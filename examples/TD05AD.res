@@ -1,0 +1,3 @@
+ TD05AD EXAMPLE PROGRAM RESULTS
+
+ Complex value of G(jW) =   0.8462  -0.2308*j

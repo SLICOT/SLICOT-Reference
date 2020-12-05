@@ -1,0 +1,46 @@
+ AB08NZ EXAMPLE PROGRAM RESULTS
+
+ The left Kronecker indices of (A,C) are 
+  1    2    2
+
+ The dimension of the observable subspace =   5
+
+ The output decoupling zeros are the eigenvalues of the matrix AF. 
+
+ The matrix AF is 
+   -1.0000  +0.0000i 
+
+
+ The right Kronecker indices of (A,B) are 
+  2    3
+
+ The dimension of the controllable subspace =   5
+
+ The input decoupling zeros are the eigenvalues of the matrix AF. 
+
+ The matrix AF is 
+   -4.0000  +0.0000i 
+
+
+ The number of finite invariant zeros =   2
+
+ The finite invariant zeros are 
+
+ real  part     imag  part 
+    2.0000  +0.0000i 
+   -1.0000  +0.0000i 
+
+ which correspond to the generalized eigenvalues of (lambda*BF - AF).
+
+
+ The number of infinite zeros =   2
+
+ The orders of the infinite zeros are 
+  1    1
+
+ The number of right Kronecker indices =   0
+
+ The number of left Kronecker indices =   1
+
+ The left Kronecker (row) indices of (A,B,C,D) are 
+  2

@@ -1,0 +1,7 @@
+ SB02MD EXAMPLE PROGRAM RESULTS
+
+ RCOND = 0.31
+
+ The solution matrix X is 
+   2.0000   1.0000
+   1.0000   2.0000

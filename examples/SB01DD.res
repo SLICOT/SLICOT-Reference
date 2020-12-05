@@ -1,0 +1,5 @@
+ SB01DD EXAMPLE PROGRAM RESULTS
+
+ The state feedback matrix G is
+  -5.2339   3.1725 -15.7885  21.7043
+  -1.6022   0.8504  -5.1914   6.2339

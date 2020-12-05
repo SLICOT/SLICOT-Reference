@@ -1,0 +1,10 @@
+ SG03AD EXAMPLE PROGRAM RESULTS
+
+ SEP =   0.29D+00
+ FERR =  0.40D-13
+ SCALE = 0.10D+01
+
+ The solution matrix X is 
+  -2.0000  -1.0000   0.0000
+  -1.0000  -3.0000  -1.0000
+   0.0000  -1.0000  -3.0000
