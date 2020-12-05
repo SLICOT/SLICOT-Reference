@@ -116,8 +116,8 @@ C     where g = 0 if DICO = 'C' and g = 1 if DICO = 'D'.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara and A. Varga, German Aerospace Center,
-C     DLR Oberpfaffenhofen, March 1998.
+C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
+C     March 1998.
 C     Based on the RASP routine SRESID.
 C
 C     REVISIONS

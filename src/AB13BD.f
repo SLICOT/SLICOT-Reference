@@ -201,8 +201,8 @@ C     operations.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara and A. Varga, German Aerospace Center,
-C     DLR Oberpfaffenhofen, July 1998.
+C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
+C     July 1998.
 C     Based on the RASP routine SL2NRM.
 C
 C     REVISIONS

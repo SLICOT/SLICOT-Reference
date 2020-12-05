@@ -220,8 +220,8 @@ C     The algorithms require less than 30N  floating point operations.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara and A. Varga, German Aerospace Center,
-C     DLR Oberpfaffenhofen, April 1998.
+C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
+C     April 1998.
 C     Based on the RASP routine OHNAP.
 C
 C     REVISIONS

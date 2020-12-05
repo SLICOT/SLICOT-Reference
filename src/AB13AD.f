@@ -174,8 +174,8 @@ C     The algorithms require about 17N  floating point operations.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara and A. Varga, German Aerospace Center,
-C     DLR Oberpfaffenhofen, July 1998.
+C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
+C     July 1998.
 C     Based on the RASP routine SHANRM.
 C
 C     REVISIONS

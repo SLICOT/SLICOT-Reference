@@ -45,6 +45,9 @@ C     AMAP    (input) INTEGER array, dimension (K)
 C             The map for accessing the factors, i.e., if AMAP(I) = J,
 C             then the factor A_I is stored at the J-th position in A.
 C             AMAP(K) is the pointer to the Hessenberg matrix.
+C             Before calling this routine, AMAP returned by SLICOT
+C             Library routine MB03BA should be modified as follows:
+C             J = AMAP(1), AMAP(I) = AMAP(I+1), I = 1:K-1, AMAP(K) = J.
 C
 C     S       (input)  INTEGER array, dimension (K)
 C             The signature array. Each entry of S must be 1 or -1.
@@ -57,8 +60,7 @@ C
 C     A       (input)  DOUBLE PRECISION array, dimension (LDA1,LDA2,K)
 C             On entry, the leading N-by-N-by-K part of this array must
 C             contain a n-by-n product (implicitly represented by its K
-C             factors) in periodic upper Hessenberg form. The Hessenberg
-C             matrix is assumed to be the last one in the product.
+C             factors) in periodic upper Hessenberg form.
 C
 C     LDA1    INTEGER
 C             The first leading dimension of the array A.  LDA1 >= N.
@@ -83,7 +85,7 @@ C
 C     CONTRIBUTOR
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
-C     Dec. 2018.
+C     Dec. 2018, Dec. 2020.
 C
 C     REVISIONS
 C

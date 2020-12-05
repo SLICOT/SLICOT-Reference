@@ -127,8 +127,8 @@ C         vol. 11, pp. 303-311, 1993.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara and A. Varga, German Aerospace Center,
-C     DLR Oberpfaffenhofen, July 1998.
+C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
+C     July 1998.
 C     Based on the RASP routine RCFI.
 C     V. Sima, Research Institute for Informatics, Bucharest, Nov. 1998,
 C     full BLAS 3 version.

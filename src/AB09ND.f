@@ -275,7 +275,6 @@ C     The algorithms require less than 30N  floating point operations.
 C
 C     CONTRIBUTOR
 C
-C     C. Oara, University "Politehnica" Bucharest.
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     February 1999. Based on the RASP routines SADSDC and SRBFSP.
 C
