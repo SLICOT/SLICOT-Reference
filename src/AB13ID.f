@@ -396,7 +396,7 @@ C     .. Local Scalars ..
      $                   LUPD, MAXACC
       INTEGER            I, ISV, ITAU, IWRK, IWS, J, K, MAXMP, MAXWRK,
      $                   MINWRK, N1, NA, RANKA
-      DOUBLE PRECISION   PREC, SVLMAX, THRESH, TOLDEF
+      DOUBLE PRECISION   PREC, SVLMAX, THRESH, TOLDEF, RCOND
 C
 C     .. Local Arrays ..
       DOUBLE PRECISION   DUM( 2 ), TOLV( 3 )
@@ -511,7 +511,8 @@ C
      $                      INFO )
                MAXWRK = MAX( MAXWRK, INT( DWORK( 1 ) ) )
             END IF
-            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK, TOL,
+            RCOND = TOL( 1 )
+            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK, RCOND,
      $                   ZERO, DWORK, RANKE, DWORK, DUM, -1, INFO )
             MAXWRK = MAX( MAXWRK, INT( DUM( 1 ) ) + N + 3 )
             CALL DORMQR( 'Left', 'Transpose', N, N, N, E, LDE, DWORK, A,
