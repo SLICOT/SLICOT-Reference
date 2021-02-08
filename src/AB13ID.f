@@ -368,7 +368,7 @@ C     University of Technology, Department of Mathematics, Feb. 2010.
 C
 C     REVISIONS
 C
-C     V. Sima, Feb. 2012, March 2012, April 2012, June 2012.
+C     V. Sima, Feb. 2012, March 2012, April 2012, June 2012, Feb. 2021.
 C
 C     KEYWORDS
 C
@@ -511,8 +511,9 @@ C
      $                      INFO )
                MAXWRK = MAX( MAXWRK, INT( DWORK( 1 ) ) )
             END IF
-            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK, TOL,
-     $                   ZERO, DWORK, RANKE, DWORK, DUM, -1, INFO )
+            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK,
+     $                   TOLDEF, ZERO, DWORK, RANKE, DWORK, DUM, -1,
+     $                   INFO )
             MAXWRK = MAX( MAXWRK, INT( DUM( 1 ) ) + N + 3 )
             CALL DORMQR( 'Left', 'Transpose', N, N, N, E, LDE, DWORK, A,
      $                   LDA, DUM, -1, INFO )
