@@ -1,10 +1,9 @@
 # SLICOT Library
------------------------------
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6463090.svg)](https://doi.org/10.5281/zenodo.6463090)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://github.com/SLICOT/SLICOT-Reference/blob/main/LICENSE)
 
-SLICOT - Subroutine Library In COntrol Theory - is a general purpose basic
+**SLICOT** - _Subroutine Library In COntrol Theory_ - is a general purpose basic
 mathematical library for control theoretical computations.  The library
 provides tools to perform essential system analysis and synthesis tasks.
 The main emphasis in SLICOT is on numerical reliability of implemented
