@@ -42,27 +42,21 @@ U : Utility Routines
 
 SLICOT Library Root Directory contains few, basic files for the SLICOT Library
 distribution and generation.  When distributed, SLICOT software comes with
-several filled-in subdirectories (benchmark_data, doc, examples, examples77,
-src, and src_aux), and five files in this root
-directory:
+several filled-in subdirectories (benchmark_data, doc, examples, src, and src_aux),
+and the following files in this root directory:
 
-- this file, readme,
+- this file, README.md,
 
-- the file Installation.txt, describing the SLICOT software installation,
+- the contributors to the library and financial support, Contributors.md,
 
-- the main SLICOT Library documentation index, libindex.html, and
+- the license file, LICENSE, and
 
-- two template files for building the object library and executable programs,
-  make.inc and makefile,
-  
-The last two files might need few changes for being adapted to the specific
-platform used.  Details about installing/updating the SLICOT software are
-given in the file Installation.txt.
+- the main SLICOT Library documentation index, libindex.html.
 
 After software installation, this directory will also contain the library 
 file slicot.a or slicot.lib, for Unix or Windows platforms, respectively.
 The library file could then be linked in applications programs, as usual.
-Specific examples are contained in the directories examples and examples77.
+Specific examples are contained in the directory examples.
 The on-line documentation of the SLICOT user's callable routines is
 accessible via the main SLICOT Library documentation index, libindex.html.
 This file also contains a link to the documentation of the lower-level,
