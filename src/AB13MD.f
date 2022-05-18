@@ -1,10 +1,6 @@
       SUBROUTINE AB13MD( FACT, N, Z, LDZ, M, NBLOCK, ITYPE, X, BOUND, D,
      $                   G, IWORK, DWORK, LDWORK, ZWORK, LZWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute an upper bound on the structured singular value for a
@@ -139,6 +135,7 @@ C
 C     REVISIONS
 C
 C     V. Sima, Katholieke Universiteit Leuven, February 2001.
+C     V. Sima, May 2022.
 C
 C     KEYWORDS
 C
@@ -209,8 +206,8 @@ C     .. External Subroutines ..
      $                   ZLASCL
 C     ..
 C     .. Intrinsic Functions ..
-      INTRINSIC          ABS, DCMPLX, DCONJG, DFLOAT, DREAL, INT, LOG,
-     $                   MAX, SQRT
+      INTRINSIC          ABS, DBLE, DCMPLX, DCONJG, DIMAG, DREAL, INT,
+     $                   LOG, MAX, SQRT
 C     ..
 C     .. Executable Statements ..
 C
@@ -296,7 +293,11 @@ C
 C
 C           1-by-1 real block.
 C
-            BOUND = ZERO
+            IF( DIMAG( Z( 1, 1 ) ).NE.ZERO ) THEN
+               BOUND = ZERO
+            ELSE
+               BOUND = ABS( DBLE( Z( 1, 1 ) ) )
+            END IF
             DWORK( 1 ) = ONE
             ZWORK( 1 ) = CONE
          ELSE
@@ -831,7 +832,7 @@ C
                END IF
   540       CONTINUE
             CALL DSCAL( N, ZNORM, G, 1 )
-            DWORK( 1 ) = DFLOAT( MINWRK - 5*N + LWAMAX )
+            DWORK( 1 ) = DBLE(   MINWRK - 5*N + LWAMAX )
             ZWORK( 1 ) = DCMPLX( MINZRK - 3*N + LZAMAX )
             RETURN
          END IF
