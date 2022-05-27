@@ -1,10 +1,6 @@
       SUBROUTINE MB01OD( UPLO, TRANS, N, ALPHA, BETA, R, LDR, H, LDH,
      $                   X, LDX, E, LDE, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrix formula

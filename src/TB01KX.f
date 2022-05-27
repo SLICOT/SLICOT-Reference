@@ -1,10 +1,6 @@
       SUBROUTINE TB01KX( N, M, P, NDIM, A, LDA, B, LDB, C, LDC, U, LDU,
      $                   V, LDV, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute an additive spectral decomposition of the transfer-

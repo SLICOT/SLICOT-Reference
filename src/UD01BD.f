@@ -1,9 +1,5 @@
       SUBROUTINE UD01BD( MP, NP, DP, NIN, P, LDP1, LDP2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To read the coefficients of a matrix polynomial

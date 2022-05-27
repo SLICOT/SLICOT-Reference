@@ -2,10 +2,6 @@
      $                   L, NSMP, U, LDU, Y, LDY, N, R, LDR, SV, RCOND,
      $                   TOL, IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To preprocess the input-output data for estimating the matrices

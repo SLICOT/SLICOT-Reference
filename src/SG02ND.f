@@ -3,10 +3,6 @@
      $                   L, LDL, X, LDX, RNORM, K, LDK, H, LDH, XE,
      $                   LDXE, OUFACT, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the optimal gain matrix K for the problem of optimal

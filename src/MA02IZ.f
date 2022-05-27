@@ -1,10 +1,6 @@
       DOUBLE PRECISION FUNCTION MA02IZ( TYP, NORM, N, A, LDA, QG,
      $                                  LDQG, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the value of the one norm, or the Frobenius norm, or

@@ -1,10 +1,6 @@
       SUBROUTINE TF01MX( N, M, P, NY, S, LDS, U, LDU, X, Y, LDY,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the output sequence of a linear time-invariant

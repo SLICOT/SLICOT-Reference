@@ -1,10 +1,6 @@
       SUBROUTINE MB3JZP( COMPQ, N, A, LDA, D, LDD, B, LDB, F, LDF, Q,
      $                   LDQ, NEIG, TOL, DWORK, ZWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To move the eigenvalues with strictly negative real parts of an

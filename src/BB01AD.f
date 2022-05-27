@@ -2,10 +2,6 @@
      1                  A, LDA, B, LDB, C, LDC, G, LDG, Q, LDQ, X, LDX,
      2                  DWORK, LDWORK, INFO)
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To generate the benchmark examples for the numerical solution of

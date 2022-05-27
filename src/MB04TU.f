@@ -1,9 +1,5 @@
       SUBROUTINE MB04TU( N, X, INCX, Y, INCY, C, S )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the Givens transformation, defined by C (cos) and S

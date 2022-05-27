@@ -1,10 +1,6 @@
       SUBROUTINE MB03BC( K, AMAP, S, SINV, A, LDA1, LDA2, MACPAR, CV,
      $                   SV, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the product singular value decomposition of the K-1

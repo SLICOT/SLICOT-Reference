@@ -3,10 +3,6 @@
      $                   LDQ, X, LDX, SEP, RCOND, FERR, WR, WI, S, LDS,
      $                   IWORK, DWORK, LDWORK, BWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X either the continuous-time algebraic Riccati

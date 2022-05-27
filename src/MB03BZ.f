@@ -2,10 +2,6 @@
      $                   Q, LDQ1, LDQ2, ALPHA, BETA, SCAL, DWORK,
      $                   LDWORK, ZWORK, LZWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the eigenvalues of the complex generalized matrix product

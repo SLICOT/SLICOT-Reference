@@ -1,9 +1,5 @@
       SUBROUTINE MC01TD( DICO, DP, P, STABLE, NZ, DWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine whether or not a given polynomial P(x) with real

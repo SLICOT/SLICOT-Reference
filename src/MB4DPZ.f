@@ -1,10 +1,6 @@
       SUBROUTINE MB4DPZ( JOB, N, THRESH, A, LDA, DE, LDDE, C, LDC, VW,
      $                   LDVW, ILO, LSCALE, RSCALE, DWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To balance the 2*N-by-2*N complex skew-Hamiltonian/Hamiltonian

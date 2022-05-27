@@ -1,10 +1,6 @@
       SUBROUTINE MB01YD( UPLO, TRANS, N, K, L, ALPHA, BETA, A, LDA, C,
      $                   LDC, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the symmetric rank k operations

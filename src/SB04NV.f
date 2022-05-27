@@ -1,9 +1,5 @@
       SUBROUTINE SB04NV( ABSCHR, UL, N, M, C, LDC, INDX, AB, LDAB, D )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct the right-hand sides D for a system of equations in

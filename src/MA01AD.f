@@ -1,9 +1,5 @@
       SUBROUTINE MA01AD( XR, XI, YR, YI )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the complex square root YR + i*YI of a complex number

@@ -3,10 +3,6 @@
      $                   C2, LDC2, D2, LDD2, N, M, A, LDA, B, LDB, C,
      $                   LDC, D, LDD, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To obtain the state-space model (A,B,C,D) for rowwise

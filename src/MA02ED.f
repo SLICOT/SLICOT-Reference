@@ -1,9 +1,5 @@
       SUBROUTINE MA02ED( UPLO, N, A, LDA )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To store by symmetry the upper or lower triangle of a symmetric

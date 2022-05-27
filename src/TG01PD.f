@@ -3,10 +3,6 @@
      $                   C, LDC, Q, LDQ, Z, LDZ, NDIM, ALPHAR, ALPHAI,
      $                   BETA, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute orthogonal transformation matrices Q and Z which

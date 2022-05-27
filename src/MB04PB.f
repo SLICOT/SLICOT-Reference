@@ -1,10 +1,6 @@
       SUBROUTINE MB04PB( N, ILO, A, LDA, QG, LDQG, CS, TAU, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce a Hamiltonian matrix,

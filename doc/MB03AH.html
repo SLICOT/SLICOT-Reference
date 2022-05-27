@@ -72,9 +72,6 @@ C     .. Array Arguments ..
           The map for accessing the factors, i.e., if AMAP(I) = J,
           then the factor A_I is stored at the J-th position in A.
           AMAP(K) is the pointer to the Hessenberg matrix.
-          Before calling this routine, AMAP returned by SLICOT
-          Library routine MB03BA should be modified as follows:
-          J = AMAP(1), AMAP(I) = AMAP(I+1), I = 1:K-1, AMAP(K) = J.
 
   S       (input)  INTEGER array, dimension (K)
           The signature array. Each entry of S must be 1 or -1.

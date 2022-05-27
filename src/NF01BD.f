@@ -1,10 +1,6 @@
       SUBROUTINE NF01BD( CJTE, NSMP, M, L, IPAR, LIPAR, X, LX, U, LDU,
      $                   E, J, LDJ, JTE, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To calculate the Jacobian dy/dX of the Wiener system

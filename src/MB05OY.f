@@ -1,9 +1,5 @@
       SUBROUTINE MB05OY( JOB, N, LOW, IGH, A, LDA, SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To restore a matrix after it has been transformed by applying

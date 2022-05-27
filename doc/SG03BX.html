@@ -51,7 +51,7 @@ Solving (for Cholesky factor) generalized stable 2-by-2 continuous- or discrete-
   pencil A - lambda * E must have a pair of complex conjugate
   eigenvalues. The eigenvalues must be in the open right half plane
   (in the continuous-time case) or inside the unit circle (in the
-  discrete-time case).
+  discrete-time case). The matrices E and B are upper triangular.
 
   The resulting matrix U is upper triangular. The entries on its
   main diagonal are non-negative. SCALE is an output scale factor
@@ -147,7 +147,10 @@ C     .. Array Arguments ..
           = 3:  the eigenvalues of the pencil A - lambda * E are
                 not in the open right half plane (in the continuous-
                 time case) or inside the unit circle (in the
-                discrete-time case).
+                discrete-time case);
+          = 4:  the LAPACK routine ZSTEIN utilized to factorize M3
+                (see SLICOT Library routine SG03BS) failed to
+                converge. This error is unlikely to occur.
 
 </PRE>
 <A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>

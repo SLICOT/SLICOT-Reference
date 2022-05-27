@@ -1,5 +1,4 @@
 *     MB02VD EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )

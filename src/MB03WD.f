@@ -2,10 +2,6 @@
      $                   LDH1, LDH2, Z, LDZ1, LDZ2, WR, WI, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the Schur decomposition and the eigenvalues of a

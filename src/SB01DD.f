@@ -2,10 +2,6 @@
      $                   Z, LDZ, Y, COUNT, G, LDG, TOL, IWORK, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute for a controllable matrix pair ( A, B ) a matrix G

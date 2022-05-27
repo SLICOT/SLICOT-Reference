@@ -1,10 +1,6 @@
       SUBROUTINE MB4DLZ( JOB, N, THRESH, A, LDA, B, LDB, ILO, IHI,
      $                   LSCALE, RSCALE, DWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To balance a pair of N-by-N complex matrices (A,B). This involves,

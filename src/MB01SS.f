@@ -1,9 +1,5 @@
       SUBROUTINE MB01SS( JOBS, UPLO, N, A, LDA, D )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To scale a symmetric N-by-N matrix A using the row and column

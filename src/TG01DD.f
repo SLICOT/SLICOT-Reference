@@ -1,10 +1,6 @@
       SUBROUTINE TG01DD( COMPZ, L, N, P, A, LDA, E, LDE, C, LDC, Z, LDZ,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the descriptor system pair (C,A-lambda E) to the

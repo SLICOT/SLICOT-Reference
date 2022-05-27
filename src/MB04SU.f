@@ -1,10 +1,6 @@
       SUBROUTINE MB04SU( M, N, A, LDA, B, LDB, CS, TAU, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a symplectic QR decomposition of a real 2M-by-N matrix

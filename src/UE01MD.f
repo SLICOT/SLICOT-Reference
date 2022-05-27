@@ -1,9 +1,5 @@
       INTEGER FUNCTION UE01MD( ISPEC, NAME, OPTS, N1, N2, N3 )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To provide an extension of the LAPACK routine ILAENV to

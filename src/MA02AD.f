@@ -1,9 +1,5 @@
       SUBROUTINE MA02AD( JOB, M, N, A, LDA, B, LDB )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To transpose all or part of a two-dimensional matrix A into

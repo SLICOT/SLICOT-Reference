@@ -1,9 +1,5 @@
       SUBROUTINE MC01SY( M, E, B, A, OVFLOW )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find a real number A from its mantissa M and its exponent E,

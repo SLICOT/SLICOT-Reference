@@ -1,10 +1,6 @@
       SUBROUTINE MB03FD( N, PREC, A, LDA, B, LDB, Q1, LDQ1, Q2, LDQ2,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute orthogonal matrices Q1 and Q2 for a real 2-by-2 or

@@ -2,10 +2,6 @@
      $                   LDA, E, LDE, Q, LDQ, Z, LDZ, ISTAIR, RANK, TOL,
      $                   IWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Let A and E be M-by-N matrices with E in column echelon form.

@@ -1,10 +1,6 @@
       SUBROUTINE MB02CU( TYPEG, K, P, Q, NB, A1, LDA1, A2, LDA2, B, LDB,
      $                   RNK, IPVT, CS, TOL, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To bring the first blocks of a generator to proper form.

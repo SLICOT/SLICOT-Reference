@@ -1,10 +1,6 @@
       SUBROUTINE SB03OR( DISCR, LTRANS, N, M, S, LDS, A, LDA, C, LDC,
      $                   SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the solution of the Sylvester equations

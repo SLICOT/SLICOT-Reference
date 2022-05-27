@@ -1,10 +1,6 @@
       SUBROUTINE NF01AD( NSMP, M, L, IPAR, LIPAR, X, LX, U, LDU, Y, LDY,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To calculate the output y of the Wiener system

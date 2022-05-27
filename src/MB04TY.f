@@ -1,10 +1,6 @@
       SUBROUTINE MB04TY( UPDATQ, UPDATZ, M, N, NBLCKS, INUK, IMUK, A,
      $                   LDA, E, LDE, Q, LDQ, Z, LDZ, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the triangularization of the submatrices having full

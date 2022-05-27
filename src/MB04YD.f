@@ -2,10 +2,6 @@
      $                   LDV, INUL, TOL, RELTOL, DWORK, LDWORK, IWARN,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To partially diagonalize the bidiagonal matrix

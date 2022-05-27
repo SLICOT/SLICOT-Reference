@@ -1,9 +1,5 @@
       SUBROUTINE MC03NX( MP, NP, DP, P, LDP1, LDP2, A, LDA, E, LDE )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Given an MP-by-NP polynomial matrix of degree dp

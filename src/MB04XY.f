@@ -1,10 +1,6 @@
       SUBROUTINE MB04XY( JOBU, JOBV, M, N, X, LDX, TAUP, TAUQ, U,
      $                   LDU, V, LDV, INUL, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply the Householder transformations Pj stored in factored

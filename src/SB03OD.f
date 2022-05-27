@@ -1,43 +1,39 @@
       SUBROUTINE SB03OD( DICO, FACT, TRANS, N, M, A, LDA, Q, LDQ, B,
      $                   LDB, SCALE, WR, WI, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X = op(U)'*op(U) either the stable non-negative
 C     definite continuous-time Lyapunov equation
 C                                   2
-C        op(A)'*X + X*op(A) = -scale *op(B)'*op(B)                   (1)
+C        op(A)'*X + X*op(A) = -scale *op(B)'*op(B),                  (1)
 C
 C     or the convergent non-negative definite discrete-time Lyapunov
 C     equation
 C                                   2
-C        op(A)'*X*op(A) - X = -scale *op(B)'*op(B)                   (2)
+C        op(A)'*X*op(A) - X = -scale *op(B)'*op(B),                  (2)
 C
 C     where op(K) = K or K' (i.e., the transpose of the matrix K), A is
 C     an N-by-N matrix, op(B) is an M-by-N matrix, U is an upper
 C     triangular matrix containing the Cholesky factor of the solution
 C     matrix X, X = op(U)'*op(U), and scale is an output scale factor,
 C     set less than or equal to 1 to avoid overflow in X. If matrix B
-C     has full rank then the solution matrix X will be positive-definite
+C     has full rank then the solution matrix X will be positive definite
 C     and hence the Cholesky factor U will be nonsingular, but if B is
-C     rank deficient then X may be only positive semi-definite and U
+C     rank deficient, then X may be only positive semi-definite and U
 C     will be singular.
 C
-C     In the case of equation (1) the matrix A must be stable (that
-C     is, all the eigenvalues of A must have negative real parts),
-C     and for equation (2) the matrix A must be convergent (that is,
-C     all the eigenvalues of A must lie inside the unit circle).
+C     In the case of equation (1) the matrix A must be stable (that is,
+C     all the eigenvalues of A must have negative real parts), and for
+C     equation (2) the matrix A must be convergent (that is, all the
+C     eigenvalues of A must lie inside the unit circle).
 C
 C     ARGUMENTS
 C
 C     Mode Parameters
 C
 C     DICO    CHARACTER*1
-C             Specifies the type of Lyapunov equation to be solved as
+C             Specifies the type of Lyapunov equation to be solved, as
 C             follows:
 C             = 'C':  Equation (1), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
@@ -58,25 +54,27 @@ C
 C     Input/Output Parameters
 C
 C     N       (input) INTEGER
-C             The order of the matrix A and the number of columns in
-C             matrix op(B).  N >= 0.
+C             The order of the matrix A and the number of columns of
+C             the matrix op(B).  N >= 0.
 C
 C     M       (input) INTEGER
-C             The number of rows in matrix op(B).  M >= 0.
+C             The number of rows of the matrix op(B).  M >= 0.
+C             If M = 0, A is unchanged on exit, and Q, WR and WI are not
+C             set.
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the matrix A. If FACT = 'F', then A contains
 C             an upper quasi-triangular matrix S in Schur canonical
 C             form; the elements below the upper Hessenberg part of the
-C             array A are not referenced.
+C             array A are then not referenced.
 C             On exit, the leading N-by-N upper Hessenberg part of this
 C             array contains the upper quasi-triangular matrix S in
 C             Schur canonical form from the Shur factorization of A.
-C             The contents of array A is not modified if FACT = 'F'.
+C             The contents of the array A is not modified if FACT = 'F'.
 C
 C     LDA     INTEGER
-C             The leading dimension of array A.  LDA >= MAX(1,N).
+C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     Q       (input or output) DOUBLE PRECISION array, dimension
 C             (LDQ,N)
@@ -86,10 +84,10 @@ C             Schur factorization of A.
 C             Otherwise, Q need not be set on entry.
 C             On exit, the leading N-by-N part of this array contains
 C             the orthogonal matrix Q of the Schur factorization of A.
-C             The contents of array Q is not modified if FACT = 'F'.
+C             The contents of the array Q is not modified if FACT = 'F'.
 C
 C     LDQ     INTEGER
-C             The leading dimension of array Q.  LDQ >= MAX(1,N).
+C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
 C             if TRANS = 'N', and dimension (LDB,max(M,N)), if
@@ -106,7 +104,7 @@ C             matrix X of the problem, X = op(U)'*op(U).
 C             If M = 0 and N > 0, then U is set to zero.
 C
 C     LDB     INTEGER
-C             The leading dimension of array B.
+C             The leading dimension of the array B.
 C             LDB >= MAX(1,N,M), if TRANS = 'N';
 C             LDB >= MAX(1,N),   if TRANS = 'T'.
 C
@@ -116,20 +114,20 @@ C             prevent the solution overflowing.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
-C             If FACT = 'N', and INFO >= 0 and INFO <= 2, WR and WI
-C             contain the real and imaginary parts, respectively, of
-C             the eigenvalues of A.
-C             If FACT = 'F', WR and WI are not referenced.
+C             If INFO >= 0 and INFO <= 3, WR and WI contain the real and
+C             imaginary parts, respectively, of the eigenvalues of A.
 C
 C     Workspace
 C
 C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
-C             On exit, if INFO = 0, or INFO = 1, DWORK(1) returns the
+C             On exit, if INFO = 0 or INFO = 1, DWORK(1) returns the
 C             optimal value of LDWORK.
+C             On exit, if INFO = -16, DWORK(1) returns the minimum value
+C             of LDWORK.
 C
 C     LDWORK  INTEGER
 C             The length of the array DWORK.
-C             If M > 0, LDWORK >= MAX(1,4*N + MIN(M,N));
+C             If M > 0, LDWORK >= MAX(1,4*N);
 C             If M = 0, LDWORK >= 1.
 C             For optimum performance LDWORK should sometimes be larger.
 C
@@ -173,10 +171,11 @@ C                   or more of the eigenvalues of S has a non-negative
 C                   real part), or DICO = 'D', but the Schur factor S
 C                   supplied in the array A is not convergent (that is,
 C                   one or more of the eigenvalues of S lies outside the
-C                   unit circle);
+C                   unit circle); the eigenvalues of A are still
+C                   returned in WR and WI;
 C             = 4:  if FACT = 'F' and the Schur factor S supplied in
 C                   the array A has two or more consecutive non-zero
-C                   elements on the first sub-diagonal, so that there is
+C                   elements on the first subdiagonal, so that there is
 C                   a block larger than 2-by-2 on the diagonal;
 C             = 5:  if FACT = 'F' and the Schur factor S supplied in
 C                   the array A has a 2-by-2 diagonal block with real
@@ -203,31 +202,39 @@ C     correspond to the eigenvalues of A). If A has already been
 C     factored prior to calling the routine however, then the factors
 C     Q and S may be supplied and the initial factorization omitted.
 C
-C     If TRANS = 'N', the matrix B is factored as (QR factorization)
-C            _   _                   _   _  _
-C        B = P ( R ),  M >= N,   B = P ( R  Z ),  M < N,
+C     If TRANS = 'N' and 6*M > 7*N, the matrix B is factored as
+C     (QR factorization)
+C            _   _
+C        B = P ( R ),
 C              ( 0 )
 C           _                                    _
 C     where P is an M-by-M orthogonal matrix and R is a square upper
-C                                         _   _      _     _  _
-C     triangular matrix. Then, the matrix B = RQ, or B = ( R  Z )Q (if
-C     M < N) is factored as
-C        _                       _
-C        B = P ( R ),  M >= N,   B = P ( R  Z ),  M < N.
+C                                         _   _
+C     triangular matrix. Then, the matrix B = RQ is factored as
+C        _
+C        B = PR.
 C
-C     If TRANS = 'T', the matrix B is factored as (RQ factorization)
-C                                         _
-C                 _   _                 ( Z ) _
-C        B = ( 0  R ) P,  M >= N,   B = ( _ ) P,  M < N,
-C                                       ( R )
+C     If TRANS = 'N' and 6*M <= 7*N, the matrix BQ is factored as
+C
+C        BQ = P ( R ),   M >= N,   BQ = P ( R  Z ),   M < N.
+C               ( 0 )
+C
+C     If TRANS = 'T' and 6*M > 7*N, the matrix B is factored as
+C     (RQ factorization)
+C                 _   _
+C        B = ( 0  R ) P,
 C           _                                    _
 C     where P is an M-by-M orthogonal matrix and R is a square upper
-C                                         _     _     _       _   _
-C     triangular matrix. Then, the matrix B = Q'R, or B = Q'( Z'  R' )'
-C     (if M < N) is factored as
-C        _                       _
-C        B = ( R ) P,  M >= N,   B = ( Z ) P,  M < N.
-C                                    ( R )
+C                                         _      _
+C     triangular matrix. Then, the matrix B = Q' R is factored as
+C        _
+C        B = RP.
+C
+C     If TRANS = 'T' and 6*M <= 7*N, the matrix Q' B is factored as
+C
+C                                              ( Z )
+C        Q' B = ( 0  R ) P,   M >= N,   Q' B = (   ) P,   M < N.
+C                                              ( R )
 C
 C     These factorizations are utilised to either transform the
 C     continuous-time Lyapunov equation to the canonical form
@@ -240,10 +247,10 @@ C       op(S)'*op(V)'*op(V)*op(S) - op(V)'*op(V) = -scale *op(F)'*op(F),
 C
 C     where V and F are upper triangular, and
 C
-C        F = R,  M >= N,   F = ( R  Z ),  M < N, if TRANS = 'N';
+C        F = R,  M >= N,   F = ( R  Z ),  M < N,  if TRANS = 'N';
 C                              ( 0  0 )
 C
-C        F = R,  M >= N,   F = ( 0  Z ),  M < N, if TRANS = 'T'.
+C        F = R,  M >= N,   F = ( 0  Z ),  M < N,  if TRANS = 'T'.
 C                              ( 0  R )
 C
 C     The transformed equation is then solved for V, from which U is
@@ -305,7 +312,7 @@ C     REVISIONS
 C
 C     Dec. 1997, April 1998, May 1998, May 1999, Oct. 2001 (V. Sima).
 C     March 2002 (A. Varga).
-C     V. Sima, Research Institute for Informatics, Bucharest, July 2011.
+C     V. Sima, July 2011, Jan. - Feb. 2022, May 2022.
 C
 C     KEYWORDS
 C
@@ -315,8 +322,8 @@ C
 C     ******************************************************************
 C
 C     .. Parameters ..
-      DOUBLE PRECISION  ZERO, ONE
-      PARAMETER         ( ZERO = 0.0D0, ONE = 1.0D0 )
+      DOUBLE PRECISION  ZERO, ONE, P95
+      PARAMETER         ( ZERO = 0.0D0, ONE = 1.0D0, P95 = 0.95D0 )
 C     .. Scalar Arguments ..
       CHARACTER         DICO, FACT, TRANS
       INTEGER           INFO, LDA, LDB, LDQ, LDWORK, M, N
@@ -325,28 +332,32 @@ C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), B(LDB,*), DWORK(*), Q(LDQ,*), WI(*),
      $                  WR(*)
 C     .. Local Scalars ..
-      LOGICAL           CONT, LQUERY, LTRANS, NOFACT
-      INTEGER           I, IFAIL, INFORM, ITAU, J, JWORK, K, L, MAXMN,
-     $                  MINMN, MINWRK, NE, SDIM, WRKOPT
-      DOUBLE PRECISION  EMAX, TEMP
+      DOUBLE PRECISION  BIGNMS, BIGNUM, EMAX, EPS, MA, MATO, MB, MBTO,
+     $                  MN, MX, SAFMIN, SMLNUM, T, TMP
+      INTEGER           BL, I, IFAIL, INFORM, ITAU, J, JWORK, K, L,
+     $                  MAXMN, MINMN, MINWRK, NC, NM, NR, SDIM, WRKOPT
+      LOGICAL           CONT, ISTRAN, LASCL, LBSCL, LQUERY, LSCL,
+     $                  NOFACT, NUNITQ, SCALB, SMALLM
 C     .. Local Arrays ..
       LOGICAL           BWORK(1)
 C     .. External Functions ..
-      LOGICAL           LSAME, SELECT
-      DOUBLE PRECISION  DLAPY2
-      EXTERNAL          DLAPY2, LSAME, SELECT
+      LOGICAL           LSAME, MA02HD, SELECT
+      DOUBLE PRECISION  DLAMCH, DLANGE, DLANHS, DLANTR, DLAPY2
+      EXTERNAL          DLAMCH, DLANGE, DLANHS, DLANTR, DLAPY2, LSAME,
+     $                  MA02HD, SELECT
 C     .. External Subroutines ..
       EXTERNAL          DCOPY, DGEES, DGEMM, DGEMV, DGEQRF, DGERQF,
-     $                  DLACPY, DLASET, DTRMM, SB03OU, XERBLA
+     $                  DLABAD, DLACPY, DLANV2, DLASCL, DLASET, DSCAL,
+     $                  DSWAP, DTRMM, MB01UY, SB03OT, XERBLA
 C     .. Intrinsic Functions ..
-      INTRINSIC         INT, MAX, MIN
+      INTRINSIC         INT, MAX, MIN, SQRT
 C     .. Executable Statements ..
 C
 C     Test the input scalar arguments.
 C
       CONT   = LSAME( DICO,  'C' )
       NOFACT = LSAME( FACT,  'N' )
-      LTRANS = LSAME( TRANS, 'T' )
+      ISTRAN = LSAME( TRANS, 'T' )
       LQUERY = LDWORK.EQ.-1
       MINMN  = MIN( M, N )
       MAXMN  = MAX( M, N )
@@ -356,7 +367,7 @@ C
          INFO = -1
       ELSE IF( .NOT.NOFACT .AND. .NOT.LSAME( FACT, 'F' ) ) THEN
          INFO = -2
-      ELSE IF( .NOT.LTRANS .AND. .NOT.LSAME( TRANS, 'N' ) ) THEN
+      ELSE IF( .NOT.ISTRAN .AND. .NOT.LSAME( TRANS, 'N' ) ) THEN
          INFO = -3
       ELSE IF( N.LT.0 ) THEN
          INFO = -4
@@ -366,15 +377,16 @@ C
          INFO = -7
       ELSE IF( LDQ.LT.MAX( 1, N ) ) THEN
          INFO = -9
-      ELSE IF( ( LDB.LT.MAX( 1, N ) )  .OR.
-     $         ( LDB.LT.MAX( 1, MAXMN ) .AND. .NOT.LTRANS ) ) THEN
+      ELSE IF ( ( ISTRAN .AND. ( LDB.LT.MAX( 1, N ) ) ) .OR.
+     $     ( .NOT.ISTRAN .AND. ( LDB.LT.MAX( 1, MAXMN ) ) ) ) THEN
          INFO = -11
       ELSE
-         IF( M.GT.0 ) THEN
-            MINWRK = 4*N + MINMN
-         ELSE
+         IF ( MINMN.EQ.0 ) THEN
             MINWRK = 1
+         ELSE
+            MINWRK = 4*N
          END IF
+         SMALLM = 6*M.LE.7*N
          IF( LQUERY ) THEN
             IF ( NOFACT ) THEN
                CALL DGEES( 'Vectors', 'Not ordered', SELECT, N, A, LDA,
@@ -384,16 +396,10 @@ C
             ELSE
                WRKOPT = MINWRK
             END IF
-            IF ( LTRANS ) THEN
-               CALL DGERQF( N, MAXMN, B, LDB, DWORK, DWORK, -1, IFAIL )
-            ELSE
-               CALL DGEQRF( MAXMN, N, B, LDB, DWORK, DWORK, -1, IFAIL )
-            END IF
-            WRKOPT = MAX( WRKOPT, INT( DWORK(1) ) + MAXMN, MINMN*N )
-            CALL SB03OU( .NOT.CONT, LTRANS, N, MINMN, A, LDA, B, LDB,
-     $                   DWORK, B, LDB, SCALE, DWORK, -1, INFO )
-            WRKOPT = MAX( WRKOPT, INT( DWORK(1) ) + MINMN, N*N )
+            CALL DGEQRF( MAXMN, N, B, LDB, DWORK, DWORK, -1, IFAIL )
+            WRKOPT = MAX( WRKOPT, INT( DWORK(1) ) + N )
          ELSE IF( LDWORK.LT.MINWRK ) THEN
+            DWORK(1) = MINWRK
             INFO = -16
          END IF
       END IF
@@ -409,15 +415,34 @@ C
          RETURN
       END IF
 C
+      SCALE = ONE
+C
 C     Quick return if possible.
 C
-      IF( MINMN.EQ.0 ) THEN
-         IF( M.EQ.0 )
+      IF ( ISTRAN ) THEN
+         K = N
+         L = M
+      ELSE
+         K = M
+         L = N
+      END IF
+      MB = DLANGE( 'Max', K, L, B, LDB, DWORK )
+      IF ( MB.EQ.ZERO ) THEN
+         IF ( N.GT.0 )
      $      CALL DLASET( 'Full', N, N, ZERO, ZERO, B, LDB )
-         SCALE = ONE
          DWORK(1) = ONE
          RETURN
       END IF
+C
+C     Set constants to control overflow.
+C
+      EPS    = DLAMCH( 'Precision' )
+      SAFMIN = DLAMCH( 'Safe minimum' )
+      SMLNUM = SAFMIN
+      BIGNMS = ONE/SMLNUM
+      CALL DLABAD( SMLNUM, BIGNMS )
+      SMLNUM = SQRT( SMLNUM )/EPS
+      BIGNUM = ONE/SMLNUM
 C
 C     Start the solution.
 C
@@ -440,240 +465,413 @@ C
             RETURN
          END IF
          WRKOPT = DWORK(1)
-C
-C        Check the eigenvalues for stability.
-C
-         IF ( CONT ) THEN
-            EMAX = WR(1)
-C
-            DO 20 J = 2, N
-               IF ( WR(J).GT.EMAX )
-     $            EMAX = WR(J)
-   20       CONTINUE
-C
-         ELSE
-            EMAX = DLAPY2( WR(1), WI(1) )
-C
-            DO 40 J = 2, N
-               TEMP = DLAPY2( WR(J), WI(J) )
-               IF ( TEMP.GT.EMAX )
-     $            EMAX = TEMP
-   40       CONTINUE
-C
-         END IF
-C
-         IF (    ( CONT ) .AND. ( EMAX.GE.ZERO ) .OR.
-     $      ( .NOT.CONT ) .AND. ( EMAX.GE.ONE  ) ) THEN
-            INFO = 2
-            RETURN
-         END IF
       ELSE
+C
+C        Set the eigenvalues of the matrix A.
+C
+         I = 1
+C
+C        WHILE( I.LT.N )LOOP
+   10    CONTINUE
+         IF ( I.LT.N ) THEN
+            IF ( A(I+1,I).NE.ZERO ) THEN
+               CALL DLANV2( A(I,I), A(I,I+1), A(I+1,I), A(I+1,I+1),
+     $                      WR(I), WI(I), WR(I+1), WI(I+1), T, TMP )
+               I = I + 2
+            ELSE
+               WR(I) = A(I,I)
+               WI(I) = ZERO
+               I = I + 1
+            END IF
+            GO TO 10
+         END IF
+C        END WHILE 10
+         IF ( I.EQ.N ) THEN
+            WR(I) = A(I,I)
+            WI(I) = ZERO
+         END IF
          WRKOPT = 0
       END IF
 C
-C     Perform the QR or RQ factorization of B,
-C            _   _           _   _  _
-C        B = P ( R ), or B = P ( R  Z ), if TRANS = 'N', or
-C              ( 0 )
-C                                 _
-C                 _   _         ( Z ) _
-C        B = ( 0  R ) P, or B = ( _ ) P, if TRANS = 'T'.
-C                               ( R )
+C     Check for identity matrix Q.
+C
+      NUNITQ = .NOT.MA02HD( 'All', N, N, ONE, Q, LDQ )
+C
+C     Check the eigenvalues for stability.
+C
+      IF ( CONT ) THEN
+         EMAX = WR(1)
+C
+         DO 20 J = 2, N
+            IF ( WR(J).GT.EMAX )
+     $         EMAX = WR(J)
+   20    CONTINUE
+C
+      ELSE
+         EMAX = DLAPY2( WR(1), WI(1) )
+C
+         DO 30 J = 2, N
+            TMP = DLAPY2( WR(J), WI(J) )
+            IF ( TMP.GT.EMAX )
+     $         EMAX = TMP
+   30    CONTINUE
+C
+      END IF
+C
+      IF (    ( CONT ) .AND. ( EMAX.GE.ZERO ) .OR.
+     $   ( .NOT.CONT ) .AND. ( EMAX.GE.ONE  ) ) THEN
+         IF ( NOFACT ) THEN
+            INFO = 2
+         ELSE
+            INFO = 3
+         END IF
+         RETURN
+      END IF
+C
+C     Scale A if the maximum absolute value of its elements is outside
+C     the range [SMLNUM,BIGNUM]. Scale similarly B. Scaling of B is done
+C     before further processing if the maximum absolute value of its
+C     elements is greater than BIGNMS; otherwise, it is postponed.
+C     For continuous-time equations, scaling is also performed if the
+C     maximum absolute values of A and B differ too much, or their
+C     minimum (maximum) is too large (small).
+C
+      MA = MIN( DLANHS( 'Max', N, A, LDA, DWORK ), BIGNMS )
+      MN = MIN( MA, MB )
+      MX = MAX( MA, MB )
+C
+      IF ( CONT ) THEN
+         LSCL = MN.LT.MX*SMLNUM .OR. MX.LT.SMLNUM .OR. MN.GT.BIGNUM
+      ELSE
+         LSCL = .FALSE.
+      END IF
+C
+      IF ( LSCL ) THEN
+         MATO  = ONE
+         MBTO  = ONE
+         LASCL = .TRUE.
+         LBSCL = .TRUE.
+      ELSE
+         IF ( MA.GT.ZERO .AND. MA.LT.SMLNUM ) THEN
+            MATO  = SMLNUM
+            LASCL = .TRUE.
+         ELSE IF ( MA.GT.BIGNUM ) THEN
+            MATO  = BIGNUM
+            LASCL = .TRUE.
+         ELSE
+            LASCL = .FALSE.
+         END IF
+C
+         IF ( MB.GT.ZERO .AND. MB.LT.SMLNUM ) THEN
+            MBTO  = SMLNUM
+            LBSCL = .TRUE.
+         ELSE IF ( MB.GT.BIGNUM ) THEN
+            MBTO  = BIGNUM
+            LBSCL = .TRUE.
+         ELSE
+            MBTO  = ONE
+            LBSCL = .FALSE.
+         END IF
+      END IF
+C
+      IF ( .NOT.CONT .AND. MATO.EQ.ONE )
+     $   MATO = P95
+      IF ( LASCL )
+     $   CALL DLASCL( 'Hess',  0, 0, MA, MATO, N, N, A, LDA, INFO )
+C
+      SCALB = MB.GT.BIGNMS
+      MB    = MIN( MB, BIGNMS )
+      IF ( LBSCL .AND. SCALB )
+     $   CALL DLASCL( 'Gen', 0, 0, MB, MBTO, K, L, B, LDB, INFO )
+C
+C     Transformation of the right hand side, involving one or two RQ or
+C     QR factorizations. Also, do scaling, if it was postponed.
+C
 C     Workspace:  need   MIN(M,N) + N;
 C                 prefer MIN(M,N) + N*NB.
 C
       ITAU  = 1
       JWORK = ITAU + MINMN
-      IF ( LTRANS ) THEN
-         CALL DGERQF( N, M, B, LDB, DWORK(ITAU), DWORK(JWORK),
-     $                LDWORK-JWORK+1, IFAIL )
-         WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1, MINMN*N)
-         JWORK = ITAU
 C
-C        Form in B
-C        _      _              _         _   _                    _
-C        B := Q'R,   m >= n,   B := Q'*( Z'  R' )',   m < n, with B an
-C        n-by-min(m,n) matrix.
-C        Use a BLAS 3 operation if enough workspace, and BLAS 2,
-C                   _
-C        otherwise: B is formed column by column.
+      IF ( ISTRAN ) THEN
+         NM = M
+         IF ( NUNITQ ) THEN
+            IF ( SMALLM ) THEN
+C                      _
+C              Compute B := Q' * B.
 C
-         IF ( LDWORK.GE.JWORK+MINMN*N-1 ) THEN
-            K = JWORK
+               NC = INT( LDWORK / N )
 C
-            DO 60 I = 1, MINMN
-               CALL DCOPY( N, Q(N-MINMN+I,1), LDQ, DWORK(K), 1 )
-               K = K + N
-   60       CONTINUE
+               DO 40 J = 1, M, NC
+                  BL = MIN( M-J+1, NC )
+                  CALL DGEMM(  'Trans', 'NoTran', N, BL, N, ONE, Q,
+     $                         LDQ, B(1,J), LDB, ZERO, DWORK, N )
+                  CALL DLACPY( 'All', N, BL, DWORK, N, B(1,J), LDB )
+   40          CONTINUE
 C
-            CALL DTRMM( 'Right', 'Upper', 'No transpose', 'Non-unit',
-     $                  N, MINMN, ONE, B(N-MINMN+1,M-MINMN+1), LDB,
-     $                  DWORK(JWORK), N )
-            IF ( M.LT.N )
-     $         CALL DGEMM( 'Transpose', 'No transpose', N, M, N-M,
-     $                     ONE, Q, LDQ, B, LDB, ONE, DWORK(JWORK), N )
-            CALL DLACPY( 'Full', N, MINMN, DWORK(JWORK), N, B, LDB )
-         ELSE
-            NE = N - MINMN
+            ELSE
 C
-            DO 80 J = 1, MINMN
-               NE = NE + 1
-               CALL DCOPY( NE, B(1,M-MINMN+J), 1, DWORK(JWORK), 1 )
-               CALL DGEMV( 'Transpose', NE, N, ONE, Q, LDQ,
-     $                     DWORK(JWORK), 1, ZERO, B(1,J), 1 )
-   80       CONTINUE
+C              If M > 7*N/6, perform the RQ factorization of B,
+C                          _   _
+C                 B = ( 0  R ) P.
 C
+               NM = N
+               CALL DGERQF( N, M, B, LDB, DWORK(ITAU), DWORK(JWORK),
+     $                      LDWORK-JWORK+1, IFAIL )
+               WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1,
+     $                       MINMN*N )
+C
+C              Form in B
+C                 _         _        _
+C                 B := Q' * R,  with B an N-by-MIN(M,N) matrix.
+C              Use a BLAS 3 operation if enough workspace, and BLAS 2,
+C                         _
+C              otherwise: B is formed column by column.
+C
+               IF ( LDWORK.GE.MINMN*N ) THEN
+                  J = 1
+C
+                  DO 50 I = 1, MINMN
+                     CALL DCOPY( N, Q(N-MINMN+I,1), LDQ, DWORK(J), 1 )
+                     J = J + N
+   50             CONTINUE
+C
+                  CALL DTRMM(  'Right', 'Upper', 'NoTran', 'NoUnit', N,
+     $                         MINMN, ONE, B(N-MINMN+1,M-MINMN+1), LDB,
+     $                         DWORK, N )
+                  CALL DLACPY( 'Full', N, MINMN, DWORK, N, B, LDB )
+               ELSE
+C
+                  DO 60 J = 1, MINMN
+                     CALL DCOPY( J, B(1,M-MINMN+J), 1, DWORK, 1 )
+                     CALL DGEMV( 'Trans', J, N, ONE, Q, LDQ, DWORK, 1,
+     $                           ZERO, B(1,J), 1 )
+   60             CONTINUE
+C
+               END IF
+            END IF
          END IF
+C                                        _
+C        Perform the RQ factorization of B to get the factor F.
+C        Note that if M <= 7*N/6, the factorization is
+C           _                          _
+C           B := ( 0  F ) P,  M >= N,  B := ( Z'  F' )' P,  M < N.
+C        Then, do scaling, if it was postponed.
+C        Make the entries on the main diagonal are non-negative.
+C
+         CALL DGERQF( N, NM, B, LDB, DWORK(ITAU), DWORK(JWORK),
+     $                LDWORK-JWORK+1, IFAIL )
+         IF ( N.GT.NM ) THEN
+            IF ( LBSCL .AND. .NOT.SCALB ) THEN
+               CALL DLASCL( 'Gen',   0, 0, MB, MBTO, N-M, M, B, LDB,
+     $                      INFO )
+               CALL DLASCL( 'Upper', 0, 0, MB, MBTO, M, M, B(N-M+1,1),
+     $                      LDB, INFO )
+            END IF
+C
+            DO 70 I = M, 1, -1
+               CALL DCOPY( N-M+I, B(1,I), 1, B(1,N-M+I), 1 )
+   70       CONTINUE
+C
+            CALL DLASET( 'Full', N, N-M, ZERO, ZERO, B, LDB )
+            IF ( M.GT.1 )
+     $         CALL DLASET( 'Lower', M-1, M-1, ZERO, ZERO,
+     $                      B(N-M+2,N-M+1), LDB )
+         ELSE
+            IF ( M.GT.N .AND. M.EQ.NM )
+     $         CALL DLACPY( 'Upper', N, N, B(1,M-N+1), LDB, B, LDB )
+            IF ( LBSCL .AND. .NOT.SCALB )
+     $         CALL DLASCL( 'Upper', 0, 0, MB, MBTO, N, N, B, LDB,
+     $                      INFO )
+         END IF
+C
+         DO 80 I = N - MINMN + 1, N
+            IF ( B(I,I).LT.ZERO )
+     $         CALL DSCAL( I, -ONE, B(1,I), 1 )
+   80    CONTINUE
+C
       ELSE
-         CALL DGEQRF( M, N, B, LDB, DWORK(ITAU), DWORK(JWORK),
-     $                LDWORK-JWORK+1, IFAIL )
-         WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1, MINMN*N)
-         JWORK = ITAU
 C
-C        Form in B
-C        _    _               _      _  _                    _
-C        B := RQ,   m >= n,   B := ( R  Z )*Q,   m < n, with B an
-C        min(m,n)-by-n matrix.
-C        Use a BLAS 3 operation if enough workspace, and BLAS 2,
-C                   _
-C        otherwise: B is formed row by row.
+         NM = M
+         IF ( NUNITQ ) THEN
+            IF ( SMALLM ) THEN
+C                      _
+C              Compute B := B * Q.
 C
-         IF ( LDWORK.GE.JWORK+MINMN*N-1 ) THEN
-            CALL DLACPY( 'Full', MINMN, N, Q, LDQ, DWORK(JWORK), MINMN )
-            CALL DTRMM( 'Left', 'Upper', 'No transpose', 'Non-unit',
-     $                  MINMN, N, ONE, B, LDB, DWORK(JWORK), MINMN )
-            IF ( M.LT.N )
-     $         CALL DGEMM( 'No transpose', 'No transpose', M, N, N-M,
-     $                     ONE, B(1,M+1), LDB, Q(M+1,1), LDQ, ONE,
-     $                     DWORK(JWORK), MINMN )
-            CALL DLACPY( 'Full', MINMN, N, DWORK(JWORK), MINMN, B, LDB )
-         ELSE
-            NE = MINMN + MAX( 0, N-M )
+               NR = INT( LDWORK / N )
 C
-            DO 100 J = 1, MINMN
-               CALL DCOPY( NE, B(J,J), LDB, DWORK(JWORK), 1 )
-               CALL DGEMV( 'Transpose', NE, N, ONE, Q(J,1), LDQ,
-     $                     DWORK(JWORK), 1, ZERO, B(J,1), LDB )
-               NE = NE - 1
-  100       CONTINUE
+               DO 90 I = 1, M, NR
+                  BL = MIN( M-I+1, NR )
+                  CALL DGEMM(  TRANS, 'NoTran', BL, N, N, ONE, B(I,1),
+     $                         LDB, Q, LDQ, ZERO, DWORK, BL )
+                  CALL DLACPY( 'All', BL, N, DWORK, BL, B(I,1), LDB )
+   90          CONTINUE
 C
+            ELSE
+C
+C              If M > 7*N/6, perform the QR factorization of B,
+C                     _   _
+C                 B = P ( R ).
+C                       ( 0 )
+C
+               CALL DGEQRF( M, N, B, LDB, DWORK(ITAU), DWORK(JWORK),
+     $                      LDWORK-JWORK+1, IFAIL )
+               WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1,
+     $                       N*N )
+C
+C              Form in B
+C                 _    _             _
+C                 B := R * Q,   with B an n-by-n matrix.
+C              Use a BLAS 3 operation if enough workspace, and BLAS 2,
+C                         _
+C              otherwise: B is formed row by row.
+C
+               IF ( LDWORK.GE.N*N ) THEN
+                  CALL DLACPY( 'Full', N, N, Q, LDQ, DWORK, N )
+                  CALL DTRMM(  'Left', 'Upper', 'NoTran', 'NoUnit', N,
+     $                         N, ONE, B, LDB, DWORK, N )
+                  CALL DLACPY( 'Full', N, N, DWORK, MINMN, B, LDB )
+               ELSE
+                  CALL MB01UY( 'Left', 'Upper', 'NoTran', N, N, ONE, B,
+     $                         LDB, Q, LDQ, DWORK, LDWORK, INFO )
+               END IF
+               NM = N
+            END IF
          END IF
-      END IF
-      JWORK  = ITAU + MINMN
+C                                        _
+C        Perform the QR factorization of B to get the factor F.
+C           _                        _
+C           B = P ( F ),   M >= N,   B = P ( F  Z ),   M < N.
+C                 ( 0 )
 C
-C     Solve for U the transformed Lyapunov equation
-C                                                      2    _      _
-C     op(S)'*op(U)'*op(U) + op(U)'*op(U)*op(S) = -scale *op(B)'*op(B),
+         CALL DGEQRF( NM, N, B, LDB, DWORK(ITAU), DWORK(JWORK),
+     $                LDWORK-JWORK+1, IFAIL )
+         IF ( LBSCL .AND. .NOT.SCALB )
+     $      CALL DLASCL( 'Upper', 0, 0, MB, MBTO, NM, N, B, LDB, INFO )
+C
+         IF ( M.LT.N )
+     $      CALL DLASET( 'Upper', N-M, N-M, ZERO, ZERO, B(M+1,M+1),
+     $                   LDB )
+C
+C        Make the entries on the main diagonal of F non-negative.
+C
+         DO 100 I = 1, MINMN
+            IF ( B(I,I).LT.ZERO )
+     $         CALL DSCAL( N+1-I, -ONE, B(I,I), LDB )
+  100    CONTINUE
+C
+      END IF
+      IF ( MINMN.GT.1 )
+     $   CALL DLASET( 'Lower', MINMN-1, MINMN-1, ZERO, ZERO, B(2,1),
+     $                LDB )
+C
+C     Solve for V the transformed Lyapunov equation
+C                                                      2
+C     op(S)'*op(V)'*op(V) + op(V)'*op(V)*op(S) = -scale *op(F)'*op(F),
 C
 C     or
-C                                                      2    _      _
-C     op(S)'*op(U)'*op(U)*op(S) - op(U)'*op(U) = -scale *op(B)'*op(B)
+C                                                      2
+C     op(S)'*op(V)'*op(V)*op(S) - op(V)'*op(V) = -scale *op(F)'*op(F).
 C
-C     Workspace:  need   MIN(M,N) + 4*N;
-C                 prefer larger.
+C     Workspace:  need   4*N.
 C
-      CALL SB03OU( .NOT.CONT, LTRANS, N, MINMN, A, LDA, B, LDB,
-     $             DWORK(ITAU), B, LDB, SCALE, DWORK(JWORK),
-     $             LDWORK-JWORK+1, INFO )
-      IF ( INFO.GT.1 ) THEN
-         INFO = INFO + 1
-         RETURN
-      END IF
-      WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1 )
-      JWORK  = ITAU
+      CALL SB03OT( .NOT.CONT, ISTRAN, N, A, LDA, B, LDB, SCALE, DWORK,
+     $             INFO )
 C
-C     Form   U :=  U*Q' or U := Q*U in the array B.
-C     Use a BLAS 3 operation if enough workspace, and BLAS 2, otherwise.
-C     Workspace:  need   N;
-C                 prefer N*N;
+C     Form U := Q*V or U :=  V*Q' in the array B, if Q is not identity.
 C
-      IF ( LDWORK.GE.JWORK+N*N-1 ) THEN
-         IF ( LTRANS ) THEN
-            CALL DLACPY( 'Full', N, N, Q, LDQ, DWORK(JWORK), N )
-            CALL DTRMM( 'Right', 'Upper', 'No transpose', 'Non-unit', N,
-     $                  N, ONE, B, LDB, DWORK(JWORK), N )
-         ELSE
-            K = JWORK
+      IF ( ISTRAN ) THEN
+C
+         IF ( NUNITQ ) THEN
+C
+C           Workspace:  need   N;
+C                       prefer larger.
+C
+            CALL MB01UY( 'Right', 'Upper', 'NoTran', N, N, ONE, B, LDB,
+     $                   Q, LDQ, DWORK, LDWORK, INFO )
+C
+C           Overwrite U with the triangular matrix of its
+C           RQ-factorization and make the entries on the main diagonal
+C           non-negative.
+C
+C           Workspace:  need   2*N;
+C                       prefer N + N*NB.
+C
+            CALL DGERQF( N, N, B, LDB, DWORK, DWORK(N+1), LDWORK-N,
+     $                   IFAIL )
+            IF ( N.GT.1 )
+     $         CALL DLASET( 'Lower', N-1, N-1, ZERO, ZERO, B(2,1),
+     $                      LDB )
+C
+            DO 110 I = 1, N
+               IF ( B(I,I).LT.ZERO )
+     $            CALL DSCAL( I, -ONE, B(1,I), 1 )
+  110       CONTINUE
+C
+         END IF
+C
+      ELSE
+C
+         IF ( NUNITQ ) THEN
+C
+C           Workspace:  need   N;
+C                       prefer larger.
+C
+            CALL MB01UY( 'Right', 'Upper', 'Trans', N, N, ONE, B, LDB,
+     $                   Q, LDQ, DWORK, LDWORK, INFO )
 C
             DO 120 I = 1, N
-               CALL DCOPY( N, Q(1,I), 1, DWORK(K), N )
-               K = K + 1
+               CALL DSWAP( I, B(I,1), LDB, B(1,I), 1 )
   120       CONTINUE
 C
-            CALL DTRMM( 'Left', 'Upper', 'No transpose', 'Non-unit', N,
-     $                  N, ONE, B, LDB, DWORK(JWORK), N )
+C           Overwrite U with the triangular matrix of its
+C           QR-factorization and make the entries on the main diagonal
+C           non-negative.
+C
+C           Workspace:  2*N;
+C                       prefer N + N*NB.
+C
+            CALL DGEQRF( N, N, B, LDB, DWORK, DWORK(N+1), LDWORK-N,
+     $                   IFAIL )
+            IF ( N.GT.1 )
+     $         CALL DLASET( 'Lower', N-1, N-1, ZERO, ZERO, B(2,1), LDB )
+C
+            DO 130 I = 1, N
+               IF ( B(I,I).LT.ZERO )
+     $            CALL DSCAL( N+1-I, -ONE, B(I,I), LDB )
+  130       CONTINUE
+C
          END IF
-         CALL DLACPY( 'Full', N, N, DWORK(JWORK), N, B, LDB )
-         WRKOPT = MAX( WRKOPT, JWORK + N*N - 1 )
-      ELSE
-         IF ( LTRANS ) THEN
 C
-C           U is formed column by column ( U := Q*U ).
-C
-            DO 140 I = 1, N
-               CALL DCOPY( I, B(1,I), 1, DWORK(JWORK), 1 )
-               CALL DGEMV( 'No transpose', N, I, ONE, Q, LDQ,
-     $                     DWORK(JWORK), 1, ZERO, B(1,I), 1 )
-  140       CONTINUE
-         ELSE
-C
-C           U is formed row by row ( U' := Q*U' ).
-C
-            DO 160 I = 1, N
-               CALL DCOPY( N-I+1, B(I,I), LDB, DWORK(JWORK), 1 )
-               CALL DGEMV( 'No transpose', N, N-I+1, ONE, Q(1,I), LDQ,
-     $                     DWORK(JWORK), 1, ZERO, B(I,1), LDB )
-  160       CONTINUE
-         END IF
       END IF
 C
-C     Lastly find the QR or RQ factorization of U, overwriting on B,
-C     to give the required Cholesky factor.
-C     Workspace:  need   2*N;
-C                 prefer N + N*NB;
+C     Undo the scaling of A and B and update SCALE.
 C
-      JWORK = ITAU + N
-      IF ( LTRANS ) THEN
-         CALL DGERQF( N, N, B, LDB, DWORK(ITAU), DWORK(JWORK),
-     $                LDWORK-JWORK+1, IFAIL )
-      ELSE
-         CALL DGEQRF( N, N, B, LDB, DWORK(ITAU), DWORK(JWORK),
-     $                LDWORK-JWORK+1, IFAIL )
+      TMP = ONE
+      IF ( LASCL ) THEN
+         CALL DLASCL( 'Hess', 0, 0, MATO, MA, N, N, A, LDA, INFO )
+         TMP = SQRT( MATO/MA )
       END IF
-      WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1 )
-C
-C     Make the diagonal elements of U non-negative.
-C
-      IF ( LTRANS ) THEN
-C
-         DO 200 J = 1, N
-            IF ( B(J,J).LT.ZERO ) THEN
-C
-               DO 180 I = 1, J
-                  B(I,J) = -B(I,J)
-  180          CONTINUE
-C
+      IF ( LBSCL ) THEN
+         MX = DLANTR( 'Max', 'Upper', 'NoDiag', N, N, B, LDB, DWORK )
+         MN = MIN( TMP, MB )
+         T  = MAX( TMP, MB )
+         IF ( T.GT.ONE ) THEN
+            IF ( MN.GT.BIGNMS/T ) THEN
+               SCALE = SCALE/T
+               TMP   =   TMP/T
             END IF
-  200    CONTINUE
-C
-      ELSE
-         K = JWORK
-C
-         DO 240 J = 1, N
-            DWORK(K) = B(J,J)
-            L = JWORK
-C
-            DO 220 I = 1, J
-               IF ( DWORK(L).LT.ZERO ) B(I,J) = -B(I,J)
-               L = L + 1
-  220       CONTINUE
-C
-            K = K + 1
-  240    CONTINUE
+         END IF
+         TMP = TMP*MB
+         IF ( TMP.GT.ONE ) THEN
+            IF ( MX.GT.BIGNMS/TMP ) THEN
+               SCALE = SCALE/MX
+               TMP   =   TMP/MX
+            END IF
+         END IF
       END IF
-C
-      IF( N.GT.1 )
-     $   CALL DLASET( 'Lower', N-1, N-1, ZERO, ZERO, B(2,1), LDB )
+      IF ( LASCL .OR. LBSCL )
+     $   CALL DLASCL( 'Upper', 0, 0, MBTO, TMP, N, N, B, LDB, INFO )
 C
 C     Set the optimal workspace.
 C

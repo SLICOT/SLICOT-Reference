@@ -1,10 +1,6 @@
       SUBROUTINE MB03GD( N, B, LDB, D, LDD, MACPAR, Q, LDQ, U, LDU,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute an orthogonal matrix Q and an orthogonal symplectic

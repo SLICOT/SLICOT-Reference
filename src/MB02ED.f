@@ -1,10 +1,6 @@
       SUBROUTINE MB02ED( TYPET, K, N, NRHS, T, LDT, B, LDB, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve a system of linear equations  T*X = B  or  X*T = B  with

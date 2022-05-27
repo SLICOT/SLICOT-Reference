@@ -1,10 +1,6 @@
       SUBROUTINE MB03AG( SHFT, K, N, AMAP, S, SINV, A, LDA1, LDA2, C1,
      $                   S1, C2, S2, IWORK, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute two Givens rotations (C1,S1) and (C2,S2) such that the

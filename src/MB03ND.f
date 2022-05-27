@@ -1,9 +1,5 @@
       INTEGER FUNCTION MB03ND( N, THETA, Q2, E2, PIVMIN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the number of singular values of the bidiagonal matrix

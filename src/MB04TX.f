@@ -1,10 +1,6 @@
       SUBROUTINE MB04TX( UPDATQ, UPDATZ, M, N, NBLCKS, INUK, IMUK, A,
      $                   LDA, E, LDE, Q, LDQ, Z, LDZ, MNEI )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To separate the pencils s*E(eps)-A(eps) and s*E(inf)-A(inf) in

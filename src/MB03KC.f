@@ -1,9 +1,5 @@
       SUBROUTINE MB03KC( K, KHESS, N, R, S, A, LDA, V, TAU )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce a 2-by-2 general, formal matrix product A of length K,

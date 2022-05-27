@@ -1,9 +1,5 @@
       SUBROUTINE MB03RY( M, N, PMAX, A, LDA, B, LDB, C, LDC, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve the Sylvester equation -AX + XB = C, where A and B are

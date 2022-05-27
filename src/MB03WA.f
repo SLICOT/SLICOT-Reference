@@ -1,10 +1,6 @@
       SUBROUTINE MB03WA( WANTQ, WANTZ, N1, N2, A, LDA, B, LDB, Q, LDQ,
      $                   Z, LDZ, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To swap adjacent diagonal blocks A11*B11 and A22*B22 of size

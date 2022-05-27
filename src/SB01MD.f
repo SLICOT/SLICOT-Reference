@@ -1,10 +1,6 @@
       SUBROUTINE SB01MD( NCONT, N, A, LDA, B, WR, WI, Z, LDZ, G, DWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine the one-dimensional state feedback matrix G of the

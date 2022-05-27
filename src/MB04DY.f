@@ -1,9 +1,5 @@
       SUBROUTINE MB04DY( JOBSCL, N, A, LDA, QG, LDQG, D, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform a symplectic scaling on the Hamiltonian matrix

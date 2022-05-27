@@ -1,9 +1,5 @@
       SUBROUTINE MA02FD( X1, X2, C, S, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the coefficients c and s (c^2 + s^2 = 1) for a modified

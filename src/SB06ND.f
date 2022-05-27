@@ -1,10 +1,6 @@
       SUBROUTINE SB06ND( N, M, KMAX, A, LDA, B, LDB, KSTAIR, U, LDU, F,
      $                   LDF, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct the minimum norm feedback matrix F to perform

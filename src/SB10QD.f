@@ -2,10 +2,6 @@
      $                   C, LDC, D, LDD, F, LDF, H, LDH, X, LDX, Y, LDY,
      $                   XYCOND, IWORK, DWORK, LDWORK, BWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the state feedback and the output injection

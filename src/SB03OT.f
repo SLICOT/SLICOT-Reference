@@ -1,10 +1,6 @@
       SUBROUTINE SB03OT( DISCR, LTRANS, N, S, LDS, R, LDR, SCALE, DWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X = op(U)'*op(U) either the stable non-negative
@@ -161,7 +157,7 @@ C     Bochum, May 1992.
 C
 C     REVISIONS
 C
-C     Dec. 1997, April 1998, May 1999, Feb. 2004.
+C     Dec. 1997, April 1998, May 1999, Feb. 2004, Jan. - Feb. 2022.
 C
 C     KEYWORDS
 C
@@ -506,10 +502,6 @@ C
                END IF
 C
                SCALOC = ONE
-               IF( TEMP.LT.SMIN ) THEN
-                  TEMP  = SMIN
-                  INFOM = 1
-               END IF
                DR = ABS( R(K,K) )
                IF( TEMP.LT.ONE .AND. DR.GT.ONE ) THEN
                   IF( DR.GT.BIGNUM*TEMP )

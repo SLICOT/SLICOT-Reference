@@ -2,10 +2,6 @@
      $                   Q, LDQ, Z, LDZ, ALPHAR, ALPHAI, BETA, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the pair (A,E) to a real generalized Schur form

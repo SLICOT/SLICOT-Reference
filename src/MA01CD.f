@@ -1,9 +1,5 @@
       INTEGER FUNCTION MA01CD( A, IA, B, IB )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute, without over- or underflow, the sign of the sum of two

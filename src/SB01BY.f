@@ -1,9 +1,5 @@
       SUBROUTINE SB01BY( N, M, S, P, A, B, F, TOL, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve an N-by-N pole placement problem for the simple cases

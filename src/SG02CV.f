@@ -2,10 +2,6 @@
      $                   LDE, X, LDX, R, LDR, NORMS, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the residual matrix R for a continuous-time or

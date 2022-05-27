@@ -1,10 +1,6 @@
       SUBROUTINE TG01AZ( JOB, L, N, M, P, THRESH, A, LDA, E, LDE,
      $                   B, LDB, C, LDC, LSCALE, RSCALE, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To balance the matrices of the system pencil

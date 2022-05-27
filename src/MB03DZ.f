@@ -1,9 +1,5 @@
       SUBROUTINE MB03DZ( A, LDA, B, LDB, CO1, SI1, CO2, SI2 )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute unitary matrices Q1 and Q2 for a complex 2-by-2 regular

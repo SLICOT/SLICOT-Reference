@@ -1,10 +1,6 @@
       SUBROUTINE MB02OD( SIDE, UPLO, TRANS, DIAG, NORM, M, N, ALPHA, A,
      $                   LDA, B, LDB, RCOND, TOL, IWORK, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve (if well-conditioned) one of the matrix equations

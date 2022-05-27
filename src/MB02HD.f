@@ -1,10 +1,6 @@
       SUBROUTINE MB02HD( TRIU, K, L, M, ML, N, NU, P, S, TC, LDTC, TR,
      $                   LDTR, RB, LDRB, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute, for a banded K*M-by-L*N block Toeplitz matrix T with

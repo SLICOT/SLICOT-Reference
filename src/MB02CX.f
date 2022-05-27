@@ -1,10 +1,6 @@
       SUBROUTINE MB02CX( TYPET, P, Q, K, A, LDA, B, LDB, CS, LCS,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To bring the first blocks of a generator in proper form.

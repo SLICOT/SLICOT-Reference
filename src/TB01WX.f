@@ -1,10 +1,6 @@
       SUBROUTINE TB01WX( COMPU, N, M, P, A, LDA, B, LDB, C, LDC, U, LDU,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the system state matrix A to an upper Hessenberg form

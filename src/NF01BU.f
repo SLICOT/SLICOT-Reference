@@ -1,10 +1,6 @@
       SUBROUTINE NF01BU( STOR, UPLO, N, IPAR, LIPAR, DPAR, LDPAR, J,
      $                   LDJ, JTJ, LDJTJ, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrix J'*J + c*I, for the Jacobian J as received

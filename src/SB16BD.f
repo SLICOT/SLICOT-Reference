@@ -3,10 +3,6 @@
      $                   F, LDF, G, LDG, DC, LDDC, HSV, TOL1, TOL2,
      $                   IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute, for a given open-loop model (A,B,C,D), and for

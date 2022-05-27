@@ -1,9 +1,5 @@
       SUBROUTINE MC01MD( DP, ALPHA, K, P, Q, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To calculate, for a given real polynomial P(x) and a real scalar

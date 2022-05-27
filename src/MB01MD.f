@@ -1,10 +1,6 @@
       SUBROUTINE MB01MD( UPLO, N, ALPHA, A, LDA, X, INCX, BETA, Y,
      $                   INCY )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the matrix-vector operation

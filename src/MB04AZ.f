@@ -2,10 +2,6 @@
      $                   LDFG, D, LDD, C, LDC, Q, LDQ, U, LDU, ALPHAR,
      $                   ALPHAI, BETA, IWORK, LIWORK, DWORK, LDWORK,
      $                   ZWORK, LZWORK, BWORK, INFO )
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues of a complex N-by-N skew-Hamiltonian/

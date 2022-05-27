@@ -1,10 +1,6 @@
       SUBROUTINE MB04YW( QRIT, UPDATU, UPDATV, M, N, L, K, SHIFT, D, E,
      $                   U, LDU, V, LDV, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform either one QR or QL iteration step onto the unreduced

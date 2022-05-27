@@ -287,8 +287,8 @@ C     .. Array Arguments ..
           real, two purely imaginary, or one real and one purely
           imaginary eigenvalue.
           For i = q+2, ..., 2*q+1, IWORK(i) contains a pointer to
-          the starting location in DWORK of the i-th quadruple of
-          1-by-1 blocks, if IWORK(i-q) &gt; 0, or 2-by-2 blocks,
+          the starting location in DWORK of the (i-q-1)-th quadruple
+          of 1-by-1 blocks, if IWORK(i-q) &gt; 0, or 2-by-2 blocks,
           if IWORK(i-q) &lt; 0, defining unreliable eigenvalues.
           IWORK(2*q+2) contains the number of the 1-by-1 blocks, and
           IWORK(2*q+3) contains the number of the 2-by-2 blocks,
@@ -380,7 +380,6 @@ C     .. Array Arguments ..
 <B>Program Text</B>
 <PRE>
 *     MB04BD EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       INTEGER            NIN, NOUT

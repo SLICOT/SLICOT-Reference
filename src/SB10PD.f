@@ -2,10 +2,6 @@
      $                   D, LDD, TU, LDTU, TY, LDTY, RCOND, TOL, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the matrices D12 and D21 of the linear time-invariant

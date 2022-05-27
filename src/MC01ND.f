@@ -1,9 +1,5 @@
       SUBROUTINE MC01ND( DP, XR, XI, P, VR, VI, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the value of the real polynomial P(x) at a given

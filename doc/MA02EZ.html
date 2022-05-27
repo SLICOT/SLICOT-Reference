@@ -19,7 +19,8 @@ Store by (skew-)symmetry the upper or lower triangle of a (skew-)symmetric/Hermi
 <PRE>
   To store by (skew-)symmetry the upper or lower triangle of a
   (skew-)symmetric/Hermitian complex matrix, given the other
-  triangle.
+  triangle. The option SKEW = 'G' allows to suitably deal with the
+  diagonal of a general square triangular matrix.
 
 </PRE>
 <A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
@@ -52,6 +53,7 @@ C     .. Array Arguments ..
   SKEW    CHARACTER*1
           Specifies whether the matrix is symmetric/Hermitian or
           skew-symmetric/Hermitian as follows:
+          = 'G':  The matrix is not symmetric/Hermitian (general);
           = 'N':  The matrix is symmetric/Hermitian;
           = 'S':  The matrix is skew-symmetric/Hermitian.
 

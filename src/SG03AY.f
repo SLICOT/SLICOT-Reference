@@ -1,9 +1,5 @@
       SUBROUTINE SG03AY( TRANS, N, A, LDA, E, LDE, X, LDX, SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X either the reduced generalized continuous-time

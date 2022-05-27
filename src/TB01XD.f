@@ -1,10 +1,6 @@
       SUBROUTINE TB01XD( JOBD, N, M, P, KL, KU, A, LDA, B, LDB, C, LDC,
      $                   D, LDD, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply a special transformation to a system given as a triple

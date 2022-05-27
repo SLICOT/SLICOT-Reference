@@ -1,10 +1,6 @@
       SUBROUTINE NF01BB( IFLAG, NFUN, LX, IPAR, LIPAR, U, LDU, Y, LDY,
      $                   X, NFEVL, E, J, LDJ, JTE, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     This is the FCN routine for optimizing all parameters of a Wiener

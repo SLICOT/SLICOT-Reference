@@ -2,10 +2,6 @@
      $                   STOREW, M, N, K, V, LDV, W, LDW, RS, LDRS, T,
      $                   LDT, A, LDA, B, LDB, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply the orthogonal symplectic block reflector

@@ -1,10 +1,6 @@
       SUBROUTINE AB04MD( TYPE, N, M, P, ALPHA, BETA, A, LDA, B, LDB, C,
      $                   LDC, D, LDD, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform a transformation on the parameters (A,B,C,D) of a

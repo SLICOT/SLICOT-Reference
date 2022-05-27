@@ -2,10 +2,6 @@
      $                   V, LDV, W, LDW, C, LDC, D, LDD, CS, TAU, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To overwrite general real m-by-n matrices C and D, or their

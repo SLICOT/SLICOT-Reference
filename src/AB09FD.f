@@ -2,10 +2,6 @@
      $                   P, NR, ALPHA, A, LDA, B, LDB, C, LDC, NQ, HSV,
      $                   TOL1, TOL2, IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a reduced order model (Ar,Br,Cr) for an original

@@ -1,10 +1,6 @@
       DOUBLE PRECISION FUNCTION MA02JZ( LTRAN1, LTRAN2, N, Q1, LDQ1, Q2,
      $                                  LDQ2, RES, LDRES )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute || Q^H Q - I ||_F for a complex matrix of the form

@@ -1,9 +1,5 @@
       SUBROUTINE MA02GZ( N, A, LDA, K1, K2, IPIV, INCX )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform a series of column interchanges on the matrix A.

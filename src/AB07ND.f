@@ -1,10 +1,6 @@
       SUBROUTINE AB07ND( N, M, A, LDA, B, LDB, C, LDC, D, LDD, RCOND,
      $                   IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the inverse (Ai,Bi,Ci,Di) of a given system (A,B,C,D).

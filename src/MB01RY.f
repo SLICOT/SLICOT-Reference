@@ -1,10 +1,6 @@
       SUBROUTINE MB01RY( SIDE, UPLO, TRANS, M, ALPHA, BETA, R, LDR, H,
      $                   LDH, B, LDB, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute either the upper or lower triangular part of one of the

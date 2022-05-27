@@ -3,10 +3,6 @@
      $                   H, LDH, B, LDB, D, LDD, TOL, IWORK, DWORK,
      $                   LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     1. To compute the triangular  (QR)  factor of the  p-by-L*s

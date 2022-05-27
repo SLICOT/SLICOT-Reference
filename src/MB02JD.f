@@ -1,10 +1,6 @@
       SUBROUTINE MB02JD( JOB, K, L, M, N, P, S, TC, LDTC, TR, LDTR, Q,
      $                   LDQ, R, LDR, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a lower triangular matrix R and a matrix Q with

@@ -147,6 +147,8 @@ or <A href="..\libindex.html">
 <PRE>
 <A href="MA02AD.html">
 <B>MA02AD</B></A>   Transpose of a matrix
+<A href="MA02AZ.html">
+<B>MA02AZ</B></A>   (Conjugate) transpose of a complex matrix
 <A href="MA02BD.html">
 <B>MA02BD</B></A>   Reversing the order of rows and/or columns of a matrix
 <A href="MA02BZ.html">
@@ -268,6 +270,9 @@ or <A href="..\libindex.html">
          modifying a complex number
 <A href="SG03BY.html">
 <B>SG03BY</B></A>   Computing a complex plane rotation in real arithmetic 
+<A href="SG03BR.html">
+<B>SG03BR</B></A>   Computing a complex plane rotation in real arithmetic (SG03BY version
+         - adaptation of LAPACK ZLARTG)
 </PRE>
 <h4>Linear Equations and Least Squares</h4>
 <PRE>
@@ -450,6 +455,9 @@ or <A href="..\libindex.html">
          form matrix
 <A href="MB03RY.html">
 <B>MB03RY</B></A>   Tentative solution of Sylvester equation -AX + XB = C (A, B in real 
+         Schur form)
+<A href="MB03RW.html">
+<B>MB03RW</B></A>   Tentative solution of Sylvester equation -AX + XB = C (A, B in complex
          Schur form)
 <A href="MB03TS.html">
 <B>MB03TS</B></A>   Swapping two diagonal blocks of a matrix in (skew-)Hamiltonian 
@@ -666,6 +674,9 @@ or <A href="..\libindex.html">
 <A href="SB03OT.html">
 <B>SB03OT</B></A>   Solving (for Cholesky factor) stable continuous- or discrete-time 
          Lyapunov equations, with A quasi-triangular and R triangular
+<A href="SB03OS.html">
+<B>SB03OS</B></A>   Solving (for Cholesky factor) stable continuous- or discrete-time 
+         complex Lyapunov equations, with matrices S and R triangular
 <A href="SB03OU.html">
 <B>SB03OU</B></A>   Solving (for Cholesky factor) stable continuous- or discrete-time 
          Lyapunov equations, with A in real Schur form and B rectangular
@@ -799,9 +810,15 @@ or <A href="..\libindex.html">
 <A href="SG03BU.html">
 <B>SG03BU</B></A>   Solving (for Cholesky factor) stable generalized discrete-time 
          Lyapunov equations with A quasi-triangular, and E, B upper triangular
+<A href="SG03BS.html">
+<B>SG03BS</B></A>   Solving (for Cholesky factor) stable generalized discrete-time 
+         complex Lyapunov equations with A, E, and B upper triangular
 <A href="SG03BV.html">
 <B>SG03BV</B></A>   Solving (for Cholesky factor) stable generalized continuous-time 
          Lyapunov equations with A quasi-triangular, and E, B upper triangular
+<A href="SG03BT.html">
+<B>SG03BT</B></A>   Solving (for Cholesky factor) stable generalized continuous-time 
+         complex Lyapunov equations with A, E, and B upper triangular
 <A href="SG03BX.html">
 <B>SG03BX</B></A>   Solving (for Cholesky factor) stable generalized 2-by-2 Lyapunov equations
 </PRE>
@@ -866,11 +883,25 @@ or <A href="..\libindex.html">
 <B>TG01HY</B></A>   Orthogonal reduction of a descriptor system to a system with
          the same transfer-function matrix and without uncontrollable finite 
          eigenvalues (blocked version)
+<A href="TG01KD.html">
+<B>TG01KD</B></A>   Orthogonal equivalence transformation of a SISO descriptor system
+         with E upper triangular (TG01OA version with more complex interface)
+<A href="TG01KZ.html">
+<B>TG01KZ</B></A>   Unitary equivalence transformation of a complex SISO descriptor system
+         with E upper triangular (TG01OB version with more complex interface)
 <A href="TG01LY.html">
 <B>TG01LY</B></A>   Finite-infinite decomposition of a structured descriptor system
 <A href="TG01NX.html">
 <B>TG01NX</B></A>   Block-diagonal decomposition of a descriptor system in 
          generalized real Schur form
+<A href="TG01OA.html">
+<B>TG01OA</B></A>   Orthogonal equivalence transformation of a SISO descriptor system
+         with E upper triangular, so that B becomes parallel to the first unit vector
+         and E keeps its structure
+<A href="TG01OB.html">
+<B>TG01OB</B></A>   Unitary equivalence transformation of a complex SISO descriptor system
+         with E upper triangular, so that B becomes parallel to the first unit vector
+         and E keeps its structure
 </PRE>
 <HR>
 <A NAME="U"><H2>U - Utility Routines</H2></A>

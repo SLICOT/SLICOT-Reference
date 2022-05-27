@@ -1,9 +1,5 @@
       SUBROUTINE TB01YD( N, M, P, A, LDA, B, LDB, C, LDC, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply a special similarity transformation to a system given as

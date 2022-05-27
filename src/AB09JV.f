@@ -3,10 +3,6 @@
      $                   EV, LDEV, BV, LDBV, CV, LDCV, DV, LDDV, IWORK,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct a state-space representation (A,BS,CS,DS) of the

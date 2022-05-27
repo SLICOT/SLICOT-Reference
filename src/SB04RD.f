@@ -1,10 +1,6 @@
       SUBROUTINE SB04RD( ABSCHU, ULA, ULB, N, M, A, LDA, B, LDB, C,
      $                   LDC, TOL, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X the discrete-time Sylvester equation

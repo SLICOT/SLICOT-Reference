@@ -2,10 +2,6 @@
      $                   LDR, S, LDS, G, LDG, ALPHA, RNORM, DWORK,
      $                   LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the line search parameter alpha minimizing the Frobenius

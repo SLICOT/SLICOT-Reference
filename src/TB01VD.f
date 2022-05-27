@@ -1,10 +1,6 @@
       SUBROUTINE TB01VD( APPLY, N, M, L, A, LDA, B, LDB, C, LDC, D, LDD,
      $                   X0, THETA, LTHETA, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To convert the linear discrete-time system given as (A, B, C, D),

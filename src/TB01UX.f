@@ -1,10 +1,6 @@
       SUBROUTINE TB01UX( COMPZ, N, M, P, A, LDA, B, LDB, C, LDC, Z, LDZ,
      $                   NOBSV, NLBLCK, CTAU, TOL, IWORK, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute an orthogonal transformation matrix Z which reduces the

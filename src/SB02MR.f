@@ -1,9 +1,5 @@
       LOGICAL FUNCTION SB02MR( REIG, IEIG )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To select the unstable eigenvalues for solving the continuous-time

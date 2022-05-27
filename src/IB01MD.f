@@ -2,10 +2,6 @@
      $                   LDU, Y, LDY, R, LDR, IWORK, DWORK, LDWORK,
      $                   IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct an upper triangular factor  R  of the concatenated

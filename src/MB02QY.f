@@ -1,10 +1,6 @@
       SUBROUTINE MB02QY( M, N, NRHS, RANK, A, LDA, JPVT, B, LDB, TAU,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine the minimum-norm solution to a real linear least

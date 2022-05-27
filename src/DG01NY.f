@@ -1,9 +1,5 @@
       SUBROUTINE DG01NY( INDI, N, XR, XI )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Auxiliary routine called only by DG01ND.

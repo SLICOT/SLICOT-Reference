@@ -1,10 +1,6 @@
       SUBROUTINE TF01ND( UPLO, N, M, P, NY, A, LDA, B, LDB, C, LDC, D,
      $                   LDD, U, LDU, X, Y, LDY, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the output sequence of a linear time-invariant

@@ -1,9 +1,5 @@
       SUBROUTINE MB03QY( N, L, A, LDA, U, LDU, E1, E2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues of a selected 2-by-2 diagonal block

@@ -2,10 +2,6 @@
      $                   B, LDB, Y, JPVT, RANK, SVAL, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a solution, optionally corresponding to specified free

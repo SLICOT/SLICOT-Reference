@@ -1,10 +1,6 @@
       SUBROUTINE MB03PD( JOBRQ, M, N, A, LDA, JPVT, RCOND, SVLMAX, TAU,
      $                   RANK, SVAL, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute (optionally) a rank-revealing RQ factorization of a

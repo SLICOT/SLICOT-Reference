@@ -1,9 +1,5 @@
       SUBROUTINE MB01SD( JOBS, M, N, A, LDA, R, C )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To scale a general M-by-N matrix A using the row and column

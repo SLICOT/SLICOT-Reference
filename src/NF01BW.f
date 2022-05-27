@@ -1,10 +1,6 @@
       SUBROUTINE NF01BW( N, IPAR, LIPAR, DPAR, LDPAR, J, LDJ, X, INCX,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrix-vector product x <-- (J'*J + c*I)*x, for the

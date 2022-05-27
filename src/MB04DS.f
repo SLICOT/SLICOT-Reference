@@ -1,9 +1,5 @@
       SUBROUTINE MB04DS( JOB, N, A, LDA, QG, LDQG, ILO, SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To balance a real skew-Hamiltonian matrix

@@ -3,10 +3,6 @@
      $                   LDF, C2, LDC2, ALPHAR, ALPHAI, BETA, IWORK,
      $                   LIWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues of a real N-by-N skew-Hamiltonian/
@@ -256,8 +252,8 @@ C             2-by-2 block. A 2-by-2 block may have two complex, two
 C             real, two purely imaginary, or one real and one purely
 C             imaginary eigenvalue.
 C             For i = q+2, ..., 2*q+1, IWORK(i) contains a pointer to
-C             the starting location in DWORK of the i-th quadruple of
-C             1-by-1 blocks, if IWORK(i-q) > 0, or 2-by-2 blocks,
+C             the starting location in DWORK of the (i-q-1)-th quadruple
+C             of 1-by-1 blocks, if IWORK(i-q) > 0, or 2-by-2 blocks,
 C             if IWORK(i-q) < 0, defining unreliable eigenvalues.
 C             IWORK(2*q+2) contains the number of the 1-by-1 blocks, and
 C             IWORK(2*q+3) contains the number of the 2-by-2 blocks,
@@ -345,7 +341,7 @@ C     V. Sima, Nov. 2010, Feb. 2011, Oct. 2011.
 C     M. Voigt, Jan. 2012, July 2014.
 C     V. Sima, Oct. 2012, Jan. 2013, Feb. 2013, July 2013, Aug. 2014,
 C     Sep. 2016, Nov. 2016, Jan. 2017, Apr. 2018, Mar. 2019, Mar. 2020,
-C     Apr. 2020.
+C     Apr. 2020, Apr. 2021.
 C
 C     KEYWORDS
 C
@@ -1188,6 +1184,8 @@ C
                   BETA(   I+1 ) =  BETA(   I )
                   I2X2 = I2X2 + 1
                   I    = I    + 1
+               ELSE IF( IWORK( M+I+5 ).LT.0 ) THEN
+                  I2X2 = I2X2 + 1
                END IF
             END IF
          ELSE IF( IWORK( I+4 ).LT.2*EMIN ) THEN
@@ -1268,12 +1266,12 @@ C     WHILE( I.LE.N ) DO
       IF( I.LE.M ) THEN
          IF( J.LE.IW )
      $      UNREL = I.EQ.ABS( IWORK( M+I+5 ) )
-         IF( ALPHAR( I ).NE.ZERO .AND. BETA( I ).NE.ZERO .AND.
-     $       ALPHAI( I ).NE.ZERO ) THEN
+         IF(   ALPHAR( I ).NE.ZERO .AND. BETA( I ).NE.ZERO .AND.
+     $       ( ALPHAI( I ).NE.ZERO .OR. IWORK( M+I+5 ).LT.0 ) ) THEN
             IF( UNREL ) THEN
                J = J + 1
                IWORK( J )    = IWORK( M+I+5 )
-               IWORK( IW+J ) = L - IWRK + 1
+               IWORK( IW+J ) = L - IWRK + 6
                UNREL = .FALSE.
             END IF
             CALL DLACPY( 'Full', 2, 2, DWORK( IMAT+(M+1)*(I-1) ), M,
@@ -1290,7 +1288,7 @@ C     WHILE( I.LE.N ) DO
             IF ( UNREL ) THEN
                J = J + 1
                IWORK( J )    = I
-               IWORK( IW+J ) = K - IWRK + 1
+               IWORK( IW+J ) = K - IWRK + 6
                UNREL = .FALSE.
             END IF
             CALL DCOPY( 4, DWORK( IMAT+(M+1)*(I-1) ), MM, DWORK( K ),

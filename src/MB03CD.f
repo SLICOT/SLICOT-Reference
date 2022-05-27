@@ -1,10 +1,6 @@
       SUBROUTINE MB03CD( UPLO, N1, N2, PREC, A, LDA, B, LDB, D, LDD, Q1,
      $                   LDQ1, Q2, LDQ2, Q3, LDQ3, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute orthogonal matrices Q1, Q2, Q3 for a real 2-by-2,

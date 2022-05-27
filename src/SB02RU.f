@@ -1,10 +1,6 @@
       SUBROUTINE SB02RU( DICO, HINV, TRANA, UPLO, N, A, LDA, G, LDG, Q,
      $                   LDQ, S, LDS, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct the 2n-by-2n Hamiltonian or symplectic matrix S

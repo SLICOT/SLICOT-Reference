@@ -1,9 +1,5 @@
       SUBROUTINE MB04MD( N, MAXRED, A, LDA, SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the 1-norm of a general real matrix A by balancing.

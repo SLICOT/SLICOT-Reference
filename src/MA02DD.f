@@ -1,9 +1,5 @@
       SUBROUTINE MA02DD( JOB, UPLO, N, A, LDA, AP )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To pack/unpack the upper or lower triangle of a symmetric matrix.

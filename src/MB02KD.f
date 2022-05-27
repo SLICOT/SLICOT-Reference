@@ -2,10 +2,6 @@
      $                   TC, LDTC, TR, LDTR, B, LDB, C, LDC, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrix product

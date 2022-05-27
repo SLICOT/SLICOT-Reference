@@ -1,5 +1,4 @@
 *     MB02ND EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       DOUBLE PRECISION ZERO

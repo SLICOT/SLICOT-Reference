@@ -1,10 +1,6 @@
       SUBROUTINE TB01PD( JOB, EQUIL, N, M, P, A, LDA, B, LDB, C, LDC,
      $                   NR, TOL, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find a reduced (controllable, observable, or minimal) state-

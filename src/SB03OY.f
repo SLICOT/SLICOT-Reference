@@ -1,10 +1,6 @@
       SUBROUTINE SB03OY( DISCR, LTRANS, ISGN, S, LDS, R, LDR, A, LDA,
      $                   SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for the Cholesky factor  U  of  X,
@@ -150,7 +146,7 @@ C     Bochum, May 1992.
 C
 C     REVISIONS
 C
-C     V. Sima, Dec. 1997, April 1998, Aug. 2012.
+C     V. Sima, Dec. 1997, April 1998, Aug. 2012, Jan. - Feb. 2022.
 C     D. Kressner, ETH Zurich, May 2011. 
 C
 C     KEYWORDS
@@ -208,8 +204,7 @@ C
       SMLNUM = SMLNUM*FOUR / EPS
       BIGNUM = ONE / SMLNUM
 C
-      SMIN = MAX( SMLNUM, EPS*MAX( ABS( S11 ), ABS( S12 ),
-     $                             ABS( S21 ), ABS( S22 ) ) )
+      SMIN  = SMLNUM
       SCALE = ONE
 C
       CALL DLANV2( S11, S12, S21, S22, TEMPR, TEMPI, E1, E2, CSP, CSQ )

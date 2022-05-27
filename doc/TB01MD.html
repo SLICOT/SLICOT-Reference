@@ -153,7 +153,8 @@ C     .. Array Arguments ..
                          N               M
   if UPLO = 'L'.
 
-  IF M &gt;= N, then the matrix U'B is trapezoidal and U'AU is full.
+  If M &gt;= N, then the matrix U'B is trapezoidal and U'AU is full.
+  If M  = 0, but N &gt; 0, the array A is unchanged on exit.
 
 </PRE>
 <A name="References"><B><FONT SIZE="+1">References</FONT></B></A>
@@ -181,7 +182,6 @@ C     .. Array Arguments ..
 <B>Program Text</B>
 <PRE>
 *     TB01MD EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       INTEGER          NIN, NOUT

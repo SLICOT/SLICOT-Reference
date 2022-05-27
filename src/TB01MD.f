@@ -1,10 +1,6 @@
       SUBROUTINE TB01MD( JOBU, UPLO, N, M, A, LDA, B, LDB, U, LDU,
      $                   DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce the pair (B,A) to upper or lower controller Hessenberg
@@ -126,7 +122,8 @@ C                    |*  . . . . . .  *|*  . . .  *|
 C                            N               M
 C     if UPLO = 'L'.
 C
-C     IF M >= N, then the matrix U'B is trapezoidal and U'AU is full.
+C     If M >= N, then the matrix U'B is trapezoidal and U'AU is full.
+C     If M  = 0, but N > 0, the array A is unchanged on exit.
 C
 C     REFERENCES
 C
@@ -148,7 +145,7 @@ C     P. Van Dooren, Philips Research Laboratory, Brussels, Belgium.
 C
 C     REVISIONS
 C
-C     February 1997.
+C     February 1997, April 2021.
 C
 C     KEYWORDS
 C
@@ -211,6 +208,13 @@ C
          RETURN
       END IF
 C
+      IF ( LJOBI ) THEN
+C
+C        Initialize U to the identity matrix.
+C
+         CALL DLASET( 'Full', N, N, ZERO, ONE, U, LDU )
+      END IF
+C
 C     Quick return if possible.
 C
       IF ( N.EQ.0 .OR. M.EQ.0 )
@@ -218,13 +222,6 @@ C
 C
       M1 = M + 1
       N1 = N - 1
-C
-      IF ( LJOBI ) THEN
-C
-C        Initialize U to the identity matrix.
-C
-         CALL DLASET( 'Full', N, N, ZERO, ONE, U, LDU )
-      END IF
 C
 C     Perform transformations involving both B and A.
 C

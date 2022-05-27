@@ -1,10 +1,6 @@
       SUBROUTINE MB03YT( A, LDA, B, LDB, ALPHAR, ALPHAI, BETA, CSL, SNL,
      $                   CSR, SNR )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the periodic Schur factorization of a real 2-by-2

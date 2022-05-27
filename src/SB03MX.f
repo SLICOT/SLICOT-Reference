@@ -1,9 +1,5 @@
       SUBROUTINE SB03MX( TRANA, N, A, LDA, C, LDC, SCALE, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve the real discrete Lyapunov matrix equation

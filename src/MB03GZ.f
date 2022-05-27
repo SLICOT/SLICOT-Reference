@@ -1,9 +1,5 @@
       SUBROUTINE MB03GZ( Z11, Z12, Z22, H11, H12, CO1, SI1, CO2, SI2 )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a unitary matrix Q and a unitary symplectic matrix U

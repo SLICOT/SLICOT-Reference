@@ -1,9 +1,5 @@
       SUBROUTINE MA02BD( SIDE, M, N, A, LDA )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reverse the order of rows and/or columns of a given matrix A

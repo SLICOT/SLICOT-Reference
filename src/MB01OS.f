@@ -1,9 +1,5 @@
       SUBROUTINE MB01OS( UPLO, TRANS, N, H, LDH, X, LDX, P, LDP, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute P = H*X or P = X*H, where H is an upper Hessenberg

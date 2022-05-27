@@ -2,10 +2,6 @@
      $                   C, LDC, Q, LDQ, Z, LDZ, RANKE, RNKA22, TOL,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute for the descriptor system (A-lambda E,B,C)

@@ -1,10 +1,6 @@
       SUBROUTINE MB01VD( TRANA, TRANB, MA, NA, MB, NB, ALPHA, BETA,
      $                   A, LDA, B, LDB, C, LDC, MC, NC, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the following matrix operation

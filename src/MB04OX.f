@@ -1,9 +1,5 @@
       SUBROUTINE MB04OX( N, A, LDA, X, INCX )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform the QR factorization

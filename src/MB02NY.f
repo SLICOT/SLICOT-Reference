@@ -1,10 +1,6 @@
       SUBROUTINE MB02NY( UPDATU, UPDATV, M, N, I, K, Q, E, U, LDU, V,
      $                   LDV, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To separate a zero singular value of a bidiagonal submatrix of

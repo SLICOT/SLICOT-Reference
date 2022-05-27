@@ -1,10 +1,6 @@
       SUBROUTINE MB05MD( BALANC, N, DELTA, A, LDA, V, LDV, Y, LDY, VALR,
      $                   VALI, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute exp(A*delta) where A is a real N-by-N non-defective

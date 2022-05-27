@@ -1,10 +1,6 @@
       SUBROUTINE MB04PA( LHAM, N, K, NB, A, LDA, QG, LDQG, XA, LDXA,
      $                   XG, LDXG, XQ, LDXQ, YA, LDYA, CS, TAU, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce a Hamiltonian like matrix

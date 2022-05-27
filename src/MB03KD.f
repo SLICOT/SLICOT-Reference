@@ -2,10 +2,6 @@
      $                   SELECT, T, LDT, IXT, Q, LDQ, IXQ, M, TOL,
      $                   IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reorder the diagonal blocks of the formal matrix product

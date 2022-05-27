@@ -1,9 +1,5 @@
       SUBROUTINE MC01SD( DP, P, S, T, MANT, E, IWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To scale the coefficients of the real polynomial P(x) such that

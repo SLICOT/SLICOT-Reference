@@ -2,10 +2,6 @@
      1                  Y, LDY, B, LDB, X, LDX, U, LDU, NOTE, DWORK,
      2                  LDWORK, INFO)
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To generate benchmark examples of (generalized) continuous-time

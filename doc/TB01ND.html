@@ -64,7 +64,7 @@ C     .. Array Arguments ..
 
   P       (input) INTEGER
           The actual output dimension, i.e. the number of rows of
-          the matrix C.  P &gt;= 0.
+          the matrix C.  0 &lt;= P &lt;= N.
 
   A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
           On entry, the leading N-by-N part of this array must
@@ -161,6 +161,7 @@ C     .. Array Arguments ..
   if UPLO = 'L'.
 
   If P &gt;= N, then the matrix CU is trapezoidal and U'AU is full.
+  If P  = 0, but N &gt; 0, the array A is unchanged on exit.
 
 </PRE>
 <A name="References"><B><FONT SIZE="+1">References</FONT></B></A>
@@ -188,7 +189,6 @@ C     .. Array Arguments ..
 <B>Program Text</B>
 <PRE>
 *     TB01ND EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       INTEGER          NIN, NOUT

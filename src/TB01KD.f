@@ -2,10 +2,6 @@
      $                   LDB, C, LDC, NDIM, U, LDU, WR, WI, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute an additive spectral decomposition of the transfer-

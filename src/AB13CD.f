@@ -3,10 +3,6 @@
      $                                  LDWORK, CWORK, LCWORK, BWORK,
      $                                  INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the H-infinity norm of the continuous-time stable

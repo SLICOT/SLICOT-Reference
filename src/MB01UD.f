@@ -1,10 +1,6 @@
       SUBROUTINE MB01UD( SIDE, TRANS, M, N, ALPHA, H, LDH, A, LDA, B,
      $                   LDB, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute one of the matrix products

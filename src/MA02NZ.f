@@ -1,9 +1,5 @@
       SUBROUTINE MA02NZ( UPLO, TRANS, SKEW, N, K, L, A, LDA )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To permute two specified rows and corresponding columns of a

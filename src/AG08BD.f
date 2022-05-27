@@ -3,10 +3,6 @@
      $                   NINFE, NKROL, INFZ, KRONR, INFE, KRONL,
      $                   TOL, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To extract from the system pencil

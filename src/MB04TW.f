@@ -1,10 +1,6 @@
       SUBROUTINE MB04TW( UPDATQ, M, N, NRE, NCE, IFIRE, IFICE, IFICA, A,
      $                   LDA, E, LDE, Q, LDQ )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce a submatrix E(k) of E to upper triangular form by row

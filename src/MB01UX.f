@@ -1,10 +1,6 @@
       SUBROUTINE MB01UX( SIDE, UPLO, TRANS, M, N, ALPHA, T, LDT, A, LDA,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute one of the matrix products

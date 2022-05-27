@@ -3,10 +3,6 @@
      $                   RY, LDRY, S, LDS, K, LDK, TOL, IWORK, DWORK,
      $                   LDWORK, BWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To estimate the system matrices A, C, B, and D, the noise

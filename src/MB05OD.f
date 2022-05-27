@@ -1,10 +1,6 @@
       SUBROUTINE MB05OD( BALANC, N, NDIAG, DELTA, A, LDA, MDIG, IDIG,
      $                   IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute exp(A*delta) where A is a real N-by-N matrix and delta

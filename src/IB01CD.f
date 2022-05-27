@@ -2,10 +2,6 @@
      $                   LDB, C, LDC, D, LDD, U, LDU, Y, LDY, X0, V,
      $                   LDV, TOL, IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To estimate the initial state and, optionally, the system matrices

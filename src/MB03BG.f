@@ -1,9 +1,5 @@
       SUBROUTINE MB03BG( K, N, AMAP, S, SINV, A, LDA1, LDA2, WR, WI )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues of the 2-by-2 trailing submatrix of the

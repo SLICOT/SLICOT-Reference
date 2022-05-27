@@ -1,10 +1,6 @@
       SUBROUTINE SB10ZP( DISCFL, N, A, LDA, B, C, D, IWORK, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To transform a SISO (single-input single-output) system [A,B;C,D]

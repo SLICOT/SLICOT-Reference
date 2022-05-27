@@ -1,10 +1,6 @@
       SUBROUTINE AB01MD( JOBZ, N, A, LDA, B, NCONT, Z, LDZ, TAU, TOL,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find a controllable realization for the linear time-invariant

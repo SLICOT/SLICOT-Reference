@@ -1,10 +1,6 @@
       SUBROUTINE MB04WD( TRANQ1, TRANQ2, M, N, K, Q1, LDQ1, Q2, LDQ2,
      $                   CS, TAU, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To generate a matrix Q with orthogonal columns (spanning an

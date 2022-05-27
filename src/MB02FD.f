@@ -1,10 +1,6 @@
       SUBROUTINE MB02FD( TYPET, K, N, P, S, T, LDT, R, LDR, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the incomplete Cholesky (ICC) factor of a symmetric

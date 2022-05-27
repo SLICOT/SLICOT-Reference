@@ -1,10 +1,6 @@
       SUBROUTINE MB4DBZ( JOB, SGN, N, ILO, LSCALE, RSCALE, M, V1, LDV1,
      $                   V2, LDV2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply from the left the inverse of a balancing transformation,

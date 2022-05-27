@@ -1,10 +1,6 @@
       SUBROUTINE MB03VD( N, P, ILO, IHI, A, LDA1, LDA2, TAU, LDTAU,
      $                   DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce a product of p real general matrices A = A_1*A_2*...*A_p

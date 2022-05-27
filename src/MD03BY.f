@@ -1,10 +1,6 @@
       SUBROUTINE MD03BY( COND, N, R, LDR, IPVT, DIAG, QTB, DELTA, PAR,
      $                   RANK, X, RX, TOL, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine a value for the parameter PAR such that if x solves

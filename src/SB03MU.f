@@ -1,10 +1,6 @@
       SUBROUTINE SB03MU( LTRANL, LTRANR, ISGN, N1, N2, TL, LDTL, TR,
      $                   LDTR, B, LDB, SCALE, X, LDX, XNORM, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for the N1-by-N2 matrix X, 1 <= N1,N2 <= 2, in

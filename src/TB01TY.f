@@ -1,10 +1,6 @@
       SUBROUTINE TB01TY( MODE, IOFF, JOFF, NROW, NCOL, SIZE, X, LDX,
      $                   BVECT )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Balances the rows (MODE .EQ. 0) or columns (MODE .NE. 0) of the

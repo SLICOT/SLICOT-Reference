@@ -1,10 +1,6 @@
       SUBROUTINE SB04RY( RC, UL, M, A, LDA, LAMBDA, D, TOL, IWORK,
      $                   DWORK, LDDWOR, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve a system of equations in Hessenberg form with one

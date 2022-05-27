@@ -3,10 +3,6 @@
      $                   LDUCO1, LDUCO2, AT, N1, TAU, TOL1, TOL2, IWORK,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Calculates the (PWORK x MWORK) transfer matrix T(s), in the form

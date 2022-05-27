@@ -2,10 +2,6 @@
      $                   LDB, R, LDR, IPIV, L, LDL, X, LDX, RNORM, F,
      $                   LDF, OUFACT, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the optimal feedback matrix F for the problem of

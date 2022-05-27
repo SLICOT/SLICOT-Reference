@@ -1,9 +1,5 @@
       SUBROUTINE TF01PD( NH1, NH2, NR, NC, H, LDH, T, LDT, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct the block Toeplitz expansion T of a multivariable

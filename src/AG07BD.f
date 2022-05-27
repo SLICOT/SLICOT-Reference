@@ -2,10 +2,6 @@
      $                   D, LDD, AI, LDAI, EI, LDEI, BI, LDBI, CI, LDCI,
      $                   DI, LDDI, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the inverse (Ai-lambda*Ei,Bi,Ci,Di) of a given

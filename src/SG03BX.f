@@ -1,10 +1,6 @@
       SUBROUTINE SG03BX( DICO, TRANS, A, LDA, E, LDE, B, LDB, U, LDU,
      $                   SCALE, M1, LDM1, M2, LDM2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X = op(U)**T * op(U) either the generalized c-stable
@@ -41,7 +37,7 @@ C     The matrices A, B, E, M1, M2, and U are real 2-by-2 matrices. The
 C     pencil A - lambda * E must have a pair of complex conjugate
 C     eigenvalues. The eigenvalues must be in the open right half plane
 C     (in the continuous-time case) or inside the unit circle (in the
-C     discrete-time case).
+C     discrete-time case). The matrices E and B are upper triangular.
 C
 C     The resulting matrix U is upper triangular. The entries on its
 C     main diagonal are non-negative. SCALE is an output scale factor
@@ -120,7 +116,10 @@ C                   a pair of complex conjugate numbers;
 C             = 3:  the eigenvalues of the pencil A - lambda * E are
 C                   not in the open right half plane (in the continuous-
 C                   time case) or inside the unit circle (in the
-C                   discrete-time case).
+C                   discrete-time case);
+C             = 4:  the LAPACK routine ZSTEIN utilized to factorize M3
+C                   (see SLICOT Library routine SG03BS) failed to
+C                   converge. This error is unlikely to occur.
 C
 C     METHOD
 C
@@ -147,20 +146,20 @@ C
 C     CONTRIBUTOR
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
+C     V. Sima, substantial changes, Dec. 2021, Jan. 2022.
 C
 C     REVISIONS
 C
-C     Sep. 1998 (V. Sima).
-C     Dec. 1998 (V. Sima).
+C     Sep. 1998, Dec. 1998.
 C     July 2003 (V. Sima; suggested by Klaus Schnepper).
 C     Oct. 2003 (A. Varga).
 C
 C     ******************************************************************
 C
 C     .. Parameters ..
-      DOUBLE PRECISION  MONE, ONE, TWO, ZERO
-      PARAMETER         ( MONE = -1.0D+0, ONE = 1.0D+0, TWO = 2.0D+0,
-     $                    ZERO = 0.0D+0)
+      DOUBLE PRECISION  ONE, TWO, ZERO, SAFETY
+      PARAMETER         ( ONE = 1.0D+0, TWO = 2.0D+0, ZERO = 0.0D+0,
+     $                    SAFETY = 1.0D+2 )
 C     .. Scalar Arguments ..
       CHARACTER         DICO, TRANS
       DOUBLE PRECISION  SCALE
@@ -169,26 +168,33 @@ C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), B(LDB,*), E(LDE,*), M1(LDM1,*),
      $                  M2(LDM2,*), U(LDU,*)
 C     .. Local Scalars ..
-      DOUBLE PRECISION  ALPHA, B11, B12I, B12R, B22, BETAI, BETAR,
-     $                  BIGNUM, CI, CR, EPS, L, LAMI, LAMR, SCALE1,
-     $                  SCALE2, SI, SMLNUM, SR, T, V, W, XR, XI, YR, YI
+      COMPLEX*16        X, ZS
+      DOUBLE PRECISION  A11, A12, A21, A22, AI11, AI12, AI21, AI22,
+     $                  ALPHA, AR11, AR12, AR21, AR22, B11, B12I, B12R,
+     $                  BETAI, BETAR, BI11, BI12, BI21, BI22, BIGNUM,
+     $                  BR11, BR12, BR21, BR22, C, CL, CQ, CQB, CQBI,
+     $                  CQU, CQUI, CZ, E11, E12, E22, EI12, EI21, ER11,
+     $                  ER12, ER22, EPS, LAMI, LAMR, LI, LR, M1I12,
+     $                  M1R12, M2I12, M2R12, M2R22, M2S, MI, MR, MX, P,
+     $                  S, SCALE1, SCALE2, SI, SIQ, SIQB, SIQU, SIZ, SL,
+     $                  SMLNUM, SQTWO, SR, SRQ, SRQB, SRQU, SRZ, T, TMP,
+     $                  UI12, UI22, UR11, UR12, UR22, V, VI12, VR12,
+     $                  VR22, W, XR, XI, YR, YI
+      INTEGER           CT
       LOGICAL           ISCONT, ISTRNS
 C     .. Local Arrays ..
-      DOUBLE PRECISION  AA(2,2), AI(2,2), AR(2,2), BB(2,2), BI(2,2),
-     $                  BR(2,2), EE(2,2), EI(2,2), ER(2,2), M1I(2,2),
-     $                  M1R(2,2), M2I(2,2), M2R(2,2), QBI(2,2),
-     $                  QBR(2,2), QI(2,2), QR(2,2), QUI(2,2), QUR(2,2),
-     $                  TI(2,2), TR(2,2), UI(2,2), UR(2,2), ZI(2,2),
-     $                  ZR(2,2)
+      COMPLEX*16        M3(1), M3C(2,1)
+      DOUBLE PRECISION  AS(2,2), D(2), DWORK(10), ES(2,2), ET(2), EV(2)
+      INTEGER           IWORK(7)
 C     .. External Functions ..
-      DOUBLE PRECISION  DLAMCH, DLAPY2
+      DOUBLE PRECISION  DLAMCH, DLAPY2, DLAPY3
       LOGICAL           LSAME
-      EXTERNAL          DLAMCH, DLAPY2, LSAME
+      EXTERNAL          DLAMCH, DLAPY2, DLAPY3, LSAME
 C     .. External Subroutines ..
-      EXTERNAL          DCOPY, DGEMM, DGEMV, DLABAD, DLADIV, DLAG2,
-     $                  SG03BY
+      EXTERNAL          DLABAD, DLADIV, DLAG2, DLASV2, SG03BR, ZLARFG,
+     $                  ZSTEIN
 C     .. Intrinsic Functions ..
-      INTRINSIC         ABS, MAX, MIN, SQRT
+      INTRINSIC         ABS, DBLE, DCMPLX, DIMAG, MAX, MIN, SQRT
 C
 C     Decode input parameters.
 C
@@ -199,186 +205,248 @@ C     Do not check input parameters for errors.
 C
 C     Set constants to control overflow.
 C
+      SQTWO  = SQRT( TWO )
       EPS    = DLAMCH( 'P' )
       SMLNUM = DLAMCH( 'S' )/EPS
       BIGNUM = ONE/SMLNUM
       CALL DLABAD( SMLNUM, BIGNUM )
+C
+C     Set constant input for ZSTEIN.
+C
+      IWORK(2) = 1
+      IWORK(3) = 0
+      IWORK(4) = 2
+      IWORK(5) = 0
+      EV(1)    = ONE
+      EV(2)    = ZERO
 C
       INFO  = 0
       SCALE = ONE
 C
 C     Make copies of A, E, and B.
 C
-      AA(1,1) = A(1,1)
-      AA(2,1) = A(2,1)
-      AA(1,2) = A(1,2)
-      AA(2,2) = A(2,2)
-      EE(1,1) = E(1,1)
-      EE(2,1) = ZERO
-      EE(1,2) = E(1,2)
-      EE(2,2) = E(2,2)
-      BB(1,1) = B(1,1)
-      BB(2,1) = ZERO
-      BB(1,2) = B(1,2)
-      BB(2,2) = B(2,2)
+      AS(1,1) = A(1,1)
+      AS(2,1) = A(2,1)
+      AS(1,2) = A(1,2)
+      AS(2,2) = A(2,2)
+      ES(1,1) = E(1,1)
+      ES(2,1) = ZERO
+      ES(1,2) = E(1,2)
+      ES(2,2) = E(2,2)
+      BR11    = B(1,1)
+      BR12    = B(1,2)
+      BR22    = B(2,2)
 C
 C     If the transposed equation (op(K)=K**T, K=A,B,E,U) is to be
 C     solved, transpose the matrices A, E, B with respect to the
 C     anti-diagonal. This results in a non-transposed equation.
 C
       IF ( ISTRNS ) THEN
-         V = AA(1,1)
-         AA(1,1) = AA(2,2)
-         AA(2,2) = V
-         V = EE(1,1)
-         EE(1,1) = EE(2,2)
-         EE(2,2) = V
-         V = BB(1,1)
-         BB(1,1) = BB(2,2)
-         BB(2,2) = V
+         V       = AS(1,1)
+         AS(1,1) = AS(2,2)
+         AS(2,2) = V
+         V       = ES(1,1)
+         ES(1,1) = ES(2,2)
+         ES(2,2) = V
+         V       = BR11
+         BR11    = BR22
+         BR22    = V
       END IF
 C
-C     Perform QZ-step to transform the pencil A - lambda * E to
+C     Perform QZ-step to transform the pencil A - lambda * E to complex
 C     generalized Schur form. The main diagonal of the Schur factor of E
 C     is real and positive.
 C
 C     Compute eigenvalues (LAMR + LAMI * I, LAMR - LAMI * I).
 C
-      T = MAX( EPS*MAX( ABS( EE(1,1) ), ABS( EE(1,2) ),
-     $                  ABS( EE(2,2) ) ), SMLNUM )
-      IF ( MIN( ABS( EE(1,1) ), ABS( EE(2,2) ) ) .LT. T ) THEN
-         INFO = 3
+      CT = 0
+   10 CONTINUE
+      CT = CT + 1
+      P  = MAX( EPS*MAX( ABS( ES(1,1) ), ABS( ES(1,2) ),
+     $                   ABS( ES(2,2) ) ), SMLNUM )
+      IF ( MIN( ABS( ES(1,1) ), ABS( ES(2,2) ) ).LT.P ) THEN
+         INFO = 2
          RETURN
       END IF
-      CALL DLAG2( AA, 2, EE, 2, SMLNUM*EPS, SCALE1, SCALE2, LAMR,
+      CALL DLAG2( AS, 2, ES, 2, SMLNUM*EPS*SAFETY, SCALE1, SCALE2, LAMR,
      $            W, LAMI )
-      IF (LAMI .LE. ZERO) THEN
+      IF ( LAMI.LE.ZERO ) THEN
          INFO = 2
          RETURN
       END IF
 C
-C     Compute right orthogonal transformation matrix Q.
+      IF ( ES(1,2).NE.ZERO ) THEN
 C
-      CALL SG03BY( SCALE1*AA(1,1) - EE(1,1)*LAMR, -EE(1,1)*LAMI,
-     $             SCALE1*AA(2,1), ZERO, CR, CI, SR, SI, L )
-      QR(1,1) =  CR
-      QR(1,2) =  SR
-      QR(2,1) = -SR
-      QR(2,2) =  CR
-      QI(1,1) = -CI
-      QI(1,2) = -SI
-      QI(2,1) = -SI
-      QI(2,2) =  CI
+C        Standardize, that is, rotate so that ES is diagonal with
+C        ES(1,1) non-negative.
 C
-C     A := Q * A
+         CALL DLASV2( ES(1,1), ES(1,2), ES(2,2), E22, E11, SR, C, SL,
+     $                CL )
 C
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, QR, 2, AA, 2, ZERO, AR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, QI, 2, AA, 2, ZERO, AI, 2 )
+         IF ( E11.LT.ZERO ) THEN
+            C   = -C
+            SR  = -SR
+            E11 = -E11
+            E22 = -E22
+         END IF
 C
-C     E := Q * E
+C        Update A using the left and right rotations.
 C
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, QR, 2, EE, 2, ZERO, ER, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, QI, 2, EE, 2, ZERO, EI, 2 )
+         S = CL*AS(1,1) + SL*AS(2,1)
+         T = CL*AS(1,2) + SL*AS(2,2)
+         V = CL*AS(2,1) - SL*AS(1,1)
+         W = CL*AS(2,2) - SL*AS(1,2)
 C
-C     Compute left orthogonal transformation matrix Z.
+         AS(1,1) = S*C + T*SR
+         AS(2,1) = V*C + W*SR
+         AS(1,2) = T*C - S*SR
+         AS(2,1) = W*C - V*SR
 C
-      CALL SG03BY( ER(2,2), EI(2,2), ER(2,1), EI(2,1), CR, CI, SR, SI,
-     $             L )
-      ZR(1,1) =  CR
-      ZR(1,2) =  SR
-      ZR(2,1) = -SR
-      ZR(2,2) =  CR
-      ZI(1,1) =  CI
-      ZI(1,2) = -SI
-      ZI(2,1) = -SI
-      ZI(2,2) = -CI
+         ES(1,1) = E11
+         ES(2,1) = ZERO
+         ES(1,2) = ZERO
 C
-C     E := E * Z
+C        If E22 is negative, negate the second columns.
 C
-      CALL DGEMV( 'T', 2, 2,  ONE, ZR, 2, ER, 2, ZERO, TR, 2 )
-      CALL DGEMV( 'T', 2, 2, MONE, ZI, 2, EI, 2,  ONE, TR, 2 )
-      CALL DGEMV( 'T', 2, 2,  ONE, ZI, 2, ER, 2, ZERO, TI, 2 )
-      CALL DGEMV( 'T', 2, 2,  ONE, ZR, 2, EI, 2,  ONE, TI, 2 )
-      CALL DCOPY( 2, TR, 2, ER, 2 )
-      CALL DCOPY( 2, TI, 2, EI, 2 )
-      ER(2,1) = ZERO
-      ER(2,2) = L
-      EI(2,1) = ZERO
-      EI(2,2) = ZERO
+         IF ( E22.LT.ZERO ) THEN
+            ES(2,2) = -E22
+            AS(1,2) = -AS(1,2)
+            AS(2,2) = -AS(2,2)
+         ELSE
+            ES(2,2) =  E22
+         END IF
 C
-C     Make main diagonal entries of E real and positive.
-C     (Note:  Z and E are altered.)
+C        Recompute the shift.
 C
-      V = DLAPY2( ER(1,1), EI(1,1) )
-      CALL DLADIV( V, ZERO, ER(1,1), EI(1,1), XR, XI )
-      ER(1,1) = V
-      EI(1,1) = ZERO
-      YR = ZR(1,1)
-      YI = ZI(1,1)
-      ZR(1,1) = XR*YR - XI*YI
-      ZI(1,1) = XR*YI + XI*YR
-      YR = ZR(2,1)
-      YI = ZI(2,1)
-      ZR(2,1) = XR*YR - XI*YI
-      ZI(2,1) = XR*YI + XI*YR
+         CALL DLAG2( AS, 2, ES, 2, SMLNUM*EPS*SAFETY, SCALE1, SCALE2,
+     $               LAMR, W, LAMI )
 C
-C     A := A * Z
+C        If standardization has perturbed the shift onto real line,
+C        do another (real single-shift) QR step.
 C
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, AR, 2, ZR, 2, ZERO, TR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, MONE, AI, 2, ZI, 2,  ONE, TR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, AR, 2, ZI, 2, ZERO, TI, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, AI, 2, ZR, 2,  ONE, TI, 2 )
-      CALL DCOPY( 4, TR, 1, AR, 1 )
-      CALL DCOPY( 4, TI, 1, AI, 1 )
+         IF ( LAMI.EQ.ZERO ) THEN
+            IF ( CT.EQ.1 ) THEN
+               GO TO 10
+            ELSE
+               INFO = 2
+               RETURN
+            END IF
+         END IF
+      END IF
+C
+C     Compute left unitary transformation matrix Q.
+C
+      A11 = AS(1,1)
+      A21 = AS(2,1)
+      A12 = AS(1,2)
+      A22 = AS(2,2)
+      E11 = ES(1,1)
+      E22 = ES(2,2)
+      CALL SG03BR( SCALE1*A11 - E11*LAMR, -E11*LAMI, SCALE1*A21, ZERO,
+     $             CQ, SRQ, SIQ, LR, LI )
+C
+C     A := Q * A.
+C
+      AR11 =  CQ*A11 + SRQ*A21
+      AR21 =  CQ*A21 - SRQ*A11
+      AR12 =  CQ*A12 + SRQ*A22
+      AR22 =  CQ*A22 - SRQ*A12
+      AI11 = SIQ*A21
+      AI21 = SIQ*A11
+      AI12 = SIQ*A22
+      AI22 = SIQ*A12
+C
+C     E := Q * E.
+C
+      EI21 = SIQ*E11
+      EI12 = SIQ*E22
+      TMP  = SRQ*E11
+      E11  =  CQ*E11
+      E12  = SRQ*E22
+C
+C     Compute right unitary transformation matrix Z.
+C
+      CALL SG03BR( CQ*E22, ZERO, TMP, -EI21, CZ, SRZ, SIZ, LR, LI )
+C
+C     E := E * Z**H.
+C
+      ER11 =  E11*CZ + E12*SRZ + EI12*SIZ
+      ER12 =  E12*CZ - E11*SRZ
+      EI12 = EI12*CZ - E11*SIZ
+      ER22 = LR
+C
+C     The structure of the matrices A, E, Q, and Z ensures that the
+C     diagonal elements are real and E(2,2) > 0. Make E(1,1) > 0.
+C
+      IF ( ER11.LT.ZERO )
+     $   ER11 = -ER11
+C
+C     A := A * Z**H.
+C
+      A11  = AR11
+      A12  = AR12
+      TMP  = AI11
+      AR11 =  A12*SRZ +  A11*CZ  + AI12*SIZ
+      AI11 = AI12*SRZ +  TMP*CZ  -  A12*SIZ
+      AR12 =  A12*CZ  +  TMP*SIZ -  A11*SRZ
+      AI12 = AI12*CZ  -  A11*SIZ -  TMP*SRZ
+      AR22 = AR22*CZ  + AI21*SIZ - AR21*SRZ
+      AI22 = AI22*CZ  - AR21*SIZ - AI21*SRZ
 C
 C     End of QZ-step.
 C
-C     B := B * Z
+C     B := B * Z**H.
 C
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, BB, 2, ZR, 2, ZERO, BR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, ONE, BB, 2, ZI, 2, ZERO, BI, 2 )
+      B11  =  BR11
+      BI11 = -BR12*SIZ
+      BI21 = -BR22*SIZ
+      BI12 =  -B11*SIZ
+      BR11 =  BR12*SRZ + B11*CZ
+      BR21 =  BR22*SRZ
+      BR12 =  BR12*CZ  - B11*SRZ
+      BR22 =  BR22*CZ
 C
 C     Overwrite B with the upper triangular matrix of its
 C     QR-factorization. The elements on the main diagonal are real
 C     and non-negative.
 C
-      CALL SG03BY( BR(1,1), BI(1,1), BR(2,1), BI(2,1), CR, CI, SR, SI,
-     $             L )
-      QBR(1,1) =  CR
-      QBR(1,2) =  SR
-      QBR(2,1) = -SR
-      QBR(2,2) =  CR
-      QBI(1,1) = -CI
-      QBI(1,2) = -SI
-      QBI(2,1) = -SI
-      QBI(2,2) =  CI
-      CALL DGEMV( 'N', 2, 2,  ONE, QBR, 2, BR(1,2), 1, ZERO, TR, 1 )
-      CALL DGEMV( 'N', 2, 2, MONE, QBI, 2, BI(1,2), 1,  ONE, TR, 1 )
-      CALL DGEMV( 'N', 2, 2,  ONE, QBI, 2, BR(1,2), 1, ZERO, TI, 1 )
-      CALL DGEMV( 'N', 2, 2,  ONE, QBR, 2, BI(1,2), 1,  ONE, TI, 1 )
-      CALL DCOPY( 2, TR, 1, BR(1,2), 1 )
-      CALL DCOPY( 2, TI, 1, BI(1,2), 1 )
-      BR(1,1) = L
-      BR(2,1) = ZERO
-      BI(1,1) = ZERO
-      BI(2,1) = ZERO
-      V = DLAPY2( BR(2,2), BI(2,2) )
-      IF ( V .GE. MAX( EPS*MAX( BR(1,1), DLAPY2( BR(1,2), BI(1,2) ) ),
-     $                 SMLNUM ) ) THEN
-         CALL DLADIV( V, ZERO, BR(2,2), BI(2,2), XR, XI )
-         BR(2,2) = V
-         YR = QBR(2,1)
-         YI = QBI(2,1)
-         QBR(2,1) = XR*YR - XI*YI
-         QBI(2,1) = XR*YI + XI*YR
-         YR = QBR(2,2)
-         YI = QBI(2,2)
-         QBR(2,2) = XR*YR - XI*YI
-         QBI(2,2) = XR*YI + XI*YR
-      ELSE
-         BR(2,2) = ZERO
+      CALL SG03BR( BR11, BI11, BR21, BI21, CQB, SRQB, SIQB, LR, LI )
+      V    = BR12
+      T    = BI12
+      BR12 = SRQB*BR22 +  CQB*V
+      BI12 = SIQB*BR22 +  CQB*T
+      BR22 =  CQB*BR22 - SRQB*V - SIQB*T
+      BI22 =             SIQB*V - SRQB*T
+      BR11 = LR
+      BI11 = LI
+C
+      IF ( LI.NE.ZERO ) THEN
+         V = DLAPY2( BR11, BI11 )
+         CALL DLADIV( V, ZERO, BR11, BI11, XR, XI )
+         BR11 = V
+         T    = XR*BR12 - XI*BI12
+         BI12 = XR*BI12 + XI*BR12
+         BR12 = T
+C
+         CQBI = XI*CQB
+         CQB  = XR*CQB
+         T    = XR*SRQB - XI*SIQB
+         SIQB = XR*SIQB + XI*SRQB
+         SRQB = T
       END IF
-      BI(2,2) = ZERO
+C
+      IF ( BI22.NE.ZERO ) THEN
+         V = DLAPY2( BR22, BI22 )
+         IF ( V.GE.MAX( EPS*MAX( BR11, DLAPY2( BR12, BI12 ) ), SMLNUM )
+     $         ) THEN
+            CALL DLADIV( V, ZERO, BR22, BI22, XR, XI )
+            BR22 = V
+         ELSE
+            BR22 = ZERO
+         END IF
+      ELSE IF ( BR22.LT.ZERO ) THEN
+         BR22 = -BR22
+      END IF
 C
 C     Compute the Cholesky factor of the solution of the reduced
 C     equation. The solution may be scaled to avoid overflow.
@@ -387,346 +455,375 @@ C
 C
 C        Continuous-time equation.
 C
-C        Step I:  Compute U(1,1). Set U(2,1) = 0.
+C        Step I:  Compute U(1,1). U(2,1) is 0.
 C
-         V = -TWO*( AR(1,1)*ER(1,1) + AI(1,1)*EI(1,1) )
-         IF ( V .LE. ZERO ) THEN
+         V = -AR11
+         IF ( V.LE.ZERO ) THEN
             INFO = 3
             RETURN
          END IF
-         V = SQRT( V )
-         T = TWO*ABS( BR(1,1) )*SMLNUM
-         IF ( T .GT. V ) THEN
-            SCALE1  = V/T
-            SCALE   = SCALE1*SCALE
-            BR(1,1) = SCALE1*BR(1,1)
-            BR(1,2) = SCALE1*BR(1,2)
-            BI(1,2) = SCALE1*BI(1,2)
-            BR(2,2) = SCALE1*BR(2,2)
+         V = SQRT( V )*SQRT( ER11 )
+         T = ( BR11*SMLNUM )/SQTWO
+         IF ( T.GT.V ) THEN
+            SCALE1 = V/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BI12   = SCALE1*BI12
+            BR22   = SCALE1*BR22
          END IF
-         UR(1,1) = BR(1,1)/V
-         UI(1,1) = ZERO
-         UR(2,1) = ZERO
-         UI(2,1) = ZERO
+         V    = V*SQTWO
+         UR11 = BR11/V
 C
 C        Step II:  Compute U(1,2).
 C
-         T = MAX( EPS*MAX( BR(2,2), DLAPY2( BR(1,2), BI(1,2) ) ),
-     $            SMLNUM )
-         IF ( ABS( BR(1,1) ) .LT. T ) THEN
-            UR(1,2) = ZERO
-            UI(1,2) = ZERO
-         ELSE
-            XR = AR(1,1)*ER(1,2) + AI(1,1)*EI(1,2)
-            XI = AI(1,1)*ER(1,2) - AR(1,1)*EI(1,2)
-            XR = XR + AR(1,2)*ER(1,1) + AI(1,2)*EI(1,1)
-            XI = XI - AI(1,2)*ER(1,1) + AR(1,2)*EI(1,1)
-            XR = -BR(1,2)*V - XR*UR(1,1)
-            XI =  BI(1,2)*V - XI*UR(1,1)
-            YR =  AR(2,2)*ER(1,1) + AI(2,2)*EI(1,1)
-            YI = -AI(2,2)*ER(1,1) + AR(2,2)*EI(1,1)
-            YR = YR + ER(2,2)*AR(1,1) + EI(2,2)*AI(1,1)
-            YI = YI - EI(2,2)*AR(1,1) + ER(2,2)*AI(1,1)
-            T  = TWO*DLAPY2( XR, XI )*SMLNUM
-            IF ( T .GT. DLAPY2( YR, YI ) ) THEN
-               SCALE1  = DLAPY2( YR, YI )/T
-               SCALE   = SCALE1*SCALE
-               BR(1,1) = SCALE1*BR(1,1)
-               BR(1,2) = SCALE1*BR(1,2)
-               BI(1,2) = SCALE1*BI(1,2)
-               BR(2,2) = SCALE1*BR(2,2)
-               UR(1,1) = SCALE1*UR(1,1)
-               XR = SCALE1*XR
-               XI = SCALE1*XI
+         MX = MAX( ABS( AR11 ), ABS( AI11 ), V )
+         IF ( ER11.GT.MX*SMLNUM ) THEN
+            MR  =  AR11/ER11
+            MI  = -AI11/ER11
+            M2S =     V/ER11
+            XR  =  M2S*BR12
+            XI  =  M2S*BI12
+            IF ( UR11.NE.ZERO ) THEN
+               XR = XR + UR11*( AR12 + MR*ER12 - MI*EI12 )
+               XI = XI + UR11*( AI12 + MR*EI12 + MI*ER12 )
             END IF
-            CALL DLADIV( XR, XI, YR, YI, UR(1,2), UI(1,2) )
-            UI(1,2) = -UI(1,2)
+            YR = AR22 + MR*ER22
+            YI = AI22 + MI*ER22
+         ELSE
+            XR = BR12*V
+            XI = BI12*V
+            IF ( UR11.NE.ZERO ) THEN
+               XR = XR + UR11*( ER11*AR12 + AR11*ER12 + AI11*EI12 )
+               XI = XI + UR11*( ER11*AI12 + AR11*EI12 - AI11*ER12 )
+            END IF
+            YR = ER11*AR22 + AR11*ER22
+            YI = ER11*AI22 - AI11*ER22
          END IF
+         T = DLAPY2( XR, XI )*SMLNUM
+         W = DLAPY2( YR, YI )
+         IF ( T.GT.W ) THEN
+            SCALE1 = W/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BR22   = SCALE1*BR22
+            BI12   = SCALE1*BI12
+            UR11   = SCALE1*UR11
+            XR     = SCALE1*XR
+            XI     = SCALE1*XI
+         END IF
+         CALL DLADIV( XR, XI, -YR, -YI, UR12, UI12 )
 C
 C        Step III:  Compute U(2,2).
 C
-         XR = ( ER(1,2)*UR(1,1) + ER(2,2)*UR(1,2) - EI(2,2)*UI(1,2) )*V
-         XI = (-EI(1,2)*UR(1,1) - ER(2,2)*UI(1,2) - EI(2,2)*UR(1,2) )*V
-         T  = TWO*DLAPY2( XR, XI )*SMLNUM
-         IF ( T .GT. DLAPY2( ER(1,1), EI(1,1) ) ) THEN
-            SCALE1  = DLAPY2( ER(1,1), EI(1,1) )/T
-            SCALE   = SCALE1*SCALE
-            UR(1,1) = SCALE1*UR(1,1)
-            UR(1,2) = SCALE1*UR(1,2)
-            UI(1,2) = SCALE1*UI(1,2)
-            BR(1,1) = SCALE1*BR(1,1)
-            BR(1,2) = SCALE1*BR(1,2)
-            BI(1,2) = SCALE1*BI(1,2)
-            BR(2,2) = SCALE1*BR(2,2)
-            XR = SCALE1*XR
-            XI = SCALE1*XI
+         VR12 = UR11*ER12 + UR12*ER22
+         VI12 = UR11*EI12 + UI12*ER22
+         IF ( ER11.GT.MX*SMLNUM ) THEN
+            YR = BR12 - M2S*VR12
+            YI = BI12 - M2S*VI12
+         ELSE
+            XR =  VR12*V
+            XI = -VI12*V
+            T  = DLAPY2( XR, XI )*SMLNUM
+            IF ( T.GT.ER11 ) THEN
+               SCALE1 = ER11/T
+               SCALE  = SCALE1*SCALE
+               BR11   = SCALE1*BR11
+               BR12   = SCALE1*BR12
+               BI12   = SCALE1*BI12
+               BR22   = SCALE1*BR22
+               UR11   = SCALE1*UR11
+               UR12   = SCALE1*UR12
+               UI12   = SCALE1*UI12
+               XR     = SCALE1*XR
+               XI     = SCALE1*XI
+            END IF
+            YR =  BR12 - XR/ER11
+            YI = -BI12 - XI/ER11
          END IF
-         CALL DLADIV( XR, XI, ER(1,1), -EI(1,1), YR, YI )
-         YR =  BR(1,2) - YR
-         YI = -BI(1,2) - YI
-         V  = -TWO*( AR(2,2)*ER(2,2) + AI(2,2)*EI(2,2) )
-         IF ( V .LE. ZERO ) THEN
+         CALL SG03BR( BR22, ZERO, YR, YI, C, SR, SI, LR, LI )
+         V = -AR22
+         IF ( V.LE.ZERO ) THEN
             INFO = 3
             RETURN
          END IF
-         V = SQRT( V )
-         W = DLAPY2( DLAPY2( BR(2,2), BI(2,2) ), DLAPY2( YR, YI ) )
-         T = TWO*W*SMLNUM
-         IF ( T .GT. V ) THEN
-            SCALE1  = V/T
-            SCALE   = SCALE1*SCALE
-            UR(1,1) = SCALE1*UR(1,1)
-            UR(1,2) = SCALE1*UR(1,2)
-            UI(1,2) = SCALE1*UI(1,2)
-            BR(1,1) = SCALE1*BR(1,1)
-            BR(1,2) = SCALE1*BR(1,2)
-            BI(1,2) = SCALE1*BI(1,2)
-            BR(2,2) = SCALE1*BR(2,2)
-            W = SCALE1*W
+         V = SQRT( V )*SQRT( ER22 )
+         T = ( LR*SMLNUM )/SQTWO
+         IF ( T.GT.V ) THEN
+            SCALE1 = V/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BR22   = SCALE1*BR22
+            BI12   = SCALE1*BI12
+            UR11   = SCALE1*UR11
+            UR12   = SCALE1*UR12
+            UI12   = SCALE1*UI12
+            LR     = SCALE1*LR
          END IF
-         UR(2,2) = W/V
-         UI(2,2) = ZERO
+         V    = V*SQTWO
+         UR22 = LR/V
 C
-C        Compute matrices M1 and M2 for the reduced equation.
+C        Compute the needed elements of the matrices M1 and M2 for the
+C        reduced equation.
 C
-         M1R(2,1) = ZERO
-         M1I(2,1) = ZERO
-         M2R(2,1) = ZERO
-         M2I(2,1) = ZERO
-         CALL DLADIV( AR(1,1), AI(1,1), ER(1,1), EI(1,1), BETAR, BETAI )
-         M1R(1,1) =  BETAR
-         M1I(1,1) =  BETAI
-         M1R(2,2) =  BETAR
-         M1I(2,2) = -BETAI
-         ALPHA = SQRT( -TWO*BETAR )
-         M2R(1,1) = ALPHA
-         M2I(1,1) = ZERO
-         V  = ER(1,1)*ER(2,2)
-         XR = ( -BR(1,1)*ER(1,2) + ER(1,1)*BR(1,2) )/V
-         XI = ( -BR(1,1)*EI(1,2) + ER(1,1)*BI(1,2) )/V
-         YR =  XR - ALPHA*UR(1,2)
-         YI = -XI + ALPHA*UI(1,2)
-         IF ( ( YR.NE.ZERO ) .OR. ( YI.NE.ZERO ) ) THEN
-            M2R(1,2) =  YR/UR(2,2)
-            M2I(1,2) = -YI/UR(2,2)
-            M2R(2,2) =  BR(2,2)/( ER(2,2)*UR(2,2) )
-            M2I(2,2) =  ZERO
-            M1R(1,2) = -ALPHA*M2R(1,2)
-            M1I(1,2) = -ALPHA*M2I(1,2)
+         BETAR = AR11/ER11
+         BETAI = AI11/ER11
+         ALPHA = SQRT( -BETAR )*SQTWO
+C
+         VR22 = UR22*ER22
+         IF ( VR22.NE.ZERO ) THEN
+            M2R22 =  BR22/VR22
+            M2R12 =  ( BR12 - ALPHA*VR12 )/VR22
+            M2I12 =  ( BI12 - ALPHA*VI12 )/VR22
+            M1R12 = -ALPHA*M2R12
+            M1I12 = -ALPHA*M2I12
          ELSE
-            M2R(1,2) = ZERO
-            M2I(1,2) = ZERO
-            M2R(2,2) = ALPHA
-            M2I(2,2) = ZERO
-            M1R(1,2) = ZERO
-            M1I(1,2) = ZERO
+            M1R12 = ZERO
+            M1I12 = ZERO
+            M2R12 = ZERO
+            M2R22 = ALPHA
+            M2I12 = ZERO
          END IF
+C
       ELSE
 C
 C        Discrete-time equation.
 C
-C        Step I:  Compute U(1,1). Set U(2,1) = 0.
+C        Step I:  Compute U(1,1). U(2,1) is 0.
 C
-         V = ER(1,1)**2 + EI(1,1)**2 - AR(1,1)**2 - AI(1,1)**2
-         IF ( V .LE. ZERO ) THEN
+         V = ER11
+         T = DLAPY2( AR11, AI11 )
+         IF ( V.LE.T ) THEN
             INFO = 3
             RETURN
          END IF
-         V = SQRT( V )
-         T = TWO*ABS( BR(1,1) )*SMLNUM
-         IF ( T .GT. V ) THEN
-            SCALE1  = V/T
-            SCALE   = SCALE1*SCALE
-            BR(1,1) = SCALE1*BR(1,1)
-            BR(1,2) = SCALE1*BR(1,2)
-            BI(1,2) = SCALE1*BI(1,2)
-            BR(2,2) = SCALE1*BR(2,2)
+         T = T/V
+         V = SQRT( ONE - T )*SQRT( ONE + T )*V
+         T = BR11*SMLNUM
+         IF ( T.GT.V ) THEN
+            SCALE1 = V/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BR22   = SCALE1*BR22
+            BI12   = SCALE1*BI12
          END IF
-         UR(1,1) = BR(1,1)/V
-         UI(1,1) = ZERO
-         UR(2,1) = ZERO
-         UI(2,1) = ZERO
+         UR11 = BR11/V
 C
 C        Step II:  Compute U(1,2).
 C
-         T = MAX( EPS*MAX( BR(2,2), DLAPY2( BR(1,2), BI(1,2) ) ),
-     $            SMLNUM )
-         IF ( ABS( BR(1,1) ) .LT. T ) THEN
-            UR(1,2) = ZERO
-            UI(1,2) = ZERO
-         ELSE
-            XR =  AR(1,1)*AR(1,2) + AI(1,1)*AI(1,2)
-            XI =  AI(1,1)*AR(1,2) - AR(1,1)*AI(1,2)
-            XR =  XR - ER(1,2)*ER(1,1) - EI(1,2)*EI(1,1)
-            XI =  XI + EI(1,2)*ER(1,1) - ER(1,2)*EI(1,1)
-            XR = -BR(1,2)*V - XR*UR(1,1)
-            XI =  BI(1,2)*V - XI*UR(1,1)
-            YR =  AR(2,2)*AR(1,1) + AI(2,2)*AI(1,1)
-            YI = -AI(2,2)*AR(1,1) + AR(2,2)*AI(1,1)
-            YR = YR - ER(2,2)*ER(1,1) - EI(2,2)*EI(1,1)
-            YI = YI + EI(2,2)*ER(1,1) - ER(2,2)*EI(1,1)
-            T  = TWO*DLAPY2( XR, XI )*SMLNUM
-            IF ( T .GT. DLAPY2( YR, YI ) ) THEN
-               SCALE1  = DLAPY2( YR, YI )/T
-               SCALE   = SCALE1*SCALE
-               BR(1,1) = SCALE1*BR(1,1)
-               BR(1,2) = SCALE1*BR(1,2)
-               BI(1,2) = SCALE1*BI(1,2)
-               BR(2,2) = SCALE1*BR(2,2)
-               UR(1,1) = SCALE1*UR(1,1)
-               XR = SCALE1*XR
-               XI = SCALE1*XI
+         MX = MAX( ABS( AR11 ), ABS( AI11 ), V )
+         IF ( ER11.GT.MX*SMLNUM ) THEN
+            MR  =  AR11/ER11
+            MI  = -AI11/ER11
+            M2S =     V/ER11
+            XR  =  M2S*BR12
+            XI  =  M2S*BI12
+            IF ( UR11.NE.ZERO ) THEN
+               XR = XR + UR11*( MR*AR12 - MI*AI12 - ER12 )
+               XI = XI + UR11*( MR*AI12 + MI*AR12 - EI12 )
             END IF
-            CALL DLADIV( XR, XI, YR, YI, UR(1,2), UI(1,2) )
-            UI(1,2) = -UI(1,2)
+            YR =  MI*AI22 - MR*AR22 + ER22
+            YI = -MR*AI22 - MI*AR22
+         ELSE
+            XR = -BR12*V
+            XI = -BI12*V
+            IF ( UR11.NE.ZERO ) THEN
+               XR = XR + UR11*( ER11*ER12 - AR11*AR12 - AI11*AI12 )
+               XI = XI + UR11*( ER11*EI12 - AR11*AI12 + AI11*AR12 )
+            END IF
+            YR = AR11*AR22 + AI11*AI22 - ER11*ER22
+            YI = AR11*AI22 - AI11*AR22
          END IF
+         T = DLAPY2( XR, XI )*SMLNUM
+         W = DLAPY2( YR, YI )
+         IF ( T.GT.W ) THEN
+            SCALE1 = W/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BR22   = SCALE1*BR22
+            BI12   = SCALE1*BI12
+            UR11   = SCALE1*UR11
+            XR     = SCALE1*XR
+            XI     = SCALE1*XI
+         END IF
+         CALL DLADIV( XR, XI, YR, YI, UR12, UI12 )
 C
 C        Step III:  Compute U(2,2).
 C
-         XR =  ER(1,2)*UR(1,1) + ER(2,2)*UR(1,2) - EI(2,2)*UI(1,2)
-         XI = -EI(1,2)*UR(1,1) - ER(2,2)*UI(1,2) - EI(2,2)*UR(1,2)
-         YR =  AR(1,2)*UR(1,1) + AR(2,2)*UR(1,2) - AI(2,2)*UI(1,2)
-         YI = -AI(1,2)*UR(1,1) - AR(2,2)*UI(1,2) - AI(2,2)*UR(1,2)
-         V  = ER(2,2)**2 + EI(2,2)**2 - AR(2,2)**2 - AI(2,2)**2
-         IF ( V .LE. ZERO ) THEN
+         XR = UR11*AR12 + UR12*AR22 - UI12*AI22
+         XI = UR11*AI12 + UR12*AI22 + UI12*AR22
+C
+         IF ( ER11.GT.MX*SMLNUM ) THEN
+C
+C           Compute auxiliary matrices M3 and Y. The factorization
+C           M3 = M3C * M3C**H is found by solving the special symmetric
+C           eigenvalue problem. (D below is the diagonal of M3.)
+C           It is convenient to use complex arithmetic for M3 and M3C.
+C           Only the (1,2) element of M3 is needed.
+C
+            X     = -M2S*DCMPLX( MR, MI )
+            M3(1) =  X
+            CALL ZLARFG( 1, X, M3, 1, ZS )
+            D(1)  = DLAPY2( MR, MI )**2
+            D(2)  = M2S**2
+            ET(1) = DBLE( X )
+C
+            CALL ZSTEIN( 2, D, ET, 1, EV, IWORK(2), IWORK(4), M3C, 2,
+     $                   DWORK, IWORK(6), IWORK, INFO )
+            IF ( INFO.NE.0 ) THEN
+               INFO = 4
+               RETURN
+            END IF
+C
+            V  =  DBLE( M3C(1,1) )*( ONE - DBLE( ZS ) )
+            W  = -DBLE( M3C(1,1) )*DIMAG( ZS )
+            T  =  DBLE( M3C(2,1) )
+            YR =  V*BR12 + W*BI12 + T*XR
+            YI =  V*BI12 - W*BR12 + T*XI
+C
+C           Overwrite B(2,2) with the scalar factor R of the
+C           QR-factorization of the 2-by-1 vector [ B(2,2); y ].
+C
+            CALL SG03BR( BR22, ZERO, YR, YI, C, SR, SI, LR, LI )
+         ELSE
+            T = DLAPY2( AR22, AI22 )
+            IF ( ER22.LE.T ) THEN
+               INFO = 3
+               RETURN
+            END IF
+            YR = UR11*ER12 + UR12*ER22
+            YI = UR11*EI12 + UI12*ER22
+            V  = DLAPY2( BR12, BI12 )
+            W  = DLAPY2( XR, XI )
+            T  = DLAPY2( YR, YI )
+            V  = DLAPY3( V, BR22, W )
+            IF ( V.LE.T ) THEN
+               INFO = 3
+               RETURN
+            END IF
+            T  = T/V
+            LR = SQRT( ONE - T )*SQRT( ONE + T )*V
+         END IF
+C
+         V = ER22
+         T = DLAPY2( AR22, AI22 )
+         IF ( V.LE.T ) THEN
             INFO = 3
             RETURN
          END IF
-         V = SQRT( V )
-         T = MAX( ABS( BR(2,2) ), ABS( BR(1,2) ), ABS( BI(1,2) ),
-     $            ABS( XR ), ABS( XI ), ABS( YR ), ABS( YI) )
-         IF ( T .LE. SMLNUM ) T = ONE
-         W = ( BR(2,2)/T )**2 + ( BR(1,2)/T )**2 + ( BI(1,2)/T )**2 -
-     $       ( XR/T )**2 - ( XI/T )**2 + ( YR/T )**2 + ( YI/T )**2
-         IF ( W .LT. ZERO ) THEN
-            INFO = 3
-            RETURN
+         T = T/V
+         V = SQRT( ONE - T )*SQRT( ONE + T )*V
+         T = LR*SMLNUM
+         IF ( V.LE.T ) THEN
+            SCALE1 = V/T
+            SCALE  = SCALE1*SCALE
+            BR11   = SCALE1*BR11
+            BR12   = SCALE1*BR12
+            BR22   = SCALE1*BR22
+            BI12   = SCALE1*BI12
+            UR11   = SCALE1*UR11
+            UR12   = SCALE1*UR12
+            UI12   = SCALE1*UI12
+            LR     = SCALE1*LR
          END IF
-         W = T*SQRT( W )
-         T = TWO*W*SMLNUM
-         IF ( T .GT. V ) THEN
-            SCALE1  = V/T
-            SCALE   = SCALE1*SCALE
-            UR(1,1) = SCALE1*UR(1,1)
-            UR(1,2) = SCALE1*UR(1,2)
-            UI(1,2) = SCALE1*UI(1,2)
-            BR(1,1) = SCALE1*BR(1,1)
-            BR(1,2) = SCALE1*BR(1,2)
-            BI(1,2) = SCALE1*BI(1,2)
-            BR(2,2) = SCALE1*BR(2,2)
-            W = SCALE1*W
-         END IF
-         UR(2,2) = W/V
-         UI(2,2) = ZERO
+         UR22 = LR/V
 C
-C        Compute matrices M1 and M2 for the reduced equation.
+C        Compute the needed elements of the matrices M1 and M2 for the
+C        reduced equation.
 C
-         B11  = BR(1,1)/ER(1,1)
-         T    = ER(1,1)*ER(2,2)
-         B12R = ( ER(1,1)*BR(1,2) - BR(1,1)*ER(1,2) )/T
-         B12I = ( ER(1,1)*BI(1,2) - BR(1,1)*EI(1,2) )/T
-         B22  = BR(2,2)/ER(2,2)
-         M1R(2,1) = ZERO
-         M1I(2,1) = ZERO
-         M2R(2,1) = ZERO
-         M2I(2,1) = ZERO
-         CALL DLADIV( AR(1,1), AI(1,1), ER(1,1), EI(1,1), BETAR, BETAI )
-         M1R(1,1) =  BETAR
-         M1I(1,1) =  BETAI
-         M1R(2,2) =  BETAR
-         M1I(2,2) = -BETAI
-         V = DLAPY2( BETAR, BETAI )
-         ALPHA = SQRT( ( ONE - V )*( ONE + V ) )
-         M2R(1,1) = ALPHA
-         M2I(1,1) = ZERO
-         XR = ( AI(1,1)*EI(1,2) - AR(1,1)*ER(1,2) )/T + AR(1,2)/ER(2,2)
-         XI = ( AR(1,1)*EI(1,2) + AI(1,1)*ER(1,2) )/T - AI(1,2)/ER(2,2)
+         B11  = BR11/ER11
+         T    = ER11*ER22
+         B12R = ( ER11*BR12 - BR11*ER12 )/T
+         B12I = ( ER11*BI12 - BR11*EI12 )/T
+C
+         BETAR = AR11/ER11
+         BETAI = AI11/ER11
+         V     = DLAPY2( BETAR, BETAI )
+         ALPHA = SQRT( ONE - V )*SQRT( ONE + V )
+C
+         XR = ( AI11*EI12 - AR11*ER12 )/T + AR12/ER22
+         XI = ( AR11*EI12 + AI11*ER12 )/T - AI12/ER22
          XR = -TWO*BETAI*B12I - B11*XR
          XI = -TWO*BETAI*B12R - B11*XI
          V  =  ONE + ( BETAI - BETAR )*( BETAI + BETAR )
          W  = -TWO*BETAI*BETAR
          CALL DLADIV( XR, XI, V, W, YR, YI )
-         IF ( ( YR.NE.ZERO ) .OR. ( YI.NE.ZERO ) ) THEN
-            M2R(1,2) =  ( YR*BETAR - YI*BETAI )/UR(2,2)
-            M2I(1,2) = -( YI*BETAR + YR*BETAI )/UR(2,2)
-            M2R(2,2) =  B22/UR(2,2)
-            M2I(2,2) =  ZERO
-            M1R(1,2) = -ALPHA*YR/UR(2,2)
-            M1I(1,2) =  ALPHA*YI/UR(2,2)
+         IF ( YR.NE.ZERO .OR. YI.NE.ZERO ) THEN
+            M1R12 = -ALPHA*YR/UR22
+            M1I12 =  ALPHA*YI/UR22
+            M2R12 =  ( YR*BETAR - YI*BETAI )/UR22
+            M2I12 = -( YI*BETAR + YR*BETAI )/UR22
+            M2R22 =  BR22/ER22/UR22
          ELSE
-            M2R(1,2) = ZERO
-            M2I(1,2) = ZERO
-            M2R(2,2) = ALPHA
-            M2I(2,2) = ZERO
-            M1R(1,2) = ZERO
-            M1I(1,2) = ZERO
+            M1R12 = ZERO
+            M1I12 = ZERO
+            M2R12 = ZERO
+            M2I12 = ZERO
+            M2R22 = ALPHA
          END IF
       END IF
 C
 C     Transform U back:  U := U * Q.
-C     (Note:  Z is used as workspace.)
 C
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, UR, 2, QR, 2, ZERO, ZR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, MONE, UI, 2, QI, 2,  ONE, ZR, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, UR, 2, QI, 2, ZERO, ZI, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, UI, 2, QR, 2,  ONE, ZI, 2 )
+      VR12 = UR12*CQ + UR11*SRQ
+      VI12 = UI12*CQ + UR11*SIQ
+      VR22 = UR22*CQ
 C
 C     Overwrite U with the upper triangular matrix of its
 C     QR-factorization. The elements on the main diagonal are real
 C     and non-negative.
 C
-      CALL SG03BY( ZR(1,1), ZI(1,1), ZR(2,1), ZI(2,1), CR, CI, SR, SI,
-     $             L )
-      QUR(1,1) =  CR
-      QUR(1,2) =  SR
-      QUR(2,1) = -SR
-      QUR(2,2) =  CR
-      QUI(1,1) = -CI
-      QUI(1,2) = -SI
-      QUI(2,1) = -SI
-      QUI(2,2) =  CI
-      CALL DGEMV( 'N', 2, 2,  ONE, QUR, 2, ZR(1,2), 1, ZERO,  U(1,2), 1)
-      CALL DGEMV( 'N', 2, 2, MONE, QUI, 2, ZI(1,2), 1,  ONE,  U(1,2), 1)
-      CALL DGEMV( 'N', 2, 2,  ONE, QUI, 2, ZR(1,2), 1, ZERO, UI(1,2), 1)
-      CALL DGEMV( 'N', 2, 2,  ONE, QUR, 2, ZI(1,2), 1,  ONE, UI(1,2), 1)
-      U(1,1) = L
+      CALL SG03BR( UR11*CQ - UR12*SRQ - UI12*SIQ, UR12*SIQ - UI12*SRQ,
+     $             -UR22*SRQ, UR22*SIQ, CQU, SRQU, SIQU, LR, LI )
+      U(1,1) = LR
       U(2,1) = ZERO
-      V = DLAPY2( U(2,2), UI(2,2) )
-      IF ( V .NE. ZERO ) THEN
-         CALL DLADIV( V, ZERO, U(2,2), UI(2,2), XR, XI )
-         YR = QUR(2,1)
-         YI = QUI(2,1)
-         QUR(2,1) = XR*YR - XI*YI
-         QUI(2,1) = XR*YI + XI*YR
-         YR = QUR(2,2)
-         YI = QUI(2,2)
-         QUR(2,2) = XR*YR - XI*YI
-         QUI(2,2) = XR*YI + XI*YR
+      U(1,2) = CQU*VR12 + SRQU*VR22
+      UI12   = CQU*VI12 + SIQU*VR22
+      U(2,2) = CQU*VR22 - SRQU*VR12 - SIQU*VI12
+      UI22   =            SIQU*VR12 - SRQU*VI12
+      IF ( LI.NE.ZERO ) THEN
+         V = DLAPY2( LR, LI )
+         CALL DLADIV( V, ZERO, LR, LI, XR, XI )
+         CQUI = XI*CQU
+         CQU  = XR*CQU
+         T    = XR*SRQU - XI*SIQU
+         SIQU = XR*SIQU + XI*SRQU
+         SRQU = T
+C
+         U(1,2) = XR*U(1,2) - XI*UI12
+         U(1,1) = V
       END IF
-      U(2,2) = V
+C
+      U(2,2) = DLAPY2( U(2,2), UI22 )
 C
 C     Transform the matrices M1 and M2 back.
 C
-C        M1 := QU * M1 * QU**H
-C        M2 := QB**H * M2 * QU**H
+C        M1 := QU * M1 * QU**H,
+C        M2 := QB**H * M2 * QU**H.
 C
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M1R, 2, QUR, 2, ZERO, TR, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M1I, 2, QUI, 2,  ONE, TR, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2, MONE, M1R, 2, QUI, 2, ZERO, TI, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M1I, 2, QUR, 2,  ONE, TI, 2 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2,  ONE, QUR, 2, TR,  2, ZERO, M1,
-     $            LDM1 )
-      CALL DGEMM( 'N', 'N', 2, 2, 2, MONE, QUI, 2, TI,  2,  ONE, M1,
-     $            LDM1 )
+      V = BETAR
+      T = ( CQU*SRQU + CQUI*SIQU )*M1R12 +
+     $    ( CQU*SIQU - CQUI*SRQU )*M1I12
 C
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M2R, 2, QUR, 2, ZERO, TR, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M2I, 2, QUI, 2,  ONE, TR, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2, MONE, M2R, 2, QUI, 2, ZERO, TI, 2 )
-      CALL DGEMM( 'N', 'T', 2, 2, 2,  ONE, M2I, 2, QUR, 2,  ONE, TI, 2 )
-      CALL DGEMM( 'T', 'N', 2, 2, 2,  ONE, QBR, 2,  TR, 2, ZERO, M2,
-     $            LDM2 )
-      CALL DGEMM( 'T', 'N', 2, 2, 2,  ONE, QBI, 2,  TI, 2,  ONE, M2,
-     $            LDM2 )
+      M1(1,1) = V + T
+      M1(2,2) = V - T
+      M1(1,2) = M1R12*( CQU -  CQUI )*( CQU +  CQUI ) +
+     $           TWO*( BETAI*( SIQU*CQU + SRQU*CQUI ) - M1I12*CQUI*CQU )
+      M1(2,1) = SIQU*( M1R12*SIQU - TWO*BETAI*CQU     - M1I12*SRQU ) -
+     $          SRQU*( M1R12*SRQU + TWO*BETAI*CQUI    + M1I12*SIQU )
+C
+      V       = M2R12* CQU - M2I12*CQUI - ALPHA*SRQU
+      W       = M2R12*CQUI + M2I12*CQU  - ALPHA*SIQU
+      M2(1,1) =  CQB*( ALPHA* CQU + M2R12*SRQU + M2I12*SIQU ) +
+     $          CQBI*( M2I12*SRQU - M2R12*SIQU - ALPHA*CQUI ) -
+     $                 M2R22*( SRQB*SRQU + SIQB*SIQU )
+      M2(2,1) = ZERO
+      M2(1,2) =  CQB*V + CQBI*W - M2R22*( SRQB*CQU - SIQB*CQUI )
+      M2(2,2) = SRQB*V + SIQB*W + M2R22*(  CQB*CQU - CQBI*CQUI )
 C
 C     If the transposed equation (op(K)=K**T, K=A,B,E,U) is to be
 C     solved, transpose the matrix U with respect to the
@@ -734,16 +831,17 @@ C     anti-diagonal and the matrices M1, M2 with respect to the diagonal
 C     and the anti-diagonal.
 C
       IF ( ISTRNS ) THEN
-         V = U(1,1)
-         U(1,1) = U(2,2)
-         U(2,2) = V
-         V = M1(1,1)
+         V       = U(1,1)
+         U(1,1)  = U(2,2)
+         U(2,2)  = V
+         V       = M1(1,1)
          M1(1,1) = M1(2,2)
          M1(2,2) = V
-         V = M2(1,1)
+         V       = M2(1,1)
          M2(1,1) = M2(2,2)
          M2(2,2) = V
       END IF
+      U(2,1) = ZERO
 C
       RETURN
 C *** Last line of SG03BX ***

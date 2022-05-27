@@ -1,9 +1,5 @@
       LOGICAL FUNCTION MA02HD( JOB, M, N, DIAG, A, LDA )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To check if A = DIAG*I, where I is an M-by-N matrix with ones on

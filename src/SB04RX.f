@@ -1,10 +1,6 @@
       SUBROUTINE SB04RX( RC, UL, M, A, LDA, LAMBD1, LAMBD2, LAMBD3,
      $                   LAMBD4, D, TOL, IWORK, DWORK, LDDWOR, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve a system of equations in quasi-Hessenberg form

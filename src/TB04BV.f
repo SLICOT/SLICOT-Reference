@@ -1,10 +1,6 @@
       SUBROUTINE TB04BV( ORDER, P, M, MD, IGN, LDIGN, IGD, LDIGD, GN,
      $                   GD, D, LDD, TOL, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To separate the strictly proper part G0 from the constant part D

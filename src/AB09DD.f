@@ -1,10 +1,6 @@
       SUBROUTINE AB09DD( DICO, N, M, P, NR, A, LDA, B, LDB, C, LDC,
      $                   D, LDD, RCOND, IWORK, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a reduced order model by using singular perturbation

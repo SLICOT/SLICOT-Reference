@@ -2,10 +2,6 @@
      $                   RANK, R, LDR, Q, LDQ, SV, B, LDB, RP, LDRP,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the minimum norm least squares solution of one of the

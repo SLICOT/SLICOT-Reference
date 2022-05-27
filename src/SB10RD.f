@@ -3,10 +3,6 @@
      $                   LDTY, X, LDX, Y, LDY, AK, LDAK, BK, LDBK, CK,
      $                   LDCK, DK, LDDK, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrices of an H-infinity (sub)optimal controller

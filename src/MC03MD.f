@@ -2,10 +2,6 @@
      $                   LDP11, LDP12, P2, LDP21, LDP22, P3, LDP31,
      $                   LDP32, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the coefficients of the real polynomial matrix

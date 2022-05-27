@@ -2,10 +2,6 @@
      $                   LDT, U, LDU, G, LDG, Q, LDQ, X, LDX, SEPD,
      $                   RCOND, FERR, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To estimate the conditioning and compute an error bound on the

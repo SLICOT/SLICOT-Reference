@@ -1,10 +1,6 @@
       SUBROUTINE SB09MD( N, NC, NB, H1, LDH1, H2, LDH2, SS, LDSS, SE,
      $                   LDSE, PRE, LDPRE, TOL, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compare two multivariable sequences M1(k) and M2(k) for

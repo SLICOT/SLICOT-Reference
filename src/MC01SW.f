@@ -1,9 +1,5 @@
       SUBROUTINE MC01SW( A, B, M, E )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the mantissa M and the exponent E of a real number A such

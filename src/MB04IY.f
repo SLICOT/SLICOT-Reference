@@ -1,10 +1,6 @@
       SUBROUTINE MB04IY( SIDE, TRANS, N, M, K, P, A, LDA, TAU, C, LDC,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To overwrite the real n-by-m matrix  C  with  Q' * C,  Q * C,

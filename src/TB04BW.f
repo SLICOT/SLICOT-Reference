@@ -1,10 +1,6 @@
       SUBROUTINE TB04BW( ORDER, P, M, MD, IGN, LDIGN, IGD, LDIGD, GN,
      $                   GD, D, LDD, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the sum of an P-by-M rational matrix G and a real

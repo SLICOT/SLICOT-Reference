@@ -2,10 +2,6 @@
      $                   DELTA, PAR, RANKS, X, RX, TOL, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine a value for the Levenberg-Marquardt parameter PAR

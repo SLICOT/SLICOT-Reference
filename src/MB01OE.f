@@ -1,10 +1,6 @@
       SUBROUTINE MB01OE( UPLO, TRANS, N, ALPHA, BETA, R, LDR, H, LDH, E,
      $                   LDE )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute one of the symmetric rank 2k operations

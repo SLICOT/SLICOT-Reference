@@ -1,10 +1,6 @@
       SUBROUTINE MB03XS( JOBU, N, A, LDA, QG, LDQG, U1, LDU1, U2, LDU2,
      $                   WR, WI, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues and real skew-Hamiltonian Schur form of

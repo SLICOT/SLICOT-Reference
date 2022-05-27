@@ -1,9 +1,5 @@
       SUBROUTINE MC01QD( DA, DB, A, B, RQ, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute, for two given real polynomials A(x) and B(x), the

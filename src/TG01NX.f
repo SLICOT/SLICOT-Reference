@@ -1,10 +1,6 @@
       SUBROUTINE TG01NX( JOBT, N, M, P, NDIM, A, LDA, E, LDE, B, LDB,
      $                   C, LDC, Q, LDQ, Z, LDZ, IWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute equivalence transformation matrices Q and Z which

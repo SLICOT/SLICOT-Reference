@@ -1,10 +1,6 @@
       SUBROUTINE MB02ID( JOB, K, L, M, N, RB, RC, TC, LDTC, TR, LDTR, B,
      $                   LDB, C, LDC, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve the overdetermined or underdetermined real linear systems

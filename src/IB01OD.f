@@ -1,9 +1,5 @@
       SUBROUTINE IB01OD( CTRL, NOBR, L, SV, N, TOL, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To estimate the system order, based on the singular values of the

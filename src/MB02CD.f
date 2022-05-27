@@ -1,10 +1,6 @@
       SUBROUTINE MB02CD( JOB, TYPET, K, N, T, LDT, G, LDG, R, LDR, L,
      $                   LDL, CS, LCS, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the Cholesky factor and the generator and/or the

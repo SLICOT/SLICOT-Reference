@@ -4,10 +4,6 @@
      $                   LDPCO2, QCOEFF, LDQCO1, LDQCO2, VCOEFF, LDVCO1,
      $                   LDVCO2, TOL, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find a relatively prime left or right polynomial matrix

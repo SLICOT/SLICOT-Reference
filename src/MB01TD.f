@@ -1,9 +1,5 @@
       SUBROUTINE MB01TD( N, A, LDA, B, LDB, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the matrix product A * B, where A and B are upper

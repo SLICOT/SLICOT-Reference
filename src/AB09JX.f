@@ -1,10 +1,6 @@
       SUBROUTINE AB09JX( DICO, STDOM, EVTYPE, N, ALPHA, ER, EI, ED,
      $                   TOLINF, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To check stability/antistability of finite eigenvalues with

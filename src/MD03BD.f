@@ -4,10 +4,6 @@
      $                   FTOL, XTOL, GTOL, TOL, IWORK, DWORK, LDWORK,
      $                   IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To minimize the sum of the squares of m nonlinear functions, e, in

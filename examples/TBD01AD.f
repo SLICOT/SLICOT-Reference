@@ -1,5 +1,4 @@
 C     BD01AD EXAMPLE PROGRAM TEXT
-C     Copyright (c) 2002-2020 NICONET e.V.
 C
 C     .. Parameters ..
       INTEGER          NIN, NOUT

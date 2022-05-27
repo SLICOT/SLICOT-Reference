@@ -1,10 +1,6 @@
       SUBROUTINE MB03HD( N, A, LDA, B, LDB, MACPAR, Q, LDQ, DWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine an orthogonal matrix Q, for a real regular 2-by-2 or

@@ -1,9 +1,5 @@
       SUBROUTINE SB08MY( DA, A, B, EPSB )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the coefficients of B(s) = A(s) * A(-s) and a norm

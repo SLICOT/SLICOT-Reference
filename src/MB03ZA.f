@@ -3,10 +3,6 @@
      $                   LDV1, V2, LDV2, W, LDW, WR, WI, M, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     1. To compute, for a given matrix pair (A,B) in periodic Schur

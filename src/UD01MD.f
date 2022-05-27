@@ -1,9 +1,5 @@
       SUBROUTINE UD01MD( M, N, L, NOUT, A, LDA, TEXT, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To print an M-by-N real matrix A row by row. The elements of A

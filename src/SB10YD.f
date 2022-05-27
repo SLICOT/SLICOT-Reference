@@ -2,10 +2,6 @@
      $                   A, LDA, B, C, D, TOL, IWORK, DWORK, LDWORK,
      $                   ZWORK, LZWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To fit a supplied frequency response data with a stable, minimum

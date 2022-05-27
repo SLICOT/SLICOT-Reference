@@ -1,9 +1,5 @@
       SUBROUTINE SB08MD( ACONA, DA, A, RES, E, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a real polynomial E(s) such that

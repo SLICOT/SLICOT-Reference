@@ -22,8 +22,8 @@ Solving (for Cholesky factor) generalized stable continuous- or discrete-time Ly
               T
      X = op(U)  * op(U),
 
-  which is the solution of either the generalized
-  c-stable continuous-time Lyapunov equation
+  which is the solution of either the generalized c-stable
+  continuous-time Lyapunov equation
 
           T                    T
      op(A)  * X * op(E) + op(E)  * X * op(A)
@@ -81,8 +81,8 @@ C     .. Array Arguments ..
 
   FACT    CHARACTER*1
           Specifies whether the generalized real Schur
-          factorization of the pencil A - lambda * E is supplied
-          on entry or not:
+          factorization of the pencil A - lambda * E is supplied on
+          entry or not:
           = 'N':  Factorization is not supplied;
           = 'F':  Factorization is supplied.
 
@@ -103,58 +103,66 @@ C     .. Array Arguments ..
 
   A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
           On entry, if FACT = 'F', then the leading N-by-N upper
-          Hessenberg part of this array must contain the
-          generalized Schur factor A_s of the matrix A (see
-          definition (3) in section METHOD). A_s must be an upper
-          quasitriangular matrix. The elements below the upper
-          Hessenberg part of the array A are not referenced.
-          If FACT = 'N', then the leading N-by-N part of this
-          array must contain the matrix A.
-          On exit, the leading N-by-N part of this array contains
-          the generalized Schur factor A_s of the matrix A. (A_s is
-          an upper quasitriangular matrix.)
+          Hessenberg part of this array must contain the generalized
+          Schur factor A_s of the matrix A (see definition (3) in
+          section METHOD). A_s must be an upper quasitriangular
+          matrix. The elements below the upper Hessenberg part of
+          the array A are not referenced.
+          If FACT = 'N', then the leading N-by-N part of this array
+          must contain the matrix A.
+          On exit, if FACT = 'N', the leading N-by-N upper
+          Hessenberg part of this array contains the generalized
+          Schur factor A_s of the matrix A. (A_s is an upper
+          quasitriangular matrix.) If FACT = 'F', the leading N-by-N
+          upper triangular part of this array is unchanged.
 
   LDA     INTEGER
           The leading dimension of the array A.  LDA &gt;= MAX(1,N).
 
   E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
           On entry, if FACT = 'F', then the leading N-by-N upper
-          triangular part of this array must contain the
-          generalized Schur factor E_s of the matrix E (see
-          definition (4) in section METHOD). The elements below the
-          upper triangular part of the array E are not referenced.
-          If FACT = 'N', then the leading N-by-N part of this
-          array must contain the coefficient matrix E of the
-          equation.
-          On exit, the leading N-by-N part of this array contains
-          the generalized Schur factor E_s of the matrix E. (E_s is
-          an upper triangular matrix.)
+          triangular part of this array must contain the generalized
+          Schur factor E_s of the matrix E (see definition (4) in
+          section METHOD). E_s must be an upper triangular matrix.
+          The elements below the upper triangular part of the array
+          E are not referenced.
+          If FACT = 'N', then the leading N-by-N part of this array
+          must contain the coefficient matrix E of the equation.
+          On exit, if FACT = 'N', the leading N-by-N upper
+          triangular part of this array contains the generalized
+          Schur factor E_s of the matrix E. (E_s is an upper
+          triangular matrix.) If FACT = 'F', the leading N-by-N
+          upper triangular part of this array is unchanged.
 
   LDE     INTEGER
           The leading dimension of the array E.  LDE &gt;= MAX(1,N).
 
   Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
           On entry, if FACT = 'F', then the leading N-by-N part of
-          this array must contain the orthogonal matrix Q from
-          the generalized Schur factorization (see definitions (3)
-          and (4) in section METHOD).
+          this array must contain the orthogonal matrix Q from the
+          generalized Schur factorization (see definitions (3) and
+          (4) in section METHOD), or an identity matrix (if the
+          original equation has upper triangular matrices A and E).
           If FACT = 'N', Q need not be set on entry.
-          On exit, the leading N-by-N part of this array contains
-          the orthogonal matrix Q from the generalized Schur
-          factorization.
+          On exit, if FACT = 'N', the leading N-by-N part of this
+          array contains the orthogonal matrix Q from the
+          generalized Schur factorization. If FACT = 'F', this array
+          is unchanged.
 
   LDQ     INTEGER
           The leading dimension of the array Q.  LDQ &gt;= MAX(1,N).
 
   Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
           On entry, if FACT = 'F', then the leading N-by-N part of
-          this array must contain the orthogonal matrix Z from
-          the generalized Schur factorization (see definitions (3)
-          and (4) in section METHOD).
+          this array must contain the orthogonal matrix Z from the
+          generalized Schur factorization (see definitions (3) and
+          (4) in section METHOD), or an identity matrix (if the
+          original equation has upper triangular matrices A and E).
           If FACT = 'N', Z need not be set on entry.
-          On exit, the leading N-by-N part of this array contains
-          the orthogonal matrix Z from the generalized Schur
-          factorization.
+          On exit, if FACT = 'N', the leading N-by-N part of this
+          array contains the orthogonal matrix Z from the
+          generalized Schur factorization. If FACT = 'F', this array
+          is unchanged.
 
   LDZ     INTEGER
           The leading dimension of the array Z.  LDZ &gt;= MAX(1,N).
@@ -164,15 +172,15 @@ C     .. Array Arguments ..
           array must contain the matrix B and N1 &gt;= MAX(M,N).
           If TRANS = 'N', the leading M-by-N part of this array
           must contain the matrix B and N1 &gt;= N.
-          On exit, the leading N-by-N part of this array contains
-          the Cholesky factor U of the solution matrix X of the
-          problem, X = op(U)**T * op(U).
+          On exit, if INFO = 0, the leading N-by-N part of this
+          array contains the Cholesky factor U of the solution
+          matrix X of the problem, X = op(U)**T * op(U).
           If M = 0 and N &gt; 0, then U is set to zero.
 
   LDB     INTEGER
           The leading dimension of the array B.
-          If TRANS = 'T', LDB &gt;= MAX(1,N).
-          If TRANS = 'N', LDB &gt;= MAX(1,M,N).
+          If TRANS = 'T',  LDB &gt;= MAX(1,N).
+          If TRANS = 'N',  LDB &gt;= MAX(1,M,N).
 
   SCALE   (output) DOUBLE PRECISION
           The scale factor set to avoid overflow in U.
@@ -182,14 +190,20 @@ C     .. Array Arguments ..
   ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
   BETA    (output) DOUBLE PRECISION array, dimension (N)
           If INFO = 0, 3, 5, 6, or 7, then
-          (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N, are the
+          (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j = 1, ... ,N, are the
           eigenvalues of the matrix pencil A - lambda * E.
+          All BETA(j) are non-negative numbers.
+          ALPHAR and ALPHAI will be always less than and usually
+          comparable with norm(A) in magnitude, and BETA always less
+          than and usually comparable with norm(B).
 
 </PRE>
 <B>Workspace</B>
 <PRE>
   DWORK   DOUBLE PRECISION array, dimension (LDWORK)
           On exit, if INFO = 0, DWORK(1) returns the optimal value
+          of LDWORK.
+          On exit, if INFO = -21, DWORK(1) returns the minimum value
           of LDWORK.
 
   LDWORK  INTEGER
@@ -243,15 +257,15 @@ C     .. Array Arguments ..
   Schur form A_s - lambda * E_s by means of orthogonal
   transformations (QZ-algorithm):
 
-     A_s = Q**T * A * Z   (upper quasitriangular)                (3)
+     A_s = Q**T * A * Z   (upper quasitriangular),               (3)
 
      E_s = Q**T * E * Z   (upper triangular).                    (4)
 
   If the pencil A - lambda * E has already been factorized prior to
-  calling the routine however, then the factors A_s, E_s, Q and Z
+  calling the routine, however, then the factors A_s, E_s, Q and Z
   may be supplied and the initial factorization omitted.
 
-  Depending on the parameters TRANS and M the N-by-N upper
+  Depending on the parameters TRANS and M, the N-by-N upper
   triangular matrix B_s is defined as follows. In any case Q_B is
   an M-by-M orthogonal matrix, which need not be accumulated.
 
@@ -315,7 +329,7 @@ C     .. Array Arguments ..
   TRANS = 'N'. The other three cases can be treated in a similar
   fashion.
 
-  We use the following partitioning for the matrices A_s, E_s, B_s
+  We use the following partitioning for the matrices A_s, E_s, B_s,
   and U_s
 
               ( A11   A12 )          ( E11   E12 )
@@ -329,7 +343,7 @@ C     .. Array Arguments ..
   The size of the (1,1)-blocks is 1-by-1 (iff A_s(2,1) = 0.0) or
   2-by-2.
 
-  We compute U11 and U12**T in three steps.
+  We compute U11, U12**T, and U22 in three steps.
 
   Step I:
 
@@ -409,11 +423,11 @@ C     .. Array Arguments ..
   (RQ-factorization). The upper triangular solution matrix U is
   obtained by
 
-     Q_U * U  =  U_s * Q**T     (if TRANS = 'N')
+     Q_U * U  =  U_s * Q**T     (if TRANS = 'N'),
 
   or
 
-     U * Q_U  =  Z * U_s        (if TRANS = 'T')
+     U * Q_U  =  Z * U_s        (if TRANS = 'T'),
 
   where Q_U is an N-by-N orthogonal matrix. Again, the orthogonal
   matrix Q_U need not be accumulated.
@@ -464,7 +478,6 @@ C     .. Array Arguments ..
 <B>Program Text</B>
 <PRE>
 *     SG03BD EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       INTEGER           NIN, NOUT

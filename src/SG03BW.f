@@ -1,10 +1,6 @@
       SUBROUTINE SG03BW( TRANS, M, N, A, LDA, C, LDC, E, LDE, D, LDD, X,
      $                   LDX, SCALE, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X the generalized Sylvester equation
@@ -139,7 +135,7 @@ C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C
 C     REVISIONS
 C
-C     Sep. 1998 (V. Sima).
+C     Sep. 1998, Dec. 2021  (V. Sima).
 C
 C     KEYWORDS
 C
@@ -167,7 +163,7 @@ C     .. External Functions ..
       LOGICAL           LSAME
       EXTERNAL          LSAME
 C     .. External Subroutines ..
-      EXTERNAL          DGEMM, DSCAL, MB02UU, MB02UV, XERBLA
+      EXTERNAL          DCOPY, DGEMM, DGESC2, DGETC2, DLASCL, XERBLA
 C     .. Intrinsic Functions ..
       INTRINSIC         MAX
 C
@@ -179,24 +175,24 @@ C     Check the scalar input parameters.
 C
       IF ( .NOT.( NOTRNS .OR. LSAME( TRANS, 'T' ) ) ) THEN
          INFO = -1
-      ELSEIF ( M .LT. 0 ) THEN
+      ELSEIF ( M.LT.0 ) THEN
          INFO = -2
-      ELSEIF ( N .NE. 1 .AND. N .NE. 2 ) THEN
+      ELSEIF ( N.NE.1 .AND. N.NE.2 ) THEN
          INFO = -3
-      ELSEIF ( LDA .LT. MAX( 1, M ) ) THEN
+      ELSEIF ( LDA.LT.MAX( 1, M ) ) THEN
          INFO = -5
-      ELSEIF ( LDC .LT. MAX( 1, N ) ) THEN
+      ELSEIF ( LDC.LT.MAX( 1, N ) ) THEN
          INFO = -7
-      ELSEIF ( LDE .LT. MAX( 1, M ) ) THEN
+      ELSEIF ( LDE.LT.MAX( 1, M ) ) THEN
          INFO = -9
-      ELSEIF ( LDD .LT. MAX( 1, N ) ) THEN
+      ELSEIF ( LDD.LT.MAX( 1, N ) ) THEN
          INFO = -11
-      ELSEIF ( LDX .LT. MAX( 1, M ) ) THEN
+      ELSEIF ( LDX.LT.MAX( 1, M ) ) THEN
          INFO = -13
       ELSE
          INFO = 0
       END IF
-      IF ( INFO .NE. 0 ) THEN
+      IF ( INFO.NE.0 ) THEN
          CALL XERBLA( 'SG03BW', -INFO )
          RETURN
       END IF
@@ -205,7 +201,7 @@ C
 C
 C     Quick return if possible.
 C
-      IF ( M .EQ. 0 )
+      IF ( M.EQ.0 )
      $    RETURN
 C
       IF ( NOTRNS ) THEN
@@ -216,14 +212,15 @@ C        Compute block row X(MA:ME,:). MB denotes the number of rows in
 C        this block row.
 C
          ME = 0
-C        WHILE ( ME .NE. M ) DO
-   20    IF ( ME .NE. M ) THEN
+C        WHILE ( ME.NE.M ) DO
+   20    CONTINUE
+         IF ( ME.NE.M ) THEN
             MA = ME + 1
-            IF ( MA .EQ. M ) THEN
+            IF ( MA.EQ.M ) THEN
                ME = M
                MB = 1
             ELSE
-               IF ( A(MA+1,MA) .EQ. ZERO ) THEN
+               IF ( A(MA+1,MA).EQ.ZERO ) THEN
                   ME = MA
                   MB = 1
                ELSE
@@ -241,14 +238,14 @@ C           and right hand side
 C
 C              RHS = vec(X(MA:ME,:)).
 C
-            IF ( N .EQ. 1 ) THEN
+            IF ( N.EQ.1 ) THEN
                DIMMAT = MB
                DO 60 I = 1, MB
                   MAI = MA + I - 1
                   DO 40 J = 1, MB
                      MAJ = MA + J - 1
                      MAT(I,J) = C(1,1)*A(MAJ,MAI)
-                     IF ( MAJ .LE. MAI )
+                     IF ( MAJ.LE.MAI )
      $                  MAT(I,J) = MAT(I,J) + D(1,1)*E(MAJ,MAI)
    40             CONTINUE
                   RHS(I) = X(MAI,1)
@@ -259,48 +256,37 @@ C
                   MAI = MA + I - 1
                   DO 80 J = 1, MB
                      MAJ = MA + J - 1
-                     MAT(I,J) = C(1,1)*A(MAJ,MAI)
-                     MAT(MB+I,J) = C(1,2)*A(MAJ,MAI)
-                     MAT(I,MB+J) = C(2,1)*A(MAJ,MAI)
+                     MAT(I,J)       = C(1,1)*A(MAJ,MAI)
+                     MAT(MB+I,J)    = C(1,2)*A(MAJ,MAI)
+                     MAT(I,MB+J)    = C(2,1)*A(MAJ,MAI)
                      MAT(MB+I,MB+J) = C(2,2)*A(MAJ,MAI)
-                     IF ( MAJ .LE. MAI ) THEN
-                        MAT(I,J) = MAT(I,J) + D(1,1)*E(MAJ,MAI)
-                        MAT(MB+I,J) = MAT(MB+I,J) + D(1,2)*E(MAJ,MAI)
-                        MAT(I,MB+J) = MAT(I,MB+J) + D(2,1)*E(MAJ,MAI)
+                     IF ( MAJ.LE.MAI ) THEN
+                        MAT(I,J)       = MAT(I,J)    + D(1,1)*E(MAJ,MAI)
+                        MAT(MB+I,J)    = MAT(MB+I,J) + D(1,2)*E(MAJ,MAI)
+                        MAT(I,MB+J)    = MAT(I,MB+J) + D(2,1)*E(MAJ,MAI)
                         MAT(MB+I,MB+J) = MAT(MB+I,MB+J) +
      $                                   D(2,2)*E(MAJ,MAI)
                      END IF
    80             CONTINUE
-                  RHS(I) = X(MAI,1)
+                  RHS(I)    = X(MAI,1)
                   RHS(MB+I) = X(MAI,2)
   100          CONTINUE
             END IF
 C
 C           Solve the system of linear equations.
 C
-            CALL MB02UV( DIMMAT, MAT, 4, PIV1, PIV2, INFO1 )
-            IF ( INFO1 .NE. 0 )
+            CALL DGETC2( DIMMAT, MAT, 4, PIV1, PIV2, INFO1 )
+            IF ( INFO1.NE.0 )
      $         INFO = 1
-            CALL MB02UU( DIMMAT, MAT, 4, RHS, PIV1, PIV2, SCALE1 )
-            IF ( SCALE1 .NE. ONE ) THEN
+            CALL DGESC2( DIMMAT, MAT, 4, RHS, PIV1, PIV2, SCALE1 )
+            IF ( SCALE1.NE.ONE ) THEN
                SCALE = SCALE1*SCALE
-               DO 120 I = 1, N
-                  CALL DSCAL( M, SCALE1, X(1,I), 1 )
-  120          CONTINUE
+               CALL DLASCL( 'G', 0, 0, ONE, SCALE1, M, N, X, LDX, INFO1)
             END IF
 C
-            IF ( N .EQ. 1 ) THEN
-               DO 140 I = 1, MB
-                  MAI = MA + I - 1
-                  X(MAI,1) = RHS(I)
-  140          CONTINUE
-            ELSE
-               DO 160 I = 1, MB
-                  MAI = MA + I - 1
-                  X(MAI,1) = RHS(I)
-                  X(MAI,2) = RHS(MB+I)
-  160          CONTINUE
-            END IF
+            CALL DCOPY( MB, RHS, 1, X(MA,1), 1 )
+            IF ( N.EQ.2 )
+     $         CALL DCOPY( MB, RHS(MB+1), 1, X(MA,2), 1 )
 C
 C           Update right hand sides.
 C
@@ -308,11 +294,11 @@ C           X(ME+1:M,:) = X(ME+1:M,:) - A(MA:ME,ME+1:M)'*X(MA:ME,:)*C
 C
 C           X(ME+1:M,:) = X(ME+1:M,:) - E(MA:ME,ME+1:M)'*X(MA:ME,:)*D
 C
-            IF ( ME .LT. M ) THEN
+            IF ( ME.LT.M ) THEN
                CALL DGEMM( 'N', 'N', MB, N, N, ONE, X(MA,1), LDX, C,
      $                     LDC, ZERO, TM, 2 )
-               CALL DGEMM( 'T', 'N', M-ME, N, MB, MONE, A(MA,ME+1),
-     $                     LDA, TM, 2, ONE, X(ME+1,1), LDX )
+               CALL DGEMM( 'T', 'N', M-ME, N, MB, MONE, A(MA,ME+1), LDA,
+     $                     TM, 2, ONE, X(ME+1,1), LDX )
                CALL DGEMM( 'N', 'N', MB, N, N, ONE, X(MA,1), LDX, D,
      $                     LDD, ZERO, TM, 2 )
                CALL DGEMM( 'T', 'N', M-ME, N, MB, MONE, E(MA,ME+1), LDE,
@@ -331,14 +317,15 @@ C        Compute block row X(MA:ME,:). MB denotes the number of rows in
 C        this block row.
 C
          MA = M + 1
-C        WHILE ( MA .NE. 1 ) DO
-  180    IF ( MA .NE. 1 ) THEN
+C        WHILE ( MA.NE.1 ) DO
+  120    CONTINUE
+         IF ( MA.NE.1 ) THEN
             ME = MA - 1
-            IF ( ME .EQ. 1 ) THEN
+            IF ( ME.EQ.1 ) THEN
                MA = 1
                MB = 1
             ELSE
-               IF ( A(ME,ME-1) .EQ. ZERO ) THEN
+               IF ( A(ME,ME-1).EQ.ZERO ) THEN
                   MA = ME
                   MB = 1
                ELSE
@@ -356,74 +343,63 @@ C           and right hand side
 C
 C              RHS = vec(X(MA:ME,:)).
 C
-            IF ( N .EQ. 1 ) THEN
+            IF ( N.EQ.1 ) THEN
                DIMMAT = MB
-               DO 220 I = 1, MB
+               DO 160 I = 1, MB
                   MAI = MA + I - 1
-                  DO 200 J = 1, MB
+                  DO 140 J = 1, MB
                      MAJ = MA + J - 1
                      MAT(I,J) = C(1,1)*A(MAI,MAJ)
-                     IF ( MAJ .GE. MAI )
+                     IF ( MAJ.GE.MAI )
      $                  MAT(I,J) = MAT(I,J) + D(1,1)*E(MAI,MAJ)
-  200             CONTINUE
+  140             CONTINUE
                   RHS(I) = X(MAI,1)
-  220          CONTINUE
+  160          CONTINUE
             ELSE
                DIMMAT = 2*MB
-               DO 260 I = 1, MB
+               DO 200 I = 1, MB
                   MAI = MA + I - 1
-                  DO 240 J = 1, MB
+                  DO 180 J = 1, MB
                      MAJ = MA + J - 1
-                     MAT(I,J) = C(1,1)*A(MAI,MAJ)
-                     MAT(MB+I,J) = C(2,1)*A(MAI,MAJ)
-                     MAT(I,MB+J) = C(1,2)*A(MAI,MAJ)
+                     MAT(I,J)       = C(1,1)*A(MAI,MAJ)
+                     MAT(MB+I,J)    = C(2,1)*A(MAI,MAJ)
+                     MAT(I,MB+J)    = C(1,2)*A(MAI,MAJ)
                      MAT(MB+I,MB+J) = C(2,2)*A(MAI,MAJ)
-                     IF ( MAJ .GE. MAI ) THEN
-                        MAT(I,J) = MAT(I,J) + D(1,1)*E(MAI,MAJ)
-                        MAT(MB+I,J) = MAT(MB+I,J) + D(2,1)*E(MAI,MAJ)
-                        MAT(I,MB+J) = MAT(I,MB+J) + D(1,2)*E(MAI,MAJ)
+                     IF ( MAJ.GE.MAI ) THEN
+                        MAT(I,J)       = MAT(I,J)    + D(1,1)*E(MAI,MAJ)
+                        MAT(MB+I,J)    = MAT(MB+I,J) + D(2,1)*E(MAI,MAJ)
+                        MAT(I,MB+J)    = MAT(I,MB+J) + D(1,2)*E(MAI,MAJ)
                         MAT(MB+I,MB+J) = MAT(MB+I,MB+J) +
      $                                   D(2,2)*E(MAI,MAJ)
                      END IF
-  240             CONTINUE
-                  RHS(I) = X(MAI,1)
+  180             CONTINUE
+                  RHS(I)    = X(MAI,1)
                   RHS(MB+I) = X(MAI,2)
-  260          CONTINUE
+  200          CONTINUE
             END IF
 C
 C           Solve the system of linear equations.
 C
-            CALL MB02UV( DIMMAT, MAT, 4, PIV1, PIV2, INFO1 )
-            IF ( INFO1 .NE. 0 )
+            CALL DGETC2( DIMMAT, MAT, 4, PIV1, PIV2, INFO1 )
+            IF ( INFO1.NE.0 )
      $         INFO = 1
-            CALL MB02UU( DIMMAT, MAT, 4, RHS, PIV1, PIV2, SCALE1 )
-            IF ( SCALE1 .NE. ONE ) THEN
+            CALL DGESC2( DIMMAT, MAT, 4, RHS, PIV1, PIV2, SCALE1 )
+            IF ( SCALE1.NE.ONE ) THEN
                SCALE = SCALE1*SCALE
-               DO 280 I = 1, N
-                  CALL DSCAL( M, SCALE1, X(1,I), 1 )
-  280          CONTINUE
+               CALL DLASCL( 'G', 0, 0, ONE, SCALE1, M, N, X, LDX, INFO1)
             END IF
 C
-            IF ( N .EQ. 1 ) THEN
-               DO 300 I = 1, MB
-                  MAI = MA + I - 1
-                  X(MAI,1) = RHS(I)
-  300          CONTINUE
-            ELSE
-               DO 320 I = 1, MB
-                  MAI = MA + I - 1
-                  X(MAI,1) = RHS(I)
-                  X(MAI,2) = RHS(MB+I)
-  320          CONTINUE
-            END IF
+            CALL DCOPY( MB, RHS, 1, X(MA,1), 1 )
+            IF ( N.EQ.2 )
+     $         CALL DCOPY( MB, RHS(MB+1), 1, X(MA,2), 1 )
 C
 C           Update right hand sides.
 C
-C              X(1:MA-1,:) = X(1:MA-1,:) - A(1:MA-1,MA:ME)*X(MA:ME,:)*C'
+C           X(1:MA-1,:) = X(1:MA-1,:) - A(1:MA-1,MA:ME)*X(MA:ME,:)*C'
 C
-C              X(1:MA-1,:) = X(1:MA-1,:) - E(1:MA-1,MA:ME)*X(MA:ME,:)*D'
+C           X(1:MA-1,:) = X(1:MA-1,:) - E(1:MA-1,MA:ME)*X(MA:ME,:)*D'
 C
-            IF ( MA .GT. 1 ) THEN
+            IF ( MA.GT.1 ) THEN
                CALL DGEMM( 'N', 'T', MB, N, N, ONE, X(MA,1), LDX, C,
      $                     LDC, ZERO, TM, 2 )
                CALL DGEMM( 'N', 'N', MA-1, N, MB, MONE, A(1,MA), LDA,
@@ -434,9 +410,9 @@ C
      $                     TM, 2, ONE, X, LDX )
             END IF
 C
-         GOTO 180
+         GOTO 120
          END IF
-C        END WHILE 180
+C        END WHILE 120
 C
       END IF
 C

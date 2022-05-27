@@ -1,10 +1,6 @@
       SUBROUTINE MB03AB( SHFT, K, N, AMAP, S, SINV, A, LDA1, LDA2, W1,
      $                   W2, C1, S1, C2, S2 )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute two Givens rotations (C1,S1) and (C2,S2) such that the
@@ -101,7 +97,7 @@ C     Nov. 2019.
 C
 C     REVISIONS
 C
-C     -
+C     V. Sima, Oct. 2020.
 C
 C     KEYWORDS
 C
@@ -176,7 +172,6 @@ C           Save C2 and S2 for the final use.
 C
             CX  = C2
             SX  = S2
-            TMP = ONE
          END IF
       ELSE
          TEMP  = S1*S2
@@ -185,13 +180,14 @@ C
          GAMMA = W2*TEMP
          CALL DLARTG( BETA, GAMMA, C1, S1, TEMP )
          CALL DLARTG( ALPHA, TEMP, C2, S2, DUM  )
-         P  = S1*S2
+C
+C        Save C1, S1, C2, and S2 for the final use.
+C
+         CX = C1
+         SX = S1
+         CY = C2
+         SY = S2
          S2 = C1*S2
-C
-C        Save CX, SX, CY, and SY for the final use.
-C
-         CALL DLARTG( C2,   P,  CX, SX, TEMP )
-         CALL DLARTG( TEMP, S2, CY, SY, TMP  )
       END IF
 C
       I  = 1
@@ -200,7 +196,7 @@ C
       ALPHA = A(1,2,AI)*S2 + A(1,1,AI)*C2
       BETA  = A(2,2,AI)*S2 + A(2,1,AI)*C2
       GAMMA = A(3,2,AI)*S2
-      CALL DLARTG( GAMMA, TMP,  C1, S1, TEMP )
+      CALL DLARTG( GAMMA, ONE,  C1, S1, TEMP )
       CALL DLARTG( BETA,  TEMP, C3, S3, DUM )
       CALL DLARTG( ALPHA, C3*BETA + S3*TEMP, C2, S2, DUM )
 C
@@ -242,10 +238,10 @@ C
          GAMMA = C1*S2*S3
       ELSE
          P     = S1*S3
-         ALPHA =   C2 + ( W2*SX - W1*CX )*CY*P*S2
-         BETA  = ( C3 - W1*P*SY )
-         P     = S2
+         ALPHA = C2 + ( W2*SX*SY - W1*CY )*P*S2
+         BETA  = C3 - W1*CX*SY*P
          GAMMA = C1*S3
+         P     = S2
       END IF
       CALL DLARTG( BETA, GAMMA, C2, S2, TEMP )
       IF ( .NOT.ISR )

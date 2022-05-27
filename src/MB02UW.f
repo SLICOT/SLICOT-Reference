@@ -1,10 +1,6 @@
       SUBROUTINE MB02UW( LTRANS, N, M, PAR, A, LDA, B, LDB, SCALE,
      $                   IWARN )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve a system of the form  A X = s B  or  A' X = s B  with

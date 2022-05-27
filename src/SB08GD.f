@@ -1,10 +1,6 @@
       SUBROUTINE SB08GD( N, M, P, A, LDA, B, LDB, C, LDC, D, LDD, BR,
      $                   LDBR, DR, LDDR, IWORK, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct the state-space representation for the system

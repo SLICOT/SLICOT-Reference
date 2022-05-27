@@ -2,10 +2,6 @@
      $                   LDPAR2, X, NFEVL, E, J, LDJ, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     This is the FCN routine for solving a standard nonlinear least

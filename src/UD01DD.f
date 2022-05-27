@@ -1,9 +1,5 @@
       SUBROUTINE UD01DD( M, N, NIN, A, LDA, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To read the elements of a sparse matrix.

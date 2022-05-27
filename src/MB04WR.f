@@ -1,10 +1,6 @@
       SUBROUTINE MB04WR( JOB, TRANS, N, ILO, Q1, LDQ1, Q2, LDQ2, CS,
      $                   TAU, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To generate orthogonal symplectic matrices U or V, defined as

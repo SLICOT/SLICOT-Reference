@@ -1,10 +1,6 @@
       SUBROUTINE MB01OO( UPLO, TRANS, N, H, LDH, X, LDX, E, LDE, P, LDP,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute either P or P', with P defined by the matrix formula

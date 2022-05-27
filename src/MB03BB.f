@@ -1,10 +1,6 @@
       SUBROUTINE MB03BB( BASE, LGBAS, ULP, K, AMAP, S, SINV, A, LDA1,
      $                   LDA2, ALPHAR, ALPHAI, BETA, SCAL, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the eigenvalues of a general 2-by-2 matrix product via

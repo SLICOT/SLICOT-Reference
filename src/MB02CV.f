@@ -2,10 +2,6 @@
      $                   A2, LDA2, B, LDB, F1, LDF1, F2, LDF2, G, LDG,
      $                   CS, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply the transformations created by the SLICOT Library routine

@@ -1,10 +1,6 @@
       SUBROUTINE MB03TS( ISHAM, WANTU, N, A, LDA, G, LDG, U1, LDU1, U2,
      $                   LDU2, J1, N1, N2, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To swap diagonal blocks A11 and A22 of order 1 or 2 in the upper

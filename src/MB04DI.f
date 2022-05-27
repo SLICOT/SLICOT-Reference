@@ -1,10 +1,6 @@
       SUBROUTINE MB04DI( JOB, SGN, N, ILO, SCALE, M, V1, LDV1, V2, LDV2,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply the inverse of a balancing transformation, computed by

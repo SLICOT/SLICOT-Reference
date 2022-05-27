@@ -1,9 +1,5 @@
-      SUBROUTINE SG03BU( TRANS, N, A, LDA, E, LDE, B, LDB, SCALE,
-     $                   DWORK, INFO )
-C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
+      SUBROUTINE SG03BU( TRANS, N, A, LDA, E, LDE, B, LDB, SCALE, DWORK,
+     $                   INFO )
 C
 C     PURPOSE
 C
@@ -23,7 +19,7 @@ C     respectively, where A, E, B, and U are real N-by-N matrices. The
 C     Cholesky factor U of the solution is computed without first
 C     finding X. The pencil A - lambda * E must be in generalized Schur
 C     form ( A upper quasitriangular, E upper triangular ). Moreover, it
-C     must be d-stable, i.e. the moduli of its eigenvalues must be less
+C     must be d-stable, i.e., the moduli of its eigenvalues must be less
 C     than one. B must be an upper triangular matrix with non-negative
 C     entries on its main diagonal.
 C
@@ -44,18 +40,20 @@ C
 C     Input/Output Parameters
 C
 C     N       (input) INTEGER
-C             The order of the matrix A.  N >= 0.
+C             The order of the matrices.  N >= 0.
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N upper Hessenberg part of this array
-C             must contain the quasitriangular matrix A.
+C             must contain the quasitriangular matrix A. The elements
+C             below the upper Hessenberg part are not referenced.
 C
 C     LDA     INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
 C             The leading N-by-N upper triangular part of this array
-C             must contain the matrix E.
+C             must contain the triangular matrix E. The elements below
+C             the main diagonal are not referenced.
 C
 C     LDE     INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
@@ -64,7 +62,8 @@ C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
 C             On entry, the leading N-by-N upper triangular part of this
 C             array must contain the matrix B.
 C             On exit, the leading N-by-N upper triangular part of this
-C             array contains the solution matrix U.
+C             array contains the solution matrix U. The elements below
+C             the main diagonal are not referenced.
 C
 C     LDB     INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
@@ -89,9 +88,9 @@ C                   precision;  perturbed values were used to solve the
 C                   equation (but the matrices A and E are unchanged);
 C             = 2:  the generalized Schur form of the pencil
 C                   A - lambda * E contains a 2-by-2 main diagonal block
-C                   whose eigenvalues are not a pair of conjugate
-C                   complex numbers;
-C             = 3:  the pencil A - lambda * E is not d-stable, i.e.
+C                   whose eigenvalues are not a pair of complex
+C                   conjugate numbers;
+C             = 3:  the pencil A - lambda * E is not d-stable, i.e.,
 C                   there are eigenvalues outside the open unit circle;
 C             = 4:  the LAPACK routine DSYEVX utilized to factorize M3
 C                   failed to converge. This error is unlikely to occur.
@@ -104,7 +103,7 @@ C
 C     We present the method for solving equation (1). Equation (2) can
 C     be treated in a similar fashion. For simplicity, assume SCALE = 1.
 C
-C     The matrix A is an upper quasitriangular matrix, i.e. it is a
+C     The matrix A is an upper quasitriangular matrix, i.e., it is a
 C     block triangular matrix with square blocks on the main diagonal
 C     and the block order at most 2. We use the following partitioning
 C     for the matrices A, E, B and the solution matrix U
@@ -120,14 +119,14 @@ C
 C     The size of the (1,1)-blocks is 1-by-1 (iff A(2,1) = 0.0) or
 C     2-by-2.
 C
-C     We compute U11 and U12**T in three steps.
+C     We compute U11, U12**T, and U22 in three steps.
 C
 C     Step I:
 C
 C        From (1) and (3) we get the 1-by-1 or 2-by-2 equation
 C
-C                T      T                   T      T
-C             A11  * U11  * U11 * A11  - E11  * U11  * U11 * E11
+C                T      T                  T      T
+C             A11  * U11  * U11 * A11 - E11  * U11  * U11 * E11
 C
 C                    T
 C             = - B11  * B11.
@@ -140,10 +139,10 @@ C        Furthermore, the auxiliary matrices M1 and M2 defined as
 C        follows
 C
 C                               -1      -1
-C           M1 = U11 * A11 * E11   * U11
+C           M1 = U11 * A11 * E11   * U11  ,
 C
 C                         -1      -1
-C           M2 = B11 * E11   * U11
+C           M2 = B11 * E11   * U11  ,
 C
 C        are computed in a numerically reliable way.
 C
@@ -170,7 +169,7 @@ C
 C        holds, where y is defined as follows
 C
 C                  T      T      T      T
-C           w = A12  * U11  + A22  * U12
+C           w = A12  * U11  + A22  * U12 ,
 C
 C                    T
 C           y = ( B12   w ) * M3EV,
@@ -238,7 +237,7 @@ C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C
 C     REVISIONS
 C
-C     Sep. 1998 (V. Sima).
+C     Sep. 1998, Dec. 2021 (V. Sima).
 C
 C     KEYWORDS
 C
@@ -257,10 +256,10 @@ C     .. Scalar Arguments ..
 C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), B(LDB,*), DWORK(*), E(LDE,*)
 C     .. Local Scalars ..
-      DOUBLE PRECISION  BIGNUM, C, DELTA1, EPS, S, SCALE1, SMLNUM, UFLT,
-     $                  X, Z
-      INTEGER           I, INFO1, J, KB, KH, KL, LDWS, M, UIIPT, WPT,
-     $                  YPT
+      DOUBLE PRECISION  BIGNUM, C, DELTA1, EPS, R, S, SCALE1, SMLNUM, T,
+     $                  UFLT, X
+      INTEGER           I, INFO1, J, KB, KH, KL, KL1, L, LDWS, M, UIIPT,
+     $                  WPT, YPT
       LOGICAL           NOTRNS
 C     .. Local Arrays ..
       DOUBLE PRECISION  M1(2,2), M2(2,2), M3(4,4), M3C(4,4), M3EW(4),
@@ -271,11 +270,11 @@ C     .. External Functions ..
       LOGICAL           LSAME
       EXTERNAL          DLAMCH, LSAME
 C     .. External Subroutines ..
-      EXTERNAL          DCOPY, DGEMM, DGEMV, DLABAD, DLACPY, DLASET,
-     $                  DROT, DROTG, DSCAL, DSYEVX, DSYRK, SG03BW,
-     $                  SG03BX, XERBLA
+      EXTERNAL          DCOPY, DGEMM, DGEMV, DLABAD, DLACPY, DLARTG,
+     $                  DLASCL, DLASET, DROT, DSCAL, DSYEVX, DSYRK,
+     $                  SG03BW, SG03BX, XERBLA
 C     .. Intrinsic Functions ..
-      INTRINSIC         ABS, SQRT
+      INTRINSIC         ABS, MAX, MIN, SQRT
 C     .. Executable Statements ..
 C
 C     Decode input parameter.
@@ -286,18 +285,18 @@ C     Check the scalar input parameters.
 C
       IF ( .NOT.( NOTRNS .OR. LSAME( TRANS, 'T' ) ) ) THEN
          INFO = -1
-      ELSEIF ( N .LT. 0 ) THEN
+      ELSEIF ( N.LT.0 ) THEN
          INFO = -2
-      ELSEIF ( LDA .LT. MAX( 1, N ) ) THEN
+      ELSEIF ( LDA.LT.MAX( 1, N ) ) THEN
          INFO = -4
-      ELSEIF ( LDE .LT. MAX( 1, N ) ) THEN
+      ELSEIF ( LDE.LT.MAX( 1, N ) ) THEN
          INFO = -6
-      ELSEIF ( LDB .LT. MAX( 1, N ) ) THEN
+      ELSEIF ( LDB.LT.MAX( 1, N ) ) THEN
          INFO = -8
       ELSE
          INFO = 0
       END IF
-      IF ( INFO .NE. 0 ) THEN
+      IF ( INFO.NE.0 ) THEN
          CALL XERBLA( 'SG03BU', -INFO )
          RETURN
       END IF
@@ -306,24 +305,24 @@ C
 C
 C     Quick return if possible.
 C
-      IF ( N .EQ. 0 )
+      IF ( N.EQ.0 )
      $    RETURN
 C
 C     Set constants to control overflow.
 C
-      EPS  = DLAMCH( 'P' )
-      UFLT = DLAMCH( 'S' )
+      EPS    = DLAMCH( 'P' )
+      UFLT   = DLAMCH( 'S' )
       SMLNUM = UFLT/EPS
       BIGNUM = ONE/SMLNUM
       CALL DLABAD( SMLNUM, BIGNUM )
 C
-C     Set work space pointers and leading dimension of matrices in
-C     work space.
+C     Set workspace pointers and leading dimension of matrices in the
+C     workspace.
 C
       UIIPT = 1
-      WPT = 2*N-1
-      YPT = 4*N-3
-      LDWS = N-1
+      WPT   = 2*N-1
+      YPT   = 4*N-3
+      LDWS  = N-1
 C
       IF ( NOTRNS ) THEN
 C
@@ -333,14 +332,15 @@ C        Main Loop. Compute block row U(KL:KH,KL:N). KB denotes the
 C        number of rows in this block row.
 C
          KH = 0
-C        WHILE ( KH .LT. N ) DO
-   20    IF ( KH .LT. N ) THEN
+C        WHILE ( KH.LT.N ) DO
+   20    CONTINUE
+         IF ( KH.LT.N ) THEN
             KL = KH + 1
-            IF ( KL .EQ. N ) THEN
+            IF ( KL.EQ.N ) THEN
                KH = N
                KB = 1
             ELSE
-               IF ( A(KL+1,KL) .EQ. ZERO ) THEN
+               IF ( A(KL+1,KL).EQ.ZERO ) THEN
                   KH = KL
                   KB = 1
                ELSE
@@ -353,24 +353,29 @@ C           STEP I: Compute block U(KL:KH,KL:KH) and the auxiliary
 C                   matrices M1 and M2. (For the moment the result
 C                   U(KL:KH,KL:KH) is stored in UI).
 C
-            IF ( KB .EQ. 1 ) THEN
-               DELTA1 = E(KL,KL)**2 - A(KL,KL)**2
-               IF ( DELTA1 .LE. ZERO ) THEN
+            IF ( KB.EQ.1 ) THEN
+               DELTA1 = E(KL,KL)
+               T      = ABS( A(KL,KL) )
+               X      = MAX( DELTA1, T )
+               DELTA1 = DELTA1/X
+               T      =      T/X
+               IF ( DELTA1.LE.T ) THEN
                   INFO = 3
                   RETURN
                END IF
-               DELTA1 = SQRT( DELTA1 )
-               Z = TWO*ABS( B(KL,KL) )*SMLNUM
-               IF ( Z .GT. DELTA1 ) THEN
-                  SCALE1 = DELTA1/Z
-                  SCALE = SCALE1*SCALE
-                  DO 40 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-   40             CONTINUE
+               DELTA1 = SQRT( ONE - T )*SQRT( ONE + T )*X
+               T = B(KL,KL)*SMLNUM
+               IF ( T.GT.DELTA1 ) THEN
+                  SCALE1 = DELTA1/T
+                  SCALE  = SCALE1*SCALE
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
                END IF
+C
                UI(1,1) = B(KL,KL)/DELTA1
                M1(1,1) = A(KL,KL)/E(KL,KL)
-               M2(1,1) = DELTA1/E(KL,KL)
+               M2(1,1) =   DELTA1/E(KL,KL)
+C                
             ELSE
 C
 C              If a pair of complex conjugate eigenvalues occurs, apply
@@ -378,20 +383,17 @@ C              (complex) Hammarling algorithm for the 2-by-2 problem.
 C
                CALL SG03BX( 'D', 'N', A(KL,KL), LDA, E(KL,KL), LDE,
      $                      B(KL,KL), LDB, UI, 2, SCALE1, M1, 2, M2, 2,
-     $                      INFO1 )
-               IF ( INFO1 .NE. 0 ) THEN
-                  INFO = INFO1
-                  RETURN
-               END IF
-               IF ( SCALE1 .NE. ONE ) THEN
+     $                      INFO )
+               IF ( INFO.NE.0 )
+     $            RETURN
+               IF ( SCALE1.NE.ONE ) THEN
                   SCALE = SCALE1*SCALE
-                  DO 60 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-   60             CONTINUE
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
                END IF
             END IF
 C
-            IF ( KH .LT. N ) THEN
+            IF ( KH.LT.N ) THEN
 C
 C              STEP II: Compute U(KL:KH,KH+1:N) by solving a generalized
 C                       Sylvester equation. (For the moment the result
@@ -413,15 +415,12 @@ C
                CALL DLASET( 'A', KB, KB, ZERO, MONE, TM, 2 )
                CALL SG03BW( 'N', N-KH, KB, A(KH+1,KH+1), LDA, M1, 2,
      $                      E(KH+1,KH+1), LDE, TM, 2, DWORK(UIIPT),
-     $                      LDWS, SCALE1, INFO1 )
-               IF ( INFO1 .NE. 0 )
-     $            INFO = 1
-               IF ( SCALE1 .NE. ONE ) THEN
+     $                      LDWS, SCALE1, INFO )
+               IF ( SCALE1.NE.ONE ) THEN
                   SCALE = SCALE1*SCALE
-                  DO 80 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-   80             CONTINUE
-                  CALL DSCAL( 4, SCALE1, UI(1,1), 1 )
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
+                  CALL DSCAL( 4, SCALE1, UI, 1 )
                END IF
 C
 C              STEP III: Form the right hand side matrix
@@ -442,7 +441,7 @@ C
                CALL DSYEVX( 'V', 'V', 'U', 2*KB, M3, 4, HALF, TWO, 1, 4,
      $                      TWO*UFLT, M, M3EW, M3C, 4, RW, 32, IW(5),
      $                      IW, INFO1 )
-               IF ( INFO1 .NE. 0 ) THEN
+               IF ( INFO1.NE.0 ) THEN
                   INFO = 4
                   RETURN
                END IF
@@ -450,11 +449,11 @@ C
      $                     M3C, 4, ZERO, DWORK(YPT), LDWS )
                CALL DGEMM( 'T', 'T', N-KH, KB, KB, ONE, A(KL,KH+1), LDA,
      $                     UI, 2, ZERO, DWORK(WPT), LDWS )
-               DO 100 I = 1, N-KH
+               DO 40 I = 1, N-KH
                   CALL DGEMV( 'T', MIN( I+1, N-KH ), KB, ONE,
      $                        DWORK(UIIPT), LDWS, A(KH+1,KH+I), 1, ONE,
      $                        DWORK(WPT+I-1), LDWS )
-  100          CONTINUE
+   40          CONTINUE
                CALL DGEMM( 'N', 'N', N-KH, KB, KB, ONE, DWORK(WPT),
      $                     LDWS, M3C(KB+1,1), 4, ONE, DWORK(YPT), LDWS )
 C
@@ -466,30 +465,34 @@ C                          (  B(KH+1:N,KH+1:N)  )
 C                          (                    )
 C                          (       Y**T         ) .
 C
-               DO 140 J = 1, KB
-                  DO 120 I = 1, N-KH
+               L = YPT - 1
+               DO 80 J = 1, KB
+                  DO 60 I = 1, N-KH
                      X = B(KH+I,KH+I)
-                     Z = DWORK(YPT+I-1+(J-1)*LDWS)
-                     CALL DROTG( X, Z, C, S )
-                     CALL DROT(  N-KH-I+1, B(KH+I,KH+I), LDB,
-     $                           DWORK(YPT+I-1+(J-1)*LDWS), 1, C, S )
-  120             CONTINUE
-  140          CONTINUE
+                     T = DWORK(L+I)
+                     CALL DLARTG( X, T, C, S, R )
+                     B(KH+I,KH+I) = R
+                     IF ( I.LT.N-KH )
+     $                  CALL DROT( N-KH-I, B(KH+I,KH+I+1), LDB,
+     $                             DWORK(L+I+1), 1, C, S )
+   60             CONTINUE
+                  L = L + LDWS
+   80          CONTINUE
 C
 C              Make main diagonal elements of B(KH+1:N,KH+1:N) positive.
 C
-               DO 160 I = KH+1, N
-                  IF ( B(I,I) .LT. ZERO )
+               DO 100 I = KH+1, N
+                  IF ( B(I,I).LT.ZERO )
      $               CALL DSCAL( N-I+1, MONE, B(I,I), LDB )
-  160          CONTINUE
+  100          CONTINUE
 C
 C              Overwrite right hand side with the part of the solution
 C              computed in step II.
 C
-               DO 180 J = KL, KH
-                  CALL DCOPY( N-KH, DWORK(UIIPT+(J-KL)*LDWS), 1,
-     $                        B(J,KH+1), LDB )
-  180          CONTINUE
+               CALL DCOPY( N-KH, DWORK(UIIPT), 1, B(KL,KH+1), LDB )
+               IF ( KH.GT.KL )
+     $            CALL DCOPY( N-KH, DWORK(UIIPT+LDWS), 1, B(KH,KH+1),
+     $                        LDB )
             END IF
 C
 C           Overwrite right hand side with the part of the solution
@@ -509,14 +512,15 @@ C        Main Loop. Compute block column U(1:KH,KL:KH). KB denotes the
 C        number of columns in this block column.
 C
          KL = N + 1
-C        WHILE ( KL .GT. 1 ) DO
-  200    IF ( KL .GT. 1 ) THEN
+C        WHILE ( KL.GT.1 ) DO
+  120    CONTINUE
+         IF ( KL.GT.1 ) THEN
             KH = KL - 1
-            IF ( KH .EQ. 1 ) THEN
+            IF ( KH.EQ.1 ) THEN
                KL = 1
                KB = 1
             ELSE
-               IF ( A(KH,KH-1) .EQ. ZERO ) THEN
+               IF ( A(KH,KH-1).EQ.ZERO ) THEN
                   KL = KH
                   KB = 1
                ELSE
@@ -524,29 +528,35 @@ C        WHILE ( KL .GT. 1 ) DO
                   KB = 2
                END IF
             END IF
+            KL1 = KL - 1
 C
 C           STEP I: Compute block U(KL:KH,KL:KH) and the auxiliary
 C                   matrices M1 and M2. (For the moment the result
 C                   U(KL:KH,KL:KH) is stored in UI).
 C
-            IF ( KB .EQ. 1 ) THEN
-               DELTA1 = E(KL,KL)**2 - A(KL,KL)**2
-               IF ( DELTA1 .LE. ZERO ) THEN
+            IF ( KB.EQ.1 ) THEN
+               DELTA1 = E(KL,KL)
+               T      = ABS( A(KL,KL) )
+               X      = MAX( DELTA1, T )
+               DELTA1 = DELTA1/X
+               T      =      T/X
+               IF ( DELTA1.LE.T ) THEN
                   INFO = 3
                   RETURN
                END IF
-               DELTA1 = SQRT( DELTA1 )
-               Z = TWO*ABS( B(KL,KL) )*SMLNUM
-               IF ( Z .GT. DELTA1 ) THEN
-                  SCALE1 = DELTA1/Z
-                  SCALE = SCALE1*SCALE
-                  DO 220 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-  220             CONTINUE
+               DELTA1 = SQRT( ONE - T )*SQRT( ONE + T )*X
+               T = B(KL,KL)*SMLNUM
+               IF ( T.GT.DELTA1 ) THEN
+                  SCALE1 = DELTA1/T
+                  SCALE  = SCALE1*SCALE
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
                END IF
+C
                UI(1,1) = B(KL,KL)/DELTA1
                M1(1,1) = A(KL,KL)/E(KL,KL)
-               M2(1,1) = DELTA1/E(KL,KL)
+               M2(1,1) =   DELTA1/E(KL,KL)
+C                
             ELSE
 C
 C              If a pair of complex conjugate eigenvalues occurs, apply
@@ -554,20 +564,17 @@ C              (complex) Hammarling algorithm for the 2-by-2 problem.
 C
                CALL SG03BX( 'D', 'T', A(KL,KL), LDA, E(KL,KL), LDE,
      $                      B(KL,KL), LDB, UI, 2, SCALE1, M1, 2, M2, 2,
-     $                      INFO1 )
-               IF ( INFO1 .NE. 0 ) THEN
-                  INFO = INFO1
-                  RETURN
-               END IF
-               IF ( SCALE1 .NE. ONE ) THEN
+     $                      INFO )
+               IF ( INFO.NE.0 )
+     $            RETURN
+               IF ( SCALE1.NE.ONE ) THEN
                   SCALE = SCALE1*SCALE
-                  DO 240 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-  240             CONTINUE
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
                END IF
             END IF
 C
-            IF ( KL .GT. 1 ) THEN
+            IF ( KL.GT.1 ) THEN
 C
 C              STEP II: Compute U(1:KL-1,KL:KH) by solving a generalized
 C                       Sylvester equation. (For the moment the result
@@ -575,28 +582,25 @@ C                       U(1:KL-1,KL:KH) is stored in the workspace.)
 C
 C              Form right hand side of the Sylvester equation.
 C
-               CALL DGEMM( 'N', 'T', KL-1, KB, KB, MONE, B(1,KL), LDB,
+               CALL DGEMM( 'N', 'T', KL1, KB, KB, MONE, B(1,KL), LDB,
      $                     M2, 2, ZERO, DWORK(UIIPT), LDWS )
-               CALL DGEMM( 'N', 'N', KL-1, KB, KB, ONE, E(1,KL), LDE,
-     $                     UI, 2, ONE, DWORK(UIIPT), LDWS )
+               CALL DGEMM( 'N', 'N', KL1, KB, KB, ONE, E(1,KL), LDE, UI,
+     $                     2, ONE, DWORK(UIIPT), LDWS )
                CALL DGEMM( 'N', 'T', KB, KB, KB, ONE, UI, 2, M1, 2,
      $                     ZERO, TM, 2 )
-               CALL DGEMM( 'N', 'N', KL-1, KB, KB, MONE, A(1,KL), LDA,
+               CALL DGEMM( 'N', 'N', KL1, KB, KB, MONE, A(1,KL), LDA,
      $                     TM, 2, ONE, DWORK(UIIPT), LDWS )
 C
 C              Solve generalized Sylvester equation.
 C
                CALL DLASET( 'A', KB, KB, ZERO, MONE, TM, 2 )
-               CALL SG03BW( 'T', KL-1, KB, A, LDA, M1, 2, E, LDE, TM, 2,
-     $                      DWORK(UIIPT), LDWS, SCALE1, INFO1 )
-               IF ( INFO1 .NE. 0 )
-     $            INFO = 1
-               IF ( SCALE1 .NE. ONE ) THEN
+               CALL SG03BW( 'T', KL1, KB, A, LDA, M1, 2, E, LDE, TM, 2,
+     $                      DWORK(UIIPT), LDWS, SCALE1, INFO )
+               IF ( SCALE1.NE.ONE ) THEN
                   SCALE = SCALE1*SCALE
-                  DO 260 I = 1, N
-                     CALL DSCAL( I, SCALE1, B(1,I), 1 )
-  260             CONTINUE
-                  CALL DSCAL( 4, SCALE1, UI(1,1), 1 )
+                  CALL DLASCL( 'Upper', 0, 0, ONE, SCALE1, N, N, B, LDB,
+     $                         INFO1 )
+                  CALL DSCAL( 4, SCALE1, UI, 1 )
                END IF
 C
 C              STEP III: Form the right hand side matrix
@@ -617,22 +621,22 @@ C
                CALL DSYEVX( 'V', 'V', 'U', 2*KB, M3, 4, HALF, TWO, 1, 4,
      $                      TWO*UFLT, M, M3EW, M3C, 4, RW, 32, IW(5),
      $                      IW, INFO1 )
-               IF ( INFO1 .NE. 0 ) THEN
+               IF ( INFO1.NE.0 ) THEN
                   INFO = 4
                   RETURN
                END IF
-               CALL DGEMM( 'N', 'N', KL-1, KB, KB, ONE, B(1,KL), LDB,
+               CALL DGEMM( 'N', 'N', KL1, KB, KB, ONE, B(1,KL), LDB,
      $                     M3C, 4, ZERO, DWORK(YPT), LDWS )
-               CALL DGEMM( 'N', 'N', KL-1, KB, KB, ONE, A(1,KL), LDA,
-     $                     UI, 2, ZERO, DWORK(WPT), LDWS )
-               DO 280 I = 1, KL-1
-                  CALL DGEMV( 'T', MIN( KL-I+1, KL-1 ), KB, ONE,
+               CALL DGEMM( 'N', 'N', KL1, KB, KB, ONE, A(1,KL), LDA, UI,
+     $                     2, ZERO, DWORK(WPT), LDWS )
+               DO 140 I = 1, KL1
+                  CALL DGEMV( 'T', MIN( KL-I+1, KL1 ), KB, ONE,
      $                        DWORK(MAX( UIIPT, UIIPT+I-2 )), LDWS,
      $                        A(I,MAX( I-1, 1 )), LDA, ONE,
      $                        DWORK(WPT+I-1), LDWS )
-  280          CONTINUE
-               CALL DGEMM( 'N', 'N', KL-1, KB, KB, ONE, DWORK(WPT),
-     $                     LDWS, M3C(KB+1,1), 4, ONE, DWORK(YPT), LDWS )
+  140          CONTINUE
+               CALL DGEMM( 'N', 'N', KL1, KB, KB, ONE, DWORK(WPT), LDWS,
+     $                     M3C(KB+1,1), 4, ONE, DWORK(YPT), LDWS )
 C
 C              Overwrite B(1:KL-1,1:KL-1) with the triangular matrix
 C              from the RQ-factorization of the (KL-1)-by-KH matrix
@@ -641,27 +645,30 @@ C                          (                        )
 C                          (  B(1:KL-1,1:KL-1)   Y  )
 C                          (                        ).
 C
-               DO 320 J = 1, KB
-                  DO 300 I = KL-1, 1, -1
+               L = YPT - 1
+               DO 180 J = 1, KB
+                  DO 160 I = KL1, 1, -1
                      X = B(I,I)
-                     Z = DWORK(YPT+I-1+(J-1)*LDWS)
-                     CALL DROTG( X, Z, C, S )
-                     CALL DROT(  I, B(1,I), 1, DWORK(YPT+(J-1)*LDWS), 1,
-     $                           C, S )
-  300             CONTINUE
-  320          CONTINUE
+                     T = DWORK(L+I)
+                     CALL DLARTG( X, T, C, S, R )
+                     B(I,I) = R
+                     IF ( I.GT.1 )
+     $                  CALL DROT( I-1, B(1,I), 1, DWORK(L+1), 1, C, S )
+  160             CONTINUE
+                  L = L + LDWS
+  180          CONTINUE
 C
 C              Make main diagonal elements of B(1:KL-1,1:KL-1) positive.
 C
-               DO 340 I = 1, KL-1
-                  IF ( B(I,I) .LT. ZERO )
+               DO 200 I = 1, KL1
+                  IF ( B(I,I).LT.ZERO )
      $               CALL DSCAL( I, MONE, B(1,I), 1 )
-  340          CONTINUE
+  200          CONTINUE
 C
 C              Overwrite right hand side with the part of the solution
 C              computed in step II.
 C
-               CALL DLACPY( 'A', KL-1, KB, DWORK(UIIPT), LDWS, B(1,KL),
+               CALL DLACPY( 'A', KL1, KB, DWORK(UIIPT), LDWS, B(1,KL),
      $                      LDB )
 C
             END IF
@@ -671,9 +678,9 @@ C           computed in step I.
 C
             CALL DLACPY( 'U', KB, KB, UI, 2, B(KL,KL), LDB )
 C
-         GOTO 200
+         GOTO 120
          END IF
-C        END WHILE 200
+C        END WHILE 120
 C
       END IF
 C

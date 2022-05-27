@@ -1,10 +1,6 @@
       SUBROUTINE MB04IZ( N, M, P, L, A, LDA, B, LDB, TAU, ZWORK, LZWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a QR factorization of an n-by-m matrix A (A = Q * R),

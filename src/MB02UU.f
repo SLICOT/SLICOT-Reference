@@ -1,9 +1,5 @@
       SUBROUTINE MB02UU( N, A, LDA, RHS, IPIV, JPIV, SCALE )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for x in A * x = scale * RHS, using the LU factorization

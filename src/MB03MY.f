@@ -1,9 +1,5 @@
       DOUBLE PRECISION FUNCTION MB03MY( NX, X, INCX )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute the absolute minimal value of NX elements in an array.

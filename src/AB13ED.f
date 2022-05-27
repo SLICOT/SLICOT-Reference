@@ -1,10 +1,6 @@
       SUBROUTINE AB13ED( N, A, LDA, LOW, HIGH, TOL, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To estimate beta(A), the 2-norm distance from a real matrix A to

@@ -1,10 +1,6 @@
       SUBROUTINE MB04QF( DIRECT, STOREV, STOREW, N, K, V, LDV, W, LDW,
      $                   CS, TAU, RS, LDRS, T, LDT, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To form the triangular block factors R, S and T of a symplectic

@@ -1,9 +1,5 @@
       SUBROUTINE MB03HZ( S11, S12, H11, H12, CO, SI )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a unitary matrix Q for a complex regular 2-by-2 

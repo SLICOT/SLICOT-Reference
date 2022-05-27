@@ -1,10 +1,6 @@
       SUBROUTINE SB03MV( LTRAN, LUPPER, T, LDT, B, LDB, SCALE, X, LDX,
      $                   XNORM, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for the 2-by-2 symmetric matrix X in

@@ -2,10 +2,6 @@
      $                   TOL, RELTOL, IWORK, DWORK, LDWORK, BWORK,
      $                   IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve the Total Least Squares (TLS) problem using a Partial

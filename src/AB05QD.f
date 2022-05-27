@@ -3,10 +3,6 @@
      $                   C2, LDC2, D2, LDD2, N, M, P, A, LDA, B, LDB,
      $                   C, LDC, D, LDD, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To append two systems G1 and G2 in state-space form together.

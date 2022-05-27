@@ -3,10 +3,6 @@
      $                   LDUCO2, TOL1, TOL2, IWORK, DWORK, LDWORK,
      $                   INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the transfer matrix T(s) of a given state-space

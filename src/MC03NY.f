@@ -1,10 +1,6 @@
       SUBROUTINE MC03NY( NBLCKS, NRA, NCA, A, LDA, E, LDE, IMUK, INUK,
      $                   VEPS, LDVEPS, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To determine a minimal basis of the right nullspace of the

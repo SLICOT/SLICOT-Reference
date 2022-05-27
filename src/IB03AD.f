@@ -2,10 +2,6 @@
      $                   ITMAX1, ITMAX2, NPRINT, U, LDU, Y, LDY, X, LX,
      $                   TOL1, TOL2, IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute a set of parameters for approximating a Wiener system

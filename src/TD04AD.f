@@ -2,10 +2,6 @@
      $                   LDUCO1, LDUCO2, NR, A, LDA, B, LDB, C, LDC, D,
      $                   LDD, TOL, IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find a minimal state-space representation (A,B,C,D) for a

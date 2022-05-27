@@ -2,10 +2,6 @@
      $                   LDB, Q, LDQ, C, LDC, R, LDR, K, LDK, TOL,
      $                   IWORK, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To calculate a combined measurement and time update of one

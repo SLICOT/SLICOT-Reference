@@ -1,9 +1,5 @@
       SUBROUTINE SB01BX( REIG, N, XR, XI, WR, WI, S, P )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To choose a real eigenvalue or a pair of complex conjugate

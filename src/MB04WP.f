@@ -1,10 +1,6 @@
       SUBROUTINE MB04WP( N, ILO, U1, LDU1, U2, LDU2, CS, TAU, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To generate an orthogonal symplectic matrix U, which is defined as

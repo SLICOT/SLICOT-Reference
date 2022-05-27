@@ -1,9 +1,5 @@
       SUBROUTINE MB04OY( M, N, V, TAU, A, LDA, B, LDB, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply a real elementary reflector H to a real (m+1)-by-n

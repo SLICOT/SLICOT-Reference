@@ -1,10 +1,6 @@
       SUBROUTINE TB01VY( APPLY, N, M, L, THETA, LTHETA, A, LDA, B, LDB,
      $                   C, LDC, D, LDD, X0, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To convert the linear discrete-time system given as its output

@@ -1,9 +1,5 @@
       SUBROUTINE MC01WD( DP, P, U1, U2, Q, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute, for a given real polynomial P(x) and a quadratic

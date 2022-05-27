@@ -1,10 +1,6 @@
       SUBROUTINE MB02MD( JOB, M, N, L, RANK, C, LDC, S, X, LDX, TOL,
      $                   IWORK, DWORK, LDWORK, IWARN, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve the Total Least Squares (TLS) problem using a Singular

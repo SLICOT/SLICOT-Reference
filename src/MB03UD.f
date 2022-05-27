@@ -1,10 +1,6 @@
       SUBROUTINE MB03UD( JOBQ, JOBP, N, A, LDA, Q, LDQ, SV, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute all, or part, of the singular value decomposition of a

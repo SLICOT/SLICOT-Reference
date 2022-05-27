@@ -2,10 +2,6 @@
      $                   DPAR, LDPAR, A, LDA, B, LDB, ATA, LDATA, DWORK,
      $                   LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve a set of systems of linear equations, A'*A*X = B, or,

@@ -20,27 +20,27 @@ Solution of stable continuous- or discrete-time Lyapunov equations (Cholesky fac
   To solve for X = op(U)'*op(U) either the stable non-negative
   definite continuous-time Lyapunov equation
                                 2
-     op(A)'*X + X*op(A) = -scale *op(B)'*op(B)                   (1)
+     op(A)'*X + X*op(A) = -scale *op(B)'*op(B),                  (1)
 
   or the convergent non-negative definite discrete-time Lyapunov
   equation
                                 2
-     op(A)'*X*op(A) - X = -scale *op(B)'*op(B)                   (2)
+     op(A)'*X*op(A) - X = -scale *op(B)'*op(B),                  (2)
 
   where op(K) = K or K' (i.e., the transpose of the matrix K), A is
   an N-by-N matrix, op(B) is an M-by-N matrix, U is an upper
   triangular matrix containing the Cholesky factor of the solution
   matrix X, X = op(U)'*op(U), and scale is an output scale factor,
   set less than or equal to 1 to avoid overflow in X. If matrix B
-  has full rank then the solution matrix X will be positive-definite
+  has full rank then the solution matrix X will be positive definite
   and hence the Cholesky factor U will be nonsingular, but if B is
-  rank deficient then X may be only positive semi-definite and U
+  rank deficient, then X may be only positive semi-definite and U
   will be singular.
 
-  In the case of equation (1) the matrix A must be stable (that
-  is, all the eigenvalues of A must have negative real parts),
-  and for equation (2) the matrix A must be convergent (that is,
-  all the eigenvalues of A must lie inside the unit circle).
+  In the case of equation (1) the matrix A must be stable (that is,
+  all the eigenvalues of A must have negative real parts), and for
+  equation (2) the matrix A must be convergent (that is, all the
+  eigenvalues of A must lie inside the unit circle).
 
 </PRE>
 <A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
@@ -62,7 +62,7 @@ C     .. Array Arguments ..
 <B>Mode Parameters</B>
 <PRE>
   DICO    CHARACTER*1
-          Specifies the type of Lyapunov equation to be solved as
+          Specifies the type of Lyapunov equation to be solved, as
           follows:
           = 'C':  Equation (1), continuous-time case;
           = 'D':  Equation (2), discrete-time case.
@@ -84,25 +84,27 @@ C     .. Array Arguments ..
 <B>Input/Output Parameters</B>
 <PRE>
   N       (input) INTEGER
-          The order of the matrix A and the number of columns in
-          matrix op(B).  N &gt;= 0.
+          The order of the matrix A and the number of columns of
+          the matrix op(B).  N &gt;= 0.
 
   M       (input) INTEGER
-          The number of rows in matrix op(B).  M &gt;= 0.
+          The number of rows of the matrix op(B).  M &gt;= 0.
+          If M = 0, A is unchanged on exit, and Q, WR and WI are not
+          set.
 
   A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
           On entry, the leading N-by-N part of this array must
           contain the matrix A. If FACT = 'F', then A contains
           an upper quasi-triangular matrix S in Schur canonical
           form; the elements below the upper Hessenberg part of the
-          array A are not referenced.
+          array A are then not referenced.
           On exit, the leading N-by-N upper Hessenberg part of this
           array contains the upper quasi-triangular matrix S in
           Schur canonical form from the Shur factorization of A.
-          The contents of array A is not modified if FACT = 'F'.
+          The contents of the array A is not modified if FACT = 'F'.
 
   LDA     INTEGER
-          The leading dimension of array A.  LDA &gt;= MAX(1,N).
+          The leading dimension of the array A.  LDA &gt;= MAX(1,N).
 
   Q       (input or output) DOUBLE PRECISION array, dimension
           (LDQ,N)
@@ -112,10 +114,10 @@ C     .. Array Arguments ..
           Otherwise, Q need not be set on entry.
           On exit, the leading N-by-N part of this array contains
           the orthogonal matrix Q of the Schur factorization of A.
-          The contents of array Q is not modified if FACT = 'F'.
+          The contents of the array Q is not modified if FACT = 'F'.
 
   LDQ     INTEGER
-          The leading dimension of array Q.  LDQ &gt;= MAX(1,N).
+          The leading dimension of the array Q.  LDQ &gt;= MAX(1,N).
 
   B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
           if TRANS = 'N', and dimension (LDB,max(M,N)), if
@@ -132,7 +134,7 @@ C     .. Array Arguments ..
           If M = 0 and N &gt; 0, then U is set to zero.
 
   LDB     INTEGER
-          The leading dimension of array B.
+          The leading dimension of the array B.
           LDB &gt;= MAX(1,N,M), if TRANS = 'N';
           LDB &gt;= MAX(1,N),   if TRANS = 'T'.
 
@@ -142,21 +144,21 @@ C     .. Array Arguments ..
 
   WR      (output) DOUBLE PRECISION array, dimension (N)
   WI      (output) DOUBLE PRECISION array, dimension (N)
-          If FACT = 'N', and INFO &gt;= 0 and INFO &lt;= 2, WR and WI
-          contain the real and imaginary parts, respectively, of
-          the eigenvalues of A.
-          If FACT = 'F', WR and WI are not referenced.
+          If INFO &gt;= 0 and INFO &lt;= 3, WR and WI contain the real and
+          imaginary parts, respectively, of the eigenvalues of A.
 
 </PRE>
 <B>Workspace</B>
 <PRE>
   DWORK   DOUBLE PRECISION array, dimension (LDWORK)
-          On exit, if INFO = 0, or INFO = 1, DWORK(1) returns the
+          On exit, if INFO = 0 or INFO = 1, DWORK(1) returns the
           optimal value of LDWORK.
+          On exit, if INFO = -16, DWORK(1) returns the minimum value
+          of LDWORK.
 
   LDWORK  INTEGER
           The length of the array DWORK.
-          If M &gt; 0, LDWORK &gt;= MAX(1,4*N + MIN(M,N));
+          If M &gt; 0, LDWORK &gt;= MAX(1,4*N);
           If M = 0, LDWORK &gt;= 1.
           For optimum performance LDWORK should sometimes be larger.
 
@@ -201,10 +203,11 @@ C     .. Array Arguments ..
                 real part), or DICO = 'D', but the Schur factor S
                 supplied in the array A is not convergent (that is,
                 one or more of the eigenvalues of S lies outside the
-                unit circle);
+                unit circle); the eigenvalues of A are still
+                returned in WR and WI;
           = 4:  if FACT = 'F' and the Schur factor S supplied in
                 the array A has two or more consecutive non-zero
-                elements on the first sub-diagonal, so that there is
+                elements on the first subdiagonal, so that there is
                 a block larger than 2-by-2 on the diagonal;
           = 5:  if FACT = 'F' and the Schur factor S supplied in
                 the array A has a 2-by-2 diagonal block with real
@@ -232,31 +235,39 @@ C     .. Array Arguments ..
   factored prior to calling the routine however, then the factors
   Q and S may be supplied and the initial factorization omitted.
 
-  If TRANS = 'N', the matrix B is factored as (QR factorization)
-         _   _                   _   _  _
-     B = P ( R ),  M &gt;= N,   B = P ( R  Z ),  M &lt; N,
+  If TRANS = 'N' and 6*M &gt; 7*N, the matrix B is factored as
+  (QR factorization)
+         _   _
+     B = P ( R ),
            ( 0 )
         _                                    _
   where P is an M-by-M orthogonal matrix and R is a square upper
-                                      _   _      _     _  _
-  triangular matrix. Then, the matrix B = RQ, or B = ( R  Z )Q (if
-  M &lt; N) is factored as
-     _                       _
-     B = P ( R ),  M &gt;= N,   B = P ( R  Z ),  M &lt; N.
+                                      _   _
+  triangular matrix. Then, the matrix B = RQ is factored as
+     _
+     B = PR.
 
-  If TRANS = 'T', the matrix B is factored as (RQ factorization)
-                                      _
-              _   _                 ( Z ) _
-     B = ( 0  R ) P,  M &gt;= N,   B = ( _ ) P,  M &lt; N,
-                                    ( R )
+  If TRANS = 'N' and 6*M &lt;= 7*N, the matrix BQ is factored as
+
+     BQ = P ( R ),   M &gt;= N,   BQ = P ( R  Z ),   M &lt; N.
+            ( 0 )
+
+  If TRANS = 'T' and 6*M &gt; 7*N, the matrix B is factored as
+  (RQ factorization)
+              _   _
+     B = ( 0  R ) P,
         _                                    _
   where P is an M-by-M orthogonal matrix and R is a square upper
-                                      _     _     _       _   _
-  triangular matrix. Then, the matrix B = Q'R, or B = Q'( Z'  R' )'
-  (if M &lt; N) is factored as
-     _                       _
-     B = ( R ) P,  M &gt;= N,   B = ( Z ) P,  M &lt; N.
-                                 ( R )
+                                      _      _
+  triangular matrix. Then, the matrix B = Q' R is factored as
+     _
+     B = RP.
+
+  If TRANS = 'T' and 6*M &lt;= 7*N, the matrix Q' B is factored as
+
+                                           ( Z )
+     Q' B = ( 0  R ) P,   M &gt;= N,   Q' B = (   ) P,   M &lt; N.
+                                           ( R )
 
   These factorizations are utilised to either transform the
   continuous-time Lyapunov equation to the canonical form
@@ -269,10 +280,10 @@ C     .. Array Arguments ..
 
   where V and F are upper triangular, and
 
-     F = R,  M &gt;= N,   F = ( R  Z ),  M &lt; N, if TRANS = 'N';
+     F = R,  M &gt;= N,   F = ( R  Z ),  M &lt; N,  if TRANS = 'N';
                            ( 0  0 )
 
-     F = R,  M &gt;= N,   F = ( 0  Z ),  M &lt; N, if TRANS = 'T'.
+     F = R,  M &gt;= N,   F = ( 0  Z ),  M &lt; N,  if TRANS = 'T'.
                            ( 0  R )
 
   The transformed equation is then solved for V, from which U is
@@ -334,7 +345,6 @@ C     .. Array Arguments ..
 <B>Program Text</B>
 <PRE>
 *     SB03OD EXAMPLE PROGRAM TEXT
-*     Copyright (c) 2002-2020 NICONET e.V.
 *
 *     .. Parameters ..
       DOUBLE PRECISION ZERO

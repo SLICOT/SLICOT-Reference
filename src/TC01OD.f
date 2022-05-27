@@ -1,10 +1,6 @@
       SUBROUTINE TC01OD( LERI, M, P, INDLIM, PCOEFF, LDPCO1, LDPCO2,
      $                   QCOEFF, LDQCO1, LDQCO2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To find the dual right (left) polynomial matrix representation of

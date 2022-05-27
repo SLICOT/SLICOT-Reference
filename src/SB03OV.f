@@ -1,9 +1,5 @@
       SUBROUTINE SB03OV( A, B, SMALL, C, S )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To construct a complex plane rotation such that, for a complex

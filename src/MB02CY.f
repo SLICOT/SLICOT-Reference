@@ -1,10 +1,6 @@
       SUBROUTINE MB02CY( TYPET, STRUCG, P, Q, N, K, A, LDA, B, LDB, H,
      $                   LDH, CS, LCS, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To apply the transformations created by the SLICOT Library

@@ -1,10 +1,6 @@
       SUBROUTINE MB03CZ( A, LDA, B, LDB, D, LDD, CO1, SI1, CO2, SI2,
      $                   CO3, SI3 )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To compute unitary matrices Q1, Q2, and Q3 for a complex 2-by-2

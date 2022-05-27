@@ -1,10 +1,6 @@
       SUBROUTINE MB04QS( TRANC, TRAND, TRANU, M, N, ILO, V, LDV, W, LDW,
      $                   C, LDC, D, LDD, CS, TAU, DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     Overwrites general real m-by-n/n-by-m matrices C and D with

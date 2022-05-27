@@ -1,10 +1,6 @@
       SUBROUTINE TB03AY( NR, A, LDA, INDBLK, NBLK, VCOEFF, LDVCO1,
      $                   LDVCO2, PCOEFF, LDPCO1, LDPCO2, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To calculate the (PWORK-by-NR) polynomial matrix V(s) one

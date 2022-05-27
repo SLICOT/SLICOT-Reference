@@ -3,10 +3,6 @@
      $                   YA, LDYA, YB, LDYB, YG, LDYG, YQ, LDYQ, CSL,
      $                   CSR, TAUL, TAUR, DWORK )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reduce 2*nb columns and rows of a real (k+2n)-by-(k+2n)

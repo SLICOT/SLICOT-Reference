@@ -1,10 +1,6 @@
       SUBROUTINE MB03YA( WANTT, WANTQ, WANTZ, N, ILO, IHI, ILOQ, IHIQ,
      $                   POS, A, LDA, B, LDB, Q, LDQ, Z, LDZ, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To annihilate one or two entries on the subdiagonal of the

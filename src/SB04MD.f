@@ -1,10 +1,6 @@
       SUBROUTINE SB04MD( N, M, A, LDA, B, LDB, C, LDC, Z, LDZ, IWORK,
      $                   DWORK, LDWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To solve for X the continuous-time Sylvester equation

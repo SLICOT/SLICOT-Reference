@@ -1,10 +1,6 @@
       SUBROUTINE MB01KD( UPLO, TRANS, N, K, ALPHA, A, LDA, B, LDB, BETA,
      $                   C, LDC, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To perform one of the skew-symmetric rank 2k operations

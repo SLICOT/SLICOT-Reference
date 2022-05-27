@@ -1,10 +1,6 @@
       SUBROUTINE MB03QD( DICO, STDOM, JOBU, N, NLOW, NSUP, ALPHA,
      $                   A, LDA, U, LDU, NDIM, DWORK, INFO )
 C
-C     SLICOT RELEASE 5.7.
-C
-C     Copyright (c) 2002-2020 NICONET e.V.
-C
 C     PURPOSE
 C
 C     To reorder the diagonal blocks of a principal submatrix of an
