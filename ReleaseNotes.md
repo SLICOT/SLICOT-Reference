@@ -7,7 +7,7 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
 
 **New Routines**
 
-`**MA02AZ**` : (Conjugate) transposes all or part of a two-dimensional complex matrix.
+`*MA02AZ*` : (Conjugate) transposes all or part of a two-dimensional complex matrix.
 
 `MB01UY` : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T`) is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
