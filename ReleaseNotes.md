@@ -9,7 +9,7 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
 
 * MA02AZ : (Conjugate) transposes all or part of a two-dimensional complex matrix.
 
-* MB01UY : Computes one of the matrix products T := alpha*op(T)*A, or T := alpha*A*op(T), where alpha is a scalar, A is an M-by-N matrix, T is a triangular matrix, and op(T) is either T or T' (the transpose of T). A block-row/column algorithm is used, if possible. The result overwrites the array T.
+* MB01UY : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T`) is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
 * MB01UZ : Computes one of the matrix products T := alpha*op(T)*A, or T := alpha*A*op(T), where alpha is a scalar, A is an M-by-N complex matrix, T is a complex triangular matrix, and op(T) is T, or T' (the transpose of T), or conj(T') (the conjugate transpose of T). A block-row/column algorithm is used, if possible. The result overwrites the array T.
 
@@ -17,23 +17,26 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
  
 * MB03RZ : Reduces an upper triangular complex matrix A (Schur form) to a block-diagonal form using well-conditioned non-unitary similarity transformations. The condition numbers of the transformations used for reduction are roughly bounded by PMAX*PMAX, where PMAX is a given value. The transformations are optionally postmultiplied in a given matrix X. The Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
  
-* MB03VW : Reduces the general product A(:,:,1)^S(1) * A(:,:,2)^S(2) * ... * A(:,:,K)^S(K) to upper Hessenberg-triangular form, where A is N-by-N-by-K and S is the signature array with values 1 or -1 (as exponents). The H-th matrix of A is reduced to upper Hessenberg form while the other matrices are triangularized.  Optionally, all or part of the transformation matrices are accumulated or updated.
+* MB03VW : Reduces the general product `A(:,:,1)^S(1) * A(:,:,2)^S(2) * ... * A(:,:,K)^S(K)` to upper Hessenberg-triangular form, where `A` is `N-by-N-by-K` and `S` is the signature array with values 1 or -1 (as exponents). The `H`-th matrix of `A` is reduced to upper Hessenberg form while the other matrices are triangularized.  Optionally, all or part of the transformation matrices are accumulated or updated.
 
 * SB03OS : Solves for X = op(U)^H * op(U) either the stable non-negative definite continuous-time Lyapunov equation
                     H                     2      H
                op(S) *X + X*op(S) = -scale *op(R) *op(R),
 
  or the convergent non-negative definite discrete-time Lyapunov equation
+
                     H                     2      H
                op(S) *X*op(S) - X = -scale *op(R) *op(R),
 
  where op(K) = K or K^H (the conjugate transpose of the matrix K), S, R, and U are N-by-N upper triangular matrices, and scale is an output scale factor, set less than or equal to 1 to avoid overflow in X.
 
 * SB03OZ : Solves for X = op(U)^H * op(U) either the stable non-negative definite continuous-time Lyapunov equation
+
                     H                     2      H
                op(A) *X + X*op(A) = -scale *op(B) *op(B),
 
  or the convergent non-negative definite discrete-time Lyapunov equation
+
                     H                     2      H
                op(A) *X*op(A) - X = -scale *op(B) *op(B),
 
@@ -43,26 +46,31 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
  ZLARTG.
 
 * SG03BS : Computes the Cholesky factor U of the matrix X, X = op(U)^H * op(U), which is the solution of the generalized d-stable  discrete-time Lyapunov equation
+
                 H            H                  2    H
                A  * X * A - E  * X * E = - scale  * B  * B,
  
  or the conjugate transposed equation
+
                         H            H          2        H
                A * X * A  - E * X * E  = - scale  * B * B ,
  
  respectively, where A, E, B, and U are complex N-by-N matrice, and scale is an output scale factor, set less than or equal to 1 to avoid overflow in X. The Cholesky factor U of the solution is computed without first finding X. The pencil A - lambda * E must be in complex generalized Schur form (A and E are upper triangular and the diagonal elements of E are non-negative real numbers). Moreover, it must be d-stable, i.e., the moduli of its eigenvalues must be less than one. B must be an upper triangular matrix with real non-negative entries on its main diagonal. The resulting matrix U is upper triangular. The entries on its main diagonal are non-negative.
  
 * SG03BT : Computes the Cholesky factor U of the matrix X, X = op(U)^H * op(U), which is the solution of the generalized c-stable continuous-time Lyapunov equation
+
                 H            H                  2    H
                A  * X * E + E  * X * A = - SCALE  * B  * B,
  
  or the conjugate transposed equation
+
                         H            H          2        H
                A * X * E  + E * X * A  = - SCALE  * B * B ,
  
  respectively, where A, E, B, and U are complex N-by-N matrices, and scale is an output scale factor, set less than or equal to 1 to avoid overflow in X. The Cholesky factor U of the solution is computed without first finding X. The pencil A - lambda * E must be in complex generalized Schur form (A and E are upper triangular and the diagonal elements of E are non-negative real numbers). Moreover, it must be c-stable, i.e., its eigenvalues must have negative real parts. B must be an upper triangular matrix with real non-negative entries on its main diagonal. The resulting matrix U is upper triangular. The entries on its main diagonal are non-negative.
  
 * SG03BZ : Computes the Cholesky factor U of the matrix X, op(U)^H * op(U), which is the solution of either the generalized c-stable continuous-time Lyapunov equation
+
                     H                    H                      2        H
                op(A)  * X * op(E) + op(E)  * X * op(A) = - SCALE  * op(B)  * op(B),
  
