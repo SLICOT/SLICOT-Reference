@@ -7,11 +7,11 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
 
 **New Routines**
 
-* `MA02AZ` : (Conjugate) transposes all or part of a two-dimensional complex matrix.
+`MA02AZ` : (Conjugate) transposes all or part of a two-dimensional complex matrix.
 
-* `MB01UY` : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T`) is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
+`MB01UY` : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T`) is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
-* `MB01UZ` : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` complex matrix, `T` is a complex triangular matrix, and `op(T)` is `T`, or `T'` (the transpose of `T`), or `conj(T')` (the conjugate transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
+`MB01UZ` : Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` complex matrix, `T` is a complex triangular matrix, and `op(T)` is `T`, or `T'` (the transpose of `T`), or `conj(T')` (the conjugate transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
 * `MB03RW` : Solves the Sylvester equation `-A*X + X*B = C`, where `A` and `B` are complex `M-by-M` and `N-by-N` matrices, respectively, in Schur form. This routine is intended to be called only by SLICOT Library routine `MB03RZ`. For efficiency purposes, the computations are aborted when the absolute value of an element of `X` is greater than a given value `PMAX`.
  
@@ -20,6 +20,7 @@ Version 5.8 of the **SLICOT** Library includes 18 new routines and 15 routines w
 * `MB03VW` : Reduces the general product `A(:,:,1)^S(1) * A(:,:,2)^S(2) * ... * A(:,:,K)^S(K)` to upper Hessenberg-triangular form, where `A` is `N-by-N-by-K` and `S` is the signature array with values 1 or -1 (as exponents). The `H`-th matrix of `A` is reduced to upper Hessenberg form while the other matrices are triangularized.  Optionally, all or part of the transformation matrices are accumulated or updated.
 
 * `SB03OS` : Solves for `X = op(U)^H * op(U)` either the stable non-negative definite continuous-time Lyapunov equation
+
                     H                     2      H
                op(S) *X + X*op(S) = -scale *op(R) *op(R),
 
