@@ -138,3 +138,7 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 15 routines 
 
 **`TB01ND:`** Added the condition `P <= N`, since the observer Hessenberg form is not defined for `P > N`.
 
+## Version v5.7 
+
+This is the first version uploaded to GitHub under a BSD-3-Clause license. 
+
