@@ -22,7 +22,7 @@ Added **`make.inc`** and **`makefile`** in the **`slicot`** directory for Window
 
 Added **`make_Unix.inc`** in **`slicot`** directory and **`makefile_Unix`** in **`slicot`** directory and subdirectories **`examples`** and **`src`**, for Unix-like platfoms with gfortran compiler.
 
-Added the file **`Installation.txt`** in the slicot directory.
+Added the file **`Installation.txt`** in the **`slicot`** directory.
 
 ## Version v5.8 
 
