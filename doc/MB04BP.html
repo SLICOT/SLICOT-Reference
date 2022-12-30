@@ -373,8 +373,9 @@ C     .. Array Arguments ..
 <PRE>
   For large values of N, the routine applies the transformations
   for reducing T on panels of columns. The user may specify in INFO
-  the desired number of columns. If on entry INFO &lt;= 0, then the
-  routine estimates a suitable value of this number.
+  the desired number of columns. If on entry INFO &lt; 0, then the
+  routine estimates a suitable value of this number. If INFO = 0,
+  the routine MB04BD is directly called.
 
 </PRE>
 
