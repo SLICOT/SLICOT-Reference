@@ -101,7 +101,7 @@ C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C
 C     REVISIONS
 C
-C     Oct. 2001, V. Sima, Research Institute for Informatics, Bucharest.
+C     V. Sima, Oct. 2001, June 2022.
 C
 C    ******************************************************************
 C
@@ -116,7 +116,7 @@ C     .. Array Arguments ..
       INTEGER            NROWS ( * )
       DOUBLE PRECISION   A( LDA, * )
 C     .. Local Scalars ..
-      LOGICAL            FIRST, LSCALE
+      LOGICAL            LSCALE
       INTEGER            I, ISUM, ITYPE
       DOUBLE PRECISION   BIGNUM, SMLNUM
 C     .. External Functions ..
@@ -128,10 +128,6 @@ C     .. External Subroutines ..
       EXTERNAL           DLABAD, MB01QD, XERBLA
 C     .. Intrinsic Functions ..
       INTRINSIC          MAX, MIN
-C     .. Save statement ..
-      SAVE               BIGNUM, FIRST, SMLNUM
-C     .. Data statements ..
-      DATA               FIRST/.TRUE./
 C     ..
 C     .. Executable Statements ..
 C
@@ -207,15 +203,11 @@ C
       IF( MN.EQ.0 .OR. ANRM.EQ.ZERO )
      $   RETURN
 C
-      IF ( FIRST ) THEN
+C     Get machine parameters.
 C
-C        Get machine parameters.
-C
-         SMLNUM = DLAMCH( 'S' ) / DLAMCH( 'P' )
-         BIGNUM = ONE / SMLNUM
-         CALL DLABAD( SMLNUM, BIGNUM )
-         FIRST = .FALSE.
-      END IF
+      SMLNUM = DLAMCH( 'S' ) / DLAMCH( 'P' )
+      BIGNUM = ONE / SMLNUM
+      CALL DLABAD( SMLNUM, BIGNUM )
 C
       IF ( LSCALE ) THEN
 C

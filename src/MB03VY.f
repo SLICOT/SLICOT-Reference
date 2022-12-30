@@ -108,7 +108,7 @@ C
 C     REVISIONS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Feb. 2004,
-C     July 2012.
+C     July 2012, June 2022.
 C
 C     KEYWORDS
 C
@@ -199,9 +199,12 @@ C
          CALL DLASET( 'Full', N, ILO-1, ZERO, ONE, A( 1, 1, J ), LDA1 )
          CALL DLASET( 'Full', ILO-1, NH, ZERO, ZERO, A( 1, ILO, J ),
      $                LDA1 )
-         IF ( NH.GT.1 )
-     $      CALL DORGQR( NH, NH, NH-1, A( ILO, ILO, J ), LDA1,
+         IF ( NH.GT.1 ) THEN
+            CALL DORGQR( NH, NH, NH-1, A( ILO, ILO, J ), LDA1,
      $                   TAU( ILO, J ), DWORK, LDWORK, INFO )
+         ELSE
+            A( ILO, ILO, J ) = ONE
+         END IF
          IF ( IHI.LT.N ) THEN
             CALL DLASET( 'Full', N-IHI, NH, ZERO, ZERO,
      $                   A( IHI+1, ILO, J ), LDA1 )

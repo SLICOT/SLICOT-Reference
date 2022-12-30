@@ -333,8 +333,9 @@ C     FURTHER COMMENTS
 C
 C     For large values of N, the routine applies the transformations
 C     for reducing T on panels of columns. The user may specify in INFO
-C     the desired number of columns. If on entry INFO <= 0, then the
-C     routine estimates a suitable value of this number.
+C     the desired number of columns. If on entry INFO < 0, then the
+C     routine estimates a suitable value of this number. If INFO = 0,
+C     the routine MB04BD is directly called.
 C
 C     CONTRIBUTOR
 C
@@ -344,7 +345,7 @@ C     REVISIONS
 C
 C     M. Voigt, Jan. 2012, July 2013, June 2014, July 2014.
 C     V. Sima, Oct. 2012, Jan. 2013, Feb. 2013, July 2013, July 2014,
-C     Aug. 2014, June 2015, Jan. 2017, Mar. 2020, Apr. 2020.
+C     Aug. 2014, June 2015, Jan. 2017, Mar. 2020, Apr. 2020, Sep. 2022.
 C
 C     KEYWORDS
 C
@@ -354,9 +355,12 @@ C
 C     ******************************************************************
 C
 C     .. Parameters ..
+C     NX is the maximum value of N for which MB04BD can be called.
       DOUBLE PRECISION   ZERO, HALF, ONE, TWO, FIVE
       PARAMETER          ( ZERO = 0.0D+0, HALF = 0.5D+0, ONE = 1.0D+0,
      $                     TWO  = 2.0D+0, FIVE = 5.0D+0 )
+      INTEGER            NX
+      PARAMETER          ( NX = 250 )
 C
 C     .. Scalar Arguments ..
       CHARACTER          COMPQ1, COMPQ2, JOB
@@ -396,7 +400,7 @@ C     .. External Subroutines ..
       EXTERNAL           DAXPY, DCOPY, DGEMM, DGEQRF, DLACPY, DLARF,
      $                   DLARFG, DLARTG, DLASET, DROT, DSYMV, DSYR2,
      $                   MA02AD, MA02PD, MB01LD, MB01MD, MB01ND, MB03BD,
-     $                   XERBLA
+     $                   MB04BD, XERBLA
 C
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DCMPLX, DIMAG, INT, MAX, MIN, MOD,
@@ -486,7 +490,13 @@ C
 C
 C     A block algorithm is used for large M.
 C
-      IF( NB.LE.0 ) THEN
+      IF( NB.EQ.0 .OR. ( NB.LT.0 .AND. N.LE.NX ) ) THEN
+         CALL MB04BD( JOB, COMPQ1, COMPQ2, N, A, LDA, DE, LDDE, C1,
+     $                LDC1, VW, LDVW, Q1, LDQ1, Q2, LDQ2, B, LDB, F,
+     $                LDF, C2, LDC2, ALPHAR, ALPHAI, BETA, IWORK,
+     $                LIWORK, DWORK, LDWORK, INFO )
+         RETURN
+      ELSE IF( NB.LT.0 ) THEN
          CALL DGEQRF( M, M, A, LDA, DWORK, DWORK, -1, INFO )
          NB = MIN( MAX( INT( DWORK( 1 ) )/M1, 2 ), M )
       END IF
@@ -506,7 +516,7 @@ C
       ELSE
          TEMP = DLANTR( 'Max', 'Lower', 'No-diag', M-1, M-1, DE( 2, 1 ),
      $                  LDDE, DWORK ) +
-     $          DLANTR( 'Max', 'Upper', 'No-diag', M-1, M-1, DE( 1, 2 ),
+     $          DLANTR( 'Max', 'Upper', 'No-diag', M-1, M-1, DE( 1, 3 ),
      $                  LDDE, DWORK )
       END IF
       IF( TEMP.EQ.ZERO ) THEN
@@ -524,7 +534,7 @@ C
    10          CONTINUE
             ELSE
                CALL MA02PD( M, M, A, LDA, I, J )
-               NINF = MAX( I, J )
+               NINF = MAX( I, J )/2
             END IF
          END IF
       ELSE

@@ -341,7 +341,7 @@ C     V. Sima, Nov. 2010, Feb. 2011, Oct. 2011.
 C     M. Voigt, Jan. 2012, July 2014.
 C     V. Sima, Oct. 2012, Jan. 2013, Feb. 2013, July 2013, Aug. 2014,
 C     Sep. 2016, Nov. 2016, Jan. 2017, Apr. 2018, Mar. 2019, Mar. 2020,
-C     Apr. 2020, Apr. 2021.
+C     Apr. 2020, Apr. 2021, July 2022.
 C
 C     KEYWORDS
 C
@@ -492,7 +492,7 @@ C
       ELSE
          TEMP = DLANTR( 'Max', 'Lower', 'No-diag', M-1, M-1, DE( 2, 1 ),
      $                  LDDE, DWORK ) +
-     $          DLANTR( 'Max', 'Upper', 'No-diag', M-1, M-1, DE( 1, 2 ),
+     $          DLANTR( 'Max', 'Upper', 'No-diag', M-1, M-1, DE( 1, 3 ),
      $                  LDDE, DWORK )
       END IF
       IF( TEMP.EQ.ZERO ) THEN
@@ -510,7 +510,7 @@ C
    10          CONTINUE
             ELSE
                CALL MA02PD( M, M, A, LDA, I, J )
-               NINF = MAX( I, J )
+               NINF = MAX( I, J )/2
             END IF
          END IF
       ELSE

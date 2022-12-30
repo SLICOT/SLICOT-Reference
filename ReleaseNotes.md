@@ -1,5 +1,29 @@
 # SLICOT Library Release Notes
 
+## Version v5.8, Update 1
+
+**Updated Routines**
+
+**`MB01PD:`** Removed `SAVE` statement and variable `FIRST` to get a thread safe version.
+
+**`MB03VY:`**  Set `A( ILO, ILO, J )` to 1 if `IHI = ILO` in the loop labelled 20.
+ 
+**`MB04BD`**:  Changed some part of finding the number of infinite eigenvalues (replaced `DE(1,2)` by `DE(1,3)` in the line 495, and replaced `NINF = MAX( I, J )` by `NINF = MAX( I, J )/2` in the line 513).
+
+**`MB04BP`**:  Changed some part of finding the number of infinite eigenvalues (replaced `DE(1,2)` by `DE(1,3)` in the line 509, and replaced `NINF = MAX( I, J )` by `NINF = MAX( I, J )/2` in the line 527).  Called **`MB04BD`** internally, if on entry `INFO = 0` or if `INFO < 0` and `M` is sufficiently small (`M <= NX`, with parameter `NX` set to 250).  Updated the documentation file, **`MB04BP.html`**.
+
+**Updated makefile**
+
+The files **`makefile`** in the **`examples`** and **`src`** sub-directories have been updated, by alphabetically ordering the names, and adding the missing ones.
+
+**New files**
+
+Added **`make.inc`** and **`makefile`** in the **`slicot`** directory for Windows platform with Intel Fortran compilers.
+
+Added **`make_Unix.inc`** in **`slicot`** directory and **`makefile_Unix`** in **`slicot`** directory and subdirectories **`examples`** and **`src`**, for Unix-like platfoms with gfortran compiler.
+
+Added the file **`Installation.txt`** in the slicot directory.
+
 ## Version v5.8 
 
 Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines with more or few changes in the operational part of the source code, in comparison to Version v5.7 of the library.  Moreover, the (comment) lines referring to the version number have been removed in all routines, example programs, and documentation files.
@@ -88,7 +112,7 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines 
 
 **Updated Routines**
 
-**`AB13MD:`** Computed the correct upper bound on the structured singular value for a 1-by-1 real matrix and a real uncertainty. Replaced `DFLOAT` by `DBLE` in line `834` to avoid a trouble with an Apple Silicon  compiler.
+**`AB13MD:`** Computed the correct upper bound on the structured singular value for a 1-by-1 real matrix and a real uncertainty. Replaced `DFLOAT` by `DBLE` in line `834` to avoid a trouble with an Apple Silicon compiler.
 
 **`MA02EZ:`** A new option, `SKEW = 'G'`, has been added that allows to suitably deal with the diagonal of a general square triangular matrix. This option is needed in the new routines `MB01UZ`, `SG03BS`, and `SG03BT`. Moreover, the internal loop index `J` has been modified from `2` to `I` or `I+1`, to reduce the number of cycles to the minimum values.
 
