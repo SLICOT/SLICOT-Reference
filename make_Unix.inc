@@ -3,7 +3,7 @@
 #  SLICOT, Release v5.8                           slicot/make.inc  #
 #  Vasile Sima                                                     #
 #  October 31, 1996.                                               #
-#  Revised Dec. 7, 1999; July 16, 2015, Dec. 28, 2022              #
+#  Revised Dec. 7, 1999; July 16, 2015, Dec. 28, 2022, Feb. 2023.  #
 ####################################################################
 
 SHELL = /bin/sh
@@ -28,7 +28,7 @@ ARFLAGS = cr
 # ARCHFLAGS= r
 # RANLIB   = ranlib
 
-LOADOPTS = $(SLICOTLIB) $(LAPACKLIB) $(BLASLIB)
+LOADOPTS = $(SLICOTLIB) $(LPKAUXLIB) $(LAPACKLIB) $(BLASLIB)
 #
 #  The location of the libraries to which you will link.  (The
 #  machine-specific, optimized BLAS library should be used whenever
@@ -36,4 +36,5 @@ LOADOPTS = $(SLICOTLIB) $(LAPACKLIB) $(BLASLIB)
 #
 BLASLIB      = ../libs/blas.a
 LAPACKLIB    = ../libs/lapack.a
+LPKAUXLIB    = ../lpkaux.a
 SLICOTLIB    = ../slicot.a

@@ -54,8 +54,9 @@ and the following files in this root directory:
 - the main SLICOT Library documentation index, libindex.html.
 
 After software installation, this directory will also contain the library 
-file slicot.a or slicot.lib, for Unix or Windows platforms, respectively.
-The library file could then be linked in applications programs, as usual.
+files slicot.a and lpkaux.a, or slicot.lib and lpkaux.lib, for Unix or 
+Windows platforms, respectively.
+The library files could then be linked in applications programs, as usual.
 Specific examples are contained in the directory examples.
 The on-line documentation of the SLICOT user's callable routines is
 accessible via the main SLICOT Library documentation index, libindex.html.

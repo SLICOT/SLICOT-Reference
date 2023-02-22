@@ -1,33 +1,37 @@
 ####################################################################
 #  SLICOT main makefile for Unix-like machines                     #
 #  Top Level Makefile for generating SLICOT Library object file,   #
-#  and linking and running the example programs.                   #
+#  the auxiliary library file, and linking and running the example #
+#  programs.                                                       #
 #                                                                  #
 #  SLICOT, Release 5.8                          ./slicot/makefile  #
 #  Vasile Sima                                                     #
 #  October 31, 1996                                                #
-#  Revised Dec. 7, 1999; Feb. 14, 2005, Dec. 28, 2022.             #
+#  Revised Dec. 7, 1999; Feb. 14, 2005, Dec. 28, 2022, Feb. 2023.  #
 ####################################################################
 #
-#  This makefile creates/updates the SLICOT Library object file, 
-#  and compiles, links, and runs the example programs for the
-#  SLICOT Library. To perform all these actions, enter
+#  This makefile creates/updates the SLICOT Library object file, the 
+#  auxiliary library, and compiles, links, and runs the example 
+#  programs for the SLICOT Library. To perform all these actions,
+#  enter
 #       make
 #
-#  To create/update the library for SLICOT, enter 
+#  To create/update the libraries, enter 
 #       make lib
 #
 #  To compile, link, and run the example programs, enter 
 #       make example
 #
-#  To remove the object files for SLICOT routines, enter
+#  To remove the object files for SLICOT routines and auxiliary
+#  routines, enter
 #       make cleanlib
 #
 #  To remove the files with the computed results (*.exa), enter
 #       make cleanexample
 #
-#  To remove the object files for SLICOT routines, as well as the 
-#  files with the computed results (*.exa), enter
+#  To remove the object files for SLICOT routines and auxiliary
+#  routines, as well as the files with the computed results (*.exa),
+#  enter
 #       make clean
 #
 ####################################################################
@@ -40,12 +44,14 @@ clean: cleanlib cleanexample
 
 lib:
 	( cd src; $(MAKE) )
+	( cd src_aux; $(MAKE) )
 
 example:
 	( cd examples; $(MAKE) )
 
 cleanlib:
 	( cd src; $(MAKE) clean )
+	( cd src_aux; $(MAKE) clean )
 
 cleanexample:
 	( cd examples; $(MAKE) clean )
