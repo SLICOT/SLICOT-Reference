@@ -43,15 +43,15 @@ all: lib example
 clean: cleanlib cleanexample
 
 lib:
-	( cd src; $(MAKE) )
-	( cd src_aux; $(MAKE) )
+	( cd src; $(MAKE) -f makefile_Unix )
+	( cd src_aux; $(MAKE) -f makefile_Unix )
 
 example:
-	( cd examples; $(MAKE) )
+	( cd examples; $(MAKE) -f makefile_Unix )
 
 cleanlib:
-	( cd src; $(MAKE) clean )
-	( cd src_aux; $(MAKE) clean )
+	( cd src; $(MAKE) -f makefile_Unix clean )
+	( cd src_aux; $(MAKE) -f makefile_Unix clean )
 
 cleanexample:
-	( cd examples; $(MAKE) clean )
+	( cd examples; $(MAKE) -f makefile_Unix clean )

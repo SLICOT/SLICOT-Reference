@@ -47,4 +47,4 @@ clean:
 	rm -f *.o
 
 .f.o: 
-	$(FORTRAN) $(OPTS) -c $<
+	$(FC) $(FFLAGS) -c $<

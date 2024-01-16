@@ -14,7 +14,6 @@ SHELL = /bin/sh
 #
 FC = gfortran
 FFLAGS = -O2 -fPIC -fdefault-integer-8
-FFLAGS_NOOPT = -O0
 
 #  Define LDFLAGS to the desired linker options for your machine.
 #
@@ -24,10 +23,11 @@ LDFLAGS =
 #  (library).  If your system has no ranlib, set RANLIB = echo.
 #
 ARCH = ar
-ARFLAGS = cr
+ARCHFLAGS = cr
 # ARCHFLAGS= r
 # RANLIB   = ranlib
 
+LOADER   = $(FC)
 LOADOPTS = $(SLICOTLIB) $(LPKAUXLIB) $(LAPACKLIB) $(BLASLIB)
 #
 #  The location of the libraries to which you will link.  (The
