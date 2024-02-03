@@ -225,8 +225,9 @@ C             than or equal to TOL(3) are ignored for scaling. If the
 C             user sets TOL(3) >= 0, then the given value of TOL(3) is
 C             used. If the user sets TOL(3) < 0, then an implicitly
 C             computed, default threshold, defined by  THRESH = c*EPS,
-C             where c = MAX(norm_1(A,E,B,C)) is used instead.
-C             TOL(3) = 0 is not always a good choice.  TOL(3) < 1.
+C             where c = MAX(||A||,||E||,||B||,||C||) is used instead and
+C             1-norm is used. TOL(3) = 0 is not always a good choice.
+C             TOL(3) < 1.
 C             TOL(3) is not used if EQUIL = 'N'.
 C
 C     Workspace
@@ -288,17 +289,16 @@ C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA. The optimal workspace includes the
 C             extra space for improving the accuracy.
 C
-C     Error/Warning Indicator
+C     Warning Indicator
 C
 C     IWARN   INTEGER
-C             = 0: When determining the rank of a matrix, the distance
-C                  between the tolerance TOL(1) and the estimated
-C                  singular values is sufficiently large. The rank can
-C                  be safely determined;
-C             = 1: When determining the rank of a matrix, there exist
-C                  estimated singular values which are very close to the
-C                  tolerance TOL(1). The computed rank is possibly
-C                  incorrect.
+C             = 0: When determining the rank of a matrix, the rank can
+C                  be safely determined: a small decrease of TOL(1) will
+C                  not increase the rank.
+C             = 1: The computed rank is possibly incorrect: a small
+C                  decrease of TOL(1) might increase the rank.
+C
+C     Error Indicator
 C
 C     INFO    INTEGER
 C             = 0: succesful exit;
@@ -364,7 +364,8 @@ C     University of Technology, Department of Mathematics, Feb. 2010.
 C
 C     REVISIONS
 C
-C     V. Sima, Feb. 2012, March 2012, April 2012, June 2012, Feb. 2021.
+C     V. Sima, Feb. 2012, March 2012, April 2012, June 2012, Feb. 2021,
+C     Oct. 2022, June 2023.
 C
 C     KEYWORDS
 C
@@ -397,17 +398,17 @@ C
 C     .. Local Arrays ..
       DOUBLE PRECISION   DUM( 2 ), TOLV( 3 )
 C
-C     .. External Subroutines ..
-      EXTERNAL           DLACPY, DLASET, DORMQR, DORMRZ, DSWAP, DTZRZF,
-     $                   MB03OD, TG01AD, TG01JY, XERBLA
-C
 C     .. External Functions ..
       LOGICAL            LSAME
       DOUBLE PRECISION   DLAMCH, DLANGE
       EXTERNAL           DLAMCH, DLANGE, LSAME
 C
+C     .. External Subroutines ..
+      EXTERNAL           DLACPY, DLASET, DORMQR, DORMRZ, DSWAP, DTZRZF,
+     $                   MB03OD, TG01AD, TG01JY, XERBLA
+C
 C     .. Intrinsic Functions ..
-      INTRINSIC          ABS, INT, MAX, MIN
+      INTRINSIC          ABS, INT, MAX
 C
 C     .. Executable Statements ..
 C
@@ -507,9 +508,8 @@ C
      $                      INFO )
                MAXWRK = MAX( MAXWRK, INT( DWORK( 1 ) ) )
             END IF
-            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK,
-     $                   TOLDEF, ZERO, DWORK, RANKE, DWORK, DUM, -1,
-     $                   INFO )
+            CALL MB03OD( 'QR Decomposition', N, N, E, LDE, IWORK, ZERO,
+     $                   ZERO, DWORK, RANKE, DWORK, DUM, -1, INFO )
             MAXWRK = MAX( MAXWRK, INT( DUM( 1 ) ) + N + 3 )
             CALL DORMQR( 'Left', 'Transpose', N, N, N, E, LDE, DWORK, A,
      $                   LDA, DUM, -1, INFO )
@@ -638,13 +638,11 @@ C
      $             DWORK( NR+4 ), LDWORK-( NR+3 ), INFO )
       MAXWRK = MAX( MAXWRK, INT( DWORK( NR+4 ) ) + NR + 3 )
 C
-C     Check whether there are singular values close to the tolerance
-C     TOLDEF.
+C     Check whether the estimated rank might be incorrect.
 C
-      IF( MIN( ABS( DWORK( NR+2 ) - TOLDEF ),
-     $         ABS( DWORK( NR+3 ) - TOLDEF ) ) .LT.TOLDEF/TEN )
+      IF( ABS( DWORK( NR+3 )/ DWORK( NR+1 ) - TOLDEF ).LT.TOLDEF/TEN )
 C
-C        One singular value is close to TOLDEF, warning returned.
+C        The estimated rank might be incorrect, warning returned.
 C
      $   IWARN = 1
 C
@@ -799,33 +797,30 @@ C
 C
          MAXWRK = MAX( MAXWRK, INT( DWORK( IWRK ) ) + IWRK - 1 )
 C
-C        Check whether there are singular values close to the
-C        tolerance TOLDEF.
 C
-         IF( MIN( ABS( DWORK( ISV+1 ) - TOLDEF ),
-     $            ABS( DWORK( ISV+2 ) - TOLDEF ) ).LT.TOLDEF/TEN )
+C        Check whether the estimated rank might be incorrect.
 C
-C           One singular value is close to TOLDEF, warning returned.
-C
+         IF( ABS( DWORK( ISV+2 )/ DWORK( ISV ) - TOLDEF ).LT.TOLDEF/TEN)
      $      IWARN = 1
 C
-C        Set R12 to 0.
+C        Set R12 and R22 to 0.
 C
-         IF( NA.GT.0 )
-     $      CALL DLASET( 'Full', RANKE, NA, ZERO, ZERO, E( 1, RANKE+1 ),
+         IF( NR.GT.1 ) THEN
+            CALL DLASET( 'Lowr', NR-1, RANKE, ZERO, ZERO, E( 2, 1 ),
      $                   LDE )
+            CALL DLASET( 'Full', NR, NA, ZERO, ZERO, E( 1, RANKE+1 ),
+     $                   LDE )
+         END IF
       ELSE
 C
 C        The block R22 is empty, no computation required.
 C
          RANKA = 0
          NA    = 0
+         IF( RANKE.GT.1 )
+     $      CALL DLASET( 'Lowr', RANKE-1, RANKE-1, ZERO, ZERO,
+     $                   E( 2, 1 ), LDE )
       END IF
-C
-C     Set the lower triangle of T in (1) to 0.
-C
-      IF( NR.GT.1 )
-     $   CALL DLASET( 'Lower', NR-1, NR-1, ZERO, ZERO, E( 2, 1 ), LDE )
 C
 C     Step 4: Determine if the transfer function is proper.
 C

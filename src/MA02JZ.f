@@ -92,11 +92,11 @@ C     .. Local Scalars ..
       DOUBLE PRECISION  TEMP
 C     .. Local Arrays ..
       DOUBLE PRECISION  DUMMY(1)
-C     .. External Subroutines ..
-      EXTERNAL          ZGEMM
 C     .. External Functions ..
       DOUBLE PRECISION  DLAPY2, ZLANGE
       EXTERNAL          DLAPY2, ZLANGE
+C     .. External Subroutines ..
+      EXTERNAL          ZGEMM
 C     .. Intrinsic Functions ..
       INTRINSIC         SQRT
 C

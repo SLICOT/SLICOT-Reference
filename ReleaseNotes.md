@@ -1,5 +1,70 @@
 # SLICOT Library Release Notes
 
+## Version v5.9 
+
+Version v5.9 of the **SLICOT** Library includes 11 new routines and 9 updated routines, in comparison to Version v5.8 of the library.
+
+**New Routines**
+
+**`AB13HD:`**  Computes the L_infinity-norm of a standard or descriptor system using structure-preserving eigenvalue computations.
+
+**`MA01DD:`**  Computes an approximate symmetric chordal metric, 
+            
+               d = min{ |a - b|, |1/a - 1/b| }
+            
+for two complex numbers `a` and `b`, given by real and imaginary parts.
+
+**`MA01DZ:`**  Computes an approximate symmetric chordal metric `d` for two, possibly infinite, complex numbers `a` and `b`, given by fractions with non-negative denominators.
+
+**`MA02RD:`**  Sorts the elements of a vector in increasing or decreasing order, and rearranges the elements of another vector using the same permutations.
+
+**`MA02SD:`**  Computes the smallest nonzero absolute value of the elements of a real matrix.
+
+**`MB04RD:`**  Reduces a real matrix pair `(A,B)` in generalized real Schur form to a block-diagonal form using well-conditioned non-orthogonal equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally postmultiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
+
+**`MB04RS:`**  Attempts to solve the generalized real Sylvester equation
+
+               A * R - L * B = scale * C,                            (1)
+               D * R - L * E = scale * F,
+
+using Level 1 and Level 2 BLAS, but aborts the calculations when the absolute value of an element of `R` or `L` is greater than a given real number `PMAX >= 1`.
+
+**`MB04RT:`**  Attempts to solve the generalized real Sylvester equation (1) using Level 3 BLAS, but aborts the calculations when the absolute value of an element of `R` or `L` is greater than a given real number `PMAX >= 1`.
+
+**`MB04RV:`**  Attempts to solve the generalized complex Sylvester equation (1) using Level 1 and Level 2 BLAS, but aborts the calculations when the absolute value of an element of `R` or `L` is greater than a given real number `PMAX >= 1`.
+
+**`MB04RW:`**  Attempts to solve the generalized complex Sylvester equation (1) using Level 3 BLAS, but aborts the calculations when the absolute value of an element of `R` or `L` is greater than a given real number `PMAX >= 1`.
+
+**`MB04RZ:`**  Reduces a complex matrix pair `(A,B)` in generalized complex Schur form to a block-diagonal form using well-conditioned non-unitary equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally postmultiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
+
+**Updated Routines**
+
+**`AB13DX:`**  Replaced `CWORK` and `LCWORK` by `ZWORK` and `LZWORK`, respectively, to agree to the **SLICOT** standards. Made several cosmetical changes.
+
+**`AB13ID:`**  Placed the lines defining the external subroutines after the lines defining the external functions, to agree to the **SLICOT** standard. Replaced `TOLDEF` by `ZERO` in the `MB03OD` call with `LDWORK = -1`. Changed the tests for checking if the estimated rank might be incorrect. The test for setting the value 1 to `IWARN` has been modified for better significance and `IWARN` parameter description has been updated. The submatrix `R22` has also been set to zero. Used a safeguard against the huge workspace size returned by some implementations of the LAPACK routine `ZGESVD`. Made several cosmetical changes.
+
+**`MA02JD:`**  Placed the lines defining the external subroutines after the lines defining the external functions, to agree to the **SLICOT** standard.
+    
+**`MA02JZ:`**  Placed the lines defining the external subroutines after the lines defining the external functions, to agree to the **SLICOT** standard.
+    
+**`MB02SZ:`**  Replaced the references to the `DCABS1` routine, which is not available in some `BLAS` implementations, to equivalent references to a locally defined statement functions.
+
+**`MB4DLZ:`**  Replaced the references to the `DCABS1` routine, which is not available in some `BLAS` implementations, to equivalent references to a locally defined statement functions.
+
+**`SB03OD:`**  Inserted a call to `DGERQF` for computing the optimal workspace when `TRANS = 'T'`.  Without this call, an error could appear when `M > N`.
+
+**`SB03OZ:`**  Inserted a call to `ZGERQF` for computing the optimal workspace when `TRANS = 'C'`.  Without this call, an error could appear when `M > N`.
+
+**`TG01JD:`**  Replaced the argument `ZERO` of the `TG01AD` call in the line 385 by a value computed based on the norms of the system matrices.
+
+**Updated makefile**
+
+The files **`makefile`** and **`makefile_Unix`** in the **`src`** sub-directory have been updated to include the new routines. 
+
+**New and Updated Documentation Files**
+
+Documentation files have been included for the new routines, and the existing documentation files have been updated when needed.
+
 ## Version v5.8, Update 1
 
 **Updated Routines**
@@ -32,11 +97,11 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines 
 
 **`MA02AZ:`** (Conjugate) transposes all or part of a two-dimensional complex matrix.
 
-**`MB01UY:`** Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T`) is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
+**`MB01UY:`** Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` matrix, `T` is a triangular matrix, and `op(T)` is either `T` or `T'` (the transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
 **`MB01UZ:`** Computes one of the matrix products `T := alpha*op(T)*A`, or `T := alpha*A*op(T)`, where `alpha` is a scalar, `A` is an `M-by-N` complex matrix, `T` is a complex triangular matrix, and `op(T)` is `T`, or `T'` (the transpose of `T`), or `conj(T')` (the conjugate transpose of `T`). A block-row/column algorithm is used, if possible. The result overwrites the array `T`.
 
-**`MB03RW:`** Solves the Sylvester equation `-A*X + X*B = C`, where `A` and `B` are complex `M-by-M` and `N-by-N` matrices, respectively, in Schur form. This routine is intended to be called only by SLICOT Library routine `MB03RZ`. For efficiency purposes, the computations are aborted when the absolute value of an element of `X` is greater than a given value `PMAX`.
+**`MB03RW:`** Solves the Sylvester equation `-A*X + X*B = C`, where `A` and `B` are complex `M-by-M` and `N-by-N` matrices, respectively, in Schur form. This routine is intended to be called only by **SLICOT** Library routine `MB03RZ`. For efficiency purposes, the computations are aborted when the absolute value of an element of `X` is greater than a given value `PMAX`.
  
 **`MB03RZ:`** Reduces an upper triangular complex matrix `A` (Schur form) to a block-diagonal form using well-conditioned non-unitary similarity transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX` is a given value. The transformations are optionally postmultiplied in a given matrix `X`. The Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
  
@@ -66,7 +131,7 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines 
 
  where `op(K) = K` or `K^H`  (the conjugate transpose of the matrix `K`), `A` is an `N-by-N` matrix, `op(B)` is an `M-by-N` matrix, `U` is an upper triangular matrix containing the Cholesky factor of the solution matrix `X`, and scale is an output scale factor, set less than or equal to 1 to avoid overflow in `X`.
 
-**`SG03BR:`** Computes the parameters for the complex Givens rotation (`c` real, `s` complex) to annihilate the second element of a complex vector of length two. The first element of the rotated vector may be complex. This is a safer implementation of the previous SLICOT routine `SG03BY`. It is an adaptation for real double precision computations of the LAPACK routine  `ZLARTG`.
+**`SG03BR:`** Computes the parameters for the complex Givens rotation (`c` real, `s` complex) to annihilate the second element of a complex vector of length two. The first element of the rotated vector may be complex. This is a safer implementation of the previous **SLICOT** routine `SG03BY`. It is an adaptation for real double precision computations of the LAPACK routine `ZLARTG`.
 
 **`SG03BS:`** Computes the Cholesky factor `U` of the matrix `X`, `X = op(U)^H * op(U)`, which is the solution of the generalized `d`-stable  discrete-time Lyapunov equation
 
@@ -106,7 +171,7 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines 
 
 **`TG01KD, TG01KZ:`** Compute for a single-input single-output descriptor system, `(A, E, B, C)`, with `E` upper triangular, a transformed system, `(Q'*A*Z, Q'*E*Z, Q'*B, C*Z)`, via an orthogonal/unitary equivalence transformation, so that `Q'*B` has only the first element nonzero and `Q'*E*Z` remains upper triangular. `TG01KZ` is the complex version.
 
-**`TG01OA, TG01OB:`** Compute for a single-input single-output descriptor system, `(A, E, B, C)`, with `E` upper triangular, a transformed system, `(Q'*A*Z, Q'*E*Z, Q'*B, C*Z)`, via an orthogonal/unitary equivalence transformation, so that `Q'*B` has only the first element nonzero and `Q'*E*Z` remains upper triangular. `TG01OA` is the real version and `TG01OB` is the complex version. `A`, `B`, `C` are stored in an array as the block elements `(2,2)`, `(2,1)`, and `(1,2)`, respectively, and `Q` and `Z` are not accumulated. These are the main differences with SLICOT Library routines `TG01KD` and `TG01KZ`.
+**`TG01OA, TG01OB:`** Compute for a single-input single-output descriptor system, `(A, E, B, C)`, with `E` upper triangular, a transformed system, `(Q'*A*Z, Q'*E*Z, Q'*B, C*Z)`, via an orthogonal/unitary equivalence transformation, so that `Q'*B` has only the first element nonzero and `Q'*E*Z` remains upper triangular. `TG01OA` is the real version and `TG01OB` is the complex version. `A`, `B`, `C` are stored in an array as the block elements `(2,2)`, `(2,1)`, and `(1,2)`, respectively, and `Q` and `Z` are not accumulated. These are the main differences with **SLICOT** Library routines `TG01KD` and `TG01KZ`.
 
 **`TG01OD, TG01OZ:`** Compute for a single-input single-output descriptor system, `(A, E, B, C)`, with `E` nonsingular, a reduced system with a "sufficiently" large feedthrough variable, using `TG01OA/TG01OB`.
 
@@ -147,11 +212,11 @@ Version v5.8 of the **SLICOT** Library includes 18 new routines and 14 routines 
 
 **`SG03BV:`** Safer computation of the 1-by-1 diagonal blocks of the solution, to avoid overflows for badly scaled equations. Replaced loops of `DSCAL` calls by calls to the LAPACK routine `DLASCL`. Replaced the calls to BLAS 1 routine `DROTG` by calls to the safer LAPACK routine `DLARTG`.
 
-**`SG03BW:`** Replaced the calls to the SLICOT routines `MB02UV` and `MB02UU` by calls to the equivalent LAPACK routines `DGETC2` and `DGESC2`, respectively. Replaced loops of `DSCAL` calls by calls to the LAPACK routine `DLASCL`. Replaced some loops of assignment statements by calls to `DCOPY`. 
+**`SG03BW:`** Replaced the calls to the **SLICOT** routines `MB02UV` and `MB02UU` by calls to the equivalent LAPACK routines `DGETC2` and `DGESC2`, respectively. Replaced loops of `DSCAL` calls by calls to the LAPACK routine `DLASCL`. Replaced some loops of assignment statements by calls to `DCOPY`. 
  
 **`SG03BX:`** The code has practically been rewritten. Although the source code of the new version is somewhat longer than of the previous version, the object code was reduced to about a half of the initial one.
   - Replaced all `2-by-2` local arrays by the needed scalars, and replaced the calls to the BLAS routines `DGEMM` and `DGEMV` involving these arrays by the necessary scalar operations, made in a compact manner. In particular, all rotations are applied directly, updating only the needed elements. When possible, two rotations are applied at once (from the left and right). Also, only the necessary elements of the matrices M1 and M2 of the reduced equations are now computed.
-  - Replaced the calls to the SLICOT routine `SG03BY` by calls to the new, safer routine `SG03BR`.
+  - Replaced the calls to the **SLICOT** routine `SG03BY` by calls to the new, safer routine `SG03BR`.
   - Added a sequence of code to standardize the matrix `E`, i.e., to become diagonal with `E(1,1)` non-negative; then recomputed the shift.
   - Safer computation of the `1-by-1` diagonal blocks of the solution, to avoid overflows for badly scaled equations.
   - Used simpler formulas and computations when numerically appropriate, but more sophisticated ones are invoked when needed.

@@ -37,8 +37,8 @@ SLSRC = \
     AB09FD.obj AB09GD.obj AB09HD.obj AB09HX.obj AB09HY.obj AB09ID.obj AB09IX.obj \
     AB09IY.obj AB09JD.obj AB09JV.obj AB09JW.obj AB09JX.obj AB09KD.obj AB09KX.obj \
     AB09MD.obj AB09ND.obj AB13AD.obj AB13AX.obj AB13BD.obj AB13CD.obj AB13DD.obj \
-    AB13DX.obj AB13ED.obj AB13FD.obj AB13ID.obj AB13MD.obj AB8NXZ.obj AG07BD.obj \
-    AG08BD.obj AG08BY.obj AG08BZ.obj AG8BYZ.obj \
+    AB13DX.obj AB13ED.obj AB13FD.obj AB13HD.obj AB13ID.obj AB13MD.obj AB8NXZ.obj \
+    AG07BD.obj AG08BD.obj AG08BY.obj AG08BZ.obj AG8BYZ.obj \
     BB01AD.obj BB02AD.obj BB03AD.obj BB04AD.obj BD01AD.obj BD02AD.obj \
     DE01OD.obj DE01PD.obj delctg.obj DF01MD.obj DG01MD.obj DG01ND.obj DG01NY.obj \
     DG01OD.obj DK01MD.obj \
@@ -46,11 +46,12 @@ SLSRC = \
     IB01AD.obj IB01BD.obj IB01CD.obj IB01MD.obj IB01MY.obj IB01ND.obj IB01OD.obj \
     IB01OY.obj IB01PD.obj IB01PX.obj IB01PY.obj IB01QD.obj IB01RD.obj IB03AD.obj \
     IB03BD.obj \
-    MA01AD.obj MA01BD.obj MA01BZ.obj MA01CD.obj MA02AD.obj MA02AZ.obj MA02BD.obj \
-    MA02BZ.obj MA02CD.obj MA02CZ.obj MA02DD.obj MA02ED.obj MA02ES.obj MA02EZ.obj \
-    MA02FD.obj MA02GD.obj MA02GZ.obj MA02HD.obj MA02HZ.obj MA02ID.obj MA02IZ.obj \
-    MA02JD.obj MA02JZ.obj MA02MD.obj MA02MZ.obj MA02NZ.obj MA02OD.obj MA02OZ.obj \
-    MA02PD.obj MA02PZ.obj MB01KD.obj MB01LD.obj MB01MD.obj MB01ND.obj MB01OC.obj \
+    MA01AD.obj MA01BD.obj MA01BZ.obj MA01CD.obj MA01DD.obj MA01DZ.obj MA02AD.obj \
+    MA02AZ.obj MA02BD.obj MA02BZ.obj MA02CD.obj MA02CZ.obj MA02DD.obj MA02ED.obj \
+    MA02ES.obj MA02EZ.obj MA02FD.obj MA02GD.obj MA02GZ.obj MA02HD.obj MA02HZ.obj \
+    MA02ID.obj MA02IZ.obj MA02JD.obj MA02JZ.obj MA02MD.obj MA02MZ.obj MA02NZ.obj \
+    MA02OD.obj MA02OZ.obj MA02PD.obj MA02PZ.obj MA02RD.obj MA02SD.obj \
+    MB01KD.obj MB01LD.obj MB01MD.obj MB01ND.obj MB01OC.obj \
     MB01OD.obj MB01OE.obj MB01OH.obj MB01OO.obj MB01OS.obj MB01OT.obj MB01PD.obj \
     MB01QD.obj MB01RB.obj MB01RD.obj MB01RH.obj MB01RT.obj MB01RU.obj MB01RW.obj \
     MB01RX.obj MB01RY.obj MB01SD.obj MB01SS.obj MB01TD.obj MB01UD.obj MB01UW.obj \

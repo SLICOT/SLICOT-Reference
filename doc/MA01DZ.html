@@ -1,0 +1,119 @@
+<HTML>
+<HEAD><TITLE>MA01DZ - SLICOT Library Routine Documentation</TITLE>
+</HEAD>
+<BODY>
+
+<H2><A Name="MA01DZ">MA01DZ</A></H2>
+<H3>
+Approximate symmetric chordal metric for two, possibly infinite, complex numbers
+</H3>
+<A HREF ="#Specification"><B>[Specification]</B></A>
+<A HREF ="#Arguments"><B>[Arguments]</B></A>
+<A HREF ="#Method"><B>[Method]</B></A>
+<A HREF ="#References"><B>[References]</B></A>
+<A HREF ="#Comments"><B>[Comments]</B></A>
+<A HREF ="#Example"><B>[Example]</B></A>
+
+<P>
+<B><FONT SIZE="+1">Purpose</FONT></B>
+<PRE>
+  To compute an approximate symmetric chordal metric for two complex
+  numbers A1 and A2 in real arithmetic.  Each number Aj, j = 1, 2,
+  is represented as a rational number with numerator ARj + i*AIj,
+  and denominator Bj, with Bj &gt;= 0.  A value Bj = 0, when ARj or AIj
+  is nonzero, means that the number Aj is infinite.  The case when
+  ARj = AIj = Bj = 0 means that the pair (Aj,Bj) is not a number.
+
+</PRE>
+<A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
+<PRE>
+      SUBROUTINE MA01DZ( AR1, AI1, B1, AR2, AI2, B2, EPS, SAFEMN, D1,
+     $                   D2, IWARN )
+C     .. Scalar Arguments ..
+      DOUBLE PRECISION  AI1, AI2, AR1, AR2, B1, B2, D1, D2, EPS, SAFEMN
+      INTEGER           IWARN
+
+</PRE>
+<A name="Arguments"><B><FONT SIZE="+1">Arguments</FONT></B></A>
+<P>
+
+</PRE>
+<B>Input/Output Parameters</B>
+<PRE>
+  AR1     (input) DOUBLE PRECISION
+  AI1     (input) DOUBLE PRECISION
+          These scalars define the real and imaginary parts of the
+          numerator of A1.
+
+  B1      (input) DOUBLE PRECISION
+          The denominator of A1.  B1 &gt;= 0.
+
+  AR2     (input) DOUBLE PRECISION
+  AI2     (input) DOUBLE PRECISION
+          These scalars define the real and imaginary parts of the
+          numerator of A2.
+
+  B2      (input) DOUBLE PRECISION
+          The denominator of A2.  B2 &gt;= 0.
+
+  EPS     (input) DOUBLE PRECISION
+          The relative machine precision. See the LAPACK Library
+          routine DLAMCH.
+
+  SAFEMN  (input) DOUBLE PRECISION
+          The "safe minimum", such that its reciprocal does not
+          overflow. See the LAPACK Library routine DLAMCH.
+
+  D1      (output) DOUBLE PRECISION
+          The numerator of the chordal metric D.  D1 &gt;= 0.
+
+  D2      (output) DOUBLE PRECISION
+          The denominator of the chordal metric D.  D2 is 0 or 1.
+          If D2 = 0, and D1 = 0, the chordal metric is undefined, so
+          either A1 and/or A2 are undefined.
+
+</PRE>
+<B>Warning Indicator</B>
+<PRE>
+  IWARN   INTEGER
+          = 0:  no warning;
+          = 1:  A1 or A2 is not a number (NaN);  D1 and D2 are both
+                set to 0.
+
+</PRE>
+<A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>
+<PRE>
+  The approximate symmetric chordal metric is evaluated using the
+  formula
+
+     D = MIN( | A1 - A2 |, |1/A1 - 1/A2| ),
+
+  taking into account the special cases of infinite or NaN values.
+  The chordal metric is finite even if A1 and A2 are both infinite,
+  or if one of them is infinite and the other is finite, nonzero.
+
+</PRE>
+
+<A name="Comments"><B><FONT SIZE="+1">Further Comments</FONT></B></A>
+<PRE>
+  None
+</PRE>
+
+<A name="Example"><B><FONT SIZE="+1">Example</FONT></B></A>
+<P>
+<B>Program Text</B>
+<PRE>
+  None
+</PRE>
+<B>Program Data</B>
+<PRE>
+  None
+</PRE>
+<B>Program Results</B>
+<PRE>
+  None
+</PRE>
+
+<HR>
+<A HREF=support.html><B>Return to Supporting Routines index</B></A></BODY>
+</HTML>

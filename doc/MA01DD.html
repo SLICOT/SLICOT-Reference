@@ -1,0 +1,93 @@
+<HTML>
+<HEAD><TITLE>MA01DD - SLICOT Library Routine Documentation</TITLE>
+</HEAD>
+<BODY>
+
+<H2><A Name="MA01DD">MA01DD</A></H2>
+<H3>
+Approximate symmetric chordal metric for two finite complex numbers
+</H3>
+<A HREF ="#Specification"><B>[Specification]</B></A>
+<A HREF ="#Arguments"><B>[Arguments]</B></A>
+<A HREF ="#Method"><B>[Method]</B></A>
+<A HREF ="#References"><B>[References]</B></A>
+<A HREF ="#Comments"><B>[Comments]</B></A>
+<A HREF ="#Example"><B>[Example]</B></A>
+
+<P>
+<B><FONT SIZE="+1">Purpose</FONT></B>
+<PRE>
+  To compute an approximate symmetric chordal metric for two complex
+  numbers A1 and A2, with Aj = ARj + i*AIj, j = 1, 2.
+
+</PRE>
+<A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
+<PRE>
+      SUBROUTINE MA01DD( AR1, AI1, AR2, AI2, EPS, SAFEMN, D )
+C     .. Scalar Arguments ..
+      DOUBLE PRECISION  AI1, AI2, AR1, AR2, D, EPS, SAFEMN
+
+</PRE>
+<A name="Arguments"><B><FONT SIZE="+1">Arguments</FONT></B></A>
+<P>
+
+</PRE>
+<B>Input/Output Parameters</B>
+<PRE>
+  AR1     (input) DOUBLE PRECISION
+  AI1     (input) DOUBLE PRECISION
+          These scalars define the real and imaginary parts of the
+          number A1.
+
+  AR2     (input) DOUBLE PRECISION
+  AI2     (input) DOUBLE PRECISION
+          These scalars define the real and imaginary parts of the
+          number A2.
+
+  EPS     (input) DOUBLE PRECISION
+          The relative machine precision. See the LAPACK Library
+          routine DLAMCH.
+
+  SAFEMN  (input) DOUBLE PRECISION
+          The "safe minimum", such that its reciprocal does not
+          overflow. See the LAPACK Library routine DLAMCH.
+
+  D       (output) DOUBLE PRECISION
+          The approximate symmetric chordal metric D.  D &gt;= 0.
+
+</PRE>
+<A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>
+<PRE>
+  The approximate symmetric chordal metric is evaluated using the
+  formula
+
+     D = MIN( | A1 - A2 |, |1/A1 - 1/A2| ).
+
+  The chordal metric is finite even if A1 and A2 are both infinite,
+  or if one of them is infinite and the other is finite, nonzero.
+
+</PRE>
+
+<A name="Comments"><B><FONT SIZE="+1">Further Comments</FONT></B></A>
+<PRE>
+  None
+</PRE>
+
+<A name="Example"><B><FONT SIZE="+1">Example</FONT></B></A>
+<P>
+<B>Program Text</B>
+<PRE>
+  None
+</PRE>
+<B>Program Data</B>
+<PRE>
+  None
+</PRE>
+<B>Program Results</B>
+<PRE>
+  None
+</PRE>
+
+<HR>
+<A HREF=support.html><B>Return to Supporting Routines index</B></A></BODY>
+</HTML>

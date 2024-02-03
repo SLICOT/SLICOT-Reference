@@ -1,0 +1,362 @@
+<HTML>
+<HEAD><TITLE>MB04RZ - SLICOT Library Routine Documentation</TITLE>
+</HEAD>
+<BODY>
+
+<H2><A Name="MB04RZ">MB04RZ</A></H2>
+<H3>
+Reduction of a complex matrix pencil in generalized complex Schur form to a block-diagonal form
+</H3>
+<A HREF ="#Specification"><B>[Specification]</B></A>
+<A HREF ="#Arguments"><B>[Arguments]</B></A>
+<A HREF ="#Method"><B>[Method]</B></A>
+<A HREF ="#References"><B>[References]</B></A>
+<A HREF ="#Comments"><B>[Comments]</B></A>
+<A HREF ="#Example"><B>[Example]</B></A>
+
+<P>
+<B><FONT SIZE="+1">Purpose</FONT></B>
+<PRE>
+  To reduce a complex matrix pair (A,B) in generalized complex
+  Schur form to a block-diagonal form using well-conditioned
+  non-unitary equivalence transformations. The condition numbers
+  of the left and right transformations used for the reduction
+  are roughly bounded by PMAX, where PMAX is a given value.
+  The transformations are optionally postmultiplied in the given
+  matrices X and Y. The generalized Schur form is optionally
+  ordered, so that clustered eigenvalues are grouped in the same
+  pair of blocks.
+
+</PRE>
+<A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
+<PRE>
+      SUBROUTINE MB04RZ( JOBX, JOBY, SORT, N, PMAX, A, LDA, B, LDB, X,
+     $                   LDX, Y, LDY, NBLCKS, BLSIZE, ALPHA, BETA,
+     $                   TOL, IWORK, INFO )
+C     .. Scalar Arguments ..
+      CHARACTER         JOBX, JOBY, SORT
+      INTEGER           INFO, LDA, LDB, LDX, LDY, N, NBLCKS
+      DOUBLE PRECISION  PMAX, TOL
+C     .. Array Arguments ..
+      INTEGER           BLSIZE(*), IWORK(*)
+      COMPLEX*16        A(LDA,*), ALPHA(*), B(LDB,*), BETA(*), X(LDX,*),
+     $                  Y(LDY,*)
+
+</PRE>
+<A name="Arguments"><B><FONT SIZE="+1">Arguments</FONT></B></A>
+<P>
+
+<B>Mode Parameters</B>
+<PRE>
+  JOBX    CHARACTER*1
+          Specifies whether or not the left transformations are
+          accumulated, as follows:
+          = 'N':  The left transformations are not accumulated;
+          = 'U':  The left transformations are accumulated in X
+                  (the given matrix X is updated).
+
+  JOBY    CHARACTER*1
+          Specifies whether or not the right transformations are
+          accumulated, as follows:
+          = 'N':  The right transformations are not accumulated;
+          = 'U':  The right transformations are accumulated in Y
+                  (the given matrix Y is updated).
+
+  SORT    CHARACTER*1
+          Specifies whether or not the diagonal elements of the
+          generalized Schur form are reordered, as follows:
+          = 'N':  The diagonal elements are not reordered;
+          = 'S':  The diagonal elements are reordered before each
+                  step of reduction, so that clustered eigenvalues
+                  appear in the same pair of blocks.
+          = 'C':  The diagonal elements are not reordered, but the
+                  "closest-neighbour" strategy is used instead of
+                  the standard "closest to the mean" strategy (see
+                  METHOD);
+          = 'B':  The diagonal elements are reordered before each
+                  step of reduction, and the "closest-neighbour"
+                  strategy is used (see METHOD).
+
+</PRE>
+<B>Input/Output Parameters</B>
+<PRE>
+  N       (input) INTEGER
+          The order of the matrices A, B, X and Y.  N &gt;= 0.
+
+  PMAX    (input) DOUBLE PRECISION
+          An upper bound for the "absolute value" of the elements of
+          the individual transformations used for reduction
+          (see METHOD and FURTHER COMMENTS).  PMAX &gt;= 1.0D0.
+
+  A       (input/output) COMPLEX*16 array, dimension (LDA,N)
+          On entry, the leading N-by-N upper triangular part of this
+          array must contain the upper triangular matrix A in the
+          generalized complex Schur form, as returned by the LAPACK
+          Library routine ZGGES. The strictly lower triangular part
+          is used as workspace.
+          On exit, the leading N-by-N upper triangular part of
+          this array contains the computed block-diagonal matrix,
+          corresponding to the given matrix A. The remaining part
+          is set to zero.
+
+  LDA     INTEGER
+          The leading dimension of the array A.  LDA &gt;= MAX(1,N).
+
+  B       (input/output) COMPLEX*16 array, dimension (LDB,N)
+          On entry, the leading N-by-N upper triangular part of this
+          array must contain the upper triangular matrix B in the
+          generalized complex Schur form, as returned by the LAPACK
+          Library routine ZGGES. The diagonal elements of B are real
+          non-negative, hence the imaginary parts of these elements
+          are zero. The strictly lower triangular part is used as
+          workspace. The matrix B is assumed nonzero.
+          On exit, the leading N-by-N upper triangular part of this
+          array contains the computed upper triangular block-
+          diagonal matrix, corresponding to the given matrix B. The
+          remaining part is set to zero. The diagonal elements of B
+          are real non-negative.
+
+  LDB     INTEGER
+          The leading dimension of the array B.  LDB &gt;= MAX(1,N).
+
+  X       (input/output) COMPLEX*16 array, dimension (LDX,*)
+          On entry, if JOBX = 'U', the leading N-by-N part of this
+          array must contain a given matrix X, for instance the left
+          transformation matrix VSL returned by the LAPACK Library
+          routine ZGGES.
+          On exit, if JOBX = 'U', the leading N-by-N part of this
+          array contains the product of the given matrix X and the
+          left transformation matrix that reduced (A,B) to block-
+          diagonal form. The local transformation matrix is itself a
+          product of non-unitary equivalence transformations having
+          elements with magnitude less than or equal to PMAX.
+          If JOBX = 'N', this array is not referenced.
+
+  LDX     INTEGER
+          The leading dimension of the array X.
+          LDX &gt;= 1,        if JOBX = 'N';
+          LDX &gt;= MAX(1,N), if JOBX = 'U'.
+
+  Y       (input/output) COMPLEX*16 array, dimension (LDY,*)
+          On entry, if JOBY = 'U', the leading N-by-N part of this
+          array must contain a given matrix Y, for instance the
+          right transformation matrix VSR returned by the LAPACK
+          Library routine ZGGES.
+          On exit, if JOBY = 'U', the leading N-by-N part of this
+          array contains the product of the given matrix Y and the
+          right transformation matrix that reduced (A,B) to block-
+          diagonal form. The local transformation matrix is itself a
+          product of non-unitary equivalence transformations having
+          elements with magnitude less than or equal to PMAX.
+          If JOBY = 'N', this array is not referenced.
+
+  LDY     INTEGER
+          The leading dimension of the array Y.
+          LDY &gt;= 1,        if JOBY = 'N';
+          LDY &gt;= MAX(1,N), if JOBY = 'U'.
+
+  NBLCKS  (output) INTEGER
+          The number of diagonal blocks of the matrices A and B.
+
+  BLSIZE  (output) INTEGER array, dimension (N)
+          The first NBLCKS elements of this array contain the orders
+          of the resulting diagonal blocks of the matrices A and B.
+
+  ALPHA   (output) COMPLEX*16 array, dimension (N)
+  BETA    (output) COMPLEX*16 array, dimension (N)
+          If INFO = 0, then ALPHA(j)/BETA(j), j = 1, ..., N, are
+          the generalized eigenvalues of the matrix pair (A, B)
+          (the diagonals of the complex Schur form).
+          All BETA(j) are non-negative real numbers.
+          The quotients ALPHA(j)/BETA(j) may easily over- or
+          underflow, and BETA(j) may even be zero. Thus, the user
+          should avoid naively computing the ratio.
+          If A and B are obtained from general matrices using ZGGES,
+          ALPHA will be always less than and usually comparable with
+          norm(A) in magnitude, and BETA always less than and
+          usually comparable with norm(B).
+
+</PRE>
+<B>Tolerances</B>
+<PRE>
+  TOL     DOUBLE PRECISION
+          If SORT = 'S' or 'B', the tolerance to be used in the
+          ordering of the diagonal elements of the upper triangular
+          matrix pair.
+          If the user sets TOL &gt; 0, then the given value of TOL is
+          used as an absolute tolerance: an eigenvalue i and a
+          temporarily fixed eigenvalue 1 (represented by the first
+          element of the current trailing pair of submatrices to be
+          reduced) are considered to belong to the same cluster if
+          they satisfy the following "distance" condition
+
+            | lambda_1 - lambda_i | &lt;= TOL.
+
+          If the user sets TOL &lt; 0, then the given value of TOL is
+          used as a relative tolerance: an eigenvalue i and a
+          temporarily fixed eigenvalue 1 are considered to belong to
+          the same cluster if they satisfy, for finite lambda_j,
+          j = 1, ..., N,
+
+            | lambda_1 - lambda_i | &lt;= | TOL | * max | lambda_j |.
+
+          If the user sets TOL = 0, then an implicitly computed,
+          default tolerance, defined by TOL = SQRT( SQRT( EPS ) )
+          is used instead, as a relative tolerance, where EPS is
+          the machine precision (see LAPACK Library routine DLAMCH).
+          The approximate symmetric chordal metric is used as
+          "distance" of two complex, possibly infinite numbers, x
+          and y. This metric is given by the formula
+
+            d(x,y) = min( |x-y|, |1/x-1/y| ),
+
+          taking into account the special cases of infinite or NaN
+          values.
+          If SORT = 'N' or 'C', this parameter is not referenced.
+
+</PRE>
+<B>Workspace</B>
+<PRE>
+  IWORK   INTEGER array, dimension (N+2)
+
+</PRE>
+<B>Error Indicator</B>
+<PRE>
+  INFO    INTEGER
+          = 0:  successful exit;
+          &lt; 0:  if INFO = -i, the i-th argument had an illegal
+                value;
+          = 1:  the matrix pencil defined by A and B is singular.
+
+</PRE>
+<A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>
+<PRE>
+  Consider first that SORT = 'N'. Let
+
+         ( A    A   )       ( B    B   )
+         (  11   12 )       (  11   12 )
+     A = (          ),  B = (          ),
+         ( 0    A   )       ( 0    B   )
+         (       22 )       (       22 )
+
+  be the given matrix pair in generalized Schur form, where
+  initially A   and B   are the first diagonal elements.
+             11      11
+  An attempt is made to compute the transformation matrices X and Y
+  of the form
+
+         ( I   V )       ( I   W )
+     X = (       ),  Y = (       )                               (1)
+         ( 0   I )       ( 0   I )
+
+  (partitioned as A and B ), so that (' denotes conjugate-transpose)
+
+              ( A     0  )            ( B     0  )
+              (  11      )            (  11      )
+     X' A Y = (          ),  X' B Y = (          ),
+              ( 0    A   )            ( 0    B   )
+              (       22 )            (       22 )
+
+  and the elements of V and W do not exceed the value PMAX in
+  magnitude. An adaptation of the standard method for solving
+  generalized Sylvester equations [1], which controls the magnitude
+  of the individual elements of the computed solution [2], is used
+  to obtain V and W. When this attempt fails, an eigenvalue of
+  (A  , B  ) closest to the mean of those of (A  , B  ) is selected,
+    22   22                                    11   11
+  and moved by unitary equivalence transformations in the leading
+  position of (A  , B  ); the moved diagonal elements in A and B are
+                22   22
+  then added to the blocks A   and B  , respectively, increasing
+                            11      11
+  their order by 1. Another attempt is made to compute suitable
+  transformation matrices X and Y with the new definitions of the
+
+  blocks A  , A  , B  , and B  . After successful transformation
+          11   22   11       22
+  matrices X and Y have been obtained, they postmultiply the current
+  transformation matrices (if JOBX = 'U' and/or JOBY = 'U') and the
+  whole procedure is repeated for the new blocks A   and B  .
+                                                  22      22
+
+  When SORT = 'S', the diagonal elements of the generalized Schur
+  form are reordered before each step of the reduction, so that each
+  cluster of generalized eigenvalues, defined as specified in the
+  definition of TOL, appears in adjacent elements. The elements for
+  each cluster are merged together, and the procedure described
+  above is applied to the larger blocks. Using the option SORT = 'S'
+  will usually provide better efficiency than the standard option
+  (SORT = 'N'), proposed in [2], because there could be no or few
+  unsuccessful attempts to compute individual transformation
+  matrices X and Y of the form (1). However, the resulting
+  dimensions of the blocks are usually larger; this could make
+  subsequent calculations less efficient.
+
+  When SORT = 'C' or 'B', the procedure is similar to that for
+  SORT = 'N' or 'S', respectively, but the blocks of A   and B
+                                                      22      22
+  whose eigenvalue(s) is (are) the closest to those of (A  , B  )
+                                                         11   11
+  (not to their mean) are selected and moved to the leading position
+  of A   and B  . This is called the "closest-neighbour" strategy.
+      22      22
+
+</PRE>
+<A name="References"><B><FONT SIZE="+1">References</FONT></B></A>
+<PRE>
+  [1] Kagstrom, B. and Westin, L.
+      Generalized Schur Methods with Condition Estimators for
+      Solving the Generalized Sylvester Equation.
+      IEEE Trans. Auto. Contr., 34, pp. 745-751, 1989.
+
+  [2] Bavely, C. and Stewart, G.W.
+      An Algorithm for Computing Reducing Subspaces by Block
+      Diagonalization.
+      SIAM J. Numer. Anal., 16, pp. 359-367, 1979.
+
+  [3] Demmel, J.
+      The Condition Number of Equivalence Transformations that
+      Block Diagonalize Matrix Pencils.
+      SIAM J. Numer. Anal., 20, pp. 599-610, 1983.
+
+</PRE>
+<A name="Numerical Aspects"><B><FONT SIZE="+1">Numerical Aspects</FONT></B></A>
+<PRE>                                    3                     4
+  The algorithm usually requires 0(N ) operations, but 0(N ) are
+  possible in the worst case, when the matrix pencil cannot be
+  diagonalized by well-conditioned transformations.
+
+</PRE>
+<A name="Comments"><B><FONT SIZE="+1">Further Comments</FONT></B></A>
+<PRE>
+  The individual non-unitary transformation matrices used in the
+  reduction of A and B to a block-diagonal form have condition
+  numbers of the order PMAX. This does not guarantee that their
+  product is well-conditioned enough. The routine can be easily
+  modified to provide estimates for the condition numbers of the
+  clusters of generalized eigenvalues.
+  For efficiency reasons, the "absolute value" (or "magnitude") of
+  the complex elements x of the transformation matrices is computed
+  as |real(x)| + |imag(x)|.
+
+</PRE>
+
+<A name="Example"><B><FONT SIZE="+1">Example</FONT></B></A>
+<P>
+<B>Program Text</B>
+<PRE>
+  None
+</PRE>
+<B>Program Data</B>
+<PRE>
+  None
+</PRE>
+<B>Program Results</B>
+<PRE>
+  None
+</PRE>
+
+<HR>
+<p>
+<A HREF=..\libindex.html><B>Return to index</B></A></BODY>
+</HTML>

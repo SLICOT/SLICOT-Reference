@@ -258,8 +258,9 @@ C     .. Array Arguments ..
           user sets TOL(3) &gt;= 0, then the given value of TOL(3) is
           used. If the user sets TOL(3) &lt; 0, then an implicitly
           computed, default threshold, defined by  THRESH = c*EPS,
-          where c = MAX(norm_1(A,E,B,C)) is used instead.
-          TOL(3) = 0 is not always a good choice.  TOL(3) &lt; 1.
+          where c = MAX(||A||,||E||,||B||,||C||) is used instead and
+          1-norm is used. TOL(3) = 0 is not always a good choice.
+          TOL(3) &lt; 1.
           TOL(3) is not used if EQUIL = 'N'.
 
 </PRE>
@@ -322,18 +323,19 @@ C     .. Array Arguments ..
           is issued by XERBLA. The optimal workspace includes the
           extra space for improving the accuracy.
 
-  Error/Warning Indicator
-
+</PRE>
+<B>Warning Indicator</B>
+<PRE>
   IWARN   INTEGER
-          = 0: When determining the rank of a matrix, the distance
-               between the tolerance TOL(1) and the estimated
-               singular values is sufficiently large. The rank can
-               be safely determined;
-          = 1: When determining the rank of a matrix, there exist
-               estimated singular values which are very close to the
-               tolerance TOL(1). The computed rank is possibly
-               incorrect.
+          = 0: When determining the rank of a matrix, the rank can
+               be safely determined: a small decrease of TOL(1) will
+               not increase the rank.
+          = 1: The computed rank is possibly incorrect: a small
+               decrease of TOL(1) might increase the rank.
 
+</PRE>
+<B>Error Indicator</B>
+<PRE>
   INFO    INTEGER
           = 0: succesful exit;
           &lt; 0: if INFO = -i, the i-th argument had an illegal value;

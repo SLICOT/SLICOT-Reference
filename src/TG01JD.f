@@ -251,7 +251,7 @@ C     REVISIONS
 C
 C     July 1999, V. Sima, Research Institute for Informatics, Bucharest.
 C     May 2003, A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
-C     May 2003, March 2004, March 2017, April 2017, V. Sima.
+C     May 2003, March 2004, March 2017, April 2017, Sep. 2023, V. Sima.
 C
 C     KEYWORDS
 C
@@ -277,10 +277,12 @@ C     .. Local Scalars ..
      $                  LSYSP, LSYSR, LSYSS
       INTEGER           I, IB, KWA, KWB, KWC, KWE, LBA, LBE, LDM, LDP,
      $                  LDQ, LDZ, M1, MAXMP, N1, NBLCK, NC, P1
+      DOUBLE PRECISION  NRM, THRSH
 C     .. Local Arrays ..
       DOUBLE PRECISION  DUM(1)
 C     .. External Functions ..
       LOGICAL           LSAME
+      DOUBLE PRECISION  DLAMCH, DLANGE
       EXTERNAL          LSAME
 C     .. External Subroutines ..
       EXTERNAL          DLACPY, MA02CD, TB01XD, TG01AD, TG01HX, XERBLA
@@ -382,7 +384,12 @@ C     If required, scale the system (A-lambda*E,B,C).
 C     Workspace: need 8*N.
 C
       IF( LEQUIL ) THEN
-         CALL TG01AD( 'All', N, N, M, P, ZERO, A, LDA, E, LDE, B, LDB,
+         NRM = MAX( DLANGE( '1-norm', N, N, A, LDA, DWORK ),
+     $              DLANGE( '1-norm', N, N, E, LDE, DWORK ),
+     $              DLANGE( '1-norm', N, M, B, LDB, DWORK ),
+     $              DLANGE( '1-norm', P, N, C, LDC, DWORK ) )
+         THRSH = NRM*DLAMCH( 'Precision' ) 
+         CALL TG01AD( 'All', N, N, M, P, THRSH, A, LDA, E, LDE, B, LDB,
      $                C, LDP, DWORK(1), DWORK(N+1), DWORK(2*N+1), INFO )
       END IF
 C

@@ -200,7 +200,7 @@ C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 2015.
 C
 C     REVISIONS
 C
-C     V. Sima, Jan. 2016, Jan. 2017, Feb. 2017.
+C     V. Sima, Jan. 2016, Jan. 2017, Feb. 2017, Nov. 2023.
 C
 C     KEYWORDS
 C
@@ -236,18 +236,23 @@ C     .. Local Scalars ..
      $                   NA, NA0, NAS, NB, NB0, NBS, PGAMMA, PROD, RAB,
      $                   RATIO, SFMAX, SFMIN, SUM, T, TA, TB, TC, TH,
      $                   TH0, THS
+      COMPLEX*16         CDUM
 C     .. Local Arrays ..
       DOUBLE PRECISION   DUM(1)
 C     .. External Functions ..
       LOGICAL            LSAME
       INTEGER            IDAMAX, IZAMAX
-      DOUBLE PRECISION   DCABS1, DDOT, DLAMCH, ZLANGE
-      EXTERNAL           DCABS1, DDOT, DLAMCH, IDAMAX, IZAMAX, LSAME,
-     $                   ZLANGE
+      DOUBLE PRECISION   DDOT, DLAMCH, ZLANGE
+      EXTERNAL           DDOT, DLAMCH, IDAMAX, IZAMAX, LSAME, ZLANGE
 C     .. External Subroutines ..
       EXTERNAL           DAXPY, DCOPY, DSCAL, XERBLA, ZDSCAL, ZSWAP
 C     .. Intrinsic Functions ..
-      INTRINSIC          ABS, DBLE, INT, LOG10, MAX, MIN, SIGN, SQRT
+      INTRINSIC          ABS, DBLE, DIMAG, INT, LOG10, MAX, MIN, SIGN,
+     $                   SQRT
+C     .. Statement Functions ..
+      DOUBLE PRECISION   CABS1
+C     .. Statement Function definitions ..
+      CABS1( CDUM )    = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C
 C     .. Executable Statements ..
 C
@@ -470,7 +475,7 @@ C
          DO 170 J = ILO, IHI
             DO 160 I = ILO, IHI
                IF( I.NE.J ) THEN
-                  AB = DCABS1( A(I,J) )
+                  AB = CABS1( A(I,J) )
                   IF( AB.NE.ZERO )
      $               MN = MIN( MN, AB )
                   MX = MAX( MX, AB )
@@ -481,7 +486,7 @@ C
          DO 190 J = ILO, IHI
             DO 180 I = ILO, IHI
                IF( I.NE.J ) THEN
-                  AB = DCABS1( B(I,J) )
+                  AB = CABS1( B(I,J) )
                   IF( AB.NE.ZERO )
      $               MN = MIN( MN, AB )
                   MX = MAX( MX, AB )
@@ -531,8 +536,8 @@ C
          CALL DCOPY(  NR, DUM, 0, RSCALE(ILO), 1 )
          DO 210 I = ILO, IHI
             DO 200 J = ILO, IHI
-               TA = DCABS1( A(I,J) )
-               TB = DCABS1( B(I,J) )
+               TA = CABS1( A(I,J) )
+               TB = CABS1( B(I,J) )
                IF( TA.GT.TH ) THEN
                   TA = LOG10( TA ) / BASL
                ELSE

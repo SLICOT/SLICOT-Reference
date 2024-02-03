@@ -1,0 +1,479 @@
+<HTML>
+<HEAD><TITLE>AB13HD - SLICOT Library Routine Documentation</TITLE>
+</HEAD>
+<BODY>
+
+<H2><A Name="AB13HD">AB13HD</A></H2>
+<H3>
+L-infinity norm of a state space system in standard or in descriptor form</H3>
+<A HREF ="#Specification"><B>[Specification]</B></A>
+<A HREF ="#Arguments"><B>[Arguments]</B></A>
+<A HREF ="#Method"><B>[Method]</B></A>
+<A HREF ="#References"><B>[References]</B></A>
+<A HREF ="#Comments"><B>[Comments]</B></A>
+<A HREF ="#Example"><B>[Example]</B></A>
+
+<P>
+<B><FONT SIZE="+1">Purpose</FONT></B>
+<PRE>
+  To compute the L-infinity norm of a proper continuous-time or
+  causal discrete-time system, either standard or in the descriptor
+  form,
+
+                                  -1
+     G(lambda) = C*( lambda*E - A ) *B + D .
+
+  The norm is finite if and only if the matrix pair (A,E) has no
+  finite eigenvalue on the boundary of the stability domain, i.e.,
+  the imaginary axis, or the unit circle, respectively.
+
+</PRE>
+<A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
+<PRE>
+      SUBROUTINE AB13HD( DICO, JOBE, EQUIL, JOBD, CKPROP, REDUCE, POLES,
+     $                   N, M, P, RANKE, FPEAK, A, LDA, E, LDE, B, LDB,
+     $                   C, LDC, D, LDD, NR, GPEAK, TOL, IWORK, DWORK,
+     $                   LDWORK, ZWORK, LZWORK, BWORK, IWARN, INFO )
+C     .. Scalar Arguments ..
+      CHARACTER          CKPROP, DICO, EQUIL, JOBD, JOBE, POLES, REDUCE
+      INTEGER            INFO, IWARN, LDA, LDB, LDC, LDD, LDE, LDWORK,
+     $                   LZWORK, M, N, NR, P, RANKE
+C     .. Array Arguments ..
+      COMPLEX*16         ZWORK(  * )
+      DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), C( LDC, * ),
+     $                   D( LDD, * ), DWORK(  * ), E( LDE, * ),
+     $                   FPEAK(  2 ), GPEAK(  2 ), TOL( * )
+      INTEGER            IWORK(  * )
+      LOGICAL            BWORK(  * )
+
+</PRE>
+<A name="Arguments"><B><FONT SIZE="+1">Arguments</FONT></B></A>
+<P>
+
+<B>Mode Parameters</B>
+<PRE>
+  DICO    CHARACTER*1
+          Specifies the type of the system, as follows:
+          = 'C':  continuous-time system;
+          = 'D':  discrete-time system.
+
+  JOBE    CHARACTER*1
+          Specifies whether E is an identity matrix, a general
+          square matrix, or a matrix in compressed form, as follows:
+          = 'I':  E is the identity matrix;
+          = 'G':  E is a general matrix;
+          = 'C':  E is in compressed form, i.e., E = [ T  0 ],
+                                                     [ 0  0 ]
+                  with a square full-rank matrix T.
+
+  EQUIL   CHARACTER*1
+          Specifies whether the user wishes to preliminarily
+          equilibrate the system (A,E,B,C) or (A,B,C), as follows:
+          = 'S':  perform equilibration (scaling);
+          = 'N':  do not perform equilibration.
+
+  JOBD    CHARACTER*1
+          Specifies whether or not a non-zero matrix D appears in
+          the given state space model:
+          = 'D':  D is present;
+          = 'Z':  D is assumed a zero matrix;
+          = 'F':  D is known to be well-conditioned (hence, to have
+                  full rank), for DICO = 'C' and JOBE = 'I'.
+          The options JOBD = 'D' and JOBD = 'F' produce the same
+          results, but much less memory is needed for JOBD = 'F'.
+
+  CKPROP  CHARACTER*1
+          If DICO = 'C' and JOBE &lt;&gt; 'I', specifies whether the user
+          wishes to check the properness of the transfer function of
+          the descriptor system, as follows:
+          = 'C':  check the properness;
+          = 'N':  do not check the properness.
+          If the test is requested and the system is found improper
+          then GPEAK and FPEAK are both set to infinity, i.e., their
+          second component is zero; in addition, IWARN is set to 2.
+          If the test is not requested, but the system is improper,
+          the resulted GPEAK and FPEAK may be wrong.
+          If DICO = 'D' or JOBE = 'I', this option is ineffective.
+
+  REDUCE  CHARACTER*1
+          If CKPROP = 'C', specifies whether the user wishes to
+          reduce the system order, by removing all uncontrollable
+          and unobservable poles before computing the norm, as
+          follows:
+          = 'R': reduce the system order;
+          = 'N': compute the norm without reducing the order.
+          If CKPROP = 'N', this option is ineffective.
+
+  POLES   CHARACTER*1
+          Specifies whether the user wishes to use all or part of
+          the poles to compute the test frequencies (in the non-
+          iterative part of the algorithm), or all or part of the
+          midpoints (in the iterative part of the algorithm), as
+          follows:
+          = 'A': use all poles with non-negative imaginary parts
+                 and all midpoints;
+          = 'P': use part of the poles and midpoints.
+
+</PRE>
+<B>Input/Output Parameters</B>
+<PRE>
+  N       (input) INTEGER
+          The order of the system.  N &gt;= 0.
+
+  M       (input) INTEGER
+          The column size of the matrix B.  M &gt;= 0.
+
+  P       (input) INTEGER
+          The row size of the matrix C.  P &gt;= 0.
+
+  RANKE   (input) INTEGER
+          If JOBE = 'C', RANKE denotes the rank of the descriptor
+          matrix E or the size of the full-rank block T.
+          0 &lt;= RANKE &lt;= N.
+
+  FPEAK   (input/output) DOUBLE PRECISION array, dimension (2)
+          On entry, this parameter must contain an estimate of the
+          frequency where the gain of the frequency response would
+          achieve its peak value. Setting FPEAK(2) = 0 indicates an
+          infinite frequency. An accurate estimate could reduce the
+          number of iterations of the iterative algorithm. If no
+          estimate is available, set FPEAK(1) = 0, and FPEAK(2) = 1.
+          FPEAK(1) &gt;= 0, FPEAK(2) &gt;= 0.
+          On exit, if INFO = 0, this array contains the frequency
+          OMEGA, where the gain of the frequency response achieves
+          its peak value GPEAK, i.e.,
+
+              || G ( j*OMEGA ) || = GPEAK ,  if DICO = 'C', or
+
+                      j*OMEGA
+              || G ( e       ) || = GPEAK ,  if DICO = 'D',
+
+          where OMEGA = FPEAK(1), if FPEAK(2) &gt; 0, and OMEGA is
+          infinite, if FPEAK(2) = 0. (If nonzero, FPEAK(2) = 1.)
+          For discrete-time systems, it is assumed that the sampling
+          period is Ts = 1. If Ts &lt;&gt; 1, the frequency corresponding
+          to the peak gain is OMEGA/Ts.
+
+  A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
+          On entry, the leading N-by-N part of this array must
+          contain the state dynamics matrix A.
+          On exit, if EQUIL = 'S' and CKPROP = 'N', the leading
+          N-by-N part of this array contains the state dynamics
+          matrix of an equivalent, scaled system.
+          On exit, if CKPROP = 'C', DICO = 'C', and JOBE &lt;&gt; 'I', the
+          leading NR-by-NR part of this array contains the state
+          dynamics matrix of an equivalent reduced, possibly scaled
+          (if EQUIL = 'S') system, used to check the properness.
+          Otherwise, the array A is unchanged.
+
+  LDA     INTEGER
+          The leading dimension of the array A.  LDA &gt;= max(1,N).
+
+  E       (input/output) DOUBLE PRECISION array, dimension (LDE,K),
+          where K is N, RANKE, or 0, if JOBE = 'G', 'C', or 'I',
+          respectively.
+          On entry, if JOBE = 'G', the leading N-by-N part of this
+          array must contain the descriptor matrix E of the system.
+          If JOBE = 'C', the leading RANKE-by-RANKE part of this
+          array must contain the full-rank block T of the descriptor
+          matrix E.
+          If JOBE = 'I', then E is assumed to be the identity matrix
+          and is not referenced.
+          On exit, if EQUIL = 'S' and CKPROP = 'N', the leading
+          K-by-K part of this array contains the descriptor matrix
+          of an equivalent, scaled system.
+          On exit, if CKPROP = 'C', DICO = 'C', and JOBE &lt;&gt; 'I', the
+          leading MIN(K,NR)-by-MIN(K,NR) part of this array contains
+          the descriptor matrix of an equivalent reduced, possibly
+          scaled (if EQUIL = 'S') system, used to check the
+          properness.
+          Otherwise, the array E is unchanged.
+
+  LDE     INTEGER
+          The leading dimension of the array E.
+          LDE &gt;= MAX(1,N),     if JOBE = 'G';
+          LDE &gt;= MAX(1,RANKE), if JOBE = 'C';
+          LDE &gt;= 1,            if JOBE = 'I'.
+
+  B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
+          On entry, the leading N-by-M part of this array must
+          contain the system input matrix B.
+          On exit, if EQUIL = 'S' and CKPROP = 'N', the leading
+          NR-by-M part of this array contains the system input
+          matrix of an equivalent, scaled system.
+          On exit, if CKPROP = 'C', DICO = 'C', and JOBE &lt;&gt; 'I', the
+          leading NR-by-M part of this array contains the system
+          input matrix of an equivalent reduced, possibly scaled (if
+          EQUIL = 'S') system, used to check the properness.
+          Otherwise, the array B is unchanged.
+
+  LDB     INTEGER
+          The leading dimension of the array B.  LDB &gt;= max(1,N).
+
+  C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
+          On entry, the leading P-by-N part of this array must
+          contain the system output matrix C.
+          On exit, if EQUIL = 'S' and CKPROP = 'N', the leading
+          P-by-NR part of this array contains the system output
+          matrix of an equivalent, scaled system.
+          On exit, if CKPROP = 'C', DICO = 'C', and JOBE &lt;&gt; 'I', the
+          leading P-by-NR part of this array contains the system
+          output matrix of an equivalent reduced, possibly scaled
+          (if EQUIL = 'S') system, used to check the properness.
+          Otherwise, the array C is unchanged.
+
+  LDC     INTEGER
+          The leading dimension of the array C.  LDC &gt;= max(1,P).
+
+  D       (input) DOUBLE PRECISION array, dimension (LDD,M)
+          If JOBD = 'D' or JOBD = 'F', the leading P-by-M part of
+          this array must contain the direct transmission matrix D.
+          The array D is not referenced if JOBD = 'Z'.
+
+  LDD     INTEGER
+          The leading dimension of array D.
+          LDD &gt;= MAX(1,P), if JOBD = 'D' or JOBD = 'F';
+          LDD &gt;= 1,        if JOBD = 'Z'.
+
+  NR      (output) INTEGER
+          If CKPROP = 'C', DICO = 'C', and JOBE &lt;&gt; 'I', the order of
+          the reduced system. Otherwise, NR = N.
+
+  GPEAK   (output) DOUBLE PRECISION array, dimension (2)
+          The L-infinity norm of the system, i.e., the peak gain
+          of the frequency response (as measured by the largest
+          singular value in the MIMO case), coded in the same way
+          as FPEAK.
+
+</PRE>
+<B>Tolerances</B>
+<PRE>
+  TOL     DOUBLE PRECISION array, dimension K, where K = 2, if
+          CKPROP = 'N' or DICO = 'D' or JOBE = 'I', and K = 4,
+          otherwise.
+          TOL(1) is the tolerance used to set the accuracy in
+          determining the norm.  0 &lt;= TOL(1) &lt; 1.
+          TOL(2) is the threshold value for magnitude of the matrix
+          elements, if EQUIL = 'S': elements with magnitude less
+          than or equal to TOL(2) are ignored for scaling. If the
+          user sets TOL(2) &gt;= 0, then the given value of TOL(2) is
+          used. If the user sets TOL(2) &lt; 0, then an implicitly
+          computed, default threshold, THRESH, is used instead,
+          defined by THRESH = 0.1, if MN/MX &lt; EPS, and otherwise,
+          THRESH = MIN( 100*(MN/(EPS**0.25*MX))**0.5, 0.1 ), where
+          MX and MN are the maximum and the minimum nonzero absolute
+          value, respectively, of the elements of A and E, and EPS
+          is the machine precision (see LAPACK Library routine
+          DLAMCH). TOL(2) = 0 is not always a good choice.
+          TOL(2) &lt; 1. TOL(2) is not used if EQUIL = 'N'.
+          TOL(3) is the tolerance to be used in rank determinations
+          when transforming (lambda*E-A,B,C), if CKPROP = 'C'. If
+          the user sets TOL(3) &gt; 0, then the given value of TOL(3)
+          is used as a lower bound for reciprocal condition numbers
+          in rank determinations; a (sub)matrix whose estimated
+          condition number is less than 1/TOL(3) is considered to be
+          of full rank.  If the user sets TOL(3) &lt;= 0, then an
+          implicitly computed, default tolerance, defined by
+          TOLDEF1 = N*N*EPS, is used instead.  TOL(3) &lt; 1.
+          TOL(4) is the tolerance to be used for checking the
+          singularity of the matrices A and E when CKPROP = 'C'.
+          If the user sets TOL(4) &gt; 0, then the given value of
+          TOL(4) is used.  If the user sets TOL(4) &lt;= 0, then an
+          implicitly computed, default tolerance, defined by
+          TOLDEF2 = N*EPS, is used instead. The 1-norms of A and E
+          are also taken into account.  TOL(4) &lt; 1.
+
+</PRE>
+<B>Workspace</B>
+<PRE>
+  IWORK   INTEGER array, dimension (LIWORK)
+          LIWORK &gt;= 1, if MIN(N,P,M) = 0, or B = 0, or C = 0; else
+          LIWORK &gt;= MAX(1,N), if DICO = 'C', JOBE = 'I', and
+                    JOBD &lt;&gt; 'D';
+          LIWORK &gt;= 2*N + M + P + R + 12, otherwise, where
+                    R = 0, if M + P is even,
+                    R = 1, if M + P is odd.
+          On exit, if INFO = 0, IWORK(1) returns the number of
+          iterations performed by the iterative algorithm
+          (possibly 0).
+
+  DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+          On exit, if INFO = 0, DWORK(1) contains the optimal value
+          of LDWORK.
+          On exit, if  INFO = -28,  DWORK(1)  returns the minimum
+          value of LDWORK. These values are also set when LDWORK = 0
+          on entry, but no error message related to LDWORK is issued
+          by XERBLA.
+
+  LDWORK  INTEGER
+          The dimension of the array DWORK.
+          LDWORK &gt;= 1, if MIN(M,P) = 0 or ( JOBD = 'Z' and
+                                      ( N = 0 or B = 0 or C = 0 ) );
+          LDWORK &gt;= P*M + x, if ( ( N = 0 and MIN(M,P) &gt; 0 )
+                       or ( B = 0 or C = 0 ) ) and JOBD &lt;&gt; 'Z',
+                    where
+                    x = MAX( 4*MIN(M,P) + MAX(M,P), 6*MIN(M,P) ),
+                                    if DICO = 'C',
+                    x = 6*MIN(M,P), if DICO = 'D';
+          LDWORK &gt;= MAX( 1, N*(N+M+P+2) + MAX( N*(N+M+2) + P*M + x,
+                                               4*N*N + 9*N ) ),
+                    if DICO = 'C', JOBE = 'I' and JOBD = 'Z'.
+          LDWORK &gt;= MAX( 1, (N+M)*(M+P) + P*P + x,
+                         2*N*(N+M+P+1) + N + MIN(P,M) +
+                         MAX( M*(N+P) + N + x, N*N +
+                              MAX( N*(P+M) + MAX(M,P),
+                                   2*N*N + 8*N ) ) ),
+                    if DICO = 'C', JOBE = 'I' and JOBD = 'F'.
+          The formulas for other cases, e.g., for JOBE &lt;&gt; 'I' or
+          CKPROP = 'C', contain additional and/or other terms.
+          The minimum value of LDWORK for all cases can be obtained
+          in DWORK(1) when LDWORK is set to 0 on entry.
+          For good performance, LDWORK must generally be larger.
+
+          If LDWORK = -1, then a workspace query is assumed;
+          the routine only calculates the optimal size of the
+          DWORK array, returns this value as the first entry of
+          the DWORK array, and no error message related to LDWORK
+          is issued by XERBLA.
+
+  ZWORK   COMPLEX*16 array, dimension (LZWORK)
+          On exit, if INFO = 0, ZWORK(1) contains the optimal
+          LZWORK.
+          On exit, if  INFO = -30,  ZWORK(1)  returns the minimum
+          value of LZWORK. These values are also set when LZWORK = 0
+          on entry, but no error message related to LZWORK is issued
+          by XERBLA.
+          If LDWORK = 0 and LZWORK = 0 are both set on entry, then
+          on exit, INFO = -30, but both DWORK(1) and ZWORK(1) are
+          set the minimum values of LDWORK and LZWORK, respectively.
+
+  LZWORK  INTEGER
+          The dimension of the array ZWORK.
+          LZWORK &gt;= 1,  if MIN(N,M,P) = 0, or B = 0, or C = 0;
+          LZWORK &gt;= MAX(1, (N+M)*(N+P) + 2*MIN(M,P) + MAX(M,P)),
+                        otherwise.
+          For good performance, LZWORK must generally be larger.
+
+          If LZWORK = -1, then a workspace query is assumed;
+          the routine only calculates the optimal size of the
+          ZWORK array, returns this value as the first entry of
+          the ZWORK array, and no error message related to LZWORK
+          is issued by XERBLA.
+
+  BWORK   LOGICAL array, dimension (N)
+
+</PRE>
+<B>Warning Indicator</B>
+<PRE>
+  IWARN   INTEGER
+          = 0:  no warning;
+          = 1:  the descriptor system is singular. GPEAK(1) and
+                GPEAK(2) are set to 0. FPEAK(1) and FPEAK(2) are
+                set to 0 and 1, respectively;
+          = 2:  the descriptor system is improper. GPEAK(1) and
+                GPEAK(2) are set to 1 and 0, respectively,
+                corresponding to infinity. FPEAK(1) and FPEAK(2) are
+                set similarly. This warning can only appear if
+                CKPROP = 'C'.
+
+</PRE>
+<B>Error Indicator</B>
+<PRE>
+  INFO    INTEGER
+          = 0:  successful exit;
+          &lt; 0:  if INFO = -i, the i-th argument had an illegal
+                value;
+          = 1:  a matrix is (numerically) singular or the Sylvester
+                equation is very ill-conditioned, when computing the
+                largest singular value of G(infinity) (for
+                DICO = 'C'); the descriptor system is nearly
+                singular; the L-infinity norm could be infinite;
+          = 2:  the (periodic) QR (or QZ) algorithm for computing
+                eigenvalues did not converge;
+          = 3:  the SVD algorithm for computing singular values did
+                not converge;
+          = 4:  the tolerance is too small and the algorithm did
+                not converge; this is a warning; 
+          = 5:  other computations than QZ iteration, or reordering
+                of eigenvalues, failed in the LAPACK Library
+                routines DHGEQZ or DTGSEN, respectively;
+          = 6:  the numbers of "finite" eigenvalues before and after
+                reordering differ; the threshold used might be
+                unsuitable.
+
+</PRE>
+<A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>
+<PRE>
+  The routine implements the method presented in [2], which is an
+  extension of the method in [1] for descriptor systems. There are
+  several improvements and refinements [3-5] to increase numerical
+  robustness, accuracy and efficiency, such as the usage of
+  structure-preserving eigenvalue computations for skew-Hamiltonian/
+  Hamiltonian eigenvalue problems in the iterative method in [2].
+
+</PRE>
+<A name="References"><B><FONT SIZE="+1">References</FONT></B></A>
+<PRE>
+  [1] Bruinsma, N.A. and Steinbuch, M.
+      A fast algorithm to compute the H-infinity-norm of a transfer
+      function matrix.
+      Systems & Control Letters, vol. 14, pp. 287-293, 1990.
+
+  [2] Voigt, M.
+      L-infinity-Norm Computation for Descriptor Systems.
+      Diploma Thesis, Fakultaet fuer Mathematik, TU Chemnitz,
+      http://nbn-resolving.de/urn:nbn:de:bsz:ch1-201001050.
+
+  [3] Benner, P., Sima, V. and Voigt, M.
+      L-infinity-norm computation for continuous-time descriptor
+      systems using structured matrix pencils.
+      IEEE Trans. Auto. Contr., AC-57, pp.233-238, 2012.
+
+  [4] Benner, P., Sima, V. and Voigt, M.
+      Robust and efficient algorithms for L-infinity-norm
+      computations for descriptor systems.
+      7th IFAC Symposium on Robust Control Design (ROCOND'12),
+      pp. 189-194, 2012.
+
+  [5] Benner, P., Sima, V. and Voigt, M.
+      Algorithm 961: Fortran 77 subroutines for the solution of
+      skew-Hamiltonian/Hamiltonian eigenproblems.
+      ACM Trans. Math. Softw, 42, pp. 1-26, 2016.
+
+</PRE>
+<A name="Numerical Aspects"><B><FONT SIZE="+1">Numerical Aspects</FONT></B></A>
+<PRE>
+  If the algorithm does not converge in MAXIT = 30 iterations
+  (INFO = 4), the tolerance must be increased, or the system is
+  improper.
+
+</PRE>
+<A name="Comments"><B><FONT SIZE="+1">Further Comments</FONT></B></A>
+<PRE>
+  Setting POLES = 'P' usually saves some computational effort. The
+  number of poles used is defined by the parameters BM, BNEICD,
+  BNEICM, BNEICX, BNEIR and SWNEIC.
+  Both real and complex optimal workspace sizes are computed if
+  either LDWORK = -1 or LZWORK = -1.
+
+</PRE>
+
+<A name="Example"><B><FONT SIZE="+1">Example</FONT></B></A>
+<P>
+<B>Program Text</B>
+<PRE>
+  None
+</PRE>
+<B>Program Data</B>
+<PRE>
+  None
+</PRE>
+<B>Program Results</B>
+<PRE>
+  None
+</PRE>
+
+<HR>
+<p>
+<A HREF=..\libindex.html><B>Return to index</B></A></BODY>
+</HTML>

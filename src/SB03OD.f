@@ -312,7 +312,7 @@ C     REVISIONS
 C
 C     Dec. 1997, April 1998, May 1998, May 1999, Oct. 2001 (V. Sima).
 C     March 2002 (A. Varga).
-C     V. Sima, July 2011, Jan. - Feb. 2022, May 2022.
+C     V. Sima, July 2011, Jan. - Feb. 2022, May 2022, Apr. 2023.
 C
 C     KEYWORDS
 C
@@ -396,7 +396,11 @@ C
             ELSE
                WRKOPT = MINWRK
             END IF
-            CALL DGEQRF( MAXMN, N, B, LDB, DWORK, DWORK, -1, IFAIL )
+            IF ( ISTRAN ) THEN
+               CALL DGERQF( N, MAXMN, B, LDB, DWORK, DWORK, -1, IFAIL )
+            ELSE
+               CALL DGEQRF( MAXMN, N, B, LDB, DWORK, DWORK, -1, IFAIL )
+            END IF
             WRKOPT = MAX( WRKOPT, INT( DWORK(1) ) + N )
          ELSE IF( LDWORK.LT.MINWRK ) THEN
             DWORK(1) = MINWRK

@@ -65,7 +65,7 @@ C
 C     REVISIONS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Oct. 2000,
-C     Jan. 2005.
+C     Jan. 2005, Nov. 2023.
 C
 C     KEYWORDS
 C
@@ -83,13 +83,15 @@ C     .. Array Arguments ..
       COMPLEX*16        H(LDH,*)
 C     .. Local Scalars ..
       INTEGER           J, JP
-C     .. External Functions ..
-      DOUBLE PRECISION  DCABS1
-      EXTERNAL          DCABS1
+      COMPLEX*16        CDUM
 C     .. External Subroutines ..
       EXTERNAL          XERBLA, ZAXPY, ZSWAP
 C     .. Intrinsic Functions ..
-      INTRINSIC         MAX
+      INTRINSIC         ABS, DBLE, DIMAG, MAX
+C     .. Statement Functions ..
+      DOUBLE PRECISION  CABS1
+C     .. Statement Function definitions ..
+      CABS1( CDUM )   = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -117,7 +119,7 @@ C        Find pivot and test for singularity.
 C
          JP = J
          IF ( J.LT.N ) THEN
-            IF ( DCABS1( H( J+1, J ) ).GT.DCABS1( H( J, J ) ) )
+            IF ( CABS1( H( J+1, J ) ).GT.CABS1( H( J, J ) ) )
      $         JP = J + 1
          END IF
          IPIV( J ) = JP

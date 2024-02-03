@@ -1,7 +1,7 @@
       DOUBLE PRECISION FUNCTION AB13DX( DICO, JOBE, JOBD, N, M, P,
      $                                  OMEGA, A, LDA, E, LDE, B, LDB,
      $                                  C, LDC, D, LDD, IWORK, DWORK,
-     $                                  LDWORK, CWORK, LCWORK, INFO )
+     $                                  LDWORK, ZWORK, LZWORK, INFO )
 C
 C     PURPOSE
 C
@@ -155,17 +155,17 @@ C                         or MIN(P,M) = 0;
 C             LDW2 = 6*MIN(P,M), otherwise.
 C             For good performance, LDWORK must generally be larger.
 C
-C     CWORK   COMPLEX*16 array, dimension (LCWORK)
-C             On exit, if INFO = 0, CWORK(1) contains the optimal
-C             LCWORK.
+C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C             On exit, if INFO = 0, ZWORK(1) contains the optimal
+C             LZWORK.
 C
-C     LCWORK  INTEGER
-C             The dimension of the array CWORK.
-C             LCWORK >= 1, if N = 0, or B = 0, or C = 0, or (OMEGA = 0
+C     LZWORK  INTEGER
+C             The dimension of the array ZWORK.
+C             LZWORK >= 1, if N = 0, or B = 0, or C = 0, or (OMEGA = 0
 C                             and DICO = 'C') or MIN(P,M) = 0;
-C             LCWORK >= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
+C             LZWORK >= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
 C                          otherwise.
-C             For good performance, LCWORK must generally be larger.
+C             For good performance, LZWORK must generally be larger.
 C
 C     Error Indicator
 C
@@ -193,7 +193,8 @@ C     V. Sima, Research Institute for Informatics, Bucharest, May 2001.
 C
 C     REVISIONS
 C
-C     V. Sima, Research Institute for Informatics, Bucharest, Sep. 2005.
+C     V. Sima, Research Institute for Informatics, Bucharest, Sep. 2005;
+C     July 2022.
 C
 C     KEYWORDS
 C
@@ -209,12 +210,12 @@ C     .. Parameters ..
 C     ..
 C     .. Scalar Arguments ..
       CHARACTER          DICO, JOBD, JOBE
-      INTEGER            INFO, LCWORK, LDA, LDB, LDC, LDD, LDE, LDWORK,
+      INTEGER            INFO, LDA, LDB, LDC, LDD, LDE, LDWORK, LZWORK,
      $                   M, N, P
       DOUBLE PRECISION   OMEGA
 C     ..
 C     .. Array Arguments ..
-      COMPLEX*16         CWORK(  * )
+      COMPLEX*16         ZWORK(  * )
       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), C( LDC, * ),
      $                   D( LDD, * ), DWORK(  * ), E( LDE, * )
       INTEGER            IWORK(  * )
@@ -222,7 +223,7 @@ C     ..
 C     .. Local Scalars ..
       LOGICAL            DISCR, FULLE, NODYN, SPECL, WITHD
       INTEGER            I, ICB, ICC, ICD, ICWK, ID, IERR, IS, IWRK, J,
-     $                   MAXWRK, MINCWR, MINPM, MINWRK
+     $                   MAXPM, MAXWRK, MINCWR, MINPM, MINWRK
       DOUBLE PRECISION   BNORM, CNORM, LAMBDI, LAMBDR, UPD
 C
 C     .. External Functions ..
@@ -274,17 +275,16 @@ C
          NODYN = N.EQ.0 .OR. MIN( BNORM, CNORM ).EQ.ZERO
          SPECL = .NOT.NODYN .AND. OMEGA.EQ.ZERO .AND. .NOT.DISCR
          MINPM = MIN( P, M )
+         MAXPM = MAX( P, M )
 C
 C        Compute workspace.
 C
-         IF( MINPM.EQ.0 ) THEN
+         IF( MINPM.EQ.0 .OR. ( NODYN .AND. .NOT.WITHD ) ) THEN
             MINWRK = 0
          ELSE IF( SPECL .OR. ( NODYN .AND. WITHD ) ) THEN
-            MINWRK = MINPM + MAX( 3*MINPM + MAX( P, M ), 5*MINPM )
-            IF ( SPECL .AND. .NOT.WITHD )
+            MINWRK = MAX( 4*MINPM + MAXPM, 6*MINPM )
+            IF( SPECL .AND. .NOT.WITHD )
      $         MINWRK = MINWRK + P*M
-         ELSE IF ( NODYN .AND. .NOT.WITHD ) THEN
-            MINWRK = 0
          ELSE
             MINWRK = 6*MINPM
          END IF
@@ -293,14 +293,14 @@ C
          IF( LDWORK.LT.MINWRK ) THEN
             INFO = -20
          ELSE
-            IF ( NODYN .OR. ( OMEGA.EQ.ZERO .AND. .NOT.DISCR ) .OR.
+            IF( NODYN .OR. ( OMEGA.EQ.ZERO .AND. .NOT.DISCR ) .OR.
      $           MINPM.EQ.0 ) THEN
                MINCWR = 1
             ELSE
                MINCWR = MAX( 1, ( N + M )*( N + P ) +
-     $                          2*MINPM + MAX( P, M ) )
+     $                          2*MINPM + MAXPM )
             END IF
-            IF( LCWORK.LT.MINCWR )
+            IF( LZWORK.LT.MINCWR )
      $         INFO = -22
          END IF
       END IF
@@ -316,7 +316,7 @@ C
          AB13DX = ZERO
 C
          DWORK( 1 ) = ONE
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = CONE
          RETURN
       END IF
 C
@@ -331,7 +331,7 @@ C
 C
 C        No dynamics: Determine the maximum singular value of G = D .
 C
-         IF ( WITHD ) THEN
+         IF( WITHD ) THEN
 C
 C           Workspace: need   MIN(P,M) + MAX(3*MIN(P,M) + MAX(P,M),
 C                                            5*MIN(P,M));
@@ -352,7 +352,7 @@ C
          END IF
 C
          DWORK( 1 ) = MAXWRK
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = CONE
          RETURN
       END IF
 C
@@ -360,7 +360,7 @@ C     Determine the maximum singular value of
 C        G(lambda) = C*inv(lambda*E - A)*B + D.
 C     The (generalized) Hessenberg form of the system is used.
 C
-      IF ( SPECL ) THEN
+      IF( SPECL ) THEN
 C
 C        Special continuous-time case:
 C        Determine the maximum singular value of the real matrix G(0).
@@ -372,12 +372,12 @@ C
          IF( IERR.GT.0 ) THEN
             INFO = IERR
             DWORK( 1 ) = ONE
-            CWORK( 1 ) = ONE
+            ZWORK( 1 ) = CONE
             RETURN
          END IF
          CALL MB02RD( 'No Transpose', N, M, A, LDA, IWORK, B, LDB,
      $                IERR )
-         IF ( WITHD ) THEN
+         IF( WITHD ) THEN
             CALL DGEMM(  'No Transpose', 'No Transpose', P, M, N, -ONE,
      $                   C, LDC, B, LDB, ONE, D, LDD )
             CALL DGESVD( 'No Vectors', 'No Vectors', P, M, D, LDD,
@@ -402,7 +402,7 @@ C
 C
          AB13DX = DWORK( IS )
          DWORK( 1 ) = INT( DWORK( IWRK ) ) + IWRK - 1
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = CONE
          RETURN
       END IF
 C
@@ -414,30 +414,30 @@ C
       ICD  = ICC + P*N
       ICWK = ICD + P*M
 C
-      IF ( WITHD ) THEN
+      IF( WITHD ) THEN
          UPD = ONE
       ELSE
          UPD = ZERO
       END IF
 C
-      IF ( DISCR ) THEN
+      IF( DISCR ) THEN
          LAMBDR = COS( OMEGA )
          LAMBDI = SIN( OMEGA )
 C
 C        Build lambda*E - A .
 C
-         IF ( FULLE ) THEN
+         IF( FULLE ) THEN
 C
             DO 20 J = 1, N
 C
                DO 10 I = 1, J
-                  CWORK( I+(J-1)*N ) =
+                  ZWORK( I+(J-1)*N ) =
      $               DCMPLX( LAMBDR*E( I, J ) - A( I, J ),
      $                       LAMBDI*E( I, J ) )
    10          CONTINUE
 C
                IF( J.LT.N )
-     $            CWORK( J+1+(J-1)*N ) = DCMPLX( -A( J+1, J ), ZERO )
+     $            ZWORK( J+1+(J-1)*N ) = DCMPLX( -A( J+1, J ), ZERO )
    20      CONTINUE
 C
          ELSE
@@ -445,10 +445,10 @@ C
             DO 40 J = 1, N
 C
                DO 30 I = 1, MIN( J+1, N )
-                  CWORK( I+(J-1)*N ) = -A( I, J )
+                  ZWORK( I+(J-1)*N ) = DCMPLX( -A( I, J ), ZERO )
    30          CONTINUE
 C
-               CWORK( J+(J-1)*N ) = DCMPLX( LAMBDR - A( J, J ), LAMBDI )
+               ZWORK( J+(J-1)*N ) = DCMPLX( LAMBDR - A( J, J ), LAMBDI )
    40      CONTINUE
 C
          END IF
@@ -457,17 +457,17 @@ C
 C
 C        Build j*omega*E - A.
 C
-         IF ( FULLE ) THEN
+         IF( FULLE ) THEN
 C
             DO 60 J = 1, N
 C
                DO 50 I = 1, J
-                  CWORK( I+(J-1)*N ) =
+                  ZWORK( I+(J-1)*N ) =
      $               DCMPLX( -A( I, J ), OMEGA*E( I, J ) )
    50         CONTINUE
 C
                IF( J.LT.N )
-     $            CWORK( J+1+(J-1)*N ) = DCMPLX( -A( J+1, J ), ZERO )
+     $            ZWORK( J+1+(J-1)*N ) = DCMPLX( -A( J+1, J ), ZERO )
    60      CONTINUE
 C
          ELSE
@@ -475,10 +475,10 @@ C
             DO 80 J = 1, N
 C
                DO 70 I = 1, MIN( J+1, N )
-                  CWORK( I+(J-1)*N ) = -A( I, J )
+                  ZWORK( I+(J-1)*N ) = DCMPLX( -A( I, J ), ZERO )
    70          CONTINUE
 C
-               CWORK( J+(J-1)*N ) = DCMPLX( -A( J, J ), OMEGA )
+               ZWORK( J+(J-1)*N ) = DCMPLX( -A( J, J ), OMEGA )
    80      CONTINUE
 C
          END IF
@@ -487,31 +487,31 @@ C
 C
 C     Build G(lambda) .
 C
-      CALL ZLACP2( 'Full', N, M, B, LDB, CWORK( ICB ), N )
-      CALL ZLACP2( 'Full', P, N, C, LDC, CWORK( ICC ), P )
-      IF ( WITHD )
-     $   CALL ZLACP2( 'Full', P, M, D, LDD, CWORK( ICD ), P )
+      CALL ZLACP2( 'Full', N, M, B, LDB, ZWORK( ICB ), N )
+      CALL ZLACP2( 'Full', P, N, C, LDC, ZWORK( ICC ), P )
+      IF( WITHD )
+     $   CALL ZLACP2( 'Full', P, M, D, LDD, ZWORK( ICD ), P )
 C
-      CALL MB02SZ( N, CWORK, N, IWORK, IERR )
+      CALL MB02SZ( N, ZWORK, N, IWORK, IERR )
       IF( IERR.GT.0 ) THEN
          INFO = IERR
          DWORK( 1 ) = ONE
-         CWORK( 1 ) = ICWK - 1
+         ZWORK( 1 ) = ICWK - 1
          RETURN
       END IF
-      CALL MB02RZ( 'No Transpose', N, M, CWORK, N, IWORK,
-     $             CWORK( ICB ), N, IERR )
+      CALL MB02RZ( 'No Transpose', N, M, ZWORK, N, IWORK,
+     $             ZWORK( ICB ), N, IERR )
       CALL ZGEMM(  'No Transpose', 'No Transpose', P, M, N, CONE,
-     $             CWORK( ICC ), P, CWORK( ICB ), N,
-     $             DCMPLX( UPD, ZERO ), CWORK( ICD ), P )
+     $             ZWORK( ICC ), P, ZWORK( ICB ), N,
+     $             DCMPLX( UPD, ZERO ), ZWORK( ICD ), P )
 C
 C     Additional workspace, complex: need   2*MIN(P,M) + MAX(P,M);
 C                                    prefer larger;
 C                           real:    need   5*MIN(P,M).
 C
-      CALL ZGESVD( 'No Vectors', 'No Vectors', P, M, CWORK( ICD ), P,
-     $             DWORK( IS ), CWORK, P, CWORK, M, CWORK( ICWK ),
-     $             LCWORK-ICWK+1, DWORK( IWRK ), IERR )
+      CALL ZGESVD( 'No Vectors', 'No Vectors', P, M, ZWORK( ICD ), P,
+     $             DWORK( IS ), ZWORK, P, ZWORK, M, ZWORK( ICWK ),
+     $             LZWORK-ICWK+1, DWORK( IWRK ), IERR )
       IF( IERR.GT.0 ) THEN
          INFO = N + 1
          RETURN
@@ -519,8 +519,13 @@ C
       AB13DX = DWORK( IS )
 C
       DWORK( 1 ) = 6*MINPM
-      CWORK( 1 ) = INT( CWORK( ICWK ) ) + ICWK - 1
+      ZWORK( 1 ) = INT( ZWORK( ICWK ) ) + ICWK - 1
 C
+C     Some implementations of ZGESVD return a huge value for the optimal
+C     workspace. If this is suspected, minimum workspace size is used. 
+C
+      IF( INT( ZWORK( ICWK ) ).GT.100*( 2*MINPM + MAXPM ) )
+     $   ZWORK( 1 ) = MINCWR
       RETURN
 C *** Last line of AB13DX ***
       END

@@ -295,7 +295,7 @@ C     V. Sima, March 2022.
 C
 C     REVISIONS
 C
-C     V. Sima, April 2022.
+C     V. Sima, April 2022, Apr. 2023.
 C
 C     KEYWORDS
 C
@@ -381,7 +381,11 @@ C
             ELSE
                WRKOPT = MINWRK
             END IF
-            CALL ZGEQRF( MAXMN, N, B, LDB, ZWORK, ZWORK, -1, IFAIL )
+            IF ( ISTRAN ) THEN
+               CALL ZGERQF( N, MAXMN, B, LDB, ZWORK, ZWORK, -1, IFAIL )
+            ELSE
+               CALL ZGEQRF( MAXMN, N, B, LDB, ZWORK, ZWORK, -1, IFAIL )
+            END IF
             WRKOPT = MAX( WRKOPT, INT( ZWORK(1) ) + N )
          ELSE IF ( LZWORK.LT.MINWRK ) THEN
             ZWORK(1) = MINWRK

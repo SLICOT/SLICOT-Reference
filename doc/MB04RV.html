@@ -1,0 +1,196 @@
+<HTML>
+<HEAD><TITLE>MB04RV - SLICOT Library Routine Documentation</TITLE>
+</HEAD>
+<BODY>
+
+<H2><A Name="MB04RV">MB04RV</A></H2>
+<H3>
+Solution of a generalized complex Sylvester equation with matrix pairs in generalized complex Schur form
+</H3>
+<A HREF ="#Specification"><B>[Specification]</B></A>
+<A HREF ="#Arguments"><B>[Arguments]</B></A>
+<A HREF ="#Method"><B>[Method]</B></A>
+<A HREF ="#References"><B>[References]</B></A>
+<A HREF ="#Comments"><B>[Comments]</B></A>
+<A HREF ="#Example"><B>[Example]</B></A>
+
+<P>
+<B><FONT SIZE="+1">Purpose</FONT></B>
+<PRE>
+  To solve the generalized complex Sylvester equation
+
+           A * R - L * B = scale * C,                            (1)
+           D * R - L * E = scale * F,
+
+  using Level 1 and 2 BLAS, where R and L are unknown M-by-N
+  matrices, and (A, D), (B, E) and (C, F) are given matrix pairs of
+  size M-by-M, N-by-N and M-by-N, respectively. A, B, D and E are
+  complex upper triangular (i.e., (A,D) and (B,E) are in generalized
+  Schur form).
+
+  The solution (R, L) overwrites (C, F). 0 &lt;= SCALE &lt;= 1 is an
+  output scaling factor chosen to avoid overflow.
+
+  This routine is intended to be called only by SLICOT Library
+  routine MB04RW. For efficiency purposes, the computations are
+  aborted when the absolute value of an element of R or L is greater
+  than a given value PMAX.
+
+</PRE>
+<A name="Specification"><B><FONT SIZE="+1">Specification</FONT></B></A>
+<PRE>
+      SUBROUTINE MB04RV( M, N, PMAX, A, LDA, B, LDB, C, LDC, D, LDD, E,
+     $                   LDE, F, LDF, SCALE, INFO )
+C     .. Scalar Arguments ..
+      INTEGER            INFO, LDA, LDB, LDC, LDD, LDE, LDF, M, N
+      DOUBLE PRECISION   PMAX, SCALE
+C     .. Array Arguments ..
+      COMPLEX*16         A( LDA, * ), B( LDB, * ), C( LDC, * ),
+     $                   D( LDD, * ), E( LDE, * ), F( LDF, * )
+
+</PRE>
+<A name="Arguments"><B><FONT SIZE="+1">Arguments</FONT></B></A>
+<P>
+
+</PRE>
+<B>Input/Output Parameters</B>
+<PRE>
+  M       (input) INTEGER
+          The order of the matrices A and D, and the row dimension
+          of C, F, R and L.  M &gt;= 0.
+
+  N       (input) INTEGER
+          The order of the matrices B and E, and the column
+          dimension of C, F, R and L.  N &gt;= 0.
+
+  PMAX    (input) DOUBLE PRECISION
+          An upper bound for the "absolute value" of the elements of
+          the solution (R, L). (See FURTHER COMMENTS.)
+          PMAX &gt;= 1.0D0.
+
+  A       (input) COMPLEX*16 array, dimension (LDA, M)
+          On entry, the leading M-by-M upper triangular part of this
+          array must contain the matrix A in the generalized complex
+          Schur form, as returned by LAPACK routine ZGGES.
+
+  LDA     INTEGER
+          The leading dimension of the array A.  LDA &gt;= max(1, M).
+
+  B       (input) COMPLEX*16 array, dimension (LDB, N)
+          On entry, the leading N-by-N upper triangular part of this
+          array must contain the matrix B in the generalized complex
+          Schur form.
+
+  LDB     INTEGER
+          The leading dimension of the array B.  LDB &gt;= max(1, N).
+
+  C       (input/output) COMPLEX*16 array, dimension (LDC, N)
+          On entry, the leading M-by-N part of this array must
+          contain the right-hand-side of the first matrix equation
+          in (1).
+          On exit, if INFO = 0, the leading M-by-N part of this
+          array contains the solution R.
+
+  LDC     INTEGER
+          The leading dimension of the array C.  LDC &gt;= max(1, M).
+
+  D       (input) COMPLEX*16 array, dimension (LDD, M)
+          On entry, the leading M-by-M upper triangular part of this
+          array must contain the matrix D in the generalized complex
+          Schur form. The diagonal elements are non-negative real.
+
+  LDD     INTEGER
+          The leading dimension of the array D.  LDD &gt;= max(1, M).
+
+  E       (input) COMPLEX*16 array, dimension (LDE, N)
+          On entry, the leading N-by-N upper triangular part of this
+          array must contain the matrix E in the generalized complex
+          Schur form. The diagonal elements are non-negative real.
+
+  LDE     INTEGER
+          The leading dimension of the array E.  LDE &gt;= max(1, N).
+
+  F       (input/output) COMPLEX*16 array, dimension (LDF, N)
+          On entry, the leading M-by-N part of this array must
+          contain the right-hand-side of the second matrix equation
+          in (1).
+          On exit, if INFO = 0, the leading M-by-N part of this
+          array contains the solution L.
+
+  LDF     INTEGER
+          The leading dimension of the array F.  LDF &gt;= max(1, M).
+
+  SCALE   (output) DOUBLE PRECISION
+          On exit, 0 &lt;= SCALE &lt;= 1. If 0 &lt; SCALE &lt; 1, the solutions
+          R and L (C and F on entry) will hold the solutions to a
+          slightly perturbed system but the input matrices A, B, D
+          and E have not been changed. If SCALE = 0, R and L will
+          hold the solutions to the homogeneous system with C = 0
+          and F = 0. Normally, SCALE = 1.
+
+</PRE>
+<B>Error Indicator</B>
+<PRE>
+  INFO    INTEGER
+          = 0:  successful exit;
+          = 1:  an element of R or L had the absolute value greater
+                than the given value PMAX.
+          = 2:  the matrix pairs (A, D) and (B, E) have common or
+                very close eigenvalues. The matrix Z in section
+                METHOD is (almost) singular.
+
+</PRE>
+<A name="Method"><B><FONT SIZE="+1">Method</FONT></B></A>
+<PRE>
+  The routine uses an adaptation of the method for solving
+  generalized Sylvester equations [1], which controls the magnitude
+  of the individual elements of the computed solution [2].
+
+  In matrix notation, solving equation (1) corresponds to solve
+  Zx = scale * b, where Z is defined as
+
+         Z = [ kron(In, A)  -kron(B', Im) ]                      (2)
+             [ kron(In, D)  -kron(E', Im) ],
+
+  Ik is the identity matrix of size k and X' is the transpose of X.
+  kron(X, Y) is the Kronecker product between the matrices X and Y.
+
+</PRE>
+<A name="References"><B><FONT SIZE="+1">References</FONT></B></A>
+<PRE>
+  [1] Kagstrom, B. and Westin, L.
+      Generalized Schur Methods with Condition Estimators for
+      Solving the Generalized Sylvester Equation.
+      IEEE Trans. Auto. Contr., 34, pp. 745-751, 1989.
+  [2] Kagstrom, B. and Westin, L.
+      GSYLV - Fortran Routines for the Generalized Schur Method with
+      Dif Estimators for Solving the Generalized Sylvester Equation.
+      Report UMINF-132.86, Institute of Information Processing,
+      Univ. of Umea, Sweden, July 1987.
+
+</PRE>
+<A name="Comments"><B><FONT SIZE="+1">Further Comments</FONT></B></A>
+<PRE>
+  For efficiency reasons, the "absolute value" of a complex number x
+  is computed as |real(x)| + |imag(x)|.
+
+</PRE>
+
+<A name="Example"><B><FONT SIZE="+1">Example</FONT></B></A>
+<P>
+<B>Program Text</B>
+<PRE>
+  None
+</PRE>
+<B>Program Data</B>
+<PRE>
+  None
+</PRE>
+<B>Program Results</B>
+<PRE>
+  None
+</PRE>
+
+<HR>
+<A HREF=support.html><B>Return to Supporting Routines index</B></A></BODY>
+</HTML>

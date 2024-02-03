@@ -38,14 +38,14 @@ Maximum singular value of a transfer-function matrix
       DOUBLE PRECISION FUNCTION AB13DX( DICO, JOBE, JOBD, N, M, P,
      $                                  OMEGA, A, LDA, E, LDE, B, LDB,
      $                                  C, LDC, D, LDD, IWORK, DWORK,
-     $                                  LDWORK, CWORK, LCWORK, INFO )
+     $                                  LDWORK, ZWORK, LZWORK, INFO )
 C     .. Scalar Arguments ..
       CHARACTER          DICO, JOBD, JOBE
-      INTEGER            INFO, LCWORK, LDA, LDB, LDC, LDD, LDE, LDWORK,
+      INTEGER            INFO, LDA, LDB, LDC, LDD, LDE, LDWORK, LZWORK,
      $                   M, N, P
       DOUBLE PRECISION   OMEGA
 C     .. Array Arguments ..
-      COMPLEX*16         CWORK(  * )
+      COMPLEX*16         ZWORK(  * )
       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), C( LDC, * ),
      $                   D( LDD, * ), DWORK(  * ), E( LDE, * )
       INTEGER            IWORK(  * )
@@ -190,17 +190,17 @@ C     .. Array Arguments ..
           LDW2 = 6*MIN(P,M), otherwise.
           For good performance, LDWORK must generally be larger.
 
-  CWORK   COMPLEX*16 array, dimension (LCWORK)
-          On exit, if INFO = 0, CWORK(1) contains the optimal
-          LCWORK.
+  ZWORK   COMPLEX*16 array, dimension (LZWORK)
+          On exit, if INFO = 0, ZWORK(1) contains the optimal
+          LZWORK.
 
-  LCWORK  INTEGER
-          The dimension of the array CWORK.
-          LCWORK &gt;= 1, if N = 0, or B = 0, or C = 0, or (OMEGA = 0
+  LZWORK  INTEGER
+          The dimension of the array ZWORK.
+          LZWORK &gt;= 1, if N = 0, or B = 0, or C = 0, or (OMEGA = 0
                           and DICO = 'C') or MIN(P,M) = 0;
-          LCWORK &gt;= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
+          LZWORK &gt;= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
                        otherwise.
-          For good performance, LCWORK must generally be larger.
+          For good performance, LZWORK must generally be larger.
 
 </PRE>
 <B>Error Indicator</B>
