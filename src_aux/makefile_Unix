@@ -3,10 +3,10 @@
 #  Makefile for creating/updating the auxiliary Library object file# 
 #  for SLICOT on Unix platforms.                                   #
 #                                                                  #
-#  SLICOT, Release 5.8                  ./slicot/src_aux/makefile  #
+#  SLICOT, Release 5.9                  ./slicot/src_aux/makefile  #
 #  Vasile Sima                                                     #
 #  Jan. 24, 2005.                                                  #
-#  Revised  Jan. 9, 2009, Jan. 25, 2010, Jan. 2016, Feb. 2023     #
+#  Revised  Jan. 9, 2009, Jan. 25, 2010, Jan. 2016, Feb. 2023      #
 ####################################################################
 #
 #  This is the makefile to create/update an auxiliary library lpkaux.lib.

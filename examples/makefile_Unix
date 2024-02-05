@@ -3,11 +3,11 @@
 #  Makefile for generating and running SLICOT Library example      # 
 #  programs on Unix-like machines.                                 #
 #                                                                  #
-#  SLICOT, Release 5.8                 ./slicot/examples/makefile  #
+#  SLICOT, Release 5.9                 ./slicot/examples/makefile  #
 #  Vasile Sima                                                     #
 #  October 31, 1996.                                               #
 #  Revised Dec. 7, 1999, Jan. 8 2009, Sep. 25, 2012, Nov. 30, 2012,#
-#          July 16, 2015, Feb. 5, 2017, Dec. 28, 2022.             #
+#          July 16, 2015, Feb. 5, 2017, Dec. 28, 2022, Feb. 2024.  #
 ####################################################################
 #
 #  This makefile compiles, links, and runs the example programs for 

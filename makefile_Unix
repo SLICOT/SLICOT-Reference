@@ -4,10 +4,11 @@
 #  the auxiliary library file, and linking and running the example #
 #  programs.                                                       #
 #                                                                  #
-#  SLICOT, Release 5.8                          ./slicot/makefile  #
+#  SLICOT, Release 5.9                          ./slicot/makefile  #
 #  Vasile Sima                                                     #
 #  October 31, 1996                                                #
 #  Revised Dec. 7, 1999; Feb. 14, 2005, Dec. 28, 2022, Feb. 2023.  #
+#          Feb. 2024.                                              #
 ####################################################################
 #
 #  This makefile creates/updates the SLICOT Library object file, the 
@@ -43,15 +44,15 @@ all: lib example
 clean: cleanlib cleanexample
 
 lib:
-	( cd src; $(MAKE) )
-	( cd src_aux; $(MAKE) )
+	( cd src; $(MAKE) -f makefile_Unix )
+	( cd src_aux; $(MAKE) -f makefile_Unix )
 
 example:
-	( cd examples; $(MAKE) )
+	( cd examples; $(MAKE) -f makefile_Unix )
 
 cleanlib:
-	( cd src; $(MAKE) clean )
-	( cd src_aux; $(MAKE) clean )
+	( cd src; $(MAKE) -f makefile_Unix clean )
+	( cd src_aux; $(MAKE) -f makefile_Unix clean )
 
 cleanexample:
-	( cd examples; $(MAKE) clean )
+	( cd examples; $(MAKE) -f makefile_Unix clean )

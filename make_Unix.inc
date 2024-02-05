@@ -1,30 +1,32 @@
 ####################################################################
 #  SLICOT make include file for Unix-like machines.                #
-#  SLICOT, Release v5.8                           slicot/make.inc  #
+#  SLICOT, Release v5.9                           slicot/make.inc  #
 #  Vasile Sima                                                     #
 #  October 31, 1996.                                               #
 #  Revised Dec. 7, 1999; July 16, 2015, Dec. 28, 2022, Feb. 2023.  #
+#          Feb. 2024.                                              #
 ####################################################################
 
 SHELL = /bin/sh
 
-#  Modify the FC and FFLAGS definitions to the desired compiler
+#  Modify the FORTRAN and OPTS definitions to the desired compiler
 #  and desired compiler options for your machine.  NOOPT refers to
 #  the compiler options desired when NO OPTIMIZATION is selected.
 #
-FC = gfortran
-FFLAGS = -O2 -fPIC -fdefault-integer-8
-FFLAGS_NOOPT = -O0
+FORTRAN = gfortran
+OPTS = -O2 -fPIC -fdefault-integer-8
+OPTS_NOOPT = -O0
 
 #  Define LDFLAGS to the desired linker options for your machine.
 #
+LOADER   = $(FORTRAN) 
 LDFLAGS =
 
 #  The archiver and the flag(s) to use when building an archive
 #  (library).  If your system has no ranlib, set RANLIB = echo.
 #
 ARCH = ar
-ARFLAGS = cr
+ARCHFLAGS = cr
 # ARCHFLAGS= r
 # RANLIB   = ranlib
 

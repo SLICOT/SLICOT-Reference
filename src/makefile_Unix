@@ -28,7 +28,7 @@
 #
 #######################################################################
  
-include ../make.inc
+include ../make_Unix.inc
 
 SLSRC = \
     AB01MD.o AB01ND.o AB01OD.o AB04MD.o AB05MD.o AB05ND.o AB05OD.o \
