@@ -25,9 +25,11 @@
      $                   BETA( NMAX/2 ),  DE( LDDE, NMAX/2+1 ),
      $                   DWORK( LDWORK ), FG( LDFG, NMAX/2+1 ),
      $                   Q( LDQ, 2*NMAX )
+      LOGICAL            LSAME
 *
 *     .. External Subroutines ..
       EXTERNAL           MB03LD
+      EXTERNAL           LSAME
 *
 *     .. Intrinsic Functions ..
       INTRINSIC          MAX

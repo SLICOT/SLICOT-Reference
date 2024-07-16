@@ -14,12 +14,12 @@ SHELL = /bin/sh
 #  the compiler options desired when NO OPTIMIZATION is selected.
 #
 FORTRAN = gfortran
-OPTS = -O2 -fPIC -fdefault-integer-8
-OPTS_NOOPT = -O0
+OPTS = -O2 -fPIC -g
+OPTS_NOOPT = -O0 -g
 
 #  Define LDFLAGS to the desired linker options for your machine.
 #
-LOADER   = $(FORTRAN) 
+LOADER   = $(FORTRAN)
 LDFLAGS =
 
 #  The archiver and the flag(s) to use when building an archive
@@ -36,7 +36,7 @@ LOADOPTS = $(SLICOTLIB) $(LPKAUXLIB) $(LAPACKLIB) $(BLASLIB)
 #  machine-specific, optimized BLAS library should be used whenever
 #  possible.)
 #
-BLASLIB      = ../libs/blas.a
-LAPACKLIB    = ../libs/lapack.a
+BLASLIB      = -lopenblas
+LAPACKLIB    = -lopenblas
 LPKAUXLIB    = ../lpkaux.a
 SLICOTLIB    = ../slicot.a
