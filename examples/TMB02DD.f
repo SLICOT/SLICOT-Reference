@@ -4,7 +4,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          KMAX, MMAX, NMAX
-      PARAMETER        ( KMAX = 20, MMAX = 20, NMAX = 20 )
+      PARAMETER        ( KMAX = 12, MMAX = 12, NMAX = 12 )
       INTEGER          LCS, LDG, LDL, LDR, LDT, LDWORK
       PARAMETER        ( LDG = KMAX*( MMAX + NMAX ),
      $                   LDL = KMAX*( MMAX + NMAX ),
@@ -32,7 +32,7 @@
       EXTERNAL         DLACPY, MB02CD, MB02DD
 *
 *     .. Executable Statements ..
-      WRITE ( NOUT, FMT = 99999 )
+      WRITE ( *, FMT = 99999 )
 *     Skip the heading in the data file and read the data.
       READ ( NIN, FMT = '()' )
       READ ( NIN, FMT = * ) N, K, M, JOB, TYPET
@@ -136,7 +136,7 @@
       END IF
       STOP
 *
-99999 FORMAT ( ' MB02DD EXAMPLE PROGRAM RESULTS',/1X)
+99999 FORMAT ( ' MB02DD EXAMPLE PROGRAM RESULTS' )
 99998 FORMAT ( ' INFO on exit from MB02CD = ',I2)
 99997 FORMAT ( ' INFO on exit from MB02DD = ',I2)
 99996 FORMAT ( ' The Cholesky factor is ')

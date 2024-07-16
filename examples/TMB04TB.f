@@ -6,7 +6,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          NBMAX, NMAX
-      PARAMETER        ( NBMAX = 64, NMAX = 421 )
+      PARAMETER        ( NBMAX = 64, NMAX = 30 )
       INTEGER          LDA, LDB, LDG, LDQ, LDRES, LDU1, LDU2, LDV1,
      $                 LDV2, LDWORK
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDG = NMAX, LDQ = NMAX,
