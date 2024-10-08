@@ -578,7 +578,7 @@ C
             ELSE IF ( FQRALG ) THEN
                IF ( .NOT.ONEBCH .AND. CONNEC ) THEN
                   MINWRK = NR*( M + L + 3 )
-               ELSE IF ( FIRST .OR. INTERM ) THEN
+               ELSE IF ( (FIRST .OR. INTERM).AND..NOT.ONEBCH ) THEN
                   MINWRK = NR*( M + L + 1 )
                ELSE
                   MINWRK = 2*NR*( M + L + 1 ) + NR
