@@ -1,0 +1,13 @@
+@PACKAGE_INIT@
+
+# Include the exported targets
+include("${CMAKE_CURRENT_LIST_DIR}/SLICOTTargets.cmake")
+
+# Dependencies
+include(CMakeFindDependencyMacro)
+find_dependency(BLAS)
+find_dependency(LAPACK)
+
+# Define convenience variables
+set(SLICOT_LIBRARIES SLICOT::slicot)
+set(SLICOT_INCLUDE_DIRS)
