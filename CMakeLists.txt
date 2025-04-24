@@ -71,38 +71,37 @@ endif()
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(examples)
-#  ADD_SUBDIRECTORY(test)
-#
-#  INCLUDE(CMakePackageConfigHelpers)
-#  WRITE_BASIC_PACKAGE_VERSION_FILE(
-#      qrupdateConfigVersion.cmake
-#      VERSION ${PROJECT_VERSION}
-#      COMPATIBILITY AnyNewerVersion
-#   )
-#  INSTALL(EXPORT qrupdatetargets
-#          FILE qrupdateTargets.cmake
-#          NAMESPACE qrupdate::
-#          DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrupdate
-#  )
-#
-#  CONFIGURE_FILE(qrupdate-config.cmake.in qrupdate-config.cmake @ONLY)
-#  INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/qrupdate-config.cmake"
-#                "${CMAKE_CURRENT_BINARY_DIR}/qrupdateConfigVersion.cmake"
-#                DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrupdate
-#          )
-#
-#  CONFIGURE_FILE(qrupdate.pc.in qrupdate.pc @ONLY)
-#  INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/qrupdate.pc"
-#                DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-#
-#  MESSAGE(STATUS "------------ Build Information --------------")
-#  MESSAGE(STATUS "CMAKE_Fortran_FLAGS:  ${CMAKE_Fortran_FLAGS}")
-#  MESSAGE(STATUS "CMAKE_Fortran_FLAGS_DEBUG:  ${CMAKE_Fortran_FLAGS_DEBUG}")
-#  MESSAGE(STATUS "CMAKE_Fortran_FLAGS_RELEASE:  ${CMAKE_Fortran_FLAGS_RELEASE}")
-#  MESSAGE(STATUS "BLAS Libraries: ${BLAS_LIBRARIES}")
-#  MESSAGE(STATUS "LAPACK Libraries: ${LAPACK_LIBRARIES}")
-#  MESSAGE(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
-#  MESSAGE(STATUS "Debug: ${DEBUG}")
-#  MESSAGE(STATUS "Shared Libs: ${BUILD_SHARED_LIBS}")
-#  MESSAGE(STATUS "---------------------------------------------")
-#
+
+INCLUDE(CMakePackageConfigHelpers)
+WRITE_BASIC_PACKAGE_VERSION_FILE(
+    SLICOTConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY AnyNewerVersion
+ )
+INSTALL(EXPORT slicot_targets
+    FILE SLICOTTargets.cmake
+    NAMESPACE SLICOT::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SLICOT
+)
+
+CONFIGURE_FILE(SLICOTConfig.cmake.in SLICOTConfig.cmake @ONLY)
+INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/SLICOTConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/SLICOTConfigVersion.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SLICOT
+        )
+
+CONFIGURE_FILE(slicot.pc.in slicot.pc @ONLY)
+INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/slicot.pc"
+              DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+
+MESSAGE(STATUS "------------ Build Information --------------")
+MESSAGE(STATUS "CMAKE_Fortran_FLAGS:  ${CMAKE_Fortran_FLAGS}")
+MESSAGE(STATUS "CMAKE_Fortran_FLAGS_DEBUG:  ${CMAKE_Fortran_FLAGS_DEBUG}")
+MESSAGE(STATUS "CMAKE_Fortran_FLAGS_RELEASE:  ${CMAKE_Fortran_FLAGS_RELEASE}")
+MESSAGE(STATUS "BLAS Libraries: ${BLAS_LIBRARIES}")
+MESSAGE(STATUS "LAPACK Libraries: ${LAPACK_LIBRARIES}")
+MESSAGE(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
+MESSAGE(STATUS "Debug: ${DEBUG}")
+MESSAGE(STATUS "Shared Libs: ${BUILD_SHARED_LIBS}")
+MESSAGE(STATUS "---------------------------------------------")
+
