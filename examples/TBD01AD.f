@@ -4,7 +4,7 @@ C     .. Parameters ..
       INTEGER          NIN, NOUT
       PARAMETER        (NIN = 5, NOUT = 6)
       INTEGER          NMAX, MMAX, PMAX
-      PARAMETER        (NMAX = 421, MMAX = 211, PMAX = 211)
+      PARAMETER        (NMAX = 100, MMAX = 100, PMAX = 100)
       INTEGER          LDA, LDB, LDC, LDD, LDE, LDWORK
       PARAMETER        (LDA = NMAX, LDB = NMAX, LDC = PMAX, LDD = PMAX,
      1                  LDE = NMAX, LDWORK = 4*NMAX)

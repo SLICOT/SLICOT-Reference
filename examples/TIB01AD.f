@@ -5,7 +5,7 @@
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          LDR, LDU, LDWORK, LDY, LIWORK, LMAX, MMAX,
      $                 NOBRMX, NSMPMX
-      PARAMETER        ( LMAX = 5, MMAX = 5, NOBRMX = 20, NSMPMX = 2000,
+      PARAMETER        ( LMAX = 5, MMAX = 5, NOBRMX = 20, NSMPMX = 200,
      $                   LDR = MAX( 2*( MMAX + LMAX )*NOBRMX,
      $                              3*MMAX*NOBRMX ), LDU = NSMPMX,
      $                   LDWORK = MAX( 6*( MMAX + LMAX )*NOBRMX,

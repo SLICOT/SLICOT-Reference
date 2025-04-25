@@ -4,7 +4,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          KMAX, MMAX, NMAX
-      PARAMETER        ( KMAX = 12, MMAX = 12, NMAX = 12 )
+      PARAMETER        ( KMAX = 10, MMAX = 10, NMAX = 10 )
       INTEGER          LCS, LDG, LDL, LDR, LDT, LDWORK
       PARAMETER        ( LDG = KMAX*( MMAX + NMAX ),
      $                   LDL = KMAX*( MMAX + NMAX ),

@@ -6,7 +6,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          NMAX
-      PARAMETER        ( NMAX = 200 )
+      PARAMETER        ( NMAX = 100 )
       INTEGER          LDA, LDB, LDQ, LDRES, LDZ, LDWORK
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDQ = NMAX,
      $                   LDRES = NMAX, LDWORK = NMAX, LDZ = NMAX )
@@ -20,7 +20,7 @@
       DOUBLE PRECISION DLANGE
       EXTERNAL         DLANGE
 *     .. External Subroutines ..
-      EXTERNAL         DGEMM, MB03XP
+      EXTERNAL         DGEMM, MB03XP, DLACPY
 *     .. Executable Statements ..
       WRITE ( NOUT, FMT = 99999 )
 *     Skip the heading in the data file and read the data.

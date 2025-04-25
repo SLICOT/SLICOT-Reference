@@ -6,7 +6,7 @@
       INTEGER          LDA, LDB, LDC, LDD, LDR, LDU, LDV, LDW1, LDW2,
      $                 LDW4, LDW5, LDWORK, LDY, LIWORK, LMAX, MMAX,
      $                 NMAX, NOBRMX, NSMPMX
-      PARAMETER        ( LMAX = 5, MMAX = 5, NOBRMX = 20, NSMPMX = 2000,
+      PARAMETER        ( LMAX = 5, MMAX = 5, NOBRMX = 15, NSMPMX = 1000,
      $                   NMAX = NOBRMX - 1, LDA = NMAX, LDB = NMAX,
      $                   LDC  = LMAX, LDD = LMAX, LDV = NMAX,
      $                   LDR  = MAX( 2*( MMAX + LMAX )*NOBRMX,

@@ -115,8 +115,8 @@ ADD_ROUTINE_IF_REQUIRED(dgegs HAVE_DGEGS lapack_aux/dgegs.f)
 ADD_ROUTINE_IF_REQUIRED(zgegs HAVE_ZGEGS lapack_aux/zgegs.f)
 ADD_ROUTINE_IF_REQUIRED(dlatzm HAVE_DLAZTM lapack_aux/dlatzm.f)
 ADD_ROUTINE_IF_REQUIRED(zlatzm HAVE_ZLAZTM lapack_aux/zlatzm.f)
-ADD_ROUTINE_IF_REQUIRED(dgegv HAVE_DGEGS lapack_aux/dgegv.f)
-ADD_ROUTINE_IF_REQUIRED(zgegv HAVE_ZGEGS lapack_aux/zgegv.f)
+ADD_ROUTINE_IF_REQUIRED(dgegv HAVE_DGEGV lapack_aux/dgegv.f)
+ADD_ROUTINE_IF_REQUIRED(zgegv HAVE_ZGEGV lapack_aux/zgegv.f)
 
 # Setup the library.
 
