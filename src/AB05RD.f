@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB05RD( FBTYPE, JOBD, N, M, P, MV, PZ, ALPHA, BETA, A,
      $                   LDA, B, LDB, C, LDC, D, LDD, F, LDF, K, LDK,
      $                   G, LDG, H, LDH, RCOND, BC, LDBC, CC, LDCC,

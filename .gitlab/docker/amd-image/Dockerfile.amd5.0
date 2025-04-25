@@ -1,0 +1,43 @@
+FROM gitlab.mpi-magdeburg.mpg.de/ci-images/aocc-compiler/noble:5.0.0
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt update ; \
+    apt install --yes git cmake build-essential wget
+WORKDIR /root
+RUN wget -O amdblis-5.0.tar.gz https://github.com/amd/blis/archive/refs/tags/5.0.tar.gz;\
+    tar xvf amdblis-5.0.tar.gz ;\
+    cd blis-5.0 ;\
+    CC=clang FC=flang ./configure --prefix=/usr --enable-aocl-dynamic --enable-cblas --complex-return=intel -t openmp x86_64 ;\
+    make -j $(nproc) ;\
+    make install; \
+    cd /root; \
+    rm -rf amd* blis*
+RUN wget -O amdblis-5.0.tar.gz https://github.com/amd/blis/archive/refs/tags/5.0.tar.gz;\
+    tar xvf amdblis-5.0.tar.gz ;\
+    cd blis-5.0 ;\
+    CC=clang FC=flang ./configure --prefix=/usr --enable-cblas --complex-return=intel -t none x86_64 ;\
+    make -j $(nproc) ;\
+    make install; \
+    cd /root; \
+    rm -rf amd* blis*
+
+RUN cd /root; wget -O aocl-utils.tar.gz https://github.com/amd/aocl-utils/archive/refs/tags/5.0.tar.gz ;\
+    tar xf aocl-utils.tar.gz ;\
+    cd aocl-utils-5.0 ;\
+    cmake -S . -B build-dir -DCMAKE_INSTALL_PREFIX=/usr ;\
+    cmake --build build-dir;\
+    cmake --build build-dir --target=install;\
+    cd /root;\
+    rm -rf aocl*
+RUN cd /root; wget -O amdflame-5.0.tar.gz https://github.com/amd/libflame/archive/refs/tags/5.0.tar.gz ;\
+    tar xf amdflame-5.0.tar.gz; \
+    cd libflame-5.0; \
+    CC=clang FC=flang FLIBS="-lflang" cmake -S . -B build -DLIBAOCLUTILS_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libaoclutils.so \
+                -DLIBAOCLUTILS_INCLUDE_PATH=/usr/include/ -DENABLE_AMD_OPT=ON  -D ENABLE_BUILTIN_LAPACK2FLAME=ON -DBUILD_SHARED_LIBS=ON \
+                -DMULTITHREADING_MODEL=OPENMP  -DENABLE_AMD_AOCC_FLAGS=ON \
+                -DENABLE_AOCL_BLAS=OFF -DENABLE_EMBED_AOCLUTILS=ON \
+                -DCMAKE_INSTALL_PREFIX=/usr ;\
+    cmake --build build -j $(nproc) ;\
+    cmake --build build --target install ;\
+    cd /root;\
+    rm -rf amdflame* libflame*
+

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03WX( N, P, T, LDT1, LDT2, WR, WI, INFO )
 C
 C     PURPOSE

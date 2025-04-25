@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02HD( TRIU, K, L, M, ML, N, NU, P, S, TC, LDTC, TR,
      $                   LDTR, RB, LDRB, DWORK, LDWORK, INFO )
 C

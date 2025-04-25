@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01DD( AR1, AI1, AR2, AI2, EPS, SAFEMN, D )
 C
 C     PURPOSE

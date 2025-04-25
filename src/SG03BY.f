@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG03BY( XR, XI, YR, YI, CR, CI, SR, SI, Z )
 C
 C     PURPOSE

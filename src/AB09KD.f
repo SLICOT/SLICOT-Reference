@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09KD( JOB, DICO, WEIGHT, EQUIL, ORDSEL, N, NV, NW, M,
      $                   P, NR, ALPHA, A, LDA, B, LDB, C, LDC, D, LDD,
      $                   AV, LDAV, BV, LDBV, CV, LDCV, DV, LDDV,

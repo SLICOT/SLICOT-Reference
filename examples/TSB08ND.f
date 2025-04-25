@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB08ND EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..

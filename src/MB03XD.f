@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03XD( BALANC, JOB, JOBU, JOBV, N, A, LDA, QG, LDQG,
      $                   T, LDT, U1, LDU1, U2, LDU2, V1, LDV1, V2, LDV2,
      $                   WR, WI, ILO, SCALE, DWORK, LDWORK, INFO )

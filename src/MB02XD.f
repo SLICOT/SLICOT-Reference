@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02XD( FORM, STOR, UPLO, F, M, N, NRHS, IPAR, LIPAR,
      $                   DPAR, LDPAR, A, LDA, B, LDB, ATA, LDATA, DWORK,
      $                   LDWORK, INFO )

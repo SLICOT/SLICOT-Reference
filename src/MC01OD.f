@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01OD( K, REZ, IMZ, REP, IMP, DWORK, INFO )
 C
 C     PURPOSE

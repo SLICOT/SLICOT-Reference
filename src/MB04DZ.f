@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DZ( JOB, N, A, LDA, QG, LDQG, ILO, SCALE, INFO )
 C
 C     PURPOSE

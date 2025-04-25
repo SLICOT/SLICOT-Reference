@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB08MY( DA, A, B, EPSB )
 C
 C     PURPOSE

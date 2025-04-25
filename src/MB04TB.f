@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TB( TRANA, TRANB, N, ILO, A, LDA, B, LDB, G, LDG,
      $                   Q, LDQ, CSL, CSR, TAUL, TAUR, DWORK, LDWORK,
      $                   INFO )

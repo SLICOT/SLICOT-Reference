@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01ND( JOBU, UPLO, N, P, A, LDA, C, LDC, U, LDU,
      $                   DWORK, INFO )
 C

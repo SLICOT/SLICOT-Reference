@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03KA( COMPQ, WHICHQ, WS, K, NC, KSCHUR, IFST, ILST,
      $                   N, NI, S, T, LDT, IXT, Q, LDQ, IXQ, TOL, IWORK,
      $                   DWORK, LDWORK, INFO )

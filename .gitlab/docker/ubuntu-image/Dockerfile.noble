@@ -1,0 +1,7 @@
+FROM ubuntu:noble
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt update ; \
+    apt install --yes cmake libopenblas-dev libopenblas64-dev git;\
+    apt install --yes build-essential;\
+    apt install --yes gfortran clang flang
+

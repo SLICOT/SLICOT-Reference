@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB08MZ( EQUIL, N, M, P, A, LDA, B, LDB, C, LDC, D, LDD,
      $                   RANK, TOL, IWORK, DWORK, ZWORK, LZWORK, INFO )
 C

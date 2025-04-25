@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB10YD( DISCFL, FLAG, LENDAT, RFRDAT, IFRDAT, OMEGA, N,
      $                   A, LDA, B, C, D, TOL, IWORK, DWORK, LDWORK,
      $                   ZWORK, LZWORK, INFO )

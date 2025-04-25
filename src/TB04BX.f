@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB04BX( IP, IZ, A, LDA, B, C, D, PR, PI, ZR, ZI, GAIN,
      $                   IWORK )
 C

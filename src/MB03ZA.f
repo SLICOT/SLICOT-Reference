@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03ZA( COMPC, COMPU, COMPV, COMPW, WHICH, SELECT, N,
      $                   A, LDA, B, LDB, C, LDC, U1, LDU1, U2, LDU2, V1,
      $                   LDV1, V2, LDV2, W, LDW, WR, WI, M, DWORK,

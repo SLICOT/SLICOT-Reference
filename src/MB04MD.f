@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04MD( N, MAXRED, A, LDA, SCALE, INFO )
 C
 C     PURPOSE

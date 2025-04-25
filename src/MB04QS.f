@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04QS( TRANC, TRAND, TRANU, M, N, ILO, V, LDV, W, LDW,
      $                   C, LDC, D, LDD, CS, TAU, DWORK, LDWORK, INFO )
 C

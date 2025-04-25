@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04HD( COMPQ1, COMPQ2, N, A, LDA, B, LDB, Q1, LDQ1,
      $                   Q2, LDQ2, IWORK, LIWORK, DWORK, LDWORK, BWORK,
      $                   INFO )

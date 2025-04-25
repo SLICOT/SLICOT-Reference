@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB02SD( JOB, FACT, TRANA, UPLO, LYAPUN, N, A, LDA, T,
      $                   LDT, U, LDU, G, LDG, Q, LDQ, X, LDX, SEPD,
      $                   RCOND, FERR, IWORK, DWORK, LDWORK, INFO )

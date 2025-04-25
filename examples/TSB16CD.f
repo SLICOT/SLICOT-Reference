@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB16CD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..

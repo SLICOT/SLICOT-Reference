@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB13ED( N, A, LDA, LOW, HIGH, TOL, DWORK, LDWORK,
      $                   INFO )
 C

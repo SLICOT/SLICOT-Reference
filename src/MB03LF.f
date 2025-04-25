@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03LF( COMPQ, COMPU, ORTH, N, Z, LDZ, B, LDB, FG,
      $                   LDFG, NEIG, Q, LDQ, U, LDU, ALPHAR, ALPHAI,
      $                   BETA, IWORK, LIWORK, DWORK, LDWORK, BWORK,

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04QC( STRAB, TRANA, TRANB, TRANQ, DIRECT, STOREV,
      $                   STOREW, M, N, K, V, LDV, W, LDW, RS, LDRS, T,
      $                   LDT, A, LDA, B, LDB, DWORK )

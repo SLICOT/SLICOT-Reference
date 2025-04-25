@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DG01ND( INDI, N, XR, XI, INFO )
 C
 C     PURPOSE

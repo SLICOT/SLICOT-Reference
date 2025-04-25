@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB05QD( OVER, N1, M1, P1, N2, M2, P2, A1, LDA1, B1,
      $                   LDB1, C1, LDC1, D1, LDD1, A2, LDA2, B2, LDB2,
      $                   C2, LDC2, D2, LDD2, N, M, P, A, LDA, B, LDB,

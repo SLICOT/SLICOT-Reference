@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03YA( WANTT, WANTQ, WANTZ, N, ILO, IHI, ILOQ, IHIQ,
      $                   POS, A, LDA, B, LDB, Q, LDQ, Z, LDZ, INFO )
 C

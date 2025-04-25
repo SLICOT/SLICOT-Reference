@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04PA( LHAM, N, K, NB, A, LDA, QG, LDQG, XA, LDXA,
      $                   XG, LDXG, XQ, LDXQ, YA, LDYA, CS, TAU, DWORK )
 C

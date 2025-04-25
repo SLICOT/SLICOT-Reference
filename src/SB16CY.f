@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB16CY( DICO, JOBCF, N, M, P, A, LDA, B, LDB, C, LDC,
      $                   F, LDF, G, LDG, SCALEC, SCALEO, S, LDS, R, LDR,
      $                   DWORK, LDWORK, INFO )

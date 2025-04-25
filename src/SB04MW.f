@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04MW( M, D, IPR, INFO )
 C
 C     PURPOSE

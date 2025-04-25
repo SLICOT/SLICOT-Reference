@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03VY( N, P, ILO, IHI, A, LDA1, LDA2, TAU, LDTAU,
      $                   DWORK, LDWORK, INFO )
 C

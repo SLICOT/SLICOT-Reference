@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 C     BD02AD EXAMPLE PROGRAM TEXT
 C
 C     .. Parameters ..

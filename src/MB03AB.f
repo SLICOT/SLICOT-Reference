@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03AB( SHFT, K, N, AMAP, S, SINV, A, LDA1, LDA2, W1,
      $                   W2, C1, S1, C2, S2 )
 C

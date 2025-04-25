@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AG07BD( JOBE, N, M, A, LDA, E, LDE, B, LDB, C, LDC,
      $                   D, LDD, AI, LDAI, EI, LDEI, BI, LDBI, CI, LDCI,
      $                   DI, LDDI, INFO )

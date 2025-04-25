@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03TS( ISHAM, WANTU, N, A, LDA, G, LDG, U1, LDU1, U2,
      $                   LDU2, J1, N1, N2, DWORK, INFO )
 C

@@ -1,0 +1,5 @@
+FROM gitlab.mpi-magdeburg.mpg.de/ci-images/intel-compiler/noble:2021
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt update ; \
+    apt install --yes git cmake build-essential
+

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03BB( BASE, LGBAS, ULP, K, AMAP, S, SINV, A, LDA1,
      $                   LDA2, ALPHAR, ALPHAI, BETA, SCAL, DWORK, INFO )
 C

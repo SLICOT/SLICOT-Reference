@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MD03BY( COND, N, R, LDR, IPVT, DIAG, QTB, DELTA, PAR,
      $                   RANK, X, RX, TOL, DWORK, LDWORK, INFO )
 C

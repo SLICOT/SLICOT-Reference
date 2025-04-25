@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB01FY( DISCR, N, M, A, LDA, B, LDB, F, LDF, V, LDV,
      $                   INFO )
 C

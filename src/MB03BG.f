@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03BG( K, N, AMAP, S, SINV, A, LDA1, LDA2, WR, WI )
 C
 C     PURPOSE

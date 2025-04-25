@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION SB02OV( ALPHAR, ALPHAI, BETA )
 C
 C     PURPOSE

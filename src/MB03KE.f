@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03KE( TRANA, TRANB, ISGN, K, M, N, PREC, SMIN, S, A,
      $                   B, C, SCALE, DWORK, LDWORK, INFO )
 C

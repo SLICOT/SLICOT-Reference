@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG03AY( TRANS, N, A, LDA, E, LDE, X, LDX, SCALE, INFO )
 C
 C     PURPOSE

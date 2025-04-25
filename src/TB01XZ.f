@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01XZ( JOBD, N, M, P, KL, KU, A, LDA, B, LDB, C, LDC,
      $                   D, LDD, INFO )
 C

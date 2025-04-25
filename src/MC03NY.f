@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC03NY( NBLCKS, NRA, NCA, A, LDA, E, LDE, IMUK, INUK,
      $                   VEPS, LDVEPS, INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB16AY( DICO, JOBC, JOBO, WEIGHT, N, M, P, NC, NCS,
      $                   A, LDA, B, LDB, C, LDC, D, LDD,
      $                   AC, LDAC, BC, LDBC, CC, LDCC, DC, LDDC,

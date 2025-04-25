@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02WD( FORM, F, N, IPAR, LIPAR, DPAR, LDPAR, ITMAX,
      $                   A, LDA, B, INCB, X, INCX, TOL, DWORK, LDWORK,
      $                   IWARN, INFO )

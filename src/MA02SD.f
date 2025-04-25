@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION MA02SD( M, N, A, LDA )
 C
 C     Purpose

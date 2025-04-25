@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB08HD( N, M, P, A, LDA, B, LDB, C, LDC, D, LDD, CR,
      $                   LDCR, DR, LDDR, IWORK, DWORK, INFO )
 C

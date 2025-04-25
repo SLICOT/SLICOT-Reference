@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01YD( N, M, P, A, LDA, B, LDB, C, LDC, INFO )
 C
 C     PURPOSE

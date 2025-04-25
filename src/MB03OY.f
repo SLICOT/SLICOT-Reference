@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03OY( M, N, A, LDA, RCOND, SVLMAX, RANK, SVAL, JPVT,
      $                   TAU, DWORK, INFO )
 C

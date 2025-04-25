@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB02JX EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..

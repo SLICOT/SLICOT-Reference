@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TC05AD( LERI, M, P, SVAL, INDEX, PCOEFF, LDPCO1,
      $                   LDPCO2, QCOEFF, LDQCO1, LDQCO2, RCOND, CFREQR,
      $                   LDCFRE, IWORK, DWORK, ZWORK, INFO )

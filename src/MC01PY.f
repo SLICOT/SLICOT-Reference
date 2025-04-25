@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01PY( K, REZ, IMZ, P, DWORK, INFO )
 C
 C     PURPOSE

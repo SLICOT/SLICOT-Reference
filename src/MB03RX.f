@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03RX( JOBV, N, KL, KU, A, LDA, X, LDX, WR, WI,
      $                   DWORK )
 C

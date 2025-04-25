@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB05ND( N, DELTA, A, LDA, EX, LDEX, EXINT, LDEXIN,
      $                   TOL, IWORK, DWORK, LDWORK, INFO )
 C

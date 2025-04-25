@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG02CX( JOBE, FLAG, JOBG, UPLO, TRANS, N, M, E, LDE, R,
      $                   LDR, S, LDS, G, LDG, ALPHA, RNORM, DWORK,
      $                   LDWORK, IWARN, INFO )

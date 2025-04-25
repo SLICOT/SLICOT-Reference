@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01TD( DICO, DP, P, STABLE, NZ, DWORK, IWARN, INFO )
 C
 C     PURPOSE

@@ -35,3 +35,10 @@ InstalledDir: C:/msys64/clang64/bin
 
 The bug is known to LLVM community: https://github.com/llvm/llvm-project/issues/69952
 
+Does not work with IBM ESSL
+---------------------------
+On the ppc64le platform, IBM provides the ESSL library for BLAS and LAPACK, but
+not all LAPACK symbols are exported by this library and thus SLICOT will not
+link against it. The typical workaround would be to used ESSL only as BLAS and
+combine it with the NETLIB LAPACK.
+

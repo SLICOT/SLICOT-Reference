@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04VD( MODE, JOBQ, JOBZ, M, N, RANKE, A, LDA, E, LDE,
      $                   Q, LDQ, Z, LDZ, ISTAIR, NBLCKS, NBLCKI, IMUK,
      $                   INUK, IMUK0, MNEI, TOL, IWORK, INFO )

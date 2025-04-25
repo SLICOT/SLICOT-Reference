@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03KC( K, KHESS, N, R, S, A, LDA, V, TAU )
 C
 C     PURPOSE

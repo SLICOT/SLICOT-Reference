@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MA02OD( SKEW, M, A, LDA, DE, LDDE )
 C
 C     PURPOSE

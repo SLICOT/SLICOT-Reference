@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01SD( JOBS, M, N, A, LDA, R, C )
 C
 C     PURPOSE

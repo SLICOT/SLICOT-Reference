@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01XD( ALPHA, BETA, GAMMA, DELTA, EVR, EVI, EVQ,
      $                   DWORK, LDWORK, INFO )
 C

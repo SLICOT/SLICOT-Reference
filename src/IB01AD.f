@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01AD( METH, ALG, JOBD, BATCH, CONCT, CTRL, NOBR, M,
      $                   L, NSMP, U, LDU, Y, LDY, N, R, LDR, SV, RCOND,
      $                   TOL, IWORK, DWORK, LDWORK, IWARN, INFO )
@@ -578,7 +581,7 @@ C
             ELSE IF ( FQRALG ) THEN
                IF ( .NOT.ONEBCH .AND. CONNEC ) THEN
                   MINWRK = NR*( M + L + 3 )
-               ELSE IF ( FIRST .OR. INTERM ) THEN
+               ELSE IF ( (FIRST .OR. INTERM) .AND. .NOT. ONEBCH ) THEN
                   MINWRK = NR*( M + L + 1 )
                ELSE
                   MINWRK = 2*NR*( M + L + 1 ) + NR

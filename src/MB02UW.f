@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02UW( LTRANS, N, M, PAR, A, LDA, B, LDB, SCALE,
      $                   IWARN )
 C

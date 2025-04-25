@@ -1,4 +1,7 @@
-# SLICOT Library
+SLICOT Library
+==============
+
+Version: 5.9.1
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6463090.svg)](https://doi.org/10.5281/zenodo.6463090)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://github.com/SLICOT/SLICOT-Reference/blob/main/LICENSE)
@@ -30,22 +33,32 @@ following chapters are currently included:
 - **T**: Transformation Routines
 - **U**: Utility Routines
 
-The SLICOT Library Root Directory contains few, basic files for the SLICOT
-Library distribution and generation. When distributed, SLICOT software comes
-with several filled-in subdirectories (`benchmark_data`, `doc`, `examples`,
-and `src`), and the following files in this root directory:
-
-- this file, `README.md`,
-- the install instructions, `INSTALL.md`
-- the contributors to the library and financial support, `Contributors.md`,
-- the license file, `LICENSE`, and
-- the main SLICOT Library documentation index, `libindex.html`.
-
 The SLICOT Library is built on LAPACK (Linear Algebra PACKage) and
 BLAS (Basic Linear Algebra Subprograms) collections. Therefore, these packages
 should be available on the platform used.
 
-**Basic References:**
+License
+-------
+SLICOT is licensed under the [BSD-3 clause license](./LICENSE).
+
+Installation
+------------
+See [INSTALL.md](./INSTALL.md)
+
+Release Notes
+-------------
+See [ReleaseNotes.md](./ReleaseNotes.md)
+
+Contributors and Financial Support
+----------------------------------
+See [Contributors.md](./Contributors.md)
+
+Documentation
+-------------
+The documentation is provided as HTML documentation in `libindex.html`.
+
+Basic References:
+-----------------
 
 1. P. Benner, V. Mehrmann, V. Sima, S. Van Huffel, and A. Varga, "SLICOT - A Subroutine Library in Systems and Control Theory", Applied and Computational Control, Signals, and Circuits (Birkhauser), Vol. 1, Ch. 10, pp. 505-546, 1999.
 

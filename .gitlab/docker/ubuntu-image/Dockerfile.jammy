@@ -1,0 +1,7 @@
+FROM ubuntu:jammy
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update ; \
+    apt install --yes cmake libopenblas-dev git;\
+    apt install --yes build-essential;\
+    apt install --yes gfortran
+

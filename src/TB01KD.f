@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01KD( DICO, STDOM, JOBA, N, M, P, ALPHA, A, LDA, B,
      $                   LDB, C, LDC, NDIM, U, LDU, WR, WI, DWORK,
      $                   LDWORK, INFO )

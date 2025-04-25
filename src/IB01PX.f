@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01PX( JOB, NOBR, N, M, L, UF, LDUF, UN, LDUN, UL,
      $                   LDUL, PGAL, LDPGAL, K, LDK, R, LDR, X, B, LDB,
      $                   D, LDD, TOL, IWORK, DWORK, LDWORK, IWARN,

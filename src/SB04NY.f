@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04NY( RC, UL, M, A, LDA, LAMBDA, D, TOL, IWORK,
      $                   DWORK, LDDWOR, INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION UE01MD( ISPEC, NAME, OPTS, N1, N2, N3 )
 C
 C     PURPOSE

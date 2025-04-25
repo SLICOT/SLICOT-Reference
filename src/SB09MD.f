@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB09MD( N, NC, NB, H1, LDH1, H2, LDH2, SS, LDSS, SE,
      $                   LDSE, PRE, LDPRE, TOL, INFO )
 C

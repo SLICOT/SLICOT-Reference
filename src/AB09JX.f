@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09JX( DICO, STDOM, EVTYPE, N, ALPHA, ER, EI, ED,
      $                   TOLINF, INFO )
 C

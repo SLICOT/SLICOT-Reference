@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01AD( XR, XI, YR, YI )
 C
 C     PURPOSE

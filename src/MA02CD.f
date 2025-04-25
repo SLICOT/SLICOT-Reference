@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02CD( N, KL, KU, A, LDA )
 C
 C     PURPOSE

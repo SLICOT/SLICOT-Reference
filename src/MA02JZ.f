@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION MA02JZ( LTRAN1, LTRAN2, N, Q1, LDQ1, Q2,
      $                                  LDQ2, RES, LDRES )
 C

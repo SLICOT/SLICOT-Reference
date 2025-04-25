@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DY( JOBSCL, N, A, LDA, QG, LDQG, D, DWORK, INFO )
 C
 C     PURPOSE

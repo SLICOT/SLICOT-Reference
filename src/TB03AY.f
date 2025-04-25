@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB03AY( NR, A, LDA, INDBLK, NBLK, VCOEFF, LDVCO1,
      $                   LDVCO2, PCOEFF, LDPCO1, LDPCO2, INFO )
 C

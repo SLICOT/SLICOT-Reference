@@ -1,0 +1,11 @@
+FROM almalinux:8
+RUN dnf update -y ; \
+    dnf install -y epel-release;\
+    dnf install -y dnf-plugins-core ;\
+    dnf config-manager --set-enabled powertools
+
+RUN dnf install -y bash mock git git-core fedora-packager rpmdevtools gcc ; \
+    dnf install -y cmake blas-devel lapack-devel; \
+    dnf install -y gcc-gfortran
+
+

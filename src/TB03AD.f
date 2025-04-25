@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB03AD( LERI, EQUIL, N, M, P, A, LDA, B, LDB, C, LDC,
      $                   D, LDD, NR, INDEX, PCOEFF, LDPCO1, LDPCO2,
      $                   QCOEFF, LDQCO1, LDQCO2, VCOEFF, LDVCO1, LDVCO2,

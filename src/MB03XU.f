@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03XU( LTRA, LTRB, N, K, NB, A, LDA, B, LDB, G, LDG,
      $                   Q, LDQ, XA, LDXA, XB, LDXB, XG, LDXG, XQ, LDXQ,
      $                   YA, LDYA, YB, LDYB, YG, LDYG, YQ, LDYQ, CSL,

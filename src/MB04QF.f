@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04QF( DIRECT, STOREV, STOREW, N, K, V, LDV, W, LDW,
      $                   CS, TAU, RS, LDRS, T, LDT, DWORK )
 C

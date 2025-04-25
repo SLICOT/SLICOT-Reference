@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03QG( DICO, STDOM, JOBU, JOBV, N, NLOW, NSUP, ALPHA,
      $                   A, LDA, E, LDE, U, LDU, V, LDV, NDIM, DWORK,
      $                   LDWORK, INFO )

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB02RU( DICO, HINV, TRANA, UPLO, N, A, LDA, G, LDG, Q,
      $                   LDQ, S, LDS, IWORK, DWORK, LDWORK, INFO )
 C

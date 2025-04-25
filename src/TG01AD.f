@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01AD( JOB, L, N, M, P, THRESH, A, LDA, E, LDE,
      $                   B, LDB, C, LDC, LSCALE, RSCALE, DWORK, INFO )
 C

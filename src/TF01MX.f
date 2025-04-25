@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TF01MX( N, M, P, NY, S, LDS, U, LDU, X, Y, LDY,
      $                   DWORK, LDWORK, INFO )
 C

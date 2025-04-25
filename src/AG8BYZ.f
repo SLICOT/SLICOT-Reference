@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AG8BYZ( FIRST, N, M, P, SVLMAX, ABCD, LDABCD, E, LDE,
      $                   NR, PR, NINFZ, DINFZ, NKRONL, INFZ, KRONL,
      $                   TOL, IWORK, DWORK, ZWORK, LZWORK, INFO )

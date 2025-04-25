@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB01OD( STAGES, JOBU, JOBV, N, M, A, LDA, B, LDB, U,
      $                   LDU, V, LDV, NCONT, INDCON, KSTAIR, TOL, IWORK,
      $                   DWORK, LDWORK, INFO )

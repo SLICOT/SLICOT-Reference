@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TX( UPDATQ, UPDATZ, M, N, NBLCKS, INUK, IMUK, A,
      $                   LDA, E, LDE, Q, LDQ, Z, LDZ, MNEI )
 C

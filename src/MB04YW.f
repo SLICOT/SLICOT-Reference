@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04YW( QRIT, UPDATU, UPDATV, M, N, L, K, SHIFT, D, E,
      $                   U, LDU, V, LDV, DWORK )
 C

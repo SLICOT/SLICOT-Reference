@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03TD( TYP, COMPU, SELECT, LOWER, N, A, LDA, G, LDG,
      $                   U1, LDU1, U2, LDU2, WR, WI, M, DWORK, LDWORK,
      $                   INFO )

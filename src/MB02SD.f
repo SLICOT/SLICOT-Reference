@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02SD( N, H, LDH, IPIV, INFO )
 C
 C     PURPOSE

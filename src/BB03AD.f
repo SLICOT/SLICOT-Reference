@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE BB03AD(DEF, NR, DPAR, IPAR, VEC, N, M, E, LDE, A, LDA,
      1                  Y, LDY, B, LDB, X, LDX, U, LDU, NOTE, DWORK,
      2                  LDWORK, INFO)

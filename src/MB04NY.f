@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04NY( M, N, V, INCV, TAU, A, LDA, B, LDB, DWORK )
 C
 C     PURPOSE
