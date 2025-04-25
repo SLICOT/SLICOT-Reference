@@ -1,4 +1,4 @@
-name: Build on Windows
+name: Build on Windows with MSYS2
 
 on:
   push:
@@ -82,7 +82,7 @@ jobs:
         -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
         -D CMAKE_INSTALL_PREFIX=${{github.workspace}}/lapack_install
         -D SLICOT_TESTING:BOOL=ON
-        -D SLICOT_BUILD_SHARED_LIBS:BOOL=ON
+        -D SLICOT_BUILD_SHARED_LIBS:BOOL=OFF
         -D CMAKE_EXE_LINKER_FLAGS="-Wl,--stack=2097152"
 
 
