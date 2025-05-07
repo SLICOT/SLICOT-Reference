@@ -10,6 +10,7 @@ not add any new routines to SLICOT.
 * The build system now uses CMAKE. The old makefile based system works in parallel
 but will be removed in the future with the next minor release.
 * CI Runs on Github and Gitlab - See Github #2
+* RPM packaging, see INSTALL.md for details
 
 ### Bugfixes
 

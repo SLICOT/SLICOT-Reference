@@ -86,6 +86,28 @@ pacboy sync gcc-fortran cmake ninja lapack
 The remaining build process works as described above.
 
 
+RPM Packages
+------------
+On RHEL, its derivatives, and Fedora Linux, we provide RPM packaging as well. In
+order to use this, install the following packages:
+```shell
+sudo dnf install cmake make gcc gcc-gfortran flexiblas-devel rpmdevtools
+```
+Instead `flexiblas-devel` also the reference packages can be installed. In this
+case uninstall `flexiblas-devel` and install `blas-devel` and `lapack-devel`.
+
+Afterwards, run
+```shell
+bash ./dist/make_rpm.sh
+```
+from the root of the source tree. This builds the SRPM and the RPM files for
+SLICOT. The results can be found in `~/rpmbuild/SRPMS` and
+`~/rpmbuild/RPMS/<ARCH>`. If only the SRPM is required, use
+```shell
+bash ./dist/make_rpm.sh -ts
+```
+instead.
+
 Issues
 ------
 A list of known issues can be found in [KNOWN_ISSUSES.md](./KNOWN_ISSUES.md)

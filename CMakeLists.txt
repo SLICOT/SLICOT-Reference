@@ -5,9 +5,14 @@ CMAKE_POLICY(SET CMP0048 NEW)
 # Adding C to the list of languages is necessary, such that BLAS
 # libraries requiring C libraries as well will work. This for
 # example is necessary to run MKL
+IF (DEFINED SLICOT_VERSION)
+    SET(_VERSION "${SLICOT_VERSION}")
+ELSE()
+    SET(_VERSION "5.9.0")
+ENDIF()
 
 PROJECT(SLICOT
-    VERSION 5.9.0
+    VERSION ${_VERSION}
     LANGUAGES C Fortran)
 
 # Add addtional CMAKE Paths.
@@ -33,11 +38,14 @@ ENDIF()
 
 
 
-# Shared libraries
 IF (SLICOT_INTEGER8)
     SET(INTEGER8 ON)
+    SET(SLICOT_NAME "slicot64")
+    SET(SLICOT_NAME_UC "SLICOT64")
 ELSE()
     SET(INTEGER8 OFF)
+    SET(SLICOT_NAME "slicot")
+    SET(SLICOT_NAME_UC "SLICOT")
 ENDIF()
 
 # Enable PIC code by default
@@ -56,6 +64,10 @@ ENDIF()
 
 INCLUDE(FortranCompilerSettings)
 INCLUDE(GNUInstallDirs)
+
+IF (NOT DEFINED BUILD_SHARED_LIBS)
+    SET(BUILD_SHARED_LIBS ON )
+ENDIF()
 
 # Set a default build type if none was specified
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -143,26 +155,26 @@ configure_file(
 
 INCLUDE(CMakePackageConfigHelpers)
 WRITE_BASIC_PACKAGE_VERSION_FILE(
-    SLICOTConfigVersion.cmake
+    ${SLICOT_NAME_UC}ConfigVersion.cmake
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY AnyNewerVersion
  )
 INSTALL(EXPORT slicot_targets
-    FILE SLICOTTargets.cmake
+    FILE ${SLICOT_NAME_UC}Targets.cmake
     NAMESPACE SLICOT::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SLICOT
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${SLICOT_NAME_UC}
 )
 
-CONFIGURE_FILE(SLICOTConfig.cmake.in SLICOTConfig.cmake @ONLY)
+CONFIGURE_FILE(SLICOTConfig.cmake.in ${SLICOT_NAME_UC}Config.cmake @ONLY)
 INSTALL(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/SLICOTConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/SLICOTConfigVersion.cmake"
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SLICOT
+    "${CMAKE_CURRENT_BINARY_DIR}/${SLICOT_NAME_UC}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${SLICOT_NAME_UC}ConfigVersion.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${SLICOT_NAME_UC}
     )
 
-CONFIGURE_FILE(slicot.pc.in slicot.pc @ONLY)
+CONFIGURE_FILE(slicot.pc.in ${SLICOT_NAME}.pc @ONLY)
 INSTALL(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/slicot.pc"
+    "${CMAKE_CURRENT_BINARY_DIR}/${SLICOT_NAME}.pc"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
 MESSAGE(STATUS "------------ Build Information --------------")
@@ -172,8 +184,9 @@ MESSAGE(STATUS "CMAKE_Fortran_FLAGS_DEBUG:  ${CMAKE_Fortran_FLAGS_DEBUG}")
 MESSAGE(STATUS "CMAKE_Fortran_FLAGS_RELEASE:  ${CMAKE_Fortran_FLAGS_RELEASE}")
 MESSAGE(STATUS "BLAS Libraries: ${BLAS_LIBRARIES}")
 MESSAGE(STATUS "LAPACK Libraries: ${LAPACK_LIBRARIES}")
-MESSAGE(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 MESSAGE(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-MESSAGE(STATUS "Shared Libs: ${BUILD_SHARED_LIBS}")
+MESSAGE(STATUS "BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
+MESSAGE(STATUS "SLICOT_INTEGER8: ${SLICOT_INTEGER8}")
+MESSAGE(STATUS "SLICOT_TESTING: ${SLICOT_TESTING}")
 MESSAGE(STATUS "---------------------------------------------")
 
