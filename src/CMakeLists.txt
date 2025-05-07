@@ -95,10 +95,43 @@ SET(SOURCES
     delctg.f select.f zelctg.f
     )
 
+
+# Check for deprecated LAPACK Symbols
+INCLUDE(CheckFortranFunctionExists)
+
+MACRO(ADD_ROUTINE_IF_REQUIRED ROUTINE VAR SOURCE_FILE)
+    SET(_CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES})
+    SET(CMAKE_REQUIRED_LIBRARIES BLAS::BLAS LAPACK::LAPACK)
+
+    Check_Fortran_Function_Exists(${ROUTINE} ${VAR})
+    IF (NOT ${VAR})
+        MESSAGE(STATUS "Add ${SOURCE_FILE} to library.")
+        SET(SOURCES ${SOURCES} ${SOURCE_FILE})
+    ENDIF()
+    SET(CMAKE_REQUIRED_LIBRARIES ${_CMAKE_REQUIRED_LIBRARIES})
+ENDMACRO()
+
+ADD_ROUTINE_IF_REQUIRED(dgegs HAVE_DGEGS lapack_aux/dgegs.f)
+ADD_ROUTINE_IF_REQUIRED(zgegs HAVE_ZGEGS lapack_aux/zgegs.f)
+ADD_ROUTINE_IF_REQUIRED(dlatzm HAVE_DLAZTM lapack_aux/dlatzm.f)
+ADD_ROUTINE_IF_REQUIRED(zlatzm HAVE_ZLAZTM lapack_aux/zlatzm.f)
+ADD_ROUTINE_IF_REQUIRED(dgegv HAVE_DGEGS lapack_aux/dgegv.f)
+ADD_ROUTINE_IF_REQUIRED(zgegv HAVE_ZGEGS lapack_aux/zgegv.f)
+
+# Setup the library.
+
 ADD_LIBRARY(slicot ${SOURCES})
-TARGET_LINK_LIBRARIES(slicot LAPACK::LAPACK BLAS::BLAS)
+TARGET_LINK_LIBRARIES(slicot PUBLIC LAPACK::LAPACK BLAS::BLAS)
 SET_PROPERTY(TARGET slicot PROPERTY VERSION ${PROJECT_VERSION})
 SET_PROPERTY(TARGET slicot PROPERTY SOVERSION ${PROJECT_VERSION_MAJOR})
+
+if(_is_coverage_build)
+  target_link_libraries(slicot PRIVATE gcov)
+  add_coverage(slicot)
+endif()
+
+
+
 
 ADD_LIBRARY(SLICOT::slicot ALIAS slicot)
 

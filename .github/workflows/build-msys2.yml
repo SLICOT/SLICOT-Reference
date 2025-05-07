@@ -1,0 +1,106 @@
+name: Build on Windows
+
+on:
+  push:
+    branches:
+    - main
+    - cmake_integration
+    paths:
+    - .github/workflows/*.yml
+    - '**CMakeLists.txt'
+    - 'cmake/**'
+    - 'examples/**'
+    - 'src/**'
+    - '!**Makefile'
+    - '!**md'
+  pull_request:
+    paths:
+    - .github/workflows/*.yml
+    - '**CMakeLists.txt'
+    - 'cmake/**'
+    - 'examples/**'
+    - 'src/**'
+    - '!**Makefile'
+    - '!**md'
+
+permissions:
+  contents: read
+
+jobs:
+
+  test-install-release:
+    runs-on: ${{ matrix.os.runs-on }}
+    env:
+      BUILD_TYPE: Release
+      FFLAGS: ${{ matrix.fflags }}
+
+
+    strategy:
+      fail-fast: false
+      matrix:
+        fflags:
+          - "-fimplicit-none "
+          - "-fimplicit-none -fopenmp"
+        os:
+          # - { icon: '⬛', sys: mingw32, runs-on: 'windows-latest' }
+          - { icon: '🟦', sys: mingw64, runs-on: 'windows-latest', fortran: 'gcc-fortran' }
+          - { icon: '🟨', sys: ucrt64, runs-on: 'windows-latest', fortran: 'gcc-fortran' }
+          - { icon: '🟧', sys: clang64, runs-on: 'windows-latest', fortran: 'flang' }
+          - { icon: '🟩', sys: clangarm64, runs-on: 'windows-11-arm', fortran: 'flang' }
+    name: 🚧${{ matrix.os.icon }} ${{ matrix.os.sys }}
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+
+    - name: '🧰 Checkout SLICOT'
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+
+    - name: '${{ matrix.os.icon }} Setup MSYS2'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{matrix.os.sys}}
+        update: true
+        install: >-
+          git
+          make
+        pacboy: >-
+          ${{ matrix.os.fortran }}
+          toolchain:p
+          cmake:p
+          ninja:p
+          lapack:p
+
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+      run: >
+        cmake -B build -G Ninja
+        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -D CMAKE_INSTALL_PREFIX=${{github.workspace}}/lapack_install
+        -D SLICOT_TESTING:BOOL=ON
+        -D SLICOT_BUILD_SHARED_LIBS:BOOL=ON
+        -D CMAKE_EXE_LINKER_FLAGS="-Wl,--stack=2097152"
+
+
+    - name: '🚧 Build'
+      run: |
+        cmake --build build --config ${{env.BUILD_TYPE}}
+
+    - name: Test with OpenMP
+      working-directory: ${{github.workspace}}/build
+      if: ${{ contains( matrix.fflags, 'openmp' ) }}
+      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j1 --output-on-failure --timeout 100
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      if: ${{ !contains( matrix.fflags, 'openmp' )  }}
+      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j2 --output-on-failure --timeout 100
+
+    - name: Install
+      run: cmake --build build --target install -j2
+
+#

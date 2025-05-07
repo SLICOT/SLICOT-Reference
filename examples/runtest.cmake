@@ -33,8 +33,18 @@ if(DEFINED OUTPUT)
   message("Test ERROR:\n${TEST_ERROR}")
 endif()
 
+# Since sign swaps like +0.0000 or -0.0000 are not detected by this approach, this could not be enabled.
+# if (DEFINED RESULT AND DEFINED OUTPUT)
+#     execute_process(COMMAND ${CMAKE_COMMAND} -E compare_files --ignore-eol "${OUTPUT}" "${RESULT}" RESULT_VARIABLE COMPARE_RET)
+#     message("COMPARE_RET: ${COMPARE_RET}")
+# else()
+#     SET(COMPARE_RET 0)
+# endif()
+SET(COMPARE_RET 0)
+
+
 # if the test does not return 0, then fail it
-if(NOT ${RET} EQUAL 0)
+if(NOT (${RET} EQUAL 0 AND ${COMPARE_RET} EQUAL 0))
   message(FATAL_ERROR "Test ${TEST} returned ${RET}")
 endif()
 message( "Test ${TEST} returned ${RET}")

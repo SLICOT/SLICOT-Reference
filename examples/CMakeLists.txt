@@ -2,6 +2,7 @@ macro(add_slicot_test name src)
     get_filename_component(baseNAME ${src} NAME_WE)
     string(SUBSTRING ${baseNAME} 1 -1 baseNAME)
     set(TEST_INPUT  "${CMAKE_CURRENT_SOURCE_DIR}/data/${baseNAME}.dat")
+    set(TEST_RESULT "${CMAKE_CURRENT_SOURCE_DIR}/results/${baseNAME}.res")
     set(TEST_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${baseNAME}.exa")
 
 
@@ -13,18 +14,38 @@ macro(add_slicot_test name src)
     add_executable(${name} ${src})
     target_link_libraries(${name} SLICOT::slicot)
     if(EXISTS "${TEST_INPUT}")
-        add_test(NAME test-${baseNAME} COMMAND "${CMAKE_COMMAND}"
-            -DTEST=$<TARGET_FILE:${name}>
-            -DINPUT=${TEST_INPUT}
-            -DOUTPUT=${TEST_OUTPUT}
-            -DINTDIR=${CMAKE_CFG_INTDIR}
-            -P "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+       if (EXISTS "${TEST_RESULT}")
+            add_test(NAME test-${baseNAME} COMMAND "${CMAKE_COMMAND}"
+                -DTEST=$<TARGET_FILE:${name}>
+                -DINPUT=${TEST_INPUT}
+                -DOUTPUT=${TEST_OUTPUT}
+                -DRESULT=${TEST_RESULT}
+                -DINTDIR=${CMAKE_CFG_INTDIR}
+                -P "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+
+            set_property(TEST test-${baseNAME} PROPERTY
+                ATTACHED_FILES "${TEST_INPUT};${TEST_RESULT};${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+        else()
+            add_test(NAME test-${baseNAME} COMMAND "${CMAKE_COMMAND}"
+                -DTEST=$<TARGET_FILE:${name}>
+                -DINPUT=${TEST_INPUT}
+                -DOUTPUT=${TEST_OUTPUT}
+                -DINTDIR=${CMAKE_CFG_INTDIR}
+                -P "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+            set_property(TEST test-${baseNAME} PROPERTY
+                ATTACHED_FILES "${TEST_INPUT};${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+
+        endif()
     else()
         add_test(NAME test-${name} COMMAND "${CMAKE_COMMAND}"
             -DTEST=$<TARGET_FILE:${name}>
             -DOUTPUT=${TEST_OUTPUT}
             -DINTDIR=${CMAKE_CFG_INTDIR}
             -P "${LAPACK_SOURCE_DIR}/TESTING/runtest.cmake")
+        set_property(TEST test-${baseNAME} PROPERTY
+            ATTACHED_FILES "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
+
+
     endif()
 endmacro()
 
