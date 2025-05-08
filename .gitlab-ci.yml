@@ -7,6 +7,7 @@ before_script:
 
 stages:
   - build
+  - deploy
 
 
 linux:
@@ -77,4 +78,18 @@ compilers:
     - cmake --build build-dir 2>&1 | tee build.log
     - cmake --build build-dir --target install
     - (cd build-dir; OMP_NUM_THREADS=1 ctest  --output-on-failure)
+
+
+dist-rpm:
+  stage: deploy
+  variables:
+    OS: fedora
+    OSVERSION: 42
+    RPM_QUIET: 1
+  image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  script:
+    - bash ./dist/make_rpm.sh
+    - dnf install -y  ~/rpmbuild/RPMS/$(uname -m)/*.rpm
+
 
