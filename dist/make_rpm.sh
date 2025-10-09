@@ -17,7 +17,7 @@ RPMSPEC=dist/rpm/${RPMSPEC_BASE}.in
 # cp "${RPMSPEC}" "${RPMSPEC_BASE}"
 
 sed -e "s/##MAJOR##/$MAJOR/g" -e "s/##MINOR##/$MINOR/g" -e "s/##PATCH##/$PATCH/g" "${RPMSPEC}" > "${RPMSPEC_BASE}"
-tar -v --exclude="build*" --exclude-vcs --exclude-vcs-ignores \
+tar --exclude="build*" --exclude-vcs --exclude-vcs-ignores \
     --transform="s/.\/\(.*\)/slicot-${MAJOR}.${MINOR}.${PATCH}\/\1/g" \
     -czf /tmp/slicot-${MAJOR}.${MINOR}.${PATCH}.tar.gz .
 rm "${RPMSPEC_BASE}"
