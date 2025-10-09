@@ -6,5 +6,4 @@ libdir=@CMAKE_INSTALL_FULL_LIBDIR@
 Name: @SLICOT_NAME@
 Description: The SLICOT library
 Version: @PROJECT_VERSION@
-Requires: blas, lapack
 Libs: -L${libdir} -l@SLICOT_NAME@

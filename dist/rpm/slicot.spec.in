@@ -2,6 +2,7 @@
 %global minor ##MINOR##
 %global patch ##PATCH##
 
+
 Name:           slicot
 Version:        %{major}.%{minor}.%{patch}
 Release:        1%{?dist}
@@ -13,7 +14,8 @@ Source0:        https://github.com/SLICOT/SLICOT-Reference/archive/v%{version}/%
 
 BuildRequires:  make, cmake >= 3.22
 BuildRequires:  gcc, gcc-fortran
-BuildRequires:  (flexiblas-devel or (blas-devel and lapack-devel))
+BuildRequires:  flexiblas-devel
+# or (blas-devel and lapack-devel))
 %global _description %{expand:
 SLICOT  is a general purpose basic mathematical library implemented
 in Fortran for control theoretical computations. The library provides

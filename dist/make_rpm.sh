@@ -7,7 +7,11 @@
 . ./.version
 
 BUILDARG=${1:--ta}
-
+if [ -n "$RPM_QUIET" ]; then
+    QUIET="--quiet"
+else
+    QUIET=""
+fi
 RPMSPEC_BASE=slicot.spec
 RPMSPEC=dist/rpm/${RPMSPEC_BASE}.in
 
@@ -22,5 +26,5 @@ tar --exclude="build*" --exclude-vcs --exclude-vcs-ignores \
     -czf /tmp/slicot-${MAJOR}.${MINOR}.${PATCH}.tar.gz .
 rm "${RPMSPEC_BASE}"
 
-rpmbuild ${BUILDARG} /tmp/slicot-${MAJOR}.${MINOR}.${PATCH}.tar.gz
+rpmbuild $QUIET ${BUILDARG} /tmp/slicot-${MAJOR}.${MINOR}.${PATCH}.tar.gz
 
