@@ -15,6 +15,11 @@ Contributors since Version 5.9.0
 Contributors until Version 5.9.0
 --------------------------------
 
+Maintainers:
+
+* Vasile Sima
+* Andreas Varga
+
 The development of the SLICOT Library (Subroutine Library In COntrol Theory)
 owe much to many people. We especially thank all those who have contributed
 routines to the Library, including
