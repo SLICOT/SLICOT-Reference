@@ -14,7 +14,7 @@ authors:
     given-names: "Andreas"
     orcid: "https://orcid.org/0000-0002-6278-2939"
 title: "SLICOT - Subroutine Library In COntrol Theory"
-version: 5.9.0
+version: 5.9.1
 doi: TBA
 date-released: TBA
 url: "https://github.com/SLICOT/SLICOT-Reference"
