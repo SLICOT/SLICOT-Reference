@@ -1,16 +1,17 @@
 SLICOT Software Installation
 ============================
 
-This file describes how to install and update the **SLICOT** Library, and how to run the example programs.
+This file describes how to install and update the **SLICOT** Library, and how
+to run the example programs.
 
 Requirements
 ------------
 
 In order to build SLICOT you need:
 
- * a F77 compatible Fortran compiler
+ * a Fortran 77 compatible Fortran compiler and a corresponding C compiler
  * cmake, at least 3.15 or 3.22 for the ILP64 build
- * a BLAS/LIBRARY
+ * a BLAS and LAPACK library, preferable an optimized one like OpenBLAS
 
 The following compilers  are tested
 
@@ -53,15 +54,15 @@ ctest --test-dir build-dir
 
 The following options to cmake are availble:
 
-| Option | Possible Values | Default Value | Description |
-|:-------|:----------------|:--------------|-------------|
-|`CMAKE_INSTALL_PREFIX` | valid path | `/usr/local` | Installation path |
+| Option                | Possible Values | Default Value | Description        |
+|:----------------------|:----------------|:--------------|--------------------|
+|`CMAKE_INSTALL_PREFIX` | valid path      | `/usr/local ` | Installation path  |
 |`CMAKE_BUILD_TYPE`     | `Debug`, `Release`, `MinSizeRel`, `RelWithDebInfo`, `Coverage` | `Release` | Specify the build type |
-|`BUILD_SHARED_LIBS`    | `ON`, `OFF` | `OFF` | Build SLICOT as shared library |
-|`SLICOT_TESTING`       | `ON`, `OFF` | `ON`  | Build the examples and the test suite |
-|`SLICOT_DEBUG`         | `ON`, `OFF` | `OFF` | Enable the debug build, equivalent to `CMAKE_BUILD_TYPE=Debug`|
-|`SLICOT_INTEGER8`      | `ON`, `OFF` | `OFF` | Enable the ILP64 integer model, i.e. the Fortran `INTEGER` defaults to a 64-bit integer, requires cmake >= 3.22|
-|`BLA_VENDOR`           | BLAS Vendor Name | empty | Specify the BLAS library to search for, see https://cmake.org/cmake/help/latest/module/FindBLAS.html for details |
+|`BUILD_SHARED_LIBS`    | `ON`, `OFF`     | `OFF`         | Build SLICOT as shared library |
+|`SLICOT_TESTING`       | `ON`, `OFF`     | `ON`          | Build the examples and the test suite |
+|`SLICOT_DEBUG`         | `ON`, `OFF`     | `OFF`         | Enable the debug build, equivalent to `CMAKE_BUILD_TYPE=Debug`|
+|`SLICOT_INTEGER8`      | `ON`, `OFF`     | `OFF`         | Enable the ILP64 integer model, i.e. the Fortran `INTEGER` defaults to a 64-bit integer, requires cmake >= 3.22|
+|`BLA_VENDOR`           | BLAS Vendor Name | empty        | Specify the BLAS library to search for, see https://cmake.org/cmake/help/latest/module/FindBLAS.html for details |
 
 The options are passed as `-DOPTION=VALUE` to cmake.
 
@@ -112,4 +113,8 @@ Issues
 ------
 A list of known issues can be found in [KNOWN_ISSUSES.md](./KNOWN_ISSUES.md)
 
-
+Deprecation Warning
+-------------------
+**SLICOT could still by built by calling `make` and setting the proper values
+in `make.inc`. This way is deprecated and will be removed in the next non-bugfix
+release of SLICOT. Most-likely in 5.10 or 6.0.**
