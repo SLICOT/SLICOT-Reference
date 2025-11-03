@@ -18,17 +18,24 @@ linux:
     matrix:
       - OS: [ "ubuntu" ]
         OSVERSION: [ 'focal', 'jammy']
+        TAG: "amd64"
       - OS: [ "ubuntu" ]
         OSVERSION: [ 'noble' ]
         INTEGER8: [ 'INTEGER8_ON', 'INTEGER8_OFF' ]
+        TAG: "amd64"
       - OS: [ "ubuntu" ]
         OSVERSION: [ 'noble' ]
         CC: "clang"
         FC: "flang-new"
+        TAG: "amd64"
       - OS: [ "fedora" ]
-        OSVERSION: [ '40', '41', '42', 'rawhide' ]
+        OSVERSION: [ '41', '42', '43', 'rawhide' ]
+        TAG: "amd64"
       - OS: [ "almalinux" ]
-        OSVERSION: [ '8', '9' ]
+        OSVERSION: [ '8', '9', '10' ]
+        TAG: "haswell"
+  tags:
+    - ${TAG}
 
   script:
     - export INTEGER8=${INTEGER8##INTEGER8_}; export INTEGER8=${INTEGER8:-OFF};

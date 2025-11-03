@@ -78,14 +78,14 @@ make -C build64 test
 
 %files
 %license LICENSE
-%doc README.md Contributors.md KNOWN_ISSUES.md ReleaseNotes.md
+%doc README.md CONTRIBUTORS.md CONTRIBUTING.md KNOWN_ISSUES.md ReleaseNotes.md INSTALL.md CITATION.cff
 %{_libdir}/lib%{name}.so.%{major}
 %{_libdir}/lib%{name}.so.%{major}.%{minor}.%{patch}
 
 %if 0%{?__isa_bits} == 64
 %files -n %{name}64
 %license LICENSE
-%doc README.md Contributors.md KNOWN_ISSUES.md ReleaseNotes.md
+%doc README.md CONTRIBUTORS.md CONTRIBUTING.md KNOWN_ISSUES.md ReleaseNotes.md INSTALL.md CITATION.cff
 %{_libdir}/lib%{name}64.so.%{major}
 %{_libdir}/lib%{name}64.so.%{major}.%{minor}.%{patch}
 %endif
