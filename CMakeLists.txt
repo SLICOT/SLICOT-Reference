@@ -1,19 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.15.0)
 CMAKE_POLICY(SET CMP0048 NEW)
 
-
-# Adding C to the list of languages is necessary, such that BLAS
-# libraries requiring C libraries as well will work. This for
-# example is necessary to run MKL
-IF (DEFINED SLICOT_VERSION)
-    SET(_VERSION "${SLICOT_VERSION}")
-ELSE()
-    SET(_VERSION "5.9.0")
-ENDIF()
-
-PROJECT(SLICOT
-    VERSION ${_VERSION}
-    LANGUAGES C Fortran)
+PROJECT(SLICOT VERSION 5.9.0
+               LANGUAGES C Fortran)
 
 # Add addtional CMAKE Paths.
 LIST(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
