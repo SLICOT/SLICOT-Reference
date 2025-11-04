@@ -109,6 +109,23 @@ bash ./dist/make_rpm.sh -ts
 ```
 instead.
 
+Debian/Ubuntu Packages
+----------------------
+On Debian, Ubuntu and their derivatives packages can be built as well. This
+requires the installation of then prerequisites:
+```shell
+sudo apt install cmake libblas-dev libblas64-dev liblapack-dev liblapack64-dev\
+         git build-essential gfortran clang flang  ninja-build debhelper
+```
+and `debhelper` must be available in version 13.0. (This disables building
+packages on Ubuntu before 22.04.)
+
+After installing the requirements, the packages are bulild using
+```shell
+dpkg-buildpackage -uc -us
+```
+
+
 Issues
 ------
 A list of known issues can be found in [KNOWN_ISSUSES.md](./KNOWN_ISSUES.md)

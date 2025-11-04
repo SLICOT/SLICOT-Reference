@@ -55,7 +55,7 @@ INCLUDE(FortranCompilerSettings)
 INCLUDE(GNUInstallDirs)
 
 IF (NOT DEFINED BUILD_SHARED_LIBS)
-    SET(BUILD_SHARED_LIBS ON )
+    SET(BUILD_SHARED_LIBS ON)
 ENDIF()
 
 # Set a default build type if none was specified

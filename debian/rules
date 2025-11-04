@@ -1,0 +1,102 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE = 1
+
+pkgsrc = $(shell LC_ALL=C dpkg-parsechangelog --show-field Source )
+pkgver = $(shell LC_ALL=C dpkg-parsechangelog --show-field Version )
+pkgdist = $(shell LC_ALL=C dpkg-parsechangelog --show-field Distribution )
+
+DEB_HOST_MULTIARCH  ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+
+
+
+OS_DIST := $(shell grep ^VERSION_CODENAME /etc/os-release | cut -d'=' -f2 | sed 's/\"//gI')
+
+SC_VERSION = $(shell dist/get_version.sh deb)
+NEW_VERSION = $(shell dpkg --compare-versions $(SC_VERSION) gt $(pkgver) && echo $(SC_VERSION) )
+
+ifdef DEB_FULLNAME
+export DEBFULLNAME=$(DEB_FULLNAME)
+endif
+
+
+%:
+	dh $@ --with-missing
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_auto_clean:
+	dh_auto_clean -B build-32
+	dh_auto_clean -B build-64
+	dh_auto_clean -B build-32-static
+	dh_auto_clean -B build-64-static
+	rm -rf build-32
+	rm -rf build-64
+	rm -rf build-32-static
+	rm -rf build-64-static
+ifneq ($(NEW_VERSION),)
+	$(warning "Setting new version in debian changelog: $(NEW_VERSION)")
+	debchange -v $(NEW_VERSION)$(VERSION_POSTFIX) "Version $(NEW_VERSION)" && debchange -D $(OS_DIST) -m -r ""
+endif
+
+
+override_dh_auto_configure:
+ifneq ($(NEW_VERSION),)
+	$(warning "Setting new version in debian changelog: $(NEW_VERSION)")
+	debchange -v $(NEW_VERSION)$(VERSION_POSTFIX) "Version $(NEW_VERSION)" && debchange -D $(OS_DIST) -m -r ""
+endif
+	mkdir -p build-32
+	mkdir -p build-64
+	mkdir -p build-32-static
+	mkdir -p build-64-static
+	dh_auto_configure -B build-32 -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=OFF \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-GNinja
+	dh_auto_configure -B build-64 -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=ON \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-GNinja
+	dh_auto_configure -B build-32-static -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=OFF \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DSLICOT_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-GNinja
+	dh_auto_configure -B build-64-static -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=ON \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DSLICOT_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-GNinja
+
+
+override_dh_auto_build:
+	dh_auto_build -B build-32
+	dh_auto_build -B build-64
+	dh_auto_build -B build-32-static
+	dh_auto_build -B build-64-static
+
+
+override_dh_auto_install:
+	dh_auto_install -B build-32
+	dh_auto_install -B build-64
+	install -m 644 -t $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/ build-32-static/lib/libslicot.a
+	install -m 644 -t $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/ build-64-static/lib/libslicot64.a
+
+
+
+override_dh_auto_test:
+	# dh_auto_test --no-parallel
+	dh_auto_test -B build-32 --no-parallel
+	dh_auto_test -B build-64 --no-parallel
+
+
+
+
