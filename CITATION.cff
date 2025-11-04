@@ -15,8 +15,8 @@ authors:
     orcid: "https://orcid.org/0000-0002-6278-2939"
 title: "SLICOT - Subroutine Library In COntrol Theory"
 version: 5.9.1
-doi: TBA
-date-released: TBA
+doi: 10.5281/zenodo.17523371
+date-released: 2025-11-04
 url: "https://github.com/SLICOT/SLICOT-Reference"
 license: BSD-3-Clause
 keywords:
