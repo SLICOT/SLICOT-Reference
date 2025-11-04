@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04NX( RC, UL, M, A, LDA, LAMBD1, LAMBD2, LAMBD3,
      $                   LAMBD4, D, TOL, IWORK, DWORK, LDDWOR, INFO )
 C

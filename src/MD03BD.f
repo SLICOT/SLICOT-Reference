@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MD03BD( XINIT, SCALE, COND, FCN, QRFACT, LMPARM, M, N,
      $                   ITMAX, FACTOR, NPRINT, IPAR, LIPAR, DPAR1,
      $                   LDPAR1, DPAR2, LDPAR2, X, DIAG, NFEV, NJEV,

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TD04AD( ROWCOL, M, P, INDEX, DCOEFF, LDDCOE, UCOEFF,
      $                   LDUCO1, LDUCO2, NR, A, LDA, B, LDB, C, LDC, D,
      $                   LDD, TOL, IWORK, DWORK, LDWORK, INFO )

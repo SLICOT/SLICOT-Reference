@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01MY( METH, BATCH, CONCT, NOBR, M, L, NSMP, U, LDU,
      $                   Y, LDY, R, LDR, IWORK, DWORK, LDWORK, IWARN,
      $                   INFO )

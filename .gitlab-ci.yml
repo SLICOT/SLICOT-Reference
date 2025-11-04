@@ -1,0 +1,116 @@
+default:
+  interruptible: true
+
+before_script:
+  - echo "Pipeline Source - ${CI_PIPELINE_SOURCE}"
+  - git submodule update --init --recursive
+
+stages:
+  - build
+  - deploy
+
+
+linux:
+  stage: build
+  image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  parallel:
+    matrix:
+      - OS: [ "ubuntu" ]
+        OSVERSION: [ 'focal', 'jammy']
+        TAG: "amd64"
+      - OS: [ "ubuntu" ]
+        OSVERSION: [ 'noble' ]
+        INTEGER8: [ 'INTEGER8_ON', 'INTEGER8_OFF' ]
+        TAG: "amd64"
+      - OS: [ "ubuntu" ]
+        OSVERSION: [ 'noble' ]
+        CC: "clang"
+        FC: "flang-new"
+        TAG: "amd64"
+      - OS: [ "fedora" ]
+        OSVERSION: [ '41', '42', '43', 'rawhide' ]
+        TAG: "amd64"
+      - OS: [ "almalinux" ]
+        OSVERSION: [ '8', '9', '10' ]
+        TAG: "haswell"
+  tags:
+    - ${TAG}
+
+  script:
+    - export INTEGER8=${INTEGER8##INTEGER8_}; export INTEGER8=${INTEGER8:-OFF};
+    - export BLA_VENDOR=${BLA_VENDOR##BLA_VENDOR_}; export BLA_VENDOR=${BLA_VENDOR:-All}
+    - cmake -S . -B build-dir -DINTEGER8=${INTEGER8} -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBLA_VENDOR=${BLA_VENDOR}
+    - cmake --build build-dir 2>&1 | tee build.log
+    - cmake --build build-dir --target install
+    - (cd build-dir; OMP_NUM_THREADS=1 ctest  --output-on-failure)
+    - cat build.log | grep -- \\[-W | sed 's/.*\[//; s/\]//' | sort | uniq -c | sort -nr
+
+compilers:
+  stage: build
+  image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH =~ /^cmake.*/
+  tags:
+   - haswell
+  parallel:
+    matrix:
+      - OS: [ "intel" ]
+        OSVERSION: [ "2021" ]
+        CC: "icc"
+        FC: "ifort"
+        BLA_VENDOR: [ "BLA_VENDOR_Intel10_64lp" ]
+      - OS: [ "intel" ]
+        OSVERSION: [ "2021", "2022", "2023", "2024", "2025" ]
+        CC: "icx"
+        FC: "ifx"
+        BLA_VENDOR: [ "BLA_VENDOR_Intel10_64lp" ]
+      - OS: [ 'amd' ]
+        OSVERSION: [ '5.0' ]
+        CC: 'clang'
+        FC: 'flang'
+        BLA_VENDOR: [ 'BLA_VENDOR_AOCL_mt', 'BLA_VENDOR_AOCL']
+        BLIS_ARCH_TYPE: 'generic'
+      - OS: [ 'nvidia' ]
+        OSVERSION: [ '21.11', '22.11', '23.11', '24.9', '25.3' ]
+        CC: 'nvc'
+        FC: 'nvfortran'
+        BLA_VENDOR: 'BLA_VENDOR_NVHPC'
+  script:
+    - export INTEGER8=${INTEGER8##INTEGER8_}; export INTEGER8=${INTEGER8:-OFF};
+    - export BLA_VENDOR=${BLA_VENDOR##BLA_VENDOR_}; export BLA_VENDOR=${BLA_VENDOR:-All}
+    - cmake -S . -B build-dir -DINTEGER8=${INTEGER8} -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBLA_VENDOR=${BLA_VENDOR}
+    - cmake --build build-dir 2>&1 | tee build.log
+    - cmake --build build-dir --target install
+    - (cd build-dir; OMP_NUM_THREADS=1 ctest  --output-on-failure)
+
+
+dist-rpm:
+  stage: deploy
+  variables:
+    RPM_QUIET: 1
+  parallel:
+    matrix:
+      - OS: [ 'fedora' ]
+        OSVERSION: ['42', '43' ]
+  image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  script:
+    - bash ./dist/make_rpm.sh
+    - dnf install -y  ~/rpmbuild/RPMS/$(uname -m)/*.rpm
+
+dist-deb:
+  stage: deploy
+  parallel:
+    matrix:
+      - OS: [ "ubuntu" ]
+        OSVERSION: [ "jammy", "noble", "latest" ]
+      - OS: [ "debian" ]
+        OSVERSION: [ "bookworm", "trixie" ]
+  image:  ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  script:
+    - dpkg-buildpackage -uc -us
+

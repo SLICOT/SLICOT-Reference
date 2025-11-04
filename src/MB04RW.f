@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04RW( M, N, PMAX, A, LDA, B, LDB, C, LDC, D, LDD, E,
      $                   LDE, F, LDF, SCALE, IWORK, INFO )
 C

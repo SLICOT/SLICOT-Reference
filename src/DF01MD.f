@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DF01MD( SICO, N, DT, A, DWORK, INFO )
 C
 C     PURPOSE

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02QD( JOB, INIPER, M, N, NRHS, RCOND, SVLMAX, A, LDA,
      $                   B, LDB, Y, JPVT, RANK, SVAL, DWORK, LDWORK,
      $                   INFO )

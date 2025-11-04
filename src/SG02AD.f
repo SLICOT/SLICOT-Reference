@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG02AD( DICO, JOBB, FACT, UPLO, JOBL, SCAL, SORT, ACC,
      $                   N, M, P, A, LDA, E, LDE, B, LDB, Q, LDQ, R,
      $                   LDR, L, LDL, RCONDU, X, LDX, ALFAR, ALFAI,

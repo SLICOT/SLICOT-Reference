@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC03NX( MP, NP, DP, P, LDP1, LDP2, A, LDA, E, LDE )
 C
 C     PURPOSE

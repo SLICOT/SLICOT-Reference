@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB07ND( N, M, A, LDA, B, LDB, C, LDC, D, LDD, RCOND,
      $                   IWORK, DWORK, LDWORK, INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TD05AD( UNITF, OUTPUT, NP1, MP1, W, A, B, VALR, VALI,
      $                   INFO )
 C

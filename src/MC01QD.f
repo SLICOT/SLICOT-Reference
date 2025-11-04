@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01QD( DA, DB, A, B, RQ, IWARN, INFO )
 C
 C     PURPOSE

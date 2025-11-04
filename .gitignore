@@ -1,0 +1,6 @@
+*.swp
+build*/
+*.obj
+*.o
+*.a
+*.lib

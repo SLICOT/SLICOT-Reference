@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION AB13CD( N, M, NP, A, LDA, B, LDB, C,
      $                                  LDC, D, LDD, TOL, IWORK, DWORK,
      $                                  LDWORK, CWORK, LCWORK, BWORK,

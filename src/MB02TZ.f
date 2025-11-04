@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02TZ( NORM, N, HNORM, H, LDH, IPIV, RCOND, DWORK,
      $                   ZWORK, INFO )
 C

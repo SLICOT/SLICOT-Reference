@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TV( UPDATZ, N, NRA, NCA, IFIRA, IFICA, A, LDA, E,
      $                   LDE, Z, LDZ )
 C

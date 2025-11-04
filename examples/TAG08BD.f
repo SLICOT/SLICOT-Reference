@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AG08BD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..

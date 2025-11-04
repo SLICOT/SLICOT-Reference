@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB05MD( BALANC, N, DELTA, A, LDA, V, LDV, Y, LDY, VALR,
      $                   VALI, IWORK, DWORK, LDWORK, INFO )
 C

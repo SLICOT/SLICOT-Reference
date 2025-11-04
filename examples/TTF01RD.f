@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TF01RD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..

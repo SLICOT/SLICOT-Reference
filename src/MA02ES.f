@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02ES( UPLO, N, A, LDA )
 C
 C     PURPOSE
@@ -52,7 +55,7 @@ C     .. Scalar Arguments ..
 C     .. Array Arguments ..
       DOUBLE PRECISION   A(LDA,*)
 C     .. Local Scalars ..
-      INTEGER            J
+      INTEGER            I, J
 C     .. External Functions ..
       LOGICAL            LSAME
       EXTERNAL           LSAME

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE UD01DD( M, N, NIN, A, LDA, INFO )
 C
 C     PURPOSE

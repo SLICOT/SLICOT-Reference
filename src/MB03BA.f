@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03BA( K, H, S, SMULT, AMAP, QMAP )
 C
 C     PURPOSE

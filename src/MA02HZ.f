@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION MA02HZ( JOB, M, N, DIAG, A, LDA )
 C
 C     PURPOSE

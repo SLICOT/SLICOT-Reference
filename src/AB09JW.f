@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09JW( JOB, DICO, JOBEW, STBCHK, N, M, P, NW, MW,
      $                   A, LDA, B, LDB, C, LDC, D, LDD, AW, LDAW,
      $                   EW, LDEW, BW, LDBW, CW, LDCW, DW, LDDW, IWORK,

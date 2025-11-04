@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03QV( N, S, LDS, T, LDT, ALPHAR, ALPHAI, BETA, INFO )
 C
 C     PURPOSE

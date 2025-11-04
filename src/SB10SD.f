@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB10SD( N, M, NP, NCON, NMEAS, A, LDA, B, LDB, C, LDC,
      $                   D, LDD, AK, LDAK, BK, LDBK, CK, LDCK, DK, LDDK,
      $                   X, LDX, Y, LDY, RCOND, TOL, IWORK, DWORK,

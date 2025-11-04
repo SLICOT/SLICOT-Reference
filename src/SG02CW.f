@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG02CW( DICO, JOB, JOBE, FLAG, JOBG, UPLO, TRANS, N, M,
      $                   A, LDA, E, LDE, G, LDG, X, LDX, F, LDF, K, LDK,
      $                   XE, LDXE, R, LDR, C, LDC, NORMS, DWORK, LDWORK,

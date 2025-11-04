@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04XY( JOBU, JOBV, M, N, X, LDX, TAUP, TAUQ, U,
      $                   LDU, V, LDV, INUL, INFO )
 C

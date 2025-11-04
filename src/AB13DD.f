@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB13DD( DICO, JOBE, EQUIL, JOBD, N, M, P, FPEAK,
      $                   A, LDA, E, LDE, B, LDB, C, LDC, D, LDD, GPEAK,
      $                   TOL, IWORK, DWORK, LDWORK, CWORK, LCWORK,

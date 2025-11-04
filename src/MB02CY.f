@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02CY( TYPET, STRUCG, P, Q, N, K, A, LDA, B, LDB, H,
      $                   LDH, CS, LCS, DWORK, LDWORK, INFO )
 C

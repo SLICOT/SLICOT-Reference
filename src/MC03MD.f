@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC03MD( RP1, CP1, CP2, DP1, DP2, DP3, ALPHA, P1,
      $                   LDP11, LDP12, P2, LDP21, LDP22, P3, LDP31,
      $                   LDP32, DWORK, INFO )

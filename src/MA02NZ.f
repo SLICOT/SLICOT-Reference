@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02NZ( UPLO, TRANS, SKEW, N, K, L, A, LDA )
 C
 C     PURPOSE

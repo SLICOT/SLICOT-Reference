@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB03BD( INIT, NOBR, M, L, NSMP, N, NN, ITMAX1, ITMAX2,
      $                   NPRINT, U, LDU, Y, LDY, X, LX, TOL1, TOL2,
      $                   IWORK, DWORK, LDWORK, IWARN, INFO )

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02PD( FACT, TRANS, N, NRHS, A, LDA, AF, LDAF, IPIV,
      $                   EQUED, R, C, B, LDB, X, LDX, RCOND, FERR, BERR,
      $                   IWORK, DWORK, INFO )

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01BZ( BASE, K, S, A, INCA, ALPHA, BETA, SCAL )
 C
 C     PURPOSE

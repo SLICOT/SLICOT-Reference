@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MB03ND( N, THETA, Q2, E2, PIVMIN, INFO )
 C
 C     PURPOSE

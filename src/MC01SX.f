@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MC01SX( LB, UB, E, MANT )
 C
 C     PURPOSE

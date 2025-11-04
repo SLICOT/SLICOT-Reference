@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION MB03MY( NX, X, INCX )
 C
 C     PURPOSE

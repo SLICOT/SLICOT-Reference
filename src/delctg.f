@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION  DELCTG( PAR1, PAR2, PAR3 )
 C
 C     PURPOSE

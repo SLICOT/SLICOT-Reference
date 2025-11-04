@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION MA02MZ( NORM, UPLO, N, A, LDA, DWORK )
 C
 C     PURPOSE

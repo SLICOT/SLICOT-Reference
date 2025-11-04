@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01OS( UPLO, TRANS, N, H, LDH, X, LDX, P, LDP, INFO )
 C
 C     PURPOSE

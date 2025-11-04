@@ -1,10 +1,13 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB02ED EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          KMAX, NMAX
-      PARAMETER        ( KMAX = 20, NMAX = 20 )
+      PARAMETER        ( KMAX = 15, NMAX = 15 )
       INTEGER          LDB, LDT, LDWORK
       PARAMETER        ( LDB = KMAX*NMAX, LDT = KMAX*NMAX,
      $                   LDWORK = NMAX*KMAX*KMAX + ( NMAX+2 )*KMAX )

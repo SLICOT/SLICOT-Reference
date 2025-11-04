@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE FB01SD( JOBX, MULTAB, MULTRC, N, M, P, SINV, LDSINV,
      $                   AINV, LDAINV, B, LDB, RINV, LDRINV, C, LDC,
      $                   QINV, LDQINV, X, RINVY, Z, E, TOL, IWORK,

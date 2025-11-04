@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03OY( DISCR, LTRANS, ISGN, S, LDS, R, LDR, A, LDA,
      $                   SCALE, INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB01BD( DICO, N, M, NP, ALPHA, A, LDA, B, LDB, WR, WI,
      $                   NFP, NAP, NUP, F, LDF, Z, LDZ, TOL, DWORK,
      $                   LDWORK, IWARN, INFO )

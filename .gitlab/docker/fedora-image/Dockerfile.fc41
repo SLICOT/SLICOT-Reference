@@ -1,0 +1,5 @@
+FROM fedora:41
+RUN dnf update -y ; \
+    dnf install -y bash rpmdevtools gcc gcc-fortran ; \
+    dnf install -y cmake flexiblas-devel git
+

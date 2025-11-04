@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09IY( DICO, JOBC, JOBO, WEIGHT, N, M, P, NV, PV,
      $                   NW, MW, ALPHAC, ALPHAO, A, LDA, B, LDB, C, LDC,
      $                   AV, LDAV, BV, LDBV, CV, LDCV, DV, LDDV,

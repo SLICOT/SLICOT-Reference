@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01VD( TRANA, TRANB, MA, NA, MB, NB, ALPHA, BETA,
      $                   A, LDA, B, LDB, C, LDC, MC, NC, INFO )
 C

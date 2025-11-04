@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04PD( DICO, FACTA, FACTB, TRANA, TRANB, ISGN, M, N,
      $                   A, LDA, U, LDU, B, LDB, V, LDV, C, LDC, SCALE,
      $                   DWORK, LDWORK, INFO )

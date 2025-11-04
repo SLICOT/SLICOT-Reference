@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DL( JOB, N, THRESH, A, LDA, B, LDB, ILO, IHI,
      $                   LSCALE, RSCALE, DWORK, IWARN, INFO )
 C

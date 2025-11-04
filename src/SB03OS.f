@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03OS( DISCR, LTRANS, N, S, LDS, R, LDR, SCALE, DWORK,
      $                   ZWORK, INFO )
 C

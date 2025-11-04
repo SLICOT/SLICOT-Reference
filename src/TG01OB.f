@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01OB( JOBE, N, DCBA, LDDCBA, E, LDE, INFO )
 C
 C     PURPOSE

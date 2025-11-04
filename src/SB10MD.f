@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB10MD( NC, MP, LENDAT, F, ORD, MNB, NBLOCK, ITYPE,
      $                   QUTOL, A, LDA, B, LDB, C, LDC, D, LDD, OMEGA,
      $                   TOTORD, AD, LDAD, BD, LDBD, CD, LDCD, DD, LDDD,

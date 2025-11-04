@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01OD( CTRL, NOBR, L, SV, N, TOL, IWARN, INFO )
 C
 C     PURPOSE

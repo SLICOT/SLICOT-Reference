@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03HZ( S11, S12, H11, H12, CO, SI )
 C
 C     PURPOSE

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02CD( JOB, TYPET, K, N, T, LDT, G, LDG, R, LDR, L,
      $                   LDL, CS, LCS, DWORK, LDWORK, INFO )
 C

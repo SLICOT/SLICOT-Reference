@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB05AD( BALEIG, INITA, N, M, P, FREQ, A, LDA, B, LDB,
      $                   C, LDC, RCOND, G, LDG, EVRE, EVIM, HINVB,
      $                   LDHINV, IWORK, DWORK, LDWORK, ZWORK, LZWORK,

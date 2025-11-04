@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB04BW( ORDER, P, M, MD, IGN, LDIGN, IGD, LDIGD, GN,
      $                   GD, D, LDD, INFO )
 C

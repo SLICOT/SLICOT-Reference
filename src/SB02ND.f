@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB02ND( DICO, FACT, UPLO, JOBL, N, M, P, A, LDA, B,
      $                   LDB, R, LDR, IPIV, L, LDL, X, LDX, RNORM, F,
      $                   LDF, OUFACT, IWORK, DWORK, LDWORK, INFO )

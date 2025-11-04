@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01CD( JOBX0, COMUSE, JOB, N, M, L, NSMP, A, LDA, B,
      $                   LDB, C, LDC, D, LDD, U, LDU, Y, LDY, X0, V,
      $                   LDV, TOL, IWORK, DWORK, LDWORK, IWARN, INFO )

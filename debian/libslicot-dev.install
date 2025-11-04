@@ -1,0 +1,8 @@
+/usr/lib/${DEB_HOST_MULTIARCH}/libslicot.so
+/usr/lib/${DEB_HOST_MULTIARCH}/libslicot64.so
+/usr/lib/${DEB_HOST_MULTIARCH}/libslicot.a
+/usr/lib/${DEB_HOST_MULTIARCH}/libslicot64.a
+/usr/lib/${DEB_HOST_MULTIARCH}/cmake/SLICOT/*
+/usr/lib/${DEB_HOST_MULTIARCH}/cmake/SLICOT64/*
+/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/slicot.pc
+/usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/slicot64.pc

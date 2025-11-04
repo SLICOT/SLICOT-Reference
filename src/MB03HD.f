@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03HD( N, A, LDA, B, LDB, MACPAR, Q, LDQ, DWORK,
      $                   INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC03ND( MP, NP, DP, P, LDP1, LDP2, DK, GAM, NULLSP,
      $                   LDNULL, KER, LDKER1, LDKER2, TOL, IWORK, DWORK,
      $                   LDWORK, INFO )

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DG01OD( SCR, WGHT, N, A, W, INFO )
 C
 C     PURPOSE

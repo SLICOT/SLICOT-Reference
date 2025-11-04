@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01TY( MODE, IOFF, JOFF, NROW, NCOL, SIZE, X, LDX,
      $                   BVECT )
 C

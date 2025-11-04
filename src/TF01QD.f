@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TF01QD( NC, NB, N, IORD, AR, MA, H, LDH, INFO )
 C
 C     PURPOSE

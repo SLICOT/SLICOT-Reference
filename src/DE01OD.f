@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DE01OD( CONV, N, A, B, INFO )
 C
 C     PURPOSE

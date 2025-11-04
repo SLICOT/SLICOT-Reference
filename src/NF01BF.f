@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE NF01BF( IFLAG, NFUN, LX, IPAR, LIPAR, U, LDU, Y, LDY,
      $                   X, NFEVL, E, J, LDJ, DWORK, LDWORK, INFO )
 C

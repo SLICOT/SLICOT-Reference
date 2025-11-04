@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04RU( N, ILO, A, LDA, QG, LDQG, CS, TAU, DWORK,
      $                   LDWORK, INFO )
 C

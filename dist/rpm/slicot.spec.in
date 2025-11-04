@@ -1,0 +1,105 @@
+%global major ##MAJOR##
+%global minor ##MINOR##
+%global patch ##PATCH##
+
+
+Name:           slicot
+Version:        %{major}.%{minor}.%{patch}
+Release:        1%{?dist}
+Summary:        A library for control theoretical computations
+
+License:        BSD-3-Clause
+URL:            https://github.com/SLICOT/SLICOT-Reference
+Source0:        https://github.com/SLICOT/SLICOT-Reference/archive/v%{version}/%{name}-%{version}.tar.gz
+
+BuildRequires:  make, cmake >= 3.22
+BuildRequires:  gcc, gcc-fortran
+BuildRequires:  flexiblas-devel
+# or (blas-devel and lapack-devel))
+%global _description %{expand:
+SLICOT  is a general purpose basic mathematical library implemented
+in Fortran for control theoretical computations. The library provides
+tools to perform essential system analysis and synthesis tasks. The
+main emphasis in SLICOT is on numerical reliability of implemented
+algorithms and the numerical robustness and efficiency of routines.
+Providing algorithmic flexibility and the use of rigorous implementation
+and documentation standards are other SLICOT features.
+}
+
+%description %_description
+
+%if 0%{?__isa_bits} == 64
+%package -n %{name}64
+Summary:        A library for control theoretical computations
+
+%description -n %{name}64 %_description
+This build has 64-bit integer support.
+%endif
+
+%package devel
+Summary:        Development headers and libraries for SLICOT
+Requires:       gcc-gfortran%{_isa}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+%if 0%{?__isa_bits} == 64
+Requires:       %{name}64%{?_isa} = %{version}-%{release}
+%endif
+
+%description devel %_description
+This package contains the development headers and libraries.
+
+%prep
+%setup -q
+
+%build
+%cmake -B build \
+    -DSLICOT_INTEGER8=OFF \
+    -DSLICOT_VERSION="%{major}.%{minor}.%{patch}"
+%make_build -C build
+%if 0%{?__isa_bits} == 64
+%cmake -B build64 \
+    -DSLICOT_INTEGER8=ON \
+    -DSLICOT_VERSION="%{major}.%{minor}.%{patch}"
+
+%make_build -C build64
+%endif
+
+%install
+%make_install -C build
+%if 0%{?__isa_bits} == 64
+%make_install -C build64
+%endif
+
+%check
+export CTEST_OUTPUT_ON_FAILURE=1
+make -C build test
+%if 0%{?__isa_bits} == 64
+make -C build64 test
+%endif
+
+%files
+%license LICENSE
+%doc README.md CONTRIBUTORS.md CONTRIBUTING.md KNOWN_ISSUES.md ReleaseNotes.md INSTALL.md CITATION.cff
+%{_libdir}/lib%{name}.so.%{major}
+%{_libdir}/lib%{name}.so.%{major}.%{minor}.%{patch}
+
+%if 0%{?__isa_bits} == 64
+%files -n %{name}64
+%license LICENSE
+%doc README.md CONTRIBUTORS.md CONTRIBUTING.md KNOWN_ISSUES.md ReleaseNotes.md INSTALL.md CITATION.cff
+%{_libdir}/lib%{name}64.so.%{major}
+%{_libdir}/lib%{name}64.so.%{major}.%{minor}.%{patch}
+%endif
+
+%files devel
+%{_libdir}/cmake/%{upper:%{name}}
+%{_libdir}/lib%{name}.so
+%{_libdir}/pkgconfig/%{name}.pc
+%if 0%{?__isa_bits} == 64
+%{_libdir}/cmake/%{upper:%{name}}64
+%{_libdir}/lib%{name}64.so
+%{_libdir}/pkgconfig/%{name}64.pc
+%endif
+
+%changelog
+%autochangelog
+

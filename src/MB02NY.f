@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02NY( UPDATU, UPDATV, M, N, I, K, Q, E, U, LDU, V,
      $                   LDV, DWORK )
 C

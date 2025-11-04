@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09GD( DICO, JOBCF, FACT, JOBMR, EQUIL, ORDSEL, N, M,
      $                   P, NR, ALPHA, A, LDA, B, LDB, C, LDC, D, LDD,
      $                   NQ, HSV, TOL1, TOL2, TOL3, IWORK, DWORK,

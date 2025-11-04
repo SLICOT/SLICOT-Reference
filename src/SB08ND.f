@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB08ND( ACONA, DA, A, RES, E, DWORK, LDWORK, INFO )
 C
 C     PURPOSE

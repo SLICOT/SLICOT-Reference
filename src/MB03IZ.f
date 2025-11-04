@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03IZ( COMPQ, COMPU, N, A, LDA, C, LDC, D, LDD, B,
      $                   LDB, F, LDF, Q, LDQ, U1, LDU1, U2, LDU2, NEIG,
      $                   TOL, INFO )

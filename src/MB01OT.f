@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01OT( UPLO, TRANS, N, ALPHA, BETA, R, LDR, E, LDE, T,
      $                   LDT )
 C

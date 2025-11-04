@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04XD( JOBU, JOBV, M, N, RANK, THETA, A, LDA, U, LDU,
      $                   V, LDV, Q, INUL, TOL, RELTOL, DWORK, LDWORK,
      $                   IWARN, INFO )

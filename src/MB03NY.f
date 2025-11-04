@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       DOUBLE PRECISION FUNCTION MB03NY( N, OMEGA, A, LDA, S, DWORK,
      $                                  LDWORK, CWORK, LCWORK, INFO )
 C

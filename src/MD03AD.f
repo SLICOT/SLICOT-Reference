@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MD03AD( XINIT, ALG, STOR, UPLO, FCN, JPJ, M, N, ITMAX,
      $                   NPRINT, IPAR, LIPAR, DPAR1, LDPAR1, DPAR2,
      $                   LDPAR2, X, NFEV, NJEV, TOL, CGTOL, DWORK,

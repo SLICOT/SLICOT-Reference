@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03MD( N, L, THETA, Q, E, Q2, E2, PIVMIN, TOL, RELTOL,
      $                   IWARN, INFO )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB08ND( EQUIL, N, M, P, A, LDA, B, LDB, C, LDC, D, LDD,
      $                   NU, RANK, DINFZ, NKROR, NKROL, INFZ, KRONR,
      $                   KRONL, AF, LDAF, BF, LDBF, TOL, IWORK, DWORK,

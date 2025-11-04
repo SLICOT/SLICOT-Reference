@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE FD01AD( JP, L, LAMBDA, XIN, YIN, EFOR, XF, EPSBCK,
      $                   CTETA, STETA, YQ, EPOS, EOUT, SALPH, IWARN,
      $                   INFO )

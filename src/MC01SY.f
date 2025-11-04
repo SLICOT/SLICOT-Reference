@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01SY( M, E, B, A, OVFLOW )
 C
 C     PURPOSE

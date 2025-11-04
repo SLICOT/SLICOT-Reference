@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB3JZP( COMPQ, N, A, LDA, D, LDD, B, LDB, F, LDF, Q,
      $                   LDQ, NEIG, TOL, DWORK, ZWORK, INFO )
 C

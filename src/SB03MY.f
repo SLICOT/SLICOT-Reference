@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03MY( TRANA, N, A, LDA, C, LDC, SCALE, INFO )
 C
 C     PURPOSE

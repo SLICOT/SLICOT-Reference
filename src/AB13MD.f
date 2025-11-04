@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB13MD( FACT, N, Z, LDZ, M, NBLOCK, ITYPE, X, BOUND, D,
      $                   G, IWORK, DWORK, LDWORK, ZWORK, LZWORK, INFO )
 C

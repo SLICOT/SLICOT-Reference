@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03OD( DICO, FACT, TRANS, N, M, A, LDA, Q, LDQ, B,
      $                   LDB, SCALE, WR, WI, DWORK, LDWORK, INFO )
 C

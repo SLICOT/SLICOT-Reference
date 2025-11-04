@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01BD( METH, JOB, JOBCK, NOBR, N, M, L, NSMPL, R,
      $                   LDR, A, LDA, C, LDC, B, LDB, D, LDD, Q, LDQ,
      $                   RY, LDRY, S, LDS, K, LDK, TOL, IWORK, DWORK,

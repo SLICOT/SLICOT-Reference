@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TF01OD( NH1, NH2, NR, NC, H, LDH, T, LDT, INFO )
 C
 C     PURPOSE

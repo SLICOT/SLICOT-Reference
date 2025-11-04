@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01JY( JOB, SYSTYP, EQUIL, CKSING, RESTOR, N, M, P, A,
      $                   LDA, E, LDE, B, LDB, C, LDC, NR, INFRED, TOL,
      $                   IWORK, DWORK, LDWORK, INFO )
@@ -336,7 +339,7 @@ C     .. Local Scalars ..
      $                  LBE, LBES, LDQ, LDZ, LWA, LWB, LWC, LWE, M1,
      $                  MAXMP, MAXWRK, MINWRK, N1, NB, NBLCK, NC, NN,
      $                  NX, P1
-      DOUBLE PRECISION  ANORM, ENORM, RCOND, T, TL, TT, TZER
+      DOUBLE PRECISION  ANORM, ENORM, RCOND, T, TL, TT, TZER, THRESH
 C     .. Local Arrays ..
       LOGICAL           BWORK(1)
       DOUBLE PRECISION  DUM(1)
@@ -510,7 +513,7 @@ C
             IF( THRESH.LT.ZERO ) THEN
                ANORM = DLANGE( '1-norm', N, N, A, LDA, DWORK )
                ENORM = DLANGE( '1-norm', N, N, E, LDE, DWORK )
-               THRESH = MAX( ANORM, ENORM, 
+               THRESH = MAX( ANORM, ENORM,
      $                       DLANGE( '1-norm', N, M, B, LDB, DWORK ),
      $                       DLANGE( '1-norm', P, N, C, LDC, DWORK ) )*T
             END IF

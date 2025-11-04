@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TT( UPDATQ, UPDATZ, M, N, IFIRA, IFICA, NCA, A,
      $                   LDA, E, LDE, Q, LDQ, Z, LDZ, ISTAIR, RANK, TOL,
      $                   IWORK )

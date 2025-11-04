@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03ZD( WHICH, METH, STAB, BALANC, ORTBAL, SELECT, N,
      $                   MM, ILO, SCALE, S, LDS, T, LDT, G, LDG, U1,
      $                   LDU1, U2, LDU2, V1, LDV1, V2, LDV2, M, WR, WI,

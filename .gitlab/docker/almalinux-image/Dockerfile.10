@@ -1,0 +1,13 @@
+FROM almalinux:10
+RUN dnf update -y ; \
+    dnf install -y epel-release; \
+    dnf install -y dnf-plugins-core; \
+    dnf config-manager --set-enabled crb ;\
+    dnf install -y elrepo-release ;\
+    dnf install -y almalinux-release-devel
+
+RUN dnf install -y bash mock git fedora-packager rpmdevtools gcc; \
+    dnf install -y cmake flexiblas-devel ;\
+    dnf install -y gcc-gfortran
+
+

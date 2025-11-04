@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04OD( REDUCE, TRANS, JOBD, M, N, A, LDA, B, LDB, C,
      $                   LDC, D, LDD, E, LDE, F, LDF, SCALE, DIF, P,
      $                   LDP, Q, LDQ, U, LDU, V, LDV, IWORK, DWORK,

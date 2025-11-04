@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03MU( LTRANL, LTRANR, ISGN, N1, N2, TL, LDTL, TR,
      $                   LDTR, B, LDB, SCALE, X, LDX, XNORM, INFO )
 C

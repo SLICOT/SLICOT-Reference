@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MD03BF( IFLAG, M, N, IPAR, LIPAR, DPAR1, LDPAR1, DPAR2,
      $                   LDPAR2, X, NFEVL, E, J, LDJ, DWORK, LDWORK,
      $                   INFO )

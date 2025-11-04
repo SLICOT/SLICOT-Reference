@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION AB13ID( JOBSYS, JOBEIG, EQUIL, CKSING, RESTOR,
      $                         UPDATE, N, M, P, A, LDA, E, LDE, B, LDB,
      $                         C, LDC, NR, RANKE, TOL, IWORK, DWORK,

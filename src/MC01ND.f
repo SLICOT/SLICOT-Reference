@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01ND( DP, XR, XI, P, VR, VI, INFO )
 C
 C     PURPOSE

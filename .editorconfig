@@ -1,0 +1,37 @@
+root = true
+
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+charset = utf-8
+
+[Makefile]
+indent_style = tab
+
+[*.{c,cpp,h,hpp,f,f90,F,F90}]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+
+[*.{f,F}]
+max_line_length = 72
+
+[*.{f90,f95,f03,F90,F95,F03}]
+max_line_length = 132
+
+[*{c,cpp,h,hpp}]
+curly_bracket_next_line = true
+indent_brace_style = Allman
+
+[CMakeLists.txt]
+indent_style = space
+indent_size = 4
+
+[*.cmake]
+indent_style = space
+indent_size = 4
+
+[*.{yaml,yml}]
+indent_style = space
+indent_size = 2
+

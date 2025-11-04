@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01KD( JOBE, COMPC, COMPQ, COMPZ, N, A, LDA, E, LDE,
      $                   B, C, INCC, Q, LDQ, Z, LDZ, INFO )
 C

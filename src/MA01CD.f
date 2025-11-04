@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MA01CD( A, IA, B, IB )
 C
 C     PURPOSE

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01WD( N, M, P, A, LDA, E, LDE, B, LDB, C, LDC,
      $                   Q, LDQ, Z, LDZ, ALPHAR, ALPHAI, BETA, DWORK,
      $                   LDWORK, INFO )

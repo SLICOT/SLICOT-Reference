@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE AB09MD( DICO, JOB, EQUIL, ORDSEL, N, M, P, NR, ALPHA,
      $                   A, LDA, B, LDB, C, LDC, NS, HSV, TOL, IWORK,
      $                   DWORK, LDWORK, IWARN, INFO )

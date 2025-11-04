@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB06ND( N, M, KMAX, A, LDA, B, LDB, KSTAIR, U, LDU, F,
      $                   LDF, DWORK, INFO )
 C
