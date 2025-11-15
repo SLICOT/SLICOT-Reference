@@ -51,7 +51,7 @@ See [ReleaseNotes.md](./ReleaseNotes.md)
 
 Contributors and Financial Support
 ----------------------------------
-See [Contributors.md](./Contributors.md)
+See [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 
 Documentation
 -------------
