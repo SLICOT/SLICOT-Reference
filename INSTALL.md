@@ -128,7 +128,7 @@ dpkg-buildpackage -uc -us
 
 Issues
 ------
-A list of known issues can be found in [KNOWN_ISSUSES.md](./KNOWN_ISSUES.md)
+A list of known issues can be found in [KNOWN_ISSUES.md](./KNOWN_ISSUES.md)
 
 Deprecation Warning
 -------------------
