@@ -32,10 +32,14 @@ override_dh_auto_clean:
 	dh_auto_clean -B build-64
 	dh_auto_clean -B build-32-static
 	dh_auto_clean -B build-64-static
+	dh_auto_clean -B build-32-static-pic
+	dh_auto_clean -B build-64-static-pic
 	rm -rf build-32
 	rm -rf build-64
 	rm -rf build-32-static
 	rm -rf build-64-static
+	rm -rf build-32-static-pic
+	rm -rf build-64-static-pic
 ifneq ($(NEW_VERSION),)
 	$(warning "Setting new version in debian changelog: $(NEW_VERSION)")
 	debchange -v $(NEW_VERSION)$(VERSION_POSTFIX) "Version $(NEW_VERSION)" && debchange -D $(OS_DIST) -m -r ""
@@ -51,6 +55,8 @@ endif
 	mkdir -p build-64
 	mkdir -p build-32-static
 	mkdir -p build-64-static
+	mkdir -p build-32-static-pic
+	mkdir -p build-64-static-pic
 	dh_auto_configure -B build-32 -- \
 		-DBLA_VENDOR=Generic \
 		-DSLICOT_INTEGER8=OFF \
@@ -67,6 +73,7 @@ endif
 		-DBUILD_SHARED_LIBS=OFF \
 		-DSLICOT_TESTING=OFF \
 		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-DSLICOT_STATIC_WITH_PIC=OFF \
 		-GNinja
 	dh_auto_configure -B build-64-static -- \
 		-DBLA_VENDOR=Generic \
@@ -74,7 +81,25 @@ endif
 		-DBUILD_SHARED_LIBS=OFF \
 		-DSLICOT_TESTING=OFF \
 		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-DSLICOT_STATIC_WITH_PIC=OFF \
 		-GNinja
+	dh_auto_configure -B build-32-static-pic -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=OFF \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DSLICOT_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-DSLICOT_STATIC_WITH_PIC=ON \
+		-GNinja
+	dh_auto_configure -B build-64-static-pic -- \
+		-DBLA_VENDOR=Generic \
+		-DSLICOT_INTEGER8=ON \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DSLICOT_TESTING=OFF \
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+		-DSLICOT_STATIC_WITH_PIC=ON \
+		-GNinja
+
 
 
 override_dh_auto_build:
@@ -82,6 +107,8 @@ override_dh_auto_build:
 	dh_auto_build -B build-64
 	dh_auto_build -B build-32-static
 	dh_auto_build -B build-64-static
+	dh_auto_build -B build-32-static-pic
+	dh_auto_build -B build-64-static-pic
 
 
 override_dh_auto_install:
@@ -89,7 +116,8 @@ override_dh_auto_install:
 	dh_auto_install -B build-64
 	install -m 644 -t $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/ build-32-static/lib/libslicot.a
 	install -m 644 -t $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/ build-64-static/lib/libslicot64.a
-
+	install -m 644 -T build-32-static-pic/lib/libslicot.a   $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libslicot_pic.a
+	install -m 644 -T build-64-static-pic/lib/libslicot64.a $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libslicot64_pic.a
 
 
 override_dh_auto_test:

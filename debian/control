@@ -55,7 +55,7 @@ Description: numerical algorithms from systems and control theory (shared librar
  routines from BLAS (Basic Linear Algebra Subroutines) and LAPACK (Linear
  Algebra PACKage).
  .
- This package contains a shared version of the library with 64-byte integers.
+ This package contains a shared version of the library with 64-bit integers.
 
 
 Package: libslicot-dev
@@ -64,6 +64,8 @@ Architecture: any
 Multi-Arch: same
 Depends: libslicot5 (= ${binary:Version}),
          libslicot64-5 (= ${binary:Version}),
+         libslicot-pic (= ${binary:Version}),
+         libslicot64-pic (= ${binary:Version}),
          libblas-dev, liblapack-dev,
          libblas64-dev, liblapack64-dev,
          ${misc:Depends}
@@ -103,3 +105,50 @@ Description: numerical algorithms from systems and control theory (documentation
  Algebra PACKage).
  .
  This package contains the documentation of all the routines.
+
+Package: libslicot-pic
+Architecture: any
+Multi-Arch: same
+Conflicts: libslicot0
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: numerical algorithms from systems and control theory (shared library)
+ SLICOT (Subroutine Library In COntrol Theory) is a general purpose basic
+ mathematical library for control theoretical computations. The library
+ provides tools to perform essential system analysis and synthesis tasks. The
+ main emphasis in SLICOT is on numerical reliability of implemented algorithms
+ and the numerical robustness and efficiency of routines. Providing algorithmic
+ flexibility and the use of rigorous implementation and documentation standards
+ are other SLICOT features.
+ .
+ SLICOT is written is Fortran 77 and builds upon the numerical linear algebra
+ routines from BLAS (Basic Linear Algebra Subroutines) and LAPACK (Linear
+ Algebra PACKage).
+ .
+ This package contains a static shared version of the library with position
+ independent code enabled.
+
+Package: libslicot64-pic
+Architecture: any
+Multi-Arch: same
+Conflicts: libslicot0
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: numerical algorithms from systems and control theory (shared library)
+ SLICOT (Subroutine Library In COntrol Theory) is a general purpose basic
+ mathematical library for control theoretical computations. The library
+ provides tools to perform essential system analysis and synthesis tasks. The
+ main emphasis in SLICOT is on numerical reliability of implemented algorithms
+ and the numerical robustness and efficiency of routines. Providing algorithmic
+ flexibility and the use of rigorous implementation and documentation standards
+ are other SLICOT features.
+ .
+ SLICOT is written is Fortran 77 and builds upon the numerical linear algebra
+ routines from BLAS (Basic Linear Algebra Subroutines) and LAPACK (Linear
+ Algebra PACKage).
+ .
+ This package contains a static shared version of the library with position
+ independent code enabled and 64 bit integers (ILP64).
+
+
+
