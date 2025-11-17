@@ -1,3 +1,9 @@
+slicot (5.9.1+1) noble; urgency=medium
+
+  * Better handling of the -fPIC flag
+
+ -- Martin Köhler <koehlerm@mpi-magdeburg.mpg.de>  Mon, 17 Nov 2025 08:31:41 +0100
+
 slicot (5.9.1) noble; urgency=medium
 
   * SLICOT Release 5.9.1.
