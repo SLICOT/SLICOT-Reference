@@ -1,5 +1,13 @@
 # SLICOT Library Release Notes
 
+## Version v5.9.2 (tbr)
+
+**Bugfix Release**
+
+* Github #21, "Index out of bounds error in MB04DD, line 327", fixed
+
+
+
 ## Version v5.9.1
 
 Version 5.9.1 is the first version maintained by M. Köhler and J. Saak. It does
