@@ -65,6 +65,7 @@ The following options to cmake are availble:
 |`SLICOT_STATIC_WITH_PIC`| `ON`, `OFF`     | `ON`          | Build static library with `-fPIC`, default for shared libraries |
 |`BLA_VENDOR`            | BLAS Vendor Name | empty        | Specify the BLAS library to search for, see https://cmake.org/cmake/help/latest/module/FindBLAS.html for details |
 |`ENABLE_COVERAGE`       | `ON`, `OFF`     | `OFF`         | Enable the generation of the coverage files, see below. |
+
 The options are passed as `-DOPTION=VALUE` to cmake.
 
 Windows

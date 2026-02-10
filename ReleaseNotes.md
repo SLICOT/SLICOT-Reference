@@ -5,6 +5,7 @@
 **Bugfix Release**
 
 * Github #21, "Index out of bounds error in MB04DD, line 327", fixed
+* Github #39, "SG03BX wrong results when E(1,2) /= 0", fixed
 * Enable Coverage Builds
 
 
