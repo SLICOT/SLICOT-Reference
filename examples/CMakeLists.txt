@@ -13,6 +13,9 @@ macro(add_slicot_test name src)
     # endif()
     add_executable(${name} ${src})
     target_link_libraries(${name} SLICOT::slicot)
+
+    add_coverage(${name})
+
     if(EXISTS "${TEST_INPUT}")
        if (EXISTS "${TEST_RESULT}")
             add_test(NAME test-${baseNAME} COMMAND "${CMAKE_COMMAND}"
