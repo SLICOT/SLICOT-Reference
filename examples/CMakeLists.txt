@@ -40,11 +40,11 @@ macro(add_slicot_test name src)
 
         endif()
     else()
-        add_test(NAME test-${name} COMMAND "${CMAKE_COMMAND}"
+        add_test(NAME test-${baseNAME} COMMAND "${CMAKE_COMMAND}"
             -DTEST=$<TARGET_FILE:${name}>
             -DOUTPUT=${TEST_OUTPUT}
             -DINTDIR=${CMAKE_CFG_INTDIR}
-            -P "${LAPACK_SOURCE_DIR}/TESTING/runtest.cmake")
+            -P "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
         set_property(TEST test-${baseNAME} PROPERTY
             ATTACHED_FILES "${CMAKE_CURRENT_SOURCE_DIR}/runtest.cmake")
 
@@ -242,6 +242,7 @@ add_slicot_test(TSG02AD TSG02AD.f)
 add_slicot_test(TSG02ND TSG02ND.f)
 add_slicot_test(TSG03AD TSG03AD.f)
 add_slicot_test(TSG03BD TSG03BD.f)
+add_slicot_test(TSG03BX tsg03bx.f90)
 add_slicot_test(TTB01ID TTB01ID.f)
 add_slicot_test(TTB01IZ TTB01IZ.f)
 add_slicot_test(TTB01KD TTB01KD.f)
@@ -295,3 +296,4 @@ add_slicot_test(TUD01CD TUD01CD.f)
 add_slicot_test(TUD01DD TUD01DD.f)
 add_slicot_test(TUD01MD TUD01MD.f)
 add_slicot_test(TUD01ND TUD01ND.f)
+
