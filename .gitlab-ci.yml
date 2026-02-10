@@ -7,6 +7,7 @@ before_script:
 
 stages:
   - build
+  - coverage
   - deploy
 
 
@@ -20,11 +21,11 @@ linux:
         OSVERSION: [ 'focal', 'jammy']
         TAG: "amd64"
       - OS: [ "ubuntu" ]
-        OSVERSION: [ 'noble' ]
+        OSVERSION: [ 'noble', 'resolute' ]
         INTEGER8: [ 'INTEGER8_ON', 'INTEGER8_OFF' ]
         TAG: "amd64"
       - OS: [ "ubuntu" ]
-        OSVERSION: [ 'noble' ]
+        OSVERSION: [ 'noble', 'resolute' ]
         CC: "clang"
         FC: "flang-new"
         TAG: "amd64"
@@ -45,6 +46,21 @@ linux:
     - cmake --build build-dir --target install
     - (cd build-dir; OMP_NUM_THREADS=1 ctest  --output-on-failure)
     - cat build.log | grep -- \\[-W | sed 's/.*\[//; s/\]//' | sort | uniq -c | sort -nr
+
+coverage:
+  stage: coverage
+  image: ${CI_REGISTRY_IMAGE}/ubuntu:noble
+  tags:
+    - amd64
+  needs: []
+  script:
+    - cmake -S . -B build-dir -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
+    - cd build-dir
+    - make
+    - make test
+    - make gcov
+    - gcovr -r ..
+  coverage: '/^TOTAL.*\s+(\d+\%)$/'
 
 compilers:
   stage: build
@@ -106,9 +122,9 @@ dist-deb:
   parallel:
     matrix:
       - OS: [ "ubuntu" ]
-        OSVERSION: [ "jammy", "noble", "latest" ]
+        OSVERSION: [ "jammy", "noble", "resolute", "latest" ]
       - OS: [ "debian" ]
-        OSVERSION: [ "bookworm", "trixie" ]
+        OSVERSION: [ "bookworm", "trixie", "forky" ]
   image:  ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
   needs: []
   script:

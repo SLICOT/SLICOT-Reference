@@ -68,7 +68,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "Setting build type to 'Release' as none was specified.")
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
   # Set the possible values of build type for cmake-gui
-  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo" "Coverage")
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
 # Select the Proper Build Type.
@@ -79,23 +79,8 @@ IF ( SLICOT_DEBUG STREQUAL ON OR CMAKE_BUILD_TYPE STREQUAL "Debug"  )
 ENDIF()
 
 
-
-# Coverage
-set(_is_coverage_build 0)
-set(_msg "Checking if build type is 'Coverage'")
-message(STATUS "${_msg}")
-if(NOT CMAKE_CONFIGURATION_TYPES)
-  string(TOLOWER ${CMAKE_BUILD_TYPE} _build_type_lc)
-  if(${_build_type_lc} STREQUAL "coverage")
-    set(_is_coverage_build 1)
-  endif()
-endif()
-message(STATUS "${_msg}: ${_is_coverage_build}")
-
-if(_is_coverage_build)
-  message(STATUS "Adding coverage")
-  find_package(codecov)
-endif()
+# Add Cmake-Codeecov
+find_package(codecov)
 
 
 
@@ -183,4 +168,4 @@ MESSAGE(STATUS "BUILD_SHARED_LIBS: ${BUILD_SHARED_LIBS}")
 MESSAGE(STATUS "SLICOT_INTEGER8: ${SLICOT_INTEGER8}")
 MESSAGE(STATUS "SLICOT_TESTING: ${SLICOT_TESTING}")
 MESSAGE(STATUS "---------------------------------------------")
-
+coverage_evaluate()

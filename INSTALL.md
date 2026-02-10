@@ -64,7 +64,7 @@ The following options to cmake are availble:
 |`SLICOT_INTEGER8`       | `ON`, `OFF`     | `OFF`         | Enable the ILP64 integer model, i.e. the Fortran `INTEGER` defaults to a 64-bit integer, requires cmake >= 3.22|
 |`SLICOT_STATIC_WITH_PIC`| `ON`, `OFF`     | `ON`          | Build static library with `-fPIC`, default for shared libraries |
 |`BLA_VENDOR`            | BLAS Vendor Name | empty        | Specify the BLAS library to search for, see https://cmake.org/cmake/help/latest/module/FindBLAS.html for details |
-
+|`ENABLE_COVERAGE`       | `ON`, `OFF`     | `OFF`         | Enable the generation of the coverage files, see below. |
 The options are passed as `-DOPTION=VALUE` to cmake.
 
 Windows
@@ -130,6 +130,38 @@ dpkg-buildpackage -uc -us
 Issues
 ------
 A list of known issues can be found in [KNOWN_ISSUES.md](./KNOWN_ISSUES.md)
+
+Coverage
+--------
+In order to generate the coverage report, we rely on CMake-codecov from
+[https://github.com/RWTH-HPC/CMake-codecov](https://github.com/RWTH-HPC/CMake-codecov)
+a BSD-3 licensed CMake Code-Coverage toolkit from RTWH Aachen.
+
+For running the code coverage, SLICOT needs to be built with GCC and the
+`-DENABLE_COVERAGE=ON` passed to CMake.  Furthermore, `gcov` and `lcov` must be
+installed on the system. After building, all test needs to be run with
+`make test`. Overall, this leads to the follwoing procedure:
+
+```shell
+cmake -S . -D build-dir -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
+make -C build-dir
+make -C build-dir test
+make -C build-dir lcov
+```
+Afterwards, the coverage report can be found in `build-dir/lcov/html/all_targets`.
+If only single coverage reports are required, please look in the documentation
+of [CMake-codecov](https://github.com/RWTH-HPC/CMake-codecov).
+
+### GCOVR
+`gcovr` is another frontend to visualize the coverage output. In this cases,
+after running the test, run
+```shell
+cd build-dir
+make gcov
+gcovr -r ..
+# or
+gcovr -r .. --html-nested coverage.html
+```
 
 Deprecation Warning
 -------------------

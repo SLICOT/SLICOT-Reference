@@ -126,10 +126,7 @@ SET_PROPERTY(TARGET slicot PROPERTY VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_V
 SET_PROPERTY(TARGET slicot PROPERTY SOVERSION ${PROJECT_VERSION_MAJOR})
 SET_PROPERTY(TARGET slicot PROPERTY OUTPUT_NAME ${SLICOT_NAME})
 
-if(_is_coverage_build)
-  target_link_libraries(slicot PRIVATE gcov)
-  add_coverage(slicot)
-endif()
+add_coverage(slicot)
 
 
 

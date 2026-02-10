@@ -3,5 +3,5 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update ; \
     apt install --yes cmake libblas-dev libblas64-dev liblapack-dev liblapack64-dev git;\
     apt install --yes build-essential;\
-    apt install --yes gfortran ninja-build debhelper
-
+    apt install --yes gfortran ninja-build debhelper lcov
+RUN apt install --yes gcovr

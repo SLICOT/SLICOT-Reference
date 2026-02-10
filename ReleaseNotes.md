@@ -5,7 +5,7 @@
 **Bugfix Release**
 
 * Github #21, "Index out of bounds error in MB04DD, line 327", fixed
-
+* Enable Coverage Builds
 
 
 ## Version v5.9.1
