@@ -465,7 +465,8 @@ C           Change the sign of  X  and transpose it in-situ.
 C
             DO 340 J = NP1, N2
 C
-               DO 320 I = 1, N
+C              Fix: do not swap it twice
+               DO 320 I = 1, J-N
                   TEMP   = -S(I,J)
                   S(I,J) = -S(J-N,I+N)
                   S(J-N,I+N) = TEMP
