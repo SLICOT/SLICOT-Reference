@@ -93,6 +93,7 @@ SET(SOURCES
     UD01BD.f UD01CD.f UD01DD.f UD01MD.f UD01MZ.f UD01ND.f UE01MD.f
 
     delctg.f select.f zelctg.f
+    lapack_aux/dlacpy_slc.f
     )
 
 

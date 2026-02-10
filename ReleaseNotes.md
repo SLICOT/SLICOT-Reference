@@ -6,6 +6,7 @@
 
 * Fix: Github #21, "Index out of bounds error in MB04DD, line 327"
 * Fix: Github #34, Double transpose in SB02RU
+* Fix: Github #35, #36, DLACPY Overlapping in AB09CX, FB01QD, FB01RD, NF01BS
 * Fix: Github #39, "SG03BX wrong results when E(1,2) /= 0"
 * Enable Coverage Builds
 
