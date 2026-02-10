@@ -259,7 +259,7 @@ C     .. External Functions ..
 C     .. External Subroutines ..
       EXTERNAL          AB04MD, AB09AX, DAXPY, DCOPY, DGELSY, DGEMM,
      $                  DLACPY, DSWAP, MA02AD, MB01SD, TB01KD, TB01WD,
-     $                  XERBLA
+     $                  XERBLA, DLACPY_SLC
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, INT, MAX, MIN, SQRT
 C     .. Executable Statements ..
@@ -437,10 +437,10 @@ C        Permute the elements of HSV and of matrices A, B, C.
 C
          CALL DCOPY( NR, HSV(1), 1, DWORK(KHSVP), 1 )
          CALL DCOPY( NU, HSV(NKR1), 1, DWORK(KHSVP+NR), 1 )
-         CALL DLACPY( 'Full', NMINR, NU, A(1,NKR1), LDA, A(1,NR1), LDA )
-         CALL DLACPY( 'Full', NU, NA, A(NKR1,1), LDA, A(NR1,1), LDA )
-         CALL DLACPY( 'Full', NU, M, B(NKR1,1), LDB, B(NR1,1), LDB )
-         CALL DLACPY( 'Full', P, NU, C(1,NKR1), LDC, C(1,NR1), LDC )
+         CALL DLACPY_SLC( 'Full', NMINR, NU, A(1,NKR1),LDA,A(1,NR1),LDA)
+         CALL DLACPY_SLC( 'Full', NU, NA, A(NKR1,1), LDA, A(NR1,1),LDA)
+         CALL DLACPY_SLC( 'Full', NU, M, B(NKR1,1), LDB, B(NR1,1), LDB)
+         CALL DLACPY_SLC( 'Full', P, NU, C(1,NKR1), LDC, C(1,NR1), LDC)
 C
 C        Save B1 and C1.
 C

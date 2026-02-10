@@ -324,7 +324,7 @@ C     .. External Functions ..
       EXTERNAL          LSAME
 C     .. External Subroutines ..
       EXTERNAL          DCOPY, DLACPY, DTRMM, DTRMV, MB02OD, MB04JD,
-     $                  MB04LD, XERBLA
+     $                  MB04LD, XERBLA, DLACPY_SLC
 C     .. Intrinsic Functions ..
       INTRINSIC         INT, MAX, MIN
 C     .. Executable Statements ..
@@ -467,7 +467,7 @@ C     Now, the workspace for C x S is no longer needed.
 C     Adjust the leading dimension of DWORK, to save space for the
 C     following computations, and make room for B x Q.
 C
-      CALL DLACPY( 'Full', N, N, DWORK(P+1), PN, DWORK, N )
+      CALL DLACPY_SLC( 'Full', N, N, DWORK(P+1), PN, DWORK, N )
 C
       DO 20 I = N*( N - 1 ) + 1, 1, -N
          CALL DCOPY( N, DWORK(I), 1, DWORK(I+N*M), 1 )

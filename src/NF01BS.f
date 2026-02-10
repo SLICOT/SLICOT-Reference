@@ -208,8 +208,8 @@ C     .. External Functions ..
       DOUBLE PRECISION  DDOT, DNRM2
       EXTERNAL          DDOT, DNRM2
 C     .. External Subroutines ..
-      EXTERNAL          DCOPY, DGEQP3, DLACPY, DLAPMT, DORMQR, DSWAP,
-     $                  MD03BX, XERBLA
+      EXTERNAL          DCOPY, DGEQP3, DLACPY_SLC, DLAPMT, DORMQR,
+     $                  DSWAP, MD03BX, XERBLA
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, INT, MAX, MIN
 C     ..
@@ -516,7 +516,8 @@ C           Reshape the second block column of R to have the leading
 C           dimension N.
 C
             IBSN = N*BSN + 1
-            CALL DLACPY( 'Full', N, ST, J(LDJ*BSN+1), LDJ, J(IBSN), N )
+            CALL DLACPY_SLC( 'Full', N, ST, J(LDJ*BSN+1),
+     $                       LDJ, J(IBSN), N )
 C
 C           Compute the original column norms for the second block
 C           column.
