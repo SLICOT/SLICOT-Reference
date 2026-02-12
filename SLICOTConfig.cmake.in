@@ -1,5 +1,16 @@
 include(CMakeFindDependencyMacro)
 
+set(SLICOT_INTEGER8 @SLICOT_INTEGER8@)
+if(CMAKE_VERSION VERSION_LESS "3.22" AND SLICOT_INTEGER8 )
+    MESSAGE(WARNING "SLICOT with 64-bit integer support requires CMAKE >= 3.22")
+endif()
+
+if ( SLICOT_INTEGER8 )
+    set (BLA_SIZEOF_INTEGER 8)
+else()
+    set (BLA_SIZEOF_INTEGER 4)
+endif()
+
 # Same syntax as find_package
 find_dependency(BLAS REQUIRED)
 find_dependency(LAPACK REQUIRED)

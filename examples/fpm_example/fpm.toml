@@ -1,0 +1,29 @@
+name = "slicot-fpm-exmaple"
+version = "0.0.1"
+license = "BSD-3-clause"
+author = "The SLICOT Team"
+maintainer = "TBA"
+copyright = "Copyright 1996-2026, The SLICOT Team"
+
+[dependencies]
+blas="*"
+slicot = { git = "https://github.com/SLICOT/SLICOT-Reference.git", branch = "main" }
+
+[[executable]]
+name = "slicot-fpm-example"
+source-dir = "app"
+main = "main.f"
+
+[fortran]
+source-form = "default"
+implicit-external = true
+
+[build]
+auto-executables = true
+auto-tests = false
+auto-examples = false
+module-naming    = false
+
+[install]
+library = false
+

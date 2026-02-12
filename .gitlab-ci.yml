@@ -62,6 +62,22 @@ coverage:
     - gcovr -r ..
   coverage: '/^TOTAL.*\s+(\d+\%)$/'
 
+fpm:
+  stage: build
+  image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
+  needs: []
+  parallel:
+    matrix:
+      - OS: [ "ubuntu" ]
+        OSVERSION: [ 'noble', 'resolute' ]
+        TAG: "amd64"
+  tags:
+    - ${TAG}
+
+  script:
+    - fpm build --profile release 
+
+
 compilers:
   stage: build
   image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}

@@ -1,0 +1,25 @@
+name = "slicot"
+version = "5.9.1"
+license = "BSD-3-clause"
+author = "The SLICOT Team"
+maintainer = "@SLICOT/SLICOT-Reference"
+copyright = "Copyright 1996-2026, The SLICOT Team"
+
+[dependencies]
+blas="*"
+
+[fortran]
+source-form = "default"
+implicit-external = true
+
+[build]
+auto-executables = false
+auto-tests = false
+auto-examples = false
+module-naming    = false
+
+[library]
+source-dir = "src"
+
+[install]
+library = true

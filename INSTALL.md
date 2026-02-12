@@ -10,8 +10,8 @@ Requirements
 In order to build SLICOT you need:
 
  * a Fortran 77 compatible Fortran compiler and a corresponding C compiler
- * cmake, at least 3.15 or 3.22 for the ILP64 build
- * a BLAS and LAPACK library, preferable an optimized one like OpenBLAS
+ * CMake, at least 3.15 or 3.22 for the ILP64 build
+ * a BLAS and LAPACK library, preferable an optimised one like OpenBLAS
 
 The following compilers  are tested
 
@@ -19,12 +19,12 @@ The following compilers  are tested
  * clang/flang
  * Intel Classic icc/ifort
  * Intel LLVM icx/ifx
- * Nvidia HPC SDK >= 21.11
+ * NVidia HPC SDK >= 21.11
  * AMD AOCC 5.0 with AMDBLIS and AMDLIBFLAME
 
 We support Linux, xBSD, MacOSX (Intel and ARM), Windows with MSYS2.
 
-For performance reasons, we suggest to use an optimized BLAS implementation
+For performance reasons, we suggest to use an optimised BLAS implementation
 like
 
  * OpenBLAS, https://www.openblas.net
@@ -35,7 +35,7 @@ like
 Installation
 ------------
 SLICOT requires an *out-of-source* build process. That means, the source code
-direcotry stays untouched during the build.
+directory stays untouched during the build.
 
 The in order to configure and compile the source, use `cmake`:
 ```shell
@@ -52,7 +52,7 @@ The test suite is executed using
 ctest --test-dir build-dir
 ```
 
-The following options to cmake are availble:
+The following options to CMake are available:
 
 | Option                 | Possible Values | Default Value | Description        |
 |:-----------------------|:----------------|:--------------|--------------------|
@@ -61,12 +61,12 @@ The following options to cmake are availble:
 |`BUILD_SHARED_LIBS`     | `ON`, `OFF`     | `OFF`         | Build SLICOT as shared library |
 |`SLICOT_TESTING`        | `ON`, `OFF`     | `ON`          | Build the examples and the test suite |
 |`SLICOT_DEBUG`          | `ON`, `OFF`     | `OFF`         | Enable the debug build, equivalent to `CMAKE_BUILD_TYPE=Debug`|
-|`SLICOT_INTEGER8`       | `ON`, `OFF`     | `OFF`         | Enable the ILP64 integer model, i.e. the Fortran `INTEGER` defaults to a 64-bit integer, requires cmake >= 3.22|
+|`SLICOT_INTEGER8`       | `ON`, `OFF`     | `OFF`         | Enable the ILP64 integer model, i.e. the Fortran `INTEGER` defaults to a 64-bit integer, requires CMake >= 3.22|
 |`SLICOT_STATIC_WITH_PIC`| `ON`, `OFF`     | `ON`          | Build static library with `-fPIC`, default for shared libraries |
 |`BLA_VENDOR`            | BLAS Vendor Name | empty        | Specify the BLAS library to search for, see https://cmake.org/cmake/help/latest/module/FindBLAS.html for details |
 |`ENABLE_COVERAGE`       | `ON`, `OFF`     | `OFF`         | Enable the generation of the coverage files, see below. |
 
-The options are passed as `-DOPTION=VALUE` to cmake.
+The options are passed as `-DOPTION=VALUE` to CMake.
 
 Windows
 -------
@@ -122,7 +122,7 @@ sudo apt install cmake libblas-dev libblas64-dev liblapack-dev liblapack64-dev\
 and `debhelper` must be available in version 13.0. (This disables building
 packages on Ubuntu before 22.04.)
 
-After installing the requirements, the packages are bulild using
+After installing the requirements, the packages are build using
 ```shell
 dpkg-buildpackage -uc -us
 ```
@@ -141,7 +141,7 @@ a BSD-3 licensed CMake Code-Coverage toolkit from RTWH Aachen.
 For running the code coverage, SLICOT needs to be built with GCC and the
 `-DENABLE_COVERAGE=ON` passed to CMake.  Furthermore, `gcov` and `lcov` must be
 installed on the system. After building, all test needs to be run with
-`make test`. Overall, this leads to the follwoing procedure:
+`make test`. Overall, this leads to the following procedure:
 
 ```shell
 cmake -S . -D build-dir -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
@@ -154,7 +154,7 @@ If only single coverage reports are required, please look in the documentation
 of [CMake-codecov](https://github.com/RWTH-HPC/CMake-codecov).
 
 ### GCOVR
-`gcovr` is another frontend to visualize the coverage output. In this cases,
+`gcovr` is another frontend to visualise the coverage output. In this cases,
 after running the test, run
 ```shell
 cd build-dir
@@ -163,6 +163,7 @@ gcovr -r ..
 # or
 gcovr -r .. --html-nested coverage.html
 ```
+
 
 Deprecation Warning
 -------------------

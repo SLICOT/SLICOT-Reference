@@ -1,5 +1,7 @@
+*.bak
 *.swp
 build*/
+*build*
 *.obj
 *.o
 *.a
