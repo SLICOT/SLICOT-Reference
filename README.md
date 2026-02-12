@@ -49,6 +49,13 @@ Release Notes
 -------------
 See [ReleaseNotes.md](./ReleaseNotes.md)
 
+Interaction with Build Systems
+------------------------------
+
+SLICOT supports the integration in various build systems.
+See [BUILD_SYSTEMS.md](./BUILD_SYSTEMS.md) for details.
+
+
 Contributors and Financial Support
 ----------------------------------
 See [CONTRIBUTORS.md](./CONTRIBUTORS.md)

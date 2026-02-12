@@ -4,7 +4,13 @@ export IMAGE_NAME=${IMAGE_NAME:-ubuntu}
 IMAGE_BASE=${CI_REGISTRY_IMAGE}/${IMAGE_NAME}
 
 
-for i in Dockerfile.*
+if [ $# -eq 1 ]; then
+    LIST=$1
+else
+    LIST="Dockerfile.*"
+fi
+
+for i in $LIST
 do
     echo $i
     v=${i#Dockerfile.}

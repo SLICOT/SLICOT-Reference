@@ -4,12 +4,13 @@
 
 **Bugfix Release**
 
-* Fix: Github #21, "Index out of bounds error in MB04DD, line 327"
-* Fix: Github #34, Double transpose in SB02RU
-* Fix: Github #35, #36, DLACPY Overlapping in AB09CX, FB01QD, FB01RD, NF01BS
-* Fix: Github #39, "SG03BX wrong results when E(1,2) /= 0"
+* Fix: GitHub #21, "Index out of bounds error in MB04DD, line 327"
+* Fix: GitHub #34, Double transpose in SB02RU
+* Fix: GitHub #35, #36, DLACPY Overlapping in AB09CX, FB01QD, FB01RD, NF01BS
+* Fix: GitHub #39, "SG03BX wrong results when E(1,2) /= 0"
 * Enable Coverage Builds
-
+* Experimental support for fpm, the Fortran Package Manager
+* Support for CMake's FetchContent Mechanism
 
 ## Version v5.9.1
 
@@ -20,7 +21,7 @@ not add any new routines to SLICOT.
 
 * The build system now uses CMAKE. The old makefile based system works in parallel
 but will be removed in the future with the next minor release.
-* CI Runs on Github and Gitlab - See Github #2
+* CI Runs on GitHub and GitLab - See GitHub #2
 * RPM packaging, see INSTALL.md for details
 
 ### Bugfixes
@@ -28,8 +29,8 @@ but will be removed in the future with the next minor release.
 * Fix: implicit variables are now declared
 * Fix: stack overflow in the test suite on Windows
 * Fix: Missing LSAME declaration in TMB03LD.f - See Github PR #14
-* Fix: Invalid work space computation in IB01AD - See Github PR #18
-* Fix: Include deprecated LAPACK routines - See Github #24 and #10
+* Fix: Invalid work space computation in IB01AD - See GitHub PR #18
+* Fix: Include deprecated LAPACK routines - See GitHub #24 and #10
 
 
 ## Version v5.9

@@ -5,4 +5,15 @@ RUN apt update ; \
     apt install --yes build-essential;\
     apt install --yes gfortran ninja-build debhelper lcov
 
-RUN apt install --yes gcovr
+RUN apt install --yes gcovr wget pkg-config
+
+RUN cd /tmp && \
+    wget -q https://github.com/fortran-lang/fpm/archive/refs/tags/v0.12.0.tar.gz && \
+    wget -q https://github.com/fortran-lang/fpm/releases/download/v0.12.0/fpm-0.12.0.F90 && \
+    tar xf v0.12.0.tar.gz && \
+    mkdir -p build/bootstrap && \
+    gfortran -J build/bootstrap -o build/bootstrap/fpm fpm-0.12.0.F90 && \
+    cd fpm-0.12.0 && \
+    ../build/bootstrap/fpm install --profile release --prefix /usr/local/ && \
+    cd / && rm -rf /tmp/*
+
