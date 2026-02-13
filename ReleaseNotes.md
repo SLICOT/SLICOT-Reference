@@ -2,15 +2,19 @@
 
 ## Version v5.9.2 (tbr)
 
-**Bugfix Release**
+### Bugfixes
 
 * Fix: GitHub #21, "Index out of bounds error in MB04DD, line 327"
 * Fix: GitHub #34, Double transpose in SB02RU
 * Fix: GitHub #35, #36, DLACPY Overlapping in AB09CX, FB01QD, FB01RD, NF01BS
 * Fix: GitHub #39, "SG03BX wrong results when E(1,2) /= 0"
+
+### Improvements
+
 * Enable Coverage Builds
 * Experimental support for fpm, the Fortran Package Manager
 * Support for CMake's FetchContent Mechanism
+* Provide a Fortran 90 module file
 
 ## Version v5.9.1
 
