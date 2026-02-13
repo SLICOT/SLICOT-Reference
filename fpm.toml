@@ -16,7 +16,7 @@ implicit-external = true
 auto-executables = false
 auto-tests = false
 auto-examples = false
-module-naming    = false
+module-naming    = "slicot"
 
 [library]
 source-dir = "src"

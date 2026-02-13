@@ -55,6 +55,20 @@ Interaction with Build Systems
 SLICOT supports the integration in various build systems.
 See [BUILD_SYSTEMS.md](./BUILD_SYSTEMS.md) for details.
 
+Fortran 90 and above
+--------------------
+Since SLICOT is orginally written in Fortran 77, it has to keep the old
+interface in order to support legacy codes. But if you are using Fortran 90 and
+above SLICOT can be imported using
+```fortran
+use slicot
+```
+which provides proper interface definitions for all SLICOT subrotuines and
+functions.
+
+**Note:** This support is still in development, thus small things, like the
+`intent(...)` clause in the function and subroutine arguments, might change.
+
 
 Contributors and Financial Support
 ----------------------------------
