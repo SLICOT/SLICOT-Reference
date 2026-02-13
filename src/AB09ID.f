@@ -34,12 +34,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBC    CHARACTER*1
+C     JOBC    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted controllability
 C             Grammian as follows:
 C             = 'S': choice corresponding to a combination method [4]
@@ -47,7 +47,7 @@ C                    of the approaches of Enns [1] and Lin-Chiu [2,3];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified combination method of [4].
 C
-C     JOBO    CHARACTER*1
+C     JOBO    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted observability
 C             Grammian as follows:
 C             = 'S': choice corresponding to a combination method [4]
@@ -55,7 +55,7 @@ C                    of the approaches of Enns [1] and Lin-Chiu [2,3];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified combination method of [4].
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root Balance & Truncate method;
@@ -66,20 +66,20 @@ C                     Approximation method;
 C             = 'P':  use the balancing-free square-root
 C                     Singular Perturbation Approximation method.
 C
-C     WEIGHT  CHARACTER*1
+C     WEIGHT  (input) CHARACTER*1
 C             Specifies the type of frequency weighting, as follows:
 C             = 'N':  no weightings are used (V = I, W = I);
 C             = 'L':  only left weighting V is used (W = I);
 C             = 'R':  only right weighting W is used (V = I);
 C             = 'B':  both left and right weightings V and W are used.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the triplet (A,B,C) as follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting order NR is fixed;
 C             = 'A':  the resulting order NR is automatically determined
@@ -170,7 +170,7 @@ C             The trailing (NR+NS-N)-by-(NR+NS-N) block contains
 C             the reduced part of A corresponding to ALPHA-stable
 C             eigenvalues.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -180,7 +180,7 @@ C             On exit, if INFO = 0, the leading NR-by-M part of this
 C             array contains the input/state matrix Br of the reduced
 C             order system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -190,7 +190,7 @@ C             On exit, if INFO = 0, the leading P-by-NR part of this
 C             array contains the state/output matrix Cr of the reduced
 C             order system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -200,7 +200,7 @@ C             On exit, if INFO = 0, the leading P-by-M part of this
 C             array contains the input/output matrix Dr of the reduced
 C             order system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     AV      (input/output) DOUBLE PRECISION array, dimension (LDAV,NV)
@@ -214,7 +214,7 @@ C             in a real Schur form. NVR is returned in IWORK(2).
 C             AV is not referenced if WEIGHT = 'R' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDAV    INTEGER
+C     LDAV    (input) INTEGER
 C             The leading dimension of array AV.
 C             LDAV >= MAX(1,NV), if WEIGHT = 'L' or 'B';
 C             LDAV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -229,7 +229,7 @@ C             the input matrix of a minimal realization of V.
 C             BV is not referenced if WEIGHT = 'R' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDBV    INTEGER
+C     LDBV    (input) INTEGER
 C             The leading dimension of array BV.
 C             LDBV >= MAX(1,NV), if WEIGHT = 'L' or 'B';
 C             LDBV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -244,7 +244,7 @@ C             contains the output matrix of a minimal realization of V.
 C             CV is not referenced if WEIGHT = 'R' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDCV    INTEGER
+C     LDCV    (input) INTEGER
 C             The leading dimension of array CV.
 C             LDCV >= MAX(1,PV), if WEIGHT = 'L' or 'B';
 C             LDCV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -256,7 +256,7 @@ C             with the transfer-function matrix V.
 C             DV is not referenced if WEIGHT = 'R' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDDV    INTEGER
+C     LDDV    (input) INTEGER
 C             The leading dimension of array DV.
 C             LDDV >= MAX(1,PV), if WEIGHT = 'L' or 'B';
 C             LDDV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -272,7 +272,7 @@ C             in a real Schur form. NWR is returned in IWORK(3).
 C             AW is not referenced if WEIGHT = 'L' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDAW    INTEGER
+C     LDAW    (input) INTEGER
 C             The leading dimension of array AW.
 C             LDAW >= MAX(1,NW), if WEIGHT = 'R' or 'B';
 C             LDAW >= 1,         if WEIGHT = 'L' or 'N'.
@@ -287,7 +287,7 @@ C             contains the input matrix of a minimal realization of W.
 C             BW is not referenced if WEIGHT = 'L' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDBW    INTEGER
+C     LDBW    (input) INTEGER
 C             The leading dimension of array BW.
 C             LDBW >= MAX(1,NW), if WEIGHT = 'R' or 'B';
 C             LDBW >= 1,         if WEIGHT = 'L' or 'N'.
@@ -302,7 +302,7 @@ C             the output matrix of a minimal realization of W.
 C             CW is not referenced if WEIGHT = 'L' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDCW    INTEGER
+C     LDCW    (input) INTEGER
 C             The leading dimension of array CW.
 C             LDCW >= MAX(1,M), if WEIGHT = 'R' or 'B';
 C             LDCW >= 1,        if WEIGHT = 'L' or 'N'.
@@ -314,7 +314,7 @@ C             with the transfer-function matrix W.
 C             DW is not referenced if WEIGHT = 'L' or 'N',
 C             or MIN(N,M,P) = 0.
 C
-C     LDDW    INTEGER
+C     LDDW    (input) INTEGER
 C             The leading dimension of array DW.
 C             LDDW >= MAX(1,M), if WEIGHT = 'R' or 'B';
 C             LDDW >= 1,        if WEIGHT = 'L' or 'N'.
@@ -330,7 +330,7 @@ C             system.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL1 contains the tolerance for
 C             determining the order of reduced system.
 C             For model reduction, the recommended value is
@@ -345,7 +345,7 @@ C             ALPHA-stable eigenvalues of A and EPS is the machine
 C             precision (see LAPACK Library Routine DLAMCH).
 C             If ORDSEL = 'F', the value of TOL1 is ignored.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             The tolerance for determining the order of a minimal
 C             realization of the ALPHA-stable part of the given system.
 C             The recommended value is TOL2 = NS*EPS*S1.
@@ -354,7 +354,7 @@ C             If TOL2 > 0 and ORDSEL = 'A', then TOL2 <= TOL1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension
+C     IWORK   (input/output) INTEGER array, dimension
 C             ( MAX( 3, LIWRK1, LIWRK2, LIWRK3 ) ), where
 C             LIWRK1 = 0,             if JOB = 'B';
 C             LIWRK1 = N,             if JOB = 'F';
@@ -368,11 +368,11 @@ C             minimal realization of the stable part of the system,
 C             IWORK(2) and IWORK(3) contain the actual orders
 C             of the state space realizations of V and W, respectively.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( LMINL, LMINR, LRCF,
 C                            2*N*N + MAX( 1, LLEFT, LRIGHT, 2*N*N+5*N,
@@ -399,7 +399,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NR is greater
 C                   than NSMIN, the sum of the order of the
@@ -423,7 +423,7 @@ C                   SLICOT Library routines SB08CD and/or SB08DD.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

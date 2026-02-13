@@ -41,10 +41,10 @@ C             On entry, the leading 2-by-2-by-K part of this array must
 C             contain a 2-by-2 product (implicitly represented by its K
 C             factors) in upper Hessenberg-triangular form.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= 2.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= 2.
 C
 C     ALPHAR  (output)  DOUBLE PRECISION array, dimension (2)
@@ -68,11 +68,11 @@ C             two eigenvalues.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (8*K)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (8*K)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  the periodic QZ algorithm did not converge;
 C             = 2:  the computed eigenvalues might be inaccurate.

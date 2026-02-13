@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     APPLY   CHARACTER*1
+C     APPLY   (input) CHARACTER*1
 C             Specifies whether or not the parameter vector should be
 C             transformed using a bijective mapping, as follows:
 C             = 'A' : apply the bijective mapping to the N vectors in
@@ -45,7 +45,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the transformed system state matrix corresponding to the
 C             output normal form with parameter vector THETA.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -55,7 +55,7 @@ C             On exit, the leading N-by-M part of this array contains
 C             the transformed system input matrix corresponding to the
 C             output normal form with parameter vector THETA.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -65,14 +65,14 @@ C             On exit, the leading L-by-N part of this array contains
 C             the transformed system output matrix corresponding to the
 C             output normal form with parameter vector THETA.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,L).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading L-by-M part of this array must contain the
 C             system input/output matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,L).
 C
 C     X0      (input/output) DOUBLE PRECISION array, dimension (N)
@@ -93,16 +93,16 @@ C             THETA(N*L+1:N*(L+M))              : parameters for B;
 C             THETA(N*(L+M)+1:N*(L+M)+L*M)      : parameters for D;
 C             THETA(N*(L+M)+L*M+1:N*(L+M+1)+L*M): parameters for x0.
 C
-C     LTHETA  INTEGER
+C     LTHETA  (input) INTEGER
 C             The length of array THETA.  LTHETA >= N*(L+M+1)+L*M.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N*N*L + N*L + N,
 C                           N*N + MAX(N*N + N*MAX(N,L) + 6*N + MIN(N,L),
@@ -111,7 +111,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

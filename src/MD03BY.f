@@ -39,7 +39,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COND    CHARACTER*1
+C     COND    (input) CHARACTER*1
 C             Specifies whether the condition of the matrices R and S
 C             should be estimated, as follows:
 C             = 'E' :  use incremental condition estimation for R and S;
@@ -59,7 +59,7 @@ C             On exit, the full upper triangle is unaltered, and the
 C             strict lower triangle contains the strict upper triangle
 C             (transposed) of the upper triangular matrix S.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     IPVT    (input) INTEGER array, dimension (N)
@@ -83,7 +83,7 @@ C             On entry, PAR must contain an initial estimate of the
 C             Levenberg-Marquardt parameter.  PAR >= 0.
 C             On exit, it contains the final estimate of this parameter.
 C
-C     RANK    (input or output) INTEGER
+C     RANK    (input/output) INTEGER
 C             On entry, if COND = 'U', this parameter must contain the
 C             (numerical) rank of the matrix R.
 C             On exit, this parameter contains the numerical rank of
@@ -98,7 +98,7 @@ C             This array contains the matrix-vector product -R*P'*x.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If COND = 'E', the tolerance to be used for finding the
 C             rank of the matrices R and S. If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -112,18 +112,18 @@ C             This parameter is not relevant if COND = 'U' or 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, the first N elements of this array contain the
 C             diagonal elements of the upper triangular matrix S.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 4*N, if COND =  'E';
 C             LDWORK >= 2*N, if COND <> 'E'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

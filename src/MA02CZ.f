@@ -36,7 +36,7 @@ C             where B is the matrix formed from the central band of A
 C             and P is a permutation matrix with ones down the secondary
 C             diagonal.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     CONTRIBUTOR

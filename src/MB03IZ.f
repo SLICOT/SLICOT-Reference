@@ -51,7 +51,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the unitary transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N':  Q is not computed;
@@ -63,7 +63,7 @@ C                     is the product of the unitary transformations
 C                     that are applied to the pencil aS - bH to reorder
 C                     the eigenvalues.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Specifies whether or not the unitary symplectic
 C             transformations should be accumulated in the arrays U1 and
 C             U2, as follows:
@@ -92,7 +92,7 @@ C             contains the transformed matrix Aout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     C       (input/output) COMPLEX*16 array, dimension (LDC, N/2)
@@ -103,7 +103,7 @@ C             contains the transformed matrix Cout.
 C             The strictly upper triangular part of this array is not
 C             referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1, N/2).
 C
 C     D       (input/output) COMPLEX*16 array, dimension (LDD, N/2)
@@ -112,7 +112,7 @@ C             contain the matrix D.
 C             On exit, the leading  N/2-by-N/2 part of this array
 C             contains the transformed matrix Dout.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1, N/2).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB, N/2)
@@ -123,7 +123,7 @@ C             contains the transformed matrix Bout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     F       (input/output) COMPLEX*16 array, dimension (LDF, N/2)
@@ -135,7 +135,7 @@ C             contains the transformed matrix Fout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= MAX(1, N/2).
 C
 C     Q       (input/output) COMPLEX*16 array, dimension (LDQ, N)
@@ -148,7 +148,7 @@ C             On exit, if COMPQ = 'I', then the leading N-by-N part of
 C             this array contains the unitary transformation matrix Q.
 C             If COMPQ = 'N' this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,         if COMPQ = 'N';
 C             LDQ >= MAX(1, N), if COMPQ = 'I' or COMPQ = 'U'.
@@ -165,7 +165,7 @@ C             of this array contains the upper left block U1 of the
 C             unitary symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= 1,           if COMPU = 'N';
 C             LDU1 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -182,7 +182,7 @@ C             of this array contains the upper right block U2 of the
 C             unitary symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= 1,           if COMPU = 'N';
 C             LDU2 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -193,7 +193,7 @@ C             negative real part.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance used to decide the sign of the eigenvalues.
 C             If the user sets TOL > 0, then the given value of TOL is
 C             used. If the user sets TOL <= 0, then an implicitly
@@ -204,7 +204,7 @@ C             needed for pencils with multiple eigenvalues.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value.
 C

@@ -17,10 +17,11 @@ C
 C     T       (input) DOUBLE PRECISION array, dimension(LDT,N)
 C             The upper quasi-triangular matrix T.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
-C     WR, WI  (output) DOUBLE PRECISION arrays, dimension (N)
+C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of T. The eigenvalues are stored in the same
 C             order as on the diagonal of T. If T(i:i+1,i:i+1) is a
@@ -29,7 +30,7 @@ C             then WI(i) > 0 and WI(i+1) = -WI(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

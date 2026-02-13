@@ -51,17 +51,17 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             Specifies the type of problem to be addressed as follows:
 C             = 'O':  Optimal control problem;
 C             = 'S':  Spectral factorization problem.
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of linear system considered as follows:
 C             = 'C':  Continuous-time system;
 C             = 'D':  Discrete-time system.
 C
-C     JOBB    CHARACTER*1
+C     JOBB    (input) CHARACTER*1
 C             Specifies whether or not the matrix G is given, instead
 C             of the matrices B and R, as follows:
 C             = 'B':  B and R are given;
@@ -69,7 +69,7 @@ C             = 'G':  G is given.
 C             For JOBB = 'G', a 2N-by-2N matrix pair is directly
 C             obtained assuming L = 0 (see the description of JOBL).
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the matrices Q and/or R (if
 C             JOBB = 'B') are factored, as follows:
 C             = 'N':  Not factored, Q and R are given;
@@ -79,14 +79,14 @@ C                     R = D + D' (if TYPE = 'S');
 C             = 'B':  Both factors C and D are given, Q = C'C, R = D'D
 C                     (or R = D + D').
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             If JOBB = 'G', or FACT = 'N', specifies which triangle of
 C             the matrices G and Q (if FACT = 'N'), or Q and R (if
 C             JOBB = 'B'), is stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     JOBL    CHARACTER*1
+C     JOBL    (input) CHARACTER*1
 C             Specifies whether or not the matrix L is zero, as follows:
 C             = 'Z':  L is zero;
 C             = 'N':  L is nonzero.
@@ -95,7 +95,7 @@ C             Using SLICOT Library routine SB02MT to compute the
 C             corresponding A and Q in this case, before calling SB02OY,
 C             enables to obtain 2N-by-2N matrix pairs directly.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether or not the matrix E is identity, as
 C             follows:
 C             = 'I':  E is the identity matrix;
@@ -122,7 +122,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state matrix A of the system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,*)
@@ -137,7 +137,7 @@ C             G = BR  B'. The strictly lower triangular part (if
 C             UPLO = 'U') or strictly upper triangular part (if
 C             UPLO = 'L') is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -151,7 +151,7 @@ C             UPLO = 'L') is not referenced.
 C             If FACT = 'C' or 'B', the leading P-by-N part of this
 C             array must contain the output matrix C of the system.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= MAX(1,N) if FACT = 'N' or 'D',
 C             LDQ >= MAX(1,P) if FACT = 'C' or 'B'.
@@ -169,7 +169,7 @@ C             array must contain the direct transmission matrix D of the
 C             system.
 C             If JOBB = 'G', this array is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.
 C             LDR >= MAX(1,M) if JOBB = 'B' and FACT = 'N' or 'C';
 C             LDR >= MAX(1,P) if JOBB = 'B' and FACT = 'D' or 'B';
@@ -180,7 +180,7 @@ C             If JOBL = 'N' (and JOBB = 'B'), the leading N-by-M part of
 C             this array must contain the cross weighting matrix L.
 C             If JOBL = 'Z' or JOBB = 'G', this array is not referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.
 C             LDL >= MAX(1,N) if JOBL = 'N';
 C             LDL >= 1        if JOBL = 'Z' or JOBB = 'G'.
@@ -191,7 +191,7 @@ C             contain the matrix E of the descriptor system.
 C             If JOBE = 'I', E is taken as identity and this array is
 C             not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.
 C             LDE >= MAX(1,N) if JOBE = 'N';
 C             LDE >= 1        if JOBE = 'I'.
@@ -203,7 +203,7 @@ C                     f
 C             Array AF must have 2*N+M columns if JOBB = 'B', and 2*N
 C             columns, otherwise.
 C
-C     LDAF    INTEGER
+C     LDAF    (input) INTEGER
 C             The leading dimension of array AF.
 C             LDAF >= MAX(1,2*N+M) if JOBB = 'B',
 C             LDAF >= MAX(1,2*N)   if JOBB = 'G'.
@@ -217,7 +217,7 @@ C             The last M zero columns are never constructed.
 C             If DICO = 'C' and JOBB = 'G' and JOBE = 'I', this array
 C             is not referenced.
 C
-C     LDBF    INTEGER
+C     LDBF    (input) INTEGER
 C             The leading dimension of array BF.
 C             LDBF >= MAX(1,2*N+M) if JOBB = 'B',
 C             LDBF >= MAX(1,2*N)   if JOBB = 'G' and ( DICO = 'D' or
@@ -227,7 +227,7 @@ C                                                      JOBE = 'I' ).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity of
 C             the original matrix pencil, specifically of the triangular
 C             factor obtained during the reduction process. If the user
@@ -242,17 +242,17 @@ C             This parameter is not referenced if JOBB = 'G'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= M if JOBB = 'B',
 C             LIWORK >= 1 if JOBB = 'G'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK. If JOBB = 'B', DWORK(2) returns the reciprocal
 C             of the condition number of the M-by-M lower triangular
 C             matrix obtained after compression.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1                  if JOBB = 'G',
 C             LDWORK >= MAX(1,2*N + M,3*M) if JOBB = 'B'.
@@ -260,7 +260,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

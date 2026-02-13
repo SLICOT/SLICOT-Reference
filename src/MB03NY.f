@@ -2,7 +2,7 @@ C
 C SPDX-License-Identifier: BSD-3-Clause
 C
       DOUBLE PRECISION FUNCTION MB03NY( N, OMEGA, A, LDA, S, DWORK,
-     $                                  LDWORK, CWORK, LCWORK, INFO )
+     $                                  LDWORK, ZWORK, LZWORK, INFO )
 C
 C     PURPOSE
 C
@@ -31,7 +31,7 @@ C             contain the matrix A.
 C             On exit, if OMEGA = 0, the contents of this array are
 C             destroyed. Otherwise, this array is unchanged.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     S       (output) DOUBLE PRECISION array, dimension (N)
@@ -39,28 +39,28 @@ C             The singular values of A - jwI in decreasing order.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX( 1, 5*N ).
 C             For optimum performance LDWORK should be larger.
 C
-C     CWORK   COMPLEX*16 array, dimension (LCWORK)
-C             On exit, if INFO = 0 and OMEGA <> 0, CWORK(1) returns the
-C             optimal value of LCWORK.
+C     ZWORK   (input/output) COMPLEX*16 array, dimension (LZWORK)
+C             On exit, if INFO = 0 and OMEGA <> 0, ZWORK(1) returns the
+C             optimal value of LZWORK.
 C             If OMEGA is zero, this array is not referenced.
 C
-C     LCWORK  INTEGER
-C             The length of the array CWORK.
-C             LCWORK >= 1,                 if OMEGA =  0;
-C             LCWORK >= MAX( 1, N*N+3*N ), if OMEGA <> 0.
-C             For optimum performance LCWORK should be larger.
+C     LZWORK  (input) INTEGER
+C             The length of the array ZWORK.
+C             LZWORK >= 1,                 if OMEGA =  0;
+C             LZWORK >= MAX( 1, N*N+3*N ), if OMEGA <> 0.
+C             For optimum performance LZWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -105,11 +105,11 @@ C     .. Parameters ..
       PARAMETER              ( CONE   = ( 1.0D0, 0.0D0 ),
      $                         RTMONE = ( 0.0D0, 1.0D0 ) )
 C     .. Scalar Arguments ..
-      INTEGER                INFO, LCWORK, LDA, LDWORK, N
+      INTEGER                INFO, LZWORK, LDA, LDWORK, N
       DOUBLE PRECISION       OMEGA
 C     .. Array Arguments ..
       DOUBLE PRECISION       A(LDA,*), DWORK(*), S(*)
-      COMPLEX*16             CWORK(*)
+      COMPLEX*16             ZWORK(*)
 C     .. Local Scalars ..
       INTEGER                I, IC, J
 C     .. Local Arrays ..
@@ -131,8 +131,8 @@ C
          INFO = -4
       ELSE IF( LDWORK.LT.MAX( 1, 5*N ) ) THEN
          INFO = -7
-      ELSE IF( LCWORK.LT.1 .OR. ( OMEGA.NE.ZERO .AND.
-     $         LCWORK.LT.N*N + 3*N ) ) THEN
+      ELSE IF( LZWORK.LT.1 .OR. ( OMEGA.NE.ZERO .AND.
+     $         LZWORK.LT.N*N + 3*N ) ) THEN
          INFO = -9
       END IF
 C
@@ -150,7 +150,7 @@ C
          MB03NY   = ZERO
          DWORK(1) = ONE
          IF ( OMEGA.NE.ZERO )
-     $      CWORK(1) = CONE
+     $      ZWORK(1) = CONE
          RETURN
       END IF
 C
@@ -171,19 +171,19 @@ C
          IC = 1
          DO 20 J = 1, N
             DO 10 I = 1, N
-               CWORK(IC) = A(I,J)
+               ZWORK(IC) = A(I,J)
                IC = IC + 1
    10       CONTINUE
-            CWORK((J-1)*N+J) = CWORK((J-1)*N+J) - OMEGA * RTMONE
+            ZWORK((J-1)*N+J) = ZWORK((J-1)*N+J) - OMEGA * RTMONE
    20    CONTINUE
-         CALL ZGESVD( 'No vectors', 'No vectors', N, N, CWORK, N, S,
-     $                ZDUMMY, 1, ZDUMMY, 1, CWORK(N*N+1), LCWORK-N*N,
+         CALL ZGESVD( 'No vectors', 'No vectors', N, N, ZWORK, N, S,
+     $                ZDUMMY, 1, ZDUMMY, 1, ZWORK(N*N+1), LZWORK-N*N,
      $                DWORK, INFO )
          IF ( INFO.NE.0 ) THEN
             INFO = 2
             RETURN
          END IF
-         CWORK(1) = CWORK(N*N+1) + DBLE( N*N ) * CONE
+         ZWORK(1) = ZWORK(N*N+1) + DBLE( N*N ) * CONE
          DWORK(1) = DBLE( 5*N )
       END IF
 C

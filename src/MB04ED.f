@@ -44,21 +44,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E':  compute the eigenvalues only; Z and T will not
 C                     necessarily be put into the forms in (2);
 C             = 'T':  put Z and T into the forms in (2), and return the
 C                     eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q as follows:
 C             = 'N':  Q is not computed;
 C             = 'I':  the array Q is initialized internally to the unit
 C                     matrix, and the orthogonal matrix Q is returned.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U as follows:
 C             = 'N':  U is not computed;
@@ -87,7 +87,7 @@ C             matrix Z just before the application of the periodic QZ
 C             algorithm. The entries in the rows N/2+1 to N and the
 C             first N/2 columns are unchanged.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1, N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -99,7 +99,7 @@ C             array contains the matrix Bout; otherwise, it contains the
 C             matrix B just before the application of the periodic QZ
 C             algorithm.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     FG      (input/output) DOUBLE PRECISION array, dimension
@@ -126,7 +126,7 @@ C             Moreover, the diagonal and the first subdiagonal of this
 C             array on exit coincide to the corresponding diagonals of
 C             this array on entry.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.
 C             LDFG >= MAX(1, N/2).
 C
@@ -143,7 +143,7 @@ C
 C             where Z11 and Z22' are upper triangular (the first step
 C             of the algorithm).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1, N).
 C
 C     U1      (input/output) DOUBLE PRECISION array, dimension
@@ -159,7 +159,7 @@ C             of this array contains the upper left block U1 of the
 C             orthogonal symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= 1,           if COMPU = 'N';
 C             LDU1 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -177,7 +177,7 @@ C             of this array contains the upper right block U2 of the
 C             orthogonal symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= 1,           if COMPU = 'N';
 C             LDU2 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -206,7 +206,7 @@ C             only to be saved once in ALPHAR, ALPHAI and BETA.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = 3, IWORK(1) contains the number of
 C             (pairs of) possibly inaccurate eigenvalues, q <= N/2, and
 C             IWORK(2), ..., IWORK(q+1) indicate their indices.
@@ -228,10 +228,10 @@ C             corresponding to unreliable eigenvalues. IWORK(2*q+4)
 C             contains the total number t of the 2-by-2 blocks.
 C             If INFO = 0, then q = 0, therefore IWORK(1) = 0.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.  LIWORK >= N+9.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 3, DWORK(1) returns the
 C             optimal LDWORK, and DWORK(2), ..., DWORK(4) contain the
 C             Frobenius norms of the factors of the formal matrix
@@ -250,7 +250,7 @@ C             corresponding 2-by-2 matrix triplet.
 C             On exit, if INFO = -23, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If JOB = 'E' and COMPQ = 'N' and COMPU = 'N',
 C                   LDWORK >= 3/4*N**2+MAX(3*N, 27);
@@ -265,7 +265,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: problem during computation of the eigenvalues;

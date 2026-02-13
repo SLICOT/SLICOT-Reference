@@ -17,13 +17,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangle of A
 C             is stored:
 C             = 'U':  Upper triangle of A is stored;
 C             = 'L':  Lower triangle of A is stored.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether op(Z) is Z or its transpose Z':
 C             = 'N':  op(Z) = Z;
 C             = 'T':  op(Z) = Z'.
@@ -52,7 +52,7 @@ C             part of this array contains the upper (UPLO = 'U') or
 C             lower (UPLO = 'L') triangular part of the symmetric
 C             matrix op(Z)*A*op(Z)'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,M,N).
 C
 C     Z       (input) DOUBLE PRECISION array, dimension (LDQ,K)
@@ -60,18 +60,18 @@ C             where K = N if TRANS = 'N' and K = M if TRANS = 'T'.
 C             The leading M-by-N part, if TRANS = 'N', or N-by-M part,
 C             if TRANS = 'T', of this array contains the matrix Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= MAX(1,M) if TRANS = 'N' and
 C             LDZ >= MAX(1,N) if TRANS = 'T'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

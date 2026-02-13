@@ -38,7 +38,7 @@ C             On exit, the leading IP-by-IP upper Hessenberg part of
 C             this array contains the LU factorization of the matrix
 C             A - S0*I, as computed by SLICOT Library routine MB02SD.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,IP).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (IP)
@@ -76,7 +76,7 @@ C             The gain of the linear system (A,b,c,d), given by (1).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (IP)
+C     IWORK   (input/output) INTEGER array, dimension (IP)
 C             On exit, it contains the pivot indices; for 1 <= i <= IP,
 C             row i of the matrix A - S0*I was interchanged with
 C             row IWORK(i).

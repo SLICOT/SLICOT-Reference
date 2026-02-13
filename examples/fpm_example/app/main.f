@@ -12,6 +12,7 @@ C     The source and destination regions overlap when LDJ > N
 C     See Github #35
 C
       PROGRAM TEST_NF01BS_35
+C      use slicot
       IMPLICIT NONE
 C
 C     Parameters to trigger overlap:
@@ -20,7 +21,6 @@ C     N = BN*BSN + ST = 6
 C     M = BN*BSM = 8
 C     LDJ = M = 8
 C
-      EXTERNAL NF01BS
       INTEGER BN, BSM, BSN, ST, N, M, LDJ_INIT
       PARAMETER ( BN = 2, BSM = 4, BSN = 2, ST = 2 )
       PARAMETER ( N = BN*BSN + ST )

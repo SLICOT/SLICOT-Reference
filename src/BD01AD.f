@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     CHARACTER*1
+C     DEF     (input) CHARACTER*1
 C             Specifies the kind of values used as parameters when
 C             generating parameter-dependent and scalable examples
 C             (i.e., examples with NR(1) = 2, 3, or 4):
@@ -112,28 +112,28 @@ C             matrix E.
 C             NOTE that this array is overwritten (by the identity
 C             matrix), if VEC(4) = .FALSE..
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= N.
 C
 C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array contains the
 C             matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= N.
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array contains the
 C             matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= P.
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -142,7 +142,7 @@ C             matrix D.
 C             NOTE that this array is overwritten (by the zero
 C             matrix), if VEC(8) = .FALSE..
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= P.
 C
 C     NOTE    (output) CHARACTER*70
@@ -151,9 +151,9 @@ C             example.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             For Example 3.4, LDWORK >= 4*IPAR(1) is required.
 C             For the other examples, no workspace is needed, i.e.,
@@ -161,7 +161,7 @@ C             LDWORK >= 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value; in particular, INFO = -3 or -4 indicates

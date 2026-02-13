@@ -25,13 +25,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANQ1  CHARACTER*1
+C     TRANQ1  (input) CHARACTER*1
 C             Specifies the form of op( Q1 ) as follows:
 C             = 'N':  op( Q1 ) = Q1;
 C             = 'T':  op( Q1 ) = Q1';
 C             = 'C':  op( Q1 ) = Q1'.
 C
-C     TRANQ2  CHARACTER*1
+C     TRANQ2  (input) CHARACTER*1
 C             Specifies the form of op( Q2 ) as follows:
 C             = 'N':  op( Q2 ) = Q2;
 C             = 'T':  op( Q2 ) = Q2';
@@ -64,7 +64,7 @@ C             array contains the matrix Q1.
 C             On exit with TRANQ1 = 'T' or TRANQ1 = 'C', the leading
 C             N-by-M part of this array contains the matrix Q1'.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.
 C             LDQ1 >= MAX(1,M),  if TRANQ1 = 'N';
 C             LDQ1 >= MAX(1,N),  if TRANQ1 = 'T' or TRANQ1 = 'C'.
@@ -85,7 +85,7 @@ C             array contains the matrix Q2.
 C             On exit with TRANQ2 = 'T' or TRANQ2 = 'C', the leading
 C             N-by-M part of this array contains the matrix Q2'.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.
 C             LDQ2 >= MAX(1,M),  if TRANQ2 = 'N';
 C             LDQ2 >= MAX(1,N),  if TRANQ2 = 'T' or TRANQ2 = 'C'.
@@ -102,18 +102,18 @@ C             F(i).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -13,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,M+N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

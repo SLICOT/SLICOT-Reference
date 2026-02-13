@@ -34,7 +34,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     QRIT    LOGICAL
+C     QRIT    (input) LOGICAL
 C             Indicates whether a QR or QL iteration step is to be
 C             taken (from larger end diagonal element towards smaller),
 C             as follows:
@@ -43,14 +43,14 @@ C                         bottom);
 C             = .FALSE.:  QL iteration step (chase bulge from bottom to
 C                         top).
 C
-C     UPDATU  LOGICAL
+C     UPDATU  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix U the left-hand Givens rotations S, as follows:
 C             = .FALSE.:  Do not form U;
 C             = .TRUE. :  The given matrix U is updated (postmultiplied)
 C                         by the left-hand Givens rotations S.
 C
-C     UPDATV  LOGICAL
+C     UPDATV  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix V the right-hand Givens rotations S, as follows:
 C             = .FALSE.:  Do not form V;
@@ -96,7 +96,7 @@ C             left have been postmultiplied into U, i.e., U * S is
 C             returned.
 C             U is not referenced if UPDATU = .FALSE..
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= max(1,M) if UPDATU = .TRUE.;
 C             LDU >= 1        if UPDATU = .FALSE..
@@ -109,14 +109,14 @@ C             right have been postmultiplied into V, i.e., V * T is
 C             returned.
 C             V is not referenced if UPDATV = .FALSE..
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= max(1,N) if UPDATV = .TRUE.;
 C             LDV >= 1        if UPDATV = .FALSE..
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(1,LDWORK))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(1,LDWORK))
 C             LDWORK >= 4*MIN(M,N)-4, if UPDATU = UPDATV = .TRUE.;
 C             LDWORK >= 2*MIN(M,N)-2, if
 C                             UPDATU = .TRUE. and UPDATV = .FALSE. or

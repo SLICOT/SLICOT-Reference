@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E':  compute the eigenvalues only; S and T will not
 C                     necessarily be put into skew-Hamiltonian
@@ -44,7 +44,7 @@ C             = 'T':  put S and T into skew-Hamiltonian triangular form
 C                     (2), and return the eigenvalues in ALPHAR, ALPHAI
 C                     and BETA.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q as follows:
 C             = 'N':  Q is not computed;
@@ -70,7 +70,7 @@ C             array contains the matrix Aout; otherwise, it contains
 C             meaningless elements, except for the diagonal blocks,
 C             which are correctly set.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     DE      (input/output) DOUBLE PRECISION array, dimension
@@ -95,7 +95,7 @@ C             of the skew-symmetric matrix D just before the application
 C             of the QZ algorithm. The remaining entries are
 C             meaningless.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.
 C             LDDE >= MAX(1, N/2).
 C
@@ -108,7 +108,7 @@ C             array contains the matrix Bout; otherwise, it contains
 C             meaningless elements, except for the diagonal 1-by-1 and
 C             2-by-2 blocks, which are correctly set.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     FG      (input/output) DOUBLE PRECISION array, dimension
@@ -133,7 +133,7 @@ C             of the skew-symmetric matrix F just before the application
 C             of the QZ algorithm. The remaining entries are
 C             meaningless.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.
 C             LDFG >= MAX(1, N/2).
 C
@@ -148,7 +148,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,         if COMPQ = 'N';
 C             LDQ >= MAX(1, N), if COMPQ = 'I' or COMPQ = 'U'.
@@ -177,7 +177,7 @@ C             only to be saved once in ALPHAR, ALPHAI and BETA.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N/2+1)
+C     IWORK   (input/output) INTEGER array, dimension (N/2+1)
 C             On exit, IWORK(1) contains the number of (pairs of)
 C             possibly inaccurate eigenvalues, q <= N/2, and the
 C             nonzero absolute values in IWORK(2), ..., IWORK(N/2+1) are
@@ -188,7 +188,7 @@ C             to negative values in IWORK. One negative value is stored
 C             for each such eigenvalue pair. Its modulus indicates the
 C             starting index of a 2-by-2 block.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK;
 C             DWORK(2) and DWORK(3) contain the Frobenius norms of the
 C             matrices S and T on entry. These norms are used in the
@@ -197,7 +197,7 @@ C             unreliable.
 C             On exit, if INFO = -19, DWORK(1) returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX(3,N/2,2*N-6),  if JOB = 'E' and COMPQ = 'N';
 C             LDWORK >= MAX(3,N**2/4+N/2), if JOB = 'T' and COMPQ = 'N';
@@ -212,7 +212,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: QZ iteration failed in the LAPACK Library routine

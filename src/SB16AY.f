@@ -24,26 +24,26 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the systems as follows:
 C             = 'C':  G and K are continuous-time systems;
 C             = 'D':  G and K are discrete-time systems.
 C
-C     JOBC    CHARACTER*1
+C     JOBC    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted controllability
 C             Grammian as follows:
 C             = 'S': choice corresponding to standard Enns' method [1];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified Enns' method of [2].
 C
-C     JOBO    CHARACTER*1
+C     JOBO    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted observability
 C             Grammian as follows:
 C             = 'S': choice corresponding to standard Enns' method [1];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified combination method of [2].
 C
-C     WEIGHT  CHARACTER*1
+C     WEIGHT  (input) CHARACTER*1
 C             Specifies the type of frequency-weighting, as follows:
 C             = 'N':  no weightings are used (V = I, W = I);
 C             = 'O':  stability enforcing left (output) weighting
@@ -81,28 +81,28 @@ C             The leading N-by-N part of this array must contain the
 C             state matrix A of the system with the transfer-function
 C             matrix G.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             state/output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array must contain the
 C             input/output matrix D of the open-loop system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     AC      (input) DOUBLE PRECISION array, dimension (LDAC,NC)
@@ -113,28 +113,28 @@ C             Ac1 is (NC-NCS)-by-(NC-NCS) and contains the unstable
 C             eigenvalues of Ac, and Ac2 is NCS-by-NCS and contains
 C             the stable eigenvalues of Ac.
 C
-C     LDAC    INTEGER
+C     LDAC    (input) INTEGER
 C             The leading dimension of array AC.  LDAC >= MAX(1,NC).
 C
 C     BC      (input) DOUBLE PRECISION array, dimension (LDBC,P)
 C             The leading NC-by-P part of this array must contain
 C             the input/state matrix Bc of the controller.
 C
-C     LDBC    INTEGER
+C     LDBC    (input) INTEGER
 C             The leading dimension of array BC.  LDBC >= MAX(1,NC).
 C
 C     CC      (input) DOUBLE PRECISION array, dimension (LDCC,NC)
 C             The leading M-by-NC part of this array must contain
 C             the state/output matrix Cc of the controller.
 C
-C     LDCC    INTEGER
+C     LDCC    (input) INTEGER
 C             The leading dimension of array CC.  LDCC >= MAX(1,M).
 C
 C     DC      (input) DOUBLE PRECISION array, dimension (LDDC,P)
 C             The leading M-by-P part of this array must contain
 C             the input/output matrix Dc of the controller.
 C
-C     LDDC    INTEGER
+C     LDDC    (input) INTEGER
 C             The leading dimension of array DC.  LDDC >= MAX(1,M).
 C
 C     SCALEC  (output) DOUBLE PRECISION
@@ -149,7 +149,7 @@ C             The leading NCS-by-NCS upper triangular part of this array
 C             contains the Cholesky factor S of the frequency-weighted
 C             controllability Grammian P = S*S'. See METHOD.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,NCS).
 C
 C     R       (output) DOUBLE PRECISION array, dimension (LDR,NCS)
@@ -157,20 +157,20 @@ C             The leading NCS-by-NCS upper triangular part of this array
 C             contains the Cholesky factor R of the frequency-weighted
 C             observability Grammian Q = R'*R. See METHOD.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,NCS).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWRK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWRK)
 C             LIWRK = 0,       if WEIGHT = 'N';
 C             LIWRK = 2(M+P),  if WEIGHT = 'O', 'I', or 'P'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, LFREQ ),
 C             where
@@ -182,7 +182,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -32,7 +32,7 @@ but will be removed in the future with the next minor release.
 
 * Fix: implicit variables are now declared
 * Fix: stack overflow in the test suite on Windows
-* Fix: Missing LSAME declaration in TMB03LD.f - See Github PR #14
+* Fix: Missing LSAME declaration in TMB03LD.f - See GitHub PR #14
 * Fix: Invalid work space computation in IB01AD - See GitHub PR #18
 * Fix: Include deprecated LAPACK routines - See GitHub #24 and #10
 
@@ -57,7 +57,7 @@ for two complex numbers `a` and `b`, given by real and imaginary parts.
 
 **`MA02SD:`**  Computes the smallest nonzero absolute value of the elements of a real matrix.
 
-**`MB04RD:`**  Reduces a real matrix pair `(A,B)` in generalized real Schur form to a block-diagonal form using well-conditioned non-orthogonal equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally postmultiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
+**`MB04RD:`**  Reduces a real matrix pair `(A,B)` in generalized real Schur form to a block-diagonal form using well-conditioned non-orthogonal equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally post-multiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
 
 **`MB04RS:`**  Attempts to solve the generalized real Sylvester equation
 
@@ -72,11 +72,11 @@ using Level 1 and Level 2 BLAS, but aborts the calculations when the absolute va
 
 **`MB04RW:`**  Attempts to solve the generalized complex Sylvester equation (1) using Level 3 BLAS, but aborts the calculations when the absolute value of an element of `R` or `L` is greater than a given real number `PMAX >= 1`.
 
-**`MB04RZ:`**  Reduces a complex matrix pair `(A,B)` in generalized complex Schur form to a block-diagonal form using well-conditioned non-unitary equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally postmultiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
+**`MB04RZ:`**  Reduces a complex matrix pair `(A,B)` in generalized complex Schur form to a block-diagonal form using well-conditioned non-unitary equivalence transformations. The condition numbers of the transformations used for reduction are roughly bounded by `PMAX`, where `PMAX >= 1` is a given real value. The transformations are optionally post-multiplied in two given matrices `X` and `Y`. The generalized Schur form is optionally ordered, so that clustered eigenvalues are grouped in the same block.
 
 **Updated Routines**
 
-**`AB13DX:`**  Replaced `CWORK` and `LCWORK` by `ZWORK` and `LZWORK`, respectively, to agree to the **SLICOT** standards. Made several cosmetical changes.
+**`AB13DX:`**  Replaced `CWORK` and `LCWORK` by `ZWORK` and `LZWORK`, respectively, to agree to the **SLICOT** standards. Made several cosmetically changes.
 
 **`AB13ID:`**  Placed the lines defining the external subroutines after the lines defining the external functions, to agree to the **SLICOT** standard. Replaced `TOLDEF` by `ZERO` in the `MB03OD` call with `LDWORK = -1`. Changed the tests for checking if the estimated rank might be incorrect. The test for setting the value 1 to `IWARN` has been modified for better significance and `IWARN` parameter description has been updated. The submatrix `R22` has also been set to zero. Used a safeguard against the huge workspace size returned by some implementations of the LAPACK routine `ZGESVD`. Made several cosmetical changes.
 

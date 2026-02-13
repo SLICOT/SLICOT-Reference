@@ -18,13 +18,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ROWCOL  CHARACTER*1
+C     ROWCOL  (input) CHARACTER*1
 C             Indicates whether T(s) is to be factorized by rows or by
 C             columns as follows:
 C             = 'R':  T(s) is factorized by rows;
 C             = 'C':  T(s) is factorized by columns.
 C
-C     LERI    CHARACTER*1
+C     LERI    (input) CHARACTER*1
 C             Indicates whether a left or a right polynomial matrix
 C             representation is required as follows:
 C             = 'L':  A left polynomial matrix representation
@@ -32,7 +32,7 @@ C                     inv(P(s))*Q(s) is required;
 C             = 'R':  A right polynomial matrix representation
 C                     Q(s)*inv(P(s)) is required.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to balance the triplet
 C             (A,B,C), before computing a minimal state-space
 C             representation, as follows:
@@ -64,7 +64,7 @@ C             DCOEFF(I,K) is the coefficient in s**(INDEXD(I)-K+1) of
 C             the I-th denominator polynomial in D(s), where K = 1,2,
 C             ...,kdcoef.
 C
-C     LDDCOE  INTEGER
+C     LDDCOE  (input) INTEGER
 C             The leading dimension of array DCOEFF.
 C             LDDCOE >= MAX(1,P), if ROWCOL = 'R';
 C             LDDCOE >= MAX(1,M), if ROWCOL = 'C'.
@@ -85,12 +85,12 @@ C             column polynomial vectors over denominator polynomials.
 C             Thus for ROWCOL = 'R', U(s) =
 C             diag(s**INDEXD(I))*(UCOEFF(.,.,1)+UCOEFF(.,.,2)/s+...).
 C
-C     LDUCO1  INTEGER
+C     LDUCO1  (input) INTEGER
 C             The leading dimension of array UCOEFF.
 C             LDUCO1 >= MAX(1,P),   if ROWCOL = 'R';
 C             LDUCO1 >= MAX(1,M,P), if ROWCOL = 'C'.
 C
-C     LDUCO2  INTEGER
+C     LDUCO2  (input) INTEGER
 C             The second dimension of array UCOEFF.
 C             LDUCO2 >= MAX(1,M),   if ROWCOL = 'R';
 C             LDUCO2 >= MAX(1,M,P), if ROWCOL = 'C'.
@@ -106,7 +106,7 @@ C                       I=1
 C             The leading NR-by-NR part of this array contains the upper
 C             block Hessenberg state dynamics matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,MAX(M,P))
@@ -114,7 +114,7 @@ C             The leading NR-by-M part of this array contains the
 C             input/state matrix B; the remainder of the leading
 C             N-by-MAX(M,P) part is used as internal workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -122,7 +122,7 @@ C             The leading P-by-NR part of this array contains the
 C             state/output matrix C; the remainder of the leading
 C             MAX(M,P)-by-N part is used as internal workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M,P).
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,MAX(M,P))
@@ -130,7 +130,7 @@ C             The leading P-by-M part of this array contains the direct
 C             transmission matrix D; the remainder of the leading
 C             MAX(M,P)-by-MAX(M,P) part is used as internal workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,M,P).
 C
 C     INDEXP  (output) INTEGER array, dimension (P), if ROWCOL = 'R', or
@@ -157,12 +157,12 @@ C             representation is requested.
 C             Thus for a left polynomial matrix representation, P(s) =
 C             diag(s**INDEXP(I))*(PCOEFF(.,.,1)+PCOEFF(.,.,2)/s+...).
 C
-C     LDPCO1  INTEGER
+C     LDPCO1  (input) INTEGER
 C             The leading dimension of array PCOEFF.
 C             LDPCO1 >= MAX(1,P), if ROWCOL = 'R';
 C             LDPCO1 >= MAX(1,M), if ROWCOL = 'C'.
 C
-C     LDPCO2  INTEGER
+C     LDPCO2  (input) INTEGER
 C             The second dimension of array PCOEFF.
 C             LDPCO2 >= MAX(1,P), if ROWCOL = 'R';
 C             LDPCO2 >= MAX(1,M), if ROWCOL = 'C'.
@@ -173,14 +173,14 @@ C             The leading pormp-by-pormd-by-kpcoef part of this array
 C             contains the coefficients of the numerator matrix Q(s).
 C             QCOEFF(I,J,K) is defined as for PCOEFF(I,J,K).
 C
-C     LDQCO1  INTEGER
+C     LDQCO1  (input) INTEGER
 C             The leading dimension of array QCOEFF.
 C             If LERI = 'L', LDQCO1 >= MAX(1,PM),
 C                                      where PM = P, if ROWCOL = 'R';
 C                                            PM = M, if ROWCOL = 'C'.
 C             If LERI = 'R', LDQCO1 >= MAX(1,M,P).
 C
-C     LDQCO2  INTEGER
+C     LDQCO2  (input) INTEGER
 C             The second dimension of array QCOEFF.
 C             If LERI = 'L', LDQCO2 >= MAX(1,MP),
 C                                      where MP = M, if ROWCOL = 'R';
@@ -193,17 +193,17 @@ C             The leading pormp-by-NR-by-kpcoef part of this array
 C             contains the coefficients of the intermediate matrix
 C             V(s) as produced by SLICOT Library routine TB03AD.
 C
-C     LDVCO1  INTEGER
+C     LDVCO1  (input) INTEGER
 C             The leading dimension of array VCOEFF.
 C             LDVCO1 >= MAX(1,P), if ROWCOL = 'R';
 C             LDVCO1 >= MAX(1,M), if ROWCOL = 'C'.
 C
-C     LDVCO2  INTEGER
+C     LDVCO2  (input) INTEGER
 C             The second dimension of array VCOEFF.  LDVCO2 >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B, C). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -216,15 +216,15 @@ C             (determined by the SLICOT routine TB01UD) is used instead.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (N+MAX(M,P))
 C             On exit, if INFO = 0, the first nonzero elements of
 C             IWORK(1:N) return the orders of the diagonal blocks of A.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N + MAX(N, 3*M, 3*P), PM*(PM + 2))
 C             where  PM = P, if ROWCOL = 'R';
@@ -233,7 +233,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

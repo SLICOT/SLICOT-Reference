@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     XINIT   CHARACTER*1
+C     XINIT   (input) CHARACTER*1
 C             Specifies how the variables x are initialized, as follows:
 C             = 'R' :  the array X is initialized to random values; the
 C                      entries DWORK(1:4) are used to initialize the
@@ -34,12 +34,12 @@ C                      between 1 and 4095;
 C             = 'G' :  the given entries of X are used as initial values
 C                      of variables.
 C
-C     SCALE   CHARACTER*1
+C     SCALE   (input) CHARACTER*1
 C             Specifies how the variables will be scaled, as follows:
 C             = 'I' :  use internal scaling;
 C             = 'S' :  use specified scaling factors, given in DIAG.
 C
-C     COND    CHARACTER*1
+C     COND    (input) CHARACTER*1
 C             Specifies whether the condition of the linear systems
 C             involved should be estimated, as follows:
 C             = 'E' :  use incremental condition estimation to find the
@@ -169,7 +169,7 @@ C                     on entry, when it is an output parameter.
 C                     It is assumed in MD03BD that LDJ is not larger
 C                     than needed.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine FCN.
 C                     On exit, if INFO = 0, DWORK(1) returns the optimal
 C                     value of LDWORK.
@@ -178,7 +178,7 @@ C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine FCN).  LDWORK >= 1.
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input (scalar) argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -259,7 +259,7 @@ C                     This array defines the permutation matrix P such
 C                     that J*P = Q*R. Column j of P is column IPVT(j) of
 C                     the identity matrix.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine QRFACT.
 C                     On exit, if INFO = 0, DWORK(1) returns the optimal
 C                     value of LDWORK.
@@ -268,7 +268,7 @@ C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine QRFACT).  LDWORK >= 1.
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input (scalar) argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -316,7 +316,7 @@ C            $                   TOL, DWORK, LDWORK, INFO )
 C
 C             where
 C
-C             COND    CHARACTER*1
+C             COND    (input) CHARACTER*1
 C                     Specifies whether the condition of the linear
 C                     systems involved should be estimated, as follows:
 C                     = 'E' :  use incremental condition estimation
@@ -375,7 +375,7 @@ C                     the Levenberg-Marquardt parameter.  PAR >= 0.
 C                     On exit, it contains the final estimate of this
 C                     parameter.
 C
-C             RANKS   (input or output) INTEGER array, dimension (r),
+C             RANKS   (input/output) INTEGER array, dimension (r),
 C                     where r is the number of diagonal blocks R_k in R,
 C                     corresponding to the block column structure of J.
 C                     On entry, if COND = 'U' and N > 0, this array must
@@ -408,7 +408,7 @@ C                     Library routine DLAMCH).
 C                     This parameter is not relevant if COND = 'U'
 C                     or 'N'.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine LMPARM.
 C                     On exit, if INFO = 0, DWORK(1) returns the optimal
 C                     value of LDWORK.
@@ -417,7 +417,7 @@ C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine LMPARM).  LDWORK >= 1.
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input (scalar) argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -519,7 +519,7 @@ C             The number of calls to FCN with IFLAG = 2.
 C
 C     Tolerances
 C
-C     FTOL    DOUBLE PRECISION
+C     FTOL    (input) DOUBLE PRECISION
 C             If FTOL >= 0, the tolerance which measures the relative
 C             error desired in the sum of squares. Termination occurs
 C             when both the actual and predicted relative reductions in
@@ -528,14 +528,14 @@ C             FTOL < 0,  then  SQRT(EPS)  is used instead FTOL, where
 C             EPS is the machine precision (see LAPACK Library routine
 C             DLAMCH).
 C
-C     XTOL    DOUBLE PRECISION
+C     XTOL    (input) DOUBLE PRECISION
 C             If XTOL >= 0, the tolerance which measures the relative
 C             error desired in the approximate solution. Termination
 C             occurs when the relative error between two consecutive
 C             iterates is at most XTOL. If the user sets  XTOL < 0,
 C             then  SQRT(EPS)  is used instead XTOL.
 C
-C     GTOL    DOUBLE PRECISION
+C     GTOL    (input) DOUBLE PRECISION
 C             If GTOL >= 0, the tolerance which measures the
 C             orthogonality desired between the function vector e and
 C             the columns of the Jacobian J. Termination occurs when
@@ -543,7 +543,7 @@ C             the cosine of the angle between e and any column of the
 C             Jacobian J is at most GTOL in absolute value. If the user
 C             sets  GTOL < 0,  then  EPS  is used instead GTOL.
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If COND = 'E', the tolerance to be used for finding the
 C             ranks of the matrices of linear systems to be solved. If
 C             the user sets TOL > 0, then the given value of TOL is used
@@ -556,7 +556,7 @@ C             This parameter is not relevant if COND = 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+r), where r is the number
+C     IWORK   (input/output) INTEGER array, dimension (N+r), where r is the number
 C             of diagonal blocks R_k in R (see description of LMPARM).
 C             On output, if INFO = 0, the first N entries of this array
 C             define a permutation matrix P such that J*P = Q*R, where
@@ -568,7 +568,7 @@ C             IWORK(j) of the identity matrix. If INFO = 0, the entries
 C             N+1:N+r of this array contain the ranks of the final
 C             submatrices S_k (see description of LMPARM).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, DWORK(2) returns the residual error norm (the
 C             sum of squares), DWORK(3) returns the number of iterations
@@ -579,7 +579,7 @@ C             product Z*Q'*e, and the elements DWORK(5+M) to
 C             DWORK(4+M+N*NC) contain the (compressed) representation of
 C             final upper triangular matrices R and S (if IWARN <> 4).
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( 4, M + max( size(J) +
 C                                        max( DW( FCN|IFLAG = 1 ),
@@ -595,7 +595,7 @@ C             (provided by FCN in IPAR(2:5), for IFLAG = 3).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             < 0:  the user set IFLAG = IWARN in the subroutine FCN;
 C             = 1:  both actual and predicted relative reductions in
 C                   the sum of squares are at most FTOL;
@@ -616,7 +616,7 @@ C             In all these cases, DWORK(1:4) are set as described above.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -30,13 +30,13 @@ C     ARGUMENTS
 C
 C     Input/Output Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies whether the matrix U or the matrix V is
 C             required:
 C             = 'U':  generate U;
 C             = 'V':  generate V.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             If  JOB = 'U'  then TRANS must have the same value as
 C             the argument TRANA in the previous call of MB04TS or
 C             MB04TB.
@@ -82,7 +82,7 @@ C             part of this array contains the matrix V1**T.
 C             If  JOB = 'V'  and  TRANS = 'T'  or  TRANS = 'C' then the
 C             leading N-by-N part of this array contains the matrix V1.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.  LDQ1 >= MAX(1,N).
 C
 C     Q2      (input/output) DOUBLE PRECISION array, dimension (LDQ2,N)
@@ -97,7 +97,7 @@ C             this array contains the matrix U2.
 C             If  JOB = 'V'  then the leading N-by-N part of this array
 C             contains the matrix V2**T.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.  LDQ2 >= MAX(1,N).
 C
 C     CS      (input) DOUBLE PRECISION array, dimension (2N)
@@ -118,13 +118,13 @@ C             reflectors FV(i).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -12,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,2*(N-ILO+1)).
 C
@@ -136,7 +136,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

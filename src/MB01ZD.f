@@ -21,26 +21,26 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the triangular matrix T appears on the
 C             left or right in the matrix product, as follows:
 C             = 'L':  the product alpha*op( T )*H is computed;
 C             = 'R':  the product alpha*H*op( T ) is computed.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies the form of the matrices T and H, as follows:
 C             = 'U':  the matrix T is upper triangular and the matrix H
 C                     is upper Hessenberg-like;
 C             = 'L':  the matrix T is lower triangular and the matrix H
 C                     is lower Hessenberg-like.
 C
-C     TRANST  CHARACTER*1
+C     TRANST  (input) CHARACTER*1
 C             Specifies the form of op( T ) to be used, as follows:
 C             = 'N':  op( T ) = T;
 C             = 'T':  op( T ) = T';
 C             = 'C':  op( T ) = T'.
 C
-C     DIAG    CHARACTER*1.
+C     DIAG    (input) CHARACTER*1.
 C             Specifies whether or not T is unit triangular, as follows:
 C             = 'U':  the matrix T is assumed to be unit triangular;
 C             = 'N':  the matrix T is not assumed to be unit triangular.
@@ -74,7 +74,7 @@ C             and the strictly upper triangular part is not referenced.
 C             Note that when DIAG = 'U', the diagonal elements of T are
 C             not referenced either, but are assumed to be unity.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.
 C             LDT >= MAX(1,M), if SIDE = 'L';
 C             LDT >= MAX(1,N), if SIDE = 'R'.
@@ -98,12 +98,12 @@ C             M > N+L), or at the right of the (M+L)-th column
 C             (if UPLO = 'L', SIDE = 'L', and N > M+L), are not set to
 C             zero nor referenced.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= max(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

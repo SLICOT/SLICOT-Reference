@@ -42,7 +42,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Indicates how H should be diagonally scaled and/or
 C             permuted to reduce its norm.
 C             = 'N': Do not diagonally scale or permute;
@@ -56,20 +56,20 @@ C                    columns of H more equal in norm. Do not permute;
 C             = 'B': Both diagonally scale and permute A, G and Q.
 C             Permuting does not change the norm of H, but scaling does.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the full
 C             decomposition (2) or the eigenvalues only, as follows:
 C             = 'E': compute the eigenvalues only;
 C             = 'S': compute matrices T and S of (2);
 C             = 'G': compute matrices T, S and G of (2).
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates whether or not the user wishes to compute the
 C             orthogonal symplectic matrix U of (2) as follows:
 C             = 'N': the matrix U is not computed;
 C             = 'U': the matrix U is computed.
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Indicates whether or not the user wishes to compute the
 C             orthogonal symplectic matrix V of (2) as follows:
 C             = 'N': the matrix V is not computed;
@@ -87,7 +87,7 @@ C             On exit, this array is overwritten. If JOB = 'S' or
 C             JOB = 'G', the leading N-by-N part of this array contains
 C             the matrix S in real Schur form of decomposition (2).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -100,7 +100,7 @@ C             On exit, this array is overwritten. If JOB = 'G', the
 C             leading N-by-N+1 part of this array contains in columns
 C             2:N+1 the matrix G of decomposition (2).
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= max(1,N).
 C
 C     T       (output) DOUBLE PRECISION array, dimension (LDT,N)
@@ -109,7 +109,7 @@ C             part of this array contains the upper triangular matrix T
 C             of the decomposition (2). Otherwise, this array is used as
 C             workspace.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= MAX(1,N).
 C
 C     U1      (output) DOUBLE PRECISION array, dimension (LDU1,N)
@@ -117,7 +117,7 @@ C             On exit, if JOBU = 'U', the leading N-by-N part of this
 C             array contains the (1,1) block of the orthogonal
 C             symplectic matrix U of decomposition (2).
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.  LDU1 >= 1.
 C             LDU1 >= N,    if JOBU = 'U'.
 C
@@ -126,7 +126,7 @@ C             On exit, if JOBU = 'U', the leading N-by-N part of this
 C             array contains the (2,1) block of the orthogonal
 C             symplectic matrix U of decomposition (2).
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.  LDU2 >= 1.
 C             LDU2 >= N,    if JOBU = 'U'.
 C
@@ -135,7 +135,7 @@ C             On exit, if JOBV = 'V', the leading N-by-N part of this
 C             array contains the (1,1) block of the orthogonal
 C             symplectic matrix V of decomposition (2).
 C
-C     LDV1    INTEGER
+C     LDV1    (input) INTEGER
 C             The leading dimension of the array V1.  LDV1 >= 1.
 C             LDV1 >= N,    if JOBV = 'V'.
 C
@@ -144,7 +144,7 @@ C             On exit, if JOBV = 'V', the leading N-by-N part of this
 C             array contains the (2,1) block of the orthogonal
 C             symplectic matrix V of decomposition (2).
 C
-C     LDV2    INTEGER
+C     LDV2    (input) INTEGER
 C             The leading dimension of the array V2.  LDV2 >= 1.
 C             LDV2 >= N,    if JOBV = 'V'.
 C
@@ -171,7 +171,7 @@ C             This array is not referenced if BALANC = 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK, and   DWORK(2)  returns the 1-norm of the
 C             scaled (if BALANC = 'S' or 'B') Hamiltonian matrix.

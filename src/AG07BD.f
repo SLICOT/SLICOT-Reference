@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general square or an identity
 C             matrix as follows:
 C             = 'G':  E is a general square matrix;
@@ -36,7 +36,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state matrix A of the original system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
@@ -45,7 +45,7 @@ C             contain the descriptor matrix E of the original system.
 C             If JOBE = 'I', then E is assumed to be the identity
 C             matrix and is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'G';
 C             LDE >= 1,        if JOBE = 'I'.
@@ -54,21 +54,21 @@ C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input matrix B of the original system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading M-by-N part of this array must contain the
 C             output matrix C of the original system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,M).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading M-by-M part of this array must contain the
 C             feedthrough matrix D of the original system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,M).
 C
 C     AI      (output) DOUBLE PRECISION array, dimension (LDAI,N+M)
@@ -77,7 +77,7 @@ C             the state matrix Ai of the inverse system.
 C             If LDAI = LDA >= N+M, then AI and A can share the same
 C             storage locations.
 C
-C     LDAI    INTEGER
+C     LDAI    (input) INTEGER
 C             The leading dimension of the array AI.
 C             LDAI >= MAX(1,N+M).
 C
@@ -87,7 +87,7 @@ C             the descriptor matrix Ei of the inverse system.
 C             If LDEI = LDE >= N+M, then EI and E can share the same
 C             storage locations.
 C
-C     LDEI    INTEGER
+C     LDEI    (input) INTEGER
 C             The leading dimension of the array EI.
 C             LDEI >= MAX(1,N+M).
 C
@@ -97,7 +97,7 @@ C             the input matrix Bi of the inverse system.
 C             If LDBI = LDB >= N+M, then BI and B can share the same
 C             storage locations.
 C
-C     LDBI    INTEGER
+C     LDBI    (input) INTEGER
 C             The leading dimension of the array BI.
 C             LDBI >= MAX(1,N+M).
 C
@@ -107,7 +107,7 @@ C             the output matrix Ci of the inverse system.
 C             If LDCI = LDC, CI and C can share the same storage
 C             locations.
 C
-C     LDCI    INTEGER
+C     LDCI    (input) INTEGER
 C             The leading dimension of the array CI.  LDCI >= MAX(1,M).
 C
 C     DI      (output) DOUBLE PRECISION array, dimension (LDDI,M)
@@ -115,12 +115,12 @@ C             The leading M-by-M part of this array contains
 C             the feedthrough matrix Di = 0 of the inverse system.
 C             DI and D can share the same storage locations.
 C
-C     LDDI    INTEGER
+C     LDDI    (input) INTEGER
 C             The leading dimension of the array DI.  LDDI >= MAX(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

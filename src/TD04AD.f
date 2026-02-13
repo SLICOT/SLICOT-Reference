@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ROWCOL  CHARACTER*1
+C     ROWCOL  (input) CHARACTER*1
 C             Indicates whether the transfer matrix T(s) is given as
 C             rows or columns over common denominators as follows:
 C             = 'R':  T(s) is given as rows over common denominators;
@@ -43,7 +43,7 @@ C             DCOEFF(I,K) is the coefficient in s**(INDEX(I)-K+1) of the
 C             I-th denominator polynomial in D(s), where
 C             K = 1,2,...,kdcoef.
 C
-C     LDDCOE  INTEGER
+C     LDDCOE  (input) INTEGER
 C             The leading dimension of array DCOEFF.
 C             LDDCOE >= MAX(1,P) if ROWCOL = 'R';
 C             LDDCOE >= MAX(1,M) if ROWCOL = 'C'.
@@ -61,12 +61,12 @@ C             if ROWCOL = 'R' then iorj = I, otherwise iorj = J.
 C             Thus for ROWCOL = 'R', U(s) =
 C             diag(s**INDEX(I))*(UCOEFF(.,.,1)+UCOEFF(.,.,2)/s+...).
 C
-C     LDUCO1  INTEGER
+C     LDUCO1  (input) INTEGER
 C             The leading dimension of array UCOEFF.
 C             LDUCO1 >= MAX(1,P)   if ROWCOL = 'R';
 C             LDUCO1 >= MAX(1,M,P) if ROWCOL = 'C'.
 C
-C     LDUCO2  INTEGER
+C     LDUCO2  (input) INTEGER
 C             The second dimension of array UCOEFF.
 C             LDUCO2 >= MAX(1,M)   if ROWCOL = 'R';
 C             LDUCO2 >= MAX(1,M,P) if ROWCOL = 'C'.
@@ -83,7 +83,7 @@ C             The leading NR-by-NR part of this array contains the upper
 C             block Hessenberg state dynamics matrix A of a minimal
 C             realization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,MAX(M,P))
@@ -92,7 +92,7 @@ C             input/state matrix B of a minimal realization; the
 C             remainder of the leading N-by-MAX(M,P) part is used as
 C             internal workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -101,7 +101,7 @@ C             state/output matrix C of a minimal realization; the
 C             remainder of the leading MAX(M,P)-by-N part is used as
 C             internal workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M,P).
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,M),
@@ -111,14 +111,14 @@ C             transmission matrix D; if ROWCOL = 'C', the remainder of
 C             the leading MAX(M,P)-by-MAX(M,P) part is used as internal
 C             workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P)   if ROWCOL = 'R';
 C             LDD >= MAX(1,M,P) if ROWCOL = 'C'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B, C). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -131,22 +131,22 @@ C             (determined by the SLICOT routine TB01UD) is used instead.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (N+MAX(M,P))
 C             On exit, if INFO = 0, the first nonzero elements of
 C             IWORK(1:N) return the orders of the diagonal blocks of A.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N + MAX(N, 3*M, 3*P)).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

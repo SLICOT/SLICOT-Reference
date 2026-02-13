@@ -31,32 +31,32 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies which type of the equation is considered:
 C             = 'C':  Continuous-time equation (1);
 C             = 'D':  Discrete-time equation (2).
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies if the solution is to be computed and if the
 C             separation is to be estimated:
 C             = 'X':  Compute the solution only;
 C             = 'S':  Estimate the separation only;
 C             = 'B':  Compute the solution and estimate the separation.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether the generalized real Schur
 C             factorization of the pencil A - lambda * E is supplied
 C             on entry or not:
 C             = 'N':  Factorization is not supplied;
 C             = 'F':  Factorization is supplied.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  op(A) = A,    op(E) = E;
 C             = 'T':  op(A) = A**T, op(E) = E**T.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the lower or the upper triangle of the
 C             array X is needed on input:
 C             = 'L':  Only the lower triangle is needed on input;
@@ -80,7 +80,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the generalized Schur factor A_s of the matrix A. (A_s is
 C             an upper quasitriangular matrix.)
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -96,7 +96,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the generalized Schur factor E_s of the matrix E. (E_s is
 C             an upper triangular matrix.)
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -109,7 +109,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the orthogonal matrix Q from the generalized Schur
 C             factorization.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -122,7 +122,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the orthogonal matrix Z from the generalized Schur
 C             factorization.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -137,7 +137,7 @@ C             the leading N-by-N part of this array contains the
 C             solution matrix X of the equation.
 C             If JOB = 'S', X is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -167,14 +167,14 @@ C             referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N**2)
+C     IWORK   (input/output) INTEGER array, dimension (N**2)
 C             IWORK is not referenced if JOB = 'X'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK. The following table
 C             contains the minimal work space requirements depending
 C             on the choice of JOB and FACT.
@@ -196,7 +196,7 @@ C             XERBLA.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

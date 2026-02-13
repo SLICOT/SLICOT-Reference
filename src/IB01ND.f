@@ -15,13 +15,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not the matrices B and D should later
 C             be computed using the MOESP approach, as follows:
 C             = 'M':  the matrices B and D should later be computed
@@ -68,7 +68,7 @@ C             R_2c = [ R_13'  R_23'  R_14' ]'.  For  METH = 'N',  the
 C             subarray  S_41 : S_43  contains the transpose of the
 C             matrix contained in  S_14 : S_34.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= MAX( 2*(M+L)*NOBR, 3*M*NOBR ),
 C                                  for METH = 'M' and JOBD = 'M';
@@ -82,7 +82,7 @@ C             Hankel matrices.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -97,10 +97,10 @@ C             This parameter is not used for  METH = 'M'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension ((M+L)*NOBR)
+C     IWORK   (input/output) INTEGER array, dimension ((M+L)*NOBR)
 C             This parameter is not referenced for METH = 'M'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK,  and, for  METH = 'N',  DWORK(2)  and  DWORK(3)
 C             contain the reciprocal condition numbers of the
@@ -108,7 +108,7 @@ C             triangular factors of the matrices  U_f  and  r_1  [6].
 C             On exit, if  INFO = -12,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( (2*M-1)*NOBR, (M+L)*NOBR, 5*L*NOBR ),
 C                                         if METH = 'M' and JOBD = 'M';
@@ -118,7 +118,7 @@ C             For good performance,  LDWORK  should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problems with coefficient matrix
 C                   U_f,  used for computing the weighted oblique
@@ -131,7 +131,7 @@ C                   coefficient matrix.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

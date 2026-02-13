@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle (U or L) is given in the array A,
 C             as follows:
 C             = 'U':  the upper triangular part U is given;
@@ -45,12 +45,12 @@ C             triangular part of this array contains the lower
 C             triangular part of the product L * L'. The strictly upper
 C             triangular part is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

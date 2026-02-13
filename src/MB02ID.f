@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the problem to be solved as follows
 C             = 'O':  solve the overdetermined system (1);
 C             = 'U':  solve the underdetermined system (2);
@@ -58,7 +58,7 @@ C     TC      (input)  DOUBLE PRECISION array, dimension (LDTC,L)
 C             On entry, the leading M*K-by-L part of this array must
 C             contain the first block column of T.
 C
-C     LDTC    INTEGER
+C     LDTC    (input) INTEGER
 C             The leading dimension of the array TC.  LDTC >= MAX(1,M*K)
 C
 C     TR      (input)  DOUBLE PRECISION array, dimension (LDTR,(N-1)*L)
@@ -66,7 +66,7 @@ C             On entry, the leading K-by-(N-1)*L part of this array must
 C             contain the 2nd to the N-th blocks of the first block row
 C             of T.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of the array TR.  LDTR >= MAX(1,K).
 C
 C     B       (input/output)  DOUBLE PRECISION array, dimension (LDB,RB)
@@ -78,7 +78,7 @@ C             part of this array contains the solution of the
 C             overdetermined system (1).
 C             This array is not referenced if JOB = 'U'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,M*K),  if JOB = 'O'  or  JOB = 'A';
 C             LDB >= 1,           if JOB = 'U'.
@@ -92,20 +92,20 @@ C             part of this array contains the solution of the
 C             underdetermined system (2).
 C             This array is not referenced if JOB = 'O'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDB >= 1,           if JOB = 'O';
 C             LDB >= MAX(1,M*K),  if JOB = 'U'  or  JOB = 'A'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -17,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             Let x = MAX( 2*N*L*(L+K) + (6+N)*L,(N*L+M*K+1)*L + M*K )
 C             and y = N*M*K*L + N*L, then
@@ -131,7 +131,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

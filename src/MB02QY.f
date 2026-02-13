@@ -47,7 +47,7 @@ C             factorization of  A),  as a product of  RANK  elementary
 C             reflectors.
 C             On exit, if  RANK = N,  this array is unchanged.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     JPVT    (input) INTEGER array, dimension ( N )
@@ -68,7 +68,7 @@ C             for the solution in the i-th column is given by the sum
 C             of squares of elements  N+1:M  in that column.
 C             If  NRHS = 0,  the array  B  is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= max(1,M,N),  if  NRHS > 0.
 C             LDB >= 1,           if  NRHS = 0.
@@ -79,11 +79,11 @@ C             If  RANK = N,  the array  TAU  is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( LDWORK )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( LDWORK )
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( 1, N, NRHS ).
 C             For good performance,  LDWORK  should sometimes be larger.
@@ -96,7 +96,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

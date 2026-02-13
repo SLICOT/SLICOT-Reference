@@ -20,12 +20,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the triplet (A,B,C) as follows:
 C             = 'S':  perform equilibration (scaling);
@@ -69,7 +69,7 @@ C                   for a continous-time system (DICO = 'C'), or the
 C                   interior of the ALPHA-radius circle centered in the
 C                   origin, for a discrete-time system (DICO = 'D').
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -79,7 +79,7 @@ C             On exit, if INFO = 0, the leading N-by-M part of this
 C             array contains the input/state matrix B of the transformed
 C             system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -89,7 +89,7 @@ C             On exit, if INFO = 0, the leading P-by-N part of this
 C             array contains the state/output matrix C of the
 C             transformed system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     NS      (output) INTEGER
@@ -103,18 +103,18 @@ C             HSV(1) is the Hankel norm of the ALPHA-stable subsystem.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,N*(MAX(N,M,P)+5)+N*(N+1)/2).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

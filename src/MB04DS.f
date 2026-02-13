@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the operations to be performed on S:
 C             = 'N':  none, set ILO = 1, SCALE(I) = 1.0, I = 1 .. N;
 C             = 'P':  permute only;
@@ -43,7 +43,7 @@ C             the matrix A of the balanced skew-Hamiltonian. In
 C             particular, the strictly lower triangular part of the
 C             first ILO-1 columns of A is zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -60,7 +60,7 @@ C             the matrices Q and G, respectively, of the balanced
 C             skew-Hamiltonian. In particular, the strictly lower
 C             triangular part of the first ILO-1 columns of QG is zero.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     ILO     (output) INTEGER
@@ -80,7 +80,7 @@ C             column j.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

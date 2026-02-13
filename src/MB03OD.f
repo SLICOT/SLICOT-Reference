@@ -24,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBQR   CHARACTER*1
+C     JOBQR   (input) CHARACTER*1
 C             = 'Q':  Perform a QR factorization with column pivoting;
 C             = 'N':  Do not perform the QR factorization (but assume
 C                     that it has been done outside).
@@ -52,7 +52,7 @@ C             triangular factor R, as determined by the QR factorization
 C             with pivoting.  The elements below the diagonal of A are
 C             not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     JPVT    (input/output) INTEGER array, dimension ( N )
@@ -115,11 +115,11 @@ C             number of R(1:RANK,1:RANK).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( LDWORK )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( LDWORK )
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 3*N + 1,                 if JOBQR = 'Q';
 C             LDWORK >= max( 1, 2*min( M, N ) ), if JOBQR = 'N'.
@@ -136,7 +136,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -213,7 +213,7 @@ C
          INFO = -7
       ELSE IF( SVLMAX.LT.ZERO ) THEN
          INFO = -8
-      ELSE 
+      ELSE
          LQUERY = LDWORK.EQ.-1
          IF ( LJOBQR ) THEN
             CALL DGEQP3( M, N, A, LDA, JPVT, TAU, DWORK, -1, INFO )

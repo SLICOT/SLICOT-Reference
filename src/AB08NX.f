@@ -55,7 +55,7 @@ C             must contain the compound input matrix of the system.
 C             On exit, the leading (NU+MU)-by-(M+NU) part of this array
 C             contains the reduced compound input matrix of the system.
 C
-C     LDABCD  INTEGER
+C     LDABCD  (input) INTEGER
 C             The leading dimension of array ABCD.
 C             LDABCD >= MAX(1,N+P).
 C
@@ -94,7 +94,7 @@ C             The number of left Kronecker indices.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -105,13 +105,13 @@ C             less than those defined above (see SVLMAX).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (MAX(M,P))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, MIN(P,M) + MAX(3*M-1,N),
 C                               MIN(P,N) + MAX(3*P-1,N+P,N+M) ).
@@ -125,7 +125,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

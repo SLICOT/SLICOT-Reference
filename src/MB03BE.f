@@ -36,10 +36,10 @@ C             On exit, the leading 2-by-2-by-K part of this array
 C             contains the product after at most 20 iterations of a real
 C             shifted periodic QZ algorithm.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= 2.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= 2.
 C
 C     METHOD

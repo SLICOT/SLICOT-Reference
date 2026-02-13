@@ -21,14 +21,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     NORM    CHARACTER*1
+C     NORM    (input) CHARACTER*1
 C             Specifies the value to be returned in MA02MD:
 C             = '1' or 'O':  one norm of A;
 C             = 'F' or 'E':  Frobenius norm of A;
 C             = 'I':         infinity norm of A;
 C             = 'M':         max(abs(A(i,j)).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangular part of
 C             the skew-symmetric matrix A is to be referenced.
 C             = 'U':  Upper triangular part of A is referenced;
@@ -51,12 +51,12 @@ C             triangular part of the matrix A, and the upper triangular
 C             part of A is not referenced.
 C             The diagonal of A need not be set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(1,LDWORK)),
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(1,LDWORK)),
 C             where LDWORK >= N when NORM = 'I' or '1' or 'O';
 C             otherwise, DWORK is not referenced.
 C

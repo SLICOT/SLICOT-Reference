@@ -39,32 +39,32 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general or an identity matrix,
 C             as follows:
 C             = 'G':  The matrix E is general and is given;
 C             = 'I':  The matrix E is assumed identity and is not given.
 C
-C     FLAG    CHARACTER*1
+C     FLAG    (input) CHARACTER*1
 C             Specifies which sign is used, as follows:
 C             = 'P':  The plus sign is used;
 C             = 'M':  The minus sign is used.
 C
-C     JOBG    CHARACTER*1
+C     JOBG    (input) CHARACTER*1
 C             Specifies how the matrix product V is defined, as follows:
 C             = 'G':  The matrix G is given:  V = op(E)'*S*G*S*op(E);
 C             = 'D':  The matrix D is given:  V = op(E)'*S*D*D'*S*op(E);
 C             = 'F':  The matrix F is given:           V = F*F';
 C             = 'H':  The matrices H and K are given:  V = H*K.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrices R, G,
 C             if JOBG = 'G', and S, if JOBG = 'G' or JOBG = 'D', are
 C             given, as follows:
 C             = 'U':  The upper triangular part is given;
 C             = 'L':  The lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(W) to be used in the matrix
 C             multiplication, as follows:
 C             = 'N':  op(W) = W;
@@ -87,7 +87,7 @@ C             N-by-N part of this array must contain the matrix E.
 C             If JOBE = 'I' or JOBG = 'F' or JOBG = 'H', this array is
 C             not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.
 C             LDE >= MAX(1,N), if JOBE = 'G' and (JOBG = 'G' or
 C                                                 JOBG = 'D');
@@ -101,7 +101,7 @@ C             or lower triangular part, respectively, of the matrix
 C             R(X), the residual of the algebraic Riccati equation.
 C             The other strictly triangular part is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     S       (input) DOUBLE PRECISION array, dimension (LDS,*)
@@ -115,13 +115,13 @@ C             If JOBG = 'F', this array is not referenced.
 C             If JOBG = 'H', the leading M-by-N part of this array must
 C             contain the matrix K.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.
 C             LDS >= MAX(1,N), if JOBG =  'G' or JOBG =  'D';
 C             LDS >= 1,        if JOBG =  'F';
 C             LDS >= MAX(1,M), if JOBG =  'H'.
 C
-C     G       (input/works.) DOUBLE PRECISION array, dimension (LDG,*)
+C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,*)
 C             If JOBG = 'G', the leading N-by-N upper or lower
 C             triangular part (depending on UPLO) of this array must
 C             contain the upper or lower triangular part, respectively,
@@ -135,7 +135,7 @@ C             contain the matrix F.
 C             If JOBG = 'H', leading N-by-M part of this array must
 C             contain the matrix H.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     ALPHA   (output) DOUBLE PRECISION
@@ -150,7 +150,7 @@ C             of the residual R(X+alpha*S).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if LDWORK = -1 on input, then DWORK(1) returns
 C             the optimal value of LDWORK.
 C             On exit, if LDWORK = -2 on input or INFO = -19, then
@@ -159,7 +159,7 @@ C             On exit, if INFO = 0, the leading N-by-N upper or lower
 C             triangular part (depending on UPLO) of this array contains
 C             the corresponding triangular part of the matrix V.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= N*N + MAX( 2*N*N, 51 ),
 C                                       if JOBG = 'G' and JOBE = 'G';
 C             LDWORK >= N*N + MAX( N*N, 51 ),
@@ -184,14 +184,14 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warnings;
 C             = 2:  no optimal line search parameter t := alpha in [0,2]
 C                   was found; t = 1 was set.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value;
@@ -304,7 +304,7 @@ C
          INFO = -1
       ELSE IF ( .NOT.LFLAG  .AND. .NOT.LSAME( FLAG,  'P' ) ) THEN
          INFO = -2
-      ELSE IF ( .NOT.LJOBG  .AND. .NOT.LSAME( JOBG,  'D' ) .AND. 
+      ELSE IF ( .NOT.LJOBG  .AND. .NOT.LSAME( JOBG,  'D' ) .AND.
      $          .NOT.LJOBL ) THEN
          INFO = -3
       ELSE IF ( .NOT.LUPLO  .AND. .NOT.LSAME( UPLO,  'L' ) ) THEN

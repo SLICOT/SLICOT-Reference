@@ -25,14 +25,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX0   CHARACTER*1
+C     JOBX0   (input) CHARACTER*1
 C             Specifies whether or not the initial state should be
 C             computed, as follows:
 C             = 'X':  compute the initial state x(0);
 C             = 'N':  do not compute the initial state (x(0) is known
 C                     to be zero).
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which matrices should be computed, as follows:
 C             = 'B':  compute the matrix B only (D is known to be zero);
 C             = 'D':  compute the matrices B and D.
@@ -62,7 +62,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix  A  in a real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
@@ -70,7 +70,7 @@ C             The leading L-by-N part of this array must contain the
 C             system output matrix  C  (corresponding to the real Schur
 C             form of  A).
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= L.
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,M)
@@ -86,7 +86,7 @@ C             (see METHOD).
 C             If  JOB = 'B',  this array is unchanged on exit.
 C             If M = 0, this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= MAX(1,NSMP),  if M > 0;
 C             LDU >= 1,            if M = 0.
@@ -98,7 +98,7 @@ C             Y = [y_1 y_2 ... y_l].  Column  j  of  Y  contains the
 C             NSMP  values of the j-th output component for consecutive
 C             time increments.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= MAX(1,NSMP).
 C
 C     X0      (output) DOUBLE PRECISION array, dimension (N)
@@ -114,7 +114,7 @@ C             in the coordinates corresponding to the real Schur form
 C             of  A.
 C             If  N = 0  or  M = 0,  this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= N,  if  N > 0  and  M > 0;
 C             LDB >= 1,  if  N = 0  or   M = 0.
@@ -125,14 +125,14 @@ C             L-by-M part of this array contains the system input-output
 C             matrix  D.
 C             If  M = 0  or  JOB = 'B',  this array is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L,  if  M > 0  and  JOB = 'D';
 C             LDD >= 1,  if  M = 0  or   JOB = 'B'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -144,13 +144,13 @@ C             (see LAPACK Library routine DLAMCH).  TOL <= 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK >= N*M + a,            if  JOB = 'B',
 C             LIWORK >= max( N*M + a, M ),  if  JOB = 'D',
 C             with  a = 0,  if  JOBX0 = 'N';
 C                   a = N,  if  JOBX0 = 'X'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK;  DWORK(2)  contains the reciprocal condition
 C             number of the triangular factor of the QR factorization of
@@ -160,7 +160,7 @@ C             triangular factor of the QR factorization of  U.
 C             On exit, if  INFO = -23,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( LDW1, min( LDW2, LDW3 ) ),  where
 C             LDW1 = 2,          if  M = 0  or   JOB = 'B',
@@ -206,14 +206,14 @@ C             also accommodate  A,  C,  U,  and  Y.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problem to be solved has a
 C                   rank-deficient coefficient matrix.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

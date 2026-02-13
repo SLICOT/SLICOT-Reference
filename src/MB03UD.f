@@ -27,13 +27,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBQ    CHARACTER*1
+C     JOBQ    (input) CHARACTER*1
 C             Specifies whether the user wishes to compute the matrix Q
 C             of left singular vectors as follows:
 C             = 'V':  Left singular vectors are computed;
 C             = 'N':  No left singular vectors are computed.
 C
-C     JOBP    CHARACTER*1
+C     JOBP    (input) CHARACTER*1
 C             Specifies whether the user wishes to compute the matrix P'
 C             of right singular vectors as follows:
 C             = 'V':  Right singular vectors are computed;
@@ -54,7 +54,7 @@ C             workspace. The strictly lower triangular part of A is set
 C             internally to zero before the reduction to bidiagonal form
 C             is performed.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     Q       (output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -62,7 +62,7 @@ C             If JOBQ = 'V', the leading N-by-N part of this array
 C             contains the orthogonal matrix Q.
 C             If JOBQ = 'N', Q is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= 1,  and when JOBQ = 'V',  LDQ >= MAX(1,N).
 C
@@ -72,7 +72,7 @@ C             descending order.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK;
 C             if INFO > 0, DWORK(2:N) contains the unconverged
 C             superdiagonal elements of an upper bidiagonal matrix B
@@ -80,7 +80,7 @@ C             whose diagonal is in SV (not necessarily sorted).
 C             B satisfies A = Q*B*P', so it has the same singular
 C             values as A, and singular vectors related by Q and P'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,5*N).
 C             For optimum performance LDWORK should be larger.
@@ -93,7 +93,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

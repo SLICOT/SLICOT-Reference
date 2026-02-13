@@ -37,7 +37,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the orthogonal transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N': do not modify Q;
@@ -50,7 +50,7 @@ C                    array Q will be first initialized to the identity
 C                    matrix;
 C             = 'P': use the parameters as encoded in QIND.
 C
-C     QIND    INTEGER array, dimension (K)
+C     QIND    (input) INTEGER array, dimension (K)
 C             If COMPQ = 'P', then this array describes the generation
 C             of the orthogonal factors as follows:
 C                If QIND(I) > 0, then the array Q(:,:,QIND(I)) is
@@ -63,7 +63,7 @@ C             factor in (1) and (2).
 C                If QIND(I) = 0, then the transformations corresponding
 C             to the i-th orthogonal factor in (1), (2) are not applied.
 C
-C     TRIU    CHARACTER*1
+C     TRIU    (input) CHARACTER*1
 C             Indicates how many matrices are reduced to upper
 C             triangular form in the first stage of the algorithm,
 C             as follows
@@ -109,11 +109,11 @@ C             On exit, A(:,:,H) is overwritten by an upper Hessenberg
 C             matrix and each A(:,:,I), for I not equal to H, is
 C             overwritten by an upper triangular matrix.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.
 C             LDA1 >= MAX(1,N).
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.
 C             LDA2 >= MAX(1,N).
 C
@@ -134,31 +134,31 @@ C             N-by-N-by-K part contain some modified orthogonal factors
 C             as described by the parameters QIND.
 C             This array is not referenced if COMPQ = 'N'.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The first leading dimension of the array Q.  LDQ1 >= 1,
 C             and, if COMPQ <> 'N', LDQ1 >= MAX(1,N).
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The second leading dimension of the array Q.  LDQ2 >= 1,
 C             and, if COMPQ <> 'N', LDQ2 >= MAX(1,N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if  INFO = -17,  IWORK(1)  returns the needed
 C             value of LIWORK.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The length of the array IWORK.  LIWORK >= MAX(1,3*K).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             On exit, if  INFO = -19,  DWORK(1)  returns the minimum
 C             value of LIWORK.
 C
-C     LDWORK  INTEGER
-C             The length of the array DWORK. 
+C     LDWORK  (input) INTEGER
+C             The length of the array DWORK.
 C             LDWORK >= 1, if MIN(N,K) = 0, or N = 1 or ILO = IHI;
 C             LDWORK >= M+MAX(IHI,N-ILO+1)), otherwise, where
 C                       M = IHI-ILO+1.
@@ -171,7 +171,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

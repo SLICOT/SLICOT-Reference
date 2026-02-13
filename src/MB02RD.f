@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of the system of equations:
 C             = 'N':  H * X = B  (No transpose)
 C             = 'T':  H'* X = B  (Transpose)
@@ -33,7 +33,7 @@ C     H       (input) DOUBLE PRECISION array, dimension (LDH,N)
 C             The factors L and U from the factorization H = P*L*U
 C             as computed by MB02SD.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (input) INTEGER array, dimension (N)
@@ -45,7 +45,7 @@ C             (LDB,NRHS)
 C             On entry, the right hand side matrix B.
 C             On exit, the solution matrix X.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     Error Indicator

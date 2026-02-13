@@ -22,7 +22,7 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     NZR     (output) INTEGER

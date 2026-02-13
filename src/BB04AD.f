@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     CHARACTER*1
+C     DEF     (input) CHARACTER*1
 C             Specifies the kind of values used as parameters when
 C             generating parameter-dependent and scalable examples
 C             (i.e., examples with NR(1) = 2, 3, or 4):
@@ -111,42 +111,42 @@ C             matrix E.
 C             NOTE that this array is overwritten (by the identity
 C             matrix), if VEC(3) = .FALSE.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= N.
 C
 C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     Y       (output) DOUBLE PRECISION array, dimension (LDY,N)
 C             The leading N-by-N part of this array contains the
 C             matrix Y.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= N.
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,N)
 C             The leading M-by-N part of this array contains the
 C             matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= M.
 C
 C     X       (output) DOUBLE PRECISION array, dimension (LDX,N)
 C             The leading N-by-N part of this array contains the
 C             matrix X.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= N.
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,N)
 C             The leading N-by-N part of this array contains the
 C             matrix U.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
 C     NOTE    (output) CHARACTER*70
@@ -155,9 +155,9 @@ C             example.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             For Examples 4.1 and 4.2., LDWORK >= 2*IPAR(1) is
 C             required.
@@ -166,7 +166,7 @@ C             LDWORK >= 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value; in particular, INFO = -3 or -4 indicates

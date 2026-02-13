@@ -18,12 +18,16 @@ C     ARGUMENTS
 C
 C     Input/Output Parameters
 C
-C     XR, XI, (input) DOUBLE PRECISION
-C     YR, YI  (input) DOUBLE PRECISION
+C     XR      (input) DOUBLE PRECISION
+C     XI      (input) DOUBLE PRECISION
+C     YR      (input) DOUBLE PRECISION
+C     YI      (input) DOUBLE PRECISION
 C             The given real scalars XR, XI, YR, YI.
 C
-C     CR, CI, (output) DOUBLE PRECISION
-C     SR, SI, (output) DOUBLE PRECISION
+C     CR      (output) DOUBLE PRECISION
+C     CI      (output) DOUBLE PRECISION
+C     SR      (output) DOUBLE PRECISION
+C     SI      (output) DOUBLE PRECISION
 C     Z       (output) DOUBLE PRECISION
 C             The computed real scalars CR, CI, SR, SI, Z, defining the
 C             complex Givens rotation and Z.

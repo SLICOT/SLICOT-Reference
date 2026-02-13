@@ -34,21 +34,21 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,NA)
 C             The leading NA-by-NA part of this array must contain the
 C             state matrix A of the system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,NA).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,NB)
 C             The leading NA-by-NB part of this array must contain the
 C             input matrix B of the system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,NA).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,NA)
 C             The leading NC-by-NA part of this array must contain the
 C             output matrix C of the system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,NC).
 C
 C     H       (output) DOUBLE PRECISION array, dimension (LDH,N*NB)
@@ -59,20 +59,20 @@ C             parameters are stored such that H(i,(k-1)xNB+j) contains
 C             the (i,j)-th element of M(k) for i = 1,2,...,NC and
 C             j = 1,2,...,NB.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,NC).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, 2*NA*NC).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

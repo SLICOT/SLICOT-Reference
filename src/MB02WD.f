@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FORM     CHARACTER*1
+C     FORM     (input) CHARACTER*1
 C              Specifies the form of the system of equations, as
 C              follows:
 C              = 'U' :  Ax = b, the upper triagular part of A is used;
@@ -76,14 +76,14 @@ C
 C             INCX    (input) INTEGER
 C                     The increment for the elements of X.  INCX > 0.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine F.
 C
 C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine F).
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input scalar argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -157,7 +157,7 @@ C             The increment for the elements of X.  INCX > 0.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If TOL > 0, absolute tolerance for the iterative process.
 C             The algorithm will stop if || Ax - b ||_2 <= TOL. Since
 C             it is advisable to use a relative tolerance, say TOLER,
@@ -168,12 +168,12 @@ C             machine precision (see LAPACK Library routine DLAMCH).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the number of
 C             iterations performed and DWORK(2) returns the remaining
 C             residual, || Ax - b ||_2.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(2,3*N + DWORK(F)),  if FORM = 'F',
 C                       where DWORK(F) is the workspace needed by F;
@@ -181,7 +181,7 @@ C             LDWORK >= MAX(2,3*N),       if FORM = 'U' or FORM = 'L'.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  the algorithm finished after ITMAX > 0 iterations,
 C                   without achieving the desired precision TOL;
@@ -189,7 +189,7 @@ C             = 2:  ITMAX is zero; in this case, DWORK(2) is not set.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

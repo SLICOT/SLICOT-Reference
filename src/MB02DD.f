@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the output of the routine, as follows:
 C             = 'R':  updates the generator G of the inverse and
 C                     computes the new columns / rows for the Cholesky
@@ -30,7 +30,7 @@ C                     of the inverse;
 C             = 'O':  only computes the new columns / rows for the
 C                     Cholesky factor R of T.
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of T, as follows:
 C             = 'R':  the first block row of an s.p.d. block Toeplitz
 C                     matrix was/is defined; if demanded, the Cholesky
@@ -75,7 +75,7 @@ C
 C             serves as the new transformation matrix T for further
 C             applications of this routine.
 C
-C     LDTA    INTEGER
+C     LDTA    (input) INTEGER
 C             The leading dimension of the array TA.
 C             LDTA >= MAX(1,K),   if TYPET = 'R';
 C             LDTA >= MAX(1,M*K), if TYPET = 'C'.
@@ -89,7 +89,7 @@ C             the upper / lower Cholesky factor of T(1:K,1:K), and in
 C             the remaining part, the Householder transformations
 C             applied during the initial factorization process.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= MAX(1,K),    if TYPET = 'R';
 C             LDT >= MAX(1,N*K),  if TYPET = 'C'.
@@ -110,7 +110,7 @@ C             generator of the inverse one has to set
 C               G(K+1:2*K, 1:K) = 0,    if TYPET = 'R';
 C               G(1:K, K+1:2*K) = 0,    if TYPET = 'C'.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.
 C             LDG >= MAX(1,2*K),  if TYPET = 'R' and JOB = 'R', or 'A';
 C             LDG >= MAX(1,( N + M )*K),
@@ -128,7 +128,7 @@ C             array contains the last M*K columns / rows of the upper /
 C             lower Cholesky factor of T. The elements in the strictly
 C             lower / upper triangular part are not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.
 C             LDR >= MAX(1, ( N + M )*K), if TYPET = 'R';
 C             LDR >= MAX(1, M*K),         if TYPET = 'C'.
@@ -142,7 +142,7 @@ C             upper Cholesky factor of the inverse of T. The elements
 C             in the strictly upper / lower triangular part are not
 C             referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of the array L.
 C             LDL >= MAX(1, M*K),         if TYPET = 'R' and JOB = 'A';
 C             LDL >= MAX(1, ( N + M )*K), if TYPET = 'C' and JOB = 'A';
@@ -158,25 +158,25 @@ C             this array contains information about all the hyperbolic
 C             rotations and Householder transformations applied during
 C             the whole process.
 C
-C     LCS     INTEGER
+C     LCS     (input) INTEGER
 C             The length of the array CS.  LCS >= 3*(N+M-1)*K.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -19,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,(N+M-1)*K).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

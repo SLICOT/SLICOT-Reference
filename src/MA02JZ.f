@@ -24,12 +24,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LTRAN1  LOGICAL
+C     LTRAN1  (input) LOGICAL
 C             Specifies the form of op( Q1 ) as follows:
 C             = .FALSE.:  op( Q1 ) = Q1;
 C             = .TRUE. :  op( Q1 ) = Q1'.
 C
-C     LTRAN2  LOGICAL
+C     LTRAN2  (input) LOGICAL
 C             Specifies the form of op( Q2 ) as follows:
 C             = .FALSE.:  op( Q2 ) = Q2;
 C             = .TRUE. :  op( Q2 ) = Q2'.
@@ -43,21 +43,21 @@ C     Q1      (input) COMPLEX*16 array, dimension (LDQ1,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the matrix op( Q1 ).
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.  LDQ1 >= MAX(1,N).
 C
 C     Q2      (input) COMPLEX*16 array, dimension (LDQ2,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the matrix op( Q2 ).
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.  LDQ2 >= MAX(1,N).
 C
 C     Workspace
 C
-C     RES     DOUBLE PRECISION array, dimension (LDRES,N)
+C     RES     (input/output) DOUBLE PRECISION array, dimension (LDRES,N)
 C
-C     LDRES   INTEGER
+C     LDRES   (input) INTEGER
 C             The leading dimension of the array RES.
 C             LDRES >= MAX(1,N).
 C

@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     APPLY   CHARACTER*1
+C     APPLY   (input) CHARACTER*1
 C             Specifies whether or not the parameter vector should be
 C             transformed using a bijective mapping, as follows:
 C             = 'A' : apply the bijective mapping to the N vectors in
@@ -46,7 +46,7 @@ C             THETA(N*L+1:N*(L+M))              : parameters for B;
 C             THETA(N*(L+M)+1:N*(L+M)+L*M)      : parameters for D;
 C             THETA(N*(L+M)+L*M+1:N*(L+M+1)+L*M): parameters for x0.
 C
-C     LTHETA  INTEGER
+C     LTHETA  (input) INTEGER
 C             The length of array THETA.  LTHETA >= N*(L+M+1)+L*M.
 C
 C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
@@ -54,7 +54,7 @@ C             The leading N-by-N part of this array contains the system
 C             state matrix corresponding to the output normal form with
 C             parameter vector THETA.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -62,7 +62,7 @@ C             The leading N-by-M part of this array contains the system
 C             input matrix corresponding to the output normal form with
 C             parameter vector THETA.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -70,7 +70,7 @@ C             The leading L-by-N part of this array contains the system
 C             output matrix corresponding to the output normal form with
 C             parameter vector THETA.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,L).
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -78,7 +78,7 @@ C             The leading L-by-M part of this array contains the system
 C             input/output matrix corresponding to the output normal
 C             form with parameter vector THETA.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,L).
 C
 C     X0      (output) DOUBLE PRECISION array, dimension (N)
@@ -88,15 +88,15 @@ C             vector THETA.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= N*(N+L+1).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

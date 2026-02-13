@@ -18,20 +18,20 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which matrices should be computed, as follows:
 C             = 'A':  compute all system matrices, A, B, C, and D;
 C             = 'C':  compute the matrices A and C only;
 C             = 'B':  compute the matrix B only;
 C             = 'D':  compute the matrices B and D only.
 C
-C     JOBCV   CHARACTER*1
+C     JOBCV   (input) CHARACTER*1
 C             Specifies whether or not the covariance matrices are to
 C             be computed, as follows:
 C             = 'C':  the covariance matrices should be computed;
@@ -84,12 +84,11 @@ C                 JOB = 'B' or 'D',  and  R_12,  R_22,  R_14 : R_34,
 C                 and possibly  R_11  are overwritten if  JOBCV = 'C';
 C             if  METH = 'N',  all needed submatrices are overwritten.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= 2*(M+L)*NOBR.
 C
-C     A       (input or output) DOUBLE PRECISION array, dimension
-C             (LDA,N)
+C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             On entry, if  METH = 'N'  and  JOB = 'B' or 'D',  the
 C             leading N-by-N part of this array must contain the system
 C             state matrix.
@@ -99,14 +98,13 @@ C             On exit, if  JOB = 'A' or 'C'  and  INFO = 0,  the
 C             leading N-by-N part of this array contains the system
 C             state matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= N,  if  JOB = 'A' or 'C',  or  METH = 'N'  and
 C                            JOB = 'B' or 'D';
 C             LDA >= 1,  otherwise.
 C
-C     C       (input or output) DOUBLE PRECISION array, dimension
-C             (LDC,N)
+C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
 C             On entry, if  METH = 'N'  and  JOB = 'B' or 'D',  the
 C             leading L-by-N part of this array must contain the system
 C             output matrix.
@@ -117,7 +115,7 @@ C             INFO = 3  (or  INFO >= 0,  for  METH = 'M'),  the leading
 C             L-by-N part of this array contains the system output
 C             matrix.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= L,  if  JOB = 'A' or 'C',  or  METH = 'N'  and
 C                            JOB = 'B' or 'D';
@@ -129,7 +127,7 @@ C             leading N-by-M part of this array contains the system
 C             input matrix. If  M = 0  or  JOB = 'C',  this array is
 C             not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= N,  if M > 0 and JOB = 'A', 'B', or 'D';
 C             LDB >= 1,  if M = 0 or  JOB = 'C'.
@@ -140,7 +138,7 @@ C             L-by-M part of this array contains the system input-output
 C             matrix. If  M = 0  or  JOB = 'C' or 'B',  this array is
 C             not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L,  if M > 0 and JOB = 'A' or 'D';
 C             LDD >= 1,  if M = 0 or  JOB = 'C' or 'B'.
@@ -152,7 +150,7 @@ C             to be used as state weighting matrix when computing the
 C             Kalman gain.
 C             This parameter is not referenced if JOBCV = 'N'.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= N,  if JOBCV = 'C';
 C             LDQ >= 1,  if JOBCV = 'N'.
@@ -164,7 +162,7 @@ C             matrix to be used as output weighting matrix when
 C             computing the Kalman gain.
 C             This parameter is not referenced if JOBCV = 'N'.
 C
-C     LDRY    INTEGER
+C     LDRY    (input) INTEGER
 C             The leading dimension of the array RY.
 C             LDRY >= L,  if JOBCV = 'C';
 C             LDRY >= 1,  if JOBCV = 'N'.
@@ -176,7 +174,7 @@ C             used as cross-weighting matrix when computing the Kalman
 C             gain.
 C             This parameter is not referenced if JOBCV = 'N'.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.
 C             LDS >= N,  if JOBCV = 'C';
 C             LDS >= 1,  if JOBCV = 'N'.
@@ -189,14 +187,14 @@ C             first  N  columns of the relevant singular vectors.
 C             If  METH = 'M'  and  JOBCV = 'N',  this array is not
 C             referenced.
 C
-C     LDO     INTEGER
+C     LDO     (input) INTEGER
 C             The leading dimension of the array  O.
 C             LDO >= L*NOBR,  if  JOBCV = 'C'  or  METH = 'N';
 C             LDO >= 1,       otherwise.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -210,7 +208,7 @@ C             DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK = N,                   if METH = 'M' and M = 0
 C                                        or JOB = 'C' and JOBCV = 'N';
 C             LIWORK = M*NOBR+N,            if METH = 'M', JOB = 'C',
@@ -221,7 +219,7 @@ C             LIWORK = max(L*NOBR,M*NOBR+N),  if METH = 'M', JOB <> 'C',
 C                                             and JOBCV = 'C';
 C             LIWORK = max(M*NOBR+N,M*(N+L)), if METH = 'N'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK,  and  DWORK(2),  DWORK(3),  DWORK(4),  and
 C             DWORK(5)  contain the reciprocal condition numbers of the
@@ -236,7 +234,7 @@ C             DWORK(3)  and  DWORK(5)  are set to one.
 C             On exit, if  INFO = -30,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( LDW1,LDW2 ), where, if METH = 'M',
 C             LDW1 >= max( 2*(L*NOBR-L)*N+2*N, (L*NOBR-L)*N+N*N+7*N ),
@@ -264,7 +262,7 @@ C             For good performance,  LDWORK  should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  a least squares problem to be solved has a
 C                   rank-deficient coefficient matrix;
@@ -273,7 +271,7 @@ C                   The problem seems to be a deterministic one.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

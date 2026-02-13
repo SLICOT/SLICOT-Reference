@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of T, as follows:
 C             = 'R':  T contains the first block row of an s.p.d. block
 C                     Toeplitz matrix; the Cholesky factor is upper
@@ -31,7 +31,7 @@ C             Note:   in the sequel, the notation x / y means that
 C                     x corresponds to TYPET = 'R' and y corresponds to
 C                     TYPET = 'C'.
 C
-C     TRIU    CHARACTER*1
+C     TRIU    (input) CHARACTER*1
 C             Specifies the structure of the last block in T, as
 C             follows:
 C             = 'N':  the last block has no special structure;
@@ -75,7 +75,7 @@ C             On exit, if INFO = 0, then the leading K-by-(NL+1)*K /
 C             (NL+1)*K-by-K part of this array contains the (P+S)-th
 C             block row / column of the Cholesky factor.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= MAX(1,K) / MAX(1,(NL+1)*K).
 C
@@ -110,14 +110,14 @@ C             Cholesky factor in banded format.
 C             For further details regarding the band storage scheme see
 C             the documentation of the LAPACK routine DPBTF2.
 C
-C     LDRB    INTEGER
+C     LDRB    (input) INTEGER
 C             The leading dimension of the array RB.
 C             If TRIU = 'N',   LDRB >= MAX( (NL+1)*K,1 );
 C             if TRIU = 'T',   LDRB >= NL*K+1.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -13,  DWORK(1)  returns the minimum
@@ -125,7 +125,7 @@ C             value of LDWORK.
 C             The first 1 + ( NL + 1 )*K*K elements of DWORK should be
 C             preserved during successive calls of the routine.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1 + ( NL + 1 )*K*K + NL*K.
 C             For optimum performance LDWORK should be larger.
@@ -138,7 +138,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

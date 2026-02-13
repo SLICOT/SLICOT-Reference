@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Indicates how the input matrix should be diagonally scaled
 C             to improve the conditioning of its eigenvalues as follows:
 C             = 'N':  Do not diagonally scale;
@@ -41,7 +41,7 @@ C             contain the given matrix A.
 C             On exit, the leading N-by-N upper quasi-triangular part of
 C             this array contains the real Schur canonical form of A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
@@ -62,7 +62,7 @@ C             columns. (The corresponding conjugate eigenvector is not
 C             stored.) The eigenvectors are not backward transformed
 C             for balancing (when BALANC = 'S').
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= max(1,N).
 C
 C     Q       (output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -70,17 +70,17 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Q which has reduced A to real Schur
 C             form.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= MAX(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             If BALANC = 'S' and LDWORK > 0, DWORK(2),...,DWORK(N+1)
 C             return the scaling factors used for balancing.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= max(1,4*N).
 C             For good performance, LDWORK must generally be larger.
 C
@@ -92,7 +92,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -27,19 +27,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'X':  Compute the solution only;
 C             = 'A':  Compute all: the solution, reciprocal condition
 C                     number, and the error bound.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the option op(A):
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices G and Q is
 C             stored, as follows:
 C             = 'U':  Upper triangles of G and Q are stored;
@@ -54,7 +54,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             coefficient matrix A of the equation.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     G       (input) DOUBLE PRECISION array, dimension (LDG,N)
@@ -65,7 +65,7 @@ C             If UPLO = 'L', the leading N-by-N lower triangular part of
 C             this array must contain the lower triangular part of the
 C             matrix G.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= max(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -76,7 +76,7 @@ C             If UPLO = 'L', the leading N-by-N lower triangular part of
 C             this array must contain the lower triangular part of the
 C             matrix Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= max(1,N).
 C
 C     X       (output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -84,7 +84,7 @@ C             If INFO = 0, INFO = 2, or INFO = 4, the leading N-by-N
 C             part of this array contains the symmetric solution matrix
 C             X of the algebraic Riccati equation.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= max(1,N).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -109,11 +109,11 @@ C             If JOB = 'X', these arrays are not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK >= 2*N,          if JOB = 'X';
 C             LIWORK >= max(2*N,N*N), if JOB = 'A'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 2, DWORK(1) contains the
 C             optimal value of LDWORK. If JOB = 'A', then DWORK(2:N*N+1)
 C             and DWORK(N*N+2:2*N*N+1) contain a real Schur form of the
@@ -122,7 +122,7 @@ C             or Ac = A - X*G (if TRANA = 'T' or 'C'), and the
 C             orthogonal matrix which reduced Ac to real Schur form,
 C             respectively.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 4*N*N + 8*N + 1,               if JOB = 'X';
 C             LDWORK >= max( 4*N*N + 8*N + 1, 6*N*N ), if JOB = 'A'.
@@ -138,7 +138,7 @@ C             is issued by XERBLA.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

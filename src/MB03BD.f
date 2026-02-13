@@ -43,7 +43,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; A will not
 C                    necessarily be put into periodic Schur form;
@@ -54,7 +54,7 @@ C                    periodic Schur form, that is, the general product
 C                    of the 2-by-2 triangular matrices corresponding to
 C                    a complex eigenvalue is diagonal.
 C
-C     DEFL    CHARACTER*1
+C     DEFL    (input) CHARACTER*1
 C             Specifies the deflation strategy to be used, as follows:
 C             = 'C': apply a careful deflation strategy, that is,
 C                    the criteria are based on the magnitudes of
@@ -69,7 +69,7 @@ C                    factor; this option is only recommended if
 C                    balancing is applied beforehand and convergence
 C                    problems are observed.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the orthogonal transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N': do not modify Q;
@@ -81,7 +81,7 @@ C                    array Q will be first initialized to the identity
 C                    matrix;
 C             = 'P': use the parameters as encoded in QIND.
 C
-C     QIND    INTEGER array, dimension (K)
+C     QIND    (input) INTEGER array, dimension (K)
 C             If COMPQ = 'P', then this array describes the generation
 C             of the orthogonal factors as follows:
 C                If QIND(I) > 0, then the array Q(:,:,QIND(I)) is
@@ -139,11 +139,11 @@ C             diagonal blocks. Consequently, the formulas (1) and (2)
 C             do not hold for the returned A and Q (if COMPQ <> 'N')
 C             in this case.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.
 C             LDA1 >= MAX(1,N).
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.
 C             LDA2 >= MAX(1,N).
 C
@@ -164,11 +164,11 @@ C             N-by-N-by-K part contain some modified orthogonal factors
 C             as described by the parameters QIND.
 C             This array is not referenced if COMPQ = 'N'.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The first leading dimension of the array Q.  LDQ1 >= 1,
 C             and, if COMPQ <> 'N', LDQ1 >= MAX(1,N).
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The second leading dimension of the array Q.  LDQ2 >= 1,
 C             and, if COMPQ <> 'N', LDQ2 >= MAX(1,N).
 C
@@ -199,7 +199,7 @@ C             contain the scaling parameters for the eigenvalues of A.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = 0, IWORK(1) returns the optimal LIWORK,
 C             and if IWARN > N, the nonzero absolute values in IWORK(2),
 C             ..., IWORK(N+1) are indices of the possibly inaccurate
@@ -213,10 +213,10 @@ C             if a 2-by-2 block is found to have two real eigenvalues.
 C             On exit, if INFO = -22, IWORK(1) returns the minimum value
 C             of LIWORK.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The length of the array IWORK.  LIWORK  >= 2*K+N.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK,
 C             and DWORK(2), ..., DWORK(1+K) contain the Frobenius norms
 C             of the factors of the formal matrix product used by the
@@ -224,13 +224,13 @@ C             algorithm.
 C             On exit, if INFO = -24, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= K + MAX( 2*N, 8*K ).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0        :  no warnings;
 C             = 1,..,N-1 :  A is in periodic Schur form, but the
 C                           algorithm was not able to reveal information
@@ -244,7 +244,7 @@ C                           details can be found in IWORK.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0      :  succesful exit;
 C             < 0      :  if INFO = -i, the i-th argument had an illegal
 C                         value;
@@ -1600,7 +1600,7 @@ C
                   J1 = IWORK(MAPQ+1)
                   IWORK(MAPQ+1) = IWORK(MAPA+1)
                END IF
-               CALL MB03AF( 'Double', K, IN, IWORK(MAPH), S, SINV, 
+               CALL MB03AF( 'Double', K, IN, IWORK(MAPH), S, SINV,
      $                      A(IFIRST,IFIRST,1), LDA1, LDA2, CS1, SN1,
      $                      CS2, SN2 )
                IF ( SINV.LT.0 )

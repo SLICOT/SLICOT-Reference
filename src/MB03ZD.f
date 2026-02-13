@@ -17,14 +17,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     WHICH   CHARACTER*1
+C     WHICH   (input) CHARACTER*1
 C             Specifies the cluster of eigenvalues for which the
 C             invariant subspaces are computed:
 C             = 'A':  select all n eigenvalues;
 C             = 'S':  select a cluster of eigenvalues specified by
 C                     SELECT.
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             If WHICH = 'A' this parameter specifies the method to be
 C             used for computing bases of the invariant subspaces:
 C             = 'S':  compute the n-dimensional basis from a set of
@@ -43,7 +43,7 @@ C             for finding the (stabilizing) solution of a Riccati
 C             equation, by solving X*Y1 = Y2. Note that Y1 might be
 C             singular when METH = 'Q'.
 C
-C     STAB    CHARACTER*1
+C     STAB    (input) CHARACTER*1
 C             Specifies the type of invariant subspaces to be computed:
 C             = 'S':  compute the stable invariant subspace, i.e., the
 C                     invariant subspace belonging to those selected
@@ -55,7 +55,7 @@ C                     part;
 C             = 'B':  compute both the stable and unstable invariant
 C                     subspaces.
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Specifies the type of inverse balancing transformation
 C             required:
 C             = 'N':  do nothing;
@@ -71,7 +71,7 @@ C             scaling part) and apply it to the final result only,
 C             see [2]. Inverse balancing is not used by this routine
 C             if METH = 'Q' or METH = 'R'.
 C
-C     ORTBAL  CHARACTER*1
+C     ORTBAL  (input) CHARACTER*1
 C             If BALANC <> 'N', this option specifies how inverse
 C             balancing is applied to the computed invariant subspaces:
 C             = 'B':  apply inverse balancing before orthogonal bases
@@ -124,7 +124,7 @@ C             contain the matrix S in real Schur form.
 C             On exit, the leading N-by-N part of this array is
 C             overwritten.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.  LDS >= max(1,N).
 C
 C     T       (input/output) DOUBLE PRECISION array, dimension (LDT,N)
@@ -133,7 +133,7 @@ C             contain the upper triangular matrix T.
 C             On exit, the leading N-by-N part of this array is
 C             overwritten.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,N)
@@ -143,7 +143,7 @@ C             On exit, if METH = 'L' or METH = 'R', the leading N-by-N
 C             part of this array is overwritten.
 C             This array is not referenced if METH = 'S' or METH = 'Q'.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= 1.
 C             LDG >= max(1,N) if METH = 'L' or METH = 'R'.
 C
@@ -153,7 +153,7 @@ C             contain the (1,1) block of an orthogonal symplectic
 C             matrix U.
 C             On exit, this array is overwritten.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.  LDU1 >= MAX(1,N).
 C
 C     U2      (input/output) DOUBLE PRECISION array, dimension (LDU2,N)
@@ -162,7 +162,7 @@ C             contain the (2,1) block of an orthogonal symplectic
 C             matrix U.
 C             On exit, this array is overwritten.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.  LDU2 >= MAX(1,N).
 C
 C     V1      (input/output) DOUBLE PRECISION array, dimension (LDV1,N)
@@ -171,7 +171,7 @@ C             contain the (1,1) block of an orthogonal symplectic
 C             matrix V.
 C             On exit, this array is overwritten.
 C
-C     LDV1    INTEGER
+C     LDV1    (input) INTEGER
 C             The leading dimension of the array V1.  LDV1 >= MAX(1,N).
 C
 C     V2      (input/output) DOUBLE PRECISION array, dimension (LDV1,N)
@@ -180,7 +180,7 @@ C             contain the (2,1) block of an orthogonal symplectic
 C             matrix V.
 C             On exit, this array is overwritten.
 C
-C     LDV2    INTEGER
+C     LDV2    (input) INTEGER
 C             The leading dimension of the array V2.  LDV2 >= MAX(1,N).
 C
 C     M       (output) INTEGER
@@ -205,7 +205,7 @@ C             eigenvalues, if METH = 'S' or METH = 'L', or the range
 C             vectors Y, if METH = 'Q' or METH = 'R' (see parameter
 C             METH). This basis is orthogonal unless ORTBAL = 'A'.
 C
-C     LDUS    INTEGER
+C     LDUS    (input) INTEGER
 C             The leading dimension of the array US.  LDUS >= 1.
 C             If STAB = 'S' or STAB = 'B',  LDUS >= 2*N.
 C
@@ -217,29 +217,29 @@ C             eigenvalues, if METH = 'S' or METH = 'L', or the range
 C             vectors Y, if METH = 'Q' or METH = 'R' (see parameter
 C             METH). This basis is orthogonal unless ORTBAL = 'A'.
 C
-C     LDUU    INTEGER
+C     LDUU    (input) INTEGER
 C             The leading dimension of the array UU.  LDUU >= 1.
 C             If STAB = 'U' or STAB = 'B',  LDUU >= 2*N.
 C
 C     Workspace
 C
-C     LWORK   LOGICAL array, dimension (2*N)
+C     LWORK   (input/output) LOGICAL array, dimension (2*N)
 C             This array is only referenced if WHICH = 'A' and
 C             (METH = 'L' or METH = 'R').
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK = 2*N, if WHICH = 'A' and METH = 'L';
 C             LIWORK = N,   if WHICH = 'A' and METH = 'S';
 C             LIWORK = 0,   if WHICH = 'A' and METH = 'Q' or METH = 'R';
 C             LIWORK = M,   if WHICH = 'S'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -35,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If WHICH = 'S' or METH = 'S' or METH = 'Q':
 C                LDWORK >= MAX( 1, 4*M*M + MAX( 8*M, 4*N ) ).
@@ -258,7 +258,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -619,7 +619,7 @@ C
      $                   IERR )
             WRKOPT = MAX( WRKOPT, INT( DWORK(M+1) ) + M )
             CALL DTRCON( '1', 'Upper', 'NotUnit', M, US, LDUS, RCOND,
-     $                   DWORK(M+1), IWORK, IERR )      
+     $                   DWORK(M+1), IWORK, IERR )
             IF ( RCOND.LE.TOL )
      $         INFO = 5
             CALL DORGQR( 2*N, M, M, US, LDUS, DWORK, DWORK(M+1),
@@ -631,7 +631,7 @@ C
      $                   IERR )
             WRKOPT = MAX( WRKOPT, INT( DWORK(M+1) ) + M )
             CALL DTRCON( '1', 'Upper', 'NotUnit', M, UU, LDUU, RCOND,
-     $                   DWORK(M+1), IWORK, IERR )      
+     $                   DWORK(M+1), IWORK, IERR )
             IF ( RCOND.LE.TOL )
      $         INFO = 6
             CALL DORGQR( 2*N, M, M, UU, LDUU, DWORK, DWORK(M+1),

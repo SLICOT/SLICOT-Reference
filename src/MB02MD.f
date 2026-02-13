@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Determines whether the values of the parameters RANK and
 C             TOL are to be specified by the user or computed by the
 C             routine as follows:
@@ -74,7 +74,7 @@ C             the remaining N+L-RANK right singular vectors. Otherwise,
 C             this part contains the matrix V2 transformed as described
 C             in Step 3 of the TLS algorithm (see METHOD).
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= max(1,M,N+L).
 C
 C     S       (output) DOUBLE PRECISION array, dimension (min(M,N+L))
@@ -87,12 +87,12 @@ C             If INFO = 0, the leading N-by-L part of this array
 C             contains the solution X to the TLS problem specified
 C             by A and B.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= max(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used to determine the rank of the TLS
 C             approximation [A+DA|B+DB] and to check the multiplicity
 C             of the singular values of matrix C. Specifically, S(i)
@@ -113,9 +113,9 @@ C             of the matrix C, as input value of TOL.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (L)
+C     IWORK   (input/output) INTEGER array, dimension (L)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, and DWORK(2) returns the reciprocal of the
 C             condition number of the matrix F.
@@ -123,7 +123,7 @@ C             If INFO > 0, DWORK(1:min(M,N+L)-1) contain the unconverged
 C             non-diagonal elements of the bidiagonal matrix whose
 C             diagonal is in S (see LAPACK Library routine DGESVD).
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = max(2, 3*(N+L) + M, 5*(N+L)),       if M >= N+L;
 C             LDWORK = max(2, M*(N+L) + max( 3M+N+L, 5*M), 3*L),
@@ -138,7 +138,7 @@ C             is issued by XERBLA.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warnings;
 C             = 1:  if the rank of matrix C has been lowered because a
 C                   singular value of multiplicity greater than 1 was
@@ -148,7 +148,7 @@ C                   upper triangular matrix F is (numerically) singular.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

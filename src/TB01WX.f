@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             = 'N':  do not compute U;
 C             = 'I':  U is initialized to the unit matrix, and the
 C                     orthogonal matrix U is returned;
@@ -41,7 +41,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the matrix U' * A * U in Hessenberg form. The elements
 C             below the first subdiagonal are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -50,7 +50,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix U' * B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -59,7 +59,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * U.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,*)
@@ -71,18 +71,18 @@ C             array contains the orthogonal transformation matrix used
 C             to reduce A to the Hessenberg form (U1*U if COMPU = 'U').
 C             If COMPU = 'N', this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= 1,        if COMPU =  'N';
 C             LDU >= max(1,N), if COMPU <> 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N > 0,
 C             LDWORK >= N - 1 + MAX(N,M,P).
 C             For optimum performance LDWORK should be larger.
@@ -95,7 +95,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

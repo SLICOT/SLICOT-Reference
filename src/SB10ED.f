@@ -64,55 +64,55 @@ C     NMEAS   (input) INTEGER
 C             The number of measurements (NP2).  NP >= NMEAS >= 0,
 C             M-NCON >= NMEAS.
 C
-C     A       (input/worksp.) DOUBLE PRECISION array, dimension (LDA,N)
+C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix A.
 C             This array is modified internally, but it is restored on
 C             exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             system input matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading NP-by-N part of this array must contain the
 C             system output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading NP-by-M part of this array must contain the
 C             system input/output matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     AK      (output) DOUBLE PRECISION array, dimension (LDAK,N)
 C             The leading N-by-N part of this array contains the
 C             controller state matrix AK.
 C
-C     LDAK    INTEGER
+C     LDAK    (input) INTEGER
 C             The leading dimension of the array AK.  LDAK >= max(1,N).
 C
 C     BK      (output) DOUBLE PRECISION array, dimension (LDBK,NMEAS)
 C             The leading N-by-NMEAS part of this array contains the
 C             controller input matrix BK.
 C
-C     LDBK    INTEGER
+C     LDBK    (input) INTEGER
 C             The leading dimension of the array BK.  LDBK >= max(1,N).
 C
 C     CK      (output) DOUBLE PRECISION array, dimension (LDCK,N)
 C             The leading NCON-by-N part of this array contains the
 C             controller output matrix CK.
 C
-C     LDCK    INTEGER
+C     LDCK    (input) INTEGER
 C             The leading dimension of the array CK.
 C             LDCK >= max(1,NCON).
 C
@@ -120,7 +120,7 @@ C     DK      (output) DOUBLE PRECISION array, dimension (LDDK,NMEAS)
 C             The leading NCON-by-NMEAS part of this array contains the
 C             controller input/output matrix DK.
 C
-C     LDDK    INTEGER
+C     LDDK    (input) INTEGER
 C             The leading dimension of the array DK.
 C             LDDK >= max(1,NCON).
 C
@@ -147,7 +147,7 @@ C                      matrix Im2 + DKHAT*D22 .
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used for controlling the accuracy of the
 C             transformations applied for diagonalizing D12 and D21,
 C             and for checking the nonsingularity of the matrices to be
@@ -157,13 +157,13 @@ C             precision.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (max(2*M2,2*N,N*N,NP2))
+C     IWORK   (input/output) INTEGER array, dimension (max(2*M2,2*N,N*N,NP2))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal
 C             LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= N*M + NP*(N+M) + M2*M2 + NP2*NP2 +
 C                       max(1,LW1,LW2,LW3,LW4,LW5,LW6), where
@@ -181,11 +181,11 @@ C             2*Q*(3*Q+2*N)+max(1,(N+Q)*(N+Q+6),Q*(Q+max(N,Q,5)+1),
 C                     2*N*N+max(1,14*N*N+6*N+max(14*N+23,16*N),
 C                               Q*(N+Q+max(Q,3)))).
 C
-C     BWORK   LOGICAL array, dimension (2*N)
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

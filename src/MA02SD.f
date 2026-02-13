@@ -27,7 +27,7 @@ C
 C     A       (input) DOUBLE PRECISION array, dimension (M,N)
 C             On entry, this array must contain the matrix A.
 C
-C     LDA     DOUBLE PRECISION array, dimension (N)
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,M).
 C
 C     METHOD

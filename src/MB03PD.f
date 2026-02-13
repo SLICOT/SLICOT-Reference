@@ -24,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBRQ   CHARACTER*1
+C     JOBRQ   (input) CHARACTER*1
 C             = 'R':  Perform an RQ factorization with row pivoting;
 C             = 'N':  Do not perform the RQ factorization (but assume
 C                     that it has been done outside).
@@ -59,7 +59,7 @@ C             subdiagonal must contain the M-by-N upper trapezoidal
 C             matrix R;
 C             the remaining elements are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     JPVT    (input/output) INTEGER array, dimension ( M )
@@ -124,13 +124,13 @@ C             number of R(M-RANK+1:M,N-RANK+1:N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( LDWORK )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( LDWORK )
 C             where LDWORK = max( 1, 3*M ),           if JOBRQ = 'R';
 C                   LDWORK = max( 1, 3*min( M, N ) ), if JOBRQ = 'N'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -46,12 +46,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYP     CHARACTER*1
+C     TYP     (input) CHARACTER*1
 C             Specifies the type of the input matrix X:
 C             = 'S': X is skew-Hamiltonian;
 C             = 'H': X is Hamiltonian.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             = 'U': update the matrices U1 and U2 containing the
 C                    Schur vectors;
 C             = 'N': do not update U1 and U2.
@@ -93,7 +93,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the reordered matrix A, again in Schur canonical form,
 C             with the selected eigenvalues in the diagonal blocks.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,N)
@@ -114,7 +114,7 @@ C             array contains the upper triangular part of the symmetric
 C             matrix G, updated by the orthogonal symplectic
 C             transformation which reorders X.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     U1      (input/output) DOUBLE PRECISION array, dimension (LDU1,N)
@@ -128,7 +128,7 @@ C             which reorders X. The leading M columns of U form an
 C             orthonormal basis for the specified invariant subspace.
 C             If COMPU = 'N', this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= MAX(1,N),  if COMPU = 'U';
 C             LDU1 >= 1,         otherwise.
@@ -143,7 +143,7 @@ C             postmultiplied by the orthogonal symplectic transformation
 C             which reorders X.
 C             If COMPU = 'N', this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= MAX(1,N),  if COMPU = 'U';
 C             LDU2 >= 1,         otherwise.
@@ -164,18 +164,18 @@ C             0 <= M <= N.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -18,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

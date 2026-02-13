@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
@@ -42,21 +42,21 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state dynamics matrix A in a real Schur canonical form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             state/output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     HSV     (output) DOUBLE PRECISION array, dimension (N)
@@ -66,18 +66,18 @@ C             HSV(1) is the Hankel norm of the given system.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,N*(MAX(N,M,P)+5)+N*(N+1)/2).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

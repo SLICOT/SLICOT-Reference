@@ -18,13 +18,13 @@ C
 C     S       (input) DOUBLE PRECISION array, dimension(LDS,N)
 C             The upper quasi-triangular matrix S.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.  LDS >= max(1,N).
 C
 C     T       (input) DOUBLE PRECISION array, dimension(LDT,N)
 C             The upper triangular matrix T.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
@@ -43,7 +43,7 @@ C             complex conjugate pair, with ALPHAI(j+1) negative.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

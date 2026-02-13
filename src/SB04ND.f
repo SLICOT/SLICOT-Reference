@@ -19,14 +19,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ABSCHU  CHARACTER*1
+C     ABSCHU  (input) CHARACTER*1
 C             Indicates whether A and/or B is/are in Schur or
 C             Hessenberg form as follows:
 C             = 'A':  A is in Schur form, B is in Hessenberg form;
 C             = 'B':  B is in Schur form, A is in Hessenberg form;
 C             = 'S':  Both A and B are in Schur form.
 C
-C     ULA     CHARACTER*1
+C     ULA     (input) CHARACTER*1
 C             Indicates whether A is in upper or lower Schur form or
 C             upper or lower Hessenberg form as follows:
 C             = 'U':  A is in upper Hessenberg form if ABSCHU = 'B' and
@@ -34,7 +34,7 @@ C                     upper Schur form otherwise;
 C             = 'L':  A is in lower Hessenberg form if ABSCHU = 'B' and
 C                     lower Schur form otherwise.
 C
-C     ULB     CHARACTER*1
+C     ULB     (input) CHARACTER*1
 C             Indicates whether B is in upper or lower Schur form or
 C             upper or lower Hessenberg form as follows:
 C             = 'U':  B is in upper Hessenberg form if ABSCHU = 'A' and
@@ -54,14 +54,14 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             coefficient matrix A of the equation.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading M-by-M part of this array must contain the
 C             coefficient matrix B of the equation.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,M)
@@ -70,12 +70,12 @@ C             contain the coefficient matrix C of the equation.
 C             On exit, if INFO = 0, the leading N-by-M part of this
 C             array contains the solution matrix X of the problem.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity in
 C             the Sylvester equation. If the user sets TOL > 0, then the
 C             given value of TOL is used as a lower bound for the
@@ -90,22 +90,22 @@ C             ULA = 'U', and ULB = 'U'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*MAX(M,N))
+C     IWORK   (input/output) INTEGER array, dimension (2*MAX(M,N))
 C             This parameter is not referenced if ABSCHU = 'S',
 C             ULA = 'U', and ULB = 'U'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             This parameter is not referenced if ABSCHU = 'S',
 C             ULA = 'U', and ULB = 'U'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = 0, if ABSCHU = 'S', ULA = 'U', and ULB = 'U';
 C             LDWORK = 2*MAX(M,N)*(4 + 2*MAX(M,N)), otherwise.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -19,20 +19,20 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the upper quasi-triangular matrix H
 C             appears on the left or right in the matrix product as
 C             follows:
 C             = 'L':  A := alpha*op( T ) * A;
 C             = 'R':  A := alpha*A * op( T ).
 C
-C     UPLO    CHARACTER*1.
+C     UPLO    (input) CHARACTER*1.
 C             Specifies whether the matrix T is an upper or lower
 C             quasi-triangular matrix as follows:
 C             = 'U':  T is an upper quasi-triangular matrix;
 C             = 'L':  T is a lower quasi-triangular matrix.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( T ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( T ) = T;
@@ -62,7 +62,7 @@ C             Hessenberg part of this array must contain the lower
 C             quasi-triangular matrix T. The elements above the
 C             supdiagonal are not referenced.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,k),
 C             where k is M when SIDE = 'L' and is N when SIDE = 'R'.
 C
@@ -72,19 +72,19 @@ C             contain the matrix A.
 C             On exit, the leading M-by-N part of this array contains
 C             the computed product.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 and ALPHA<>0,  DWORK(1)  returns the
 C             optimal value of LDWORK.
 C             On exit, if  INFO = -12,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C             This array is not referenced when alpha = 0.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= 1,       if alpha =  0 or MIN(M,N) = 0;
 C             LDWORK >= 2*(M-1), if SIDE  = 'L';
 C             LDWORK >= 2*(N-1), if SIDE  = 'R'.
@@ -103,7 +103,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

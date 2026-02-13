@@ -27,7 +27,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the right deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -35,7 +35,7 @@ C             = 'N':  do not compute the deflating subspace;
 C             = 'C':  compute the deflating subspace and store it in the
 C                     leading subarray of Q.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Specifies whether to compute the companion subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -43,7 +43,7 @@ C             = 'N': do not compute the companion subspace;
 C             = 'C': compute the companion subspace and store it in the
 C                    leading subarray of U.
 C
-C     ORTH    CHARACTER*1
+C     ORTH    (input) CHARACTER*1
 C             If COMPQ = 'C' and/or COMPU = 'C', specifies the technique
 C             for computing the orthogonal basis of the deflating
 C             subspace, and/or of the companion subspace, as follows:
@@ -75,14 +75,14 @@ C             periodic QZ algorithm. The elements of the (2,1) block,
 C             i.e., in the rows N/2+1 to N and in the columns 1 to N/2
 C             are not set to zero, but are unchanged on exit.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1, N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB, N/2)
 C             On entry, the leading N/2-by-N/2 part of this array must
 C             contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     FG      (input) DOUBLE PRECISION array, dimension (LDFG, N/2+1)
@@ -93,7 +93,7 @@ C             part of the submatrix in the columns 2 to N/2+1 of this
 C             array must contain the upper triangular part of the
 C             symmetric matrix F.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.
 C             LDFG >= MAX(1, N/2).
 C
@@ -109,7 +109,7 @@ C             aS - bH with strictly negative real part. The remaining
 C             part of this array is used as workspace.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,           if COMPQ = 'N';
 C             LDQ >= MAX(1, 2*N), if COMPQ = 'C'.
@@ -122,7 +122,7 @@ C             strictly negative real part. The remaining part of this
 C             array is used as workspace.
 C             If COMPU = 'N', this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= 1,         if COMPU = 'N';
 C             LDU >= MAX(1, N), if COMPU = 'C'.
@@ -157,22 +157,22 @@ C             consecutive locations, are not complex conjugate.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = -20, IWORK(1) returns the minimum value
 C             of LIWORK.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.
 C             LIWORK >= N + 18,      if COMPQ = 'N' and COMPU = 'N';
 C             LIWORK >= MAX( 2*N+1, 48 ), otherwise.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -22, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= b*N*N + 3*N*N/2 + MAX( 6*N, 54 ),
 C                                       if COMPQ = 'N' and COMPU = 'N';
@@ -188,18 +188,18 @@ C             routine only calculates the optimal size of the DWORK
 C             array, returns this value as the first entry of the DWORK
 C             array, and no error message is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (N/2)
+C     BWORK   (input/output) LOGICAL array, dimension (N/2)
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0: no warning;
 C             = 1: some eigenvalues might be unreliable. More details
 C                  can be obtained by running the SLICOT routine MB04AD.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: periodic QZ iteration failed in the SLICOT Library

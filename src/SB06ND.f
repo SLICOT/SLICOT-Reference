@@ -39,7 +39,7 @@ C             Library routine AB01OD (with option STAGES = 'A').
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix U'AU + U'BF.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -50,7 +50,7 @@ C             (with option STAGES = 'A').
 C             On exit, the leading N-by-M part of this array contains
 C             the matrix U'B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     KSTAIR  (input) INTEGER array, dimension (KMAX)
@@ -68,23 +68,23 @@ C             the product of the input matrix U and the state-space
 C             transformation matrix which reduces A + BFU' to real
 C             Schur form.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,N).
 C
 C     F       (output) DOUBLE PRECISION array, dimension (LDF,N)
 C             The leading M-by-N part of this array contains the
 C             deadbeat feedback matrix F.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the output of the routine, as follows:
 C             = 'G':  only computes the generator G of the inverse;
 C             = 'R':  computes the generator G of the inverse and the
@@ -30,7 +30,7 @@ C             = 'A':  computes the generator G, the Cholesky factor L
 C                     of the inverse and the Cholesky factor R of T;
 C             = 'O':  only computes the Cholesky factor R of T.
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of T, as follows:
 C             = 'R':  T contains the first block row of an s.p.d. block
 C                     Toeplitz matrix; if demanded, the Cholesky factors
@@ -67,7 +67,7 @@ C             the upper / lower Cholesky factor of T(1:K,1:K), and in
 C             the remaining part, the Householder transformations
 C             applied during the process.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= MAX(1,K),    if TYPET = 'R';
 C             LDT >= MAX(1,N*K),  if TYPET = 'C'.
@@ -84,7 +84,7 @@ C             Actually, to obtain a generator one has to set
 C                 G(K+1:2*K, 1:K) = 0,    if TYPET = 'R';
 C                 G(1:K, K+1:2*K) = 0,    if TYPET = 'C'.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.
 C             LDG >= MAX(1,2*K),  if TYPET = 'R' and
 C                                    JOB = 'G', 'R', 'L', or 'A';
@@ -99,7 +99,7 @@ C             Cholesky factor of T.
 C             The elements in the strictly lower / upper triangular part
 C             are not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.
 C             LDR >= MAX(1,N*K),  if JOB = 'R', 'A', or 'O';
 C             LDR >= 1,           if JOB = 'G', or 'L'.
@@ -111,7 +111,7 @@ C             Cholesky factor of the inverse of T.
 C             The elements in the strictly upper / lower triangular part
 C             are not referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of the array L.
 C             LDL >= MAX(1,N*K),  if JOB = 'L', or 'A';
 C             LDL >= 1,           if JOB = 'G', 'R', or 'O'.
@@ -123,25 +123,25 @@ C             and Householder transformations applied during the
 C             process. This information is needed for updating the
 C             factorizations in SLICOT Library routine MB02DD.
 C
-C     LCS     INTEGER
+C     LCS     (input) INTEGER
 C             The length of the array CS.  LCS >= 3*(N-1)*K.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -16,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,(N-1)*K).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -477,7 +477,7 @@ C
 C           (N-1)*K locations of DWORK are used by SLICOT Library
 C           routine MB02CY.
 C
-            DO 30  I = 2, N	
+            DO 30  I = 2, N
                STARTR = ( I - 1 )*K + 1
                STARTI = ( N - I + 1 )*K + 1
                STARTT = 3*( I - 2 )*K + 1

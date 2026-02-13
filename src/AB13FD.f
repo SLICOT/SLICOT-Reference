@@ -2,7 +2,7 @@ C
 C SPDX-License-Identifier: BSD-3-Clause
 C
       SUBROUTINE AB13FD( N, A, LDA, BETA, OMEGA, TOL, DWORK, LDWORK,
-     $                   CWORK, LCWORK, INFO )
+     $                   ZWORK, LZWORK, INFO )
 C
 C     PURPOSE
 C
@@ -26,7 +26,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     BETA    (output) DOUBLE PRECISION
@@ -39,7 +39,7 @@ C             (A - jwI) equals beta(A).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Specifies the accuracy with which beta(A) is to be
 C             calculated. (See the Numerical Aspects section below.)
 C             If the user sets TOL to be less than EPS, where EPS is the
@@ -48,31 +48,31 @@ C             then the tolerance is taken to be EPS.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             If DWORK(1) is not needed, the first 2*N*N entries of
-C             DWORK may overlay CWORK.
+C             DWORK may overlay ZWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, 3*N*(N+2) ).
 C             For optimum performance LDWORK should be larger.
 C
-C     CWORK   COMPLEX*16 array, dimension (LCWORK)
-C             On exit, if INFO = 0, CWORK(1) returns the optimal value
-C             of LCWORK.
-C             If CWORK(1) is not needed, the first N*N entries of
-C             CWORK may overlay DWORK.
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
+C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
+C             of LZWORK.
+C             If ZWORK(1) is not needed, the first N*N entries of
+C             ZWORK may overlay DWORK.
 C
-C     LCWORK  INTEGER
-C             The length of the array CWORK.
-C             LCWORK >= MAX( 1, N*(N+3) ).
-C             For optimum performance LCWORK should be larger.
+C     LZWORK  (input) INTEGER
+C             The length of the array ZWORK.
+C             LZWORK >= MAX( 1, N*(N+3) ).
+C             For optimum performance LZWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -152,11 +152,11 @@ C     .. Parameters ..
       COMPLEX*16        CONE
       PARAMETER         ( CONE = ( 1.0D0, 0.0D0 ) )
 C     .. Scalar Arguments ..
-      INTEGER           INFO, LCWORK, LDA, LDWORK, N
+      INTEGER           INFO, LZWORK, LDA, LDWORK, N
       DOUBLE PRECISION  BETA, OMEGA, TOL
 C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), DWORK(*)
-      COMPLEX*16        CWORK(*)
+      COMPLEX*16        ZWORK(*)
 C     .. Local Scalars ..
       INTEGER           I, IA2, IAA, IGF, IHI, ILO, ITNUM, IWI, IWK,
      $                  IWR, JWORK, KOM, LBEST, MINWRK, N2
@@ -186,7 +186,7 @@ C
          INFO = -3
       ELSE IF( LDWORK.LT.MAX( 1, MINWRK ) ) THEN
          INFO = -8
-      ELSE IF( LCWORK.LT.MAX( 1, N*( N + 3 ) ) ) THEN
+      ELSE IF( LZWORK.LT.MAX( 1, N*( N + 3 ) ) ) THEN
          INFO = -10
       END IF
 C
@@ -204,7 +204,7 @@ C
       IF ( N.EQ.0 ) THEN
          BETA = ZERO
          DWORK(1) = ONE
-         CWORK(1) = CONE
+         ZWORK(1) = CONE
          RETURN
       END IF
 C
@@ -238,7 +238,7 @@ C
       LOW = ZERO
       CALL DLACPY( 'All', N, N, A, LDA, DWORK(IGF), N )
       BETA = MB03NY( N, OMEGA, DWORK(IGF), N, DWORK(IGF+N2),
-     $               DWORK(IA2), LDWORK-IA2, CWORK, LCWORK, INFO )
+     $               DWORK(IA2), LDWORK-IA2, ZWORK, LZWORK, INFO )
       IF ( INFO.NE.0 )
      $   RETURN
       LBEST = MAX( MINWRK, INT( DWORK(IA2) ) - IA2 + 1, 4*N2 + N )
@@ -354,7 +354,7 @@ C
 C
             CALL DLACPY( 'All', N, N, A, LDA, DWORK(IGF), N )
             SV = MB03NY( N, OM, DWORK(IGF), N, DWORK(IGF+N2),
-     $                   DWORK(IA2), LDWORK-IA2, CWORK, LCWORK, INFO )
+     $                   DWORK(IA2), LDWORK-IA2, ZWORK, LZWORK, INFO )
             IF ( INFO.NE.0 )
      $         RETURN
             IF ( BETA.GT.SV ) THEN

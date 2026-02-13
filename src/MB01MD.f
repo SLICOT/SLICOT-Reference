@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangular part of
 C             the array A is to be referenced as follows:
 C             = 'U':  only the strictly upper triangular part of A is to
@@ -48,7 +48,7 @@ C             array must contain the strictly lower triangular part of
 C             the matrix A. The upper triangular part of this array is
 C             not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N)
 C
 C     X       (input) DOUBLE PRECISION array, dimension

@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             Indicates the type of the original system and the
 C             transformation to be performed as follows:
 C             = 'D':  discrete-time   -> continuous-time;
@@ -31,8 +31,9 @@ C
 C     P       (input) INTEGER
 C             The number of system outputs.  P >= 0.
 C
-C     ALPHA,  (input) DOUBLE PRECISION
-C     BETA    Parameters specifying the bilinear transformation.
+C     ALPHA   (input) DOUBLE PRECISION
+C     BETA    (input) DOUBLE PRECISION
+C             Parameters specifying the bilinear transformation.
 C             Recommended values for stable systems: ALPHA = 1,
 C             BETA = 1.  ALPHA <> 0, BETA <> 0.
 C
@@ -43,7 +44,7 @@ C             On exit, the leading N-by-N part of this array contains
 C                              _
 C             the state matrix A of the transformed system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -53,7 +54,7 @@ C             On exit, the leading N-by-M part of this array contains
 C                              _
 C             the input matrix B of the transformed system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -63,7 +64,7 @@ C             On exit, the leading P-by-N part of this array contains
 C                               _
 C             the output matrix C of the transformed system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -73,25 +74,25 @@ C             On exit, the leading P-by-M part of this array contains
 C                                     _
 C             the input/output matrix D of the transformed system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C             For optimum performance LDWORK >= MAX(1,N*NB), where NB
 C             is the optimal blocksize.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

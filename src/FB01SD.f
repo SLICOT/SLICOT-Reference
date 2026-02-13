@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Indicates whether X    is to be computed as follows:
 C                                i+1
 C             = 'X':  X    is computed and stored in array X;
@@ -24,7 +24,7 @@ C                      i+1
 C             = 'N':  X    is not required.
 C                      i+1
 C
-C     MULTAB  CHARACTER*1             -1
+C     MULTAB  (input) CHARACTER*1     -1
 C             Indicates how matrices A   and B  are to be passed to
 C                                     i       i
 C             the routine as follows:                       -1
@@ -35,7 +35,7 @@ C                                                       i  i
 C             = 'N':  Arrays AINV and B must contain the matrices
 C                     as described below.
 C
-C     MULTRC  CHARACTER*1             -1/2
+C     MULTRC  (input) CHARACTER*1     -1/2
 C             Indicates how matrices R     and C    are to be passed to
 C                                     i+1       i+1
 C             the routine as follows:
@@ -85,7 +85,7 @@ C             (hence the information square root) at instant i+1.
 C             The strict lower triangular part of this array is not
 C             referenced.
 C
-C     LDSINV  INTEGER
+C     LDSINV  (input) INTEGER
 C             The leading dimension of array SINV.  LDSINV >= MAX(1,N).
 C
 C     AINV    (input) DOUBLE PRECISION array, dimension (LDAINV,N)
@@ -95,7 +95,7 @@ C                                                                 i
 C             the inverse of the state transition matrix of the discrete
 C             system at instant i.
 C
-C     LDAINV  INTEGER
+C     LDAINV  (input) INTEGER
 C             The leading dimension of array AINV.  LDAINV >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -105,7 +105,7 @@ C             the input weight matrix (or the product A  B  if
 C                                                      i  i
 C             MULTAB = 'P') of the discrete system at instant i.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     RINV    (input) DOUBLE PRECISION array, dimension (LDRINV,*)
@@ -122,7 +122,7 @@ C             Otherwise, RINV is not referenced and can be supplied as a
 C             dummy array (i.e., set parameter LDRINV = 1 and declare
 C             this array to be RINV(1,1) in the calling program).
 C
-C     LDRINV  INTEGER
+C     LDRINV  (input) INTEGER
 C             The leading dimension of array RINV.
 C             LDRINV >= MAX(1,P) if MULTRC = 'N';
 C             LDRINV >= 1        if MULTRC = 'P'.
@@ -134,7 +134,7 @@ C             the output weight matrix (or the product R    C    if
 C                                                       i+1  i+1
 C             MULTRC = 'P') of the discrete system at instant i+1.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     QINV    (input/output) DOUBLE PRECISION array, dimension
@@ -155,7 +155,7 @@ C             instant i.
 C             The strict lower triangular part of this array is not
 C             referenced.
 C
-C     LDQINV  INTEGER
+C     LDQINV  (input) INTEGER
 C             The leading dimension of array QINV.  LDQINV >= MAX(1,M).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (N)
@@ -193,7 +193,7 @@ C             i+1.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If JOBX = 'X', then TOL is used to test for near
 C                                        -1
 C             singularity of the matrix S   . If the user sets
@@ -210,11 +210,11 @@ C             Otherwise, TOL is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             where LIWORK = N if JOBX = 'X',
 C             and   LIWORK = 1 otherwise.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.  If INFO = 0 and JOBX = 'X', DWORK(2) returns
 C             an estimate of the reciprocal of the condition number
@@ -222,7 +222,7 @@ C                                 -1
 C             (in the 1-norm) of S   .
 C                                 i+1
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= MAX(1,N*(N+2*M)+3*M,(N+P)*(N+1)+2*N),
 C                           if JOBX = 'N';
 C             LDWORK >= MAX(2,N*(N+2*M)+3*M,(N+P)*(N+1)+2*N,3*N),
@@ -231,7 +231,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;                        -1

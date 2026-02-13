@@ -39,28 +39,28 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix A of the shaped plant.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             system input matrix B of the shaped plant.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading NP-by-N part of this array must contain the
 C             system output matrix C of the shaped plant.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading NP-by-M part of this array must contain the
 C             system input/output matrix D of the shaped plant.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     FACTOR  (input) DOUBLE PRECISION
@@ -74,28 +74,28 @@ C     AK      (output) DOUBLE PRECISION array, dimension (LDAK,N)
 C             The leading N-by-N part of this array contains the
 C             controller state matrix Ak.
 C
-C     LDAK    INTEGER
+C     LDAK    (input) INTEGER
 C             The leading dimension of the array AK.  LDAK >= max(1,N).
 C
 C     BK      (output) DOUBLE PRECISION array, dimension (LDBK,NP)
 C             The leading N-by-NP part of this array contains the
 C             controller input matrix Bk.
 C
-C     LDBK    INTEGER
+C     LDBK    (input) INTEGER
 C             The leading dimension of the array BK.  LDBK >= max(1,N).
 C
 C     CK      (output) DOUBLE PRECISION array, dimension (LDCK,N)
 C             The leading M-by-N part of this array contains the
 C             controller output matrix Ck.
 C
-C     LDCK    INTEGER
+C     LDCK    (input) INTEGER
 C             The leading dimension of the array CK.  LDCK >= max(1,M).
 C
 C     DK      (output) DOUBLE PRECISION array, dimension (LDDK,NP)
 C             The leading M-by-NP part of this array contains the
 C             controller matrix Dk.
 C
-C     LDDK    INTEGER
+C     LDDK    (input) INTEGER
 C             The leading dimension of the array DK.  LDDK >= max(1,M).
 C
 C     RCOND   (output) DOUBLE PRECISION array, dimension (6)
@@ -120,7 +120,7 @@ C                      number of the matrix Im + Dk*D.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used for checking the nonsingularity of the
 C             matrices to be inverted. If TOL <= 0, then a default value
 C             equal to sqrt(EPS) is used, where EPS is the relative
@@ -128,20 +128,20 @@ C             machine precision.  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*max(N,M+NP))
+C     IWORK   (input/output) INTEGER array, dimension (2*max(N,M+NP))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 16*N*N + 5*M*M + 7*NP*NP + 6*M*N + 7*M*NP +
 C                        7*N*NP + 6*N + 2*(M + NP) +
 C                        max(14*N+23,16*N,2*M-1,2*NP-1).
 C             For good performance, LDWORK must generally be larger.
 C
-C     BWORK   LOGICAL array, dimension (2*N)
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Error Indicator
 C

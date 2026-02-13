@@ -56,10 +56,10 @@ C             On exit, the leading 2-by-2-by-K part of this array
 C             contains modified triangular factors such that their
 C             product is diagonal.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= 2.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= 2.
 C
 C     MACPAR  (input)  DOUBLE PRECISION array, dimension (5)
@@ -80,7 +80,7 @@ C             sines of the Givens rotations.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*(K-1))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*(K-1))
 C
 C     METHOD
 C

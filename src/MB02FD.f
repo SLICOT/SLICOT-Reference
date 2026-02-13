@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of T, as follows:
 C             = 'R':  T contains the first block row of an s.p.d. block
 C                     Toeplitz matrix; the ICC factor R is upper
@@ -70,7 +70,7 @@ C             and in the remaining part, the negative generator of the
 C             Schur complement of the leading (P+S)*K-by(P+S)*K part
 C             in T.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= MAX(1,K),        if TYPET = 'R';
 C             LDT >= MAX(1,(N-P)*K),  if TYPET = 'C'.
@@ -95,7 +95,7 @@ C             P-th to (P+S)-th block rows / columns of the ICC factor.
 C             The elements in the strictly lower / upper trapezoidal
 C             part are not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.
 C             LDR >= MAX(1, S*K ),        if TYPET = 'R' and P = 0;
 C             LDR >= MAX(1, (S+1)*K ),    if TYPET = 'R' and P > 0;
@@ -104,13 +104,13 @@ C             LDR >= MAX(1, (N-P+1)*K ),  if TYPET = 'C' and P > 0.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -11,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,(N+1)*K,4*K),   if P = 0;
 C             LDWORK >= MAX(1,(N-P+2)*K,4*K), if P > 0.
@@ -118,7 +118,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

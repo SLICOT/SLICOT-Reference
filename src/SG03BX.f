@@ -50,13 +50,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies whether the continuous-time or the discrete-time
 C             equation is to be solved:
 C             = 'C':  Solve continuous-time equation (1);
 C             = 'D':  Solve discrete-time equation (2).
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  op(K) = K,     K = A, B, E, U;
@@ -68,28 +68,28 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,2)
 C             The leading 2-by-2 part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= 2.
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,2)
 C             The leading 2-by-2 upper triangular part of this array
 C             must contain the matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= 2.
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,2)
 C             The leading 2-by-2 upper triangular part of this array
 C             must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= 2.
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,2)
 C             The leading 2-by-2 part of this array contains the upper
 C             triangular matrix U.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= 2.
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -100,19 +100,19 @@ C     M1      (output) DOUBLE PRECISION array, dimension (LDM1,2)
 C             The leading 2-by-2 part of this array contains the
 C             matrix M1.
 C
-C     LDM1    INTEGER
+C     LDM1    (input) INTEGER
 C             The leading dimension of the array M1.  LDM1 >= 2.
 C
 C     M2      (output) DOUBLE PRECISION array, dimension (LDM2,2)
 C             The leading 2-by-2 part of this array contains the
 C             matrix M2.
 C
-C     LDM2    INTEGER
+C     LDM2    (input) INTEGER
 C             The leading dimension of the array M2.  LDM2 >= 2.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 2:  the eigenvalues of the pencil A - lambda * E are not
 C                   a pair of complex conjugate numbers;

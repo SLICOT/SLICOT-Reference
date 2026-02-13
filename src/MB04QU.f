@@ -32,31 +32,31 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANC   CHARACTER*1
+C     TRANC   (input) CHARACTER*1
 C             Specifies the form of op( C ) as follows:
 C             = 'N':  op( C ) = C;
 C             = 'T':  op( C ) = C';
 C             = 'C':  op( C ) = C'.
 C
-C     STOREV  CHARACTER*1
+C     STOREV  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in V are stored:
 C             = 'C':  columnwise;
 C             = 'R':  rowwise.
 C
-C     STOREW  CHARACTER*1
+C     STOREW  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in W are stored:
 C             = 'C':  columnwise;
 C             = 'R':  rowwise.
 C
-C     TRAND   CHARACTER*1
+C     TRAND   (input) CHARACTER*1
 C             Specifies the form of op( D ) as follows:
 C             = 'N':  op( D ) = D;
 C             = 'T':  op( D ) = D';
 C             = 'C':  op( D ) = D'.
 C
-C     TRANQ   CHARACTER*1
+C     TRANQ   (input) CHARACTER*1
 C             = 'N':  apply Q;
 C             = 'T':  apply Q'.
 C
@@ -84,7 +84,7 @@ C             On entry with STOREV = 'R', the leading K-by-M part of
 C             this array must contain in its rows the vectors which
 C             define the elementary reflectors F(i).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= MAX(1,M),  if STOREV = 'C';
 C             LDV >= MAX(1,K),  if STOREV = 'R'.
@@ -99,7 +99,7 @@ C             On entry with STOREW = 'R', the leading K-by-M part of
 C             this array must contain in its rows the vectors which
 C             define the elementary reflectors H(i).
 C
-C     LDW     INTEGER
+C     LDW     (input) INTEGER
 C             The leading dimension of the array W.
 C             LDW >= MAX(1,M),  if STOREW = 'C';
 C             LDW >= MAX(1,K),  if STOREW = 'R'.
@@ -118,7 +118,7 @@ C             On exit with TRANC = 'C' or TRANC = 'T', the leading
 C             N-by-M part of this array contains the transpose of the
 C             updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M),  if TRANC = 'N';
 C             LDC >= MAX(1,N),  if TRANC = 'T' or TRANC = 'C'.
@@ -137,7 +137,7 @@ C             On exit with TRAND = 'C' or TRAND = 'T', the leading
 C             N-by-M part of this array contains the transpose of the
 C             updated matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= MAX(1,M),  if TRAND = 'N';
 C             LDD >= MAX(1,N),  if TRAND = 'T' or TRAND = 'C'.
@@ -154,18 +154,18 @@ C             F(i).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -20,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

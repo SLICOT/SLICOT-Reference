@@ -13,12 +13,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     RC      CHARACTER*1
+C     RC      (input) CHARACTER*1
 C             Indicates processing by columns or rows, as follows:
 C             = 'R':  Row transformations are applied;
 C             = 'C':  Column transformations are applied.
 C
-C     UL      CHARACTER*1
+C     UL      (input) CHARACTER*1
 C             Indicates whether AB is upper or lower Hessenberg matrix,
 C             as follows:
 C             = 'U':  AB is upper Hessenberg;
@@ -33,13 +33,15 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,M)
 C             The leading M-by-M part of this array must contain a
 C             matrix A in Hessenberg form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
-C     LAMBD1, (input) DOUBLE PRECISION
-C     LAMBD2, These variables must contain the 2-by-2 block to be added
-C     LAMBD3, to the diagonal blocks of A.
-C     LAMBD4
+C     LAMBD1  (input) DOUBLE PRECISION
+C     LAMBD2  (input) DOUBLE PRECISION
+C     LAMBD3  (input) DOUBLE PRECISION
+C     LAMBD4  (input) DOUBLE PRECISION
+C             These variables must contain the 2-by-2 block to be added
+C             to the diagonal blocks of A.
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (2*M)
 C             On entry, this array must contain the two right-hand
@@ -49,7 +51,7 @@ C             vectors of the Hessenberg system, stored row-wise.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity of
 C             the triangular factor R of the Hessenberg matrix. A matrix
 C             whose estimated condition number is less than 1/TOL is
@@ -57,22 +59,22 @@ C             considered to be nonsingular.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*M)
+C     IWORK   (input/output) INTEGER array, dimension (2*M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDDWOR,2*M+3)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDDWOR,2*M+3)
 C             The leading 2*M-by-2*M part of this array is used for
 C             computing the triangular factor of the QR decomposition
 C             of the Hessenberg matrix. The remaining 6*M elements are
 C             used as workspace for the computation of the reciprocal
 C             condition estimate.
 C
-C     LDDWOR  INTEGER
+C     LDDWOR  (input) INTEGER
 C             The leading dimension of array DWORK.
 C             LDDWOR >= MAX(1,2*M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if the Hessenberg matrix is (numerically) singular.
 C                   That is, its estimated reciprocal condition number

@@ -43,13 +43,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     STAGES  CHARACTER*1
+C     STAGES  (input) CHARACTER*1
 C             Specifies the reduction stages to be performed as follows:
 C             = 'F':  Perform the forward stage only;
 C             = 'B':  Perform the backward stage only;
 C             = 'A':  Perform both (all) stages.
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix U the state-space transformations as follows:
 C             = 'N':  Do not form U;
@@ -58,7 +58,7 @@ C                     STAGES <> 'B'), or updated (if STAGES = 'B'), and
 C                     the orthogonal transformation matrix U is
 C                     returned.
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix V the input-space transformations as follows:
 C             = 'N':  Do not form V;
@@ -90,7 +90,7 @@ C             zero.  If STAGES <> 'F', the subdiagonal blocks of A are
 C             triangularized by RQ factorization, and the annihilated
 C             elements are explicitly zeroed.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -106,7 +106,7 @@ C             this array contains the transformed input matrix
 C             U' * B * V, with all elements but the first block set to
 C             zero and the first block in upper triangular form.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -123,7 +123,7 @@ C             If JOBU = 'N', the array U is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDU = 1 and
 C             declare this array to be U(1,1) in the calling program).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             If JOBU = 'I', LDU >= MAX(1,N);  if JOBU = 'N', LDU >= 1.
 C
@@ -135,7 +135,7 @@ C             referenced and can be supplied as a dummy array (i.e. set
 C             parameter  LDV = 1 and declare this array to be V(1,1) in
 C             the calling program).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.
 C             If STAGES <> 'F' and JOBV = 'I', LDV >= MAX(1,M);
 C             if STAGES = 'F' or JOBV = 'N', LDV >= 1.
@@ -158,7 +158,7 @@ C             KSTAIR is input if STAGES = 'B', and output otherwise.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -174,14 +174,14 @@ C             TOL is not referenced if STAGES = 'B'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C             IWORK is not referenced if STAGES = 'B'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If STAGES <> 'B', LDWORK >= MAX(1, N + MAX(N,3*M));
 C             If STAGES =  'B', LDWORK >= MAX(1, M + MAX(N,M)).
@@ -189,7 +189,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

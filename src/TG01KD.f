@@ -16,19 +16,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is an upper triangular or an identity
 C             matrix, as follows:
 C             = 'U':  The matrix E is an upper triangular matrix;
 C             = 'I':  The matrix E is assumed identity and is not given.
 C
-C     COMPC   CHARACTER*1
+C     COMPC   (input) CHARACTER*1
 C             Indicates whether the user wishes to transform the system
 C             output matrix C, as follows:
 C             = 'C':  Transform the system output matrix C;
 C             = 'N':  Do not transform the system output matrix C.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Q the orthogonal row transformations, as follows:
 C             = 'N':  Do not form Q;
@@ -37,7 +37,7 @@ C                     orthogonal transformation matrix Q is returned;
 C             = 'U':  The given matrix Q is updated by the orthogonal
 C                     transformations used.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal column transformations, as
 C             follows:
@@ -60,7 +60,7 @@ C             contain the original state matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed state matrix Q'*A*Z.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,*)
@@ -75,7 +75,7 @@ C             triangular part of the transformed descriptor matrix,
 C             Q'*E*Z.
 C             If JOBE = 'I', this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'U';
 C             LDE >= 1,        if JOBE = 'I'.
@@ -97,7 +97,7 @@ C             (N-1)*INCC+1 of this array contain the transformed output
 C             vector C*Z.
 C             If COMPC = 'N', this array is not referenced.
 C
-C     INCC    INTEGER
+C     INCC    (input) INTEGER
 C             If COMPC = 'C', the increment between successive values
 C             of C.  INCC > 0.
 C             If COMPC = 'N', INCC is not used.
@@ -111,7 +111,7 @@ C             array contains the orthogonal transformation matrix used
 C             (Q1*Q if COMPQ = 'U').
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,        if COMPQ =  'N';
 C             LDQ >= max(1,N), if COMPQ <> 'N'.
@@ -125,14 +125,14 @@ C             array contains the orthogonal transformation matrix used
 C             (Z1*Z if COMPZ = 'U').
 C             If COMPZ = 'N', this array is not referenced.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= 1,        if COMPZ =  'N';
 C             LDZ >= max(1,N), if COMPZ <> 'N'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

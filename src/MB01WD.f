@@ -28,24 +28,24 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the formula to be evaluated, as follows:
 C             = 'C':  formula (1), "continuous-time" case;
 C             = 'D':  formula (2), "discrete-time" case.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrix R and
 C             triangular matrix T are given, as follows:
 C             = 'U':  the upper triangular parts of R and T are given;
 C             = 'L':  the lower triangular parts of R and T are given;
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( M ) to be used, as follows:
 C             = 'N':  op( M ) = M;
 C             = 'T':  op( M ) = M';
 C             = 'C':  op( M ) = M'.
 C
-C     HESS    CHARACTER*1
+C     HESS    (input) CHARACTER*1
 C             Specifies the form of the matrix A, as follows:
 C             = 'F':  matrix A is full;
 C             = 'H':  matrix A is Hessenberg (or Schur), either upper
@@ -77,7 +77,7 @@ C             this array contains the corresponding triangular part of
 C                                 _
 C             the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
@@ -96,7 +96,7 @@ C                A*T, otherwise,
 C             if DICO = 'D' (and in this case, these products have a
 C             Hessenberg form, if HESS = 'H').
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     T       (input) DOUBLE PRECISION array, dimension (LDT,N)
@@ -109,12 +109,12 @@ C             this array must contain the lower triangular matrix T and
 C             the strictly upper triangular part need not be set to zero
 C             (and it is not referenced).
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value.

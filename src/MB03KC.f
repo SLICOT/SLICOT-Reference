@@ -65,7 +65,7 @@ C             dimension LDA.
 C             On exit, this array contains at position IXA(k) the
 C             N-by-N matrix Te_k stored with leading dimension LDA.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             Leading dimension of the matrices Ae_k and Te_k in the
 C             one-dimensional array A.  LDA >= N.
 C

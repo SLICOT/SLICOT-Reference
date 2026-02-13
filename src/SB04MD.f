@@ -32,7 +32,7 @@ C             leading N-by-N part, together with the elements 2,3,...,N
 C             of array DWORK, contain the orthogonal transformation
 C             matrix U (stored in factored form).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -41,7 +41,7 @@ C             contain the coefficient matrix B of the equation.
 C             On exit, the leading M-by-M part of this array contains
 C             the quasi-triangular Schur factor S of the matrix B'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,M)
@@ -50,7 +50,7 @@ C             contain the coefficient matrix C of the equation.
 C             On exit, the leading N-by-M part of this array contains
 C             the solution matrix X of the problem.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,M)
@@ -58,21 +58,21 @@ C             The leading M-by-M part of this array contains the
 C             orthogonal matrix Z used to transform B' to real upper
 C             Schur form.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= MAX(1,M).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (4*N)
+C     IWORK   (input/output) INTEGER array, dimension (4*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, and DWORK(2), DWORK(3),..., DWORK(N) contain
 C             the scalar factors of the elementary reflectors used to
 C             reduce A to upper Hessenberg form, as returned by LAPACK
 C             Library routine DGEHRD.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = MAX(1, 2*N*N + 8*N, 5*M, N + M).
 C             For optimum performance LDWORK should be larger.
@@ -85,7 +85,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

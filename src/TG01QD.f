@@ -25,12 +25,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the descriptor system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies the type of the domain of interest for the
 C             generalized eigenvalues, as follows:
 C             = 'S':  stability type domain (i.e., left part of complex
@@ -39,7 +39,7 @@ C             = 'U':  instability type domain (i.e., right part of complex
 C                     plane or outside of a circle);
 C             = 'N':  whole complex domain, excepting infinity.
 C
-C     JOBFI   CHARACTER*1
+C     JOBFI   (input) CHARACTER*1
 C             Specifies the type of generalized eigenvalues in the
 C             leading diagonal block(s) as follows:
 C             = 'F':  finite generalized eigenvalues are in the
@@ -108,7 +108,7 @@ C               For DICO = 'D':
 C                  Abs(eig(Af,Ef))  < ALPHA if STDOM = 'S';
 C                  Abs(eig(Af,Ef))  > ALPHA if STDOM = 'U'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -120,7 +120,7 @@ C             elements below the diagonal set to zero. Its structure
 C             corresponds to the block structure of the matrix Q'*A*Z
 C             (see description of A).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -129,7 +129,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -138,7 +138,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     N1      (output) INTEGER
@@ -164,7 +164,7 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Q, where Q' is the product of orthogonal
 C             transformations applied to A, E, and B on the left.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -172,7 +172,7 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Z, which is the product of orthogonal
 C             transformations applied to A, E, and C on the right.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
@@ -191,7 +191,7 @@ C             complex conjugate pair, with ALPHAI(j+1) negative.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -204,13 +204,13 @@ C             TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N = 0,
 C             LDWORK >= 4*N,    if STDOM = 'N';
 C             LDWORK >= 4*N+16, if STDOM = 'S' or 'U'.
@@ -224,7 +224,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

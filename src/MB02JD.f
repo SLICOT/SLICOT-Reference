@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the output of the routine as follows:
 C             = 'Q':  computes Q and R;
 C             = 'R':  only computes R.
@@ -54,7 +54,7 @@ C     TC      (input) DOUBLE PRECISION array, dimension (LDTC, L)
 C             On entry, if P = 0, the leading M*K-by-L part of this
 C             array must contain the first block column of T.
 C
-C     LDTC    INTEGER
+C     LDTC    (input) INTEGER
 C             The leading dimension of the array TC.
 C             LDTC >= MAX(1,M*K).
 C
@@ -63,7 +63,7 @@ C             On entry, if P = 0, the leading K-by-(N-1)*L part of this
 C             array must contain the first block row of T without the
 C             leading K-by-L block.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of the array TR.
 C             LDTR >= MAX(1,K).
 C
@@ -77,7 +77,7 @@ C             M*K-by-MIN( S*L, MIN( M*K,N*L )-P*L ) part of this array
 C             contains the P-th to (P+S)-th block columns of the factor
 C             Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= MAX(1,M*K), if JOB = 'Q';
 C             LDQ >= 1,          if JOB = 'R'.
@@ -96,13 +96,13 @@ C             factor R.
 C             Note that elements in the strictly upper triangular part
 C             will not be referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.
 C             LDR >= MAX( 1, MIN( N, N-P+1 )*L )
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -17,  DWORK(1) returns the minimum
@@ -114,7 +114,7 @@ C             If JOB = 'R', the first 1 + (N-1)*L*( 2*K + L ) elements
 C             of DWORK should be preserved during successive calls of
 C             the routine.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             JOB = 'Q':
 C                LDWORK >= 1 + ( M*K + ( N - 1 )*L )*( L + 2*K ) + 6*L
@@ -135,7 +135,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

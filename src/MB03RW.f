@@ -34,7 +34,7 @@ C             The leading M-by-M upper triangular part of this array
 C             must contain the matrix A of the Sylvester equation.
 C             The elements below the diagonal are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input) COMPLEX*16 array, dimension (LDB,N)
@@ -42,7 +42,7 @@ C             The leading N-by-N upper triangular part of this array
 C             must contain the matrix B of the Sylvester equation.
 C             The elements below the diagonal are not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) COMPLEX*16 array, dimension (LDC,N)
@@ -58,12 +58,12 @@ C             absolute value greater than PMAX. Part of the matrix C has
 C             possibly been overwritten with the corresponding part
 C             of X.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  an element of X had the absolute value greater than
 C                   the given value PMAX.

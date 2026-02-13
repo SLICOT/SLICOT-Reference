@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBA    CHARACTER*1
+C     JOBA    (input) CHARACTER*1
 C             = 'N':  do not reduce A22;
 C             = 'R':  reduce A22 to an SVD form.
 C
@@ -68,7 +68,7 @@ C             where A11 is a RANKE-by-RANKE matrix and Ar is a
 C             RNKA22-by-RNKA22 invertible diagonal matrix, with
 C             decresingly ordered positive diagonal elements.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -85,7 +85,7 @@ C             where Er is a RANKE-by-RANKE invertible diagonal matrix
 C             having on the diagonal the decreasingly ordered positive
 C             singular values of E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -94,7 +94,7 @@ C             contain the input/state matrix B.
 C             On exit, the leading L-by-M part of this array contains
 C             the transformed matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,L) if M > 0 or LDB >= 1 if M = 0.
 C
@@ -104,7 +104,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Q       (output) DOUBLE PRECISION array, dimension (LDQ,L)
@@ -112,7 +112,7 @@ C             The leading L-by-L part of this array contains the
 C             orthogonal matrix Q, which is the accumulated product of
 C             transformations applied to A, E, and B on the left.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= MAX(1,L).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -120,7 +120,7 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Z, which is the accumulated product of
 C             transformations applied to A, E, and C on the right.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= MAX(1,N).
 C
 C     RANKE   (output) INTEGER
@@ -141,7 +141,7 @@ C             If JOBA = 'N', then RNKA22 is not referenced.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in determining the rank of E
 C             and of A22. If TOL > 0, then singular values less than
 C             TOL*SVMAX are treated as zero, where SVMAX is the maximum
@@ -152,18 +152,18 @@ C             (see LAPACK Library routine DLAMCH). TOL < 1.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,MIN(L,N) +
 C                           MAX(3*MIN(L,N)+MAX(L,N), 5*MIN(L,N), M, P)).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

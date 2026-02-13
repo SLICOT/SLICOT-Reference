@@ -48,14 +48,14 @@ C             The leading N-by-N part of this array must contain the
 C             stable state dynamics matrix A in a real Schur canonical
 C             form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix B, corresponding to the Schur matrix A.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
@@ -63,14 +63,14 @@ C             The leading P-by-N part of this array must contain the
 C             state/output matrix C, corresponding to the Schur
 C             matrix A.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array must
 C             contain the full row rank input/output matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     SCALEC  (output) DOUBLE PRECISION
@@ -84,7 +84,7 @@ C             The leading N-by-N upper triangular part of this array
 C             contains the Cholesky factor Su of the cotrollability
 C             Grammian P = Su*Su' satisfying (1).
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N).
 C
 C     R       (output) DOUBLE PRECISION array, dimension (LDR,N)
@@ -92,14 +92,14 @@ C             The leading N-by-N upper triangular part of this array
 C             contains the Cholesky factor Ru of the observability
 C             Grammian Q = Ru'*Ru satisfying (2).
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N)
+C     IWORK   (input/output) INTEGER array, dimension (2*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK and DWORK(2) contains RCOND, the reciprocal
 C             condition number of the U11 matrix from the expression
@@ -107,17 +107,17 @@ C             used to compute X = U21*inv(U11). A small value RCOND
 C             indicates possible ill-conditioning of the Riccati
 C             equation (3).
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 2, N*(MAX(N,M,P)+5),
 C                            2*N*P+MAX(P*(M+2),10*N*(N+1) ) ).
 C             For optimum performance LDWORK should be larger.
 C
-C     BWORK   LOGICAL array, dimension 2*N
+C     BWORK   (input/output) LOGICAL array, dimension 2*N
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

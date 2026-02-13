@@ -18,13 +18,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the spectrum separation to be
 C             performed as follows:
 C             = 'C':  continuous-time sense;
 C             = 'D':  discrete-time sense.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies whether the domain of interest is of stability
 C             type (left part of complex plane or inside of a circle)
 C             or of instability type (right part of complex plane or
@@ -32,7 +32,7 @@ C             outside of a circle) as follows:
 C             = 'S':  stability type domain;
 C             = 'U':  instability type domain.
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates how the performed orthogonal transformations UT
 C             are accumulated, as follows:
 C             = 'I':  U is initialized to the unit matrix and the matrix
@@ -45,8 +45,9 @@ C
 C     N       (input) INTEGER
 C             The order of the matrices A and U.  N >= 1.
 C
-C     NLOW,   (input) INTEGER
-C     NSUP    NLOW and NSUP specify the boundary indices for the rows
+C     NLOW    (input) INTEGER
+C     NSUP    (input) INTEGER
+C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal submatrix of A whose diagonal
 C             blocks are to be reordered.  1 <= NLOW <= NSUP <= N.
 C
@@ -79,7 +80,7 @@ C               For DICO = 'D':
 C                  Abs(lambda(D)) < ALPHA if STDOM = 'S';
 C                  Abs(lambda(D)) > ALPHA if STDOM = 'U'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -95,7 +96,7 @@ C             array contains the matrix UT of the performed orthogonal
 C             transformations.
 C             Array U need not be set on entry if JOBU = 'I'.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
 C     NDIM    (output) INTEGER
@@ -111,11 +112,11 @@ C             subspace.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

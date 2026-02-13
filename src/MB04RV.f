@@ -47,7 +47,7 @@ C             On entry, the leading M-by-M upper triangular part of this
 C             array must contain the matrix A in the generalized complex
 C             Schur form, as returned by LAPACK routine ZGGES.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1, M).
 C
 C     B       (input) COMPLEX*16 array, dimension (LDB, N)
@@ -55,7 +55,7 @@ C             On entry, the leading N-by-N upper triangular part of this
 C             array must contain the matrix B in the generalized complex
 C             Schur form.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1, N).
 C
 C     C       (input/output) COMPLEX*16 array, dimension (LDC, N)
@@ -65,7 +65,7 @@ C             in (1).
 C             On exit, if INFO = 0, the leading M-by-N part of this
 C             array contains the solution R.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1, M).
 C
 C     D       (input) COMPLEX*16 array, dimension (LDD, M)
@@ -73,7 +73,7 @@ C             On entry, the leading M-by-M upper triangular part of this
 C             array must contain the matrix D in the generalized complex
 C             Schur form. The diagonal elements are non-negative real.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1, M).
 C
 C     E       (input) COMPLEX*16 array, dimension (LDE, N)
@@ -81,7 +81,7 @@ C             On entry, the leading N-by-N upper triangular part of this
 C             array must contain the matrix E in the generalized complex
 C             Schur form. The diagonal elements are non-negative real.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= max(1, N).
 C
 C     F       (input/output) COMPLEX*16 array, dimension (LDF, N)
@@ -91,7 +91,7 @@ C             in (1).
 C             On exit, if INFO = 0, the leading M-by-N part of this
 C             array contains the solution L.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= max(1, M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -104,7 +104,7 @@ C             and F = 0. Normally, SCALE = 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  an element of R or L had the absolute value greater
 C                   than the given value PMAX.

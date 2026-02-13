@@ -84,7 +84,7 @@ C             Note that this condition is not checked by the routine.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             This parameter defines the multiplicity of singular values
 C             by considering all singular values within an interval of
 C             length TOL as coinciding. TOL is used in checking how many
@@ -93,7 +93,7 @@ C             computing an appropriate upper bound THETA by a bisection
 C             method, TOL is used as a stopping criterion defining the
 C             minimum (absolute) subinterval width.  TOL >= 0.
 C
-C     RELTOL  DOUBLE PRECISION
+C     RELTOL  (input) DOUBLE PRECISION
 C             This parameter specifies the minimum relative width of an
 C             interval. When an interval is narrower than TOL, or than
 C             RELTOL times the larger (in magnitude) endpoint, then it
@@ -104,7 +104,7 @@ C             is machine precision (see LAPACK Library routine DLAMCH).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warnings;
 C             = 1:  if the value of L has been increased as the L-th
 C                   smallest singular value of J coincides with the
@@ -112,7 +112,7 @@ C                   (L+1)-th smallest one.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -21,13 +21,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1                                         _
+C     UPLO    (input) CHARACTER*1                                         _
 C             Specifies which triangles of the symmetric matrices R, R,
 C             and X are given as follows:
 C             = 'U':  the upper triangular part is given;
 C             = 'L':  the lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( A ) = A;
@@ -72,7 +72,7 @@ C             corresponding part of the matrix expression
 C             beta*op( A )*T*op( A )', where T is the triangular matrix
 C             defined in the Method section.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,M).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,k)
@@ -83,7 +83,7 @@ C             array must contain the matrix A.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             N-by-M part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,l),
 C             where l is M when TRANS = 'N' and is N when TRANS = 'T' or
 C             TRANS = 'C'.
@@ -100,25 +100,25 @@ C             upper triangular part of the array is not referenced.
 C             On exit, each diagonal element of this array has half its
 C             input value, but the other elements are not modified.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, the leading M-by-N part of this
 C             array (with the leading dimension MAX(1,M)) returns the
 C             matrix product beta*op( A )*T, where T is the triangular
 C             matrix defined in the Method section.
 C             This array is not referenced when beta = 0.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= MAX(1,M*N), if  beta <> 0;
 C             LDWORK >= 1,          if  beta =  0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value.

@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPEG   CHARACTER*1
+C     TYPEG   (input) CHARACTER*1
 C             Specifies the type of the generator, as follows:
 C             = 'D':  generator is column oriented and rank
 C                     deficient;
@@ -26,7 +26,7 @@ C                     deficient.
 C             Note that this parameter must be equivalent with the
 C             used TYPEG in the call of MB02CU.
 C
-C     STRUCG  CHARACTER*1
+C     STRUCG  (input) CHARACTER*1
 C             Information about the structure of the generators,
 C             as follows:
 C             = 'T':  the trailing block of the positive generator
@@ -69,7 +69,7 @@ C             On entry, if TYPEG = 'D', the leading K-by-K part of this
 C             array must contain the matrix A1 as returned by MB02CU.
 C             If TYPEG = 'C' or 'R', this array is not referenced.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The leading dimension of the array A1.
 C             If TYPEG = 'D',                   LDA1 >= MAX(1,K);
 C             if TYPEG = 'C'  or  TYPEG = 'R',  LDA1 >= 1.
@@ -84,7 +84,7 @@ C             On entry, if TYPEG = 'R', the leading (P-K)-by-K part of
 C             this array must contain the matrix A2 as returned by
 C             MB02CU.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The leading dimension of the array A2.
 C             If P = K,                  LDA2 >= 1;
 C             If P > K and (TYPEG = 'D' or TYPEG = 'C'),
@@ -100,7 +100,7 @@ C             returned by MB02CU.
 C             On entry, if TYPEG = 'R', the leading Q-by-K part of this
 C             array must contain the matrix B as returned by MB02CU.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             If Q = 0,                  LDB >= 1;
 C             If Q > 0 and (TYPEG = 'D' or TYPEG = 'C'),
@@ -123,7 +123,7 @@ C             On exit, if TYPEG = 'R', the leading K-by-N part of this
 C             array contains the first part of the transformed positive
 C             generator.
 C
-C     LDF1    INTEGER
+C     LDF1    (input) INTEGER
 C             The leading dimension of the array F1.
 C             If TYPEG = 'D'  or  TYPEG = 'C',   LDF1 >= MAX(1,N);
 C             if TYPEG = 'R',                    LDF1 >= MAX(1,K).
@@ -144,7 +144,7 @@ C             On exit, if TYPEG = 'R', the leading (P-K)-by-N part of
 C             this array contains the second part of the transformed
 C             positive generator.
 C
-C     LDF2    INTEGER
+C     LDF2    (input) INTEGER
 C             The leading dimension of the array F2.
 C             If P = K,                  LDF2 >= 1;
 C             If P > K and (TYPEG = 'D' or TYPEG = 'C'),
@@ -166,7 +166,7 @@ C             negative generator.
 C             On exit, if TYPEG = 'R', the leading Q-by-N part of this
 C             array contains the transformed negative generator.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.
 C             If Q = 0,                  LDG >= 1;
 C             If Q > 0 and (TYPEG = 'D' or TYPEG = 'C'),
@@ -185,11 +185,11 @@ C             returned by MB02CU.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = -23,  DWORK(1) returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             TYPEG = 'D':               LDWORK >= MAX(1,N);
 C             (TYPEG = 'C' or TYPEG = 'R')  and  NB <= 0:
@@ -199,7 +199,7 @@ C                                        LDWORK >= MAX(1,( N + K )*NB).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

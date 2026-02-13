@@ -32,7 +32,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies if the pencil is in lower or upper block
 C             triangular form on entry, as follows:
 C             = 'U': Upper block triangular, eigenvalues are exchanged
@@ -58,7 +58,7 @@ C     PREC    (input) DOUBLE PRECISION
 C             The machine precision, (relative machine precision)*base.
 C             See the LAPACK Library routine DLAMCH.
 C
-C     A       (input or input/output) DOUBLE PRECISION array, dimension
+C     A       (input/output) DOUBLE PRECISION array, dimension
 C                (LDA, N1+N2)
 C             On entry, the leading (N1+N2)-by-(N1+N2) part of this
 C             array must contain the matrix A of the pencil aAB - bD.
@@ -69,10 +69,10 @@ C                               [  0 1 ]
 C             J' A J, where J = [ -1 0 ]; otherwise, this array is
 C             unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N1+N2.
 C
-C     B       (input or input/output) DOUBLE PRECISION array, dimension
+C     B       (input/output) DOUBLE PRECISION array, dimension
 C                (LDB, N1+N2)
 C             On entry, the leading (N1+N2)-by-(N1+N2) part of this
 C             array must contain the matrix B of the pencil aAB - bD.
@@ -81,7 +81,7 @@ C             UPLO = 'L', need not be set to zero.
 C             On exit, if N1 = N2 = 1, this array contains the matrix
 C             J' B J; otherwise, this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N1+N2.
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension
@@ -93,36 +93,36 @@ C             (N1+N2)-by-(N1+N2) part of this array contains the
 C             transformed matrix D in real Schur form. If N1 = 1 and
 C             N2 = 1, this array contains the matrix J' D J.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= N1+N2.
 C
 C     Q1      (output) DOUBLE PRECISION array, dimension (LDQ1, N1+N2)
 C             The leading (N1+N2)-by-(N1+N2) part of this array contains
 C             the first orthogonal transformation matrix.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.  LDQ1 >= N1+N2.
 C
 C     Q2      (output) DOUBLE PRECISION array, dimension (LDQ2, N1+N2)
 C             The leading (N1+N2)-by-(N1+N2) part of this array contains
 C             the second orthogonal transformation matrix.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.  LDQ2 >= N1+N2.
 C
 C     Q3      (output) DOUBLE PRECISION array, dimension (LDQ3, N1+N2)
 C             The leading (N1+N2)-by-(N1+N2) part of this array contains
 C             the third orthogonal transformation matrix.
 C
-C     LDQ3    INTEGER
+C     LDQ3    (input) INTEGER
 C             The leading dimension of the array Q3.  LDQ3 >= N1+N2.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             If N1+N2 = 2 then DWORK is not referenced.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If N1+N2 = 2, then LDWORK = 0; otherwise,
 C             LDWORK >= 16*N1 + 10*N2 + 23, UPLO = 'U';
@@ -130,7 +130,7 @@ C             LDWORK >= 10*N1 + 16*N2 + 23, UPLO = 'L'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             = 1: the QZ iteration failed in the LAPACK routine DGGEV;
 C             = 2: another error occured while executing a routine in

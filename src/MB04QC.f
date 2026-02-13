@@ -28,39 +28,39 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     STRAB   CHARACTER*1
+C     STRAB   (input) CHARACTER*1
 C             Specifies the structure of the first blocks of A and B:
 C             = 'Z':  the leading K-by-N submatrices of op(A) and op(B)
 C                     are (implicitly) assumed to be zero;
 C             = 'N';  no structure to mention.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op( A ) as follows:
 C             = 'N':  op( A ) = A;
 C             = 'T':  op( A ) = A';
 C             = 'C':  op( A ) = A'.
 C
-C     TRANB   CHARACTER*1
+C     TRANB   (input) CHARACTER*1
 C             Specifies the form of op( B ) as follows:
 C             = 'N':  op( B ) = B;
 C             = 'T':  op( B ) = B';
 C             = 'C':  op( B ) = B'.
 C
-C     DIRECT  CHARACTER*1
+C     DIRECT  (input) CHARACTER*1
 C             This is a dummy argument, which is reserved for future
 C             extensions of this subroutine. Not referenced.
 C
-C     TRANQ   CHARACTER*1
+C     TRANQ   (input) CHARACTER*1
 C             = 'N':  apply Q;
 C             = 'T':  apply Q'.
 C
-C     STOREV  CHARACTER*1
+C     STOREV  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in V are stored:
 C             = 'C':  columnwise;
 C             = 'R':  rowwise.
 C
-C     STOREW  CHARACTER*1
+C     STOREW  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in W are stored:
 C             = 'C':  columnwise;
@@ -90,7 +90,7 @@ C             On entry with STOREV = 'R', the leading K-by-M part of
 C             this array must contain in its rows the vectors which
 C             define the elementary reflector used to form parts of Q.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= MAX(1,M),  if STOREV = 'C';
 C             LDV >= MAX(1,K),  if STOREV = 'R'.
@@ -105,7 +105,7 @@ C             On entry with STOREW = 'R', the leading K-by-M part of
 C             this array must contain in its rows the vectors which
 C             define the elementary reflector used to form parts of Q.
 C
-C     LDW     INTEGER
+C     LDW     (input) INTEGER
 C             The leading dimension of the array W.
 C             LDW >= MAX(1,M),  if STOREW = 'C';
 C             LDW >= MAX(1,K),  if STOREW = 'R'.
@@ -117,7 +117,7 @@ C             R and S of the symplectic block reflector Q. The
 C             (strictly) lower portions of this array are not
 C             referenced.
 C
-C     LDRS    INTEGER
+C     LDRS    (input) INTEGER
 C             The leading dimension of the array RS.  LDRS >= MAX(1,K).
 C
 C     T       (input) DOUBLE PRECISION array, dimension (K,9*K)
@@ -126,7 +126,7 @@ C             contain the upper triangular matrices defining the factor
 C             T of the symplectic block reflector Q. The (strictly)
 C             lower portions of this array are not referenced.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= MAX(1,K).
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension
@@ -137,7 +137,7 @@ C             array must contain the matrix A.
 C             On entry with TRANA = 'T' or TRANA = 'C', the leading
 C             N-by-M part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,M),  if TRANA = 'N';
 C             LDA >= MAX(1,N),  if TRANA = 'C' or TRANA = 'T'.
@@ -150,14 +150,14 @@ C             array must contain the matrix B.
 C             On entry with TRANB = 'T' or TRANB = 'C', the leading
 C             N-by-M part of this array must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,M),  if TRANB = 'N';
 C             LDB >= MAX(1,N),  if TRANB = 'C' or TRANB = 'T'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK), where
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK), where
 C             LDWORK >= 8*N*K,   if STRAB = 'Z',
 C             LDWORK >= 9*N*K,   if STRAB = 'N'.
 C

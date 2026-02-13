@@ -35,13 +35,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of Lyapunov equation to be solved, as
 C             follows:
 C             = 'C':  Equation (1), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization
 C             of the matrix A is supplied on entry, as follows:
 C             = 'F':  On entry, A and Q contain the factors from the
@@ -49,7 +49,7 @@ C                     real Schur factorization of the matrix A;
 C             = 'N':  The Schur factorization of A will be computed
 C                     and the factors will be stored in A and Q.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(K) to be used, as follows:
 C             = 'N':  op(K) = K    (No transpose);
 C             = 'T':  op(K) = K**T (Transpose).
@@ -76,10 +76,10 @@ C             array contains the upper quasi-triangular matrix S in
 C             Schur canonical form from the Shur factorization of A.
 C             The contents of the array A is not modified if FACT = 'F'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
-C     Q       (input or output) DOUBLE PRECISION array, dimension
+C     Q       (input/output) DOUBLE PRECISION array, dimension
 C             (LDQ,N)
 C             On entry, if FACT = 'F', then the leading N-by-N part of
 C             this array must contain the orthogonal matrix Q of the
@@ -89,7 +89,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the orthogonal matrix Q of the Schur factorization of A.
 C             The contents of the array Q is not modified if FACT = 'F'.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -106,7 +106,7 @@ C             the upper triangular Cholesky factor U of the solution
 C             matrix X of the problem, X = op(U)'*op(U).
 C             If M = 0 and N > 0, then U is set to zero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N,M), if TRANS = 'N';
 C             LDB >= MAX(1,N),   if TRANS = 'T'.
@@ -122,13 +122,13 @@ C             imaginary parts, respectively, of the eigenvalues of A.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 1, DWORK(1) returns the
 C             optimal value of LDWORK.
 C             On exit, if INFO = -16, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If M > 0, LDWORK >= MAX(1,4*N);
 C             If M = 0, LDWORK >= 1.
@@ -142,7 +142,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

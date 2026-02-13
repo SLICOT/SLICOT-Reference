@@ -17,12 +17,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LTRAN   LOGICAL
+C     LTRAN   (input) LOGICAL
 C             Specifies the form of op(T) to be used, as follows:
 C             = .FALSE.:  op(T) = T,
 C             = .TRUE. :  op(T) = T'.
 C
-C     LUPPER  LOGICAL
+C     LUPPER  (input) LOGICAL
 C             Specifies which triangle of the matrix B is used, and
 C             which triangle of the matrix X is computed, as follows:
 C             = .TRUE. :  The upper triangular part;
@@ -34,7 +34,7 @@ C     T       (input) DOUBLE PRECISION array, dimension (LDT,2)
 C             The leading 2-by-2 part of this array must contain the
 C             matrix T.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= 2.
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,2)
@@ -47,7 +47,7 @@ C             triangular part of this array must contain the lower
 C             triangular part of the symmetric matrix B and the strictly
 C             upper triangular part of B is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= 2.
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -66,7 +66,7 @@ C             strictly upper triangular part of X is not referenced.
 C             Note that X may be identified with B in the calling
 C             statement.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= 2.
 C
 C     XNORM   (output) DOUBLE PRECISION
@@ -74,7 +74,7 @@ C             The infinity-norm of the solution.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if T has almost reciprocal eigenvalues, so T
 C                   is perturbed to get a nonsingular equation.

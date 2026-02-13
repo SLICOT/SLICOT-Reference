@@ -41,10 +41,10 @@ C             Specifically, P(i,j,k) must contain the (i,j)-th element
 C             of P(k-1), which is the cofficient of s**(k-1) of P(s),
 C             where i = 1,2,...,MP, j = 1,2,...,NP and k = 1,2,...,DP+1.
 C
-C     LDP1    INTEGER
+C     LDP1    (input) INTEGER
 C             The leading dimension of array P.  LDP1 >= MAX(1,MP).
 C
-C     LDP2    INTEGER
+C     LDP2    (input) INTEGER
 C             The second dimension of array P.   LDP2 >= MAX(1,NP).
 C
 C     DK      (output) INTEGER
@@ -63,7 +63,7 @@ C             The leading NP-by-SUM(i*GAM(i)) part of this array
 C             contains the right nullspace vectors of P(s) in condensed
 C             form (as defined in METHOD), where i = 1,2,...,DK+1.
 C
-C     LDNULL  INTEGER
+C     LDNULL  (input) INTEGER
 C             The leading dimension of array NULLSP.
 C             LDNULL >= MAX(1,NP).
 C
@@ -76,15 +76,15 @@ C             KER(i,j,m) contains the (i,j)-th element of K(m-1), which
 C             is the coefficient of s**(m-1) of K(s), where i = 1,2,...,
 C             NP, j = 1,2,...,nk and m = 1,2,...,DK+1.
 C
-C     LDKER1  INTEGER
+C     LDKER1  (input) INTEGER
 C             The leading dimension of array KER.  LDKER1 >= MAX(1,NP).
 C
-C     LDKER2  INTEGER
+C     LDKER2  (input) INTEGER
 C             The second dimension of array KER.   LDKER2 >= MAX(1,NP).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance below which matrix elements are considered
 C             to be zero. If the user sets TOL to be less than
 C             10 * EPS * MAX( ||A|| , ||E|| ), then the tolerance is
@@ -96,17 +96,17 @@ C             A and E are matrices (as defined in METHOD).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (m+2*MAX(n,m+1)+n),
+C     IWORK   (input/output) INTEGER array, dimension (m+2*MAX(n,m+1)+n),
 C             where m = DP*MP and n = (DP-1)*MP + NP.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= m*n*n + 2*m*n + 2*n*n.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

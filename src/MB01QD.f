@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             TYPE indices the storage type of the input matrix.
 C             = 'G':  A is a full matrix.
 C             = 'L':  A is a (block) lower triangular matrix.
@@ -74,7 +74,7 @@ C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             Not used in this implementation.
 C
 C     METHOD

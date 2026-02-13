@@ -65,21 +65,21 @@ C             The leading NSMP-by-M part of this array must contain the
 C             set of input samples,
 C             U = ( U(1,1),...,U(1,M); ...; U(NSMP,1),...,U(NSMP,M) ).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= MAX(1,NSMP).
 C
 C     Y       (output) DOUBLE PRECISION array, dimension (LDY, L)
 C             The leading NSMP-by-L part of this array contains the
 C             simulated output.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= MAX(1,NSMP).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= NSMP*L + MAX( 2*NN, (N + L)*(N + M) + 2*N +
 C                                     MAX( N*(N + L), N + M + L ) )
@@ -90,7 +90,7 @@ C             A larger value of LDWORK could improve the efficiency.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

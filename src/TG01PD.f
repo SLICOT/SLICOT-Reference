@@ -34,12 +34,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the descriptor system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies whether the domain of interest is of stability
 C             type (left part of complex plane or inside of a circle)
 C             or of instability type (right part of complex plane or
@@ -47,20 +47,20 @@ C             outside of a circle) as follows:
 C             = 'S':  stability type domain;
 C             = 'U':  instability type domain.
 C
-C     JOBAE   CHARACTER*1
+C     JOBAE   (input) CHARACTER*1
 C             Specifies the shape of the matrix pair (A,E) on entry
 C             as follows:
 C             = 'S':  (A,E) is in a generalized real Schur form;
 C             = 'G':  A and E are general square dense matrices.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
 C             = 'U':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C                     This option can not be used when JOBAE = 'G'.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
 C             = 'U':  Z must contain an orthogonal matrix Z1 on entry,
@@ -80,7 +80,7 @@ C
 C     P       (input) INTEGER
 C             The number of rows of the matrix C.  P >= 0.
 C
-C     NLOW,   (input) INTEGER
+C     NLOW    (input) INTEGER
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal subpencil of A - lambda*E
@@ -120,7 +120,7 @@ C               For DICO = 'D':
 C                  Abs(eig(A12,E12)) < ALPHA if STDOM = 'S';
 C                  Abs(eig(A12,E12)) > ALPHA if STDOM = 'U'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -136,7 +136,7 @@ C             eigenvalues in the domain of interest, and the trailing
 C             part of this subpencil has generalized eigenvalues outside
 C             the domain of interest.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -145,7 +145,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -154,7 +154,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -171,7 +171,7 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q. LDQ >= MAX(1,N).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -188,7 +188,7 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z. LDZ >= MAX(1,N).
 C
 C     NDIM    (output) INTEGER
@@ -212,11 +212,11 @@ C             complex conjugate pair, with ALPHAI(j+1) negative.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 8*N+16, if JOBAE = 'G';
 C             LDWORK >= 4*N+16, if JOBAE = 'S'.
@@ -230,7 +230,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

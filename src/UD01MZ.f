@@ -30,7 +30,7 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix to be printed.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= M.
 C
 C     TEXT    (input) CHARACTER*72.
@@ -39,7 +39,7 @@ C             maximum of 72 characters). For example, TEXT = 'Matrix A'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

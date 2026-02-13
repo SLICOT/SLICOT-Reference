@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix U the unitary state-space transformations for
 C             reducing the system, as follows:
@@ -24,7 +24,7 @@ C                     unitary transformation matrix U is returned;
 C             = 'U':  The given matrix U is updated by the unitary
 C                     transformations used in the reduction.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Indicates whether the user wishes the pair (A,C) to be
 C             reduced to upper or lower observer Hessenberg form as
 C             follows:
@@ -48,7 +48,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the transformed state transition matrix U' * A * U.
 C             The annihilated elements are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -58,7 +58,7 @@ C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * U.
 C             The annihilated elements are set to zero.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,*)
@@ -77,17 +77,17 @@ C             If JOBU = 'N', the array U is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDU = 1 and
 C             declare this array to be U(1,1) in the calling program).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U. If JOBU = 'U' or
 C             JOBU = 'I', LDU >= MAX(1,N); if JOBU = 'N', LDU >= 1.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(N,P-1))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(N,P-1))
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

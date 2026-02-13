@@ -31,11 +31,11 @@ C             EVQ(K) >= 0.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, DIMENSION (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, DIMENSION (LDWORK)
 C             On exit, if LDWORK = -1 on input, then DWORK(1) returns
 C             the optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.  LDWORK >= 42.
 C
 C             If LDWORK = -1, an optimal workspace query is assumed; the
@@ -45,7 +45,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -3,7 +3,7 @@ C SPDX-License-Identifier: BSD-3-Clause
 C
       SUBROUTINE AB13DD( DICO, JOBE, EQUIL, JOBD, N, M, P, FPEAK,
      $                   A, LDA, E, LDE, B, LDB, C, LDC, D, LDD, GPEAK,
-     $                   TOL, IWORK, DWORK, LDWORK, CWORK, LCWORK,
+     $                   TOL, IWORK, DWORK, LDWORK, ZWORK, LZWORK,
      $                   INFO )
 C
 C     PURPOSE
@@ -23,24 +23,24 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system, as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general square or an identity
 C             matrix, as follows:
 C             = 'G':  E is a general square matrix;
 C             = 'I':  E is the identity matrix.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the system (A,E,B,C) or (A,B,C), as follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state space model:
 C             = 'D':  D is present;
@@ -81,7 +81,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state dynamics matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
@@ -90,7 +90,7 @@ C             contain the descriptor matrix E of the system.
 C             If JOBE = 'I', then E is assumed to be the identity
 C             matrix and is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'G';
 C             LDE >= 1,        if JOBE = 'I'.
@@ -99,14 +99,14 @@ C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             system input matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             system output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -114,7 +114,7 @@ C             If JOBD = 'D', the leading P-by-M part of this array must
 C             contain the direct transmission matrix D.
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D';
 C             LDD >= 1,        if JOBD = 'Z'.
@@ -127,19 +127,19 @@ C             as FPEAK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used to set the accuracy in determining the
 C             norm.  0 <= TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= K, where K can be computed using the following
 C             pseudo-code (or the Fortran code included in the routine)
@@ -218,20 +218,20 @@ C
 C             K = MAX( 1, 6*N*N + N*P + 2*N*M + P*M + 11*N + MAX(P,M) +
 C                         6*MIN(P,M) ).
 C
-C     CWORK   COMPLEX*16 array, dimension (LCWORK)
-C             On exit, if INFO = 0, CWORK(1) contains the optimal
-C             LCWORK.
+C     ZWORK   (input/output) COMPLEX*16 array, dimension (LZWORK)
+C             On exit, if INFO = 0, ZWORK(1) contains the optimal
+C             LZWORK.
 C
-C     LCWORK  INTEGER
-C             The dimension of the array CWORK.
-C             LCWORK >= 1,  if N = 0, or B = 0, or C = 0;
-C             LCWORK >= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
+C     LZWORK  (input) INTEGER
+C             The dimension of the array ZWORK.
+C             LZWORK >= 1,  if N = 0, or B = 0, or C = 0;
+C             LZWORK >= MAX(1, (N+M)*(N+P) + 2*MIN(P,M) + MAX(P,M)),
 C                           otherwise.
-C             For good performance, LCWORK must generally be larger.
+C             For good performance, LZWORK must generally be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -301,12 +301,12 @@ C     .. Parameters ..
 C     ..
 C     .. Scalar Arguments ..
       CHARACTER          DICO, EQUIL, JOBD, JOBE
-      INTEGER            INFO, LCWORK, LDA, LDB, LDC, LDD, LDE, LDWORK,
+      INTEGER            INFO, LZWORK, LDA, LDB, LDC, LDD, LDE, LDWORK,
      $                   M, N, P
       DOUBLE PRECISION   TOL
 C     ..
 C     .. Array Arguments ..
-      COMPLEX*16         CWORK(  * )
+      COMPLEX*16         ZWORK(  * )
       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), C( LDC, * ),
      $                   D( LDD, * ), DWORK(  * ), E( LDE, * ),
      $                   FPEAK(  2 ), GPEAK(  2 )
@@ -464,7 +464,7 @@ C
                MINCWR = MAX( 1, ( N + M )*( N + P ) +
      $                          2*MINPM + MAX( P, M ) )
             END IF
-            IF( LCWORK.LT.MINCWR )
+            IF( LZWORK.LT.MINCWR )
      $         INFO = -25
          END IF
       END IF
@@ -482,7 +482,7 @@ C
          GPEAK( 2 ) = ONE
          FPEAK( 2 ) = ONE
          DWORK( 1 ) = ONE
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = ONE
          RETURN
       END IF
 C
@@ -549,7 +549,7 @@ C
          GPEAK( 2 ) = ONE
          FPEAK( 2 ) = ONE
          DWORK( 1 ) = MAXWRK
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = ONE
          RETURN
       END IF
 C
@@ -1050,7 +1050,7 @@ C
          END IF
 C
          DWORK( 1 ) = MAXWRK
-         CWORK( 1 ) = ONE
+         ZWORK( 1 ) = ONE
          RETURN
       END IF
 C
@@ -1093,7 +1093,7 @@ C
       GAMMA = AB13DX( DICO, JOBE, JOBD, N, M, P, ZERO, DWORK( IAS ), N,
      $                DWORK( IE ), N, DWORK( IBS ), N, DWORK( IC ), P,
      $                DWORK( ID ), P, IWORK, DWORK( IWRK ),
-     $                LDWORK-IWRK+1, CWORK, LCWORK, IERR )
+     $                LDWORK-IWRK+1, ZWORK, LZWORK, IERR )
       MAXWRK = MAX( INT( DWORK( IWRK ) ) + IWRK - 1, MAXWRK )
       IF( IERR.GE.1 .AND. IERR.LE.N ) THEN
          GPEAK( 1 ) = ONE
@@ -1117,7 +1117,7 @@ C
          FPEAK( 2 ) = ZERO
       END IF
 C
-      MAXCWK = INT( CWORK( 1 ) )
+      MAXCWK = INT( ZWORK( 1 ) )
 C
       IF( DISCR ) THEN
 C
@@ -1127,8 +1127,8 @@ C
          GAMMA = AB13DX( DICO, JOBE, JOBD, N, M, P, PI, DWORK( IA ),
      $                   N, DWORK( IE ), N, DWORK( IB ), N, DWORK( IC ),
      $                   P, DWORK( ID ), P, IWORK, DWORK( IWRK ),
-     $                   LDWORK-IWRK+1, CWORK, LCWORK, IERR )
-         MAXCWK = MAX( INT( CWORK( 1 ) ), MAXCWK )
+     $                   LDWORK-IWRK+1, ZWORK, LZWORK, IERR )
+         MAXCWK = MAX( INT( ZWORK( 1 ) ), MAXCWK )
          MAXWRK = MAX( INT( DWORK( IWRK ) ) + IWRK - 1, MAXWRK )
          IF( IERR.GE.1 .AND. IERR.LE.N ) THEN
             GPEAK( 1 ) = ONE
@@ -1169,8 +1169,8 @@ C
          GAMMA = AB13DX( DICO, JOBE, JOBD, N, M, P, FPEAKS, DWORK( IA ),
      $                   N, DWORK( IE ), N, DWORK( IB ), N, DWORK( IC ),
      $                   P, DWORK( ID ), P, IWORK, DWORK( IWRK ),
-     $                   LDWORK-IWRK+1, CWORK, LCWORK, IERR )
-         MAXCWK = MAX( INT( CWORK( 1 ) ), MAXCWK )
+     $                   LDWORK-IWRK+1, ZWORK, LZWORK, IERR )
+         MAXCWK = MAX( INT( ZWORK( 1 ) ), MAXCWK )
          MAXWRK = MAX( INT( DWORK( IWRK ) ) + IWRK - 1, MAXWRK )
          IF ( DISCR ) THEN
             TM = ABS( ATAN2( SIN( FPEAKS ), COS( FPEAKS ) ) )
@@ -1209,9 +1209,9 @@ C
             GAMMA = AB13DX( DICO, JOBE, JOBD, N, M, P, OMEGA,
      $                      DWORK( IA ), N, DWORK( IE ), N, DWORK( IB ),
      $                      N, DWORK( IC ), P, DWORK( ID ), P, IWORK,
-     $                      DWORK( IWRK ), LDWORK-IWRK+1, CWORK, LCWORK,
+     $                      DWORK( IWRK ), LDWORK-IWRK+1, ZWORK, LZWORK,
      $                      IERR )
-            MAXCWK = MAX( INT( CWORK( 1 ) ), MAXCWK )
+            MAXCWK = MAX( INT( ZWORK( 1 ) ), MAXCWK )
             MAXWRK = MAX( INT( DWORK( IWRK ) ) + IWRK - 1, MAXWRK )
             IF ( DISCR ) THEN
                TM = ABS( ATAN2( SIN( OMEGA ), COS( OMEGA ) ) )
@@ -1799,9 +1799,9 @@ C
             GAMMA = AB13DX( DICO, JOBE, JOBD, N, M, P, OMEGA,
      $                      DWORK( IA ), N, DWORK( IE ), N, DWORK( IB ),
      $                      N, DWORK( IC ), P, DWORK( ID ), P, IWORK,
-     $                      DWORK( IWRK ), LDWORK-IWRK+1, CWORK, LCWORK,
+     $                      DWORK( IWRK ), LDWORK-IWRK+1, ZWORK, LZWORK,
      $                      IERR )
-            MAXCWK = MAX( INT( CWORK( 1 ) ), MAXCWK )
+            MAXCWK = MAX( INT( ZWORK( 1 ) ), MAXCWK )
             MAXWRK = MAX( INT( DWORK( IWRK ) ) + IWRK - 1, MAXWRK )
             IF ( DISCR ) THEN
                TM = ABS( ATAN2( SIN( OMEGA ), COS( OMEGA ) ) )
@@ -1847,7 +1847,7 @@ C
 C
   340 CONTINUE
       DWORK( 1 ) = MAXWRK
-      CWORK( 1 ) = MAXCWK
+      ZWORK( 1 ) = MAXCWK
       RETURN
 C *** Last line of AB13DD ***
       END

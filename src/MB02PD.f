@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the factored form of the matrix A
 C             is supplied on entry, and if not, whether the matrix A
 C             should be equilibrated before it is factored.
@@ -35,7 +35,7 @@ C             = 'N':  The matrix A will be copied to AF and factored.
 C             = 'E':  The matrix A will be equilibrated if necessary,
 C                     then copied to AF and factored.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of the system of equations as follows:
 C             = 'N':  A * X = B     (No transpose);
 C             = 'T':  A**T * X = B  (Transpose);
@@ -63,10 +63,10 @@ C             EQUED = 'R':  A := diag(R) * A;
 C             EQUED = 'C':  A := A * diag(C);
 C             EQUED = 'B':  A := diag(R) * A * diag(C).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
-C     AF      (input or output) DOUBLE PRECISION array, dimension
+C     AF      (input/output) DOUBLE PRECISION array, dimension
 C             (LDAF,N)
 C             If FACT = 'F', then AF is an input argument and on entry
 C             the leading N-by-N part of this array must contain the
@@ -86,7 +86,7 @@ C
 C     LDAF    (input) INTEGER
 C             The leading dimension of the array AF.  LDAF >= max(1,N).
 C
-C     IPIV    (input or output) INTEGER array, dimension (N)
+C     IPIV    (input/output) INTEGER array, dimension (N)
 C             If FACT = 'F', then IPIV is an input argument and on entry
 C             it must contain the pivot indices from the factorization
 C             A = P*L*U as computed by DGETRF; row i of the matrix was
@@ -98,7 +98,7 @@ C             If FACT = 'E', then IPIV is an output argument and on exit
 C             it contains the pivot indices from the factorization
 C             A = P*L*U of the equilibrated matrix A.
 C
-C     EQUED   (input or output) CHARACTER*1
+C     EQUED   (input/output) CHARACTER*1
 C             Specifies the form of equilibration that was done as
 C             follows:
 C             = 'N':  No equilibration (always true if FACT = 'N');
@@ -111,14 +111,14 @@ C                     been replaced by diag(R) * A * diag(C).
 C             EQUED is an input argument if FACT = 'F'; otherwise, it is
 C             an output argument.
 C
-C     R       (input or output) DOUBLE PRECISION array, dimension (N)
+C     R       (input/output) DOUBLE PRECISION array, dimension (N)
 C             The row scale factors for A.  If EQUED = 'R' or 'B', A is
 C             multiplied on the left by diag(R); if EQUED = 'N' or 'C',
 C             R is not accessed.  R is an input argument if FACT = 'F';
 C             otherwise, R is an output argument.  If FACT = 'F' and
 C             EQUED = 'R' or 'B', each element of R must be positive.
 C
-C     C       (input or output) DOUBLE PRECISION array, dimension (N)
+C     C       (input/output) DOUBLE PRECISION array, dimension (N)
 C             The column scale factors for A.  If EQUED = 'C' or 'B',
 C             A is multiplied on the right by diag(C); if EQUED = 'N'
 C             or 'R', C is not accessed.  C is an input argument if
@@ -137,7 +137,7 @@ C             N-by-NRHS part of this array contains diag(R)*B;
 C             if TRANS = 'T' or 'C' and EQUED = 'C' or 'B', the leading
 C             N-by-NRHS part of this array contains diag(C)*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     X       (output) DOUBLE PRECISION array, dimension (LDX,NRHS)
@@ -180,9 +180,9 @@ C             any element of A or B that makes X(j) an exact solution).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (4*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (4*N)
 C             On entry, if FACT = 'F', DWORK(1) contains the reciprocal
 C             pivot growth factor norm(A)/norm(U), computed previously
 C             by this routine, with FACT <> 'N', for the same matrix A.
@@ -198,7 +198,7 @@ C             growth factor for the leading INFO columns of A.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

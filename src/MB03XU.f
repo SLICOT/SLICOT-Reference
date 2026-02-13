@@ -33,12 +33,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LTRA    LOGICAL
+C     LTRA    (input) LOGICAL
 C             Specifies the form of op( A ) as follows:
 C             = .FALSE.:  op( A ) = A;
 C             = .TRUE.:   op( A ) = A'.
 C
-C     LTRB    LOGICAL
+C     LTRB    (input) LOGICAL
 C             Specifies the form of op( B ) as follows:
 C             = .FALSE.:  op( B ) = B;
 C             = .TRUE.:   op( B ) = B'.
@@ -71,7 +71,7 @@ C             On exit with LTRA = .TRUE., the leading N-by-(K+N) part of
 C             this array contains the matrix Aout and in the zero parts
 C             information about the elementary reflectors.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,K+N),  if LTRA = .FALSE.;
 C             LDA >= MAX(1,N),    if LTRA = .TRUE..
@@ -91,7 +91,7 @@ C             On exit with LTRB = .TRUE., the leading (K+N)-by-N part of
 C             this array contains the matrix Bout and in the zero parts
 C             information about the elementary reflectors.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N),    if LTRB = .FALSE.;
 C             LDB >= MAX(1,K+N),  if LTRB = .TRUE..
@@ -102,7 +102,7 @@ C             contain the matrix G.
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix Gout.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -112,63 +112,63 @@ C             On exit, the leading N-by-N part of this array contains
 C             the matrix Qout and in the zero parts information about
 C             the elementary reflectors used to compute the reduction.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     XA      (output) DOUBLE PRECISION array, dimension (LDXA,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix XA.
 C
-C     LDXA    INTEGER
+C     LDXA    (input) INTEGER
 C             The leading dimension of the array XA.  LDXA >= MAX(1,N).
 C
 C     XB      (output) DOUBLE PRECISION array, dimension (LDXB,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix XB.
 C
-C     LDXB    INTEGER
+C     LDXB    (input) INTEGER
 C             The leading dimension of the array XB. LDXB >= MAX(1,K+N).
 C
 C     XG      (output) DOUBLE PRECISION array, dimension (LDXG,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix XG.
 C
-C     LDXG    INTEGER
+C     LDXG    (input) INTEGER
 C             The leading dimension of the array XG. LDXG >= MAX(1,K+N).
 C
 C     XQ      (output) DOUBLE PRECISION array, dimension (LDXQ,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix XQ.
 C
-C     LDXQ    INTEGER
+C     LDXQ    (input) INTEGER
 C             The leading dimension of the array XQ.  LDXQ >= MAX(1,N).
 C
 C     YA      (output) DOUBLE PRECISION array, dimension (LDYA,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix YA.
 C
-C     LDYA    INTEGER
+C     LDYA    (input) INTEGER
 C             The leading dimension of the array YA. LDYA >= MAX(1,K+N).
 C
 C     YB      (output) DOUBLE PRECISION array, dimension (LDYB,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix YB.
 C
-C     LDYB    INTEGER
+C     LDYB    (input) INTEGER
 C             The leading dimension of the array YB.  LDYB >= MAX(1,N).
 C
 C     YG      (output) DOUBLE PRECISION array, dimension (LDYG,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix YG.
 C
-C     LDYG    INTEGER
+C     LDYG    (input) INTEGER
 C             The leading dimension of the array YG. LDYG >= MAX(1,K+N).
 C
 C     YQ      (output) DOUBLE PRECISION array, dimension (LDYQ,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix YQ.
 C
-C     LDYQ    INTEGER
+C     LDYQ    (input) INTEGER
 C             The leading dimension of the array YQ.  LDYQ >= MAX(1,N).
 C
 C     CSL     (output) DOUBLE PRECISION array, dimension (2*NB)
@@ -195,7 +195,7 @@ C             applied form the right-hand side.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (5*NB)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (5*NB)
 C
 C     METHOD
 C

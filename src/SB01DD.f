@@ -38,7 +38,7 @@ C             the real Schur form of the matrix A - B*G.
 C             The elements below the real Schur form of A are set to
 C             zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -48,7 +48,7 @@ C             as returned by SLICOT Library routine AB01ND.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     NBLK    (input) INTEGER array, dimension (N)
@@ -79,7 +79,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the orthogonal transformation matrix which reduces A - B*G
 C             to real Schur form.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= max(1,N).
 C
 C     Y       (input) DOUBLE PRECISION array, dimension (M*N)
@@ -98,12 +98,12 @@ C             The leading M-by-N part of this array contains the
 C             feedback matrix which assigns the desired eigenstructure
 C             of A - B*G.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= max(1,M).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -118,20 +118,20 @@ C             DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(M*N,M*M+2*N+4*M+1).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

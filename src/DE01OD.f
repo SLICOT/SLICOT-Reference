@@ -12,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CONV    CHARACTER*1
+C     CONV    (input) CHARACTER*1
 C             Indicates whether convolution or deconvolution is to be
 C             performed as follows:
 C             = 'C':  Convolution;
@@ -35,7 +35,7 @@ C             NOTE that this array is overwritten.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -32,7 +32,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies if the pencil is in lower or upper block
 C             triangular form on entry, as follows:
 C             = 'U': Upper block triangular, eigenvalues are exchanged
@@ -71,7 +71,7 @@ C             the matrix J' A J, where J = [ -1 0 ]; otherwise, this
 C             array contains the transformed quasi-triangular matrix in
 C             generalized real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N1+N2.
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -84,29 +84,29 @@ C             the matrix J' B J; otherwise, this array contains the
 C             transformed upper triangular matrix in generalized real
 C             Schur form.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N1+N2.
 C
 C     Q1      (output) DOUBLE PRECISION array, dimension (LDQ1, N1+N2)
 C             The leading (N1+N2)-by-(N1+N2) part of this array contains
 C             the first orthogonal transformation matrix.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.  LDQ1 >= N1+N2.
 C
 C     Q2      (output) DOUBLE PRECISION array, dimension (LDQ2, N1+N2)
 C             The leading (N1+N2)-by-(N1+N2) part of this array contains
 C             the second orthogonal transformation matrix.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.  LDQ2 >= N1+N2.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             If N1+N2 = 2 then DWORK is not referenced.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If N1+N2 = 2, then LDWORK = 0; otherwise,
 C             LDWORK >= 16*N1 + 10*N2 + 23, if UPLO = 'U';
@@ -116,7 +116,7 @@ C             For good performance LDWORK should be generally larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             = 3: the QZ iteration failed in the LAPACK routine DGGES
 C                  (if UPLO <> 'T') or DHGEQZ (if UPLO = 'T');

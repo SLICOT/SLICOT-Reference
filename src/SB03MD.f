@@ -25,19 +25,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the equation from which X is to be determined
 C             as follows:
 C             = 'C':  Equation (1), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'X':  Compute the solution only;
 C             = 'S':  Compute the separation only;
 C             = 'B':  Compute both the solution and the separation.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization
 C             of the matrix A is supplied on entry, as follows:
 C             = 'F':  On entry, A and U contain the factors from the
@@ -45,7 +45,7 @@ C                     real Schur factorization of the matrix A;
 C             = 'N':  The Schur factorization of A will be computed
 C                     and the factors will be stored in A and U.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
@@ -68,10 +68,10 @@ C             quasi-triangular matrix in Schur canonical form from the
 C             Schur factorization of A. The contents of array A is not
 C             modified if FACT = 'F'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
-C     U       (input or output) DOUBLE PRECISION array, dimension
+C     U       (input/output) DOUBLE PRECISION array, dimension
 C             (LDU,N)
 C             If FACT = 'F', then U is an input argument and on entry
 C             the leading N-by-N part of this array must contain the
@@ -80,7 +80,7 @@ C             If FACT = 'N', then U is an output argument and on exit,
 C             if INFO = 0 or INFO = N+1, it contains the orthogonal
 C             N-by-N matrix from the real Schur factorization of A.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -91,7 +91,7 @@ C             the leading N-by-N part of C has been overwritten by the
 C             symmetric solution matrix X.
 C             If JOB = 'S', C is not referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= 1,        if JOB = 'S';
 C             LDC >= MAX(1,N), otherwise.
@@ -124,14 +124,14 @@ C             If FACT = 'F', WR and WI are not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N*N)
+C     IWORK   (input/output) INTEGER array, dimension (N*N)
 C             This array is not referenced if JOB = 'X'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = N+1, DWORK(1) returns the
 C             optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and
 C             If JOB = 'X' then
 C                If FACT = 'F', LDWORK >= N*N,           for DICO = 'C';
@@ -152,7 +152,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

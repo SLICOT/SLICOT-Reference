@@ -24,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Indicates if the matrix A is or not triangular as follows:
 C             = 'L':  Matrix A is lower trapezoidal/triangular;
 C             = 'F':  Matrix A is full.
@@ -49,7 +49,7 @@ C             array contains the lower triangular matrix L.
 C             The strict upper triangular part of this array is not
 C             referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.  LDL >= MAX(1,N).
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,M)
@@ -63,7 +63,7 @@ C             triangular, if UPLO = 'L') of this array contains the
 C             trailing components (the vectors v, see Method) of the
 C             elementary reflectors used in the factorization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -72,14 +72,14 @@ C             contain the matrix B.
 C             On exit, the leading P-by-M part of this array contains
 C             the computed matrix D.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,P).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array contains the
 C             computed matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     TAU     (output) DOUBLE PRECISION array, dimension (N)
@@ -87,7 +87,7 @@ C             The scalar factors of the elementary reflectors used.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     METHOD
 C

@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to remove the
 C             uncontrollable and/or unobservable parts as follows:
 C             = 'I':  Remove both the uncontrollable and unobservable
@@ -28,7 +28,7 @@ C                     controllable descriptor representation;
 C             = 'O':  Remove the unobservable part only to get an
 C                     observable descriptor representation.
 C
-C     SYSTYP  CHARACTER*1
+C     SYSTYP  (input) CHARACTER*1
 C             Indicates the type of descriptor system algorithm
 C             to be applied according to the assumed
 C             transfer-function matrix as follows:
@@ -36,13 +36,13 @@ C             = 'R':  Rational transfer-function matrix;
 C             = 'S':  Proper (standard) transfer-function matrix;
 C             = 'P':  Polynomial transfer-function matrix.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily scale
 C             the system (A-lambda*E,B,C) as follows:
 C             = 'S':  Perform scaling;
 C             = 'N':  Do not perform scaling.
 C
-C     CKSING  CHARACTER*1
+C     CKSING  (input) CHARACTER*1
 C             Specifies whether the user wishes to check if the pencil
 C             (A-lambda*E) is singular as follows:
 C             = 'C':  Check singularity;
@@ -50,7 +50,7 @@ C             = 'N':  Do not check singularity.
 C             If the pencil is singular, the reduced system computed for
 C             CKSING = 'N' can be wrong.
 C
-C     RESTOR  CHARACTER*1
+C     RESTOR  (input) CHARACTER*1
 C             Specifies whether the user wishes to save the system
 C             matrices before each phase and restore them if no order
 C             reduction took place as follows:
@@ -91,7 +91,7 @@ C             The resulting Ar has INFRED(5) nonzero sub-diagonals.
 C             The block structure of staircase forms is contained
 C             in the leading INFRED(7) elements of IWORK.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -110,7 +110,7 @@ C             performed order reduction phase (see METHOD).
 C             The block structure of staircase forms is contained
 C             in the leading INFRED(7) elements of IWORK.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M),
@@ -127,7 +127,7 @@ C             JOB = 'C', or JOB = 'O', respectively.
 C             If JOB = 'C', only the first IWORK(1) rows of B are
 C             nonzero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -143,7 +143,7 @@ C             JOB = 'C', or JOB = 'O', respectively.
 C             If JOB = 'I', or JOB = 'O', only the last IWORK(1) columns
 C             (in the first NR columns) of C are nonzero.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,M,P) if N > 0.
 C             LDC >= 1          if N = 0.
@@ -173,7 +173,7 @@ C                            in the first INFRED(7) elements of IWORK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION array, dimension 3
+C     TOL     (input) DOUBLE PRECISION array, dimension 3
 C             TOL(1) is the tolerance to be used in rank determinations
 C             when transforming (A-lambda*E,B,C). If the user sets
 C             TOL(1) > 0, then the given value of TOL(1) is used as a
@@ -203,16 +203,16 @@ C             TOL(3) is not used if EQUIL = 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N+MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (2*N+MAX(M,P))
 C             On exit, if INFO = 0, the leading INFRED(7) elements of
 C             IWORK contain the orders of the diagonal blocks of
 C             Ar-lambda*Er.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,x,y,8*N), if EQUIL = 'S',
 C             LDWORK >= MAX(1,x,y),     if EQUIL = 'N',
@@ -244,7 +244,7 @@ C             extra space for improving the accuracy.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

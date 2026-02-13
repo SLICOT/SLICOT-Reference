@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Specifies whether or not the transformations are
 C             accumulated, as follows:
 C             = 'N':  The transformations are not accumulated;
@@ -53,7 +53,7 @@ C             contain the matrix A in real Schur canonical form.
 C             On exit, the leading N-by-N part of this array contains
 C             the ordered real Schur canonical form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -64,13 +64,14 @@ C             array contains the product of the given matrix X and the
 C             transformation matrix that performed the reordering of A.
 C             If JOBV = 'N', this array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.
 C             LDX >= 1,        if JOBV = 'N';
 C             LDX >= MAX(1,N), if JOBV = 'V'.
 C
-C     WR,     (input/output) DOUBLE PRECISION arrays, dimension (N)
-C     WI      On entry, these arrays must contain the real and imaginary
+C     WR      (input/output) DOUBLE PRECISION arrays, dimension (N)
+C     WI      (input/output) DOUBLE PRECISION arrays, dimension (N)
+C             On entry, these arrays must contain the real and imaginary
 C             parts, respectively, of the eigenvalues of the matrix A.
 C             On exit, these arrays contain the real and imaginary
 C             parts, respectively, of the eigenvalues of the matrix A,
@@ -78,7 +79,7 @@ C             possibly reordered.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     METHOD
 C

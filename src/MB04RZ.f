@@ -21,21 +21,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Specifies whether or not the left transformations are
 C             accumulated, as follows:
 C             = 'N':  The left transformations are not accumulated;
 C             = 'U':  The left transformations are accumulated in X
 C                     (the given matrix X is updated).
 C
-C     JOBY    CHARACTER*1
+C     JOBY    (input) CHARACTER*1
 C             Specifies whether or not the right transformations are
 C             accumulated, as follows:
 C             = 'N':  The right transformations are not accumulated;
 C             = 'U':  The right transformations are accumulated in Y
 C                     (the given matrix Y is updated).
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies whether or not the diagonal elements of the
 C             generalized Schur form are reordered, as follows:
 C             = 'N':  The diagonal elements are not reordered;
@@ -71,7 +71,7 @@ C             this array contains the computed block-diagonal matrix,
 C             corresponding to the given matrix A. The remaining part
 C             is set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB,N)
@@ -88,7 +88,7 @@ C             diagonal matrix, corresponding to the given matrix B. The
 C             remaining part is set to zero. The diagonal elements of B
 C             are real non-negative.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     X       (input/output) COMPLEX*16 array, dimension (LDX,*)
@@ -104,7 +104,7 @@ C             product of non-unitary equivalence transformations having
 C             elements with magnitude less than or equal to PMAX.
 C             If JOBX = 'N', this array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.
 C             LDX >= 1,        if JOBX = 'N';
 C             LDX >= MAX(1,N), if JOBX = 'U'.
@@ -122,7 +122,7 @@ C             product of non-unitary equivalence transformations having
 C             elements with magnitude less than or equal to PMAX.
 C             If JOBY = 'N', this array is not referenced.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.
 C             LDY >= 1,        if JOBY = 'N';
 C             LDY >= MAX(1,N), if JOBY = 'U'.
@@ -150,7 +150,7 @@ C             usually comparable with norm(B).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If SORT = 'S' or 'B', the tolerance to be used in the
 C             ordering of the diagonal elements of the upper triangular
 C             matrix pair.
@@ -187,11 +187,11 @@ C             If SORT = 'N' or 'C', this parameter is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+2)
+C     IWORK   (input/output) INTEGER array, dimension (N+2)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

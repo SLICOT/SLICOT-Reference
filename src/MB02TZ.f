@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     NORM    CHARACTER*1
+C     NORM    (input) CHARACTER*1
 C             Specifies whether the 1-norm condition number or the
 C             infinity-norm condition number is required:
 C             = '1' or 'O':  1-norm;
@@ -33,7 +33,7 @@ C     H       (input) COMPLEX*16 array, dimension (LDH,N)
 C             The factors L and U from the factorization H = P*L*U
 C             as computed by MB02SZ.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (input) INTEGER array, dimension (N)
@@ -46,13 +46,13 @@ C             computed as RCOND = 1/(norm(H) * norm(inv(H))).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
-C     ZWORK   COMPLEX*16 array, dimension (2*N)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

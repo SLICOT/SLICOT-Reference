@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of T, as follows:
 C             = 'R':  T contains the first block row of an s.p.d. block
 C                     Toeplitz matrix, and the system X*T = B is solved;
@@ -47,7 +47,7 @@ C             On exit, if  INFO = 0  and  NRHS > 0,  then the leading
 C             K-by-N*K / N*K-by-K part of this array contains the last
 C             row / column of the Cholesky factor of inv(T).
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= MAX(1,K),    if TYPET = 'R';
 C             LDT >= MAX(1,N*K),  if TYPET = 'C'.
@@ -59,27 +59,27 @@ C             this array must contain the right hand side matrix B.
 C             On exit, the leading NRHS-by-N*K / N*K-by-NRHS part of
 C             this array contains the solution matrix X.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,NRHS),  if TYPET = 'R';
 C             LDB >= MAX(1,N*K),   if TYPET = 'C'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -10,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,N*K*K+(N+2)*K).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

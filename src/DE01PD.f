@@ -12,13 +12,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CONV    CHARACTER*1
+C     CONV    (input) CHARACTER*1
 C             Indicates whether convolution or deconvolution is to be
 C             performed as follows:
 C             = 'C':  Convolution;
 C             = 'D':  Deconvolution.
 C
-C     WGHT    CHARACTER*1
+C     WGHT    (input) CHARACTER*1
 C             Indicates whether the precomputed weights are available
 C             or not, as follows:
 C             = 'A':  available;
@@ -52,7 +52,7 @@ C             On exit, this array contains the long weight vector.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

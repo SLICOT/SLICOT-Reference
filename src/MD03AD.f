@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     XINIT   CHARACTER*1
+C     XINIT   (input) CHARACTER*1
 C             Specifies how the variables x are initialized, as follows:
 C             = 'R' :  the array X is initialized to random values; the
 C                      entries DWORK(1:4) are used to initialize the
@@ -34,7 +34,7 @@ C                      between 1 and 4095;
 C             = 'G' :  the given entries of X are used as initial values
 C                      of variables.
 C
-C     ALG     CHARACTER*1
+C     ALG     (input) CHARACTER*1
 C             Specifies the algorithm used for solving the linear
 C             systems involving a Jacobian matrix J, as follows:
 C             = 'D' :  a direct algorithm, which computes the Cholesky
@@ -43,7 +43,7 @@ C             = 'I' :  an iterative Conjugate Gradients algorithm, which
 C                      only needs the matrix J, is used.
 C             In both cases, matrix J is stored in a compressed form.
 C
-C     STOR    CHARACTER*1
+C     STOR    (input) CHARACTER*1
 C             If ALG = 'D', specifies the storage scheme for the
 C             symmetric matrix J'*J, as follows:
 C             = 'F' :  full storage is used;
@@ -51,7 +51,7 @@ C             = 'P' :  packed storage is used.
 C             The option STOR = 'F' usually ensures a faster execution.
 C             This parameter is not relevant if ALG = 'I'.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             If ALG = 'D', specifies which part of the matrix J'*J
 C             is stored, as follows:
 C             = 'U' :  the upper triagular part is stored;
@@ -185,7 +185,7 @@ C
 C             JTE     (output) DOUBLE PRECISION array, dimension (N)
 C                     If IFLAG = 2, the matrix-vector product J'*e.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine FCN.
 C                     On exit, if INFO = 0, DWORK(1) returns the optimal
 C                     value of LDWORK.
@@ -194,7 +194,7 @@ C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine FCN).  LDWORK >= 1.
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input (scalar) argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -277,14 +277,14 @@ C                     The leading dimension of the array JTJ.
 C                     LDJTJ >= MAX(1,N), if STOR = 'F'.
 C                     LDJTJ >= 1,        if STOR = 'P'.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine JPJ.
 C
 C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine JPJ).
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input (scalar) argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -382,7 +382,7 @@ C             The number of calls to FCN with IFLAG = 2.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If TOL >= 0, the tolerance which measures the relative
 C             error desired in the sum of squares. Termination occurs
 C             when the actual relative reduction in the sum of squares
@@ -390,7 +390,7 @@ C             is at most TOL. If the user sets  TOL < 0, then  SQRT(EPS)
 C             is used instead TOL, where EPS is the machine precision
 C             (see LAPACK Library routine DLAMCH).
 C
-C     CGTOL   DOUBLE PRECISION
+C     CGTOL   (input) DOUBLE PRECISION
 C             If ALG = 'I' and CGTOL > 0, the tolerance which measures
 C             the relative residual of the solutions computed by the
 C             conjugate gradients (CG) algorithm. Termination of a
@@ -400,7 +400,7 @@ C             is used instead CGTOL.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, DWORK(2) returns the residual error norm (the
 C             sum of squares), DWORK(3) returns the number of iterations
@@ -408,7 +408,7 @@ C             performed, DWORK(4) returns the total number of conjugate
 C             gradients iterations performed (zero, if ALG = 'D'), and
 C             DWORK(5) returns the final Levenberg factor.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( 5, M + 2*N + size(J) +
 C                            max( DW( FCN|IFLAG = 1 ) + N,
@@ -426,7 +426,7 @@ C             DW( sol ) = 3*N + DW( JPJ ),  if ALG = 'I'.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             < 0:  the user set IFLAG = IWARN in the subroutine FCN;
 C             = 0:  no warning;
 C             = 1:  if the iterative process did not converge in ITMAX
@@ -447,7 +447,7 @@ C                   above.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the type of backward transformation required,
 C             as follows:
 C             = 'N', do nothing, return immediately;
@@ -40,7 +40,7 @@ C             contain the matrix to be back-transformed.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     SCALE   (input) DOUBLE PRECISION array, dimension (N)
@@ -49,7 +49,7 @@ C             returned by DGEBAL.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

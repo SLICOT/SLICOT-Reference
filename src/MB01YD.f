@@ -21,14 +21,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the symmetric matrix C
 C             is given and computed, as follows:
 C             = 'U':  the upper triangular part is given/computed;
 C             = 'L':  the lower triangular part is given/computed.
 C             UPLO also defines the pattern of the matrix A (see below).
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used, as follows:
 C             = 'N':  op( A ) = A;
 C             = 'T':  op( A ) = A';
@@ -70,7 +70,7 @@ C             If UPLO = 'L', only the lower triangular part and the
 C             first L superdiagonals are referenced, and the remaining
 C             superdiagonals are assumed to be zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,NR),
 C             where NR = N, if TRANS = 'N', and NR = K, otherwise.
 C
@@ -86,12 +86,12 @@ C             UPLO = 'U'), or lower triangular part (if UPLO = 'L'), of
 C             this array contains the corresponding triangular part of
 C             the updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

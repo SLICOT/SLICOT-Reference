@@ -44,7 +44,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COND    CHARACTER*1
+C     COND    (input) CHARACTER*1
 C             Specifies whether the condition of submatrices R_k should
 C             be estimated, as follows:
 C             = 'E' :  use incremental condition estimation and store
@@ -54,7 +54,7 @@ C             = 'N' :  do not use condition estimation, but check the
 C                      diagonal entries of R_k for zero values;
 C             = 'U' :  use the ranks already stored in RANKS(1:l+1).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies the storage scheme for the matrix R, as follows:
 C             = 'U' :  the upper triangular part is stored as in Rc;
 C             = 'L' :  the lower triangular part is stored, namely,
@@ -66,7 +66,7 @@ C                        stored in the array SDIAG;
 C                      - the transpose of the last block column in R
 C                        (without R_l+1) is stored in the array S.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of the system of equations, as follows:
 C             = 'N':  R*x  = b  (No transpose);
 C             = 'T':  R'*x = b  (Transpose);
@@ -119,7 +119,7 @@ C             The diagonal elements and, if COND = 'E', the upper
 C             triangular elements are modified internally, but are
 C             restored on exit.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.  LDR >= MAX(1,N).
 C
 C     SDIAG   (input) DOUBLE PRECISION array, dimension (N)
@@ -137,7 +137,7 @@ C             modified internally, but is restored on exit.
 C             This parameter is not referenced if UPLO = 'U', or
 C             BN <= 1, or BSN = 0.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.
 C             LDS >= 1,         if UPLO = 'U', or BN <= 1, or BSN = 0;
 C             LDS >= MAX(1,ST), if UPLO = 'L', BN > 1, and BSN > 0.
@@ -148,7 +148,7 @@ C             vector b.
 C             On exit, this array contains the (least squares) solution
 C             of the system R*x = b or R'*x = b.
 C
-C     RANKS   (input or output) INTEGER array, dimension (r), where
+C     RANKS   (input/output) INTEGER array, dimension (r), where
 C             r = BN + 1,  if ST > 0, BSN > 0, and BN > 1;
 C             r = BN,      if ST = 0 and BSN > 0;
 C             r = 1,       if ST > 0 and ( BSN = 0 or BN <= 1 );
@@ -161,7 +161,7 @@ C             k = 1:l(+1), estimated according to the value of COND.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If COND = 'E', the tolerance to be used for finding the
 C             ranks of the submatrices R_k. If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -175,9 +175,9 @@ C             This parameter is not relevant if COND = 'U' or 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             Denote Full = ( BN <= 1 or  BSN = 0 );
 C                    Comp = ( BN >  1 and BSN > 0 ).
@@ -187,7 +187,7 @@ C             LDWORK >= 0,   in the remaining cases.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

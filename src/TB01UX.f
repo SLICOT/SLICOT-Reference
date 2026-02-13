@@ -44,7 +44,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned.
@@ -80,7 +80,7 @@ C             The matrix ( Ao ) is in the observability staircase
 C                        ( Co )
 C             form (1).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -90,7 +90,7 @@ C             contain the N-by-M input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Z'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N) if M > 0 or  P > 0;
 C             LDB >= 1        if M = 0 and P = 0.
@@ -108,7 +108,7 @@ C             The matrix ( Ao ) is in the observability staircase
 C                        ( Co )
 C             form (1).
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M,P) if N > 0;
 C             LDC >= 1          if N = 0.
@@ -121,7 +121,7 @@ C                             array contains the orthogonal matrix Z,
 C                             i.e., the product of the transformations
 C                             applied to A and C on the right.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'I'.
@@ -144,7 +144,7 @@ C             form (1).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming the pair (A,C). If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -158,15 +158,15 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (P)
+C     IWORK   (input/output) INTEGER array, dimension (P)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N+MAX(1, N, 3*P, M))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N+MAX(1, N, 3*P, M))
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

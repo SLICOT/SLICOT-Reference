@@ -10,6 +10,141 @@ C     This is the FCN routine for optimizing all parameters of a Wiener
 C     system using SLICOT Library routine MD03AD. See the argument FCN
 C     in the routine MD03AD for the description of parameters.
 C
+C     Arguments
+C
+C     IFLAG   (input/output) INTEGER
+C             On entry, this parameter must contain a value
+C             defining the computations to be performed:
+C             = 0 :  Optionally, print the current iterate X,
+C                    function values E, and Jacobian matrix J,
+C                    or other results defined in terms of these
+C                    values. See the argument NPRINT of MD03AD.
+C                    Do not alter E and J.
+C             = 1 :  Calculate the functions at X and return
+C                    this vector in E. Do not alter J.
+C             = 2 :  Calculate the Jacobian at X and return
+C                    this matrix in J. Also return J'*e in JTE
+C                    and NFEVL (see below). Do not alter E.
+C             = 3 :  Do not compute neither the functions nor
+C                    the Jacobian, but return in LDJ and
+C                    IPAR/DPAR1,DPAR2 (some of) the integer/real
+C                    parameters needed.
+C             On exit, the value of this parameter should not be
+C             changed by FCN unless the user wants to terminate
+C             execution of MD03AD, in which case IFLAG must be
+C             set to a negative integer.
+C
+C     NFUN    (input) INTEGER
+C             The number of functions.  NFUN >= 0.
+C
+C     LX      (input) INTEGER
+C             The number of variables.  NFUN >= LX >= 0.
+C
+C     IPAR    (input/output) INTEGER array, dimension (LIPAR)
+C             The integer parameters describing the structure of
+C             the Jacobian matrix or needed for problem solving.
+C             IPAR is an input parameter, except for IFLAG = 3
+C             on entry, when it is also an output parameter.
+C             On exit, if IFLAG = 3, IPAR(1) contains the length
+C             of the array J, for storing the Jacobian matrix,
+C             and the entries IPAR(2:5) contain the workspace
+C             required by FCN for IFLAG = 1, FCN for IFLAG = 2,
+C             JPJ for ALG = 'D', and JPJ for ALG = 'I',
+C             respectively.
+C
+C     LIPAR   (input) INTEGER
+C             The length of the array IPAR.  LIPAR >= 5.
+C
+C     U       (input/output) DOUBLE PRECISION array, dimension
+C             (LDU,*) or (LDU)
+C             A first set of real parameters needed for
+C             describing or solving the problem.
+C             U can also be used as an additional array for
+C             intermediate results when computing the functions
+C             or the Jacobian. For control problems, U could
+C             store the input trajectory of a system.
+C
+C     LDU     (input) INTEGER
+C             The leading dimension or the length of the array
+C             U, as convenient.  LDU >= 0.  (LDU >= 1,
+C             if leading dimension.)
+C
+C     Y       (input/output) DOUBLE PRECISION array, dimension
+C             (LDY,*) or (LDY)
+C             A second set of real parameters needed for
+C             describing or solving the problem.
+C             Y can also be used as an additional array for
+C             intermediate results when computing the functions
+C             or the Jacobian. For control problems, Y could
+C             store the output trajectory of a system.
+C
+C     LDY     (input) INTEGER
+C             The leading dimension or the length of the array
+C             Y, as convenient.  LY >= 0.  (LDY >= 1,
+C             if leading dimension.)
+C
+C     X       (input) DOUBLE PRECISION array, dimension (N)
+C             This array must contain the value of the
+C             variables x where the functions or the Jacobian
+C             must be evaluated.
+C
+C     NFEVL   (input/output) INTEGER
+C             The number of function evaluations needed to
+C             compute the Jacobian by a finite difference
+C             approximation.
+C             NFEVL is an input parameter if IFLAG = 0, or an
+C             output parameter if IFLAG = 2. If the Jacobian is
+C             computed analytically, NFEVL should be set to a
+C             non-positive value.
+C
+C     E       (input/output) DOUBLE PRECISION array,
+C             dimension (M)
+C             This array contains the value of the (error)
+C             functions e evaluated at X.
+C             E is an input parameter if IFLAG = 0 or 2, or an
+C             output parameter if IFLAG = 1.
+C
+C     J       (input/output) DOUBLE PRECISION array, dimension
+C             (LDJ,NC), where NC is the number of columns
+C             needed.
+C             This array contains a possibly compressed
+C             representation of the Jacobian matrix evaluated
+C             at X. If full Jacobian is stored, then NC = N.
+C             J is an input parameter if IFLAG = 0, or an output
+C             parameter if IFLAG = 2.
+C
+C     LDJ     (input/output) INTEGER
+C             The leading dimension of array J.  LDJ >= 1.
+C             LDJ is essentially used inside the routines FCN
+C             and JPJ.
+C             LDJ is an input parameter, except for IFLAG = 3
+C             on entry, when it is an output parameter.
+C             It is assumed in MD03AD that LDJ is not larger
+C             than needed.
+C
+C     JTE     (output) DOUBLE PRECISION array, dimension (N)
+C             If IFLAG = 2, the matrix-vector product J'*e.
+C
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
+C             The workspace array for subroutine FCN.
+C             On exit, if INFO = 0, DWORK(1) returns the optimal
+C             value of LDWORK.
+C
+C     LDWORK  (input) INTEGER
+C             The size of the array DWORK (as large as needed
+C             in the subroutine FCN).  LDWORK >= 1.
+C
+C     INFO    (output) INTEGER
+C             Error indicator, set to a negative value if an
+C             input (scalar) argument is erroneous, and to
+C             positive values for other possible errors in the
+C             subroutine FCN. The LAPACK Library routine XERBLA
+C             should be used in conjunction with negative INFO.
+C             INFO must be zero if the subroutine finished
+C             successfully.
+C
+C
+C
 C     ******************************************************************
 C
 C     .. Parameters ..

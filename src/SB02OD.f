@@ -39,19 +39,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of Riccati equation to be solved as
 C             follows:
 C             = 'C':  Equation (1), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
 C
-C     JOBB    CHARACTER*1
+C     JOBB    (input) CHARACTER*1
 C             Specifies whether or not the matrix G is given, instead
 C             of the matrices B and R, as follows:
 C             = 'B':  B and R are given;
 C             = 'G':  G is given.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the matrices Q and/or R (if
 C             JOBB = 'B') are factored, as follows:
 C             = 'N':  Not factored, Q and R are given;
@@ -59,14 +59,14 @@ C             = 'C':  C is given, and Q = C'C;
 C             = 'D':  D is given, and R = D'D;
 C             = 'B':  Both factors C and D are given, Q = C'C, R = D'D.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             If JOBB = 'G', or FACT = 'N', specifies which triangle of
 C             the matrices G and Q (if FACT = 'N'), or Q and R (if
 C             JOBB = 'B'), is stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     JOBL    CHARACTER*1
+C     JOBL    (input) CHARACTER*1
 C             Specifies whether or not the matrix L is zero, as follows:
 C             = 'Z':  L is zero;
 C             = 'N':  L is nonzero.
@@ -75,7 +75,7 @@ C             SLICOT Library routine SB02MT should be called just before
 C             SB02OD, for obtaining the results when JOBB = 'G' and
 C             JOBL = 'N'.
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies which eigenvalues should be obtained in the top
 C             of the generalized Schur form, as follows:
 C             = 'S':  Stable   eigenvalues come first;
@@ -104,7 +104,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state matrix A of the system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,*)
@@ -119,7 +119,7 @@ C             G = BR  B'. The strictly lower triangular part (if
 C             UPLO = 'U') or strictly upper triangular part (if
 C             UPLO = 'L') is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -137,7 +137,7 @@ C             array must contain the output matrix C of the system.
 C             If JOBB = 'B', this part is modified internally, but is
 C             restored on exit.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= MAX(1,N) if FACT = 'N' or 'D',
 C             LDQ >= MAX(1,P) if FACT = 'C' or 'B'.
@@ -158,7 +158,7 @@ C             system. This part is modified internally, but is restored
 C             on exit.
 C             If JOBB = 'G', this array is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.
 C             LDR >= MAX(1,M) if JOBB = 'B' and FACT = 'N' or 'C';
 C             LDR >= MAX(1,P) if JOBB = 'B' and FACT = 'D' or 'B';
@@ -170,7 +170,7 @@ C             this array must contain the cross weighting matrix L.
 C             This part is modified internally, but is restored on exit.
 C             If JOBL = 'Z' or JOBB = 'G', this array is not referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.
 C             LDL >= MAX(1,N) if JOBL = 'N' and JOBB = 'B';
 C             LDL >= 1        if JOBL = 'Z' or  JOBB = 'G'.
@@ -184,7 +184,7 @@ C     X       (output) DOUBLE PRECISION array, dimension (LDX,N)
 C             The leading N-by-N part of this array contains the
 C             solution matrix X of the problem.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     ALFAR   (output) DOUBLE PRECISION array, dimension (2*N)
@@ -219,7 +219,7 @@ C                    11   12      22
 C             Array S must have 2*N+M columns if JOBB = 'B', and 2*N
 C             columns, otherwise.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.
 C             LDS >= MAX(1,2*N+M) if JOBB = 'B',
 C             LDS >= MAX(1,2*N)   if JOBB = 'G'.
@@ -240,7 +240,7 @@ C             where T  , T   and T   are N-by-N matrices.
 C                    11   12      22
 C             If DICO = 'C' and JOBB = 'G' this array is not referenced.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.
 C             LDT >= MAX(1,2*N+M) if JOBB = 'B',
 C             LDT >= MAX(1,2*N)   if JOBB = 'G' and DICO = 'D',
@@ -262,12 +262,12 @@ C
 C             where U  , U  , U   and U   are N-by-N matrices.
 C                    11   12   21      22
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,2*N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity of
 C             the original matrix pencil, specifically of the triangular
 C             factor obtained during the reduction process. If the user
@@ -282,11 +282,11 @@ C             This parameter is not referenced if JOBB = 'G'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= MAX(1,M,2*N) if JOBB = 'B',
 C             LIWORK >= MAX(1,2*N)   if JOBB = 'G'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK. If JOBB = 'B' and N > 0, DWORK(2) returns the
 C             reciprocal of the condition number of the M-by-M lower
@@ -297,7 +297,7 @@ C             factor used internally, which should multiply the
 C             submatrix Y2 to recover X from the first N columns of U
 C             (see METHOD).
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(3,6*N),                       if JOBB = 'G',
 C                                                            DICO = 'C';
@@ -306,11 +306,11 @@ C                                                            DICO = 'D';
 C             LDWORK >= MAX(7*(2*N+1)+16,16*N,2*N+M,3*M), if JOBB = 'B'.
 C             For optimum performance LDWORK should be larger.
 C
-C     BWORK   LOGICAL array, dimension (2*N)
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

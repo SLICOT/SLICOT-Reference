@@ -46,20 +46,20 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the equation from which K is to be determined,
 C             as follows:
 C             = 'D':  Equation (1), discrete-time case;
 C             = 'C':  Equation (2), continuous-time case.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general or an identity matrix,
 C             as follows:
 C             = 'G':  The matrix E is general and is given;
 C             = 'I':  The matrix E is assumed identity and is not given.
 C             This parameter is not relevant for DICO = 'D'.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies what should be computed, as follows:
 C             = 'K':  Compute and return the matrix K only;
 C             = 'H':  Compute and return both matrices H and K;
@@ -81,7 +81,7 @@ C                     contain the Cholesky factor of R + B'XB, if
 C                     DICO = 'D'.
 C             JOB should not be set to 'F' if FACT = 'U'.
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Specifies whether the matrix op(Xop(E)), if DICO = 'C', or
 C             op(Xop(A)), if DICO = 'D', must be computed, as follows:
 C             = 'C':  Compute and return the coresponding matrix;
@@ -89,7 +89,7 @@ C             = 'N':  Do not compute that matrix.
 C             This parameter is not relevant for DICO = 'C' and
 C             JOBE = 'I'.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies how the matrix R is given (factored or not), as
 C             follows:
 C             = 'N':  Array R contains the matrix R;
@@ -99,18 +99,18 @@ C             = 'U':  Array R contains the symmetric indefinite UdU' or
 C                     LdL' factorization of R. This option is not
 C                     available for DICO = 'D'.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the possibly factored matrix R
 C             (or R + B'XB, on exit) is or should be stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     JOBL    CHARACTER*1
+C     JOBL    (input) CHARACTER*1
 C             Specifies whether or not the matrix L is zero, as follows:
 C             = 'Z':  L is zero;
 C             = 'N':  L is nonzero.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(W) to be used in the matrix
 C             multiplication, as follows:
 C             = 'N':  op(W) = W;
@@ -138,7 +138,7 @@ C             If DICO = 'D', the leading N-by-N part of this array must
 C             contain the state matrix A of the system.
 C             If DICO = 'C', this array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.
 C             LDA >= MAX(1,N) if DICO = 'D';
 C             LDA >= 1        if DICO = 'C'.
@@ -148,12 +148,12 @@ C             If JOBE = 'G' and DICO = 'C', the leading N-by-N part of
 C             this array must contain the matrix E.
 C             If JOBE = 'I' or DICO = 'D', this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.
 C             LDE >= MAX(1,N), if JOBE = 'G' and DICO = 'C';
 C             LDE >= 1,        if JOBE = 'I'  or DICO = 'D'.
 C
-C     B       (input/worksp.) DOUBLE PRECISION array, dimension (LDB,M)
+C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input matrix B of the system, transformed by SB02MT or
 C             SB02MX, if JOB = 'D' or JOB = 'C'.
@@ -167,7 +167,7 @@ C             eigenvalues of X, where V and U are the matrices with the
 C             eigenvalues and eigenvectors of X.
 C             Otherwise, B is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,M)
@@ -212,7 +212,7 @@ C             (for DICO = 'C'), or that of the matrix R + B'XB
 C             (for DICO = 'D' and FACT = 'N').
 C             On exit R is unchanged if FACT = 'U' or N = 0.
 C
-C     LDR     INTEGER.
+C     LDR     (input) INTEGER.
 C             The leading dimension of the array R.
 C             LDR >= MAX(1,M)   if FACT <> 'D';
 C             LDR >= MAX(1,M,P) if FACT =  'D'.
@@ -235,7 +235,7 @@ C             contain the cross weighting matrix L, transformed by
 C             SB02MT or SB02MX, if JOB = 'D' or JOB = 'C'.
 C             If JOBL = 'Z', this array is not referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.
 C             LDL >= MAX(1,N) if JOBL = 'N';
 C             LDL >= 1        if JOBL = 'Z'.
@@ -270,7 +270,7 @@ C             of this array contains the matrix of orthonormal
 C             eigenvectors of X.
 C             On exit X is unchanged if DICO = 'C' or FACT = 'N'.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     RNORM   (input) DOUBLE PRECISION
@@ -283,7 +283,7 @@ C             If JOB = 'K' or JOB = 'H' or JOB = 'D' or OUFACT(1) = 2,
 C             the leading M-by-N part of this array contains the gain
 C             matrix K.
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of array K.  LDK >= MAX(1,M).
 C
 C     H       (output) DOUBLE PRECISION array, dimension (LDH,*)
@@ -294,7 +294,7 @@ C             If JOB = 'C' or (JOB = 'F' and OUFACT(1) = 1), the leading
 C             N-by-M part of this array contains the matrix F.
 C             If JOB = 'K', this array is not referenced.
 C
-C     LDH    INTEGER
+C     LDH    (input) INTEGER
 C             The leading dimension of array H.
 C             LDH >= MAX(1,N), if JOB <> 'K';
 C             LDH >= 1,        if JOB =  'K'.
@@ -312,7 +312,7 @@ C             equation (see SLICOT Library routine SG02CW).
 C             If JOBX = 'N' or (DICO = 'C' and JOBE = 'I'), this array
 C             is not referenced.
 C
-C     LDXE    INTEGER
+C     LDXE    (input) INTEGER
 C             The leading dimension of array XE.
 C             LDXE >= MAX(1,N), if JOBX = 'C', and either DICO = 'C' and
 C                               JOBE = 'G', or DICO = 'D';
@@ -334,9 +334,9 @@ C             This array is not set if N = 0 or M = 0.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or LDWORK = -1, DWORK(1) returns the
 C             optimal value of LDWORK, and for LDWORK set as specified
 C             below, DWORK(2) contains the reciprocal condition number
@@ -350,7 +350,7 @@ C             If on exit INFO = 0, and OUFACT(2) = 2, then DWORK(3),...,
 C             DWORK(N+2) contain the eigenvalues of X, in ascending
 C             order.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             Dimension of working array DWORK.
 C             Let a = N, if JOBX = 'N' and (DICO = 'D' or JOBE = 'G');
 C                 a = 0, otherwise. Then
@@ -373,7 +373,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -890,7 +890,7 @@ C
                   IF ( WITHL )
      $               CALL DLACPY( 'All', N, NR, L(1,I), LDL, H(1,I),
      $                            LDH )
-                  CALL DGEMM( NTRANS, NT, N, NR, N, ONE, E, LDE, DWORK, 
+                  CALL DGEMM( NTRANS, NT, N, NR, N, ONE, E, LDE, DWORK,
      $                        N, TEMP, H(1,I), LDH )
    20          CONTINUE
 C

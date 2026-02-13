@@ -11,6 +11,17 @@ C     where beta is the base of the machine representation of
 C     floating-point numbers, i.e.,
 C     V = max(E(j)) - min(E(j)), j = LB,...,UB and MANT(j) non-zero.
 C
+C     Arguments
+C
+C     LB        (input) INTEGER
+C
+C     UB        (input) INTEGER
+C
+C     E         (input) DOUBLE PRECISION array
+C
+C     MANT      (input) DOUBLE PRECISION array
+C
+C
 C     CONTRIBUTOR
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.

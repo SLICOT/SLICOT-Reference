@@ -21,30 +21,30 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the open-loop system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears
 C             in the given state space model, as follows:
 C             = 'D':  D is present;
 C             = 'Z':  D is assumed a zero matrix.
 C
-C     JOBMR   CHARACTER*1
+C     JOBMR   (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root B&T method;
 C             = 'F':  use the balancing-free square-root B&T method.
 C
-C     JOBCF   CHARACTER*1
+C     JOBCF   (input) CHARACTER*1
 C             Specifies whether left or right coprime factorization
 C             of the controller is to be used as follows:
 C             = 'L':  use left coprime factorization;
 C             = 'R':  use right coprime factorization.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting controller order NCR is fixed;
 C             = 'A':  the resulting controller order NCR is
@@ -87,7 +87,7 @@ C             On exit, if INFO = 0, the leading NCR-by-NCR part of this
 C             array contains the state dynamics matrix Ac of the reduced
 C             controller.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -96,7 +96,7 @@ C             contain the open-loop system input/state matrix B.
 C             On exit, this array is overwritten with a NCR-by-M
 C             B&T approximation of the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -105,7 +105,7 @@ C             contain the open-loop system state/output matrix C.
 C             On exit, this array is overwritten with a P-by-NCR
 C             B&T approximation of the matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -114,7 +114,7 @@ C             array must contain the system direct input/output
 C             transmission matrix D.
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D';
 C             LDD >= 1,        if JOBD = 'Z'.
@@ -126,7 +126,7 @@ C             On exit, if INFO = 0, the leading M-by-NCR part of this
 C             array contains the output/state matrix Cc of the reduced
 C             controller.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,P)
@@ -136,7 +136,7 @@ C             On exit, if INFO = 0, the leading NCR-by-P part of this
 C             array contains the input/state matrix Bc of the reduced
 C             controller.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     HSV     (output) DOUBLE PRECISION array, dimension (N)
@@ -145,7 +145,7 @@ C             Hankel singular values ordered decreasingly (see METHOD).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL contains the tolerance for
 C             determining the order of reduced controller.
 C             The recommended value is TOL = c*S1, where c is a constant
@@ -158,15 +158,15 @@ C             If ORDSEL = 'F', the value of TOL is ignored.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK = 0,   if JOBMR = 'B';
 C             LIWORK = N,   if JOBMR = 'F'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2*N*N + MAX( 1, 2*N*N + 5*N, N*MAX(M,P),
 C                                    N*(N + MAX(N,MP) + MIN(N,MP) + 6)),
@@ -176,7 +176,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NCR is
 C                   greater than the order of a minimal realization
@@ -190,7 +190,7 @@ C                   HSV(NCR) > HSV(NCR+1).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

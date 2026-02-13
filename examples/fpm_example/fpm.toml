@@ -7,7 +7,9 @@ copyright = "Copyright 1996-2026, The SLICOT Team"
 
 [dependencies]
 blas="*"
-slicot = { git = "https://github.com/SLICOT/SLICOT-Reference.git", branch = "main" }
+# slicot = { git = "https://github.com/SLICOT/SLICOT-Reference.git", branch = "main" }
+slicot = { git = "../../", branch = "main" }
+
 
 [[executable]]
 name = "slicot-fpm-example"

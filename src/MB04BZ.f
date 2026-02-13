@@ -53,14 +53,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; S and H will not
 C                    necessarily be transformed as in (3).
 C             = 'T': put S and H into the forms in (3) and return the
 C                    eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the unitary transformation
 C             matrix Q, as follows:
 C             = 'N':  Q is not computed;
@@ -81,7 +81,7 @@ C             also METHOD). The strictly lower triangular part is not
 C             zeroed, but it is preserved.
 C             If JOB = 'E', this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, K).
 C
 C     DE      (input/output) COMPLEX*16 array, dimension
@@ -98,7 +98,7 @@ C             also METHOD). The strictly lower triangular part of the
 C             input matrix is preserved.
 C             If JOB = 'E', this array is unchanged on exit.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.  LDDE >= MAX(1, K).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB, K)
@@ -111,7 +111,7 @@ C             zeroed; the elements below the first subdiagonal of the
 C             input matrix are preserved.
 C             If JOB = 'E', this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, K).
 C
 C     FG      (input/output) COMPLEX*16 array, dimension
@@ -129,7 +129,7 @@ C             matrix is preserved. The diagonal elements might have tiny
 C             imaginary parts.
 C             If JOB = 'E', this array is unchanged on exit.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.  LDFG >= MAX(1, K).
 C
 C     Q       (output) COMPLEX*16 array, dimension (LDQ, 2*N)
@@ -142,7 +142,7 @@ C             and the array Q returns the orthogonal matrix that
 C             performed the partial reduction.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,           if COMPQ = 'N';
 C             LDQ >= MAX(1, 2*N), if COMPQ = 'C'.
@@ -166,7 +166,7 @@ C             overflow, the ratios should not, in general, be computed.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N+4)
+C     IWORK   (input/output) INTEGER array, dimension (2*N+4)
 C             On exit, IWORK(1) contains the number, q, of unreliable,
 C             possibly inaccurate (pairs of) eigenvalues, and the
 C             absolute values in IWORK(2), ..., IWORK(q+1) are their
@@ -191,7 +191,7 @@ C             corresponding to unreliable eigenvalues. IWORK(2*q+4)
 C             contains the total number t of the 2-by-2 blocks.
 C             If INFO = 0, then q = 0, therefore IWORK(1) = 0.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 3, DWORK(1) returns the
 C             optimal LDWORK, and DWORK(2) and DWORK(3) contain the
 C             Frobenius norms of the matrices B_S and B_T. These norms
@@ -208,7 +208,7 @@ C             of (T11(i:i+1,i:i+1),S11(i:i+1,i:i+1)).
 C             On exit, if INFO = -19, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK. If COMPQ = 'N',
 C             LDWORK >= MAX( 3,  4*N*N + 3*N ), if   JOB = 'E';
 C             LDWORK >= MAX( 3,  5*N*N + 3*N ), if   JOB = 'T';
@@ -221,12 +221,12 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal LZWORK.
 C             On exit, if INFO = -21, ZWORK(1) returns the minimum value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 1,       if JOB = 'E'; otherwise,
 C             LZWORK >= 6*N + 4, if COMPQ = 'N';
@@ -238,13 +238,13 @@ C             ZWORK array, returns this value as the first entry of
 C             the ZWORK array, and no error message related to LZWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (LBWORK)
+C     BWORK   (input/output) LOGICAL array, dimension (LBWORK)
 C             LBWORK >= 0, if JOB = 'E';
 C             LBWORK >= N, if JOB = 'T'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: QZ iteration failed in the SLICOT Library routine

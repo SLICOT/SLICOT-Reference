@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  Solve equation (1);
@@ -45,14 +45,14 @@ C             The leading M-by-M part of this array must contain the
 C             upper quasitriangular matrix A. The elements below the
 C             upper Hessenberg part are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,M).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,M)
@@ -60,14 +60,14 @@ C             The leading M-by-M part of this array must contain the
 C             upper triangular matrix E. The elements below the main
 C             diagonal are not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,M).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -76,7 +76,7 @@ C             contain the right hand side matrix Y.
 C             On exit, the leading M-by-N part of this array contains
 C             the solution matrix X.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= MAX(1,M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -85,7 +85,7 @@ C             0 < SCALE <= 1.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

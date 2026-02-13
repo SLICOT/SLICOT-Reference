@@ -80,7 +80,7 @@ C             (see METHOD). The TLS solution is computed from these
 C             vectors. The other columns of array C contain no useful
 C             information.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= max(1,M,N+L).
 C
 C     X       (output) DOUBLE PRECISION array, dimension (LDX,L)
@@ -88,7 +88,7 @@ C             If INFO = 0, the leading N-by-L part of this array
 C             contains the solution X to the TLS problem specified by
 C             A and B.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= max(1,N).
 C
 C     Q       (output) DOUBLE PRECISION array, dimension
@@ -109,7 +109,7 @@ C             the TLS solution has been computed.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             This parameter defines the multiplicity of singular values
 C             by considering all singular values within an interval of
 C             length TOL as coinciding. TOL is used in checking how many
@@ -122,7 +122,7 @@ C             QR/QL iterations. If the user sets TOL to be less than or
 C             equal to 0, then the tolerance is taken as specified in
 C             SLICOT Library routine MB04YD document.
 C
-C     RELTOL  DOUBLE PRECISION
+C     RELTOL  (input) DOUBLE PRECISION
 C             This parameter specifies the minimum relative width of an
 C             interval. When an interval is narrower than TOL, or than
 C             RELTOL times the larger (in magnitude) endpoint, then it
@@ -134,14 +134,14 @@ C             tolerance is taken as BASE * EPS.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+2*L)
+C     IWORK   (input/output) INTEGER array, dimension (N+2*L)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, and DWORK(2) returns the reciprocal of the
 C             condition number of the matrix F.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = max(2, max(M,N+L) + 2*min(M,N+L),
 C                          min(M,N+L) + LW + max(6*(N+L)-5,
@@ -157,11 +157,11 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (N+L)
+C     BWORK   (input/output) LOGICAL array, dimension (N+L)
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warnings;
 C             = 1:  if the rank of matrix C has been lowered because a
 C                   singular value of multiplicity greater than 1 was
@@ -171,7 +171,7 @@ C                   upper triangular matrix F is (numerically) singular.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

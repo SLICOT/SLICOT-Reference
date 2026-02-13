@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used as follows:
 C             = 'N':  op(A) = A;
 C             = 'T':  op(A) = A';
@@ -39,7 +39,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the factors L and U from the factorization A = P*L*U;
 C             the unit diagonal elements of L are not stored.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)

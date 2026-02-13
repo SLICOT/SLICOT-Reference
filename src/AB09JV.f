@@ -27,25 +27,25 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the projection to be computed as follows:
 C             = 'V':  compute the projection of V*G containing
 C                     the poles of G;
 C             = 'C':  compute the projection of conj(V)*G containing
 C                     the poles of G.
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the systems as follows:
 C             = 'C':  G and V are continuous-time systems;
 C             = 'D':  G and V are discrete-time systems.
 C
-C     JOBEV   CHARACTER*1
+C     JOBEV   (input) CHARACTER*1
 C             Specifies whether EV is a general square or an identity
 C             matrix as follows:
 C             = 'G':  EV is a general square matrix;
 C             = 'I':  EV is the identity matrix.
 C
-C     STBCHK  CHARACTER*1
+C     STBCHK  (input) CHARACTER*1
 C             Specifies whether stability/antistability of V is to be
 C             checked as follows:
 C             = 'C':  check stability if JOB = 'C' or antistability if
@@ -83,7 +83,7 @@ C             The leading N-by-N part of this array must contain the
 C             state matrix A of the system with the transfer-function
 C             matrix G in a real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -91,7 +91,7 @@ C             The leading N-by-M part of this array must contain
 C             the input/state matrix B of the system with the
 C             transfer-function matrix G. The matrix BS is equal to B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -102,7 +102,7 @@ C             On exit, if INFO = 0, the leading PV-by-N part of this
 C             array contains the output matrix CS of the projection of
 C             V*G, if JOB = 'V', or of conj(V)*G, if JOB = 'C'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P,PV).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -114,7 +114,7 @@ C             this array contains the feedthrough matrix DS of the
 C             projection of V*G, if JOB = 'V', or of conj(V)*G,
 C             if JOB = 'C'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,P,PV).
 C
 C     AV      (input/output) DOUBLE PRECISION array, dimension (LDAV,NV)
@@ -134,7 +134,7 @@ C             if JOBEV = 'G', JOB = 'C' and DICO = 'D', it contains an
 C             upper triangular matrix corresponding to the generalized
 C             real Schur form of the pair (EV',AV').
 C
-C     LDAV    INTEGER
+C     LDAV    (input) INTEGER
 C             The leading dimension of the array AV.  LDAV >= MAX(1,NV).
 C
 C     EV      (input/output) DOUBLE PRECISION array, dimension (LDEV,NV)
@@ -155,7 +155,7 @@ C             if JOB = 'C' and DICO = 'D', it contains a quasi-upper
 C             triangular matrix corresponding to the generalized
 C             real Schur form of the pair (EV',AV').
 C
-C     LDEV    INTEGER
+C     LDEV    (input) INTEGER
 C             The leading dimension of the array EV.
 C             LDEV >= MAX(1,NV), if JOBEV = 'G';
 C             LDEV >= 1,         if JOBEV = 'I'.
@@ -172,7 +172,7 @@ C             that reduces AV to the real Schur form or the left
 C             orthogonal matrix used to reduce the pair (AV,EV),
 C             (AV',EV') or (EV',AV') to the generalized real Schur form.
 C
-C     LDBV    INTEGER
+C     LDBV    (input) INTEGER
 C             The leading dimension of the array BV.  LDBV >= MAX(1,NV).
 C
 C     CV      (input/output) DOUBLE PRECISION array, dimension (LDCV,NV)
@@ -186,7 +186,7 @@ C             reduces AV to the real Schur form, or CV*Z, where Z is the
 C             right orthogonal matrix used to reduce the pair (AV,EV),
 C             (AV',EV') or (EV',AV') to the generalized real Schur form.
 C
-C     LDCV    INTEGER
+C     LDCV    (input) INTEGER
 C             The leading dimension of the array CV.
 C             LDCV >= MAX(1,PV) if JOB = 'V';
 C             LDCV >= MAX(1,P)  if JOB = 'C'.
@@ -199,22 +199,22 @@ C             the feedthrough matrix DV of the system with the
 C             transfer-function matrix V, where PCV = PV, if JOB = 'V',
 C             or PCV = P, if JOB = 'C'.
 C
-C     LDDV    INTEGER
+C     LDDV    (input) INTEGER
 C             The leading dimension of the array DV.
 C             LDDV >= MAX(1,PV) if JOB = 'V';
 C             LDDV >= MAX(1,P)  if JOB = 'C'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK =   0,    if JOBEV = 'I';
 C             LIWORK = NV+N+6, if JOBEV = 'G'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= LW1, if JOBEV = 'I',
 C             LDWORK >= LW2, if JOBEV = 'G', where
@@ -227,7 +227,7 @@ C             For good performance, LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             =  0:  successful exit;
 C             <  0:  if INFO = -i, the i-th argument had an illegal
 C                    value;

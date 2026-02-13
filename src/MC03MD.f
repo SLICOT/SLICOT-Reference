@@ -60,12 +60,12 @@ C             dummy array (i.e. set the parameters LDP11 = LDP12 = 1 and
 C             declare this array to be P1(1,1,1) in the calling
 C             program).
 C
-C     LDP11   INTEGER
+C     LDP11   (input) INTEGER
 C             The leading dimension of array P1.
 C             LDP11 >= MAX(1,RP1) if DP1 >= 0,
 C             LDP11 >= 1          if DP1 = -1.
 C
-C     LDP12   INTEGER
+C     LDP12   (input) INTEGER
 C             The second dimension of array P1.
 C             LDP12 >= MAX(1,CP1) if DP1 >= 0,
 C             LDP12 >= 1          if DP1 = -1.
@@ -83,12 +83,12 @@ C             dummy array (i.e. set the parameters LDP21 = LDP22 = 1 and
 C             declare this array to be P2(1,1,1) in the calling
 C             program).
 C
-C     LDP21   INTEGER
+C     LDP21   (input) INTEGER
 C             The leading dimension of array P2.
 C             LDP21 >= MAX(1,CP1) if DP2 >= 0,
 C             LDP21 >= 1          if DP2 = -1.
 C
-C     LDP22   INTEGER
+C     LDP22   (input) INTEGER
 C             The second dimension of array P2.
 C             LDP22 >= MAX(1,CP2) if DP2 >= 0,
 C             LDP22 >= 1          if DP2 = -1.
@@ -113,19 +113,19 @@ C             ...,CP2 and k = 1,2,...,DP3+1.
 C             If DP3 = -1 on exit, then the coefficients of P(x) (the
 C             zero polynomial matrix) are not stored in the array.
 C
-C     LDP31   INTEGER
+C     LDP31   (input) INTEGER
 C             The leading dimension of array P3.  LDP31 >= MAX(1,RP1).
 C
-C     LDP32   INTEGER
+C     LDP32   (input) INTEGER
 C             The second dimension of array P3.   LDP32 >= MAX(1,CP2).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (CP1)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (CP1)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

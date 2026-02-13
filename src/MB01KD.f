@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangular part of
 C             the array C is to be referenced, as follows:
 C             = 'U':  only the strictly upper triangular part of C is to
@@ -34,7 +34,7 @@ C                     be referenced;
 C             = 'L':  only the striclty lower triangular part of C is to
 C                     be referenced.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the operation to be performed, as follows:
 C             = 'N':         C := alpha*A*B' - alpha*B*A' + beta*C;
 C             = 'T' or 'C':  C := alpha*A'*B - alpha*B'*A + beta*C.
@@ -60,7 +60,7 @@ C             of this array must contain the matrix A.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             K-by-N part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,N),  if TRANS = 'N';
 C             LDA >= MAX(1,K),  if TRANS = 'T' or TRANS = 'C'.
@@ -72,7 +72,7 @@ C             of this array must contain the matrix B.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             K-by-N part of this array must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N),  if TRANS = 'N';
 C             LDB >= MAX(1,K),  if TRANS = 'T' or TRANS = 'C'.
@@ -97,12 +97,12 @@ C             On exit with UPLO = 'L', the leading N-by-N part of this
 C             array contains the strictly lower triangular part of the
 C             updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

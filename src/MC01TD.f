@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Indicates whether the stability test to be applied to
 C             P(x) is in the continuous-time or discrete-time case as
 C             follows:
@@ -47,14 +47,14 @@ C             circle if DICO = 'D' (see also NUMERICAL ASPECTS).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*DP+2)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*DP+2)
 C             The leading (DP+1) elements of DWORK contain the Routh
 C             coefficients, if DICO = 'C', or the constant terms of
 C             the Schur-Cohn transforms, if DICO = 'D'.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = k:  if the degree of the polynomial P(x) has been
 C                   reduced to (DB - k) because P(DB+1-j) = 0.0 on entry
@@ -62,7 +62,7 @@ C                   for j = 0, 1,..., k-1 and P(DB+1-k) <> 0.0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

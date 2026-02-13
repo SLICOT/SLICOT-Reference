@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPEG   CHARACTER*1
+C     TYPEG   (input) CHARACTER*1
 C             Specifies the type of the generator, as follows:
 C             = 'D':  generator is column oriented and rank
 C                     deficiencies are expected;
@@ -64,7 +64,7 @@ C             On exit, if TYPEG = 'R', the leading K-by-K part of this
 C             array contains the leading upper triangular part of the
 C             proper generator.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The leading dimension of the array A1.  LDA1 >= MAX(1,K).
 C
 C     A2      (input/output)  DOUBLE PRECISION array,
@@ -83,7 +83,7 @@ C             On exit, if TYPEG = 'R', the leading (P-K)-by-K part of
 C             this array contains information for Householder
 C             transformations.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The leading dimension of the array A2.
 C             If P = K,                   LDA2 >= 1;
 C             If P > K and (TYPEG = 'D' or TYPEG = 'C'),
@@ -104,7 +104,7 @@ C             Householder transformations.
 C             On exit, if TYPEG = 'R', the leading Q-by-K part of this
 C             array contains information for Householder transformations.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             If Q = 0,                  LDB >= 1;
 C             if Q > 0 and (TYPEG = 'D' or TYPEG = 'C'),
@@ -136,7 +136,7 @@ C             transformations).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If TYPEG = 'D', this number specifies the used tolerance
 C             for handling deficiencies. If the hyperbolic norm
 C             of two diagonal elements in the positive and negative
@@ -145,18 +145,18 @@ C             the corresponding columns are not reduced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = -17,  DWORK(1) returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,4*K),         if TYPEG = 'D';
 C             LDWORK >= MAX(1,MAX(NB,1)*K), if TYPEG = 'C' or 'R'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

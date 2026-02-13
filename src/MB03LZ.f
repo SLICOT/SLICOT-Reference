@@ -58,7 +58,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -67,7 +67,7 @@ C                    eigenvalues only;
 C             = 'C': compute the deflating subspace and store it in the
 C                    leading subarray of Q.
 C
-C     ORTH    CHARACTER*1
+C     ORTH    (input) CHARACTER*1
 C             If COMPQ = 'C', specifies the technique for computing an
 C             orthonormal basis of the deflating subspace, as follows:
 C             = 'P':  QR factorization with column pivoting;
@@ -88,7 +88,7 @@ C             also METHOD). The strictly lower triangular part is not
 C             zeroed; it is preserved in the leading N/2-by-N/2 part.
 C             If COMPQ = 'N', this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N).
 C
 C     DE      (input/output) COMPLEX*16 array, dimension (LDDE, N)
@@ -104,7 +104,7 @@ C             also METHOD). The strictly lower triangular part of the
 C             input matrix is preserved.
 C             If COMPQ = 'N', this array is unchanged on exit.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.  LDDE >= MAX(1, N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB, N)
@@ -117,7 +117,7 @@ C             zeroed; the elements below the first subdiagonal of the
 C             input matrix are preserved.
 C             If COMPQ = 'N', this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N).
 C
 C     FG      (input/output) COMPLEX*16 array, dimension (LDFG, N)
@@ -134,7 +134,7 @@ C             matrix is preserved. The diagonal elements might have tiny
 C             imaginary parts.
 C             If COMPQ = 'N', this array is unchanged on exit.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.  LDFG >= MAX(1, N).
 C
 C     NEIG    (output) INTEGER
@@ -149,7 +149,7 @@ C             pencil aS - bH with strictly negative real part.
 C             The remaining entries are meaningless.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,           if COMPQ = 'N';
 C             LDQ >= MAX(1, 2*N), if COMPQ = 'C'.
@@ -173,14 +173,14 @@ C             overflow, the ratios should not, in general, be computed.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+1)
+C     IWORK   (input/output) INTEGER array, dimension (N+1)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             On exit, if INFO = -20, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX( 4*N*N + 2*N + MAX(3,N) ), if COMPQ = 'N';
 C             LDWORK >= MAX( 1, 11*N*N + 2*N ),        if COMPQ = 'C'.
@@ -192,12 +192,12 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal LZWORK.
 C             On exit, if INFO = -22, ZWORK(1) returns the minimum value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 1,       if COMPQ = 'N';
 C             LZWORK >= 8*N + 4, if COMPQ = 'C'.
@@ -209,13 +209,13 @@ C             ZWORK array, returns this value as the first entry of
 C             the ZWORK array, and no error message related to LZWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (LBWORK)
+C     BWORK   (input/output) LOGICAL array, dimension (LBWORK)
 C             LBWORK >= 0,     if COMPQ = 'N';
 C             LBWORK >= N - 1, if COMPQ = 'C'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: QZ iteration failed in the SLICOT Library routine

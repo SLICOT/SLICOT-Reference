@@ -31,7 +31,7 @@ C            On exit, the leading N-by-N upper triangular part of this
 C            array contains the upper triangular matrix R.
 C            The strict lower triangle of A is not referenced.
 C
-C     LDA    INTEGER
+C     LDA    (input) INTEGER
 C            The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     X      (input/output) DOUBLE PRECISION array, dimension

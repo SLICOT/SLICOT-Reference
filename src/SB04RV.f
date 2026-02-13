@@ -14,12 +14,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ABSCHR  CHARACTER*1
+C     ABSCHR  (input) CHARACTER*1
 C             Indicates whether AB contains A or B, as follows:
 C             = 'A':  AB contains A;
 C             = 'B':  AB contains B.
 C
-C     UL      CHARACTER*1
+C     UL      (input) CHARACTER*1
 C             Indicates whether AB is upper or lower Hessenberg matrix,
 C             as follows:
 C             = 'U':  AB is upper Hessenberg;
@@ -39,7 +39,7 @@ C             the not yet modified part of the coefficient matrix C of
 C             the Sylvester equation X + AXB = C, and both the currently
 C             computed part of the solution of the Sylvester equation.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     INDX    (input) INTEGER
@@ -51,7 +51,7 @@ C             The leading N-by-N or M-by-M part of this array must
 C             contain either A or B of the Sylvester equation
 C             X + AXB = C.
 C
-C     LDAB    INTEGER
+C     LDAB    (input) INTEGER
 C             The leading dimension of array AB.
 C             LDAB >= MAX(1,N) or LDAB >= MAX(1,M) (depending on
 C             ABSCHR = 'A' or ABSCHR = 'B', respectively).
@@ -61,7 +61,7 @@ C             The leading N-by-N or M-by-M part of this array must
 C             contain either A or B of the Sylvester equation
 C             X + AXB = C, the matrix not contained in AB.
 C
-C     LDBA    INTEGER
+C     LDBA    (input) INTEGER
 C             The leading dimension of array BA.
 C             LDBA >= MAX(1,N) or LDBA >= MAX(1,M) (depending on
 C             ABSCHR = 'B' or ABSCHR = 'A', respectively).
@@ -73,7 +73,7 @@ C             right-hand side stored as a matrix with two rows.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             where LDWORK is equal to 2*N or 2*M (depending on
 C             ABSCHR = 'B' or ABSCHR = 'A', respectively).
 C

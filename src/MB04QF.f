@@ -28,17 +28,17 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DIRECT  CHARACTER*1
+C     DIRECT  (input) CHARACTER*1
 C             This is a dummy argument, which is reserved for future
 C             extensions of this subroutine. Not referenced.
 C
-C     STOREV  CHARACTER*1
+C     STOREV  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder F(i) reflectors are stored:
 C             = 'C':  columnwise;
 C             = 'R':  rowwise.
 C
-C     STOREW  CHARACTER*1
+C     STOREW  (input) CHARACTER*1
 C             Specifies how the vectors which define the concatenated
 C             Householder H(i) reflectors are stored:
 C             = 'C':  columnwise;
@@ -63,7 +63,7 @@ C             On entry with STOREV = 'R', the leading K-by-N part of
 C             this array must contain in its i-th row the vector
 C             which defines the elementary reflector F(i).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= MAX(1,N),  if STOREV = 'C';
 C             LDV >= K,         if STOREV = 'R'.
@@ -78,7 +78,7 @@ C             On entry with STOREV = 'R', the leading K-by-N part of
 C             this array must contain in its i-th row the vector
 C             which defines the elementary reflector H(i).
 C
-C     LDW     INTEGER
+C     LDW     (input) INTEGER
 C             The leading dimension of the array W.
 C             LDW >= MAX(1,N),  if STOREW = 'C';
 C             LDW >= K,         if STOREW = 'R'.
@@ -99,7 +99,7 @@ C             the upper triangular matrices defining the factors R and
 C             S of the symplectic block reflector SH. The (strictly)
 C             lower portions of this array are not used.
 C
-C     LDRS    INTEGER
+C     LDRS    (input) INTEGER
 C             The leading dimension of the array RS.  LDRS >= K.
 C
 C     T       (output) DOUBLE PRECISION array, dimension (K,9*K)
@@ -108,12 +108,12 @@ C             the upper triangular matrices defining the factor T of the
 C             symplectic block reflector SH. The (strictly) lower
 C             portions of this array are not used.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= K.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*K)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*K)
 C
 C     REFERENCES
 C

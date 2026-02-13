@@ -20,14 +20,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the full
 C             Schur form or the eigenvalues only, as follows:
 C             = 'E':  Compute the eigenvalues only;
 C             = 'S':  compute the factors S and T of the full
 C                     Schur form.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Q as follows:
 C             = 'N':  The matrix Q is not required;
@@ -36,7 +36,7 @@ C                     orthogonal transformation matrix Q is returned;
 C             = 'V':  Q must contain an orthogonal matrix U on entry,
 C                     and the product U*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Z as follows:
 C             = 'N':  The matrix Z is not required;
@@ -71,7 +71,7 @@ C             If JOB = 'E', the diagonal elements and 2-by-2 diagonal
 C             blocks of A will be correct, but the remaining parts of A
 C             are unspecified on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -87,7 +87,7 @@ C             If JOB = 'E', the elements corresponding to diagonal
 C             elements and 2-by-2 diagonal blocks in A will be correct,
 C             but the remaining parts of B are unspecified on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -101,7 +101,7 @@ C             part of this array contains the transformation matrix
 C             which produced the Schur form.
 C             If COMPQ = 'N', Q is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= 1.
 C             If COMPQ <> 'N', LDQ >= MAX(1,N).
 C
@@ -116,7 +116,7 @@ C             part of this array contains the transformation matrix
 C             which produced the Schur form.
 C             If COMPZ = 'N', Z is not referenced.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= 1.
 C             If COMPZ <> 'N', LDZ >= MAX(1,N).
 C
@@ -133,18 +133,18 @@ C             and B.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -19,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

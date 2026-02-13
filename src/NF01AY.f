@@ -63,7 +63,7 @@ C             The leading NSMP-by-NZ part of this array must contain the
 C             set of input samples,
 C             Z = ( Z(1,1),...,Z(1,NZ); ...; Z(NSMP,1),...,Z(NSMP,NZ) ).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,NSMP).
 C
 C     Y       (output) DOUBLE PRECISION array, dimension (LDY, L)
@@ -71,20 +71,20 @@ C             The leading NSMP-by-L part of this array contains the set
 C             of output samples,
 C             Y = ( Y(1,1),...,Y(1,L); ...; Y(NSMP,1),...,Y(NSMP,L) ).
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= MAX(1,NSMP).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 2*NN.
 C             For better performance, LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

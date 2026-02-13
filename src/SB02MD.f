@@ -39,32 +39,32 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of Riccati equation to be solved as
 C             follows:
 C             = 'C':  Equation (3), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
 C
-C     HINV    CHARACTER*1
+C     HINV    (input) CHARACTER*1
 C             If DICO = 'D', specifies which symplectic matrix is to be
 C             constructed, as follows:
 C             = 'D':  The matrix H in (5) (see METHOD) is constructed;
 C             = 'I':  The inverse of the matrix H in (5) is constructed.
 C             HINV is not used if DICO = 'C'.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices G and Q is
 C             stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     SCAL    CHARACTER*1
+C     SCAL    (input) CHARACTER*1
 C             Specifies whether or not a scaling strategy should be
 C             used, as follows:
 C             = 'G':  General scaling should be used;
 C             = 'N':  No scaling should be used.
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies which eigenvalues should be obtained in the top
 C             of the Schur form, as follows:
 C             = 'S':  Stable   eigenvalues come first;
@@ -83,7 +83,7 @@ C                                                                    -1
 C             leading N-by-N part of this array contains the matrix A  .
 C             Otherwise, the array A is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     G       (input) DOUBLE PRECISION array, dimension (LDG,N)
@@ -95,7 +95,7 @@ C             The strictly lower triangular part (if UPLO = 'U') or
 C             strictly upper triangular part (if UPLO = 'L') is not
 C             referenced.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -109,7 +109,7 @@ C             used.
 C             On exit, if INFO = 0, the leading N-by-N part of this
 C             array contains the solution matrix X of the problem.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array N.  LDQ >= MAX(1,N).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -145,7 +145,7 @@ C
 C             where S  , S   and S   are N-by-N matrices.
 C                    11   12      22
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,2*N).
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,2*N)
@@ -163,31 +163,31 @@ C
 C             where U  , U  , U   and U   are N-by-N matrices.
 C                    11   12   21      22
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,2*N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N)
+C     IWORK   (input/output) INTEGER array, dimension (2*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK and DWORK(2) returns the scaling factor used
 C             (set to 1 if SCAL = 'N'), also set if INFO = 5;
 C             if DICO = 'D', DWORK(3) returns the reciprocal condition
 C             number of the given matrix  A.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(2,6*N) if DICO = 'C';
 C             LDWORK >= MAX(3,6*N) if DICO = 'D'.
 C             For optimum performance LDWORK should be larger.
 C
-C     BWORK   LOGICAL array, dimension (2*N)
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

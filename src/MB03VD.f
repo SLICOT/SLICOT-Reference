@@ -56,11 +56,11 @@ C             below the diagonal, with the j-th column of the array TAU
 C             represent the orthogonal matrix Q_j as a product of
 C             elementary reflectors. See FURTHER COMMENTS.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.
 C             LDA1 >= max(1,N).
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.
 C             LDA2 >= max(1,N).
 C
@@ -69,17 +69,17 @@ C             The leading N-1 elements in the j-th column contain the
 C             scalar factors of the elementary reflectors used to form
 C             the matrix Q_j, j = 1, ..., P. See FURTHER COMMENTS.
 C
-C     LDTAU   INTEGER
+C     LDTAU   (input) INTEGER
 C             The leading dimension of the array TAU.
 C             LDTAU >= max(1,N-1).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -31,13 +31,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the equation from which X is to be determined
 C             as follows:
 C             = 'C':  Equation (1), continuous-time case;
 C             = 'D':  Equation (2), discrete-time case.
 C
-C     FACTA   CHARACTER*1
+C     FACTA   (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization
 C             of the matrix A is supplied on entry, as follows:
 C             = 'F':  On entry, A and U contain the factors from the
@@ -46,7 +46,7 @@ C             = 'N':  The Schur factorization of A will be computed
 C                     and the factors will be stored in A and U;
 C             = 'S':  The matrix A is quasi-triangular (or Schur).
 C
-C     FACTB   CHARACTER*1
+C     FACTB   (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization
 C             of the matrix B is supplied on entry, as follows:
 C             = 'F':  On entry, B and V contain the factors from the
@@ -55,19 +55,19 @@ C             = 'N':  The Schur factorization of B will be computed
 C                     and the factors will be stored in B and V;
 C             = 'S':  The matrix B is quasi-triangular (or Schur).
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     TRANB   CHARACTER*1
+C     TRANB   (input) CHARACTER*1
 C             Specifies the form of op(B) to be used, as follows:
 C             = 'N':  op(B) = B    (No transpose);
 C             = 'T':  op(B) = B**T (Transpose);
 C             = 'C':  op(B) = B**T (Conjugate transpose = Transpose).
 C
-C     ISGN    INTEGER
+C     ISGN    (input) INTEGER
 C             Specifies the sign of the equation as described before.
 C             ISGN may only be 1 or -1.
 C
@@ -81,7 +81,7 @@ C     N       (input) INTEGER
 C             The order of the matrix B, and the number of columns in
 C             the matrices X and C.  N >= 0.
 C
-C     A       (input or input/output) DOUBLE PRECISION array,
+C     A       (input/output) DOUBLE PRECISION array,
 C             dimension (LDA,M)
 C             On entry, the leading M-by-M part of this array must
 C             contain the matrix A. If FACTA = 'S', then A contains
@@ -94,10 +94,10 @@ C             contains the upper quasi-triangular matrix in Schur
 C             canonical form from the Schur factorization of A. The
 C             contents of array A is not modified if FACTA = 'F' or 'S'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
-C     U       (input or output) DOUBLE PRECISION array, dimension
+C     U       (input/output) DOUBLE PRECISION array, dimension
 C             (LDU,M)
 C             If FACTA = 'F', then U is an input argument and on entry
 C             the leading M-by-M part of this array must contain the
@@ -107,12 +107,12 @@ C             if INFO = 0 or INFO >= M+1, it contains the orthogonal
 C             M-by-M matrix from the real Schur factorization of A.
 C             If FACTA = 'S', the array U is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             LDU >= MAX(1,M), if FACTA = 'F' or 'N';
 C             LDU >= 1,        if FACTA = 'S'.
 C
-C     B       (input or input/output) DOUBLE PRECISION array,
+C     B       (input/output) DOUBLE PRECISION array,
 C             dimension (LDB,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the matrix B. If FACTB = 'S', then B contains
@@ -128,7 +128,7 @@ C
 C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
-C     V       (input or output) DOUBLE PRECISION array, dimension
+C     V       (input/output) DOUBLE PRECISION array, dimension
 C             (LDV,N)
 C             If FACTB = 'F', then V is an input argument and on entry
 C             the leading N-by-N part of this array must contain the
@@ -138,7 +138,7 @@ C             if INFO = 0 or INFO = M+N+1, it contains the orthogonal
 C             N-by-N matrix from the real Schur factorization of B.
 C             If FACTB = 'S', the array V is not referenced.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.
 C             LDV >= MAX(1,N), if FACTB = 'F' or 'N';
 C             LDV >= 1,        if FACTB = 'S'.
@@ -149,7 +149,7 @@ C             contain the right hand side matrix C.
 C             On exit, if INFO = 0 or INFO = M+N+1, the leading M-by-N
 C             part of this array contains the solution matrix X.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -158,7 +158,7 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or M+N+1, then: DWORK(1) returns the
 C             optimal value of LDWORK; if FACTA = 'N', DWORK(1+i) and
 C             DWORK(1+M+i), i = 1,...,M, contain the real and imaginary
@@ -168,7 +168,7 @@ C             with f = 2*M if FACTA = 'N', and f = 0, otherwise, contain
 C             the real and imaginary parts, respectively, of the
 C             eigenvalues of B.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, a+MAX( c, b+d, b+e ) ),
 C             where a = 1+2*M, if FACTA =  'N',
@@ -192,7 +192,7 @@ C             LDWORK = 1+2*M+MAX( 3*M, 5*N, 2*N+2*M, 2*N+M*N ).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

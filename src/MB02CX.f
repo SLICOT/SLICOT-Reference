@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of the generator, as follows:
 C             = 'R':  A and B are the first blocks of the rows of the
 C                     positive and negative generators;
@@ -52,7 +52,7 @@ C             of the positive part in the first block of the proper
 C             generator.
 C             The lower / upper trapezoidal part is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,P),    if TYPET = 'R';
 C             LDA >= MAX(1,K),    if TYPET = 'C'.
@@ -66,7 +66,7 @@ C             On exit, the leading Q-by-K / K-by-Q part of this array
 C             contains part of the necessary information for the
 C             Householder transformations.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,Q),    if TYPET = 'R';
 C             LDB >= MAX(1,K),    if TYPET = 'C'.
@@ -77,24 +77,24 @@ C             contains necessary information for the SLICOT Library
 C             routine MB02CY (modified hyperbolic rotation parameters
 C             and scalar factors of the Householder transformations).
 C
-C     LCS     INTEGER
+C     LCS     (input) INTEGER
 C             The length of the array CS.  LCS >= 2*K + MIN(K,Q).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -12,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,K).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  succesful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

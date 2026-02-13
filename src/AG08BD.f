@@ -25,7 +25,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to balance the system
 C             matrix as follows:
 C             = 'S':  Perform balancing (scaling);
@@ -51,7 +51,7 @@ C             contain the state dynamics matrix A of the system.
 C             On exit, the leading NFZ-by-NFZ part of this array
 C             contains the matrix Af of the reduced pencil.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -60,7 +60,7 @@ C             contain the descriptor matrix E of the system.
 C             On exit, the leading NFZ-by-NFZ part of this array
 C             contains the matrix Ef of the reduced pencil.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -68,7 +68,7 @@ C             On entry, the leading L-by-M part of this array must
 C             contain the input/state matrix B of the system.
 C             On exit, this matrix does not contain useful information.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,L) if M > 0;
 C             LDB >= 1        if M = 0.
@@ -78,14 +78,14 @@ C             On entry, the leading P-by-N part of this array must
 C             contain the state/output matrix C of the system.
 C             On exit, this matrix does not contain useful information.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array must contain the
 C             direct transmission matrix D of the system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     NFZ     (output) INTEGER
@@ -129,7 +129,7 @@ C             left Kronecker (row) indices.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -143,15 +143,15 @@ C             (see LAPACK Library routine DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+max(1,M))
+C     IWORK   (input/output) INTEGER array, dimension (N+max(1,M))
 C             On output, IWORK(1) contains the normal rank of the
 C             transfer function matrix.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( 4*(L+N), LDW ), if EQUIL = 'S',
 C             LDWORK >= LDW,                 if EQUIL = 'N', where
@@ -166,7 +166,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

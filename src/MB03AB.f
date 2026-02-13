@@ -27,7 +27,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SHFT    CHARACTER*1
+C     SHFT    (input) CHARACTER*1
 C             Specifies the number and type of shifts employed by the
 C             shift polynomial, as follows:
 C             = 'C':  two complex conjugate shifts;
@@ -65,10 +65,10 @@ C             The leading N-by-N-by-K part of this array must contain an
 C             n-by-n product (implicitly represented by its K factors)
 C             in periodic upper Hessenberg form.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= N.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     W1      (input)  DOUBLE PRECISION

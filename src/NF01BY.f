@@ -36,7 +36,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CJTE    CHARACTER*1
+C     CJTE    (input) CHARACTER*1
 C             Specifies whether the matrix-vector product J'*e should be
 C             computed or not, as follows:
 C             = 'C' :  compute J'*e;
@@ -87,7 +87,7 @@ C             The leading NSMP-by-NZ part of this array must contain the
 C             set of input samples,
 C             Z = ( Z(1,1),...,Z(1,NZ); ...; Z(NSMP,1),...,Z(NSMP,NZ) ).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= MAX(1,NSMP).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (NSMP)
@@ -98,7 +98,7 @@ C     J       (output) DOUBLE PRECISION array, dimension (LDJ, NWB)
 C             The leading NSMP-by-NWB part of this array contains the
 C             Jacobian of the error function.
 C
-C     LDJ     INTEGER
+C     LDJ     (input) INTEGER
 C             The leading dimension of array J.  LDJ >= MAX(1,NSMP).
 C             Note that LDJ is an input parameter, except for
 C             IPAR(1) < 0 on entry, when it is an output parameter.
@@ -110,16 +110,16 @@ C             If CJTE = 'N', this array is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             This argument is included for combatibility with SLICOT
 C             Library routine NF01BD.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             Normally, the length of the array DWORK.  LDWORK >= 0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

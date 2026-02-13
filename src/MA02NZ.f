@@ -12,20 +12,20 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangular part of
 C             the (skew-)symmetric/Hermitian matrix A is to be
 C             referenced, as follows:
 C             = 'U':  Upper triangular part of A is referenced;
 C             = 'L':  Lower triangular part of A is referenced.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether to use transposition or conjugate
 C             transposition as follows:
 C             = 'T':  Use transposition;
 C             = 'C':  Use conjugate transposition.
 C
-C     SKEW    CHARACTER*1
+C     SKEW    (input) CHARACTER*1
 C             Specifies whether the matrix is symmetric/Hermitian or
 C             skew-symmetric/Hermitian as follows:
 C             = 'N':  The matrix is symmetric/Hermitian;
@@ -57,7 +57,7 @@ C             the diagonal entries zero. Similarly, a skew-Hermitian
 C             matrix has the real parts of the diagonal entries zero.
 C             The routine does not check out this conditions.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(N,1).
 C
 C     CONTRIBUTORS

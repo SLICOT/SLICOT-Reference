@@ -17,17 +17,17 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LTRANL  LOGICAL
+C     LTRANL  (input) LOGICAL
 C             Specifies the form of op(TL) to be used, as follows:
 C             = .FALSE.:  op(TL) = TL,
 C             = .TRUE. :  op(TL) = TL'.
 C
-C     LTRANR  LOGICAL
+C     LTRANR  (input) LOGICAL
 C             Specifies the form of op(TR) to be used, as follows:
 C             = .FALSE.:  op(TR) = TR,
 C             = .TRUE. :  op(TR) = TR'.
 C
-C     ISGN    INTEGER
+C     ISGN    (input) INTEGER
 C             Specifies the sign of the equation as described before.
 C             ISGN may only be 1 or -1.
 C
@@ -43,21 +43,21 @@ C     TL      (input) DOUBLE PRECISION array, dimension (LDTL,N1)
 C             The leading N1-by-N1 part of this array must contain the
 C             matrix TL.
 C
-C     LDTL    INTEGER
+C     LDTL    (input) INTEGER
 C             The leading dimension of array TL.  LDTL >= MAX(1,N1).
 C
 C     TR      (input) DOUBLE PRECISION array, dimension (LDTR,N2)
 C             The leading N2-by-N2 part of this array must contain the
 C             matrix TR.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of array TR.  LDTR >= MAX(1,N2).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,N2)
 C             The leading N1-by-N2 part of this array must contain the
 C             right-hand side of the equation.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N1).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -70,7 +70,7 @@ C             solution of the equation.
 C             Note that X may be identified with B in the calling
 C             statement.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N1).
 C
 C     XNORM   (output) DOUBLE PRECISION
@@ -78,7 +78,7 @@ C             The infinity-norm of the solution.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if TL and -ISGN*TR have almost reciprocal
 C                   eigenvalues, so TL or TR is perturbed to get a

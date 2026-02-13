@@ -12,14 +12,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBS    CHARACTER*1
+C     JOBS    (input) CHARACTER*1
 C             Specifies the scaling operation to be done, as follows:
 C             = 'D':  row and column scaling with D, i.e., A will be
 C                     transformed to diag(D)*A*diag(D);
 C             = 'I':  row and column scaling with inv(D), i.e., A will
 C                     be transformed to inv(diag(D))*A*inv(diag(D)).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrix A is stored, as
 C             follows:
 C             = 'U':  Upper triangle is stored;
@@ -45,7 +45,7 @@ C             The stricly lower triangular part (if UPLO = 'U') or
 C             stricly upper triangular part (if UPLO = 'L') is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (N)

@@ -34,7 +34,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether equation (1) or equation (2) is to be
 C             solved:
 C             = 'N':  Solve equation (1);
@@ -50,7 +50,7 @@ C             The leading N-by-N upper Hessenberg part of this array
 C             must contain the quasitriangular matrix A. The elements
 C             below the upper Hessenberg part are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
@@ -58,7 +58,7 @@ C             The leading N-by-N upper triangular part of this array
 C             must contain the triangular matrix E. The elements below
 C             the main diagonal are not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -68,7 +68,7 @@ C             On exit, the leading N-by-N upper triangular part of this
 C             array contains the solution matrix U. The elements below
 C             the main diagonal are not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -77,11 +77,11 @@ C             0 < SCALE <= 1.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (6*N-6)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (6*N-6)
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

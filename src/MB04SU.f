@@ -36,7 +36,7 @@ C             the matrix [ R11  R12 ] and, in the zero parts of R,
 C             information about the elementary reflectors used to
 C             compute the symplectic QR decomposition.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,M).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -47,7 +47,7 @@ C             the matrix [ R21  R22 ] and, in the zero parts of B,
 C             information about the elementary reflectors used to
 C             compute the symplectic QR decomposition.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,M).
 C
 C     CS      (output) DOUBLE PRECISION array, dimension (2 * min(M,N))
@@ -62,18 +62,18 @@ C             reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -10,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

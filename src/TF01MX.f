@@ -40,7 +40,7 @@ C     S       (input) DOUBLE PRECISION array, dimension (LDS,N+M)
 C             The leading (N+P)-by-(N+M) part of this array must contain
 C             the system matrix S.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N+P).
 C
 C     U       (input) DOUBLE PRECISION array, dimension (LDU,M)
@@ -48,7 +48,7 @@ C             The leading NY-by-M part of this array must contain the
 C             input vector sequence u(k), for k = 1,2,...,NY.
 C             Specifically, the k-th row of U must contain u(k)'.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,NY).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (N)
@@ -63,14 +63,14 @@ C             vector sequence y(1),y(2),...,y(NY) such that the k-th
 C             row of Y contains y(k)' (the outputs at instant k),
 C             for k = 1,2,...,NY.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= MAX(1,NY).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 0,        if MIN(N,P,NY) = 0;  otherwise,
 C             LDWORK >= N+P,      if M = 0;
@@ -79,7 +79,7 @@ C             For better performance, LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

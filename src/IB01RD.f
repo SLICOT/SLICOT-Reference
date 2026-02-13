@@ -25,7 +25,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies whether or not the matrix D is zero, as follows:
 C             = 'Z':  the matrix  D  is zero;
 C             = 'N':  the matrix  D  is not zero.
@@ -49,7 +49,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix  A  in a real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -58,7 +58,7 @@ C             system input matrix  B  (corresponding to the real Schur
 C             form of  A).
 C             If  N = 0  or  M = 0,  this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= N,  if  N > 0  and  M > 0;
 C             LDB >= 1,  if  N = 0  or   M = 0.
@@ -68,7 +68,7 @@ C             The leading L-by-N part of this array must contain the
 C             system output matrix  C  (corresponding to the real Schur
 C             form of  A).
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= L.
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -76,7 +76,7 @@ C             The leading L-by-M part of this array must contain the
 C             system input-output matrix.
 C             If  M = 0  or  JOB = 'Z',  this array is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L,  if  M > 0  and  JOB = 'N';
 C             LDD >= 1,  if  M = 0  or   JOB = 'Z'.
@@ -89,7 +89,7 @@ C             NSMP  values of the j-th input component for consecutive
 C             time increments.
 C             If M = 0, this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= MAX(1,NSMP),  if M > 0;
 C             LDU >= 1,            if M = 0.
@@ -101,7 +101,7 @@ C             Y = [y_1 y_2 ... y_l].  Column  j  of  Y  contains the
 C             NSMP  values of the j-th output component for consecutive
 C             time increments.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= MAX(1,NSMP).
 C
 C     X0      (output) DOUBLE PRECISION array, dimension (N)
@@ -109,7 +109,7 @@ C             The estimated initial state of the system,  x(0).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -121,9 +121,9 @@ C             (see LAPACK Library routine DLAMCH).  TOL <= 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK and  DWORK(2)  contains the reciprocal condition
 C             number of the triangular factor of the QR factorization of
@@ -131,7 +131,7 @@ C             the matrix  Gamma  (see METHOD).
 C             On exit, if  INFO = -22,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( 2, min( LDW1, LDW2 ) ),  where
 C             LDW1 = t*L*(N + 1) + 2*N + max( 2*N*N, 4*N ),
@@ -152,14 +152,14 @@ C             also accommodate  A, B, C, D, U,  and  Y.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problem to be solved has a
 C                   rank-deficient coefficient matrix.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

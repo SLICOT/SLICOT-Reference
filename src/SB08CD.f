@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
@@ -69,7 +69,7 @@ C             real Schur form. The leading NR-by-NR part of this matrix
 C             represents the state dynamics matrix of a minimal
 C             realization of the denominator factor R.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -81,7 +81,7 @@ C             the leading NQ-by-M part of the matrix Z'*(B+H*D), the
 C             input/state matrix of the numerator factor Q.
 C             The remaining part of this array is needed as workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -95,7 +95,7 @@ C             state/output matrix of a minimal realization of the
 C             denominator factor R.
 C             The remaining part of this array is needed as workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,M,P), if N > 0.
 C             LDC >= 1,          if N = 0.
@@ -109,7 +109,7 @@ C             the matrix V*D representing the input/output matrix
 C             of the numerator factor Q.
 C             The remaining part of this array is needed as workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,M,P).
 C
 C     NQ      (output) INTEGER
@@ -133,7 +133,7 @@ C             circle (if DICO = 'D'). The first NR rows of this matrix
 C             form the input/state matrix of a minimal realization of
 C             the denominator factor R.
 C
-C     LDBR    INTEGER
+C     LDBR    (input) INTEGER
 C             The leading dimension of array BR.  LDBR >= MAX(1,N).
 C
 C     DR      (output) DOUBLE PRECISION array, dimension (LDDR,P)
@@ -141,12 +141,12 @@ C             The leading P-by-P part of this array contains the lower
 C             triangular matrix V representing the input/output matrix
 C             of the denominator factor R.
 C
-C     LDDR    INTEGER
+C     LDDR    (input) INTEGER
 C             The leading dimension of array DR.  LDDR >= MAX(1,P).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The absolute tolerance level below which the elements of
 C             C are considered zero (used for observability tests).
 C             If the user sets TOL <= 0, then an implicitly computed,
@@ -157,18 +157,18 @@ C             the infinity-norm of C.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.
 C             LDWORK >= MAX( 1, P*N + MAX( N*(N+5),P*(P+2),4*P,4*M ) ).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = K:  K violations of the numerical stability condition
 C                   NORM(H) <= 10*NORM(A)/NORM(C) occured during the
@@ -176,7 +176,7 @@ C                   assignment of eigenvalues.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

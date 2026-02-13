@@ -41,7 +41,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   LOGICAL
+C     COMPQ   (input) LOGICAL
 C             Specify the option to accumulate or not the performed
 C             left transformations:
 C             COMPQ = .FALSE. : do not accumulate the transformations;
@@ -49,7 +49,7 @@ C             COMPQ = .TRUE.  : accumulate the transformations; in this
 C                     case, Q must contain an orthogonal matrix Q1
 C                     on entry, and the product Q1*Q is returned.
 C
-C     COMPZ   LOGICAL
+C     COMPZ   (input) LOGICAL
 C             Specify the option to accumulate or not the performed
 C             right transformations:
 C             COMPZ = .FALSE. : do not accumulate the transformations;
@@ -72,11 +72,11 @@ C             The number of rows of the matrix C.  P >= 0.
 C
 C     RANKE   (input) INTEGER
 C             The rank of the matrix E; also, the order of the upper
-C             triangular matrix E11.  0 <= RANKE <= N. 
+C             triangular matrix E11.  0 <= RANKE <= N.
 C
 C     RNKA22  (input) DOUBLE PRECISION
 C             The order of the nonsingular submatrix A22 of A.
-C             0 <= RNKA22 <= N - RANKE. 
+C             0 <= RNKA22 <= N - RANKE.
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             On entry, the leading N-by-N part of this array must
@@ -93,7 +93,7 @@ C             The submatrix Ai is in the staircase form (2), where A0,0
 C             is (N-RANKE)-by-(N-RANKE), and Ai,i , for i = 1, ...,
 C             NIBLCK is IBLCK(i)-by-IBLCK(i).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -110,7 +110,7 @@ C             where Ef is an NF-by-NF nonsingular matrix and Ei is an
 C             (N-NF)-by-(N-NF) nilpotent matrix in the staircase
 C             form (2).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -119,7 +119,7 @@ C             contain the N-by-M input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -128,7 +128,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -138,7 +138,7 @@ C                         this array must contain an orthogonal matrix
 C                         Q1; on exit, the leading N-by-N part of this
 C                         array contains the orthogonal matrix Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,        if COMPQ = .FALSE.;
 C             LDQ >= MAX(1,N), if COMPQ = .TRUE. .
@@ -150,7 +150,7 @@ C                        this array must contain an orthogonal matrix
 C                        Z1; on exit, the leading N-by-N part of this
 C                        array contains the orthogonal matrix Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= 1,        if COMPZ = .FALSE.;
 C             LDZ >= MAX(1,N), if COMPZ = .TRUE. .
@@ -170,7 +170,7 @@ C             staircase form (2), where i = 1, 2, ..., NIBLCK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -183,13 +183,13 @@ C             TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N-RANKE)
+C     IWORK   (input/output) INTEGER array, dimension (N-RANKE)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1, if RANKE = N; otherwise,
 C             LDWORK >= MAX(4*(N-RANKE)-1, N-RANKE-RNKA22+MAX(N,M)).
@@ -203,7 +203,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

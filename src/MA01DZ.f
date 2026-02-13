@@ -51,7 +51,7 @@ C             either A1 and/or A2 are undefined.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  A1 or A2 is not a number (NaN);  D1 and D2 are both
 C                   set to 0.

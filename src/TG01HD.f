@@ -119,21 +119,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBCON  CHARACTER*1
+C     JOBCON  (input) CHARACTER*1
 C             = 'C':  separate both finite and infinite uncontrollable
 C                     eigenvalues;
 C             = 'F':  separate only finite uncontrollable eigenvalues:
 C             = 'I':  separate only nonzero finite and infinite
 C                     uncontrollable eigenvalues.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
 C             = 'U':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
@@ -181,7 +181,7 @@ C             where the NIUCON-by-NIUCON matrix Ainc is nonsingular and
 C             upper triangular.
 C             If JOBCON = 'I', Anc is nonsingular and upper triangular.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -210,7 +210,7 @@ C             and the (N-NCONT-NIUCON)-by-(N-NCONT-NIUCON) matrix Efnc
 C             is nonsingular and upper triangular.
 C             If JOBCON = 'F', Enc is nonsingular and upper triangular.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -229,7 +229,7 @@ C              controllability staircase form (1).
 C              For JOBCON = 'F', the matrix ( Bc Ac ) is in the
 C              controllability staircase form (3).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -238,7 +238,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -256,7 +256,7 @@ C                             on exit, the leading N-by-N part of this
 C                             array contains the orthogonal matrix
 C                             Qc*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,N), if COMPQ = 'U' or 'I'.
@@ -275,7 +275,7 @@ C                             on exit, the leading N-by-N part of this
 C                             array contains the orthogonal matrix
 C                             Zc*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'U' or 'I'.
@@ -311,7 +311,7 @@ C             for JOBCON = 'F', respectively.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming (A-lambda*E, B). If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -325,13 +325,13 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(N,2*M))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(N,2*M))
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

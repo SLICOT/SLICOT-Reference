@@ -37,11 +37,11 @@ C             by SLICOT Library routine MB03VD, j = 1, ..., p.
 C             On exit, the leading N-by-N part of A(*,*,j) contains the
 C             N-by-N orthogonal matrix Q_j, j = 1, ..., p.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.
 C             LDA1 >= max(1,N).
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.
 C             LDA2 >= max(1,N).
 C
@@ -51,17 +51,17 @@ C             the scalar factors of the elementary reflectors used to
 C             form the matrix Q_j, as returned by SLICOT Library routine
 C             MB03VD.
 C
-C     LDTAU   INTEGER
+C     LDTAU   (input) INTEGER
 C             The leading dimension of the array TAU.
 C             LDTAU >= max(1,N-1).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C             For optimum performance LDWORK should be larger.
 C
@@ -73,7 +73,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -31,7 +31,7 @@ C             non-trivial factor of the decomposition of the
 C             skew-Hamiltonian input matrix J B' J' B. The (2,1) block
 C             is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N.
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD, N)
@@ -40,7 +40,7 @@ C             first block row of the second matrix of a J B' J' B - b D.
 C             The matrix D has to be Hamiltonian. The strict lower
 C             triangle of the (1,2) block is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= N/2.
 C
 C     MACPAR  (input)  DOUBLE PRECISION array, dimension (2)
@@ -53,28 +53,28 @@ C     Q       (output) DOUBLE PRECISION array, dimension (LDQ, N)
 C             The leading N-by-N part of this array contains the
 C             orthogonal transformation matrix Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= N.
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU, N)
 C             The leading N-by-N part of this array contains the
 C             orthogonal symplectic transformation matrix U.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= N.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             If N = 2 then DWORK is not referenced.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If N = 2 then LDWORK >= 0; if N = 4 then LDWORK >= 12.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             = 1: B11 or B22 is a (numerically) singular matrix.
 C

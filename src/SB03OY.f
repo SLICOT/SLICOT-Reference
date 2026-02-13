@@ -42,18 +42,18 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the equation to be solved:       2
 C             = .FALSE.: op(S)'*X + X*op(S) = -ISGN*scale *op(R)'*op(R);
 C                                                        2
 C             = .TRUE. : op(S)'*X*op(S) - X = -ISGN*scale *op(R)'*op(R).
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies the form of op(K) to be used, as follows:
 C             = .FALSE.:  op(K) = K    (No transpose);
 C             = .TRUE. :  op(K) = K**T (Transpose).
 C
-C     ISGN    INTEGER
+C     ISGN    (input) INTEGER
 C             Specifies the sign of the equation as described before.
 C             ISGN may only be 1 or -1.
 C
@@ -67,7 +67,7 @@ C             Notice that if U is nonsingular then
 C               B = U*S*inv( U ),  if LTRANS = .FALSE.
 C               B = inv( U )*S*U,  if LTRANS = .TRUE..
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= 2.
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,2)
@@ -76,7 +76,7 @@ C             The element R( 2, 1 ) is not referenced.
 C             On exit, R contains U, the 2-by-2 upper triangular
 C             Cholesky factor of the solution X, X = op(U)'*op(U).
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= 2.
 C
 C     A       (output) DOUBLE PRECISION array, dimension (LDA,2)
@@ -87,7 +87,7 @@ C             Notice that if U is nonsingular then
 C               A = scale*scale*R*inv( U ),  if LTRANS = .FALSE.
 C               A = scale*scale*inv( U )*R,  if LTRANS = .TRUE..
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= 2.
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -96,7 +96,7 @@ C             prevent the solution overflowing.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if the Lyapunov equation is (nearly) singular
 C                   (warning indicator);

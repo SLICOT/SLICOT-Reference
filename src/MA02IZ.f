@@ -34,12 +34,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYP     CHARACTER*1
+C     TYP     (input) CHARACTER*1
 C             Specifies the type of the input matrix X:
 C             = 'S':         X is skew-Hamiltonian;
 C             = 'H':         X is Hamiltonian.
 C
-C     NORM    CHARACTER*1
+C     NORM    (input) CHARACTER*1
 C             Specifies the value to be returned in MA02IZ:
 C             = '1' or 'O':  one norm of X;
 C             = 'F' or 'E':  Frobenius norm of X;
@@ -55,7 +55,7 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input) COMPLEX*16 array, dimension (LDQG,N+1)
@@ -70,12 +70,12 @@ C             parts of the entries on the diagonal and the first
 C             superdiagonal of this array, which should be zero, need
 C             not be set.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             where LDWORK >= 2*N when NORM = '1', NORM = 'I' or
 C             NORM = 'O'; otherwise, DWORK is not referenced.
 C

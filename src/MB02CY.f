@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPET   CHARACTER*1
+C     TYPET   (input) CHARACTER*1
 C             Specifies the type of the generator, as follows:
 C             = 'R':  A and B are additional columns of the generator;
 C             = 'C':  A and B are additional rows of the generator.
@@ -23,7 +23,7 @@ C             Note:   in the sequel, the notation x / y means that
 C                     x corresponds to TYPET = 'R' and y corresponds to
 C                     TYPET = 'C'.
 C
-C     STRUCG  CHARACTER*1
+C     STRUCG  (input) CHARACTER*1
 C             Information about the structure of the two generators,
 C             as follows:
 C             = 'T':  the trailing block of the positive generator
@@ -55,7 +55,7 @@ C             must contain the positive part of the generator.
 C             On exit, the leading P-by-N / N-by-P part of this array
 C             contains the transformed positive part of the generator.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,P),    if TYPET = 'R';
 C             LDA >= MAX(1,N),    if TYPET = 'C'.
@@ -67,7 +67,7 @@ C             must contain the negative part of the generator.
 C             On exit, the leading Q-by-N / N-by-Q part of this array
 C             contains the transformed negative part of the generator.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,Q),    if TYPET = 'R';
 C             LDB >= MAX(1,N),    if TYPET = 'C'.
@@ -79,7 +79,7 @@ C             contain part of the necessary information for the
 C             Householder transformations computed by SLICOT Library
 C             routine MB02CX.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.
 C             LDH >= MAX(1,Q),    if TYPET = 'R';
 C             LDH >= MAX(1,K),    if TYPET = 'C'.
@@ -90,24 +90,24 @@ C             contain the necessary information for modified hyperbolic
 C             rotations and the scalar factors of the Householder
 C             transformations computed by SLICOT Library routine MB02CX.
 C
-C     LCS     INTEGER
+C     LCS     (input) INTEGER
 C             The length of the array CS.  LCS >= 2*K + MIN(K,Q).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -16,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  succesful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the right deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -31,7 +31,7 @@ C             = 'N':  do not compute the deflating subspace;
 C             = 'C':  compute the deflating subspace and store it in the
 C                     leading subarray of Q.
 C
-C     ORTH    CHARACTER*1
+C     ORTH    (input) CHARACTER*1
 C             If COMPQ = 'C', specifies the technique for computing an
 C             orthogonal basis of the deflating subspace, as follows:
 C             = 'P':  QR factorization with column pivoting;
@@ -53,7 +53,7 @@ C             (see METHOD); otherwise, it contains the upper triangular
 C             matrix A obtained just before the application of the
 C             periodic QZ algorithm (see SLICOT Library routine MB04BD).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     DE      (input/output) DOUBLE PRECISION array, dimension
@@ -83,7 +83,7 @@ C             strictly upper triangular part of the skew-symmetric
 C             matrix D (without the main diagonal) just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.
 C             LDDE >= MAX(1, N/2).
 C
@@ -97,7 +97,7 @@ C             (see METHOD); otherwise, it contains the upper triangular
 C             matrix C1 obtained just before the application of the
 C             periodic QZ algorithm.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     FG      (input/output) DOUBLE PRECISION array, dimension
@@ -114,7 +114,7 @@ C             contains the matrix Vout (see METHOD); otherwise, it
 C             contains the matrix V obtained just before the application
 C             of the periodic QZ algorithm.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.
 C             LDFG >= MAX(1, N/2).
 C
@@ -130,7 +130,7 @@ C             aA - bB with strictly negative real part. The remaining
 C             part of this array is used as workspace.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,           if COMPQ = 'N';
 C             LDQ >= MAX(1, 2*N), if COMPQ = 'C'.
@@ -163,21 +163,21 @@ C             are stored. The remaining eigenvalues have opposite signs.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = -19, IWORK(1) returns the minimum value
 C             of LIWORK.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.  LIWORK = 1, if N = 0,
 C             LIWORK >= MAX( N + 12, 2*N + 3 ),     if COMPQ = 'N',
 C             LIWORK >= MAX( 32, 2*N + 3 ),         if COMPQ = 'C'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             On exit, if INFO = -21, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.  LDWORK = 1, if N = 0,
 C             LDWORK >= 3*(N/2)**2 + N**2 + MAX( L, 36 ),
 C                                                        if COMPQ = 'N',
@@ -191,11 +191,11 @@ C             routine only calculates the optimal size of the DWORK
 C             array, returns this value as the first entry of the DWORK
 C             array, and no error message is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (N/2)
+C     BWORK   (input/output) LOGICAL array, dimension (N/2)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: periodic QZ iteration failed in the SLICOT Library

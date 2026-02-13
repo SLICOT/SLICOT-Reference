@@ -60,7 +60,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which of the matrices B and D should be
 C             computed, as follows:
 C             = 'B':  compute the matrix B, but not the matrix D;
@@ -92,7 +92,7 @@ C             On exit, the leading  M*NOBR-by-M*NOBR  upper triangular
 C             part of this array is unchanged, and the strict lower
 C             triangle is set to zero.
 C
-C     LDUF    INTEGER
+C     LDUF    (input) INTEGER
 C             The leading dimension of the array  UF.
 C             LDUF >= MAX( 1, M*NOBR ).
 C
@@ -102,7 +102,7 @@ C             contain the matrix  GaL,  i.e., the leading part of the
 C             first  N  columns of the matrix  Un  of relevant singular
 C             vectors.
 C
-C     LDUN    INTEGER
+C     LDUN    (input) INTEGER
 C             The leading dimension of the array  UN.
 C             LDUN >= L*(NOBR-1).
 C
@@ -114,7 +114,7 @@ C             On exit, if  M > 0,  the leading  (N+L)-by-L*NOBR  part of
 C             this array is overwritten by the matrix
 C             [ Q_11  Q_12  ...  Q_1,s-2  Q_1,s-1  Q_1s ].
 C
-C     LDUL    INTEGER
+C     LDUL    (input) INTEGER
 C             The leading dimension of the array  UL.  LDUL >= N+L.
 C
 C     PGAL    (input) DOUBLE PRECISION array, dimension
@@ -123,14 +123,14 @@ C             The leading  N-by-L*(NOBR-1)  part of this array must
 C             contain the pseudoinverse of the matrix  GaL,  computed by
 C             SLICOT Library routine IB01PD.
 C
-C     LDPGAL  INTEGER
+C     LDPGAL  (input) INTEGER
 C             The leading dimension of the array  PGAL.  LDPGAL >= N.
 C
 C     K       (input) DOUBLE PRECISION array, dimension ( LDK,M*NOBR )
 C             The leading  (N+L)-by-M*NOBR  part of this array must
 C             contain the given matrix  K.
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of the array  K.  LDK >= N+L.
 C
 C     R       (output) DOUBLE PRECISION array, dimension ( LDR,M*(N+L) )
@@ -139,7 +139,7 @@ C             contains details of the complete orthogonal factorization
 C             of the coefficient matrix  T  of the least squares problem
 C             which is solved for getting the system matrices B and D.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= MAX( 1, (N+L)*M*NOBR ).
 C
@@ -154,7 +154,7 @@ C     B       (output) DOUBLE PRECISION array, dimension ( LDB,M )
 C             The leading N-by-M part of this array contains the system
 C             input matrix.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N.
 C
 C     D       (output) DOUBLE PRECISION array, dimension ( LDD,M )
@@ -162,14 +162,14 @@ C             If  JOB = 'D',  the leading L-by-M part of this array
 C             contains the system input-output matrix.
 C             If  JOB = 'B',  this array is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L, if  JOB = 'D';
 C             LDD >= 1, if  JOB = 'B'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -183,9 +183,9 @@ C             DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension ( M*(N+L) )
+C     IWORK   (input/output) INTEGER array, dimension ( M*(N+L) )
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( LDWORK )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( LDWORK )
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK,  and, if  M > 0,  DWORK(2)  contains the
 C             reciprocal condition number of the triangular factor of
@@ -193,21 +193,21 @@ C             the matrix  T.
 C             On exit, if  INFO = -26,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( (N+L)*(N+L), 4*M*(N+L)+1 ).
 C             For good performance,  LDWORK  should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problem to be solved has a
 C                   rank-deficient coefficient matrix.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

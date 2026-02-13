@@ -31,19 +31,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANC   CHARACTER*1
+C     TRANC   (input) CHARACTER*1
 C             Specifies the form of op( C ) as follows:
 C             = 'N':  op( C ) = C; 
 C             = 'T':  op( C ) = C';
 C             = 'C':  op( C ) = C'.
 C
-C     TRAND   CHARACTER*1
+C     TRAND   (input) CHARACTER*1
 C             Specifies the form of op( D ) as follows:
 C             = 'N':  op( D ) = D; 
 C             = 'T':  op( D ) = D';
 C             = 'C':  op( D ) = D'.
 C
-C     TRANU   CHARACTER*1
+C     TRANU   (input) CHARACTER*1
 C             Specifies whether U or U' is applied as follows:
 C             = 'N':  apply U;
 C             = 'T':  apply U'.
@@ -70,7 +70,7 @@ C             On entry, the leading M-by-M part of this array must
 C             contain in its columns the vectors which define the
 C             elementary reflectors H(i).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= MAX(1,M).
 C
 C     W       (input) DOUBLE PRECISION array, dimension (LDW,M)
@@ -78,7 +78,7 @@ C             On entry, the leading M-by-M part of this array must
 C             contain in its columns the vectors which define the
 C             elementary reflectors F(i).
 C
-C     LDW     INTEGER
+C     LDW     (input) INTEGER
 C             The leading dimension of the array W.  LDW >= MAX(1,M).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension
@@ -95,7 +95,7 @@ C             On exit with TRANC = 'T' or TRANC = 'C', the leading
 C             N-by-M part of this array contains the transpose of the
 C             updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M),  if TRANC = 'N';
 C             LDC >= MAX(1,N),  if TRANC = 'T' or TRANC = 'C'.
@@ -114,7 +114,7 @@ C             On exit with TRAND = 'T' or TRAND = 'C', the leading
 C             N-by-M part of this array contains the transpose of the
 C             updated matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= MAX(1,M),  if TRAND = 'N';
 C             LDD >= MAX(1,N),  if TRAND = 'T' or TRAND = 'C'.
@@ -131,13 +131,13 @@ C             F(i), as returned by MB04PU or MB04RU.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal value
 C             of LDWORK.
 C             On exit, if  INFO = -18,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C             If LDWORK = -1, then a workspace query is assumed;
@@ -148,7 +148,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

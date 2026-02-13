@@ -23,12 +23,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system, as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is an identity matrix, a general
 C             square matrix, or a matrix in compressed form, as follows:
 C             = 'I':  E is the identity matrix;
@@ -37,13 +37,13 @@ C             = 'C':  E is in compressed form, i.e., E = [ T  0 ],
 C                                                        [ 0  0 ]
 C                     with a square full-rank matrix T.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the system (A,E,B,C) or (A,B,C), as follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state space model:
 C             = 'D':  D is present;
@@ -53,7 +53,7 @@ C                     full rank), for DICO = 'C' and JOBE = 'I'.
 C             The options JOBD = 'D' and JOBD = 'F' produce the same
 C             results, but much less memory is needed for JOBD = 'F'.
 C
-C     CKPROP  CHARACTER*1
+C     CKPROP  (input) CHARACTER*1
 C             If DICO = 'C' and JOBE <> 'I', specifies whether the user
 C             wishes to check the properness of the transfer function of
 C             the descriptor system, as follows:
@@ -66,7 +66,7 @@ C             If the test is not requested, but the system is improper,
 C             the resulted GPEAK and FPEAK may be wrong.
 C             If DICO = 'D' or JOBE = 'I', this option is ineffective.
 C
-C     REDUCE  CHARACTER*1
+C     REDUCE  (input) CHARACTER*1
 C             If CKPROP = 'C', specifies whether the user wishes to
 C             reduce the system order, by removing all uncontrollable
 C             and unobservable poles before computing the norm, as
@@ -75,7 +75,7 @@ C             = 'R': reduce the system order;
 C             = 'N': compute the norm without reducing the order.
 C             If CKPROP = 'N', this option is ineffective.
 C
-C     POLES   CHARACTER*1
+C     POLES   (input) CHARACTER*1
 C             Specifies whether the user wishes to use all or part of
 C             the poles to compute the test frequencies (in the non-
 C             iterative part of the algorithm), or all or part of the
@@ -136,7 +136,7 @@ C             dynamics matrix of an equivalent reduced, possibly scaled
 C             (if EQUIL = 'S') system, used to check the properness.
 C             Otherwise, the array A is unchanged.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,K),
@@ -159,7 +159,7 @@ C             scaled (if EQUIL = 'S') system, used to check the
 C             properness.
 C             Otherwise, the array E is unchanged.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N),     if JOBE = 'G';
 C             LDE >= MAX(1,RANKE), if JOBE = 'C';
@@ -177,7 +177,7 @@ C             input matrix of an equivalent reduced, possibly scaled (if
 C             EQUIL = 'S') system, used to check the properness.
 C             Otherwise, the array B is unchanged.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -192,7 +192,7 @@ C             output matrix of an equivalent reduced, possibly scaled
 C             (if EQUIL = 'S') system, used to check the properness.
 C             Otherwise, the array C is unchanged.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -200,7 +200,7 @@ C             If JOBD = 'D' or JOBD = 'F', the leading P-by-M part of
 C             this array must contain the direct transmission matrix D.
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D' or JOBD = 'F';
 C             LDD >= 1,        if JOBD = 'Z'.
@@ -217,7 +217,7 @@ C             as FPEAK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION array, dimension K, where K = 2, if
+C     TOL     (input) DOUBLE PRECISION array, dimension K, where K = 2, if
 C             CKPROP = 'N' or DICO = 'D' or JOBE = 'I', and K = 4,
 C             otherwise.
 C             TOL(1) is the tolerance used to set the accuracy in
@@ -254,7 +254,7 @@ C             are also taken into account.  TOL(4) < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= 1, if MIN(N,P,M) = 0, or B = 0, or C = 0; else
 C             LIWORK >= MAX(1,N), if DICO = 'C', JOBE = 'I', and
 C                       JOBD <> 'D';
@@ -265,7 +265,7 @@ C             On exit, if INFO = 0, IWORK(1) returns the number of
 C             iterations performed by the iterative algorithm
 C             (possibly 0).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C             On exit, if  INFO = -28,  DWORK(1)  returns the minimum
@@ -273,7 +273,7 @@ C             value of LDWORK. These values are also set when LDWORK = 0
 C             on entry, but no error message related to LDWORK is issued
 C             by XERBLA.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 1, if MIN(M,P) = 0 or ( JOBD = 'Z' and
 C                                         ( N = 0 or B = 0 or C = 0 ) );
@@ -304,7 +304,7 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) contains the optimal
 C             LZWORK.
 C             On exit, if  INFO = -30,  ZWORK(1)  returns the minimum
@@ -315,7 +315,7 @@ C             If LDWORK = 0 and LZWORK = 0 are both set on entry, then
 C             on exit, INFO = -30, but both DWORK(1) and ZWORK(1) are
 C             set the minimum values of LDWORK and LZWORK, respectively.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 1,  if MIN(N,M,P) = 0, or B = 0, or C = 0;
 C             LZWORK >= MAX(1, (N+M)*(N+P) + 2*MIN(M,P) + MAX(M,P)),
@@ -328,11 +328,11 @@ C             ZWORK array, returns this value as the first entry of
 C             the ZWORK array, and no error message related to LZWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (N)
+C     BWORK   (input/output) LOGICAL array, dimension (N)
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  the descriptor system is singular. GPEAK(1) and
 C                   GPEAK(2) are set to 0. FPEAK(1) and FPEAK(2) are
@@ -345,7 +345,7 @@ C                   CKPROP = 'C'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -359,7 +359,7 @@ C                   eigenvalues did not converge;
 C             = 3:  the SVD algorithm for computing singular values did
 C                   not converge;
 C             = 4:  the tolerance is too small and the algorithm did
-C                   not converge; this is a warning; 
+C                   not converge; this is a warning;
 C             = 5:  other computations than QZ iteration, or reordering
 C                   of eigenvalues, failed in the LAPACK Library
 C                   routines DHGEQZ or DTGSEN, respectively;
@@ -447,7 +447,7 @@ C     and BNEIR has the same purpose for real poles;
 C     MAXIT is the maximum number of iterations;
 C     SWNEIC is the system order when the number of complex poles to be
 C     used is increased.
-C                        
+C
       INTEGER            BM, BNEICD, BNEICM, BNEICX, BNEIR, MAXIT,
      $                   SWNEIC
       PARAMETER          ( BM = 2, BNEICD = 10, BNEICM = 45,
@@ -1907,7 +1907,7 @@ C
 C
 C        Undo scaling.
 C
-         IF( NSRT ) THEN 
+         IF( NSRT ) THEN
             IF( ILASCL ) THEN
                CALL DLASCL( 'Hessenberg', 0, 0, ANRMTO, ANRM, N, N,
      $                      DWORK( IA ), N, IERR )
@@ -2459,7 +2459,7 @@ C        Prepare for using separately part of real and complex poles.
 C
          NEIC = 0
          NEIR = 0
-C   
+C
          DO 150 I = 0, NEI - 1
             IF( BWORK( I+1 ) ) THEN
                DWORK( IR+NEIR ) = DWORK( IM+I )

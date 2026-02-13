@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
@@ -42,7 +42,7 @@ C             contain the state dynamics matrix of the original system.
 C             On exit, the leading NR-by-NR part of this array contains
 C             the state dynamics matrix Ar of the reduced order system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -51,7 +51,7 @@ C             contain the input/state matrix of the original system.
 C             On exit, the leading NR-by-M part of this array contains
 C             the input/state matrix Br of the reduced order system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -60,7 +60,7 @@ C             contain the state/output matrix of the original system.
 C             On exit, the leading P-by-NR part of this array contains
 C             the state/output matrix Cr of the reduced order system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -71,7 +71,7 @@ C             the input/output matrix Dr of the reduced order system.
 C             If NR = 0 and the given system is stable, then D contains
 C             the steady state gain of the system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -80,13 +80,13 @@ C             (see METHOD).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*(N-NR))
+C     IWORK   (input/output) INTEGER array, dimension (2*(N-NR))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (4*(N-NR))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (4*(N-NR))
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

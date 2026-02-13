@@ -16,13 +16,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     BATCH   CHARACTER*1
+C     BATCH   (input) CHARACTER*1
 C             Specifies whether or not sequential data processing is to
 C             be used, and, for sequential processing, whether or not
 C             the current data block is the first block, an intermediate
@@ -36,7 +36,7 @@ C             NOTE that when  100  cycles of sequential data processing
 C                  are completed for  BATCH = 'I',  a warning is
 C                  issued, to prevent for an infinite loop.
 C
-C     CONCT   CHARACTER*1
+C     CONCT   (input) CHARACTER*1
 C             Specifies whether or not the successive data blocks in
 C             sequential data processing belong to a single experiment,
 C             as follows:
@@ -85,7 +85,7 @@ C             NSMP  values of the j-th input component for consecutive
 C             time increments.
 C             If M = 0, this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= NSMP, if M > 0;
 C             LDU >= 1,    if M = 0.
@@ -97,7 +97,7 @@ C             Y = [y_1 y_2 ... y_l].  Column  j  of  Y  contains the
 C             NSMP  values of the j-th output component for consecutive
 C             time increments.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= NSMP.
 C
 C     R       (output) DOUBLE PRECISION array, dimension
@@ -108,13 +108,13 @@ C             array contains the upper triangular factor R from the
 C             QR factorization of the concatenated block Hankel
 C             matrices.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= 2*(M+L)*NOBR.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension MAX(3,M+L)
+C     IWORK   (input/output) INTEGER array, dimension MAX(3,M+L)
 C             On entry with  BATCH = 'I'  or  BATCH = 'L',  IWORK(1:3)
 C             must contain the values of ICYCLE, MAXWRK, and NSMPSM
 C             set by the previous call of this routine.
@@ -128,7 +128,7 @@ C             The first three elements of  IWORK  should be preserved
 C             during successive calls of the routine with  BATCH = 'F'
 C             or  BATCH = 'I',  till the final call with   BATCH = 'L'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -16,  DWORK(1)  returns the minimum
@@ -142,7 +142,7 @@ C                     single experiment  (CONCT = 'N');
 C             c = 2,  if the successive data blocks belong to a single
 C                     experiment  (CONCT = 'C').
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= (M+L)*2*NOBR*(M+L+3),
 C                              if BATCH <> 'O' and CONCT = 'C';
@@ -162,7 +162,7 @@ C             BATCH = 'O'.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  the number of 100 cycles in sequential data
 C                   processing has been exhausted without signaling
@@ -170,7 +170,7 @@ C                   that the last block of data was get.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

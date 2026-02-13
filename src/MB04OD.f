@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Indicates if the matrix A is or not triangular as follows:
 C             = 'U':  Matrix A is upper trapezoidal/triangular;
 C             = 'F':  Matrix A is full.
@@ -46,7 +46,7 @@ C             array contains the upper triangular matrix R.
 C             The strict lower triangular part of this array is not
 C             referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
@@ -60,7 +60,7 @@ C             triangular, if UPLO = 'U') of this array contains the
 C             trailing components (the vectors v, see Method) of the
 C             elementary reflectors used in the factorization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,P).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -70,7 +70,7 @@ C             On exit, the leading N-by-M part of this array contains
 C                                 _
 C             the computed matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,M)
@@ -80,7 +80,7 @@ C             On exit, the leading P-by-M part of this array contains
 C                                 _
 C             the computed matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     TAU     (output) DOUBLE PRECISION array, dimension (N)
@@ -88,7 +88,7 @@ C             The scalar factors of the elementary reflectors used.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(N-1,M))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(N-1,M))
 C
 C     METHOD
 C

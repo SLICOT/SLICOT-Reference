@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SHFT    CHARACTER*1
+C     SHFT    (input) CHARACTER*1
 C             Specifies the number of shifts employed by the shift
 C             polynomial, as follows:
 C             = 'D':  two shifts (assumes N > 2);
@@ -57,10 +57,10 @@ C             The leading N-by-N-by-K part of this array must contain
 C             the product (implicitly represented by its K factors)
 C             in periodic upper Hessenberg form.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= N.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     C1      (output)  DOUBLE PRECISION
@@ -75,9 +75,9 @@ C             for the second Givens rotation. Otherwise, C2 = 1, S2 = 0.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N)
+C     IWORK   (input/output) INTEGER array, dimension (2*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*N*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*N*N)
 C             On exit, DWORK(N*N+1:N*N+N) and DWORK(N*N+N+1:N*N+2*N)
 C             contain the real and imaginary parts, respectively, of the
 C             eigenvalues of the matrix product.

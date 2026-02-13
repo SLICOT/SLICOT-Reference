@@ -25,12 +25,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the equation to be solved:
 C             = .FALSE.:  op(S)'*X + X*op(A) = scale*C;
 C             = .TRUE. :  op(S)'*X*op(A) - X = scale*C.
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies the form of op(K) to be used, as follows:
 C             = .FALSE.:  op(K) = K    (No transpose);
 C             = .TRUE. :  op(K) = K**T (Transpose).
@@ -54,14 +54,14 @@ C             diagonal blocks larger than two-by-two and the two-by-two
 C             blocks must only correspond to complex conjugate pairs of
 C             eigenvalues, not to real eigenvalues.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDS,M)
 C             The leading  M-by-M  part of this array must contain a
 C             given matrix, where M = 1 or M = 2.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= M.
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,M)
@@ -70,7 +70,7 @@ C             M = 2.
 C             On exit, C contains the N-by-M matrix X, the solution of
 C             the Sylvester equation.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -79,7 +79,7 @@ C             prevent the solution overflowing.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if DISCR = .FALSE., and S and -A have common
 C                   eigenvalues, or if DISCR = .TRUE., and S and A have

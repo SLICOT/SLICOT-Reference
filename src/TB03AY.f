@@ -25,6 +25,22 @@ C     for K = L,...,INPLUS, with each of these having only its first
 C     NBLK(K-1) rows non-trivial except for K = L, which has NBLK(L)
 C     such rows.
 C
+C     Arguments
+C
+C     NR     (input) INTEGER
+C     A      (input) DOUBLE PRECISION, dimension(LDA,*)
+C     LDA    (input) INTEGER
+C     INDBLK (input) INTEGER
+C     NBLK   (input) INTEGER, dimension(*)
+C     VCOEFF (input/output) DOUBLE PRECISION, dimension(LDVC01, LDVC02,*)
+C     LDVCO1 (input) INTEGER
+C     LDVCO2 (input) INTEGER
+C     PCOEFF (input/output) DOUBLE PRECISION, dimension(LDPC01, LPCO2,*)
+C     LDPCO1 (input) INTEGER
+C     LDPCO2 (input) INTEGER
+C     INFO   (input/output) INTEGER
+C
+C
 C     REVISIONS
 C
 C     -

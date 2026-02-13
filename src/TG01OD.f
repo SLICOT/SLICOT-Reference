@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general or an identity matrix,
 C             as follows:
 C             = 'G':  The matrix E is a general matrix;
@@ -48,7 +48,7 @@ C
 C             On exit, the leading (NZ+1)-by-(NZ+1) part of this array
 C             contains the reduced system matrices a, b, c, and d.
 C
-C     LDDCBA  INTEGER
+C     LDDCBA  (input) INTEGER
 C             The leading dimension of the array DCBA.  LDDCBA >= N+1.
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,*)
@@ -58,7 +58,7 @@ C             On exit, if JOBE = 'G', the leading NZ-by-NZ part of this
 C             array contains the reduced descriptor matrix e.
 C             If JOBE = 'I', this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'G';
 C             LDE >= 1,        if JOBE = 'I'.
@@ -71,7 +71,7 @@ C             The gain of the reduced system.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in determining if the transformed
 C             d has a "sufficiently" large magnitude. If the user sets
 C             TOL > 0, then the given value of TOL is used. If the user
@@ -82,13 +82,13 @@ C             Library routine DLAMCH).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -11, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2*N+1,  if JOBE = 'G';
 C             LDWORK >=   N+1,  if JOBE = 'I'.
@@ -106,7 +106,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

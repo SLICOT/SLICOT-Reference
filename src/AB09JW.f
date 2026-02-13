@@ -27,25 +27,25 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the projection to be computed as follows:
 C             = 'W':  compute the projection of G*W containing
 C                     the poles of G;
 C             = 'C':  compute the projection of G*conj(W) containing
 C                     the poles of G.
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the systems as follows:
 C             = 'C':  G and W are continuous-time systems;
 C             = 'D':  G and W are discrete-time systems.
 C
-C     JOBEW   CHARACTER*1
+C     JOBEW   (input) CHARACTER*1
 C             Specifies whether EW is a general square or an identity
 C             matrix as follows:
 C             = 'G':  EW is a general square matrix;
 C             = 'I':  EW is the identity matrix.
 C
-C     STBCHK  CHARACTER*1
+C     STBCHK  (input) CHARACTER*1
 C             Specifies whether stability/antistability of W is to be
 C             checked as follows:
 C             = 'C':  check stability if JOB = 'C' or antistability if
@@ -83,7 +83,7 @@ C             The leading N-by-N part of this array must contain the
 C             state matrix A of the system with the transfer-function
 C             matrix G in a real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array,
@@ -95,7 +95,7 @@ C             On exit, if INFO = 0, the leading N-by-MW part of this
 C             array contains the input matrix BS of the projection of
 C             G*W, if JOB = 'W', or of G*conj(W), if JOB = 'C'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
@@ -103,7 +103,7 @@ C             The leading P-by-N part of this array must contain
 C             the output/state matrix C of the system with the
 C             transfer-function matrix G. The matrix CS is equal to C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array,
@@ -116,7 +116,7 @@ C             this array contains the feedthrough matrix DS of the
 C             projection of G*W, if JOB = 'W', or of G*conj(W),
 C             if JOB = 'C'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,P).
 C
 C     AW      (input/output) DOUBLE PRECISION array, dimension (LDAW,NW)
@@ -136,7 +136,7 @@ C             if JOBEW = 'G', JOB = 'C' and DICO = 'D', it contains an
 C             upper triangular matrix corresponding to the generalized
 C             real Schur form of the pair (EW',AW').
 C
-C     LDAW    INTEGER
+C     LDAW    (input) INTEGER
 C             The leading dimension of the array AW.  LDAW >= MAX(1,NW).
 C
 C     EW      (input/output) DOUBLE PRECISION array, dimension (LDEW,NW)
@@ -157,7 +157,7 @@ C             if JOB = 'C' and DICO = 'D', it contains a quasi-upper
 C             triangular matrix corresponding to the generalized
 C             real Schur form of the pair (EW',AW').
 C
-C     LDEW    INTEGER
+C     LDEW    (input) INTEGER
 C             The leading dimension of the array EW.
 C             LDEW >= MAX(1,NW), if JOBEW = 'G';
 C             LDEW >= 1,         if JOBEW = 'I'.
@@ -174,7 +174,7 @@ C             that reduces AW to the real Schur form or the left
 C             orthogonal matrix used to reduce the pair (AW,EW),
 C             (AW',EW') or (EW',AW') to the generalized real Schur form.
 C
-C     LDBW    INTEGER
+C     LDBW    (input) INTEGER
 C             The leading dimension of the array BW.  LDBW >= MAX(1,NW).
 C
 C     CW      (input/output) DOUBLE PRECISION array, dimension (LDCW,NW)
@@ -188,7 +188,7 @@ C             reduces AW to the real Schur form, or CW*Z, where Z is the
 C             right orthogonal matrix used to reduce the pair (AW,EW),
 C             (AW',EW') or (EW',AW') to the generalized real Schur form.
 C
-C     LDCW    INTEGER
+C     LDCW    (input) INTEGER
 C             The leading dimension of the array CW.
 C             LDCW >= MAX(1,PCW), where PCW = M if JOB = 'W', or
 C             PCW = MW if JOB = 'C'.
@@ -201,21 +201,21 @@ C             the feedthrough matrix DW of the system with the
 C             transfer-function matrix W, where PCW = M if JOB = 'W',
 C             or PCW = MW if JOB = 'C'.
 C
-C     LDDW    INTEGER
+C     LDDW    (input) INTEGER
 C             LDDW >= MAX(1,PCW), where PCW = M if JOB = 'W', or
 C             PCW = MW if JOB = 'C'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK =   0,    if JOBEW = 'I';
 C             LIWORK = NW+N+6, if JOBEW = 'G'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= LW1, if JOBEW = 'I',
 C             LDWORK >= LW2, if JOBEW = 'G', where
@@ -228,7 +228,7 @@ C             For good performance, LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             =  0:  successful exit;
 C             <  0:  if INFO = -i, the i-th argument had an illegal
 C                    value;

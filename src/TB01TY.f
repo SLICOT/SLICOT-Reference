@@ -33,6 +33,19 @@ C
 C     For efficiency, no tests of the input scalar parameters are
 C     performed.
 C
+C     Arguments
+C
+C     MODE    (input) INTEGER
+C     IOFF    (input) INTEGER
+C     JOFF    (input) INTEGER
+C     NROW    (input) INTEGER
+C     NCOL    (input) INTEGER
+C     SIZE    (input) DOUBLE PRECISION
+C     X       (input/output) DOUBLE PRECISION, dimension(LDX,*)
+C     LDX     (input) INTEGER,
+C     BVECT   (input/output) DOUBLE PRECISION
+C
+C
 C     REVISIONS
 C
 C     -

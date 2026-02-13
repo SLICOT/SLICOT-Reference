@@ -27,7 +27,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ1  CHARACTER*1
+C     COMPQ1  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q1, as follows:
 C             = 'N':  Q1 is not computed;
@@ -39,7 +39,7 @@ C                     is the product of the orthogonal transformations
 C                     that are applied on the right to the pencil
 C                     aA - bB in (1).
 C
-C     COMPQ2  CHARACTER*1
+C     COMPQ2  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q2, as follows:
 C             = 'N':  Q2 is not computed;
@@ -63,7 +63,7 @@ C             blocks need not be set to zero.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed upper triangular matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB, N)
@@ -73,7 +73,7 @@ C             blocks need not be set to zero.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed upper quasi-triangular matrix.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N).
 C
 C     Q1      (input/output) DOUBLE PRECISION array, dimension (LDQ1, N)
@@ -87,7 +87,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q1.
 C             If COMPQ1 = 'N' this array is not referenced.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.
 C             LDQ1 >= 1,         if COMPQ1 = 'N';
 C             LDQ1 >= MAX(1, N), if COMPQ1 = 'I' or COMPQ1 = 'U'.
@@ -103,25 +103,25 @@ C             this array contains the orthogonal transformation matrix
 C             Q2.
 C             If COMPQ2 = 'N' this array is not referenced.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.
 C             LDQ2 >= 1,         if COMPQ2 = 'N';
 C             LDQ2 >= MAX(1, N), if COMPQ2 = 'I' or COMPQ2 = 'U'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.
 C             LIWORK >= MAX( N/2+1, 32 ).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             On exit, if INFO = -16, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 2*N*N + MAX( N/2 + 168, 272 ).
 C             For good performance LDWORK should be generally larger.
@@ -131,11 +131,11 @@ C             routine only calculates the optimal size of the DWORK
 C             array, returns this value as the first entry of the DWORK
 C             array, and no error message is issued by XERBLA. 
 C
-C     BWORK   LOGICAL array, dimension (N/2)
+C     BWORK   (input/output) LOGICAL array, dimension (N/2)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the periodic QZ algorithm failed to reorder the

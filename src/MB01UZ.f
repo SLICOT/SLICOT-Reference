@@ -23,19 +23,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the triangular matrix T appears on the
 C             left or right in the matrix product, as follows:
 C             = 'L':  T := alpha * op( T ) * A;
 C             = 'R':  T := alpha * A * op( T ).
 C
-C     UPLO    CHARACTER*1.
+C     UPLO    (input) CHARACTER*1.
 C             Specifies whether the matrix T is an upper or lower
 C             triangular matrix, as follows:
 C             = 'U':  T is an upper triangular matrix;
 C             = 'L':  T is a lower triangular matrix.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( T ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( T ) = T;
@@ -70,7 +70,7 @@ C             On exit, the leading M-by-N part of this array contains
 C             the corresponding product defined by SIDE, UPLO, and
 C             TRANS.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= max(1,M),    if SIDE = 'L';
 C             LDT >= max(1,M,N),  if SIDE = 'R'.
@@ -79,18 +79,18 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     Workspace
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0,  ZWORK(1)  returns the optimal value
 C             of LZWORK.
 C             On exit, if  INFO = -12,  ZWORK(1)  returns the minimum
 C             value of LZWORK.
 C
-C     LZWORK  The length of the array ZWORK.
+C     LZWORK  (input) INTEGER, The length of the array ZWORK.
 C             LZWORK >= 1, if alpha =  0 or MIN(M,N) = 0;
 C             LZWORK >= M, if SIDE  = 'L';
 C             LZWORK >= N, if SIDE  = 'R'.
@@ -104,7 +104,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -257,7 +257,7 @@ C        correspond to UPLO = 'L' and TRANS = 'N'.
 C
          IF ( LTRAN ) THEN
             CALL MA02EZ( UPLO, TRANS, 'General', K, T, LDT )
-            IF ( LUPLO ) THEN 
+            IF ( LUPLO ) THEN
                UPLOC = 'Lower'
             ELSE
                UPLOC = 'Upper'

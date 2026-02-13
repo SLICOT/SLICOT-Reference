@@ -34,18 +34,18 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBG    CHARACTER*1
+C     JOBG    (input) CHARACTER*1
 C             Specifies whether or not the matrix G is to be computed,
 C             as follows:
 C             = 'G':  Compute G;
 C             = 'N':  Do not compute G.
 C
-C     JOBL    CHARACTER*1
+C     JOBL    (input) CHARACTER*1
 C             Specifies whether or not the matrix L is zero, as follows:
 C             = 'Z':  L is zero;
 C             = 'N':  L is nonzero.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies how the matrix R is given (factored or not), as
 C             follows:
 C             = 'N':  Array R contains the matrix R;
@@ -53,7 +53,7 @@ C             = 'C':  Array R contains the Cholesky factor of R;
 C             = 'U':  Array R contains the factors of the symmetric
 C                     indefinite UdU' or LdL' factorization of R.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices R, Q (if
 C             JOBL = 'N'), and G (if JOBG = 'G') is stored, as follows:
 C             = 'U':  Upper triangle is stored;
@@ -77,7 +77,7 @@ C                                                    -          -1
 C             part of this array contains the matrix A = A - B*R  L'.
 C             If JOBL = 'Z', this array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.
 C             LDA >= MAX(1,N) if JOBL = 'N';
 C             LDA >= 1        if JOBL = 'Z'.
@@ -91,7 +91,7 @@ C             part of this array contains the matrix B*chol(R)  .
 C             On exit, B is unchanged if OUFACT <> 1 (hence also when
 C             FACT = 'U').
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -110,7 +110,7 @@ C                                  -          -1
 C             the symmetric matrix Q = Q - L*R  *L'.
 C             If JOBL = 'Z', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= MAX(1,N) if JOBL = 'N';
 C             LDQ >= 1        if JOBL = 'Z'.
@@ -148,7 +148,7 @@ C             contains the factors of the UdU' or LdL' factorization,
 C             respectively, of the given input weighting matrix.
 C             On exit R is unchanged if FACT = 'C' or 'U'.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,M).
 C
 C     L       (input/output) DOUBLE PRECISION array, dimension (LDL,M)
@@ -162,7 +162,7 @@ C             On exit, L is unchanged if OUFACT <> 1 (hence also when
 C             FACT = 'U').
 C             L is not referenced if JOBL = 'Z'.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.
 C             LDL >= MAX(1,N) if JOBL = 'N';
 C             LDL >= 1        if JOBL = 'Z'.
@@ -194,17 +194,17 @@ C                                                                 -1
 C             (if UPLO = 'L'), respectively, of the matrix G = B*R  B'.
 C             If JOBG = 'N', this array is not referenced.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.
 C             LDG >= MAX(1,N) if JOBG = 'G';
 C             LDG >= 1        if JOBG = 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C             If FACT = 'C' or FACT = 'U', this array is not referenced.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or LDWORK = -1, DWORK(1) returns the
 C             optimal value of LDWORK; if FACT = 'N' and LDWORK is set
 C             as specified below, DWORK(2) contains the reciprocal
@@ -212,7 +212,7 @@ C             condition number of the given matrix R.
 C             On exit, if LDWORK = -2 on input or INFO = -23, then
 C             DWORK(1) returns the minimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1              if FACT = 'C' or  (FACT = 'U' and
 C                                         JOBG = 'N' and  JOBL = 'Z');
@@ -237,7 +237,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

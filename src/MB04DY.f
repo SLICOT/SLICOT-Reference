@@ -39,7 +39,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBSCL  CHARACTER*1
+C     JOBSCL  (input) CHARACTER*1
 C             Indicates which scaling strategy is used, as follows:
 C             = 'S'       :  do the symplectic scaling (2);
 C             = '1' or 'O':  do the 1-norm scaling (3);
@@ -60,7 +60,7 @@ C             Hamiltonian matrix H' in (2) or H'' in (3), depending on
 C             the setting of JOBSCL.
 C             If JOBSCL = 'N', this array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,N), if JOBSCL <> 'N';
 C             LDA >= 1,        if JOBSCL =  'N'.
@@ -86,7 +86,7 @@ C             Hamiltonian matrix H' in (2) or H'' in (3), depending on
 C             the setting of JOBSCL.
 C             If JOBSCL = 'N', this array is not referenced.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.
 C             LDQG >= MAX(1,N), if JOBSCL <> 'N';
 C             LDQG >= 1,        if JOBSCL =  'N'.
@@ -101,12 +101,12 @@ C             If JOBSCL = 'N', this array is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C             If JOBSCL = 'N', this array is not referenced.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, then the i-th argument had an illegal
 C                   value.

@@ -28,7 +28,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ACONA   CHARACTER*1
+C     ACONA   (input) CHARACTER*1
 C             Indicates whether the coefficients of A(z) or B(z) =
 C             A(1/z) * A(z) are to be supplied as follows:
 C             = 'A':  The coefficients of A(z) are to be supplied;
@@ -63,14 +63,14 @@ C             powers of z.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 5*DA+5.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

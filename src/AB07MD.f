@@ -12,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state space model:
 C             = 'D':  D is present;
@@ -35,7 +35,7 @@ C             contain the original state dynamics matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the dual state dynamics matrix A'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -45,7 +45,7 @@ C             contain the original input/state matrix B.
 C             On exit, the leading N-by-P part of this array contains
 C             the dual input/state matrix C'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -54,7 +54,7 @@ C             contain the original state/output matrix C.
 C             On exit, the leading M-by-N part of this array contains
 C             the dual state/output matrix B'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,M,P) if N > 0.
 C             LDC >= 1 if N = 0.
@@ -68,14 +68,14 @@ C             On exit, if JOBD = 'D', the leading M-by-P part of this
 C             array contains the dual direct transmission matrix D'.
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,M,P) if JOBD = 'D'.
 C             LDD >= 1 if JOBD = 'Z'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

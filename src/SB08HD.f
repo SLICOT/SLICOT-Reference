@@ -40,7 +40,7 @@ C             Q and R.
 C             On exit, the leading N-by-N part of this array contains
 C             the state dynamics matrix of the system G.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -49,7 +49,7 @@ C             contain the input/state matrix BQR of the systems Q and R.
 C             On exit, the leading N-by-M part of this array contains
 C             the input/state matrix of the system G.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -58,7 +58,7 @@ C             contain the state/output matrix CQ of the system Q.
 C             On exit, the leading P-by-N part of this array contains
 C             the state/output matrix of the system G.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C
@@ -68,14 +68,14 @@ C             contain the input/output matrix DQ of the system Q.
 C             On exit, the leading P-by-M part of this array contains
 C             the input/output matrix of the system G.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     CR      (input) DOUBLE PRECISION array, dimension (LDCR,N)
 C             The leading M-by-N part of this array must contain the
 C             state/output matrix CR of the system R.
 C
-C     LDCR    INTEGER
+C     LDCR    (input) INTEGER
 C             The leading dimension of array CR.  LDCR >= MAX(1,M).
 C
 C     DR      (input/output) DOUBLE PRECISION array, dimension (LDDR,M)
@@ -85,20 +85,20 @@ C             On exit, the leading M-by-M part of this array contains
 C             the LU factorization of the matrix DR, as computed by
 C             LAPACK Library routine DGETRF.
 C
-C     LDDR    INTEGER
+C     LDDR    (input) INTEGER
 C             The leading dimension of array DR.  LDDR >= MAX(1,M).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(1,4*M))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(1,4*M))
 C             On exit, DWORK(1) contains an estimate of the reciprocal
 C             condition number of the matrix DR.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

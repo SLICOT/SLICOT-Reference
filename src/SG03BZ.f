@@ -48,19 +48,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies which type of the equation is considered:
 C             = 'C':  Continuous-time equation (1);
 C             = 'D':  Discrete-time equation (2).
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether the generalized (complex) Schur
 C             factorization of the pencil A - lambda * E is supplied on
 C             entry or not:
 C             = 'N':  Factorization is not supplied;
 C             = 'F':  Factorization is supplied.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the conjugate transposed equation is to
 C             be solved or not:
 C             = 'N':  op(A) = A,    op(E) = E;
@@ -91,7 +91,7 @@ C             Schur factor A_s of the matrix A. (A_s is an upper
 C             triangular matrix.) If FACT = 'F', the leading N-by-N
 C             upper triangular part of this array is unchanged.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) COMPLEX*16 array, dimension (LDE,N)
@@ -109,7 +109,7 @@ C             Schur factor E_s of the matrix E. (E_s is an upper
 C             triangular matrix.) If FACT = 'F', the leading N-by-N
 C             upper triangular part of this array is unchanged.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     Q       (input/output) COMPLEX*16 array, dimension (LDQ,N)
@@ -124,7 +124,7 @@ C             array contains the unitary matrix Q from the generalized
 C             Schur factorization. If FACT = 'F', this array is
 C             unchanged.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (input/output) COMPLEX*16 array, dimension (LDZ,N)
@@ -139,7 +139,7 @@ C             array contains the unitary matrix Z from the generalized
 C             Schur factorization. If FACT = 'F', this array is
 C             unchanged.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB,N1)
@@ -152,7 +152,7 @@ C             array contains the Cholesky factor U of the solution
 C             matrix X of the problem, X = op(U)**H * op(U).
 C             If M = 0 and N > 0, then U is set to zero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             If TRANS = 'C',  LDB >= MAX(1,N).
 C             If TRANS = 'N',  LDB >= MAX(1,M,N).
@@ -162,7 +162,8 @@ C             The scale factor set to avoid overflow in U.
 C             0 < SCALE <= 1.
 C
 C     ALPHA   (output) COMPLEX*16 arrays, dimension (N)
-C     BETA    If INFO = 0, 5, 6, or 7, then ALPHA(j)/BETA(j),
+C     BETA    (output) COMPLEX*16 arrays, dimension (N)
+C             If INFO = 0, 5, 6, or 7, then ALPHA(j)/BETA(j),
 C             j = 1, ... , N, are the eigenvalues of the matrix pencil
 C             A - lambda * E (the diagonals of the complex Schur form).
 C             All BETA(j) are non-negative real numbers.
@@ -172,20 +173,20 @@ C             usually comparable with norm(B).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK), where
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK), where
 C             LDWORK = 0,           if MIN(M,N) = 0 or
 C                                      FACT = 'F' and N <= 1; else,
 C             LDWORK = N-1,         if FACT = 'F' and DICO = 'C';
 C             LDWORK = MAX(N-1,10), if FACT = 'F' and DICO = 'D';
 C             LDWORK = 8*N,         if FACT = 'N'.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
 C             of LZWORK.
 C             On exit, if INFO = -21, ZWORK(1) returns the minimum value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= MAX(1,3*N-3,2*N).
 C             For good performance, LZWORK should be larger.
@@ -198,7 +199,7 @@ C             XERBLA.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -47,7 +47,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     CHARACTER
+C     DEF     (input) CHARACTER*1
 C             This parameter specifies if the default parameters are
 C             to be used or not.
 C             = 'N' or 'n' : The parameters given in the input vectors
@@ -246,7 +246,7 @@ C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the
 C             coefficient matrix A of the CARE.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -254,7 +254,7 @@ C             If (BPAR(1) = .FALSE.), then the leading N-by-M part of
 C             this array contains the matrix B of the factored form (I)
 C             of G. Otherwise, B is used as workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= N.
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -262,7 +262,7 @@ C             If (BPAR(4) = .FALSE.), then the leading P-by-N part of
 C             this array contains the matrix C of the factored form (II)
 C             of Q. Otherwise, C is used as workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= P, where P is the number of rows of the matrix C,
 C             i.e., the output value of IPAR(3). (For all examples,
@@ -279,7 +279,7 @@ C             weighting matrix' R of G's factored form as in (I). (For
 C             all examples, M <= N.) The symmetric matrix contained in
 C             array G is stored according to BPAR(2) and BPAR(3).
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             If conventional storage mode is used for G, i.e.,
 C             BPAR(2) = .TRUE., then G is stored like a 2-dimensional
 C             array with leading dimension LDG. If packed symmetric
@@ -296,7 +296,7 @@ C             weighting matrix' W of Q's factored form as in (II).
 C             The symmetric matrix contained in array Q is stored
 C             according to BPAR(5) and BPAR(6).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             If conventional storage mode is used for Q, i.e.,
 C             BPAR(5) = .TRUE., then Q is stored like a 2-dimensional
 C             array with leading dimension LDQ. If packed symmetric
@@ -309,21 +309,21 @@ C             2.3-2.6, 3.2), then the leading N-by-N part of this array
 C             contains the solution matrix X in conventional storage
 C             mode. Otherwise, X is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= 1, and
 C             LDX >= N if NR = 1.1, 1.2, 2.1, 2.3-2.6, 3.2.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= N*MAX(4,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0 : successful exit;
 C             < 0 : if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -391,7 +391,7 @@ C
 C     .. Scalar Arguments ..
       INTEGER          INFO, LDA, LDB, LDC, LDG, LDQ, LDWORK, LDX, M, N,
      $                 P
-      CHARACTER        DEF
+      CHARACTER*1      DEF
 C
 C     .. Array Arguments ..
       INTEGER          IPAR(4), NR(2)

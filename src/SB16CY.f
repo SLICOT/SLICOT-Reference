@@ -19,12 +19,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the open-loop system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBCF   CHARACTER*1
+C     JOBCF   (input) CHARACTER*1
 C             Specifies whether a left or right coprime factorization
 C             of the state-feedback controller is to be used as follows:
 C             = 'L':  use a left coprime factorization;
@@ -46,35 +46,35 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state matrix A of the open-loop system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix B of the open-loop system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             state/output matrix C of the open-loop system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     F       (input) DOUBLE PRECISION array, dimension (LDF,N)
 C             The leading M-by-N part of this array must contain a
 C             stabilizing state feedback matrix.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     G       (input) DOUBLE PRECISION array, dimension (LDG,P)
 C             The leading N-by-P part of this array must contain a
 C             stabilizing observer gain matrix.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     SCALEC  (output) DOUBLE PRECISION
@@ -90,7 +90,7 @@ C             The leading N-by-N upper triangular part of this array
 C             contains the Cholesky factor Su of frequency-weighted
 C             cotrollability Grammian P = Su*Su'. See METHOD.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.  LDS >= MAX(1,N).
 C
 C     R       (output) DOUBLE PRECISION array, dimension (LDR,N)
@@ -98,16 +98,16 @@ C             The leading N-by-N upper triangular part of this array
 C             contains the Cholesky factor Ru of the frequency-weighted
 C             observability Grammian Q = Ru'*Ru. See METHOD.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.  LDR >= MAX(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N*(N + MAX(N,M) + MIN(N,M) + 6)),
 C                                                       if JOBCF = 'L';
@@ -119,7 +119,7 @@ C             LDWORK >= MAX(1, N*(N + MAX(N,M,P) + 7)).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

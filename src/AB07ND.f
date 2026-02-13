@@ -24,7 +24,7 @@ C             contain the state matrix A of the original system.
 C             On exit, the leading N-by-N part of this array contains
 C             the state matrix Ai of the inverse system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -33,7 +33,7 @@ C             contain the input matrix B of the original system.
 C             On exit, the leading N-by-M part of this array contains
 C             the input matrix Bi of the inverse system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -42,7 +42,7 @@ C             contain the output matrix C of the original system.
 C             On exit, the leading M-by-N part of this array contains
 C             the output matrix Ci of the inverse system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,M).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -51,7 +51,7 @@ C             contain the feedthrough matrix D of the original system.
 C             On exit, the leading M-by-M part of this array contains
 C             the feedthrough matrix Di of the inverse system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,M).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -60,13 +60,13 @@ C             feedthrough matrix D of the original system.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*M)
+C     IWORK   (input/output) INTEGER array, dimension (2*M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or M+1, DWORK(1) returns the optimal
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,4*M).
 C             For good performance, LDWORK should be larger.
 C
@@ -78,7 +78,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

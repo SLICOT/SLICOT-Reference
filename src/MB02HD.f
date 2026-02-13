@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRIU    CHARACTER*1
+C     TRIU    (input) CHARACTER*1
 C             Specifies the structure, if any, of the last blocks in TC
 C             and TR, as follows:
 C             = 'N':  TC and TR have no special structure;
@@ -85,7 +85,7 @@ C             On entry, if P = 0, the leading (ML+1)*K-by-L part of this
 C             array must contain the nonzero blocks in the first block
 C             column of T.
 C
-C     LDTC    INTEGER
+C     LDTC    (input) INTEGER
 C             The leading dimension of the array TC.
 C             LDTC >= MAX(1,(ML+1)*K),  if P = 0.
 C
@@ -94,7 +94,7 @@ C             On entry, if P = 0, the leading K-by-NU*L part of this
 C             array must contain the 2nd to the (NU+1)-st blocks of
 C             the first block row of T.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of the array TR.
 C             LDTR >= MAX(1,K),  if P = 0.
 C
@@ -111,14 +111,14 @@ C             column of the lower R factor (1) in band storage format.
 C             For further details regarding the band storage scheme see
 C             the documentation of the LAPACK routine DPBTF2.
 C
-C     LDRB    INTEGER
+C     LDRB    (input) INTEGER
 C             The leading dimension of the array RB.
 C             LDRB >= MAX( MIN( ML+NU+1,N )*L,1 ),      if TRIU = 'N';
 C             LDRB >= MAX( MIN( (ML+NU)*L+1,N*L ),1 ),  if TRIU = 'T'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -17,  DWORK(1)  returns the minimum
@@ -126,7 +126,7 @@ C             value of LDWORK.
 C             The first 1 + 2*MIN( ML+NU+1,N )*L*(K+L) elements of DWORK
 C             should be preserved during successive calls of the routine.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             Let x = MIN( ML+NU+1,N ), then
 C             LDWORK >= 1 + MAX( x*L*L + (2*NU+1)*L*K,
@@ -142,7 +142,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

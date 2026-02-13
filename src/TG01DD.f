@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
@@ -42,7 +42,7 @@ C             contain the state dynamics matrix A.
 C             On exit, the leading L-by-N part of this array contains
 C             the transformed matrix A*Z.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -62,7 +62,7 @@ C
 C             where R is an MIN(L,N)-by-MIN(L,N) upper triangular
 C             matrix.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -71,7 +71,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -89,18 +89,18 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'U' or 'I'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,P)).
 C             For optimum performance
@@ -109,7 +109,7 @@ C             where NB is the optimal blocksize.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

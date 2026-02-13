@@ -42,7 +42,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LHAM    LOGICAL
+C     LHAM    (input) LOGICAL
 C             Specifies the type of matrix to be reduced:
 C             = .FALSE. :  skew-Hamiltonian like W;
 C             = .TRUE.  :  Hamiltonian like H.
@@ -68,7 +68,7 @@ C             contains the matrix Aout and in the zero part
 C             information about the elementary reflectors used to
 C             compute the reduction.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,K+N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -85,35 +85,35 @@ C             information about the elementary reflectors used to
 C             compute the reduction. Note that if LHAM = .FALSE. then
 C             the (K-1)-th and K-th subdiagonals are not referenced.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG. LDQG >= MAX(1,N+K).
 C
 C     XA      (output) DOUBLE PRECISION array, dimension (LDXA,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix XA.
 C
-C     LDXA    INTEGER
+C     LDXA    (input) INTEGER
 C             The leading dimension of the array XA.  LDXA >= MAX(1,N).
 C
 C     XG      (output) DOUBLE PRECISION array, dimension (LDXG,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix XG.
 C
-C     LDXG    INTEGER
+C     LDXG    (input) INTEGER
 C             The leading dimension of the array XG. LDXG >= MAX(1,K+N).
 C
 C     XQ      (output) DOUBLE PRECISION array, dimension (LDXQ,2*NB)
 C             On exit, the leading N-by-(2*NB) part of this array
 C             contains the matrix XQ.
 C
-C     LDXQ    INTEGER
+C     LDXQ    (input) INTEGER
 C             The leading dimension of the array XQ.  LDXQ >= MAX(1,N).
 C
 C     YA      (output) DOUBLE PRECISION array, dimension (LDYA,2*NB)
 C             On exit, the leading (K+N)-by-(2*NB) part of this array
 C             contains the matrix YA.
 C
-C     LDYA    INTEGER
+C     LDYA    (input) INTEGER
 C             The leading dimension of the array YA. LDYA >= MAX(1,K+N).
 C
 C     CS      (output) DOUBLE PRECISION array, dimension (2*NB)
@@ -127,7 +127,7 @@ C             scalar factors of some of the elementary reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*NB)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*NB)
 C
 C     METHOD
 C

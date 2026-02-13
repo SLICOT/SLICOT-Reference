@@ -72,7 +72,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Indicates how H should be diagonally scaled and/or
 C             permuted to reduce its norm.
 C             = 'N': Do not diagonally scale or permute;
@@ -86,14 +86,14 @@ C                    columns of H more equal in norm. Do not permute;
 C             = 'B': Both diagonally scale and permute A, G and Q.
 C             Permuting does not change the norm of H, but scaling does.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the full
 C             decomposition (4) or the eigenvalues only, as follows:
 C             = 'E': compute the eigenvalues only;
 C             = 'S': compute the matrix Sc of (4);
 C             = 'G': compute the matrices Sc and Gc of (4).
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates whether or not the user wishes to compute the
 C             symplectic matrix Ue of (3), if JOB = 'E', or U of (4),
 C             if JOB = 'S' or JOB = 'G', as follows:
@@ -117,7 +117,7 @@ C             On exit, if JOB = 'S' or JOB = 'G', the leading 2*N-by-2*N
 C             upper triangular part of this array contains the matrix Sc
 C             (complex Schur form) of decomposition (4).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,K).
 C
 C     QG      (input/output) COMPLEX*16 array, dimension
@@ -134,7 +134,7 @@ C             On exit, JOB = 'G', the leading 2*N-by-2*N upper
 C             triangular part of this array contains the upper
 C             triangular part of the matrix Gc in the decomposition (4).
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= max(1,K).
 C
 C     U1      (output) COMPLEX*16 array, dimension (LDU1,2*N)
@@ -144,7 +144,7 @@ C             block of the unitary symplectic matrix U of the
 C             decomposition (4).
 C             If JOB = 'E' or JOBU = 'N', this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.  LDU1 >= 1.
 C             LDU1 >= 2*N,    if JOBU = 'U'.
 C
@@ -155,7 +155,7 @@ C             block of the unitary symplectic matrix U of the
 C             decomposition (4).
 C             If JOB = 'E' or JOBU = 'N', this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.  LDU2 >= 1.
 C             LDU2 >= 2*N,    if JOBU = 'U'.
 C
@@ -179,7 +179,7 @@ C             This array is not referenced if BALANC = 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK, and   DWORK(2)  returns the 1-norm of the
 C             (scaled, if BALANC = 'S' or 'B') Hamiltonian matrix.
@@ -202,7 +202,7 @@ C             orthogonal symplectic matrix Ue.
 C             On exit, if  INFO = -18,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX( 12*N**2 + 4*N, 8*N**2 + 12*N ) + 2,
 C                                    if JOB = 'E' and JOBU = 'N';
@@ -220,13 +220,13 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0,  ZWORK(1)  returns the optimal
 C             value of LZWORK.
 C             On exit, if  INFO = -20,  ZWORK(1)  returns the minimum
 C             value of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 1,                  if JOB = 'E';
 C             LZWORK >= MAX( 1, 12*N - 6 ), if JOB = 'S' and JOBU = 'N';
@@ -238,13 +238,13 @@ C             ZWORK array, returns this value as the first entry of
 C             the ZWORK array, and no error message related to LZWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (LBWORK)
+C     BWORK   (input/output) LOGICAL array, dimension (LBWORK)
 C             LBWORK >= 0,     if JOB = 'E';
 C             LBWORK >= 2*N-1, if JOB = 'S' or JOB = 'G'.
 C
 C     Error Indicator
 C
-C     INFO     INTEGER
+C     INFO     (output) INTEGER
 C              = 0:  successful exit;
 C              < 0:  if INFO = -i, the i-th argument had an illegal
 C                    value;

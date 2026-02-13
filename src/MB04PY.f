@@ -20,7 +20,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Indicates whether the elementary reflector should be
 C             applied from the left or from the right, as follows:
 C             = 'L':  Compute H * C;
@@ -48,12 +48,12 @@ C             contain the matrix C.
 C             On exit, the leading M-by-N part of this array contains
 C             the matrix H * C, if SIDE = 'L', or C * H, if SIDE = 'R'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N), if SIDE = 'L', or
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N), if SIDE = 'L', or
 C                                               (M), if SIDE = 'R'.
 C             DWORK is not referenced if H has order less than 11.
 C

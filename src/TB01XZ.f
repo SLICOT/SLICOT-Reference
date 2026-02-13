@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state space model:
 C             = 'D':  D is present;
@@ -56,7 +56,7 @@ C             contain the system state matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed (pertransposed) matrix P*A'*P.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB,MAX(M,P))
@@ -65,7 +65,7 @@ C             contain the original input/state matrix B.
 C             On exit, the leading N-by-P part of this array contains
 C             the dual input/state matrix P*C'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N) if M > 0 or  P > 0.
 C             LDB >= 1        if M = 0 and P = 0.
@@ -76,7 +76,7 @@ C             contain the original state/output matrix C.
 C             On exit, the leading M-by-N part of this array contains
 C             the dual state/output matrix B'*P.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,M,P) if N > 0.
 C             LDC >= 1          if N = 0.
@@ -89,14 +89,14 @@ C             On exit, if JOBD = 'D', the leading M-by-P part of this
 C             array contains the transposed direct transmission matrix
 C             D'. The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,M,P) if JOBD = 'D'.
 C             LDD >= 1          if JOBD = 'Z'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

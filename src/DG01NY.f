@@ -5,10 +5,58 @@ C
 C
 C     PURPOSE
 C
+
+C
 C     Auxiliary routine called only by DG01ND.
 C
 C     For efficiency, no tests of the input scalar parameters are
 C     performed.
+C
+C     Mode Parameters
+C
+C     INDI    (input) CHARACTER*1
+C             Indicates whether a Fourier transform or inverse Fourier
+C             transform is to be performed as follows:
+C             = 'D':  (Direct) Fourier transform;
+C             = 'I':  Inverse Fourier transform.
+C
+C     Input/Output Parameters
+C
+C     N       (input) INTEGER
+C             Half the number of real samples.  N must be a power of 2.
+C             N >= 2.
+C
+C     XR      (input/output) DOUBLE PRECISION array, dimension (N+1)
+C             On entry with INDI = 'D', the first N elements of this
+C             array must contain the odd part of the input signal; for
+C             example, XR(I) = A(2*I-1) for I = 1,2,...,N.
+C             On entry with INDI = 'I', the first N+1 elements of this
+C             array must contain the the real part of the input discrete
+C             Fourier transform (computed, for instance, by a previous
+C             call of the routine).
+C             On exit with INDI = 'D', the first N+1 elements of this
+C             array contain the real part of the output signal, that is
+C             of the computed discrete Fourier transform.
+C             On exit with INDI = 'I', the first N elements of this
+C             array contain the odd part of the output signal, that is
+C             of the computed inverse discrete Fourier transform.
+C
+C     XI      (input/output) DOUBLE PRECISION array, dimension (N+1)
+C             On entry with INDI = 'D', the first N elements of this
+C             array must contain the even part of the input signal; for
+C             example, XI(I) = A(2*I) for I = 1,2,...,N.
+C             On entry with INDI = 'I', the first N+1 elements of this
+C             array must contain the the imaginary part of the input
+C             discrete Fourier transform (computed, for instance, by a
+C             previous call of the routine).
+C             On exit with INDI = 'D', the first N+1 elements of this
+C             array contain the imaginary part of the output signal,
+C             that is of the computed discrete Fourier transform.
+C             On exit with INDI = 'I', the first N elements of this
+C             array contain the even part of the output signal, that is
+C             of the computed inverse discrete Fourier transform.
+C
+
 C
 C     .. Parameters ..
       DOUBLE PRECISION  ZERO, HALF, ONE, TWO, EIGHT

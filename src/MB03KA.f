@@ -38,7 +38,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N': do not compute any of the matrices Q_k;
 C             = 'U': each coefficient of Q must contain an orthogonal
 C                    matrix Q1_k on entry, and the products Q1_k*Q_k are
@@ -47,7 +47,7 @@ C                    reordering;
 C             = 'W': the computation of each Q_k is specified
 C                    individually in the array WHICHQ.
 C
-C     WHICHQ  INTEGER array, dimension (K)
+C     WHICHQ  (input) INTEGER array, dimension (K)
 C             If COMPQ = 'W', WHICHQ(k) specifies the computation of Q_k
 C             as follows:
 C             = 0:   do not compute Q_k;
@@ -56,7 +56,7 @@ C                    matrix Q1_k on entry, and the product Q1_k*Q_k is
 C                    returned.
 C             This array is not referenced if COMPQ <> 'W'.
 C
-C     WS      LOGICAL
+C     WS      (input) LOGICAL
 C             = .FALSE. : do not perform the strong stability tests;
 C             = .TRUE.  : perform the strong stability tests; often,
 C                         this is not needed, and omitting them can save
@@ -117,13 +117,13 @@ C             Schur form.
 C             On exit, the matrices T_k are overwritten by the reordered
 C             periodic Schur form.
 C
-C     LDT     INTEGER array, dimension (K)
+C     LDT     (input) INTEGER array, dimension (K)
 C             The leading dimensions of the matrices T_k in the one-
 C             dimensional array T.
 C             LDT(k) >= max(1,N(k+1)),  if S(k) =  1,
 C             LDT(k) >= max(1,N(k)),    if S(k) = -1.
 C
-C     IXT     INTEGER array, dimension (K)
+C     IXT     (input) INTEGER array, dimension (K)
 C             Start indices of the matrices T_k in the one-dimensional
 C             array T.
 C
@@ -136,21 +136,21 @@ C             Q_k is post-multiplied with the orthogonal matrix that
 C             performed the reordering.
 C             This array is not referenced if COMPQ = 'N'.
 C
-C     LDQ     INTEGER array, dimension (K)
+C     LDQ     (input) INTEGER array, dimension (K)
 C             The leading dimensions of the matrices Q_k in the one-
 C             dimensional array Q.
 C             LDQ(k) >= max(1,N(k)), if COMPQ = 'U', or COMPQ = 'W' and
 C                                                       WHICHQ(k) > 0;
 C             This array is not referenced if COMPQ = 'N'.
 C
-C     IXQ     INTEGER array, dimension (K)
+C     IXQ     (input) INTEGER array, dimension (K)
 C             Start indices of the matrices Q_k in the one-dimensional
 C             array Q.
 C             This array is not referenced if COMPQ = 'N'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION array, dimension (3)
+C     TOL     (input) DOUBLE PRECISION array, dimension (3)
 C             This array contains tolerance parameters. The weak and
 C             strong stability tests use a threshold computed by the
 C             formula  MAX( c*EPS*NRM, SMLNUM ),  where c is a constant,
@@ -166,12 +166,12 @@ C             respectively. TOL(1) should normally be at least 10.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (4*K)
+C     IWORK   (input/output) INTEGER array, dimension (4*K)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 10*K + MN, if all blocks between IFST and ILST
 C                                  have order 1;
@@ -193,7 +193,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -21, the LDWORK argument was too small;
 C             = 1:  the reordering of T failed because some eigenvalues

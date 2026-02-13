@@ -3,7 +3,7 @@ C SPDX-License-Identifier: BSD-3-Clause
 C
       DOUBLE PRECISION FUNCTION AB13CD( N, M, NP, A, LDA, B, LDB, C,
      $                                  LDC, D, LDD, TOL, IWORK, DWORK,
-     $                                  LDWORK, CWORK, LCWORK, BWORK,
+     $                                  LDWORK, ZWORK, LZWORK, BWORK,
      $                                  INFO )
 C
 C     PURPOSE
@@ -39,66 +39,66 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             system input matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading NP-by-N part of this array must contain the
 C             system output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading NP-by-M part of this array must contain the
 C             system input/output matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used to set the accuracy in determining the
 C             norm.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK, and DWORK(2) contains the frequency where the
 C             gain of the frequency response achieves its peak value
 C             HNORM.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= max(2,4*N*N+2*M*M+3*M*N+M*NP+2*(N+NP)*NP+10*N+
 C                             6*max(M,NP)).
 C             For good performance, LDWORK must generally be larger.
 C
-C     CWORK   COMPLEX*16 array, dimension (LCWORK)
-C             On exit, if INFO = 0, CWORK(1) contains the optimal value
-C             of LCWORK.
+C     ZWORK   (input/output) COMPLEX*16 array, dimension (LZWORK)
+C             On exit, if INFO = 0, ZWORK(1) contains the optimal value
+C             of LZWORK.
 C
-C     LCWORK  INTEGER
-C             The dimension of the array CWORK.
-C             LCWORK >= max(1,(N+M)*(N+NP)+3*max(M,NP)).
-C             For good performance, LCWORK must generally be larger.
+C     LZWORK  (input) INTEGER
+C             The dimension of the array ZWORK.
+C             LZWORK >= max(1,(N+M)*(N+NP)+3*max(M,NP)).
+C             For good performance, LZWORK must generally be larger.
 C
-C     BWORK   LOGICAL array, dimension (2*N)
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -157,13 +157,13 @@ C     .. Parameters ..
       PARAMETER          ( HUGE = 10.0D+0**30 )
 C     ..
 C     .. Scalar Arguments ..
-      INTEGER            INFO, LDA, LDB, LDC, LCWORK, LDD, LDWORK, M, N,
+      INTEGER            INFO, LDA, LDB, LDC, LZWORK, LDD, LDWORK, M, N,
      $                   NP
       DOUBLE PRECISION   TOL
 C     ..
 C     .. Array Arguments ..
       INTEGER            IWORK( * )
-      COMPLEX*16         CWORK( * )
+      COMPLEX*16         ZWORK( * )
       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), C( LDC, * ),
      $                   D( LDD, * ), DWORK( * )
       LOGICAL            BWORK( * )
@@ -219,7 +219,7 @@ C
          INFO = -15
       END IF
       MINCWR = MAX( 1, ( N + M )*( N + NP ) + 3*MAX( M, NP ) )
-      IF( LCWORK.LT.MINCWR ) THEN
+      IF( LZWORK.LT.MINCWR ) THEN
          INFO = -17
       END IF
       IF( INFO.NE.0 ) THEN
@@ -263,7 +263,7 @@ C
          AB13CD   = GAMMAL
          DWORK(1) = TWO
          DWORK(2) = ZERO
-         CWORK(1) = ONE
+         ZWORK(1) = ONE
          RETURN
       END IF
 C
@@ -346,34 +346,34 @@ C     G(omega) = C*inv(j*omega*In - A)*B + D .
 C
       DO 50 J = 1, N
          DO 40 I = 1, N
-            CWORK( I+(J-1)*N ) = -A( I, J )
+            ZWORK( I+(J-1)*N ) = -A( I, J )
    40    CONTINUE
-         CWORK( J+(J-1)*N ) = JIMAG*OMEGA - A( J, J )
+         ZWORK( J+(J-1)*N ) = JIMAG*OMEGA - A( J, J )
    50 CONTINUE
       DO 70 J = 1, M
          DO 60 I = 1, N
-            CWORK( ICW2+I+(J-1)*N ) = B( I, J )
+            ZWORK( ICW2+I+(J-1)*N ) = B( I, J )
    60    CONTINUE
    70 CONTINUE
       DO 90 J = 1, N
          DO 80 I = 1, NP
-            CWORK( ICW3+I+(J-1)*NP ) = C( I, J )
+            ZWORK( ICW3+I+(J-1)*NP ) = C( I, J )
    80    CONTINUE
    90 CONTINUE
       DO 110 J = 1, M
          DO 100 I = 1, NP
-            CWORK( ICW4+I+(J-1)*NP ) = D( I, J )
+            ZWORK( ICW4+I+(J-1)*NP ) = D( I, J )
   100    CONTINUE
   110 CONTINUE
-      CALL ZGESV( N, M, CWORK, N, IWORK, CWORK( ICW2+1 ), N, INFO2 )
+      CALL ZGESV( N, M, ZWORK, N, IWORK, ZWORK( ICW2+1 ), N, INFO2 )
       IF( INFO2.GT.0 ) THEN
          INFO = 1
          RETURN
       END IF
-      CALL ZGEMM( 'N', 'N', NP, M, N, CONE, CWORK( ICW3+1 ), NP,
-     $            CWORK( ICW2+1 ), N, CONE, CWORK( ICW4+1 ), NP )
-      CALL ZGESVD( 'N', 'N', NP, M, CWORK( ICW4+1 ), NP, DWORK( IW6+1 ),
-     $             CWORK, NP, CWORK, M, CWORK( ICWRK+1 ), LCWORK-ICWRK,
+      CALL ZGEMM( 'N', 'N', NP, M, N, CONE, ZWORK( ICW3+1 ), NP,
+     $            ZWORK( ICW2+1 ), N, CONE, ZWORK( ICW4+1 ), NP )
+      CALL ZGESVD( 'N', 'N', NP, M, ZWORK( ICW4+1 ), NP, DWORK( IW6+1 ),
+     $             ZWORK, NP, ZWORK, M, ZWORK( ICWRK+1 ), LZWORK-ICWRK,
      $             DWORK( IWRK+1 ), INFO2 )
       IF( INFO2.GT.0 ) THEN
          INFO = 4
@@ -383,7 +383,7 @@ C
          GAMMAL = DWORK( IW6+1 )
          FPEAK  = OMEGA
       END IF
-      LCWAMX = INT( CWORK( ICWRK+1 ) ) + ICWRK
+      LCWAMX = INT( ZWORK( ICWRK+1 ) ) + ICWRK
 C
 C     Workspace usage.
 C
@@ -537,36 +537,36 @@ C
             OMEGA = ( DWORK( IW10+L ) + DWORK( IW10+L+1 ) )/TWO
             DO 250 J = 1, N
                DO 240 I = 1, N
-                  CWORK( I+(J-1)*N ) = -A( I, J )
+                  ZWORK( I+(J-1)*N ) = -A( I, J )
   240          CONTINUE
-               CWORK( J+(J-1)*N ) = JIMAG*OMEGA - A( J, J )
+               ZWORK( J+(J-1)*N ) = JIMAG*OMEGA - A( J, J )
   250       CONTINUE
             DO 270 J = 1, M
                DO 260 I = 1, N
-                  CWORK( ICW2+I+(J-1)*N ) = B( I, J )
+                  ZWORK( ICW2+I+(J-1)*N ) = B( I, J )
   260          CONTINUE
   270       CONTINUE
             DO 290 J = 1, N
                DO 280 I = 1, NP
-                  CWORK( ICW3+I+(J-1)*NP ) = C( I, J )
+                  ZWORK( ICW3+I+(J-1)*NP ) = C( I, J )
   280          CONTINUE
   290       CONTINUE
             DO 310 J = 1, M
                DO 300 I = 1, NP
-                  CWORK( ICW4+I+(J-1)*NP ) = D( I, J )
+                  ZWORK( ICW4+I+(J-1)*NP ) = D( I, J )
   300          CONTINUE
   310       CONTINUE
-            CALL ZGESV( N, M, CWORK, N, IWORK, CWORK( ICW2+1 ), N,
+            CALL ZGESV( N, M, ZWORK, N, IWORK, ZWORK( ICW2+1 ), N,
      $                  INFO2 )
             IF( INFO2.GT.0 ) THEN
                INFO = 1
                RETURN
             END IF
-            CALL ZGEMM( 'N', 'N', NP, M, N, CONE, CWORK( ICW3+1 ), NP,
-     $                   CWORK( ICW2+1 ), N, CONE, CWORK( ICW4+1 ), NP )
-            CALL ZGESVD( 'N', 'N', NP, M, CWORK( ICW4+1 ), NP,
-     $                   DWORK( IW6+1 ), CWORK, NP, CWORK, M,
-     $                   CWORK( ICWRK+1 ), LCWORK-ICWRK,
+            CALL ZGEMM( 'N', 'N', NP, M, N, CONE, ZWORK( ICW3+1 ), NP,
+     $                   ZWORK( ICW2+1 ), N, CONE, ZWORK( ICW4+1 ), NP )
+            CALL ZGESVD( 'N', 'N', NP, M, ZWORK( ICW4+1 ), NP,
+     $                   DWORK( IW6+1 ), ZWORK, NP, ZWORK, M,
+     $                   ZWORK( ICWRK+1 ), LZWORK-ICWRK,
      $                   DWORK( IWRK+1 ), INFO2 )
             IF( INFO2.GT.0 ) THEN
                INFO = 4
@@ -576,7 +576,7 @@ C
                GAMMAL = DWORK( IW6+1 )
                FPEAK  = OMEGA
             END IF
-            LCWAMX = MAX( INT( CWORK( ICWRK+1 ) ) + ICWRK, LCWAMX )
+            LCWAMX = MAX( INT( ZWORK( ICWRK+1 ) ) + ICWRK, LCWAMX )
   320    CONTINUE
       END IF
       GO TO 120
@@ -584,7 +584,7 @@ C
 C
       DWORK( 1 ) = LWAMAX
       DWORK( 2 ) = FPEAK
-      CWORK( 1 ) = LCWAMX
+      ZWORK( 1 ) = LCWAMX
       RETURN
 C *** End of AB13CD ***
       END

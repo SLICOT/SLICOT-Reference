@@ -34,7 +34,7 @@ C     ARGUMENTS
 C
 C     MODE PARAMETERS
 C
-C     REDUCE  CHARACTER*1
+C     REDUCE  (input) CHARACTER*1
 C             Indicates whether the matrix pairs (A,D) and/or (B,E) are
 C             to be reduced to generalized Schur form as follows:
 C             = 'R':  The matrix pairs (A,D) and (B,E) are to be reduced
@@ -49,7 +49,7 @@ C             = 'N':  The matrix pairs (A,D) and (B,E) are already in
 C                     generalized (real) Schur canonical form, as
 C                     produced by LAPACK routine DGGES.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Indicates which of the equations, (1) or (2), is to be
 C             solved as follows:
 C             = 'N':  The generalized Sylvester equation (1) is to be
@@ -57,7 +57,7 @@ C                     solved;
 C             = 'T':  The "transposed" generalized Sylvester equation
 C                     (2) is to be solved.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Indicates whether the Dif estimator is to be computed as
 C             follows:
 C             = '1':  Only the one-norm-based Dif estimate is computed
@@ -91,7 +91,7 @@ C             be in upper quasi-triangular form if REDUCE = 'B' or 'N'.
 C             On exit, the leading M-by-M part of this array contains
 C             the upper quasi-triangular form of A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -101,7 +101,7 @@ C             be in upper quasi-triangular form if REDUCE = 'A' or 'N'.
 C             On exit, the leading N-by-N part of this array contains
 C             the upper quasi-triangular form of B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -114,7 +114,7 @@ C             problem; if JOBD = '1' or '2' and TRANS = 'N', the leading
 C             M-by-N part of this array contains the solution matrix R
 C             achieved during the computation of the Dif estimate.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -124,7 +124,7 @@ C             be in upper triangular form if REDUCE = 'B' or 'N'.
 C             On exit, the leading M-by-M part of this array contains
 C             the upper triangular form of D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,M).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -134,7 +134,7 @@ C             be in upper triangular form if REDUCE = 'A' or 'N'.
 C             On exit, the leading N-by-N part of this array contains
 C             the upper triangular form of E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     F       (input/output) DOUBLE PRECISION array, dimension (LDF,N)
@@ -147,7 +147,7 @@ C             problem; if JOBD = '1' or '2' and TRANS = 'N', the leading
 C             M-by-N part of this array contains the solution matrix L
 C             achieved during the computation of the Dif estimate.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -177,7 +177,7 @@ C             Otherwise, P is not referenced and can be supplied as a
 C             dummy array (i.e. set parameter LDP = 1 and declare this
 C             array to be P(1,1) in the calling program).
 C
-C     LDP     INTEGER
+C     LDP     (input) INTEGER
 C             The leading dimension of array P.
 C             LDP >= MAX(1,M) if REDUCE = 'R' or 'A',
 C             LDP >= 1        if REDUCE = 'B' or 'N'.
@@ -190,7 +190,7 @@ C             Otherwise, Q is not referenced and can be supplied as a
 C             dummy array (i.e. set parameter LDQ = 1 and declare this
 C             array to be Q(1,1) in the calling program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= MAX(1,M) if REDUCE = 'R' or 'A',
 C             LDQ >= 1        if REDUCE = 'B' or 'N'.
@@ -203,7 +203,7 @@ C             Otherwise, U is not referenced and can be supplied as a
 C             dummy array (i.e. set parameter LDU = 1 and declare this
 C             array to be U(1,1) in the calling program).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             LDU >= MAX(1,N) if REDUCE = 'R' or 'B',
 C             LDU >= 1        if REDUCE = 'A' or 'N'.
@@ -216,20 +216,20 @@ C             Otherwise, V is not referenced and can be supplied as a
 C             dummy array (i.e. set parameter LDV = 1 and declare this
 C             array to be V(1,1) in the calling program).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.
 C             LDV >= MAX(1,N) if REDUCE = 'R' or 'B',
 C             LDV >= 1        if REDUCE = 'A' or 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M+N+6)
+C     IWORK   (input/output) INTEGER array, dimension (M+N+6)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If TRANS = 'N' and JOBD = 'D' or 'F', then
 C                LDWORK = MAX(1,11*MN,10*MN+23,2*M*N) if REDUCE = 'R';
@@ -247,7 +247,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

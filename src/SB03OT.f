@@ -31,13 +31,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the type of Lyapunov equation to be solved as
 C             follows:
 C             = .TRUE. :  Equation (2), discrete-time case;
 C             = .FALSE.:  Equation (1), continuous-time case.
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies the form of op(K) to be used, as follows:
 C             = .FALSE.:  op(K) = K    (No transpose);
 C             = .TRUE. :  op(K) = K**T (Transpose).
@@ -55,7 +55,7 @@ C             S are not referenced. The 2-by-2 blocks must only
 C             correspond to complex conjugate pairs of eigenvalues (not
 C             to real eigenvalues).
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N).
 C
 C     R       (input/output) DOUBLE PRECISION array of dimension (LDR,N)
@@ -65,7 +65,7 @@ C             On exit, the leading N-by-N upper triangular part of this
 C             array contains the upper triangular matrix U.
 C             The strict lower triangle of R is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -74,11 +74,11 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (4*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (4*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

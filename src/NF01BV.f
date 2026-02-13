@@ -16,13 +16,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     STOR    CHARACTER*1
+C     STOR    (input) CHARACTER*1
 C             Specifies the storage scheme for the symmetric
 C             matrix J'*J + c*I, as follows:
 C             = 'F' :  full storage is used;
 C             = 'P' :  packed storage is used.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the matrix J'*J + c*I is stored,
 C             as follows:
 C             = 'U' :  the upper triagular part is stored;
@@ -55,7 +55,7 @@ C     J       (input) DOUBLE PRECISION array, dimension (LDJ,N)
 C             The leading M-by-N part of this array must contain the
 C             Jacobian matrix J.
 C
-C     LDJ     INTEGER
+C     LDJ     (input) INTEGER
 C             The leading dimension of the array J.  LDJ >= MAX(1,M).
 C
 C     JTJ     (output) DOUBLE PRECISION array,
@@ -68,22 +68,22 @@ C             UPLO = 'U', or UPLO = 'L', respectively, stored either as
 C             a two-dimensional, or one-dimensional array, depending
 C             on STOR.
 C
-C     LDJTJ   INTEGER
+C     LDJTJ   (input) INTEGER
 C             The leading dimension of the array JTJ.
 C             LDJTJ >= MAX(1,N), if STOR = 'F'.
 C             LDJTJ >= 1,        if STOR = 'P'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             Currently, this array is not used.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

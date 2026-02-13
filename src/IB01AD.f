@@ -16,13 +16,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     ALG     CHARACTER*1
+C     ALG     (input) CHARACTER*1
 C             Specifies the algorithm for computing the triangular
 C             factor R, as follows:
 C             = 'C':  Cholesky algorithm applied to the correlation
@@ -31,7 +31,7 @@ C             = 'F':  Fast QR algorithm;
 C             = 'Q':  QR algorithm applied to the concatenated block
 C                     Hankel matrices.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not the matrices B and D should later
 C             be computed using the MOESP approach, as follows:
 C             = 'M':  the matrices B and D should later be computed
@@ -40,7 +40,7 @@ C             = 'N':  the matrices B and D should not be computed using
 C                     the MOESP approach.
 C             This parameter is not relevant for METH = 'N'.
 C
-C     BATCH   CHARACTER*1
+C     BATCH   (input) CHARACTER*1
 C             Specifies whether or not sequential data processing is to
 C             be used, and, for sequential processing, whether or not
 C             the current data block is the first block, an intermediate
@@ -54,7 +54,7 @@ C             NOTE that when  100  cycles of sequential data processing
 C                  are completed for  BATCH = 'I',  a warning is
 C                  issued, to prevent for an infinite loop.
 C
-C     CONCT   CHARACTER*1
+C     CONCT   (input) CHARACTER*1
 C             Specifies whether or not the successive data blocks in
 C             sequential data processing belong to a single experiment,
 C             as follows:
@@ -65,7 +65,7 @@ C             = 'N':  there is no connection between the current data
 C                     block and the previous and/or the next ones.
 C             This parameter is not used if BATCH = 'O'.
 C
-C     CTRL    CHARACTER*1
+C     CTRL    (input) CHARACTER*1
 C             Specifies whether or not the user's confirmation of the
 C             system order estimate is desired, as follows:
 C             = 'C':  user's confirmation;
@@ -114,7 +114,7 @@ C             NSMP  values of the j-th input component for consecutive
 C             time increments.
 C             If M = 0, this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= NSMP, if M > 0;
 C             LDU >= 1,    if M = 0.
@@ -126,7 +126,7 @@ C             Y = [y_1 y_2 ... y_l].  Column  j  of  Y  contains the
 C             NSMP  values of the j-th output component for consecutive
 C             time increments.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= NSMP.
 C
 C     N       (output) INTEGER
@@ -134,7 +134,7 @@ C             The estimated order of the system.
 C             If  CTRL = 'C',  the estimated order has been reset to a
 C             value specified by the user.
 C
-C     R       (output or input/output) DOUBLE PRECISION array, dimension
+C     R       (input/output) DOUBLE PRECISION array, dimension
 C             ( LDR,2*(M+L)*NOBR )
 C             On exit, if ALG = 'C' and BATCH = 'F' or 'I', the leading
 C             2*(M+L)*NOBR-by-2*(M+L)*NOBR upper triangular part of this
@@ -176,7 +176,7 @@ C             triangular matrix R computed at the previous call of this
 C             routine in sequential data processing. The array R need
 C             not be set on entry if ALG = 'F' or if BATCH = 'F' or 'O'.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= MAX( 2*(M+L)*NOBR, 3*M*NOBR ),
 C                                  for METH = 'M' and JOBD = 'M';
@@ -188,7 +188,7 @@ C             The singular values used to estimate the system order.
 C
 C     Tolerances
 C
-C     RCOND   DOUBLE PRECISION
+C     RCOND   (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  RCOND > 0,  the given value
 C             of  RCOND  is used as a lower bound for the reciprocal
@@ -201,7 +201,7 @@ C             relative machine precision (see LAPACK Library routine
 C             DLAMCH).
 C             This parameter is not used for  METH = 'M'.
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Absolute tolerance used for determining an estimate of
 C             the system order. If  TOL >= 0,  the estimate is
 C             indicated by the index of the last singular value greater
@@ -216,7 +216,7 @@ C             logarithmic gap to its successor.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= MAX(3,(M+L)*NOBR), if METH = 'N';
 C             LIWORK >= MAX(3,M+L), if METH = 'M' and ALG = 'F';
 C             LIWORK >= 3,   if METH = 'M' and ALG = 'C' or 'Q'.
@@ -233,7 +233,7 @@ C             The first three elements of  IWORK  should be preserved
 C             during successive calls of the routine with  BATCH = 'F'
 C             or  BATCH = 'I',  till the final call with   BATCH = 'L'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK,  and, for  METH = 'N',  and  BATCH = 'L'  or
 C             'O',  DWORK(2)  and  DWORK(3)  contain the reciprocal
@@ -250,7 +250,7 @@ C             The first (M+L)*k elements of  DWORK  should be preserved
 C             during successive calls of the routine with  BATCH = 'F'
 C             or  'I',  till the final call with  BATCH = 'L'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= (4*NOBR-2)*(M+L), if ALG = 'C', BATCH = 'F' or
 C                             'I' and CONCT = 'C';
@@ -293,7 +293,7 @@ C             For good performance,  LDWORK  should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  the number of 100 cycles in sequential data
 C                   processing has been exhausted without signaling
@@ -317,7 +317,7 @@ C                   for the identification problem.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

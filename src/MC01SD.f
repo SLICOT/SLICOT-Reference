@@ -44,11 +44,11 @@ C             scaled polynomial Q(x) in increasing powers of x.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (DP+1)
+C     IWORK   (input/output) INTEGER array, dimension (DP+1)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

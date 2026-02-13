@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LERI    CHARACTER*1
+C     LERI    (input) CHARACTER*1
 C             Indicates whether a left polynomial matrix representation
 C             or a right polynomial matrix representation is input as
 C             follows:
@@ -56,12 +56,12 @@ C             diag(s**INDEX(I))*(PCOEFF(.,.,1)+PCOEFF(.,.,2)/s+...).
 C             If LERI = 'R', PCOEFF is modified by the routine but
 C             restored on exit.
 C
-C     LDPCO1  INTEGER
+C     LDPCO1  (input) INTEGER
 C             The leading dimension of array PCOEFF.
 C             LDPCO1 >= MAX(1,P) if LERI = 'L',
 C             LDPCO1 >= MAX(1,M) if LERI = 'R'.
 C
-C     LDPCO2  INTEGER
+C     LDPCO2  (input) INTEGER
 C             The second dimension of array PCOEFF.
 C             LDPCO2 >= MAX(1,P) if LERI = 'L',
 C             LDPCO2 >= MAX(1,M) if LERI = 'R'.
@@ -75,12 +75,12 @@ C             QCOEFF(I,J,K) is defined as for PCOEFF(I,J,K).
 C             If LERI = 'R', QCOEFF is modified by the routine but
 C             restored on exit.
 C
-C     LDQCO1  INTEGER
+C     LDQCO1  (input) INTEGER
 C             The leading dimension of array QCOEFF.
 C             LDQCO1 >= MAX(1,P)   if LERI = 'L',
 C             LDQCO1 >= MAX(1,M,P) if LERI = 'R'.
 C
-C     LDQCO2  INTEGER
+C     LDQCO2  (input) INTEGER
 C             The second dimension of array QCOEFF.
 C             LDQCO2 >= MAX(1,M)   if LERI = 'L',
 C             LDQCO2 >= MAX(1,M,P) if LERI = 'R'.
@@ -102,7 +102,7 @@ C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the state
 C             dynamics matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,MAX(M,P))
@@ -110,7 +110,7 @@ C             The leading N-by-M part of this array contains the
 C             input/state matrix B; the remainder of the leading
 C             N-by-MAX(M,P) part is used as internal workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -118,7 +118,7 @@ C             The leading P-by-N part of this array contains the
 C             state/output matrix C; the remainder of the leading
 C             MAX(M,P)-by-N part is used as internal workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M,P).
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,MAX(M,P))
@@ -126,25 +126,25 @@ C             The leading P-by-M part of this array contains the direct
 C             transmission matrix D; the remainder of the leading
 C             MAX(M,P)-by-MAX(M,P) part is used as internal workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,M,P).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (2*MAX(M,P))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,MAX(M,P)*(MAX(M,P)+4)).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

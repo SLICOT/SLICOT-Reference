@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ROWCOL  CHARACTER*1
+C     ROWCOL  (input) CHARACTER*1
 C             Indicates whether the transfer matrix T(s) is required
 C             as rows or columns over common denominators as follows:
 C             = 'R':  T(s) is required as rows over common denominators;
@@ -45,7 +45,7 @@ C             transformed representation for the original system: this
 C             is completely controllable if ROWCOL = 'R', or completely
 C             observable if ROWCOL = 'C'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M),
@@ -57,7 +57,7 @@ C             part is used as internal workspace.
 C             On exit, the leading NR-by-M part of this array contains
 C             the transformed input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -68,7 +68,7 @@ C             part is used as internal workspace.
 C             On exit, the leading P-by-NR part of this array contains
 C             the transformed state/output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,P)   if ROWCOL = 'R';
 C             LDC >= MAX(1,M,P) if ROWCOL = 'C'.
@@ -81,7 +81,7 @@ C             this array is modified internally, but restored on exit,
 C             and the remainder of the leading MAX(M,P)-by-MAX(M,P)
 C             part is used as internal workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P)   if ROWCOL = 'R';
 C             LDD >= MAX(1,M,P) if ROWCOL = 'C'.
@@ -100,7 +100,7 @@ C             kdcoef = MAX(INDEX(I)) + 1.
 C             DCOEFF(I,K) is the coefficient in s**(INDEX(I)-K+1) of
 C             the I-th denominator polynomial, where K = 1,2,...,kdcoef.
 C
-C     LDDCOE  INTEGER
+C     LDDCOE  (input) INTEGER
 C             The leading dimension of array DCOEFF.
 C             LDDCOE >= MAX(1,P) if ROWCOL = 'R';
 C             LDDCOE >= MAX(1,M) if ROWCOL = 'C'.
@@ -116,19 +116,19 @@ C             if ROWCOL = 'R' then iorj = I, otherwise iorj = J.
 C             Thus for ROWCOL = 'R', U(s) =
 C             diag(s**INDEX(I))*(UCOEFF(.,.,1)+UCOEFF(.,.,2)/s+...).
 C
-C     LDUCO1  INTEGER
+C     LDUCO1  (input) INTEGER
 C             The leading dimension of array UCOEFF.
 C             LDUCO1 >= MAX(1,P) if ROWCOL = 'R';
 C             LDUCO1 >= MAX(1,M) if ROWCOL = 'C'.
 C
-C     LDUCO2  INTEGER
+C     LDUCO2  (input) INTEGER
 C             The second dimension of array UCOEFF.
 C             LDUCO2 >= MAX(1,M) if ROWCOL = 'R';
 C             LDUCO2 >= MAX(1,P) if ROWCOL = 'C'.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             The tolerance to be used in determining the i-th row of
 C             T(s), where i = 1,2,...,porm. If the user sets TOL1 > 0,
 C             then the given value of TOL1 is used as an absolute
@@ -137,7 +137,7 @@ C             considered neglijible. If the user sets TOL1 <= 0, then
 C             an implicitly computed, default tolerance, defined in
 C             the SLICOT Library routine TB01ZD, is used instead.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             The tolerance to be used to separate out a controllable
 C             subsystem of (A,B,C). If the user sets TOL2 > 0, then
 C             the given value of TOL2 is used as a lower bound for the
@@ -151,15 +151,15 @@ C             instead.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (N+MAX(M,P))
 C             On exit, if INFO = 0, the first nonzero elements of
 C             IWORK(1:N) return the orders of the diagonal blocks of A.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N*(N + 1) + MAX(N*MP + 2*N + MAX(N,MP),
 C                                       3*MP, PM)),
@@ -169,7 +169,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

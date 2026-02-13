@@ -35,7 +35,7 @@ C             The sines s of the modified hyperbolic plane rotation.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  succesful exit;
 C             = 1:  if abs(x2) >= abs(x1) and either x1 <> 0 or x2 <> 0.
 C

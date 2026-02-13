@@ -30,7 +30,7 @@ C             the remaining elements, with the array TAU, represent the
 C             orthogonal matrix Q as a product of min(m,n) elementary
 C             reflectors (see METHOD).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A. LDA >= max(1,M).
 C
 C     JPVT    (input/output) INTEGER array, dimension (M)
@@ -45,11 +45,11 @@ C             The scalar factors of the elementary reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*M)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*M)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

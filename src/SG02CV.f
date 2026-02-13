@@ -33,30 +33,30 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the Lyapunov equation, as follows:
 C             = 'C':  continuous-time Lyapunov equation;
 C             = 'D':  discrete-time Lyapunov equation.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which results must be computed, as follows:
 C             = 'R':  The matrix R only must be computed;
 C             = 'N':  The matrix R and the norms must be computed;
 C             = 'B':  The matrix R and the norms must be computed.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general or an identity matrix,
 C             as follows:
 C             = 'G':  The matrix E is general and is given;
 C             = 'I':  The matrix E is assumed identity and is not given.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrices X and
 C             Q are given, as follows:
 C             = 'U':  The upper triangular part is given;
 C             = 'L':  The lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(W) to be used in the formulas
 C             above, as follows:
 C             = 'N':  op(W) = W;
@@ -77,7 +77,7 @@ C             are modified internally, but are restored on exit.
 C             Otherwise, the part of this array below the first
 C             subdiagonal is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,*)
@@ -87,12 +87,12 @@ C             The strictly lower triangular part of this array is not
 C             referenced.
 C             If JOBE = 'I', this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.
 C             LDE >= MAX(1,N), if JOBE = 'G';
 C             LDE >= 1,        if JOBE = 'I'.
 C
-C     X       (input/works.) DOUBLE PRECISION array, dimension (LDX,N)
+C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
 C             On entry, if UPLO = 'U', the leading N-by-N upper
 C             triangular part of this array must contain the upper
 C             triangular part of the symmetric matrix X and the strictly
@@ -105,7 +105,7 @@ C             If DICO = 'D' or (JOB = 'R' and JOBE = 'G'), the diagonal
 C             elements of this array are modified internally, but they
 C             are restored on exit.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,*)
@@ -118,7 +118,7 @@ C             On exit, the leading N-by-N upper or lower triangular
 C             part (depending on UPLO) of this array contains the upper
 C             or lower triangular part, respectively, of the matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     NORMS   (output) DOUBLE PRECISION array, dimension (LN)
@@ -137,13 +137,14 @@ C             If JOB <> 'N', this array is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = -17 or if LDWORK = -2 on input, then
 C             DWORK(1) returns the minimum value of LDWORK.
 C             On exit, if INFO = 0, or if LDWORK = -1 on input, then
 C             DWORK(1) returns the optimal value of LDWORK.
 C
-C     LDWORK  The length of the array DWORK. LDWORK >= MAX(v,1), with v
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
+C             LDWORK >= MAX(v,1), with v
 C             specified in the following table, where
 C                a = 1, if JOBE = 'G';
 C                a = 0, if JOBE = 'I'.
@@ -169,7 +170,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

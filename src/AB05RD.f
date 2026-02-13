@@ -19,12 +19,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FBTYPE  CHARACTER*1
+C     FBTYPE  (input) CHARACTER*1
 C             Specifies the type of the feedback law as follows:
 C             = 'I':  Unitary output feedback (F = I);
 C             = 'O':  General output feedback.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears
 C             in the given state space model:
 C             = 'D':  D is present;
@@ -67,7 +67,7 @@ C             contain the system state transition matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the state matrix Ac of the closed-loop system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -76,7 +76,7 @@ C             contain the system input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the intermediary input matrix B1 (see METHOD).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -85,7 +85,7 @@ C             contain the system output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the intermediary output matrix C1+BETA*D1*K (see METHOD).
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,P) if N > 0.
 C             LDC >= 1 if N = 0.
@@ -99,7 +99,7 @@ C             the intermediary direct input/output transmission matrix
 C             D1 (see METHOD).
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P) if JOBD = 'D'.
 C             LDD >= 1 if JOBD = 'Z'.
@@ -112,7 +112,7 @@ C             an M x M order identity matrix.
 C             The array F is not referenced if FBTYPE = 'I'  or
 C             ALPHA = 0.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.
 C             LDF >= MAX(1,M) if FBTYPE = 'O' and ALPHA <> 0.
 C             LDF >= 1 if FBTYPE = 'I' or ALPHA = 0.
@@ -122,7 +122,7 @@ C             The leading M-by-N part of this array must contain the
 C             state feedback matrix K.
 C             The array K is not referenced if BETA = 0.
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of the array K.
 C             LDK >= MAX(1,M) if BETA <> 0.
 C             LDK >= 1 if BETA = 0.
@@ -131,14 +131,14 @@ C     G       (input) DOUBLE PRECISION array, dimension (LDG,MV)
 C             The leading M-by-MV part of this array must contain the
 C             system input scaling matrix G.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,M).
 C
 C     H       (input) DOUBLE PRECISION array, dimension (LDH,P)
 C             The leading PZ-by-P part of this array must contain the
 C             system output scaling matrix H.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= MAX(1,PZ).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -149,14 +149,14 @@ C     BC      (output) DOUBLE PRECISION array, dimension (LDBC,MV)
 C             The leading N-by-MV part of this array contains the input
 C             matrix Bc of the closed-loop system.
 C
-C     LDBC    INTEGER
+C     LDBC    (input) INTEGER
 C             The leading dimension of array BC.  LDBC >= MAX(1,N).
 C
 C     CC      (output) DOUBLE PRECISION array, dimension (LDCC,N)
 C             The leading PZ-by-N part of this array contains the
 C             system output matrix Cc of the closed-loop system.
 C
-C     LDCC    INTEGER
+C     LDCC    (input) INTEGER
 C             The leading dimension of array CC.
 C             LDCC >= MAX(1,PZ) if N > 0.
 C             LDCC >= 1 if N = 0.
@@ -167,21 +167,21 @@ C             contains the direct input/output transmission matrix Dc
 C             of the closed-loop system.
 C             The array DC is not referenced if JOBD = 'Z'.
 C
-C     LDDC    INTEGER
+C     LDDC    (input) INTEGER
 C             The leading dimension of array DC.
 C             LDDC >= MAX(1,PZ) if JOBD = 'D'.
 C             LDDC >= 1 if JOBD = 'Z'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= MAX(1,2*P) if JOBD = 'D'.
 C             LIWORK >= 1 if JOBD = 'Z'.
 C             IWORK is not referenced if JOBD = 'Z'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= wspace, where
 C                   wspace = MAX( 1, M, P*MV, P*P + 4*P ) if JOBD = 'D',
@@ -190,7 +190,7 @@ C             For best performance, LDWORK >= MAX( wspace, N*M, N*P ).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

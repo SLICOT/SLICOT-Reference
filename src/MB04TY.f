@@ -27,14 +27,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPDATQ  LOGICAL
+C     UPDATQ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Q the orthogonal row transformations, as follows:
 C             = .FALSE.: Do not form Q;
 C             = .TRUE.:  The given matrix Q is updated by the orthogonal
 C                        row transformations used in the reduction.
 C
-C     UPDATZ  LOGICAL
+C     UPDATZ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal column transformations, as
 C             follows:
@@ -67,14 +67,14 @@ C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             On entry, this array contains the matrix A to be reduced.
 C             On exit, it contains the transformed matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
 C             On entry, this array contains the matrix E to be reduced.
 C             On exit, it contains the transformed matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,M).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,*)
@@ -90,7 +90,7 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDQ = 1 and declare this array to be Q(1,1) in the calling
 C             program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q. If UPDATQ = .TRUE.,
 C             LDQ >= MAX(1,M); if UPDATQ = .FALSE., LDQ >= 1.
 C
@@ -107,13 +107,13 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDZ = 1 and declare this array to be Z(1,1) in the calling
 C             program).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z. If UPDATZ = .TRUE.,
 C             LDZ >= MAX(1,N); if UPDATZ = .FALSE., LDZ >= 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if incorrect dimensions of a full column rank
 C                   submatrix;

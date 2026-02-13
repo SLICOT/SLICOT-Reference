@@ -22,7 +22,7 @@ C             On exit, the factors L and U from the factorization
 C             H = P*L*U; the unit diagonal elements of L are not stored,
 C             and L is lower bidiagonal.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)
@@ -31,7 +31,7 @@ C             was interchanged with row IPIV(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

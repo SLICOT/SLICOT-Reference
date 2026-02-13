@@ -33,7 +33,7 @@ C             the upper quasi-triangular matrix A after its selected
 C             block has been split and/or put in the LAPACK standard
 C             form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N.
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -44,7 +44,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the transformed upper triangular matrix E (in the LAPACK
 C             standard form).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= N.
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -54,7 +54,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             U*UT, where UT is the transformation matrix used to
 C             split and/or standardize the selected block pair.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= N.
 C
 C     V       (input/output) DOUBLE PRECISION array, dimension (LDV,N)
@@ -64,7 +64,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             V*VT, where VT is the transformation matrix used to
 C             split and/or standardize the selected block pair.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= N.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (2)
@@ -76,7 +76,7 @@ C             Note that BETA(k) may be zero.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

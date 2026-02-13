@@ -32,12 +32,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ISHAM   LOGIGAL
+C     ISHAM   (input) LOGIGAL
 C             Specifies the type of X:
 C             = .TRUE.:   X is a Hamiltonian matrix;
 C             = .FALSE.:  X is a skew-Hamiltonian matrix.
 C
-C     WANTU   LOGIGAL
+C     WANTU   (input) LOGIGAL
 C             = .TRUE.:   update the matrices U1 and U2 containing the
 C                         Schur vectors;
 C             = .FALSE.:  do not update U1 and U2.
@@ -54,7 +54,7 @@ C             canonical form.
 C             On exit, the leading N-by-N part of this array contains
 C             the reordered matrix A, again in Schur canonical form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,N)
@@ -68,7 +68,7 @@ C             the upper or strictly upper triangular part of the
 C             symmetric or skew-symmetric matrix G, respectively,
 C             updated by the orthogonal transformation which reorders A.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     U1      (input/output) DOUBLE PRECISION array, dimension (LDU1,N)
@@ -80,7 +80,7 @@ C             transformation which reorders A. See the description in
 C             the SLICOT subroutine MB03TD for further details.
 C             If WANTU = .FALSE., this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= MAX(1,N),  if WANTU = .TRUE.;
 C             LDU1 >= 1,         otherwise.
@@ -93,7 +93,7 @@ C             this array contains U2, postmultiplied by the orthogonal
 C             transformation which reorders A.
 C             If WANTU = .FALSE., this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= MAX(1,N),  if WANTU = .TRUE.;
 C             LDU2 >= 1,         otherwise.
@@ -114,11 +114,11 @@ C             The order of the second block A22. N2 = 0, 1 or 2.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  the transformed matrix A would be too far from Schur
 C                   form; the blocks are not swapped and A, G, U1 and

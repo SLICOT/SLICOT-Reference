@@ -41,7 +41,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             system state matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -49,7 +49,7 @@ C             The leading N-by-M part of this array must contain the
 C             system input matrix B. Only the submatrix
 C             B2 = B(:,M-M2+1:M) is used.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
@@ -57,7 +57,7 @@ C             The leading NP-by-N part of this array must contain the
 C             system output matrix C. Only the submatrix
 C             C2 = C(NP-NP2+1:NP,:) is used.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -65,21 +65,21 @@ C             The leading NP-by-M part of this array must contain the
 C             system input/output matrix D. Only the submatrix
 C             D22 = D(NP-NP2+1:NP,M-M2+1:M) is used.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     F       (input) DOUBLE PRECISION array, dimension (LDF,N)
 C             The leading NCON-by-N part of this array must contain the
 C             state feedback matrix F.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= max(1,NCON).
 C
 C     H       (input) DOUBLE PRECISION array, dimension (LDH,NMEAS)
 C             The leading N-by-NMEAS part of this array must contain the
 C             output injection matrix H.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     TU      (input) DOUBLE PRECISION array, dimension (LDTU,M2)
@@ -87,7 +87,7 @@ C             The leading M2-by-M2 part of this array must contain the
 C             control transformation matrix TU, as obtained by the
 C             SLICOT Library routine SB10UD.
 C
-C     LDTU    INTEGER
+C     LDTU    (input) INTEGER
 C             The leading dimension of the array TU.  LDTU >= max(1,M2).
 C
 C     TY      (input) DOUBLE PRECISION array, dimension (LDTY,NP2)
@@ -95,7 +95,7 @@ C             The leading NP2-by-NP2 part of this array must contain the
 C             measurement transformation matrix TY, as obtained by the
 C             SLICOT Library routine SB10UD.
 C
-C     LDTY    INTEGER
+C     LDTY    (input) INTEGER
 C             The leading dimension of the array TY.
 C             LDTY >= max(1,NP2).
 C
@@ -103,21 +103,21 @@ C     AK      (output) DOUBLE PRECISION array, dimension (LDAK,N)
 C             The leading N-by-N part of this array contains the
 C             controller state matrix AK.
 C
-C     LDAK    INTEGER
+C     LDAK    (input) INTEGER
 C             The leading dimension of the array AK.  LDAK >= max(1,N).
 C
 C     BK      (output) DOUBLE PRECISION array, dimension (LDBK,NMEAS)
 C             The leading N-by-NMEAS part of this array contains the
 C             controller input matrix BK.
 C
-C     LDBK    INTEGER
+C     LDBK    (input) INTEGER
 C             The leading dimension of the array BK.  LDBK >= max(1,N).
 C
 C     CK      (output) DOUBLE PRECISION array, dimension (LDCK,N)
 C             The leading NCON-by-N part of this array contains the
 C             controller output matrix CK.
 C
-C     LDCK    INTEGER
+C     LDCK    (input) INTEGER
 C             The leading dimension of the array CK.
 C             LDCK >= max(1,NCON).
 C
@@ -125,13 +125,13 @@ C     DK      (output) DOUBLE PRECISION array, dimension (LDDK,NMEAS)
 C             The leading NCON-by-NMEAS part of this array contains the
 C             controller input/output matrix DK.
 C
-C     LDDK    INTEGER
+C     LDDK    (input) INTEGER
 C             The leading dimension of the array DK.
 C             LDDK >= max(1,NCON).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

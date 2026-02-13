@@ -29,15 +29,16 @@ C             The elements below the subdiagonal of T(*,*,1) and below
 C             the diagonal of T(*,*,j), j = 2, ..., p, are not
 C             referenced.
 C
-C     LDT1    INTEGER
+C     LDT1    (input) INTEGER
 C             The first leading dimension of the array T.
 C             LDT1 >= max(1,N).
 C
-C     LDT2    INTEGER
+C     LDT2    (input) INTEGER
 C             The second leading dimension of the array T.
 C             LDT2 >= max(1,N).
 C
-C     WR, WI  (output) DOUBLE PRECISION arrays, dimension (N)
+C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of T. The eigenvalues are stored in the same
 C             order as on the diagonal of T_1. If T(i:i+1,i:i+1,1) is a
@@ -46,7 +47,7 @@ C             then WI(i) > 0 and WI(i+1) = -WI(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

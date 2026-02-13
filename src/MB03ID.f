@@ -46,7 +46,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the orthogonal transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N':  Q is not computed;
@@ -58,7 +58,7 @@ C                     is the product of the orthogonal transformations
 C                     that are applied to the pencil aS - bH to reorder
 C                     the eigenvalues.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Specifies whether or not the orthogonal symplectic
 C             transformations should be accumulated in the arrays U1 and
 C             U2, as follows:
@@ -87,7 +87,7 @@ C             strictly lower triangular part of this array are not used.
 C             On exit, the leading  N/2-by-N/2 part of this array
 C             contains the transformed matrix Aout.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension
@@ -98,7 +98,7 @@ C             strictly upper triangular part of this array are not used.
 C             On exit, the leading  N/2-by-N/2 part of this array
 C             contains the transformed matrix Cout.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1, N/2).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension
@@ -108,7 +108,7 @@ C             contain the matrix D.
 C             On exit, the leading  N/2-by-N/2 part of this array
 C             contains the transformed matrix Dout.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1, N/2).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -121,7 +121,7 @@ C             the matrix Bout.
 C             The part below the first subdiagonal of this array is
 C             not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     F       (input/output) DOUBLE PRECISION array, dimension
@@ -136,7 +136,7 @@ C             The strictly lower triangular part of this array is not
 C             referenced, except for the element F(N/2,N/2-1), but its
 C             initial value is preserved.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= MAX(1, N/2).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ, N)
@@ -150,7 +150,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q.
 C             If COMPQ = 'N' this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,         if COMPQ = 'N';
 C             LDQ >= MAX(1, N), if COMPQ = 'I' or COMPQ = 'U'.
@@ -168,7 +168,7 @@ C             of this array contains the upper left block U1 of the
 C             orthogonal symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= 1,           if COMPU = 'N';
 C             LDU1 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -186,7 +186,7 @@ C             of this array contains the upper right block U2 of the
 C             orthogonal symplectic transformation matrix U.
 C             If COMPU = 'N' this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= 1,           if COMPU = 'N';
 C             LDU2 >= MAX(1, N/2), if COMPU = 'I' or COMPU = 'U'.
@@ -197,15 +197,15 @@ C             negative real part.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.
 C             LIWORK >= N+1.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If COMPQ = 'N',
 C                LDWORK >= MAX(2*N+48,171);
@@ -214,7 +214,7 @@ C                LDWORK >= MAX(4*N+48,171).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the periodic QZ algorithm did not converge in SLICOT

@@ -30,7 +30,7 @@ C             Each parameter M1(k) is an NC-by-NB matrix, whose
 C             (i,j)-th element must be stored in H1(i,(k-1)*NB+j) for
 C             i = 1,2,...,NC and j = 1,2,...,NB.
 C
-C     LDH1    INTEGER
+C     LDH1    (input) INTEGER
 C             The leading dimension of array H1.  LDH1 >= MAX(1,NC).
 C
 C     H2      (input) DOUBLE PRECISION array, dimension (LDH2,N*NB)
@@ -40,33 +40,33 @@ C             Each parameter M2(k) is an NC-by-NB matrix, whose
 C             (i,j)-th element must be stored in H2(i,(k-1)*NB+j) for
 C             i = 1,2,...,NC and j = 1,2,...,NB.
 C
-C     LDH2    INTEGER
+C     LDH2    (input) INTEGER
 C             The leading dimension of array H2.  LDH2 >= MAX(1,NC).
 C
 C     SS      (output) DOUBLE PRECISION array, dimension (LDSS,NB)
 C             The leading NC-by-NB part of this array contains the
 C             matrix SS.
 C
-C     LDSS    INTEGER
+C     LDSS    (input) INTEGER
 C             The leading dimension of array SS.  LDSS >= MAX(1,NC).
 C
 C     SE      (output) DOUBLE PRECISION array, dimension (LDSE,NB)
 C             The leading NC-by-NB part of this array contains the
 C             quadratic error matrix SE.
 C
-C     LDSE    INTEGER
+C     LDSE    (input) INTEGER
 C             The leading dimension of array SE.  LDSE >= MAX(1,NC).
 C
 C     PRE     (output) DOUBLE PRECISION array, dimension (LDPRE,NB)
 C             The leading NC-by-NB part of this array contains the
 C             percentage relative error matrix PRE.
 C
-C     LDPRE   INTEGER
+C     LDPRE   (input) INTEGER
 C             The leading dimension of array PRE.  LDPRE >= MAX(1,NC).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in the computation of the error
 C             matrices SE and PRE. If the user sets TOL to be less than
 C             EPS then the tolerance is taken as EPS, where EPS is the
@@ -74,7 +74,7 @@ C             machine precision (see LAPACK Library routine DLAMCH).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -20,7 +20,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALEIG  CHARACTER*1
+C     BALEIG  (input) CHARACTER*1
 C             Determines whether the user wishes to balance matrix A
 C             and/or compute its eigenvalues and/or estimate the
 C             condition number of the problem as follows:
@@ -37,7 +37,7 @@ C                     and its eigenvalues and an estimate of the
 C                     condition number of the problem are to be
 C                     calculated.
 C
-C     INITA   CHARACTER*1
+C     INITA   (input) CHARACTER*1
 C             Specifies whether or not the matrix A is already in upper
 C             Hessenberg form as follows:
 C             = 'G':  The matrix A is a general matrix;
@@ -77,7 +77,7 @@ C             (via an orthogonal matrix consisting of a sequence of
 C             Householder transformations) the original state transition
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -88,7 +88,7 @@ C             this array contains the product of the transpose of the
 C             orthogonal transformation matrix used to reduce A to upper
 C             Hessenberg form and the original input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -99,7 +99,7 @@ C             this array contains the product of the original output/
 C             state matrix C and the orthogonal transformation matrix
 C             used to reduce A to upper Hessenberg form.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -111,11 +111,12 @@ C     G       (output) COMPLEX*16 array, dimension (LDG,M)
 C             The leading P-by-M part of this array contains the
 C             frequency response matrix G(freq).
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,P).
 C
-C     EVRE,   (output) DOUBLE PRECISION arrays, dimension (N)
-C     EVIM    If INITA = 'G' and BALEIG = 'B' or 'E' or BALEIG = 'A',
+C     EVRE    (output) DOUBLE PRECISION arrays, dimension (N)
+C     EVIM    (output) DOUBLE PRECISION arrays, dimension (N)
+C             If INITA = 'G' and BALEIG = 'B' or 'E' or BALEIG = 'A',
 C             then these arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A.
 C             Otherwise, these arrays are not referenced.
@@ -125,18 +126,18 @@ C             The leading N-by-M part of this array contains the
 C                      -1
 C             product H  B.
 C
-C     LDHINV  INTEGER
+C     LDHINV  (input) INTEGER
 C             The leading dimension of array HINVB.  LDHINV >= MAX(1,N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N - 1 + MAX(N,M,P)),
 C                       if INITA = 'G' and BALEIG = 'N', or 'B', or 'E';
@@ -148,16 +149,16 @@ C             LDWORK >= 1, otherwise.
 C             For optimum performance when INITA = 'G' LDWORK should be
 C             larger.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.
 C             LZWORK >= MAX(1,N*N+2*N), if BALEIG = 'C', or 'A';
 C             LZWORK >= MAX(1,N*N),     otherwise.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

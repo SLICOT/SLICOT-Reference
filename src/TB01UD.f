@@ -44,7 +44,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBZ    CHARACTER*1
+C     JOBZ    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal similarity transformations for
 C             reducing the system, as follows:
@@ -77,7 +77,7 @@ C             the original system. The elements below the first block-
 C             subdiagonal are set to zero. The leading N-by-N part
 C             contains the matrix Ac.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -88,7 +88,7 @@ C             contains the transformed input matrix Bcont in Bc, given
 C             by Z' * B, with all elements but the first block set to
 C             zero. The leading N-by-M part contains the matrix Bc.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -97,7 +97,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix Cc, given by C * Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     NCONT   (output) INTEGER
@@ -125,7 +125,7 @@ C             If JOBZ = 'N', the array Z is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDZ = 1 and
 C             declare this array to be Z(1,1) in the calling program).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z. If JOBZ = 'I' or
 C             JOBZ = 'F', LDZ >= MAX(1,N); if JOBZ = 'N', LDZ >= 1.
 C
@@ -135,7 +135,7 @@ C             elementary reflectors used in the reduction of B and A.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -150,20 +150,20 @@ C             DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N, 3*M, P).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -48,19 +48,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies which type of the equation is considered:
 C             = 'C':  Continuous-time equation (1);
 C             = 'D':  Discrete-time equation (2).
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether the generalized real Schur
 C             factorization of the pencil A - lambda * E is supplied on
 C             entry or not:
 C             = 'N':  Factorization is not supplied;
 C             = 'F':  Factorization is supplied.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  op(A) = A,    op(E) = E;
@@ -89,7 +89,7 @@ C             Schur factor A_s of the matrix A. (A_s is an upper
 C             quasitriangular matrix.) If FACT = 'F', the leading N-by-N
 C             upper triangular part of this array is unchanged.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -107,7 +107,7 @@ C             Schur factor E_s of the matrix E. (E_s is an upper
 C             triangular matrix.) If FACT = 'F', the leading N-by-N
 C             upper triangular part of this array is unchanged.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -122,7 +122,7 @@ C             array contains the orthogonal matrix Q from the
 C             generalized Schur factorization. If FACT = 'F', this array
 C             is unchanged.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -137,7 +137,7 @@ C             array contains the orthogonal matrix Z from the
 C             generalized Schur factorization. If FACT = 'F', this array
 C             is unchanged.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N1)
@@ -150,7 +150,7 @@ C             array contains the Cholesky factor U of the solution
 C             matrix X of the problem, X = op(U)**T * op(U).
 C             If M = 0 and N > 0, then U is set to zero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             If TRANS = 'T',  LDB >= MAX(1,N).
 C             If TRANS = 'N',  LDB >= MAX(1,M,N).
@@ -172,13 +172,13 @@ C             than and usually comparable with norm(B).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -21, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX(1,4*N,6*N-6),  if FACT = 'N';
 C             LDWORK >= MAX(1,2*N,6*N-6),  if FACT = 'F'.
@@ -192,7 +192,7 @@ C             XERBLA.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

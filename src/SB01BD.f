@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
@@ -56,17 +56,18 @@ C             corresponds to the uncontrollable eigenvalues detected by
 C             the eigenvalue assignment algorithm. The elements under
 C             the first subdiagonal are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
-C     WR,WI   (input/output) DOUBLE PRECISION array, dimension (NP)
+C     WR      (input/output) DOUBLE PRECISION array, dimension (NP)
+C     WI      (input/output) DOUBLE PRECISION array, dimension (NP)
 C             On entry, these arrays must contain the real and imaginary
 C             parts, respectively, of the desired eigenvalues of the
 C             closed-loop system state-matrix A+B*F. The eigenvalues
@@ -96,7 +97,7 @@ C             The leading M-by-N part of this array contains the state
 C             feedback F, which assigns NAP closed-loop eigenvalues and
 C             keeps unaltered N-NAP open-loop eigenvalues.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -104,12 +105,12 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Z which reduces the closed-loop
 C             system state matrix A + B*F to upper real Schur form.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The absolute tolerance level below which the elements of A
 C             or B are considered zero (used for controllability tests).
 C             If the user sets TOL <= 0, then the default tolerance
@@ -119,18 +120,18 @@ C             and NORM(A) denotes the 1-norm of A.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.
 C             LDWORK >= MAX( 1,5*M,5*N,2*N+4*M ).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = K:  K violations of the numerical stability condition
 C                   NORM(F) <= 100*NORM(A)/NORM(B) occured during the
@@ -138,7 +139,7 @@ C                   assignment of eigenvalues.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

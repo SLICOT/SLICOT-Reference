@@ -22,7 +22,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPDATZ  LOGICAL
+C     UPDATZ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal column transformations, as
 C             follows:
@@ -53,7 +53,7 @@ C             contain the submatrix A(k) of full row rank to be reduced
 C             to upper triangular form.
 C             On exit, it contains the transformed matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,NRA).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -61,7 +61,7 @@ C             On entry, the elements of E(1:IFIRA-1,IFICA:na) must
 C             contain the submatrix E(k).
 C             On exit, it contains the transformed matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,IFIRA-1).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,*)
@@ -77,7 +77,7 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDZ = 1 and declare this array to be Z(1,1) in the calling
 C             program).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z. If UPDATZ = .TRUE.,
 C             LDZ >= MAX(1,N); if UPDATZ = .FALSE., LDZ >= 1.
 C

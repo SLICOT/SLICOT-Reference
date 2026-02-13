@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to remove the
 C             uncontrollable and/or unobservable parts as follows:
 C             = 'M':  Remove both the uncontrollable and unobservable
@@ -25,7 +25,7 @@ C                     controllable state-space representation;
 C             = 'O':  Remove the unobservable part only to get an
 C                     observable state-space representation.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily balance
 C             the triplet (A,B,C) as follows:
 C             = 'S':  Perform balancing (scaling);
@@ -56,7 +56,7 @@ C             The block structure of the resulting staircase form is
 C             contained in the leading INFRED(4) elements of IWORK.
 C             If INFRED(1:2) < 0, then A contains the original matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M),
@@ -74,7 +74,7 @@ C             respectively. If JOB = 'C', only the first IWORK(1) rows
 C             of B are nonzero.
 C             If INFRED(1:2) < 0, then B contains the original matrix.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -92,7 +92,7 @@ C             IWORK(1) columns (in the first NR columns) of C are
 C             nonzero.
 C             If INFRED(1:2) < 0, then C contains the original matrix.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M,P), if N > 0.
 C             LDC >= 1,          if N = 0.
@@ -124,7 +124,7 @@ C                            of IWORK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming (A, B, C). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -137,16 +137,16 @@ C             (determined by the SLICOT routine TB01UD) is used instead.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (c*N+MAX(M,P)), where
+C     IWORK   (input/output) INTEGER array, dimension (c*N+MAX(M,P)), where
 C             c = 2, if JOB = 'M', and c = 1, otherwise.
 C             On exit, if INFO = 0, the first INFRED(4) elements of
 C             IWORK return the orders of the diagonal blocks of A.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N > 0,
 C             LDWORK >= N + MAX(N, 3*M, 3*P).
 C             For optimum performance LDWORK should be larger.
@@ -159,7 +159,7 @@ C             no order reduction took place in that phase.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

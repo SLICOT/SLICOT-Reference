@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBS    CHARACTER*1
+C     JOBS    (input) CHARACTER*1
 C             Indicates whether the user wishes to transform the leading
 C             diagonal block of Er to an identity matrix, as follows:
 C             = 'S':  make Er with leading diagonal identity;
@@ -50,7 +50,7 @@ C             descriptor realization without non-dynamic modes.
 C             Array A contains the original state dynamics matrix if
 C             INFRED < 0.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -65,7 +65,7 @@ C             upper triangular. Array E contains the original descriptor
 C             matrix if INFRED < 0. If JOBS = 'S', then the leading
 C             RANKE-by-RANKE submatrix results in an identity matrix.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -76,7 +76,7 @@ C             the reduced order input matrix Br of a descriptor
 C             realization without non-dynamic modes. Array B contains
 C             the original input matrix if INFRED < 0.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,L).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -87,7 +87,7 @@ C             the reduced order output matrix Cr of a descriptor
 C             realization without non-dynamic modes. Array C contains
 C             the original output matrix if INFRED < 0.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -97,7 +97,7 @@ C             On exit, the leading P-by-M part of this array contains
 C             the feedthrough matrix Dr of a reduced descriptor
 C             realization without non-dynamic modes.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,P).
 C
 C     LR      (output) INTEGER
@@ -120,7 +120,7 @@ C                         system has been restored.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming (A-lambda*E). If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -134,13 +134,13 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1, if MIN(L,N) = 0; otherwise,
 C             LDWORK >= MAX( N+P, MIN(L,N)+MAX(3*N-1,M,L) ).
@@ -160,7 +160,7 @@ C             space needed for saving the original system matrices.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

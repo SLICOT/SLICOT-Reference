@@ -24,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the operations to be performed on A and B:
 C             = 'N':  none:  simply set ILO = 1, LSCALE(I) = 1.0 and
 C                     RSCALE(I) = 1.0 for I = 1,...,N.
@@ -79,7 +79,7 @@ C             the balanced matrix A.
 C             In particular, the strictly lower triangular part of the
 C             first ILO-1 columns and the last N-IHI rows of A is zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB, N)
@@ -91,7 +91,7 @@ C             In particular, the strictly lower triangular part of the
 C             first ILO-1 columns and the last N-IHI rows of B is zero.
 C             If JOB = 'N', the arrays A and B are not referenced.
 C
-C     LDB    INTEGER
+C     LDB    (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N).
 C
 C     ILO     (output) INTEGER
@@ -125,7 +125,7 @@ C             IHI+1, then 1 to ILO-1.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK) where
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK) where
 C             LDWORK = 0,   if  JOB = 'N' or JOB = 'P', or N = 0;
 C             LDWORK = 6*N, if (JOB = 'S' or JOB = 'B') and THRESH >= 0;
 C             LDWORK = 8*N, if (JOB = 'S' or JOB = 'B') and THRESH <  0.
@@ -137,7 +137,7 @@ C             used (irrelevant if IWARN = 1 or ILO = IHI).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  scaling has been requested, for THRESH = -2 or
 C                   THRESH = -4, but it most probably would not improve
@@ -151,7 +151,7 @@ C                   if requested, has been preserved.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

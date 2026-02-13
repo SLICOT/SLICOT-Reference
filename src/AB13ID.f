@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBSYS  CHARACTER*1
+C     JOBSYS  (input) CHARACTER*1
 C             Indicates whether the system (lambda*E-A,B,C) is already
 C             in the reduced form which is obtained as stated in
 C             JOBEIG, as follows.
@@ -44,7 +44,7 @@ C                    step is performed;
 C             = 'N': The system is in a reduced form; the reduction step
 C                    is omitted.
 C
-C     JOBEIG  CHARACTER*1
+C     JOBEIG  (input) CHARACTER*1
 C             Indicates which kind of eigenvalues of the matrix pencil
 C             lambda*E-A should be removed if JOBSYS = 'R', as follows:
 C             = 'A': All uncontrollable and unobservable eigenvalues
@@ -54,13 +54,13 @@ C             = 'I': Only all uncontrollable and unobservable infinite
 C                    eigenvalues are removed; the returned system is not
 C                    fully reduced if UPDATE = 'N'.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily scale
 C             the system (lambda*E-A,B,C) as follows:
 C             = 'S': Perform scaling;
 C             = 'N': Do not perform scaling.
 C
-C     CKSING  CHARACTER*1
+C     CKSING  (input) CHARACTER*1
 C             Specifies whether the user wishes to check if the pencil
 C             (lambda*E-A) is singular as follows:
 C             = 'C':  Check singularity;
@@ -70,7 +70,7 @@ C             CKSING = 'N' may have completely different eigenvalues
 C             than the given system.
 C             The test is performed only if JOBSYS = 'R'.
 C
-C     RESTOR  CHARACTER*1
+C     RESTOR  (input) CHARACTER*1
 C             Specifies whether the user wishes to save the system
 C             matrices before each reduction phase (if JOBSYS = 'R') and
 C             restore them if no order reduction took place as follows:
@@ -78,7 +78,7 @@ C             = 'R':  Save and restore;
 C             = 'N':  Do not save the matrices.
 C             This option is ineffective if JOBSYS = 'N'.
 C
-C     UPDATE  CHARACTER*1
+C     UPDATE  (input) CHARACTER*1
 C             Specifies whether the user wishes to update the matrices
 C             A, B, and C if JOBEIG = 'I' as follows:
 C             = 'U':  Update the matrices A, B and C;
@@ -121,7 +121,7 @@ C             URV decomposition of E (see (2) in METHOD), and if
 C             JOBEIG = 'I' and UPDATE = 'N', the submatrix A22 in (2) is
 C             further transformed to estimate its rank.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -140,7 +140,7 @@ C             upper triangular. In both cases, or if JOBSYS = 'N', the
 C             matrix Er results from a URV decomposition of the matrix E
 C             (see METHOD).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -163,7 +163,7 @@ C             contains the transformed matrix B corresponding to the
 C             URV decomposition of E, but if JOBEIG = 'I', EQUIL = 'N'
 C             and UPDATE = 'N', the array B is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -185,7 +185,7 @@ C             contains the transformed matrix C corresponding to the
 C             URV decomposition of E, but if JOBEIG = 'I', EQUIL = 'N'
 C             and UPDATE = 'N', the array C is unchanged on exit.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M,P) if N > 0;
 C             LDC >= 1          if N = 0.
@@ -204,7 +204,7 @@ C             The effective (estimated) rank of the reduced matrix Er.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION array, dimension 3
+C     TOL     (input) DOUBLE PRECISION array, dimension 3
 C             TOL(1) is the tolerance to be used in rank determinations
 C             when transforming (lambda*E-A,B,C). If the user sets
 C             TOL(1) > 0, then the given value of TOL(1) is used as a
@@ -235,7 +235,7 @@ C             TOL(3) is not used if EQUIL = 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             If JOBSYS = 'R',  LIWORK >= 2*N+MAX(M,P)+7;
 C             If JOBSYS = 'N',  LIWORK >= N.
 C             If JOBSYS = 'R', the first 7 elements of IWORK contain
@@ -244,11 +244,11 @@ C             resulting system matrices after removing the specified
 C             eigenvalues (see the description of the parameter INFRED
 C             of the SLICOT Library routine TG01JY).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If JOBSYS = 'R', and EQUIL = 'S',
 C                LDWORK >= MAX(w+4*N+4,8*N,x,y),
@@ -294,7 +294,7 @@ C             extra space for improving the accuracy.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0: When determining the rank of a matrix, the rank can
 C                  be safely determined: a small decrease of TOL(1) will
 C                  not increase the rank.
@@ -303,7 +303,7 @@ C                  decrease of TOL(1) might increase the rank.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the given pencil A - lambda*E is numerically

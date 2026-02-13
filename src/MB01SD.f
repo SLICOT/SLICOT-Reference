@@ -12,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBS    CHARACTER*1
+C     JOBS    (input) CHARACTER*1
 C             Specifies the scaling operation to be done, as follows:
 C             = 'R':  row scaling, i.e., A will be premultiplied
 C                     by diag(R);
@@ -34,7 +34,7 @@ C             On entry, the M-by-N matrix A.
 C             On exit, the scaled matrix.  See JOBS for the form of the
 C             scaled matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     R       (input) DOUBLE PRECISION array, dimension (M)

@@ -21,13 +21,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the skew-symmetric matrices R
 C             and X are given, as follows:
 C             = 'U':  the strictly upper triangular part is given;
 C             = 'L':  the strictly lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used in the matrix
 C             multiplication, as follows:
 C             = 'N':  op( A ) = A;
@@ -68,7 +68,7 @@ C             (if UPLO = 'L'), of this array contains the corresponding
 C                                                             _
 C             strictly triangular part of the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.  LDR >= MAX(1,M).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,k)
@@ -79,12 +79,12 @@ C             array must contain the matrix A.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             N-by-M part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,k),
 C             where k is M when TRANS = 'N' and is N when TRANS = 'T' or
 C             TRANS = 'C'.
 C
-C     X       (input or input/output) DOUBLE PRECISION array, dimension
+C     X       (input/output) DOUBLE PRECISION array, dimension
 C             (LDX,K), where K = N, if UPLO = 'U' or  LDWORK >= M*(N-1),
 C                  or K = MAX(N,M), if UPLO = 'L' and LDWORK <  M*(N-1).
 C             On entry, if UPLO = 'U', the leading N-by-N strictly upper
@@ -98,18 +98,18 @@ C             the upper triangular part of the array is not referenced.
 C             If LDWORK < M*(N-1), this array is overwritten with the
 C             matrix op(A)*X, if UPLO = 'U', or X*op(A)', if UPLO = 'L'.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.
 C             LDX >= MAX(1,N),   if UPLO = 'L' or  LDWORK >= M*(N-1);
 C             LDX >= MAX(1,N,M), if UPLO = 'U' and LDWORK <  M*(N-1).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             This array is not referenced when beta = 0, or M <= 1, or
 C             N <= 1.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= N, if  beta <> 0, and M > 0, and N >  1;
 C             LDWORK >= 0, if  beta =  0, or  M = 0, or  N <= 1.
 C             For optimum performance, LDWORK >= M*(N-1), if  beta <> 0,
@@ -117,7 +117,7 @@ C             M > 1, and N > 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value.

@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CTRL    CHARACTER*1
+C     CTRL    (input) CHARACTER*1
 C             Specifies whether or not the user's confirmation of the
 C             system order estimate is desired, as follows:
 C             = 'C':  user's confirmation;
@@ -43,7 +43,7 @@ C             The estimated order of the system.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Absolute tolerance used for determining an estimate of
 C             the system order. If  TOL >= 0,  the estimate is
 C             indicated by the index of the last singular value greater
@@ -58,14 +58,14 @@ C             logarithmic gap to its successor.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 3:  all singular values were exactly zero, hence  N = 0.
 C                   (Both input and output were identically zero.)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

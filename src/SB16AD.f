@@ -39,26 +39,26 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original controller as follows:
 C             = 'C':  continuous-time controller;
 C             = 'D':  discrete-time controller.
 C
-C     JOBC    CHARACTER*1
+C     JOBC    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted controllability
 C             Grammian as follows:
 C             = 'S': choice corresponding to standard Enns' method [1];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified Enns' method of [2].
 C
-C     JOBO    CHARACTER*1
+C     JOBO    (input) CHARACTER*1
 C             Specifies the choice of frequency-weighted observability
 C             Grammian as follows:
 C             = 'S': choice corresponding to standard Enns' method [1];
 C             = 'E': choice corresponding to the stability enhanced
 C                    modified combination method of [2].
 C
-C     JOBMR   CHARACTER*1
+C     JOBMR   (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root B&T method;
@@ -66,7 +66,7 @@ C             = 'F':  use the balancing-free square-root B&T method;
 C             = 'S':  use the square-root SPA method;
 C             = 'P':  use the balancing-free square-root SPA method.
 C
-C     WEIGHT  CHARACTER*1
+C     WEIGHT  (input) CHARACTER*1
 C             Specifies the type of frequency-weighting, as follows:
 C             = 'N':  no weightings are used (V = I, W = I);
 C             = 'O':  stability enforcing left (output) weighting
@@ -79,14 +79,14 @@ C             = 'P':  stability and performance enforcing weightings
 C                               -1                -1
 C                     V = (I-G*K) *G ,  W = (I-G*K)  are used.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the triplets (A,B,C) and (Ac,Bc,Cc) as
 C             follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting order NCR is fixed;
 C             = 'A':  the resulting order NCR is automatically
@@ -144,7 +144,7 @@ C             part of this array contains the scaled state dynamics
 C             matrix of the open-loop system.
 C             If EQUIL = 'N', this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -155,7 +155,7 @@ C             part of this array contains the scaled input/state matrix
 C             of the open-loop system.
 C             If EQUIL = 'N', this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -166,14 +166,14 @@ C             part of this array contains the scaled state/output matrix
 C             of the open-loop system.
 C             If EQUIL = 'N', this array is unchanged on exit.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array must contain the
 C             input/output matrix D of the open-loop system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     AC      (input/output) DOUBLE PRECISION array, dimension (LDAC,NC)
@@ -192,7 +192,7 @@ C             The trailing (NCR+NCS-NC)-by-(NCR+NCS-NC) block contains
 C             the reduced part of Ac corresponding to ALPHA-stable
 C             eigenvalues.
 C
-C     LDAC    INTEGER
+C     LDAC    (input) INTEGER
 C             The leading dimension of array AC.  LDAC >= MAX(1,NC).
 C
 C     BC      (input/output) DOUBLE PRECISION array, dimension (LDBC,P)
@@ -203,7 +203,7 @@ C             On exit, if INFO = 0, the leading NCR-by-P part of this
 C             array contains the input/state matrix Bcr of the reduced
 C             controller.
 C
-C     LDBC    INTEGER
+C     LDBC    (input) INTEGER
 C             The leading dimension of array BC.  LDBC >= MAX(1,NC).
 C
 C     CC      (input/output) DOUBLE PRECISION array, dimension (LDCC,NC)
@@ -214,7 +214,7 @@ C             On exit, if INFO = 0, the leading M-by-NCR part of this
 C             array contains the state/output matrix Ccr of the reduced
 C             controller.
 C
-C     LDCC    INTEGER
+C     LDCC    (input) INTEGER
 C             The leading dimension of array CC.  LDCC >= MAX(1,M).
 C
 C     DC      (input/output) DOUBLE PRECISION array, dimension (LDDC,P)
@@ -225,7 +225,7 @@ C             On exit, if INFO = 0, the leading M-by-P part of this
 C             array contains the input/output matrix Dcr of the reduced
 C             controller.
 C
-C     LDDC    INTEGER
+C     LDDC    (input) INTEGER
 C             The leading dimension of array DC.  LDDC >= MAX(1,M).
 C
 C     NCS     (output) INTEGER
@@ -239,7 +239,7 @@ C             controller.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL1 contains the tolerance for
 C             determining the order of the reduced controller.
 C             For model reduction, the recommended value is
@@ -254,7 +254,7 @@ C             ALPHA-stable eigenvalues of Ac and EPS is the machine
 C             precision (see LAPACK Library Routine DLAMCH).
 C             If ORDSEL = 'F', the value of TOL1 is ignored.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             The tolerance for determining the order of a minimal
 C             realization of the ALPHA-stable part of the given
 C             controller. The recommended value is TOL2 = NCS*EPS*S1.
@@ -263,7 +263,7 @@ C             If TOL2 > 0 and ORDSEL = 'A', then TOL2 <= TOL1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (MAX(1,LIWRK1,LIWRK2))
+C     IWORK   (input/output) INTEGER array, dimension (MAX(1,LIWRK1,LIWRK2))
 C             LIWRK1 = 0,       if JOBMR  = 'B';
 C             LIWRK1 = NC,      if JOBMR  = 'F';
 C             LIWRK1 = 2*NC,    if JOBMR  = 'S' or 'P';
@@ -273,11 +273,11 @@ C             On exit, if INFO = 0, IWORK(1) contains NCMIN, the order
 C             of the computed minimal realization of the stable part of
 C             the controller.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2*NC*NC + MAX( 1, LFREQ, LSQRED ),
 C             where
@@ -292,7 +292,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NCR is greater
 C                   than NSMIN, the sum of the order of the
@@ -314,7 +314,7 @@ C                   the order of the ALPHA-unstable part.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

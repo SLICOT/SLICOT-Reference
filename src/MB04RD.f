@@ -20,21 +20,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Specifies whether or not the left transformations are
 C             accumulated, as follows:
 C             = 'N':  The left transformations are not accumulated;
 C             = 'U':  The left transformations are accumulated in X
 C                     (the given matrix X is updated).
 C
-C     JOBY    CHARACTER*1
+C     JOBY    (input) CHARACTER*1
 C             Specifies whether or not the right transformations are
 C             accumulated, as follows:
 C             = 'N':  The right transformations are not accumulated;
 C             = 'U':  The right transformations are accumulated in Y
 C                     (the given matrix Y is updated).
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies whether or not the diagonal blocks of the
 C             generalized real Schur form are reordered, as follows:
 C             = 'N':  The diagonal blocks are not reordered;
@@ -70,7 +70,7 @@ C             this array contains the computed block-diagonal matrix, in
 C             real Schur canonical form, corresponding to the given
 C             matrix A. The remaining part is set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -86,7 +86,7 @@ C             diagonal matrix, corresponding to the given matrix B. The
 C             remaining part is set to zero. The diagonal elements of B
 C             are non-negative.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,*)
@@ -102,7 +102,7 @@ C             product of non-orthogonal equivalence transformations
 C             having elements with magnitude less than or equal to PMAX.
 C             If JOBX = 'N', this array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.
 C             LDX >= 1,        if JOBX = 'N';
 C             LDX >= MAX(1,N), if JOBX = 'U'.
@@ -120,7 +120,7 @@ C             product of non-orthogonal equivalence transformations
 C             having elements with magnitude less than or equal to PMAX.
 C             If JOBY = 'N', this array is not referenced.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.
 C             LDY >= 1,        if JOBY = 'N';
 C             LDY >= MAX(1,N), if JOBY = 'U'.
@@ -156,7 +156,7 @@ C             usually comparable with norm(B).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If SORT = 'S' or 'B', the tolerance to be used in the
 C             ordering of the diagonal blocks of the upper triangular
 C             matrix pair.
@@ -194,9 +194,9 @@ C             If SORT = 'N' or 'C', this parameter is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+6)
+C     IWORK   (input/output) INTEGER array, dimension (N+6)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -22, DWORK(1) returns the minimum
@@ -205,7 +205,7 @@ C             routine will return this value for INFO, and also set
 C             DWORK(1), but no error message related to LDWORK is
 C             issued by XERBLA.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 1,         if N <= 1;
 C             LDWORK >= 4*N + 16,  if N >  1.
@@ -218,7 +218,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

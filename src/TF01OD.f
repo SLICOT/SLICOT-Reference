@@ -35,7 +35,7 @@ C             ...,(NR+NC-1). Specifically, each parameter M(k) is an
 C             NH1-by-NH2 matrix whose (i,j)-th element must be stored in
 C             H(i,(k-1)*NH2+j) for i = 1,2,...,NH1 and j = 1,2,...,NH2.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,NH1).
 C
 C     T       (output) DOUBLE PRECISION array, dimension (LDT,NH2*NC)
@@ -43,12 +43,12 @@ C             The leading NH1*NR-by-NH2*NC part of this array contains
 C             the block Hankel expansion of the multivariable sequence
 C             M(k).
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,NH1*NR).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

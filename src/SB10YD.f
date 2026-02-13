@@ -56,7 +56,7 @@ C             The leading N-by-N part of this array contains the
 C             matrix A. If FLAG = 1, then A is in an upper Hessenberg
 C             form, and corresponds to a minimal realization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (N)
@@ -71,7 +71,7 @@ C             The computed scalar D.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for determining the effective
 C             rank of matrices. If the user sets TOL > 0, then the given
 C             value of TOL is used as a lower bound for the reciprocal
@@ -85,14 +85,14 @@ C             Library routine DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (max(2,2*N+1))
+C     IWORK   (input/output) INTEGER array, dimension (max(2,2*N+1))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK and DWORK(2) contains the optimal value of
 C             LZWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = max( 2, LW1, LW2, LW3, LW4 ), where
 C             LW1 = 2*LENDAT + 4*HNPTS;  HNPTS = 2048;
@@ -105,16 +105,16 @@ C             LW4 = max( N*N + 5*N, 6*N + 1 + min( 1,N ) ), if FLAG = 1;
 C             LW4 = 0,                                      if FLAG = 0.
 C             For optimum performance LDWORK should be larger.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.
 C             LZWORK = LENDAT*(2*N+3), if N > 0;
 C             LZWORK = LENDAT,         if N = 0.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

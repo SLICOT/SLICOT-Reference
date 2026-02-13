@@ -19,7 +19,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FIRST   LOGICAL
+C     FIRST   (input) LOGICAL
 C             Specifies if AB08NY is called first time, or it is called
 C             for an already reduced system, with D of full column rank,
 C             with the last M rows in upper triangular form:
@@ -64,7 +64,7 @@ C             Cr is a PR-by-NR matrix, and Dr is a PR-by-M full row rank
 C             left upper-trapezoidal matrix, with the first PR columns
 C             in an upper triangular form.
 C
-C     LDABCD  INTEGER
+C     LDABCD  (input) INTEGER
 C             The leading dimension of the array ABCD.
 C             LDABCD >= MAX(1,N+P).
 C
@@ -105,7 +105,7 @@ C             blocks of dimension i-by-(i-1), where i = 1,2,...,NKRONL.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -120,13 +120,13 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (MAX(M,P))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1, if MIN(P, MAX(N,M)) = 0; otherwise,
 C             LDWORK >= MAX( MIN(P,M) + M + MAX(2*M,N) - 1,
@@ -141,7 +141,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -447,7 +447,7 @@ C
      $                      ABCD(IROW,ICOL), LDABCD, DWORK(ITAU),
      $                      ABCD(IROW,MP1),  LDABCD, DWORK(JWORK),
      $                      LDWORK-JWORK+1, INFO )
-               WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1 ) 
+               WRKOPT = MAX( WRKOPT, INT( DWORK(JWORK) ) + JWORK - 1 )
                CALL DLASET( 'Lower', RO1-1, MIN( RO1-1, RANK ), ZERO,
      $                      ZERO, ABCD(MIN( PN, IROW+1 ),ICOL), LDABCD )
                RO1 = RO1 - RANK

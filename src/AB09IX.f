@@ -34,12 +34,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root B&T method;
@@ -47,13 +47,13 @@ C             = 'F':  use the balancing-free square-root B&T method;
 C             = 'S':  use the square-root SPA method;
 C             = 'P':  use the balancing-free square-root SPA method.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not, on entry, the matrix A is in a
 C             real Schur form, as follows:
 C             = 'S':  A is in a real Schur form;
 C             = 'N':  A is a general dense square matrix.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting order NR is fixed;
 C             = 'A':  the resulting order NR is automatically determined
@@ -104,7 +104,7 @@ C             On exit, if INFO = 0, the leading NR-by-NR part of this
 C             array contains the state dynamics matrix Ar of the
 C             reduced order system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -114,7 +114,7 @@ C             On exit, if INFO = 0, the leading NR-by-M part of this
 C             array contains the input/state matrix Br of the reduced
 C             order system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -124,7 +124,7 @@ C             On exit, if INFO = 0, the leading P-by-NR part of this
 C             array contains the state/output matrix Cr of the reduced
 C             order system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -136,7 +136,7 @@ C             leading P-by-M part of this array contains the
 C             input/output matrix Dr of the reduced order system.
 C             If JOB = 'B' or JOB = 'F', this array is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= 1,        if JOB = 'B' or JOB = 'F';
 C             LDD >= MAX(1,P), if JOB = 'S' or JOB = 'P'.
@@ -150,7 +150,7 @@ C             part of this array contains the left truncation matrix
 C             TI in (1), for the B&T approach, or in (2), for the
 C             SPA approach.
 C
-C     LDTI    INTEGER
+C     LDTI    (input) INTEGER
 C             The leading dimension of array TI.  LDTI >= MAX(1,N).
 C
 C     T       (input/output) DOUBLE PRECISION array, dimension (LDT,N)
@@ -162,7 +162,7 @@ C             part of this array contains the right truncation matrix
 C             T in (1), for the B&T approach, or in (2), for the
 C             SPA approach.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,N).
 C
 C     NMINR   (output) INTEGER
@@ -180,7 +180,7 @@ C             singular values of the product R*S.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL1 contains the tolerance for
 C             determining the order of the reduced system.
 C             For model reduction, the recommended value lies in the
@@ -191,7 +191,7 @@ C             (see LAPACK Library Routine DLAMCH) and S1 is the largest
 C             Hankel singular value (computed in HSV(1)).
 C             If ORDSEL = 'F', the value of TOL1 is ignored.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             The tolerance for determining the order of a minimal
 C             realization of the system.
 C             The recommended value is TOL2 = N*EPS*S1.
@@ -200,23 +200,23 @@ C             If TOL2 > 0, and ORDSEL = 'A', then TOL2 <= TOL1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK = 0,   if JOB = 'B';
 C             LIWORK = N,   if JOB = 'F';
 C             LIWORK = 2*N, if JOB = 'S' or 'P'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, 2*N*N + 5*N, N*MAX(M,P) ).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NR is greater
 C                   than NMINR, the order of a minimal realization of
@@ -230,7 +230,7 @@ C                   to the largest value such that HSV(NR) > HSV(NR+1).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

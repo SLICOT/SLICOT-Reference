@@ -28,18 +28,18 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which projection to be computed as follows:
 C             = 'N':  compute the stable projection of V*G*W;
 C             = 'C':  compute the stable projection of
 C                     conj(V)*G*conj(W).
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the systems as follows:
 C             = 'C':  G, V and W are continuous-time systems;
 C             = 'D':  G, V and W are discrete-time systems.
 C
-C     WEIGHT  CHARACTER*1
+C     WEIGHT  (input) CHARACTER*1
 C             Specifies the type of frequency weighting, as follows:
 C             = 'N':  no weightings are used (V = I, W = I);
 C             = 'L':  only left weighting V is used (W = I);
@@ -87,7 +87,7 @@ C             The leading N-by-N part of this array must
 C             contain the state matrix A of the system with the
 C             transfer-function matrix G in a real Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -99,7 +99,7 @@ C             array contains the input matrix BS of the stable
 C             projection of V*G*W if JOB = 'N', and of conj(V)*G*conj(W)
 C             if JOB = 'C'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -111,7 +111,7 @@ C             array contains the output matrix CS of the stable
 C             projection of V*G*W if JOB = 'N', and of conj(V)*G*conj(W)
 C             if JOB = 'C'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -123,7 +123,7 @@ C             array contains the feedthrough matrix DS of the stable
 C             projection of V*G*W if JOB = 'N', and of conj(V)*G*conj(W)
 C             if JOB = 'C'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,P).
 C
 C     AV      (input/output) DOUBLE PRECISION array, dimension (LDAV,NV)
@@ -135,7 +135,7 @@ C             NV-by-NV part of this array contains a real Schur form
 C             of AV.
 C             AV is not referenced if WEIGHT = 'R' or 'N'.
 C
-C     LDAV    INTEGER
+C     LDAV    (input) INTEGER
 C             The leading dimension of the array AV.
 C             LDAV >= MAX(1,NV), if WEIGHT = 'L' or 'B';
 C             LDAV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -149,7 +149,7 @@ C             NV-by-P part of this array contains the transformed input
 C             matrix BV.
 C             BV is not referenced if WEIGHT = 'R' or 'N'.
 C
-C     LDBV    INTEGER
+C     LDBV    (input) INTEGER
 C             The leading dimension of the array BV.
 C             LDBV >= MAX(1,NV), if WEIGHT = 'L' or 'B';
 C             LDBV >= 1,         if WEIGHT = 'R' or 'N'.
@@ -163,7 +163,7 @@ C             P-by-NV part of this array contains the transformed output
 C             matrix CV.
 C             CV is not referenced if WEIGHT = 'R' or 'N'.
 C
-C     LDCV    INTEGER
+C     LDCV    (input) INTEGER
 C             The leading dimension of the array CV.
 C             LDCV >= MAX(1,P), if WEIGHT = 'L' or 'B';
 C             LDCV >= 1,        if WEIGHT = 'R' or 'N'.
@@ -174,7 +174,7 @@ C             array must contain the feedthrough matrix DV of the system
 C             with the transfer-function matrix V.
 C             DV is not referenced if WEIGHT = 'R' or 'N'.
 C
-C     LDDV    INTEGER
+C     LDDV    (input) INTEGER
 C             The leading dimension of the array DV.
 C             LDDV >= MAX(1,P), if WEIGHT = 'L' or 'B';
 C             LDDV >= 1,        if WEIGHT = 'R' or 'N'.
@@ -188,7 +188,7 @@ C             NW-by-NW part of this array contains a real Schur form
 C             of AW.
 C             AW is not referenced if WEIGHT = 'L' or 'N'.
 C
-C     LDAW    INTEGER
+C     LDAW    (input) INTEGER
 C             The leading dimension of the array AW.
 C             LDAW >= MAX(1,NW), if WEIGHT = 'R' or 'B';
 C             LDAW >= 1,         if WEIGHT = 'L' or 'N'.
@@ -202,7 +202,7 @@ C             NW-by-M part of this array contains the transformed input
 C             matrix BW.
 C             BW is not referenced if WEIGHT = 'L' or 'N'.
 C
-C     LDBW    INTEGER
+C     LDBW    (input) INTEGER
 C             The leading dimension of the array BW.
 C             LDBW >= MAX(1,NW), if WEIGHT = 'R' or 'B';
 C             LDBW >= 1,         if WEIGHT = 'L' or 'N'.
@@ -216,7 +216,7 @@ C             M-by-NW part of this array contains the transformed output
 C             matrix CW.
 C             CW is not referenced if WEIGHT = 'L' or 'N'.
 C
-C     LDCW    INTEGER
+C     LDCW    (input) INTEGER
 C             The leading dimension of the array CW.
 C             LDCW >= MAX(1,M), if WEIGHT = 'R' or 'B';
 C             LDCW >= 1,        if WEIGHT = 'L' or 'N'.
@@ -227,18 +227,18 @@ C             array must contain the feedthrough matrix DW of the system
 C             with the transfer-function matrix W.
 C             DW is not referenced if WEIGHT = 'L' or 'N'.
 C
-C     LDDW    INTEGER
+C     LDDW    (input) INTEGER
 C             The leading dimension of the array DW.
 C             LDDW >= MAX(1,M), if WEIGHT = 'R' or 'B';
 C             LDDW >= 1,        if WEIGHT = 'L' or 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, LDW1, LDW2 ), where
 C               LDW1 = 0 if WEIGHT = 'R' or 'N' and
@@ -253,7 +253,7 @@ C             For good performance, LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             =  0:  no warning;
 C             =  1:  JOB = 'N' and AV is not completely unstable, or
 C                    JOB = 'C' and AV is not stable;
@@ -263,7 +263,7 @@ C             =  3:  both above conditions appear.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             =  0:  successful exit;
 C             <  0:  if INFO = -i, the i-th argument had an illegal
 C                    value;

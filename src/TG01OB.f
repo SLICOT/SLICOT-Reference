@@ -20,7 +20,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is an upper triangular or an identity
 C             matrix, as follows:
 C             = 'U':  The matrix E is an upper triangular matrix;
@@ -45,7 +45,7 @@ C             On exit, the leading (N+1)-by-(N+1) part of this array
 C             contains the transformed matrices C*Z, Q'*B, and Q'*A*Z,
 C             replacing C, B, and A. The scalar D is unchanged.
 C
-C     LDDCBA  INTEGER
+C     LDDCBA  (input) INTEGER
 C             The leading dimension of the array DCBA.
 C             LDDCBA >= N+1.
 C
@@ -61,14 +61,14 @@ C             triangular part of the transformed descriptor matrix,
 C             Q'*E*Z.
 C             If JOBE = 'I', this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'U';
 C             LDE >= 1,        if JOBE = 'I'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

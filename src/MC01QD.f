@@ -49,7 +49,7 @@ C             Q(x) in increasing powers of x.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = k:  if the degree of the denominator polynomial B(x) has
 C                   been reduced to (DB - k) because B(DB+1-j) = 0.0 on
@@ -57,7 +57,7 @@ C                   entry for j = 0, 1, ..., k-1 and B(DB+1-k) <> 0.0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

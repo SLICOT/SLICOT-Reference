@@ -16,25 +16,25 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the original system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root Balance & Truncate method;
 C             = 'N':  use the balancing-free square-root
 C                     Balance & Truncate method.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the triplet (A,B,C) as follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting order NR is fixed;
 C             = 'A':  the resulting order NR is automatically determined
@@ -96,7 +96,7 @@ C             The trailing (NR+NS-N)-by-(NR+NS-N) block contains
 C             the reduced part of A corresponding to ALPHA-stable
 C             eigenvalues.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -106,7 +106,7 @@ C             On exit, if INFO = 0, the leading NR-by-M part of this
 C             array contains the input/state matrix Br of the reduced
 C             order system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -116,7 +116,7 @@ C             On exit, if INFO = 0, the leading P-by-NR part of this
 C             array contains the state/output matrix Cr of the reduced
 C             order system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     NS      (output) INTEGER
@@ -130,7 +130,7 @@ C             HSV(1) is the Hankel norm of the ALPHA-stable subsystem.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL contains the tolerance for
 C             determining the order of reduced system.
 C             For model reduction, the recommended value is
@@ -148,22 +148,22 @@ C             If ORDSEL = 'F', the value of TOL is ignored.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK = 0, if JOB = 'B';
 C             LIWORK = N, if JOB = 'N'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,N*(2*N+MAX(N,M,P)+5) + N*(N+1)/2).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NR is greater
 C                   than NSMIN, the sum of the order of the
@@ -178,7 +178,7 @@ C                   order of the ALPHA-unstable part.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

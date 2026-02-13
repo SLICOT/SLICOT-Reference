@@ -54,7 +54,7 @@ C             diagonal contain the trailing components (the vectors v,
 C             see Method) of the elementary reflectors used in the
 C             factorization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB,L)
@@ -64,7 +64,7 @@ C             On exit, the leading N-by-L part of this array contains
 C             the updated matrix B.
 C             If L = 0, this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,N) if L > 0;
 C             LDB >= 1        if L = 0.
@@ -74,11 +74,11 @@ C             The scalar factors of the elementary reflectors used.
 C
 C     Workspace
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
 C             of LZWORK.
 C
-C     LZWORK  The length of the array ZWORK.
+C     LZWORK  (input) INTEGER, The length of the array ZWORK.
 C             LZWORK >= MAX(1,M-1,M-P,L).
 C             For optimum performance LZWORK should be larger.
 C
@@ -90,7 +90,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

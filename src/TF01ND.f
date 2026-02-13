@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Indicates whether the user wishes to use an upper or lower
 C             Hessenberg matrix as follows:
 C             = 'U':  Upper Hessenberg matrix;
@@ -47,28 +47,28 @@ C             system.
 C             The remainder of the leading N-by-N part is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input matrix B of the system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             output matrix C of the system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array must contain the
 C             direct link matrix D of the system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     U       (input) DOUBLE PRECISION array, dimension (LDU,NY)
@@ -76,7 +76,7 @@ C             The leading M-by-NY part of this array must contain the
 C             input vector sequence u(k), for k = 1,2,...,NY.
 C             Specifically, the k-th column of U must contain u(k).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,M).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (N)
@@ -91,16 +91,16 @@ C             vector sequence y(1),y(2),...,y(NY) such that the k-th
 C             column of Y contains y(k) (the outputs at instant k),
 C             for k = 1,2,...,NY.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= MAX(1,P).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

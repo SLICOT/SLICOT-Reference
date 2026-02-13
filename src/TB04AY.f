@@ -31,6 +31,37 @@ C     D:I(s) found exactly as if it were V:0(s), and finally the
 C     numerator vector U:I(s) obtained from the Orthogonal Structure
 C     Theorem relation.
 C
+C     Arguments
+C
+C     N      (input) INTEGER
+C     MWORK  (input) INTEGER
+C     PWORK  (input) INTEGER
+C     A      (input) DOUBLE PRECISION, dimension(LDA, *)
+C     LDA    (input) INTEGER
+C     B      (input) DOUBLE PRECISION, dimension(LDB, *)
+C     LDB    (input) INTEGER
+C     C      (input) DOUBLE PRECISION, dimension(LDC, *)
+C     LDC    (input) INTEGER
+C     D      (input) DOUBLE PRECISION, dimension(LDD, *)
+C     LDD    (input) INTEGER
+C     NCONT  (input) INTEGER
+C     INDEXD (input) INTEGER, dimension(*)
+C     DCOEFF (input) DOUBLE PRECISION, dimension(LDDCOE)
+C     LDDCOE (input) INTEGER
+C     UCOEFF (input/output) DOUBLE PRECISION, dimension(LDUCO1,LDUCO2,*)
+C     LDUCO1 (input) INTEGER
+C     LDUCO2 (input) INTEGER
+C     AT     (input/output) DOUBLE PRECISION, dimension(N1, *)
+C     N1     (input) INTEGER
+C     TAU    (input) DOUBLE PRECISION, dimension(*)
+C     TOL1   (input) DOUBLE PRECISION
+C     TOL2   (input) DOUBLE PRECISION
+C     IWORK  (input/output) INTEGER, dimension(*)
+C     DWORK  (input/output) DOUBLE PRECISION, dimension(LDWORK)
+C     LDWORK (input) INTEGER
+C     INFO   (input/output) INTEGER
+C
+C
 C     ******************************************************************
 C
       DOUBLE PRECISION  ONE

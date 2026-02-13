@@ -30,31 +30,31 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether op( A ) appears on the left or right
 C             of X as follows:
 C             = 'L':  op( A )*X = alpha*B;
 C             = 'R':  X*op( A ) = alpha*B.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the matrix A is an upper or lower
 C             triangular matrix as follows:
 C             = 'U':  A is an upper triangular matrix;
 C             = 'L':  A is a lower triangular matrix.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( A ) = A;
 C             = 'T':  op( A ) = A';
 C             = 'C':  op( A ) = A'.
 C
-C     DIAG    CHARACTER*1
+C     DIAG    (input) CHARACTER*1
 C             Specifies whether or not A is unit triangular as follows:
 C             = 'U':  A is assumed to be unit triangular;
 C             = 'N':  A is not assumed to be unit triangular.
 C
-C     NORM    CHARACTER*1
+C     NORM    (input) CHARACTER*1
 C             Specifies whether the 1-norm condition number or the
 C             infinity-norm condition number is required:
 C             = '1' or 'O':  1-norm;
@@ -85,7 +85,7 @@ C             of A is not referenced.
 C             Note that when DIAG = 'U', the diagonal elements of A are
 C             not referenced either, but are assumed to be unity.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.
 C             LDA >= max(1,M) when SIDE = 'L';
 C             LDA >= max(1,N) when SIDE = 'R'.
@@ -97,7 +97,7 @@ C             On exit, if INFO = 0, the leading M-by-N part of this
 C             array contains the solution matrix X.
 C             Otherwise, this array is not modified by the routine.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= max(1,M).
 C
 C     RCOND   (output) DOUBLE PRECISION
@@ -106,7 +106,7 @@ C             computed as RCOND = 1/(norm(A) * norm(inv(A))).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity of
 C             the matrix A. If the user sets TOL > 0, then the given
 C             value of TOL is used as a lower bound for the reciprocal
@@ -119,13 +119,13 @@ C             LAPACK Library routine DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (k)
+C     IWORK   (input/output) INTEGER array, dimension (k)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*k)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*k)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -36,21 +36,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPC   CHARACTER*1
+C     COMPC   (input) CHARACTER*1
 C             = 'U':  update the matrix C;
 C             = 'N':  do not update C.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             = 'U':  update the matrices U1 and U2;
 C             = 'N':  do not update U1 and U2.
 C             See the description of U1 and U2.
 C
-C     COMPV   CHARACTER*1
+C     COMPV   (input) CHARACTER*1
 C             = 'U':  update the matrices V1 and V2;
 C             = 'N':  do not update V1 and V2.
 C             See the description of V1 and V2.
 C
-C     COMPW   CHARACTER*1
+C     COMPW   (input) CHARACTER*1
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix W as follows:
 C             = 'N':  the matrix W is not required;
@@ -59,14 +59,14 @@ C                     orthogonal transformation matrix W is returned;
 C             = 'V':  W must contain an orthogonal matrix Q on entry,
 C                     and the product Q*W is returned.
 C
-C     WHICH   CHARACTER*1
+C     WHICH   (input) CHARACTER*1
 C             = 'A':  select all eigenvalues, this effectively means
 C                     that Ur and Vr are identity matrices and A11 = A,
 C                     B11 = B;
 C             = 'S':  select a cluster of eigenvalues specified by
 C                     SELECT.
 C
-C     SELECT  LOGICAL array, dimension (N)
+C     SELECT  (input) LOGICAL array, dimension (N)
 C             If WHICH = 'S', then SELECT specifies the eigenvalues of
 C             A*B in the selected cluster. To select a real eigenvalue
 C             w(j), SELECT(j) must be set to .TRUE.. To select a complex
@@ -88,7 +88,7 @@ C             pair (A,B) in periodic Schur form.
 C             On exit, the leading M-by-M part of this array contains
 C             the matrix R22 in (2).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -98,7 +98,7 @@ C             (A,B) in periodic Schur form.
 C             On exit, the leading N-by-N part of this array is
 C             overwritten.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -109,7 +109,7 @@ C             array contains the updated matrix Ur'*C*Vr.
 C             If COMPC = 'N' or WHICH = 'A', this array is not
 C             referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= 1.
 C             LDC >= N,  if COMPC = 'U' and WHICH = 'S'.
 C
@@ -123,7 +123,7 @@ C             N-by-N part of this array contains U1*Ur.
 C             If COMPU = 'N' or WHICH = 'A', this array is not
 C             referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.  LDU1 >= 1.
 C             LDU1 >= N,  if COMPU = 'U' and WHICH = 'S'.
 C
@@ -137,7 +137,7 @@ C             N-by-N part of this array contains U2*Ur.
 C             If COMPU = 'N' or WHICH = 'A', this array is not
 C             referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.  LDU2 >= 1.
 C             LDU2 >= N,  if COMPU = 'U' and WHICH = 'S'.
 C
@@ -151,7 +151,7 @@ C             N-by-N part of this array contains V1*Vr.
 C             If COMPV = 'N' or WHICH = 'A', this array is not
 C             referenced.
 C
-C     LDV1    INTEGER
+C     LDV1    (input) INTEGER
 C             The leading dimension of the array V1.  LDV1 >= 1.
 C             LDV1 >= N,  if COMPV = 'U' and WHICH = 'S'.
 C
@@ -165,7 +165,7 @@ C             N-by-N part of this array contains V2*Vr.
 C             If COMPV = 'N' or WHICH = 'A', this array is not
 C             referenced.
 C
-C     LDV2    INTEGER
+C     LDV2    (input) INTEGER
 C             The leading dimension of the array V2.  LDV2 >= 1.
 C             LDV2 >= N,  if COMPV = 'U' and WHICH = 'S'.
 C
@@ -179,7 +179,7 @@ C             of this array is post-multiplied by the transformation
 C             matrix that produced (2).
 C             If COMPW = 'N', this array is not referenced.
 C
-C     LDW     INTEGER
+C     LDW     (input) INTEGER
 C             The leading dimension of the array W.  LDW >= 1.
 C             LDW >= 2*M,  if COMPW = 'I' or COMPW = 'V'.
 C
@@ -200,17 +200,17 @@ C             The number of selected eigenvalues.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = -28,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, 4*N, 8*M ).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -1350,6 +1350,9 @@ C
 C
 C     Void logical function for DGEES.
 C
+C      X     (input) DOUBLE PRECISION
+C      Y     (input) DOUBLE PRECISION
+
       DOUBLE PRECISION X, Y
       LFDUM = .FALSE.
       RETURN

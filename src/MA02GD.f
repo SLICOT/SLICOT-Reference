@@ -26,7 +26,7 @@ C             K = K1, ..., K2.
 C             On exit, the leading N-by-M part of this array contains
 C             the permuted matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     K1      (input) INTEGER

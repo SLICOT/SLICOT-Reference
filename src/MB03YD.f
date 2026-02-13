@@ -16,19 +16,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     WANTT   LOGICAL
+C     WANTT   (input) LOGICAL
 C             Indicates whether the user wishes to compute the full
 C             Schur form or the eigenvalues only, as follows:
 C             = .TRUE. :  Compute the full Schur form;
 C             = .FALSE.:  compute the eigenvalues only.
 C
-C     WANTQ   LOGICAL
+C     WANTQ   (input) LOGICAL
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Q as follows:
 C             = .TRUE. :  The matrix Q is updated;
 C             = .FALSE.:  the matrix Q is not required.
 C
-C     WANTZ   LOGICAL
+C     WANTZ   (input) LOGICAL
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Z as follows:
 C             = .TRUE. :  The matrix Z is updated;
@@ -66,7 +66,7 @@ C             If WANTT = .FALSE., the diagonal elements and 2-by-2
 C             diagonal blocks of A will be correct, but the remaining
 C             parts of A are unspecified on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -82,7 +82,7 @@ C             If WANTT = .FALSE., the elements corresponding to diagonal
 C             elements and 2-by-2 diagonal blocks in A will be correct,
 C             but the remaining parts of B are unspecified on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -94,7 +94,7 @@ C             of this array contains the matrix Q updated in the
 C             submatrix Q(ILOQ:IHIQ,ILO:IHI).
 C             If WANTQ = .FALSE., Q is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= 1.
 C             If WANTQ = .TRUE., LDQ >= MAX(1,N).
 C
@@ -107,7 +107,7 @@ C             of this array contains the matrix Z updated in the
 C             submatrix Z(ILOQ:IHIQ,ILO:IHI).
 C             If WANTZ = .FALSE., Z is not referenced.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= 1.
 C             If WANTZ = .TRUE., LDZ >= MAX(1,N).
 C
@@ -124,16 +124,16 @@ C             A and B.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = -19,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

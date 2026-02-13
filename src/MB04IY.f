@@ -25,13 +25,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specify if  Q  or  Q'  is applied from the left or right,
 C             as follows:
 C             = 'L':  apply  Q  or  Q'  from the left;
 C             = 'R':  apply  Q  or  Q'  from the right.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specify if  Q  or  Q'  is to be applied, as follows:
 C             = 'N':  apply  Q   (No transpose);
 C             = 'T':  apply  Q'  (Transpose).
@@ -62,7 +62,7 @@ C             reflector  H(i),  so that matrix  Q  is the product of
 C             elementary reflectors:  Q = H(1) H(2) . . . H(k).
 C             A is modified by the routine but restored on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array  A.
 C             LDA >= max(1,N),  if  SIDE = 'L';
 C             LDA >= max(1,M),  if  SIDE = 'R'.
@@ -76,16 +76,16 @@ C             contain the matrix  C.
 C             On exit, the leading N-by-M part of this array contains
 C             the updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array  C.  LDC >= max(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,M),  if  SIDE = 'L';
 C             LDWORK >= MAX(1,N),  if  SIDE = 'R'.
@@ -95,7 +95,7 @@ C             block size.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

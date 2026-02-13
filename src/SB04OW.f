@@ -38,14 +38,14 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,M)
 C             On entry, the leading M-by-M part of this array must
 C             contain the upper quasi triangular matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,M).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the upper quasi triangular matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -55,21 +55,21 @@ C             in (1).
 C             On exit, the leading M-by-N part of this array contains
 C             the solution R.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,M).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
 C             On entry, the leading M-by-M part of this array must
 C             contain the upper triangular matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,M).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
 C             On entry, the leading N-by-N part of this array must
 C             contain the upper triangular matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     F       (input/output) DOUBLE PRECISION array, dimension (LDF,N)
@@ -79,7 +79,7 @@ C             in (1).
 C             On exit, the leading M-by-N part of this array contains
 C             the solution L.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= MAX(1,M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -92,11 +92,11 @@ C             Normally, SCALE = 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M+N+2)
+C     IWORK   (input/output) INTEGER array, dimension (M+N+2)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

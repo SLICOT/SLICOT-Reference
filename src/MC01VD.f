@@ -33,7 +33,7 @@ C             smallest root in magnitude.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if on entry, either A = B = 0.0 or A = 0.0 and the
 C                   root -C/B overflows; in this case Z1RE, Z1IM, Z2RE

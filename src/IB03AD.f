@@ -37,7 +37,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     INIT    CHARACTER*1
+C     INIT    (input) CHARACTER*1
 C             Specifies which parts have to be initialized, as follows:
 C             = 'L' : initialize the linear part only, X already
 C                     contains an initial approximation of the
@@ -54,7 +54,7 @@ C             by SLICOT Library routine NF01BA (used as a second FCN
 C             routine in the MD03AD call for the initialization step,
 C             see METHOD).
 C
-C     ALG     CHARACTER*1
+C     ALG     (input) CHARACTER*1
 C             Specifies the algorithm used for solving the linear
 C             systems involving a Jacobian matrix J, as follows:
 C             = 'D' :  a direct algorithm, which computes the Cholesky
@@ -64,7 +64,7 @@ C             = 'I' :  an iterative Conjugate Gradients algorithm, which
 C                      only needs the matrix J, is used.
 C             In both cases, matrix J is stored in a compressed form.
 C
-C     STOR    CHARACTER*1
+C     STOR    (input) CHARACTER*1
 C             If ALG = 'D', specifies the storage scheme for the
 C             symmetric matrix J'*J, as follows:
 C             = 'F' :  full storage is used;
@@ -129,7 +129,7 @@ C             The leading NSMP-by-M part of this array must contain the
 C             set of input samples,
 C             U = ( U(1,1),...,U(1,M); ...; U(NSMP,1),...,U(NSMP,M) ).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,NSMP).
 C
 C     Y       (input) DOUBLE PRECISION array, dimension (LDY, L)
@@ -137,7 +137,7 @@ C             The leading NSMP-by-L part of this array must contain the
 C             set of output samples,
 C             Y = ( Y(1,1),...,Y(1,L); ...; Y(NSMP,1),...,Y(NSMP,L) ).
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= MAX(1,NSMP).
 C
 C     X       (input/output) DOUBLE PRECISION array dimension (LX)
@@ -172,7 +172,7 @@ C             is unchanged.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If INIT = 'S' or 'B' and TOL1 >= 0, TOL1 is the tolerance
 C             which measures the relative error desired in the sum of
 C             squares, for the initialization step of nonlinear part.
@@ -187,7 +187,7 @@ C             instead TOL1, where EPS is the machine precision
 C             (see LAPACK Library routine DLAMCH).
 C             This parameter is ignored if INIT is 'N' or 'L'.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             If TOL2 >= 0, TOL2 is the tolerance which measures the
 C             relative error desired in the sum of squares, for the
 C             whole optimization process. Termination occurs when the
@@ -205,7 +205,7 @@ C             and spend more time with cheaper iterations.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (MAX( 3, LIW1, LIW2 )), where
+C     IWORK   (input/output) INTEGER array, dimension (MAX( 3, LIW1, LIW2 )), where
 C             LIW1 = LIW2 = 0,  if INIT = 'S' or 'N'; otherwise,
 C             LIW1 = M+L;
 C             LIW2 = MAX(M*NOBR+N,M*(N+L)).
@@ -217,7 +217,7 @@ C             specifies how many locations of DWORK contain reciprocal
 C             condition number estimates (see below); otherwise,
 C             IWORK(3) = 0.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On entry, if desired, and if INIT = 'S' or 'B', the
 C             entries DWORK(1:4) are set to initialize the random
 C             numbers generator for the nonlinear part parameters (see
@@ -242,7 +242,7 @@ C             Library routines IB01AD, IB01BD, and IB01CD.
 C             On exit, if  INFO = -23,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             In the formulas below, N should be taken not larger than
 C             NOBR - 1, if N < 0 on entry.
@@ -294,7 +294,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             < 0:  the user set IFLAG = IWARN in (one of) the
 C                   subroutine(s) FCN, i.e., NF01BA, if INIT = 'S'
@@ -328,7 +328,7 @@ C             described above.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the unitary transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N':  Q is not computed;
@@ -60,7 +60,7 @@ C             contains the transformed matrix Aout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     D       (input/output) COMPLEX*16 array, dimension (LDD, N/2)
@@ -72,7 +72,7 @@ C             contains the transformed matrix Dout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1, N/2).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB, N/2)
@@ -83,7 +83,7 @@ C             contains the transformed matrix Bout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     F       (input/output) COMPLEX*16 array, dimension (LDF, N/2)
@@ -95,7 +95,7 @@ C             contains the transformed matrix Fout.
 C             The strictly lower triangular part of this array is not
 C             referenced.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= MAX(1, N/2).
 C
 C     Q       (input/output) COMPLEX*16 array, dimension (LDQ, N)
@@ -108,7 +108,7 @@ C             On exit, if COMPQ = 'I', then the leading N-by-N part of
 C             this array contains the unitary transformation matrix Q.
 C             If COMPQ = 'N' this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,         if COMPQ = 'N';
 C             LDQ >= MAX(1, N), if COMPQ = 'I' or COMPQ = 'U'.
@@ -119,7 +119,7 @@ C             negative real part.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance used to decide the sign of the eigenvalues.
 C             If the user sets TOL > 0, then the given value of TOL is
 C             used. If the user sets TOL <= 0, then an implicitly
@@ -130,7 +130,7 @@ C             needed for pencils with multiple eigenvalues.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value.
 C

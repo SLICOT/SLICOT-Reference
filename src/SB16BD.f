@@ -22,18 +22,18 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the open-loop system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears
 C             in the given state space model:
 C             = 'D':  D is present;
 C             = 'Z':  D is assumed a zero matrix.
 C
-C     JOBMR   CHARACTER*1
+C     JOBMR   (input) CHARACTER*1
 C             Specifies the model reduction approach to be used
 C             as follows:
 C             = 'B':  use the square-root B&T method;
@@ -41,20 +41,20 @@ C             = 'F':  use the balancing-free square-root B&T method;
 C             = 'S':  use the square-root SPA method;
 C             = 'P':  use the balancing-free square-root SPA method.
 C
-C     JOBCF   CHARACTER*1
+C     JOBCF   (input) CHARACTER*1
 C             Specifies whether left or right coprime factorization is
 C             to be used as follows:
 C             = 'L':  use left coprime factorization;
 C             = 'R':  use right coprime factorization.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to perform a
 C             preliminary equilibration before performing
 C             order reduction as follows:
 C             = 'S':  perform equilibration (scaling);
 C             = 'N':  do not perform equilibration.
 C
-C     ORDSEL  CHARACTER*1
+C     ORDSEL  (input) CHARACTER*1
 C             Specifies the order selection method as follows:
 C             = 'F':  the resulting controller order NCR is fixed;
 C             = 'A':  the resulting controller order NCR is
@@ -98,21 +98,21 @@ C             On exit, if INFO = 0, the leading NCR-by-NCR part of this
 C             array contains the state dynamics matrix Ac of the reduced
 C             controller.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must
 C             contain the original input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must
 C             contain the original state/output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -121,7 +121,7 @@ C             array must contain the system direct input/output
 C             transmission matrix D.
 C             The array D is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D';
 C             LDD >= 1,        if JOBD = 'Z'.
@@ -133,7 +133,7 @@ C             On exit, if INFO = 0, the leading M-by-NCR part of this
 C             array contains the state/output matrix Cc of the reduced
 C             controller.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,P)
@@ -143,7 +143,7 @@ C             On exit, if INFO = 0, the leading NCR-by-P part of this
 C             array contains the input/state matrix Bc of the reduced
 C             controller.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     DC      (output) DOUBLE PRECISION array, dimension (LDDC,P)
@@ -151,7 +151,7 @@ C             If INFO = 0, the leading M-by-P part of this array
 C             contains the input/output matrix Dc of the reduced
 C             controller.
 C
-C     LDDC    INTEGER
+C     LDDC    (input) INTEGER
 C             The leading dimension of array DC.  LDDC >= MAX(1,M).
 C
 C     HSV     (output) DOUBLE PRECISION array, dimension (N)
@@ -160,7 +160,7 @@ C             of the extended system ordered decreasingly (see METHOD).
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If ORDSEL = 'A', TOL1 contains the tolerance for
 C             determining the order of the reduced extended system.
 C             For model reduction, the recommended value is
@@ -172,7 +172,7 @@ C             TOL1 <= 0 on entry, where EPS is the machine precision
 C             (see LAPACK Library Routine DLAMCH).
 C             If ORDSEL = 'F', the value of TOL1 is ignored.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             The tolerance for determining the order of a minimal
 C             realization of the coprime factorization controller
 C             (see METHOD). The recommended value is
@@ -182,7 +182,7 @@ C             If TOL2 > 0 and ORDSEL = 'A', then TOL2 <= TOL1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK = 0,         if ORDSEL = 'F' and NCR = N.
 C                                                 Otherwise,
 C             LIWORK = MAX(PM,M), if JOBCF = 'L',
@@ -191,11 +191,11 @@ C             PM = 0,             if JOBMR = 'B',
 C             PM = N,             if JOBMR = 'F',
 C             PM = MAX(1,2*N),    if JOBMR = 'S' or 'P'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= P*N, if ORDSEL = 'F' and NCR = N. Otherwise,
 C             LDWORK >= (N+M)*(M+P) + MAX(LWR,4*M), if JOBCF = 'L',
@@ -205,7 +205,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  with ORDSEL = 'F', the selected order NCR is
 C                   greater than the order of a minimal
@@ -213,7 +213,7 @@ C                   realization of the controller.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

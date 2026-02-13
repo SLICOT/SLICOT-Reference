@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not an information from the
 C             previous call is supplied in the vector X.
 C             = 'F':  On entry, X contains information from the
@@ -32,7 +32,7 @@ C             The leading N-by-N part of this array must contain the
 C             complex matrix Z for which the upper bound on the
 C             structured singular value is to be computed.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= max(1,N).
 C
 C     M       (input) INTEGER
@@ -65,7 +65,8 @@ C
 C     BOUND   (output) DOUBLE PRECISION
 C             The upper bound on the structured singular value.
 C
-C     D, G    (output) DOUBLE PRECISION arrays, dimension (N)
+C     D       (output) DOUBLE PRECISION arrays, dimension (N)
+C     G       (output) DOUBLE PRECISION arrays, dimension (N)
 C             The vectors of length N containing the diagonal entries
 C             of the diagonal N-by-N matrices D and G, respectively,
 C             such that the matrix
@@ -74,13 +75,13 @@ C             is negative semidefinite.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (MAX(4*M-2,N))
+C     IWORK   (input/output) INTEGER array, dimension (MAX(4*M-2,N))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 2*N*N*M - N*N + 9*M*M + N*M + 11*N + 33*M - 11.
 C             For best performance
@@ -88,11 +89,11 @@ C             LDWORK >= 2*N*N*M - N*N + 9*M*M + N*M + 6*N + 33*M - 11 +
 C                       MAX( 5*N,2*N*NB )
 C             where NB is the optimal blocksize returned by ILAENV.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) contains the optimal value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 6*N*N*M + 12*N*N + 6*M + 6*N - 3.
 C             For best performance
@@ -102,7 +103,7 @@ C             where NB is the optimal blocksize returned by ILAENV.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

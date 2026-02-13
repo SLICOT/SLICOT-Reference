@@ -42,14 +42,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; S and H will not
 C                    necessarily be transformed as in (2).
 C             = 'T': put S and H into the forms in (2) and return the
 C                    eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ1  CHARACTER*1
+C     COMPQ1  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q1, as follows:
 C             = 'N':  Q1 is not computed;
@@ -61,7 +61,7 @@ C                     is the product of the orthogonal transformations
 C                     that are applied to the pencil aS - bH to reduce
 C                     S and H to the forms in (2), for COMPQ1 = 'I'.
 C
-C     COMPQ2  CHARACTER*1
+C     COMPQ2  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q2, as follows:
 C             = 'N':  Q2 is not computed;
@@ -88,7 +88,7 @@ C             array contains the matrix Aout; otherwise, it contains the
 C             upper triangular matrix A obtained just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1, N/2).
 C
 C     DE      (input/output) DOUBLE PRECISION array, dimension
@@ -113,7 +113,7 @@ C             of the skew-symmetric matrix D just before the application
 C             of the periodic QZ algorithm. The remaining entries are
 C             meaningless.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.
 C             LDDE >= MAX(1, N/2).
 C
@@ -126,7 +126,7 @@ C             array contains the matrix C1out; otherwise, it contains
 C             the upper triangular matrix C1 obtained just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDC1    INTEGER
+C     LDC1    (input) INTEGER
 C             The leading dimension of the array C1.
 C             LDC1 >= MAX(1, N/2).
 C
@@ -144,7 +144,7 @@ C             If JOB = 'E', the N/2-by-N/2 part in the columns 2 to
 C             N/2+1 of this array contains the matrix V just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDVW    INTEGER
+C     LDVW    (input) INTEGER
 C             The leading dimension of the array VW.
 C             LDVW >= MAX(1, N/2).
 C
@@ -159,7 +159,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q1.
 C             If COMPQ1 = 'N', this array is not referenced.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.
 C             LDQ1 >= 1,         if COMPQ1 = 'N';
 C             LDQ1 >= MAX(1, N), if COMPQ1 = 'I' or COMPQ1 = 'U'.
@@ -174,7 +174,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q2.
 C             If COMPQ2 = 'N', this array is not referenced.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.
 C             LDQ2 >= 1,         if COMPQ2 = 'N';
 C             LDQ2 >= MAX(1, N), if COMPQ2 = 'I' or COMPQ2 = 'U'.
@@ -185,7 +185,7 @@ C             array contains the matrix Bout; otherwise, it contains the
 C             upper triangular matrix B obtained just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N/2).
 C
 C     F       (output) DOUBLE PRECISION array, dimension (LDF, N/2)
@@ -199,7 +199,7 @@ C             the application of the periodic QZ algorithm.
 C             The entries on the leading N/2-by-N/2 lower triangular
 C             part of this array are not referenced.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of the array F.  LDF >= MAX(1, N/2).
 C
 C     C2      (output) DOUBLE PRECISION array, dimension (LDC2, N/2)
@@ -208,7 +208,7 @@ C             array contains the matrix C2out; otherwise, it contains
 C             the upper Hessenberg matrix C2 obtained just before the
 C             application of the periodic QZ algorithm.
 C
-C     LDC2    INTEGER
+C     LDC2    (input) INTEGER
 C             The leading dimension of the array C2.
 C             LDC2 >= MAX(1, N/2).
 C
@@ -242,7 +242,7 @@ C             consecutive locations, are not complex conjugate.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = 3, IWORK(1) contains the number of
 C             (pairs of) possibly inaccurate eigenvalues, q <= N/2, and
 C             IWORK(2), ..., IWORK(q+1) indicate their indices.
@@ -264,10 +264,10 @@ C             corresponding to unreliable eigenvalues. IWORK(2*q+4)
 C             contains the total number t of the 2-by-2 blocks.
 C             If INFO = 0, then q = 0, therefore IWORK(1) = 0.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.  LIWORK >= N+12.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 3, DWORK(1) returns the
 C             optimal LDWORK, and DWORK(2), ..., DWORK(5) contain the
 C             Frobenius norms of the factors of the formal matrix
@@ -288,7 +288,7 @@ C             define the corresponding 2-by-2 matrix quadruple.
 C             On exit, if INFO = -27, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If JOB = 'E' and COMPQ1 = 'N' and COMPQ2 = 'N',
 C                LDWORK >= N**2 + MAX(L,36);
@@ -301,7 +301,7 @@ C             For good performance LDWORK should generally be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: problem during computation of the eigenvalues;

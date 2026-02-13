@@ -33,22 +33,22 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             = 'F':  perform the finite-infinite separation;
 C             = 'I':  perform the infinite-finite separation.
 C
-C     JOBA    CHARACTER*1
+C     JOBA    (input) CHARACTER*1
 C             = 'H':  reduce Af further to an upper Hessenberg form;
 C             = 'N':  keep Af unreduced.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
 C             = 'U':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
@@ -86,7 +86,7 @@ C             Ai has a block structure as in (3) or (4), where A0,0 is
 C             ND-by-ND and Ai,i , for i = 1, ..., NIBLCK, is
 C             IBLCK(i)-by-IBLCK(i).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -103,7 +103,7 @@ C             depending on JOB, with Ef an NF-by-NF nonsingular matrix,
 C             and Ei an (N-NF)-by-(N-NF) nilpotent matrix in an upper
 C             block triangular form, as in (3) or (4).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,K),
@@ -113,7 +113,7 @@ C             contain the N-by-M input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -122,7 +122,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,K),
 C             where K = P if JOB = 'F', and K = MAX(M,P) if JOB = 'I'.
 C
@@ -141,7 +141,7 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,N), if COMPQ = 'I' or 'U'.
@@ -161,7 +161,7 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'I' or 'U'.
@@ -185,7 +185,7 @@ C             staircase form (3) or (4), with i = 1,2, ..., NIBLCK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -198,13 +198,13 @@ C             TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N > 0,
 C             LDWORK >= N + MAX(3*N,M,P).
 C
@@ -216,7 +216,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -38,25 +38,25 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system as follows:
 C             = 'C':  Continuous-time system;
 C             = 'D':  Discrete-time system.
 C
-C     HINV    CHARACTER*1
+C     HINV    (input) CHARACTER*1
 C             If DICO = 'D', specifies which of the matrices (2) or (3)
 C             is constructed, as follows:
 C             = 'D':  The matrix S in (2) is constructed;
 C             = 'I':  The (inverse) matrix S in (3) is constructed.
 C             HINV is not referenced if DICO = 'C'.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices G and Q is
 C             stored, as follows:
 C             = 'U':  Upper triangle is stored;
@@ -71,7 +71,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,N)
@@ -85,7 +85,7 @@ C             If DICO = 'C', this array is not modified on exit, and the
 C             strictly lower triangular part (if UPLO = 'U') or strictly
 C             upper triangular part (if UPLO = 'L') is not referenced.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -99,7 +99,7 @@ C             If DICO = 'C', this array is not modified on exit, and the
 C             strictly lower triangular part (if UPLO = 'U') or strictly
 C             upper triangular part (if UPLO = 'L') is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     S       (output) DOUBLE PRECISION array, dimension (LDS,2*N)
@@ -107,16 +107,16 @@ C             If INFO = 0, the leading 2N-by-2N part of this array
 C             contains the Hamiltonian or symplectic matrix of the
 C             problem.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.  LDS >= MAX(1,2*N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK >= 0,   if DICO = 'C';
 C             LIWORK >= 2*N, if DICO = 'D'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if DICO = 'D', DWORK(1) returns the reciprocal
 C             condition number  RCOND  of the given matrix  A,  and
 C             DWORK(2) returns the reciprocal pivot growth factor
@@ -126,14 +126,14 @@ C             and  RCOND  could be unreliable. If 0 < INFO <= N, then
 C             DWORK(2) contains the reciprocal pivot growth factor for
 C             the leading INFO columns of  A.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 0,          if DICO = 'C';
 C             LDWORK >= MAX(2,6*N), if DICO = 'D'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

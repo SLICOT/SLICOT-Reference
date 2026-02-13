@@ -26,19 +26,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     TRANB   CHARACTER*1
+C     TRANB   (input) CHARACTER*1
 C             Specifies the form of op(B) to be used, as follows:
 C             = 'N':  op(B) = B    (No transpose);
 C             = 'T':  op(B) = B**T (Transpose);
 C             = 'C':  op(B) = B**T (Conjugate transpose = Transpose).
 C
-C     ISGN    INTEGER
+C     ISGN    (input) INTEGER
 C             Specifies the sign of the equation as described before.
 C             ISGN may only be 1 or -1.
 C
@@ -58,7 +58,7 @@ C             upper quasi-triangular matrix A, in Schur canonical form.
 C             The part of A below the first sub-diagonal is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,N)
@@ -76,7 +76,7 @@ C             contain the right hand side matrix C.
 C             On exit, if INFO >= 0, the leading M-by-N part of this
 C             array contains the solution matrix X.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -85,11 +85,11 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*M)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*M)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

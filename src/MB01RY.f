@@ -24,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the Hessenberg matrix H appears on the
 C             left or right in the matrix product as follows:
 C                     _
@@ -32,13 +32,13 @@ C             = 'L':  R = alpha*R + beta*op( H )*B;
 C                     _
 C             = 'R':  R = alpha*R + beta*B*op( H ).
 C
-C     UPLO    CHARACTER*1                               _
+C     UPLO    (input) CHARACTER*1                               _
 C             Specifies which triangles of the matrices R and R are
 C             computed and given, respectively, as follows:
 C             = 'U':  the upper triangular part;
 C             = 'L':  the lower triangular part.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( H ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( H ) = H;
@@ -73,7 +73,7 @@ C             this array contains the corresponding triangular part of
 C                                 _
 C             the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,M).
 C
 C     H       (input) DOUBLE PRECISION array, dimension (LDH,M)
@@ -84,26 +84,26 @@ C             The elements below the subdiagonal are not referenced,
 C             except possibly for those in the first column, which
 C             could be overwritten, but are restored on exit.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,M).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             On entry, the leading M-by-M part of this array must
 C             contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             LDWORK >= M, if  beta <> 0 and SIDE = 'L';
 C             LDWORK >= 0, if  beta =  0 or  SIDE = 'R'.
 C             This array is not referenced when beta = 0 or SIDE = 'R'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

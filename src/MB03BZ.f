@@ -37,14 +37,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; A will not
 C                    necessarily be put into periodic Schur form;
 C             = 'S': put A into periodic Schur form, and return the
 C                    eigenvalues in ALPHA, BETA, and SCAL.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether or not the unitary transformations
 C             should be accumulated in the array Q, as follows:
 C             = 'N': do not modify Q;
@@ -89,11 +89,11 @@ C             nonnegative real numbers.
 C             On exit, if JOB = 'E', then the leading N-by-N-by-K part
 C             of this array contains meaningless elements.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.
 C             LDA1 >= MAX(1,N).
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.
 C             LDA2 >= MAX(1,N).
 C
@@ -106,11 +106,11 @@ C             N-by-N-by-K part of this array contains the modified
 C             unitary factors as described in (1) and (2).
 C             This array is not referenced if COMPQ = 'N'.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The first leading dimension of the array Q.  LDQ1 >= 1,
 C             and, if COMPQ <> 'N', LDQ1 >= MAX(1,N).
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The second leading dimension of the array Q.  LDQ2 >= 1,
 C             and, if COMPQ <> 'N', LDQ2 >= MAX(1,N).
 C
@@ -137,23 +137,23 @@ C             of A.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the minimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the minimal value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.  LZWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0      :  succesful exit;
 C             < 0      :  if INFO = -i, the i-th argument had an illegal
 C                         value;

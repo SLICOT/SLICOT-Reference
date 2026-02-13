@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the output of the routine as follows:
 C             = 'Q':  computes Q and R;
 C             = 'R':  only computes R.
@@ -46,7 +46,7 @@ C     TC      (input) DOUBLE PRECISION array, dimension (LDTC, L)
 C             The leading M*K-by-L part of this array must contain
 C             the first block column of T.
 C
-C     LDTC    INTEGER
+C     LDTC    (input) INTEGER
 C             The leading dimension of the array TC.
 C             LDTC >= MAX(1,M*K).
 C
@@ -55,7 +55,7 @@ C             The leading K-by-(N-1)*L part of this array must contain
 C             the first block row of T without the leading K-by-L
 C             block.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of the array TR.  LDTR >= MAX(1,K).
 C
 C     RNK     (output)  INTEGER
@@ -67,7 +67,7 @@ C             If JOB = 'Q', then the leading M*K-by-RNK part of this
 C             array contains the factor Q.
 C             If JOB = 'R', then this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= MAX(1,M*K),  if JOB = 'Q';
 C             LDQ >= 1,           if JOB = 'R'.
@@ -76,7 +76,7 @@ C     R       (output)  DOUBLE PRECISION array, dimension (LDR,RNK)
 C             The leading N*L-by-RNK part of this array contains the
 C             lower trapezoidal factor R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.
 C             LDR >= MAX(1,N*L)
 C
@@ -87,24 +87,24 @@ C             the k-th column of T.
 C
 C     Tolerances
 C
-C     TOL1    DOUBLE PRECISION
+C     TOL1    (input) DOUBLE PRECISION
 C             If TOL1 >= 0.0, the user supplied diagonal tolerance;
 C             if TOL1 < 0.0, a default diagonal tolerance is used.
 C
-C     TOL2    DOUBLE PRECISION
+C     TOL2    (input) DOUBLE PRECISION
 C             If TOL2 >= 0.0, the user supplied offdiagonal tolerance;
 C             if TOL2 < 0.0, a default offdiagonal tolerance is used.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK;  DWORK(2) and DWORK(3) return the used values
 C             for TOL1 and TOL2, respectively.
 C             On exit, if INFO = -19,  DWORK(1) returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 3, ( M*K + ( N - 1 )*L )*( L + 2*K ) + 9*L
 C                                 + MAX(M*K,(N-1)*L) ),    if JOB = 'Q';
@@ -113,7 +113,7 @@ C                                 M*K*( L + 1 ) + L ),     if JOB = 'R'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

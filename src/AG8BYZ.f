@@ -28,7 +28,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FIRST   LOGICAL
+C     FIRST   (input) LOGICAL
 C             Specifies if AG8BYZ is called first time or it is called
 C             for an already reduced system, with D full column rank
 C             with the last M rows in upper triangular form:
@@ -74,7 +74,7 @@ C             Cr is a PR-by-NR matrix, Dr is a PR-by-M full row rank
 C             left upper trapezoidal matrix with the first PR columns
 C             in upper triangular form.
 C
-C     LDABCD  INTEGER
+C     LDABCD  (input) INTEGER
 C             The leading dimension of array ABCD.
 C             LDABCD >= MAX(1,N+P).
 C
@@ -84,7 +84,7 @@ C             contain the upper triangular nonsingular matrix E.
 C             On exit, the leading NR-by-NR part contains the reduced
 C             upper triangular nonsingular matrix Er.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     NR      (output) INTEGER
@@ -119,7 +119,7 @@ C             blocks of dimension i-by-(i-1), where i = 1,2,...,NKRONL.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -134,18 +134,18 @@ C             less than those defined above (see SVLMAX).  TOL <= 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C             If FIRST = .FALSE., IWORK is not referenced.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             LDWORK >= 2*MAX(M,P), if FIRST = .TRUE.;
 C             LDWORK >= 2*P,        if FIRST = .FALSE. .
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.
 C             LZWORK >= 1, if P = 0; otherwise
 C             LZWORK >= MAX( 1, N+M-1, MIN(P,M) + MAX(3*M-1,N), 3*P ),
@@ -162,7 +162,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

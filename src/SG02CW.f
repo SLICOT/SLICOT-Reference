@@ -94,12 +94,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the Riccati equation, as follows:
 C             = 'C':  continuous-time algebraic Riccati equation;
 C             = 'D':  discrete-time algebraic Riccati equation.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies which results must be computed, as follows:
 C             = 'A':  Both (all) matrices R and C must be computed;
 C             = 'R':  The matrix R only must be computed;
@@ -108,18 +108,18 @@ C             = 'N':  The matrices R and C and the norms must be
 C                     computed;
 C             = 'B':  The matrix R and the norms must be computed.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general or an identity matrix,
 C             as follows:
 C             = 'G':  The matrix E is general and is given;
 C             = 'I':  The matrix E is assumed identity and is not given.
 C
-C     FLAG    CHARACTER*1
+C     FLAG    (input) CHARACTER*1
 C             Specifies which sign is used, as follows:
 C             = 'P':  The plus sign is used;
 C             = 'M':  The minus sign is used.
 C
-C     JOBG    CHARACTER*1
+C     JOBG    (input) CHARACTER*1
 C             Specifies how the quadratic term in the formulas for R is
 C             defined, as follows:
 C             = 'G':  The matrix G is given;
@@ -127,14 +127,14 @@ C             = 'D':  The matrix D is given;
 C             = 'F':  The matrix F is given;
 C             = 'H':  The matrices H and K are given.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrices X, G
 C             (if JOBG = 'G'), and Q (if JOB <> 'C') are given, as
 C             follows:
 C             = 'U':  The upper triangular part is given;
 C             = 'L':  The lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(W) to be used in the formulas
 C             above, as follows:
 C             = 'N':  op(W) = W;
@@ -155,7 +155,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,*)
@@ -165,7 +165,7 @@ C             this array must contain the matrix E.
 C             If JOBE = 'I' or (JOB = 'C' and (DICO = 'D' or
 C             JOBG = 'F' or JOBG = 'H')), this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.
 C             LDE >= MAX(1,N), if JOBE = 'G' and (JOB <> 'C' or
 C                                (DICO = 'C' and (JOBG = 'G' or
@@ -174,7 +174,7 @@ C             LDE >= 1,        if JOBE = 'I'  or (JOB  = 'C' and
 C                                (DICO = 'D'  or  JOBG = 'F' or
 C                                                 JOBG = 'H')).
 C
-C     G       (input/works.) DOUBLE PRECISION array, dimension (LDG,*)
+C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,*)
 C             If JOBG = 'G', the leading N-by-N upper or lower
 C             triangular part (depending on UPLO) of this array must
 C             contain the upper or lower triangular part, respectively,
@@ -190,14 +190,14 @@ C             N-by-M part of this array must contain the matrix B.
 C             If (JOBG = 'F' or JOBG = 'H') and JOB = 'R' or JOB = 'B',
 C             this array is not referenced.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.
 C             LDG >= MAX(1,N), if  JOBG = 'G' or  JOBG = 'D' or
 C                                 (JOB <> 'R' and JOB <> 'B');
 C             LDG >= 1,        if (JOBG = 'F' or JOBG = 'H') and
 C                                 (JOB  = 'R' or JOB  = 'B').
 C
-C     X       (input/works.) DOUBLE PRECISION array, dimension (LDX,N)
+C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
 C             The leading N-by-N part of this array must contain the
 C             symmetric matrix X, and it is unchanged on exit.
 C             If DICO = 'D', JOBE = 'G' and JOB <> 'C', the diagonal
@@ -226,7 +226,7 @@ C             upper or lower triangular part (depending on UPLO) of this
 C             array must be input, and the other strictly triangular
 C             part is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     F       (input) DOUBLE PRECISION array, dimension (LDF,*)
@@ -236,7 +236,7 @@ C             If JOBG = 'H', the leading N-by-M part of this array must
 C             contain the matrix H.
 C             If JOBG = 'G' or JOBG = 'D', this array is not referenced.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.
 C             LDF >= MAX(1,N), if JOBG = 'F' or JOBG = 'H';
 C             LDF >= 1,        if JOBG = 'G' or JOBG = 'D'.
@@ -246,7 +246,7 @@ C             If JOBG = 'H', the leading M-by-N part of this array must
 C             contain the matrix K.
 C             If JOBG <> 'H', this array is not referenced.
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of array K.
 C             LDK >= MAX(1,M), if JOBG =  'H';
 C             LDK >= 1,        if JOBG <> 'H'.
@@ -264,7 +264,7 @@ C             These matrix products are needed for computing F or H.
 C             If JOBG = 'G' or JOBG = 'D' or JOB = 'C' or (DICO = 'C'
 C             and JOBE = 'I') this array is not referenced.
 C
-C     LDXE    INTEGER
+C     LDXE    (input) INTEGER
 C             The leading dimension of array XE.
 C             LDXE >= MAX(1,N), if (JOBG = 'F' or JOBG = 'H'),
 C                               JOB <> 'C', and either DICO = 'C' and
@@ -284,7 +284,7 @@ C             array contains the upper or lower triangular part,
 C             respectively, of the matrix R.
 C             If JOB = 'C', this array is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.
 C             LDR >= MAX(1,N), if JOB <> 'C';
 C             LDR >= 1,        if JOB =  'C'.
@@ -294,7 +294,7 @@ C             If JOB <> 'R' and JOB <> 'B' and INFO = 0, the leading
 C             N-by-N part of this array contains the matrix op(C).
 C             If JOB = 'R' or JOB = 'B', this array is not referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,N), if JOB <> 'R' and JOB <> 'B';
 C             LDC >= 1,        if JOB =  'R' or  JOB =  'B'.
@@ -324,13 +324,14 @@ C             referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = -30, or if LDWORK = -2 on input, then
 C             DWORK(1) returns the minimum value of LDWORK.
 C             On exit, if INFO = 0, or if LDWORK = -1 on input, then
 C             DWORK(1) returns the optimal value of LDWORK.
 C
-C     LDWORK  The length of the array DWORK. LDWORK >= MAX(v,1), with v
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
+C             LDWORK >= MAX(v,1), with v
 C             specified in the following table, where
 C                a = 1, if JOBE = 'G';
 C                a = 0, if JOBE = 'I'.
@@ -379,7 +380,7 @@ C             the array X).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

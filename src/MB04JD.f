@@ -54,7 +54,7 @@ C             diagonal contain the trailing components (the vectors v,
 C             see Method) of the elementary reflectors used in the
 C             factorization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -64,7 +64,7 @@ C             On exit, the leading L-by-M part of this array contains
 C             the updated matrix B.
 C             If L = 0, this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,L).
 C
 C     TAU     (output) DOUBLE PRECISION array, dimension MIN(N,M)
@@ -72,17 +72,17 @@ C             The scalar factors of the elementary reflectors used.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= MAX(1,N-1,N-P,L).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

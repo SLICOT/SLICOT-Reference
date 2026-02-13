@@ -71,7 +71,7 @@ C             contain the A matrix of the closed-loop system.
 C             On exit, if MP > 0, the leading NC-by-NC part of this
 C             array contains an upper Hessenberg matrix similar to A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,NC).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,MP)
@@ -81,7 +81,7 @@ C             On exit, the leading NC-by-MP part of this array contains
 C             the transformed B matrix corresponding to the Hessenberg
 C             form of A.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,NC).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,NC)
@@ -91,14 +91,14 @@ C             On exit, the leading MP-by-NC part of this array contains
 C             the transformed C matrix corresponding to the Hessenberg
 C             form of A.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,MP).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,MP)
 C             The leading MP-by-MP part of this array must contain the
 C             D matrix of the closed-loop system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= MAX(1,MP).
 C
 C     OMEGA   (input) DOUBLE PRECISION array, dimension (LENDAT)
@@ -113,7 +113,7 @@ C             The leading TOTORD-by-TOTORD part of this array contains
 C             the A matrix of the D-scaling system.
 C             Not referenced if QUTOL < 0.
 C
-C     LDAD    INTEGER
+C     LDAD    (input) INTEGER
 C             The leading dimension of the array AD.
 C             LDAD >= MAX(1,MP*ORD), if QUTOL >= 0;
 C             LDAD >= 1,             if QUTOL <  0.
@@ -123,7 +123,7 @@ C             The leading TOTORD-by-(MP+F) part of this array contains
 C             the B matrix of the D-scaling system.
 C             Not referenced if QUTOL < 0.
 C
-C     LDBD    INTEGER
+C     LDBD    (input) INTEGER
 C             The leading dimension of the array BD.
 C             LDBD >= MAX(1,MP*ORD), if QUTOL >= 0;
 C             LDBD >= 1,             if QUTOL <  0.
@@ -133,7 +133,7 @@ C             The leading (MP+F)-by-TOTORD part of this array contains
 C             the C matrix of the D-scaling system.
 C             Not referenced if QUTOL < 0.
 C
-C     LDCD    INTEGER
+C     LDCD    (input) INTEGER
 C             The leading dimension of the array CD.
 C             LDCD >= MAX(1,MP+F), if QUTOL >= 0;
 C             LDCD >= 1,           if QUTOL <  0.
@@ -143,7 +143,7 @@ C             The leading (MP+F)-by-(MP+F) part of this array contains
 C             the D matrix of the D-scaling system.
 C             Not referenced if QUTOL < 0.
 C
-C     LDDD    INTEGER
+C     LDDD    (input) INTEGER
 C             The leading dimension of the array DD.
 C             LDDD >= MAX(1,MP+F), if QUTOL >= 0;
 C             LDDD >= 1,           if QUTOL <  0.
@@ -154,21 +154,21 @@ C             singular value (mju) for each frequency in OMEGA.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The length of the array IWORK.
 C             LIWORK >= MAX( NC, 4*MNB-2, MP, 2*ORD+1 ), if QUTOL >= 0;
 C             LIWORK >= MAX( NC, 4*MNB-2, MP ),          if QUTOL <  0.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, DWORK(2) returns the optimal value of LZWORK,
 C             and DWORK(3) returns an estimate of the minimum reciprocal
 C             of the condition numbers (with respect to inversion) of
 C             the generated Hessenberg matrices.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 3, LWM, LWD ), where
 C             LWM = LWA + MAX( NC + MAX( NC, MP-1 ),
@@ -185,9 +185,9 @@ C             LW3 = 2*LENDAT*(2*ORD + 1) + MAX( 2*LENDAT, 2*ORD + 1 ) +
 C                   MAX( MN + 6*ORD + 4, 2*MN + 1 );
 C             LW4 = MAX( ORD*ORD + 5*ORD, 6*ORD + 1 + MIN( 1, ORD ) ).
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.
 C             LZWORK >= MAX( LZM, LZD ), where
 C             LZM = MAX( MP*MP + NC*MP + NC*NC + 2*NC,

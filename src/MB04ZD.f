@@ -39,7 +39,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Indicates whether the orthogonal symplectic similarity
 C             transformation matrix U in (3) is returned or
 C             accumulated into an orthogonal symplectic matrix, or if
@@ -68,7 +68,7 @@ C             On output, the leading N-by-N part of this array contains
 C             the upper left block A' of the square-reduced Hamiltonian
 C             matrix H' in (2).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -89,7 +89,7 @@ C             contains the upper triangle of the upper right symmetric
 C             block G' of the square-reduced Hamiltonian matrix H'
 C             in (2).
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,2*N)
@@ -108,18 +108,18 @@ C             The storage scheme implied by (3) is used for orthogonal
 C             symplectic matrices, i.e., only the first N rows are
 C             stored, as they contain all relevant information.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= MAX(1,N), if COMPU <> 'N';
 C             LDU >= 1,        if COMPU =  'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, then the i-th argument had an illegal
 C                   value.

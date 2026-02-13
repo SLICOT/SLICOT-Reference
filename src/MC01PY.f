@@ -31,12 +31,12 @@ C             powers of x.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (K)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (K)
 C             If K = 0, this array is not referenced.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

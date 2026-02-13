@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether R has been previously factored or not,
 C             as follows:
 C             = 'F':  R has been factored and its rank and singular
@@ -31,19 +31,19 @@ C                     value decomposition, R = Q*S*P', are available;
 C             = 'N':  R has not been factored and its singular value
 C                     decomposition, R = Q*S*P', should be computed.
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether op(R) appears on the left or right
 C             of X as follows:
 C             = 'L':  Solve op(R)*X = alpha*B  (op(R) is on the left);
 C             = 'R':  Solve X*op(R) = alpha*B  (op(R) is on the right).
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(R) to be used as follows:
 C             = 'N':  op(R) = R;
 C             = 'T':  op(R) = R';
 C             = 'C':  op(R) = R'.
 C
-C     JOBP    CHARACTER*1
+C     JOBP    (input) CHARACTER*1
 C             Specifies whether or not the pseudoinverse of R is to be
 C             computed or it is available as follows:
 C             = 'P':  Compute pinv(R), if FACT = 'N', or
@@ -70,7 +70,7 @@ C             where EPS is the relative machine precision (see LAPACK
 C             Library routine DLAMCH).  RCOND <= 1.
 C             RCOND is not used if FACT = 'F'.
 C
-C     RANK    (input or output) INTEGER
+C     RANK    (input/output) INTEGER
 C             The rank of matrix R.
 C             RANK is an input parameter when FACT = 'F', and an output
 C             parameter when FACT = 'N'.  L >= RANK >= 0.
@@ -89,10 +89,10 @@ C             array contains the L-by-L orthogonal matrix P', with its
 C             first RANK rows scaled by inv(S(1:RANK,1:RANK)), when
 C             JOBP = 'P'.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,L).
 C
-C     Q       (input or output) DOUBLE PRECISION array, dimension
+C     Q       (input/output) DOUBLE PRECISION array, dimension
 C             (LDQ,L)
 C             On entry, if FACT = 'F', the leading L-by-L part of this
 C             array must contain the L-by-L orthogonal matrix Q from
@@ -101,10 +101,10 @@ C             If FACT = 'N', this array need not be set on entry, and
 C             on exit, if INFO = 0, the leading L-by-L part of this
 C             array contains the orthogonal matrix Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= MAX(1,L).
 C
-C     SV      (input or output) DOUBLE PRECISION array, dimension (L)
+C     SV      (input/output) DOUBLE PRECISION array, dimension (L)
 C             On entry, if FACT = 'F', the first RANK entries of this
 C             array must contain the reciprocal of the largest RANK
 C             singular values of the matrix R, and the last L-RANK
@@ -123,10 +123,10 @@ C             array must contain the matrix B.
 C             On exit, if INFO = 0 and RANK > 0, the leading M-by-N part
 C             of this array contains the M-by-N solution matrix X.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
-C     RP      (input or output) DOUBLE PRECISION array, dimension
+C     RP      (input/output) DOUBLE PRECISION array, dimension
 C             (LDRP,L)
 C             On entry, if FACT = 'F', JOBP = 'P', and RANK > 0, the
 C             leading L-by-L part of this array must contain the L-by-L
@@ -136,14 +136,14 @@ C             leading L-by-L part of this array contains the L-by-L
 C             matrix pinv(R), the Moore-Penrose pseudoinverse of R.
 C             If JOBP = 'N', this array is not referenced.
 C
-C     LDRP    INTEGER
+C     LDRP    (input) INTEGER
 C             The leading dimension of array RP.
 C             LDRP >= MAX(1,L), if JOBP = 'P'.
 C             LDRP >= 1,        if JOBP = 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK;
 C             if INFO = i, 1 <= i <= L, then DWORK(2:L) contain the
 C             unconverged superdiagonal elements of an upper bidiagonal
@@ -151,7 +151,7 @@ C             matrix D whose diagonal is in SV (not necessarily sorted).
 C             D satisfies R = Q*D*P', so it has the same singular
 C             values as R, and singular vectors related by Q and P'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,L),   if FACT = 'F';
 C             LDWORK >= MAX(1,5*L), if FACT = 'N'.
@@ -167,7 +167,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

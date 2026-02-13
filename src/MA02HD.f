@@ -18,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the part of the matrix A to be checked out,
 C             as follows:
 C             = 'U': Upper triangular/trapezoidal part;
@@ -42,7 +42,7 @@ C            matrix A.  If JOB = 'U', only the upper triangle or
 C            trapezoid is accessed; if JOB = 'L', only the lower
 C            triangle or trapezoid is accessed.
 C
-C     LDA    INTEGER
+C     LDA    (input) INTEGER
 C            The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     METHOD

@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     REIG    LOGICAL
+C     REIG    (input) LOGICAL
 C             Specifies the type of eigenvalues as follows:
 C             = .TRUE.,  a real eigenvalue is to be selected;
 C             = .FALSE., a pair of complex eigenvalues is to be
@@ -25,13 +25,15 @@ C     N       (input) INTEGER
 C             The number of eigenvalues contained in the arrays WR
 C             and WI.  N >= 1.
 C
-C     XR,XI   (input) DOUBLE PRECISION
+C     XR      (input) DOUBLE PRECISION
+C     XI      (input) DOUBLE PRECISION
 C             If REIG = .TRUE., XR must contain the real value and XI
 C             is assumed zero and therefore not referenced.
 C             If REIG = .FALSE., XR must contain the real part and XI
 C             the imaginary part, respectively, of the complex value.
 C
-C     WR,WI   (input/output) DOUBLE PRECISION array, dimension (N)
+C     WR      (input/output) DOUBLE PRECISION array, dimension (N)
+C     WI      (input/output) DOUBLE PRECISION array, dimension (N)
 C             On entry, if REIG = .TRUE., WR must contain the real
 C             eigenvalues from which an eigenvalue at minimal distance
 C             to XR is to be selected. In this case, WI is considered
@@ -46,7 +48,8 @@ C             On exit, the elements of these arrays are reordered such
 C             that the selected eigenvalue(s) is (are) found in the
 C             last element(s) of these arrays.
 C
-C     S,P     (output) DOUBLE PRECISION
+C     S       (output) DOUBLE PRECISION
+C     P       (output) DOUBLE PRECISION
 C             If REIG = .TRUE., S (and also P) contains the value of
 C             the selected real eigenvalue.
 C             If REIG = .FALSE., S and P contain the sum and product,

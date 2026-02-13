@@ -29,6 +29,28 @@ C     it is theoretically completely observable: however, its
 C     observability matrix may be poorly conditioned, so it is safer
 C     not to assume observability either.
 C
+C     Arguments
+C
+C     MWORK   (input) INTEGER
+C     PWORK   (input) INTEGER
+C     INDEX   (input) INTEGER, dimension(*)
+C     DCOEFF  (input) DOUBLE PRECISION, dimension( LDDCOE, *)
+C     LDDCOE  (input) INTEGER
+C     UCOEFF  (input) DOUBLE PRECISION,
+C             dimension(LDUCO1,LDUCO2,*)
+C     LDUCO1  (input) INTEGER
+C     LDUCO2  (input) INTEGER
+C     N       (input) INTEGER
+C     A       (input/output) DOUBLE PRECISION, dimension(LDA,*)
+C     LDA     (input) INTEGER
+C     B       (input/output) DOUBLE PRECISION, dimension(LDB,*)
+C     LDB     (input) INTEGER
+C     C       (input/output) DOUBLE PRECISION, dimension(LDC,*)
+C     LDC     (input) INTEGER
+C     D       (input/output) DOUBLE PRECISION, dimension(LDD,*)
+C     LDD     (input) INTEGER
+C     INFO    (input/output) INTEGER
+C
 C     REVISIONS
 C
 C     May 13, 1998.

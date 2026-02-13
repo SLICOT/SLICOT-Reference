@@ -12,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the part of the matrix A to be transposed into B
 C             as follows:
 C             = 'U': Upper triangular part;
@@ -32,13 +32,13 @@ C            The m-by-n matrix A.  If JOB = 'U', only the upper
 C            triangle or trapezoid is accessed; if JOB = 'L', only the
 C            lower triangle or trapezoid is accessed.
 C
-C     LDA    INTEGER
+C     LDA    (input) INTEGER
 C            The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     B      (output) DOUBLE PRECISION array, dimension (LDB,M)
 C            B = A' in the locations specified by JOB.
 C
-C     LDB    INTEGER
+C     LDB    (input) INTEGER
 C            The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     CONTRIBUTOR

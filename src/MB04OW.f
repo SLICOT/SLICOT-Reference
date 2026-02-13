@@ -45,7 +45,7 @@ C            On exit, the leading M-by-(M+N) upper trapezoidal part of
 C            this array contains the upper trapezoidal matrix ( R1 R2 ).
 C            The strict lower triangle of A is not referenced.
 C
-C     LDA    INTEGER
+C     LDA    (input) INTEGER
 C            The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     T      (input/output) DOUBLE PRECISION array, dimension (LDT,N)
@@ -55,7 +55,7 @@ C            On exit, the leading N-by-N upper triangular part of this
 C            array contains the upper triangular matrix R3.
 C            The strict lower triangle of T is not referenced.
 C
-C     LDT    INTEGER
+C     LDT    (input) INTEGER
 C            The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     X      (input/output) DOUBLE PRECISION array, dimension
@@ -73,7 +73,7 @@ C            On exit, the leading M-by-P part of this array contains
 C            the transformed matrix B.
 C            If M = 0 or P = 0, this array is not referenced.
 C
-C     LDB    INTEGER
+C     LDB    (input) INTEGER
 C            The leading dimension of the array B.
 C            LDB >= max(1,M), if P > 0;
 C            LDB >= 1,        if P = 0.
@@ -85,7 +85,7 @@ C            On exit, the leading N-by-P part of this array contains
 C            the transformed matrix C.
 C            If N = 0 or P = 0, this array is not referenced.
 C
-C     LDC    INTEGER
+C     LDC    (input) INTEGER
 C            The leading dimension of the array C.
 C            LDC >= max(1,N), if P > 0;
 C            LDC >= 1,        if P = 0.

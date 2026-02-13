@@ -67,7 +67,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COND    CHARACTER*1
+C     COND    (input) CHARACTER*1
 C             Specifies whether the condition of the diagonal blocks R_k
 C             and S_k of the matrices R and S should be estimated,
 C             as follows:
@@ -117,7 +117,7 @@ C             If BN <= 1 or BSN = 0, then the transpose of the strict
 C             upper triangle of S is stored in the strict lower triangle
 C             of R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     IPVT    (input) INTEGER array, dimension (N)
@@ -141,7 +141,7 @@ C             On entry, PAR must contain an initial estimate of the
 C             Levenberg-Marquardt parameter.  PAR >= 0.
 C             On exit, it contains the final estimate of this parameter.
 C
-C     RANKS   (input or output) INTEGER array, dimension (r), where
+C     RANKS   (input/output) INTEGER array, dimension (r), where
 C             r = BN + 1,  if ST > 0, BSN > 0, and BN > 1;
 C             r = BN,      if ST = 0 and BSN > 0;
 C             r = 1,       if ST > 0 and ( BSN = 0 or BN <= 1 );
@@ -160,7 +160,7 @@ C             This array contains the matrix-vector product -R*P'*x.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If COND = 'E', the tolerance to be used for finding the
 C             ranks of the submatrices R_k and S_k. If the user sets
 C             TOL > 0, then the given value of TOL is used as a lower
@@ -174,14 +174,14 @@ C             This parameter is not relevant if COND = 'U' or 'N'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, the first N elements of this array contain the
 C             diagonal elements of the upper triangular matrix S.
 C             If BN > 1 and BSN > 0, the elements N+1 : N+ST*(N-ST)
 C             contain the submatrix (S(1:N-ST,N-ST+1:N))' of the
 C             matrix S.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2*N,              if BN <= 1 or  BSN = 0 and
 C                                                        COND <> 'E';
@@ -195,7 +195,7 @@ C                                                        COND =  'E'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

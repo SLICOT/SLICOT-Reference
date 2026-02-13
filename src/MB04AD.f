@@ -60,7 +60,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; Z, T, and H will not
 C                    necessarily be put into the forms in (2); H22' is
@@ -68,7 +68,7 @@ C                    upper Hessenberg;
 C             = 'T': put Z, T, and H into the forms in (2), and return
 C                    the eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ1  CHARACTER*1
+C     COMPQ1  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q1, as follows:
 C             = 'N': Q1 is not computed;
@@ -81,7 +81,7 @@ C                    that are applied to the pencil aT*Z - bH on the
 C                    left to reduce T, Z, and H to the forms in (2),
 C                    for COMPQ1 = 'I'.
 C
-C     COMPQ2  CHARACTER*1
+C     COMPQ2  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q2, as follows:
 C             = 'N': Q2 is not computed;
@@ -94,7 +94,7 @@ C                    that are applied to the pencil aT*Z - bH on the
 C                    right to reduce T, Z, and H to the forms in (2),
 C                    for COMPQ2 = 'I'.
 C
-C     COMPU1  CHARACTER*1
+C     COMPU1  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U1, as follows:
 C             = 'N': U1 is not computed;
@@ -111,7 +111,7 @@ C                    transformations that are applied to the pencil
 C                    aT*Z - bH to reduce T, Z, and H to the forms in
 C                    (2), for COMPU1 = 'I'.
 C
-C     COMPU2  CHARACTER*1
+C     COMPU2  (input) CHARACTER*1
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U2, as follows:
 C             = 'N': U2 is not computed;
@@ -144,7 +144,7 @@ C             The elements of the (2,1) block, i.e., in the rows N/2+1
 C             to N and in the columns 1 to N/2 are not set to zero, but
 C             are unchanged on exit.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1, N).
 C
 C     H       (input/output) DOUBLE PRECISION array, dimension (LDH, N)
@@ -156,7 +156,7 @@ C             array contains the matrix Hout; otherwise, it contains the
 C             matrix H obtained just before the application of the
 C             periodic QZ algorithm.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= MAX(1, N).
 C
 C     Q1      (input/output) DOUBLE PRECISION array, dimension (LDQ1, N)
@@ -170,7 +170,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q1.
 C             If COMPQ1 = 'N', this array is not referenced.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.
 C             LDQ1 >= 1,         if COMPQ1 = 'N';
 C             LDQ1 >= MAX(1, N), if COMPQ1 = 'I' or COMPQ1 = 'U'.
@@ -186,7 +186,7 @@ C             this array contains the orthogonal transformation matrix
 C             Q2.
 C             If COMPQ2 = 'N', this array is not referenced.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.
 C             LDQ2 >= 1,         if COMPQ2 = 'N';
 C             LDQ2 >= MAX(1, N), if COMPQ2 = 'I' or COMPQ2 = 'U'.
@@ -204,7 +204,7 @@ C             of this array contains the upper left block U11 of the
 C             orthogonal symplectic transformation matrix U1.
 C             If COMPU1 = 'N' this array is not referenced.
 C
-C     LDU11   INTEGER
+C     LDU11   (input) INTEGER
 C             The leading dimension of the array U11.
 C             LDU11 >= 1,           if COMPU1 = 'N';
 C             LDU11 >= MAX(1, N/2), if COMPU1 = 'I' or COMPU1 = 'U'.
@@ -223,7 +223,7 @@ C             of this array contains the upper right block U12 of the
 C             orthogonal symplectic transformation matrix U1.
 C             If COMPU1 = 'N' this array is not referenced.
 C
-C     LDU12   INTEGER
+C     LDU12   (input) INTEGER
 C             The leading dimension of the array U12.
 C             LDU12 >= 1,           if COMPU1 = 'N';
 C             LDU12 >= MAX(1, N/2), if COMPU1 = 'I' or COMPU1 = 'U'.
@@ -241,7 +241,7 @@ C             of this array contains the upper left block U21 of the
 C             orthogonal symplectic transformation matrix U2.
 C             If COMPU2 = 'N' this array is not referenced.
 C
-C     LDU21   INTEGER
+C     LDU21   (input) INTEGER
 C             The leading dimension of the array U21.
 C             LDU21 >= 1,           if COMPU2 = 'N';
 C             LDU21 >= MAX(1, N/2), if COMPU2 = 'I' or COMPU2 = 'U'.
@@ -260,7 +260,7 @@ C             of this array contains the upper right block U22 of the
 C             orthogonal symplectic transformation matrix U2.
 C             If COMPU2 = 'N' this array is not referenced.
 C
-C     LDU22   INTEGER
+C     LDU22   (input) INTEGER
 C             The leading dimension of the array U22.
 C             LDU22 >= 1,           if COMPU2 = 'N';
 C             LDU22 >= MAX(1, N/2), if COMPU2 = 'I' or COMPU2 = 'U'.
@@ -271,7 +271,7 @@ C             contains the matrix Tout; otherwise, it contains the
 C             matrix T obtained just before the application of the
 C             periodic QZ algorithm.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= MAX(1, N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N/2)
@@ -304,7 +304,7 @@ C             consecutive locations, are not complex conjugate.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             On exit, if INFO = 3, IWORK(1) contains the number of
 C             (pairs of) possibly inaccurate eigenvalues, q <= N/2, and
 C             IWORK(2), ..., IWORK(q+1) indicate their indices.
@@ -326,10 +326,10 @@ C             corresponding to unreliable eigenvalues. IWORK(2*q+4)
 C             contains the total number t of the 2-by-2 blocks.
 C             If INFO = 0, then q = 0, therefore IWORK(1) = 0.
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.   LIWORK >= N+18.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = 3, DWORK(1) returns the
 C             optimal LDWORK, and DWORK(2), ..., DWORK(7) contain the
 C             Frobenius norms of the factors of the formal matrix
@@ -352,7 +352,7 @@ C             sextuple.
 C             On exit, if INFO = -31, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If JOB = 'E' and COMPQ1 = 'N' and COMPQ2 = 'N' and
 C             COMPU1 = 'N' and COMPU2 = 'N', then
@@ -368,7 +368,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the periodic QZ algorithm was not able to reveal

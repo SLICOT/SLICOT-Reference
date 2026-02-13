@@ -28,19 +28,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'S':  Compute the separation only;
 C             = 'T':  Compute the norm of Theta only;
 C             = 'B':  Compute both the separation and the norm of Theta.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     LYAPUN  CHARACTER*1
+C     LYAPUN  (input) CHARACTER*1
 C             Specifies whether or not the original Lyapunov equations
 C             should be solved, as follows:
 C             = 'O':  Solve the original Lyapunov equations, updating
@@ -59,7 +59,7 @@ C             The leading N-by-N upper Hessenberg part of this array
 C             must contain the upper quasi-triangular matrix T in Schur
 C             canonical form from a Schur factorization of A.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,N).
 C
 C     U       (input) DOUBLE PRECISION array, dimension (LDU,N)
@@ -67,7 +67,7 @@ C             The leading N-by-N part of this array must contain the
 C             orthogonal matrix U from a real Schur factorization of A.
 C             If LYAPUN = 'R', the array U is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             LDU >= 1,        if LYAPUN = 'R';
 C             LDU >= MAX(1,N), if LYAPUN = 'O'.
@@ -78,7 +78,7 @@ C             solution matrix X of the Lyapunov equation (reduced
 C             Lyapunov equation if LYAPUN = 'R').
 C             If JOB = 'S', the array X is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.
 C             LDX >= 1,        if JOB = 'S';
 C             LDX >= MAX(1,N), if JOB = 'T' or 'B'.
@@ -95,16 +95,16 @@ C             If JOB = 'S' or N = 0, THNORM is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N*N)
+C     IWORK   (input/output) INTEGER array, dimension (N*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 2*N*N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

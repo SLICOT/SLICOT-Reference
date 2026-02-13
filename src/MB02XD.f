@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FORM    CHARACTER*1
+C     FORM    (input) CHARACTER*1
 C             Specifies the form in which the matrix A is provided, as
 C             follows:
 C             = 'S' :  standard form, the matrix A is given;
@@ -23,13 +23,13 @@ C             = 'F' :  the implicit, function form f(A) is provided.
 C             If FORM = 'F', then the routine F is called to compute the
 C             matrix A'*A.
 C
-C     STOR    CHARACTER*1
+C     STOR    (input) CHARACTER*1
 C             Specifies the storage scheme for the symmetric
 C             matrix A'*A, as follows:
 C             = 'F' :  full storage is used;
 C             = 'P' :  packed storage is used.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the matrix A'*A is stored, as
 C             follows:
 C             = 'U' :  the upper triagular part is stored;
@@ -104,14 +104,14 @@ C                     The leading dimension of the array ATA.
 C                     LDATA >= MAX(1,N), if STOR = 'F'.
 C                     LDATA >= 1,        if STOR = 'P'.
 C
-C             DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C             DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C                     The workspace array for subroutine F.
 C
 C             LDWORK  (input) INTEGER
 C                     The size of the array DWORK (as large as needed
 C                     in the subroutine F).
 C
-C             INFO    INTEGER
+C             INFO    (output) INTEGER
 C                     Error indicator, set to a negative value if an
 C                     input scalar argument is erroneous, and to
 C                     positive values for other possible errors in the
@@ -162,7 +162,7 @@ C             where NR is the number of rows.
 C             If FORM = 'F', this array is not referenced by this
 C             routine itself, except in the call to the routine F.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.
 C             LDA >= MAX(1,M),  if FORM = 'S';
 C             LDA >= MAX(1,NR), if FORM = 'F'.
@@ -176,7 +176,7 @@ C             N-by-NRHS part of this array contains the solution X of
 C             the set of systems of linear equations A'*A*X = B or
 C             f(A)*X = B. If M (or NR) is zero, then B is unchanged.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     ATA     (output) DOUBLE PRECISION array,
@@ -189,21 +189,21 @@ C             on UPLO = 'U', or UPLO = 'L', respectively, stored either
 C             as a two-dimensional, or one-dimensional array, depending
 C             on STOR.
 C
-C     LDATA   INTEGER
+C     LDATA   (input) INTEGER
 C             The leading dimension of the array ATA.
 C             LDATA >= MAX(1,N), if STOR = 'F'.
 C             LDATA >= 1,        if STOR = 'P'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

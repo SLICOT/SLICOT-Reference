@@ -35,7 +35,7 @@ C             contain the state matrix A of the descriptor system.
 C             On exit, the leading NSYS-by-NSYS part of this array
 C             contains the state matrix Ad of the converted system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -44,7 +44,7 @@ C             contain the input matrix B of the descriptor system.
 C             On exit, the leading NSYS-by-M part of this array
 C             contains the input matrix Bd of the converted system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -53,7 +53,7 @@ C             contain the output matrix C of the descriptor system.
 C             On exit, the leading NP-by-NSYS part of this array
 C             contains the output matrix Cd of the converted system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -62,7 +62,7 @@ C             contain the matrix D of the descriptor system.
 C             On exit, the leading NP-by-M part of this array contains
 C             the matrix Dd of the converted system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -70,7 +70,7 @@ C             On entry, the leading N-by-N part of this array must
 C             contain the matrix E of the descriptor system.
 C             On exit, this array contains no useful information.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= max(1,N).
 C
 C     NSYS    (output) INTEGER
@@ -78,18 +78,18 @@ C             The order of the converted state-space system.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= max( 1, 2*N*N + 2*N + N*MAX( 5, N + M + NP ) ).
 C             For good performance, LDWORK must generally be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

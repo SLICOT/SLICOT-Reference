@@ -43,7 +43,7 @@ C             Otherwise, the leading N-by-N part of this array contains
 C             P     , its input value.
 C              i|i-1
 C
-C     LDP     INTEGER
+C     LDP     (input) INTEGER
 C             The leading dimension of array P.  LDP >= MAX(1,N).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
@@ -52,7 +52,7 @@ C                                                                 i
 C             the state transition matrix of the discrete system at
 C             instant i.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -61,7 +61,7 @@ C                                                                 i
 C             the input weight matrix of the discrete system at
 C             instant i.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
@@ -70,7 +70,7 @@ C                                                                 i
 C             the output weight matrix of the discrete system at
 C             instant i.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,L).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,M)
@@ -80,7 +80,7 @@ C             the input (process) noise covariance matrix at instant i.
 C             The diagonal elements of this array are modified by the
 C             routine, but are restored on exit.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= MAX(1,M).
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,L)
@@ -95,7 +95,7 @@ C                                                                i
 C             the square root (left Cholesky factor) of the covariance
 C             matrix of the innovations at instant i.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,L).
 C
 C     K       (output) DOUBLE PRECISION array, dimension (LDK,L)
@@ -106,12 +106,12 @@ C             If INFO > 0, the leading N-by-L part of this array
 C             contains the matrix product P     C'.
 C                                          i|i-1 i
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of array K.  LDK >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used to test for near singularity of
 C             the matrix RINOV . If the user sets TOL > 0, then the
 C                             i
@@ -125,20 +125,20 @@ C             machine precision (see LAPACK Library routine DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (L)
+C     IWORK   (input/output) INTEGER array, dimension (L)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, or INFO = L+1, DWORK(1) returns an
 C             estimate of the reciprocal of the condition number (in the
 C             1-norm) of the matrix RINOV .
 C                                        i
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= MAX(1,L*N+3*L,N*N,N*M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value;

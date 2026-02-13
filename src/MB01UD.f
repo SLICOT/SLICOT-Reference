@@ -19,13 +19,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the Hessenberg matrix H appears on the
 C             left or right in the matrix product as follows:
 C             = 'L':  B = alpha*op( H ) * A;
 C             = 'R':  B = alpha*A * op( H ).
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( H ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( H ) = H;
@@ -56,7 +56,7 @@ C             The elements below the subdiagonal are not referenced,
 C             except possibly for those in the first column, which
 C             could be overwritten, but are restored on exit.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,k),
 C             where k is M when SIDE = 'L' and is N when SIDE = 'R'.
 C
@@ -64,19 +64,19 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,N)
 C             The leading M-by-N part of this array contains the
 C             computed product.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

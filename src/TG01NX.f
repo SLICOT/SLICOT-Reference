@@ -26,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBT    CHARACTER*1
+C     JOBT    (input) CHARACTER*1
 C             = 'D':  compute the direct transformation matrices;
 C             = 'I':  compute the inverse transformation matrices
 C                     inv(Q) and inv(Z).
@@ -57,7 +57,7 @@ C             the transformed state matrix Q*A*Z (if JOBT = 'D') or
 C             inv(Q)*A*inv(Z) (if JOBT = 'I'), in the form (1), where
 C             A1 is a NDIM-by-NDIM matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -69,7 +69,7 @@ C             the transformed descriptor matrix Q*E*Z (if JOBT = 'D') or
 C             inv(Q)*E*inv(Z) (if JOBT = 'I'), in the form (1), where
 C             E1 is an NDIM-by-NDIM matrix.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -79,7 +79,7 @@ C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q*B (if JOBT = 'D') or
 C             inv(Q)*B (if JOBT = 'I').
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -89,7 +89,7 @@ C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z (if JOBT = 'D') or C*inv(Z)
 C             (if JOBT = 'I').
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -100,7 +100,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the left transformation matrix Q = Q2*Q1, if JOBT = 'D',
 C             or its inverse inv(Q), if JOBT = 'I'.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (input/output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -111,16 +111,16 @@ C             On exit, the leading N-by-N part of this array contains
 C             the right transformation matrix Z = Z1*Z2, if JOBT = 'D',
 C             or its inverse inv(Z), if JOBT = 'I'.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+6)
+C     IWORK   (input/output) INTEGER array, dimension (N+6)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

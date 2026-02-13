@@ -68,13 +68,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies whether or not the matrices B and D should be
 C             computed, as follows:
 C             = 'B':  compute the matrix B, but not the matrix D;
@@ -118,7 +118,7 @@ C             is overwritten by the matrix  F  of the algorithm in [4],
 C             where  LDF = MAX( 1, L*NOBR-N-L ), if  METH = 'M';
 C                    LDF = N,                    if  METH = 'N'.
 C
-C     LDUL    INTEGER
+C     LDUL    (input) INTEGER
 C             The leading dimension of the array  UL.
 C             LDUL >= L*NOBR, if  METH = 'M';
 C             LDUL >= N+L,    if  METH = 'N'.
@@ -136,7 +136,7 @@ C             orthogonal matrix  Q1  in the QR factorization of  GaL.
 C             If  JOB = 'N',  or  M = 0,  or  METH = 'N', or  METH = 'M'
 C             and  RANKR1 < N,  this array is not referenced.
 C
-C     LDR1    INTEGER
+C     LDR1    (input) INTEGER
 C             The leading dimension of the array  R1.
 C             LDR1 >= L*(NOBR-1), if  JOB <> 'N',  M > 0,  METH = 'M',
 C                                 and  RANKR1 = N;
@@ -159,7 +159,7 @@ C             as computed by SLICOT Library routine IB01PD.
 C             If  METH = 'M'  and  JOB = 'N',  or  M = 0,  or
 C             RANKR1 = N,  this array is not referenced.
 C
-C     LDPGAL  INTEGER
+C     LDPGAL  (input) INTEGER
 C             The leading dimension of the array  PGAL.
 C             LDPGAL >= N,  if   METH = 'N',  or  JOB <> 'N',  M > 0,
 C                           and  METH = 'M'  and RANKR1 < N;
@@ -172,7 +172,7 @@ C             must contain the given matrix  K  defined above.
 C             On exit, the leading  (p/s)-by-M*NOBR  part of this array
 C             contains the transformed matrix  K.
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of the array  K.  LDK >= p/s.
 C
 C     R       (output) DOUBLE PRECISION array, dimension ( LDR,L*NOBR )
@@ -186,7 +186,7 @@ C             array contains details of the complete orhogonal
 C             factorization of the matrix  Q,  as constructed by SLICOT
 C             Library routines MB03OD and MB02QY.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.  LDR >= L*NOBR.
 C
 C     H       (output) DOUBLE PRECISION array, dimension ( LDH,M )
@@ -206,7 +206,7 @@ C             matrix product  Q1'*X,  and the subarray
 C             L*(NOBR-1)+1:L*NOBR-by-M  contains the  corresponding
 C             submatrix of  X,  with  X  defined in the phrase above.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array  H.  LDH >= L*NOBR.
 C
 C     B       (output) DOUBLE PRECISION array, dimension ( LDB,M )
@@ -215,7 +215,7 @@ C             N-by-M part of this array contains the system input
 C             matrix.
 C             If  M = 0  or  JOB = 'N',  this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= N, if  M > 0 and JOB = 'B' or 'D';
 C             LDB >= 1, if  M = 0 or  JOB = 'N'.
@@ -227,14 +227,14 @@ C             matrix.
 C             If  M = 0  or  JOB = 'B'  or  'N',  this array is not
 C             referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L, if  M > 0 and JOB = 'D';
 C             LDD >= 1, if  M = 0 or  JOB = 'B' or 'N'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -249,11 +249,11 @@ C             This parameter is not used if  M = 0  or  JOB = 'N'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension ( LIWORK )
+C     IWORK   (input/output) INTEGER array, dimension ( LIWORK )
 C             where  LIWORK >= 0,       if  JOB =  'N',  or   M = 0;
 C                    LIWORK >= L*NOBR,  if  JOB <> 'N',  and  M > 0.
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( LDWORK )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( LDWORK )
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of  LDWORK,  and, if  JOB <> 'N',  and  M > 0,  DWORK(2)
 C             contains the reciprocal condition number of the triangular
@@ -261,7 +261,7 @@ C             factor of the matrix  R.
 C             On exit, if  INFO = -28,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 2*L, L*NOBR, L+M*NOBR ),
 C                                         if  JOB = 'N',  or  M = 0;
@@ -271,14 +271,14 @@ C             For good performance,  LDWORK  should be larger.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problem to be solved has a
 C                   rank-deficient coefficient matrix.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -32,7 +32,7 @@ C             Schur form. Only the entries (1,1), (1,2), (1,4), and
 C             (2,2) are referenced.
 C             If N = 2, this array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N/2.
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB, N)
@@ -41,7 +41,7 @@ C             first block row of the Hamiltonian matrix B of the
 C             pencil aA - bB in structured Schur form. The entry (2,3)
 C             is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N/2.
 C
 C     MACPAR  (input)  DOUBLE PRECISION array, dimension (2)
@@ -54,17 +54,17 @@ C     Q       (output) DOUBLE PRECISION array, dimension (LDQ, N)
 C             The leading N-by-N part of this array contains the
 C             orthogonal transformation matrix Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= N.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (24)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (24)
 C             If N = 2, then DWORK is not referenced.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             = 1: the leading N/2-by-N/2 block of the matrix B is
 C                  numerically singular, but slightly perturbed values

@@ -18,19 +18,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state-space model:
 C             = 'D':  D is present;
 C             = 'Z':  D is assumed to be a zero matrix.
 C
-C     ORDER   CHARACTER*1
+C     ORDER   (input) CHARACTER*1
 C             Specifies the order in which the polynomial coefficients
 C             are stored, as follows:
 C             = 'I':  Increasing order of powers of the indeterminate;
 C             = 'D':  Decreasing order of powers of the indeterminate.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily
 C             equilibrate the triplet (A,B,C) as follows:
 C             = 'S':  perform equilibration (scaling);
@@ -59,7 +59,7 @@ C             array contains the balanced matrix inv(S)*A*S, as returned
 C             by SLICOT Library routine TB01ID.
 C             If EQUIL = 'N', this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -68,7 +68,7 @@ C             contain the input matrix B.
 C             On exit, the contents of B are destroyed: all elements but
 C             those in the first row are set to zero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -79,7 +79,7 @@ C             array contains the balanced matrix C*S, as returned by
 C             SLICOT Library routine TB01ID.
 C             If EQUIL = 'N', this array is unchanged on exit.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,M)
@@ -87,7 +87,7 @@ C             If JOBD = 'D', the leading P-by-M part of this array must
 C             contain the matrix D.
 C             If JOBD = 'Z', the array D is not referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D';
 C             LDD >= 1,        if JOBD = 'Z'.
@@ -99,7 +99,7 @@ C             matrix G. Specifically, the (i,j) element of IGN contains
 C             the degree of the numerator polynomial of the transfer
 C             function G(i,j) from the j-th input to the i-th output.
 C
-C     LDIGN   INTEGER
+C     LDIGN   (input) INTEGER
 C             The leading dimension of array IGN.  LDIGN >= max(1,P).
 C
 C     IGD     (output) INTEGER array, dimension (LDIGD,M)
@@ -109,7 +109,7 @@ C             matrix G. Specifically, the (i,j) element of IGD contains
 C             the degree of the denominator polynomial of the transfer
 C             function G(i,j).
 C
-C     LDIGD   INTEGER
+C     LDIGD   (input) INTEGER
 C             The leading dimension of array IGD.  LDIGD >= max(1,P).
 C
 C     GN      (output) DOUBLE PRECISION array, dimension (P*M*MD)
@@ -132,7 +132,7 @@ C             numerator polynomials.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in determining the
 C             controllability of a single-input system (A,b) or (A',c'),
 C             where b and c' are columns in B and C' (C transposed). If
@@ -147,13 +147,13 @@ C             column in B or C' (see METHOD).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N*(N+P) +
 C                              MAX( N + MAX( N,P ), N*(2*N+5)))
@@ -163,7 +163,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

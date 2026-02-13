@@ -58,12 +58,12 @@ C             The Markov parameters are stored such that H(i,(k-1)xNB+j)
 C             contains the (i,j)-th element of M(k) for i = 1,2,...,NC
 C             and j = 1,2,...,NB.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,NC).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

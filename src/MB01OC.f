@@ -19,13 +19,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrices R
 C             and X are given as follows:
 C             = 'U':  the upper triangular part is given;
 C             = 'L':  the lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the operation to be performed as follows:
 C             = 'N':         R := alpha*R + beta*H*X  + beta*X*H';
 C             = 'T' or 'C':  R := alpha*R + beta*H'*X + beta*X*H.
@@ -58,7 +58,7 @@ C             UPLO = 'U'), or lower triangular part (if UPLO = 'L'), of
 C             this array contains the corresponding triangular part of
 C             the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array R.  LDR >= MAX(1,N).
 C
 C     H       (input) DOUBLE PRECISION array, dimension (LDH,N)
@@ -66,7 +66,7 @@ C             On entry, the leading N-by-N upper Hessenberg part of this
 C             array must contain the upper Hessenberg matrix H.
 C             The remaining part of this array is not referenced.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= MAX(1,N).
 C
 C     X       (input) DOUBLE PRECISION array, dimension (LDX,N)
@@ -79,12 +79,12 @@ C             triangular part of this array must contain the lower
 C             triangular part of the symmetric matrix X and the strictly
 C             upper triangular part of the array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value.

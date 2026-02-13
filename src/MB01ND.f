@@ -20,7 +20,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies whether the upper or lower triangular part of
 C             the array A is to be referenced as follows:
 C             = 'U':  only the strictly upper triangular part of A is to
@@ -71,7 +71,7 @@ C             On exit with UPLO = 'L', the leading N-by-N part of this
 C             array contains the strictly lower triangular part of the
 C             updated matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N)
 C
 C     NUMERICAL ASPECTS

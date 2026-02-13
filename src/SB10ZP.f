@@ -34,7 +34,7 @@ C             contain the original system matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed matrix A, in an upper Hessenberg form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (N)
@@ -55,20 +55,20 @@ C             On exit, this array contains the transformed scalar D.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (max(2,N+1))
+C     IWORK   (input/output) INTEGER array, dimension (max(2,N+1))
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max(N*N + 5*N, 6*N + 1 + min(1,N)).
 C             For optimum performance LDWORK should be larger.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

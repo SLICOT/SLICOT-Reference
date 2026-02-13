@@ -42,7 +42,7 @@ C     J       (input) DOUBLE PRECISION array, dimension (LDJ,N)
 C             The leading M-by-N part of this array must contain the
 C             Jacobian matrix J.
 C
-C     LDJ     INTEGER
+C     LDJ     (input) INTEGER
 C             The leading dimension of the array J.  LDJ >= MAX(1,M).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension
@@ -57,14 +57,14 @@ C             The increment for the elements of X.  INCX <> 0.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= M.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -19,7 +19,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LERI    CHARACTER*1
+C     LERI    (input) CHARACTER*1
 C             Indicates whether a left polynomial matrix representation
 C             or a right polynomial matrix representation is to be used
 C             to evaluate the transfer matrix as follows:
@@ -63,12 +63,12 @@ C             diag(s**INDEX(I))*(PCOEFF(.,.,1)+PCOEFF(.,.,2)/s+...).
 C             If LERI = 'R', PCOEFF is modified by the routine but
 C             restored on exit.
 C
-C     LDPCO1  INTEGER
+C     LDPCO1  (input) INTEGER
 C             The leading dimension of array PCOEFF.
 C             LDPCO1 >= MAX(1,P) if LERI = 'L',
 C             LDPCO1 >= MAX(1,M) if LERI = 'R'.
 C
-C     LDPCO2  INTEGER
+C     LDPCO2  (input) INTEGER
 C             The second dimension of array PCOEFF.
 C             LDPCO2 >= MAX(1,P) if LERI = 'L',
 C             LDPCO2 >= MAX(1,M) if LERI = 'R'.
@@ -82,12 +82,12 @@ C             QCOEFF(I,J,K) is defined as for PCOEFF(I,J,K).
 C             If LERI = 'R', QCOEFF is modified by the routine but
 C             restored on exit.
 C
-C     LDQCO1  INTEGER
+C     LDQCO1  (input) INTEGER
 C             The leading dimension of array QCOEFF.
 C             LDQCO1 >= MAX(1,P)   if LERI = 'L',
 C             LDQCO1 >= MAX(1,M,P) if LERI = 'R'.
 C
-C     LDQCO2  INTEGER
+C     LDQCO2  (input) INTEGER
 C             The second dimension of array QCOEFF.
 C             LDQCO2 >= MAX(1,M)   if LERI = 'L',
 C             LDQCO2 >= MAX(1,M,P) if LERI = 'R'.
@@ -102,28 +102,28 @@ C     CFREQR  (output) COMPLEX*16 array, dimension (LDCFRE,MAX(M,P))
 C             The leading porm-by-porp part of this array contains the
 C             frequency response matrix T(SVAL).
 C
-C     LDCFRE  INTEGER
+C     LDCFRE  (input) INTEGER
 C             The leading dimension of array CFREQR.
 C             LDCFRE >= MAX(1,P)   if LERI = 'L',
 C             LDCFRE >= MAX(1,M,P) if LERI = 'R'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (liwork)
+C     IWORK   (input/output) INTEGER array, dimension (liwork)
 C             where liwork = P, if LERI = 'L',
 C                   liwork = M, if LERI = 'R'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (ldwork)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (ldwork)
 C             where ldwork = 2*P, if LERI = 'L',
 C                   ldwork = 2*M, if LERI = 'R'.
 C
-C     ZWORK   COMPLEX*16 array, dimension (lzwork),
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (lzwork),
 C             where lzwork = P*(P+2), if LERI = 'L',
 C                   lzwork = M*(M+2), if LERI = 'R'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

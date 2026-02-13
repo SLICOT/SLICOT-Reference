@@ -40,7 +40,7 @@ C             contain the matrix A.
 C             On exit, the leading 1-by-N part of this array contains
 C             the updated matrix A (the first row of H * C).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= 1.
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -49,12 +49,12 @@ C             contain the matrix B.
 C             On exit, the leading M-by-N part of this array contains
 C             the updated matrix B (the last m rows of H * C).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C             DWORK is not referenced if H has order less than 11.
 C
 C     METHOD

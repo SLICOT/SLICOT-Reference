@@ -28,13 +28,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     WANTQ   LOGICAL
+C     WANTQ   (input) LOGICAL
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Q as follows:
 C             = .TRUE. :  The matrix Q is updated;
 C             = .FALSE.:  the matrix Q is not required.
 C
-C     WANTZ   LOGICAL
+C     WANTZ   (input) LOGICAL
 C             Indicates whether or not the user wishes to accumulate
 C             the matrix Z as follows:
 C             = .TRUE. :  The matrix Z is updated;
@@ -55,7 +55,7 @@ C             array must contain the matrix A.
 C             On exit, the leading (N1+N2)-by-(N1+N2) part of this array
 C             contains the matrix A of the reordered pair.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A. LDA >= MAX(1,N1+N2).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -65,7 +65,7 @@ C             array must contain the matrix B.
 C             On exit, the leading (N1+N2)-by-(N1+N2) part of this array
 C             contains the matrix B of the reordered pair.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B. LDB >= MAX(1,N1+N2).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension
@@ -78,7 +78,7 @@ C             contains the updated matrix Q. Q will be a rotation
 C             matrix for N1=N2=1.
 C             This array is not referenced if WANTQ = .FALSE..
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q. LDQ >= 1.
 C             If WANTQ = .TRUE., LDQ >= N1+N2.
 C
@@ -92,13 +92,13 @@ C             contains the updated matrix Z. Z will be a rotation
 C             matrix for N1=N2=1.
 C             This array is not referenced if WANTZ = .FALSE..
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z. LDZ >= 1.
 C             If WANTZ = .TRUE., LDZ >= N1+N2.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  the transformed matrix (A, B) would be
 C                   too far from periodic Schur form; the blocks are

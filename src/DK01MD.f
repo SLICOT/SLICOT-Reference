@@ -11,7 +11,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             Indicates the type of window to be applied to the signal
 C             as follows:
 C             = 'M':  Hamming window;
@@ -30,7 +30,7 @@ C             On exit, this array contains the windowing function.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

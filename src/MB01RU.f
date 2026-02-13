@@ -21,13 +21,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangles of the symmetric matrices R
 C             and X are given as follows:
 C             = 'U':  the upper triangular part is given;
 C             = 'L':  the lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( A ) = A;
@@ -68,7 +68,7 @@ C             the computed matrix R. When R is identified with X in
 C             the call, after exit, the diagonal entries of R must be
 C             divided by 2.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,M).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,k)
@@ -79,7 +79,7 @@ C             array must contain the matrix A.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             N-by-M part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,k),
 C             where k is M when TRANS = 'N' and is N when TRANS = 'T' or
 C             TRANS = 'C'.
@@ -96,21 +96,21 @@ C             upper triangular part of the array is not referenced.
 C             The diagonal elements of this array are modified
 C             internally, but are restored on exit.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             This array is not referenced when beta = 0, or M*N = 0.
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= M*N, if  beta <> 0;
 C             LDWORK >= 0,   if  beta =  0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -k, the k-th argument had an illegal
 C                   value.

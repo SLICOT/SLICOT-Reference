@@ -35,13 +35,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the type of Lyapunov equation to be solved as
 C             follows:
 C             = .TRUE. :  Equation (2), discrete-time case;
 C             = .FALSE.:  Equation (1), continuous-time case.
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies the form of op(K) to be used, as follows:
 C             = .FALSE.:  op(K) = K    (No transpose);
 C             = .TRUE. :  op(K) = K**T (Transpose).
@@ -63,7 +63,7 @@ C             referenced. The 2-by-2 blocks must only correspond to
 C             complex conjugate pairs of eigenvalues (not to real
 C             eigenvalues).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -93,7 +93,7 @@ C             overwritten by details of the matrix P (also defined in
 C             METHOD). When M < N, rows 1,...,(N-M) of the array B
 C             are overwritten by the matrix Z (see METHOD).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,M), if LTRANS = .FALSE.,
 C             LDB >= MAX(1,N), if LTRANS = .TRUE..
@@ -110,7 +110,7 @@ C             The array U may be identified with B in the calling
 C             statement, if B is properly dimensioned, and the
 C             intermediate results returned in B are not needed.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -119,11 +119,11 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, or INFO = 1, DWORK(1) returns the
 C             optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK. LDWORK >= MAX(1,4*N).
 C             For optimum performance LDWORK should sometimes be larger.
 C
@@ -135,7 +135,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

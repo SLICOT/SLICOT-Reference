@@ -26,14 +26,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPDATQ  LOGICAL
+C     UPDATQ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Q the orthogonal row transformations, as follows:
 C             = .FALSE.: Do not form Q;
 C             = .TRUE.:  The given matrix Q is updated by the orthogonal
 C                        row transformations used in the reduction.
 C
-C     UPDATZ  LOGICAL
+C     UPDATZ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal column transformations, as
 C             follows:
@@ -69,7 +69,7 @@ C             the matrix Aj.
 C             On exit, it contains the matrix A with AA that has been
 C             row compressed while keeping EE in column echelon form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A. LDA >= MAX(1,M).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -78,7 +78,7 @@ C             matrix Ej which is in column echelon form.
 C             On exit, it contains the transformed matrix EE which is
 C             kept in column echelon form.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E. LDE >= MAX(1,M).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,*)
@@ -94,7 +94,7 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDQ = 1 and declare this array to be Q(1,1) in the calling
 C             program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q. If UPDATQ = .TRUE.,
 C             LDQ >= MAX(1,M); if UPDATQ = .FALSE., LDQ >= 1.
 C
@@ -111,7 +111,7 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDZ = 1 and declare this array to be Z(1,1) in the calling
 C             program).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z. If UPDATZ = .TRUE.,
 C             LDZ >= MAX(1,N); if UPDATZ = .FALSE., LDZ >= 1.
 C
@@ -130,13 +130,13 @@ C             Numerical rank of the submatrix Aj in A (based on TOL).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance used when considering matrix elements
 C             to be zero.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
 C     REFERENCES
 C

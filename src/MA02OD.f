@@ -21,7 +21,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SKEW    CHARACTER*1
+C     SKEW    (input) CHARACTER*1
 C             Specifies whether the matrix is Hamiltonian or skew-
 C             Hamiltonian as follows:
 C             = 'H':  The matrix is Hamiltonian;
@@ -36,7 +36,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,M)
 C             The leading M-by-M part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     DE      (input) DOUBLE PRECISION array, dimension (LDDE,M+1)
@@ -49,7 +49,7 @@ C             (skew-)symmetric matrix D. If S is skew-Hamiltonian, the
 C             parts containing the diagonal and the first superdiagonal
 C             of this array, which should be zero, are not referenced.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.  LDDE >= MAX(1,M).
 C
 C     CONTRIBUTORS

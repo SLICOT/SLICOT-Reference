@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     CHARACTER
+C     DEF     (input) CHARACTER*1
 C             This parameter specifies if the default parameters are
 C             to be used or not.
 C             = 'N' or 'n' : The parameters given in the input vectors
@@ -195,7 +195,7 @@ C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the
 C             coefficient matrix A of the DARE.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -203,7 +203,7 @@ C             If (BPAR(4) = .FALSE.), then the leading N-by-M part
 C             of this array contains the coefficient matrix B of
 C             the DARE.  Otherwise, B is used as workspace.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= N.
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -211,7 +211,7 @@ C             If (BPAR(1) = .FALSE.), then the leading P-by-N part
 C             of this array contains the matrix C of the factored
 C             form (I) of Q.  Otherwise, C is used as workspace.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= P.
 C
 C     Q       (output) DOUBLE PRECISION array, dimension (NQ)
@@ -226,7 +226,7 @@ C             NQ = P*(P+1)/2.
 C             The symmetric matrix contained in array Q is stored
 C             according to BPAR(2) and BPAR(3).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             If conventional storage mode is used for Q, i.e.,
 C             BPAR(2) = .TRUE., then Q is stored like a 2-dimensional
 C             array with leading dimension LDQ. If packed symmetric
@@ -246,7 +246,7 @@ C             MR = M*(M+1)/2.
 C             The symmetric matrix contained in array R is stored
 C             according to BPAR(5) and BPAR(6).
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             If conventional storage mode is used for R, i.e.,
 C             BPAR(5) = .TRUE., then R is stored like a 2-dimensional
 C             array with leading dimension LDR. If packed symmetric
@@ -258,7 +258,7 @@ C     S       (output) DOUBLE PRECISION array, dimension (LDS,M)
 C             If (BPAR(7) = .TRUE.), then the leading N-by-M part of
 C             this array contains the coefficient matrix S of the DARE.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= 1, and
 C             LDS >= N if BPAR(7) = .TRUE..
 C
@@ -268,20 +268,20 @@ C             2.3,2.4,2.5,4.1), then NX = N and the leading N-by-N part
 C             of this array contains the solution matrix X.
 C             Otherwise, X is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= 1, and
 C             LDX >= N if an exact solution is available.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= N*N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0 : successful exit;
 C             < 0 : if INFO = -i, the i-th argument had an illegal
 C                   value;

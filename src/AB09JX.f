@@ -13,12 +13,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the stability domain as follows:
 C             = 'C':  for a continuous-time system;
 C             = 'D':  for a discrete-time system.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies whether the domain of interest is of stability
 C             type (left part of complex plane or inside of a circle)
 C             or of instability type (right part of complex plane or
@@ -26,7 +26,7 @@ C             outside of a circle) as follows:
 C             = 'S':  stability type domain;
 C             = 'U':  instability type domain.
 C
-C     EVTYPE  CHARACTER*1
+C     EVTYPE  (input) CHARACTER*1
 C             Specifies whether the eigenvalues arise from a standard
 C             or a generalized eigenvalue problem as follows:
 C             = 'S':  standard eigenvalue problem;
@@ -46,8 +46,10 @@ C             parts of eigenvalues, while for a discrete-time system
 C             (DICO = 'D'), ALPHA >= 0 represents the boundary value for
 C             the moduli of eigenvalues.
 C
-C     ER, EI, (input) DOUBLE PRECISION arrays, dimension (N)
-C     ED      If EVTYPE = 'S', ER(j) + EI(j)*i, j = 1,...,N, are
+C     ER      (input) DOUBLE PRECISION arrays, dimension (N)
+C     EI      (input) DOUBLE PRECISION arrays, dimension (N)
+C     ED      (input) DOUBLE PRECISION arrays, dimension (N)
+C             If EVTYPE = 'S', ER(j) + EI(j)*i, j = 1,...,N, are
 C             the eigenvalues of a real matrix.
 C             ED is not referenced and is implicitly considered as
 C             a vector having all elements equal to one.
@@ -60,14 +62,14 @@ C             consecutively.
 C
 C     Tolerances
 C
-C     TOLINF  DOUBLE PRECISION
+C     TOLINF  (input) DOUBLE PRECISION
 C             If EVTYPE = 'G' or 'R', TOLINF contains the tolerance for
 C             detecting infinite generalized eigenvalues.
 C             0 <= TOLINF < 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             =  0:  successful exit, i.e., all eigenvalues lie within
 C                    the domain of interest defined by DICO, STDOM
 C                    and ALPHA;

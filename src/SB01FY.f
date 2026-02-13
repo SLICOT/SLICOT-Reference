@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the type of system as follows:
 C             = .FALSE.:  continuous-time system;
 C             = .TRUE. :  discrete-time system.
@@ -39,14 +39,14 @@ C             system state matrix A whose eigenvalues must have positive
 C             real parts if DISCR = .FALSE. or moduli greater than unity
 C             if DISCR = .TRUE..
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             system input matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= N.
 C
 C     F       (output) DOUBLE PRECISION array, dimension (LDF,N)
@@ -57,7 +57,7 @@ C             symmetric positions with respect to the imaginary axis
 C             (if DISCR = .FALSE.) or the unit circle (if
 C             DISCR = .TRUE.).
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     V       (output) DOUBLE PRECISION array, dimension (LDV,M)
@@ -66,12 +66,12 @@ C             contains the input/output matrix V of the resulting inner
 C             system in upper triangular form.
 C             If DISCR = .FALSE., the resulting V is an identity matrix.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.  LDF >= MAX(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if uncontrollability of the pair (A,B) is detected;
 C             = 2:  if A is stable or at the stability limit;

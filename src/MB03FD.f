@@ -42,7 +42,7 @@ C             contains the transformed upper triangular matrix of the
 C             generalized real Schur form of the pencil aA - bB.
 C             If N = 2, this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N.
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB, N)
@@ -54,29 +54,29 @@ C             contains the transformed real Schur matrix of the
 C             generalized real Schur form of the pencil aA - bB.
 C             If N = 2, this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N.
 C
 C     Q1      (output) DOUBLE PRECISION array, dimension (LDQ1, N)
 C             The leading N-by-N part of this array contains the first
 C             orthogonal transformation matrix.
 C
-C     LDQ1    INTEGER
+C     LDQ1    (input) INTEGER
 C             The leading dimension of the array Q1.  LDQ1 >= N.
 C
 C     Q2      (output) DOUBLE PRECISION array, dimension (LDQ2, N)
 C             The leading N-by-N part of this array contains the second
 C             orthogonal transformation matrix.
 C
-C     LDQ2    INTEGER
+C     LDQ2    (input) INTEGER
 C             The leading dimension of the array Q2.  LDQ2 >= N.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             If N = 2, then DWORK is not referenced.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             If N = 4, then LDWORK >= 63. For good performance LDWORK
 C             should be generally larger.
@@ -84,7 +84,7 @@ C             If N = 2, then LDWORK >= 0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             = 1: the QZ iteration failed in the LAPACK routine DGGES;
 C             = 2: another error occured during execution of DGGES.

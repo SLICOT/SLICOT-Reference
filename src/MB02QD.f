@@ -24,14 +24,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies whether or not a standard least squares solution
 C             must be computed, as follows:
 C             = 'L':  Compute a standard least squares solution (Y = 0);
 C             = 'F':  Compute a solution with specified free elements
 C                     (given in Y).
 C
-C     INIPER  CHARACTER*1
+C     INIPER  (input) CHARACTER*1
 C             Specifies whether an initial column permutation, defined
 C             by JPVT, must be performed, as follows:
 C             = 'P':  Perform an initial column permutation;
@@ -80,7 +80,7 @@ C             next RANK entries of the array DWORK, represent the
 C             orthogonal matrix Z as a product of RANK elementary
 C             reflectors (see METHOD).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -95,7 +95,7 @@ C             squares of elements N+1:M in that column.
 C             If NRHS = 0, this array is not referenced, and the routine
 C             returns the effective rank of A, and its QR factorization.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,M,N).
 C
 C     Y       (input) DOUBLE PRECISION array, dimension ( N*NRHS )
@@ -141,7 +141,7 @@ C             number of R(1:RANK,1:RANK).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, and the entries 2 to min(M,N) + RANK + 1
 C             contain the scalar factors of the elementary reflectors
@@ -149,14 +149,14 @@ C             used in the complete orthogonal factorization of A.
 C             Among the entries 2 to min(M,N) + 1, only the first RANK
 C             elements are useful, if INIPER = 'N'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= max( min(M,N)+3*N+1, 2*min(M,N)+NRHS )
 C             For optimum performance LDWORK should be larger.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

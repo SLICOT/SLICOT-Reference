@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ORDER   CHARACTER*1
+C     ORDER   (input) CHARACTER*1
 C             Specifies the order in which the polynomial coefficients
 C             of the transfer function matrix are stored, as follows:
 C             = 'I':  Increasing order of powers of the indeterminate;
@@ -40,7 +40,7 @@ C             numerator polynomial of the polynomial ratio G(i,j).
 C             On exit, the leading P-by-M part of this array contains
 C             the degrees of the numerator polynomials in G0.
 C
-C     LDIGN   INTEGER
+C     LDIGN   (input) INTEGER
 C             The leading dimension of array IGN.  LDIGN >= max(1,P).
 C
 C     IGD     (input) INTEGER array, dimension (LDIGD,M)
@@ -49,7 +49,7 @@ C             degrees of the denominator polynomials in G (and G0):
 C             the (i,j) element of IGD contains the degree of the
 C             denominator polynomial of the polynomial ratio G(i,j).
 C
-C     LDIGD   INTEGER
+C     LDIGD   (input) INTEGER
 C             The leading dimension of array IGD.  LDIGD >= max(1,P).
 C
 C     GN      (input/output) DOUBLE PRECISION array, dimension (P*M*MD)
@@ -77,12 +77,12 @@ C     D       (output) DOUBLE PRECISION array, dimension (LDD,M)
 C             The leading P-by-M part of this array contains the
 C             matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= max(1,P).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in determining the degrees of
 C             the numerators Num0(i,j) of the strictly proper part of
 C             the transfer function matrix G. If the user sets TOL > 0,
@@ -97,7 +97,7 @@ C             norm (the maximum coefficient in absolute value).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

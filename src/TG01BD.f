@@ -34,13 +34,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is a general square or an upper
 C             triangular matrix, as follows:
 C             = 'G':  E is a general square matrix;
 C             = 'U':  E is an upper triangular matrix.
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Indicates what should be done with matrix Q, as follows:
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
@@ -48,7 +48,7 @@ C                     orthogonal matrix Q is returned;
 C             = 'V':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             Indicates what should be done with matrix Z, as follows:
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
@@ -85,7 +85,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the upper Hessenberg matrix H = Q' * A * Z. The elements
 C             below the first subdiagonal are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -96,7 +96,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the upper triangular matrix T = Q' * E * Z. The elements
 C             below the diagonal are set to zero.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -106,7 +106,7 @@ C             On exit, if M > 0, the leading N-by-M part of this array
 C             contains the transformed matrix Q' * B.
 C             The array B is not referenced if M = 0.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,N) if M > 0;  LDB >= 1 if M = 0.
 C
@@ -117,7 +117,7 @@ C             On exit, if P > 0, the leading P-by-N part of this array
 C             contains the transformed matrix C * Z.
 C             The array C is not referenced if P = 0.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -131,7 +131,7 @@ C             If COMPQ = 'V':  on entry, Q must contain an orthogonal
 C                              matrix Q1, and on exit this is
 C                              overwritten by Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,N), if COMPQ = 'I' or 'V'.
@@ -147,18 +147,18 @@ C             If COMPZ = 'V':  on entry, Z must contain an orthogonal
 C                              matrix Z1, and on exit this is
 C                              overwritten by Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'I' or 'V'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= 1,                          if JOBE = 'U';
 C             LDWORK >= MAX(1,IHI+1-ILO+MAX(NI,M)), if JOBE = 'G', where
@@ -169,7 +169,7 @@ C             NB is the optimal block size.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

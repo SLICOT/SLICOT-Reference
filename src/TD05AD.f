@@ -14,12 +14,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UNITF   CHARACTER*1
+C     UNITF   (input) CHARACTER*1
 C             Indicates the choice of frequency unit as follows:
 C             = 'R':  Input frequency W in radians/second;
 C             = 'H':  Input frequency W in hertz.
 C
-C     OUTPUT  CHARACTER*1
+C     OUTPUT  (input) CHARACTER*1
 C             Indicates the choice of co-ordinates for output as folows:
 C             = 'C':  Cartesian co-ordinates (output real and imaginary
 C                     parts of G(jW));
@@ -63,7 +63,7 @@ C                              degrees.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

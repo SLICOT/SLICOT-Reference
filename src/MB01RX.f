@@ -25,7 +25,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies whether the matrix A appears on the left or
 C             right in the matrix product as follows:
 C                     _
@@ -33,13 +33,13 @@ C             = 'L':  R = alpha*R + beta*op( A )*B;
 C                     _
 C             = 'R':  R = alpha*R + beta*B*op( A ).
 C
-C     UPLO    CHARACTER*1                               _
+C     UPLO    (input) CHARACTER*1                               _
 C             Specifies which triangles of the matrices R and R are
 C             computed and given, respectively, as follows:
 C             = 'U':  the upper triangular part;
 C             = 'L':  the lower triangular part.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op( A ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( A ) = A;
@@ -84,7 +84,7 @@ C             this array contains the corresponding triangular part of
 C                                 _
 C             the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,M).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,k), where
@@ -101,7 +101,7 @@ C                          SIDE = 'L', and TRANS = 'T',
 C             the leading N-by-M part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,l), where
 C             l = M  when  SIDE = 'L', and TRANS = 'N', or
 C                          SIDE = 'R', and TRANS = 'T';
@@ -115,14 +115,14 @@ C             On entry, the leading N-by-M part, if SIDE = 'L', or
 C             M-by-N part, if SIDE = 'R', of this array must contain the
 C             matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,N), if SIDE = 'L';
 C             LDB >= MAX(1,M), if SIDE = 'R'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

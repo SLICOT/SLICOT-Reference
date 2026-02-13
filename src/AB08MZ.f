@@ -13,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to balance the compound
 C             matrix (see METHOD) as follows:
 C             = 'S':  Perform balancing (scaling);
@@ -35,28 +35,28 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             state dynamics matrix A of the system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) COMPLEX*16 array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input/state matrix B of the system.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input) COMPLEX*16 array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             state/output matrix C of the system.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input) COMPLEX*16 array, dimension (LDD,M)
 C             The leading P-by-M part of this array must contain the
 C             direct transmission matrix D of the system.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     RANK    (output) INTEGER
@@ -64,7 +64,7 @@ C             The normal rank of the transfer-function matrix.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -77,15 +77,15 @@ C             Routine DLAMCH).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N+MAX(M,P)+1)
+C     IWORK   (input/output) INTEGER array, dimension (2*N+MAX(M,P)+1)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*MAX(M,P))
+C     DWORK   (input/output) DOUBLE PRECISION, dimension(2*MAX(M,P))
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
 C             of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The length of the array ZWORK.
 C             LZWORK >= (N+P)*(N+M) + MAX(MIN(P,M) + MAX(3*M-1,N), 1,
 C                                         MIN(P,N) + MAX(3*P-1,N+P,N+M))
@@ -99,7 +99,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

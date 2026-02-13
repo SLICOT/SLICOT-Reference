@@ -38,7 +38,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Specifies whether matrix U is computed or not, as follows:
 C             = 'N': transformation matrix U is not computed;
 C             = 'U': transformation matrix U is computed.
@@ -54,7 +54,7 @@ C             contain the matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix Aout in Schur canonical form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -71,7 +71,7 @@ C             Note that the parts containing the diagonal and the first
 C             superdiagonal of this array are not overwritten by zeros
 C             only if JOBU = 'U' or LDWORK >= 2*N*N - N.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     U1      (output) DOUBLE PRECISION array, dimension (LDU1,N)
@@ -79,7 +79,7 @@ C             On exit, if JOBU = 'U', the leading N-by-N part of this
 C             array contains the matrix U1.
 C             If JOBU = 'N', this array is not referenced.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.
 C             LDU1 >= MAX(1,N),  if JOBU = 'U';
 C             LDU1 >= 1,         if JOBU = 'N'.
@@ -89,7 +89,7 @@ C             On exit, if JOBU = 'U', the leading N-by-N part of this
 C             array contains the matrix U2.
 C             If JOBU = 'N', this array is not referenced.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.
 C             LDU2 >= MAX(1,N),  if JOBU = 'U';
 C             LDU2 >= 1,         if JOBU = 'N'.
@@ -105,13 +105,13 @@ C             and WI(i+1) = -WI(i).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal value
 C             of LDWORK.
 C             On exit, if  INFO = -14,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,(N+5)*N),      if JOBU = 'U';
 C             LDWORK >= MAX(1,5*N,(N+1)*N),  if JOBU = 'N'.
@@ -124,7 +124,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

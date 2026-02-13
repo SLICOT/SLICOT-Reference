@@ -77,10 +77,10 @@ C             with P(s) as described in [1] Section 4.6. The pencil
 C             s*E-A is assumed to be in generalized Schur form.
 C             On exit, these arrays contain no useful information.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,NRA).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,NRA).
 C
 C     IMUK    (input) INTEGER array, dimension (NBLCKS)
@@ -102,13 +102,13 @@ C             column vectors of a minimal polynomial basis for the right
 C             nullspace of the subpencil s*E(eps)-A(eps). (See [1]
 C             Section 4.6.4.) An upper bound for ncv is (NRA+1)*NCA.
 C
-C     LDVEPS  INTEGER
+C     LDVEPS  (input) INTEGER
 C             The leading dimension of array VEPS.
 C             LDVEPS >= MAX(1,NCA).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

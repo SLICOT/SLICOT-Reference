@@ -40,7 +40,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CJTE    CHARACTER*1
+C     CJTE    (input) CHARACTER*1
 C             Specifies whether the matrix-vector product J'*e should be
 C             computed or not, as follows:
 C             = 'C' :  compute J'*e;
@@ -97,7 +97,7 @@ C             The leading NSMP-by-M part of this array must contain the
 C             set of input samples,
 C             U = ( U(1,1),...,U(1,M); ...; U(NSMP,1),...,U(NSMP,M) ).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= MAX(1,NSMP).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (NSMP*L)
@@ -113,7 +113,7 @@ C             the Jacobian of the error function stored in a compressed
 C             form, as described above, where
 C             NCOLJ = NN*(L + 2) + 1 + N*(M + L + 1) + L*M.
 C
-C     LDJ     INTEGER
+C     LDJ     (input) INTEGER
 C             The leading dimension of array J.  LDJ >= MAX(1,NSMP*L).
 C             Note that LDJ is an input parameter, except for
 C             IPAR(1) < 0 on entry, when it is an output parameter.
@@ -125,9 +125,9 @@ C             If CJTE = 'N', this array is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2*NSMP*L + MAX( 2*NN, (N + L)*(N + M) + 2*N +
 C                                       MAX( N*(N + L), N + M + L ) )
@@ -138,7 +138,7 @@ C             A larger value of LDWORK could improve the efficiency.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

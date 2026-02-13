@@ -19,7 +19,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the type of inverse transformation required:
 C             = 'N':  do nothing, return immediately;
 C             = 'P':  do inverse transformation for permutation only;
@@ -29,7 +29,7 @@ C                     and scaling.
 C             JOB must be the same as the argument JOB supplied to
 C             MB04DP.
 C
-C     SGN     CHARACTER*1
+C     SGN     (input) CHARACTER*1
 C             Specifies the sign to use for V2:
 C             = 'P':  sgn = +1;
 C             = 'N':  sgn = -1.
@@ -61,7 +61,7 @@ C             On exit, the leading N-by-M part of this array is
 C             overwritten by the updated matrix V1 of the transformed
 C             matrix.
 C
-C     LDV1    INTEGER
+C     LDV1    (input) INTEGER
 C             The leading dimension of the array V1. LDV1 >= max(1,N).
 C
 C     V2      (input/output) DOUBLE PRECISION array, dimension (LDV2,M)
@@ -71,12 +71,12 @@ C             On exit, the leading N-by-M part of this array is
 C             overwritten by the updated matrix V2 of the transformed
 C             matrix.
 C
-C     LDV2    INTEGER
+C     LDV2    (input) INTEGER
 C             The leading dimension of the array V2. LDV2 >= max(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

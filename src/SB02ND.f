@@ -29,13 +29,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the equation from which F is to be determined,
 C             as follows:
 C             = 'D':  Equation (1), discrete-time case;
 C             = 'C':  Equation (2), continuous-time case.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies how the matrix R is given (factored or not), as
 C             follows:
 C             = 'N':  Array R contains the matrix R;
@@ -45,13 +45,13 @@ C             = 'U':  Array R contains the symmetric indefinite UdU' or
 C                     LdL' factorization of R. This option is not
 C                     available for DICO = 'D'.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the possibly factored matrix R
 C             (or R + B'XB, on exit) is or should be stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     JOBL    CHARACTER*1
+C     JOBL    (input) CHARACTER*1
 C             Specifies whether or not the matrix L is zero, as follows:
 C             = 'Z':  L is zero;
 C             = 'N':  L is nonzero.
@@ -76,12 +76,12 @@ C             If DICO = 'D', the leading N-by-N part of this array must
 C             contain the state matrix A of the system.
 C             If DICO = 'C', this array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.
 C             LDA >= MAX(1,N) if DICO = 'D';
 C             LDA >= 1        if DICO = 'C'.
 C
-C     B       (input/worksp.) DOUBLE PRECISION array, dimension (LDB,M)
+C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array must contain the
 C             input matrix B of the system.
 C             If DICO = 'D' and FACT = 'D' or 'C', the contents of this
@@ -94,7 +94,7 @@ C             eigenvalues of X, where V and U are the matrices with the
 C             eigenvalues and eigenvectors of X.
 C             Otherwise, B is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,M)
@@ -138,7 +138,7 @@ C             (for DICO = 'C'), or that of the matrix R + B'XB
 C             (for DICO = 'D' and FACT = 'N').
 C             On exit R is unchanged if FACT = 'U' or N = 0.
 C
-C     LDR     INTEGER.
+C     LDR     (input) INTEGER.
 C             The leading dimension of the array R.
 C             LDR >= MAX(1,M)   if FACT <> 'D';
 C             LDR >= MAX(1,M,P) if FACT =  'D'.
@@ -160,7 +160,7 @@ C             If JOBL = 'N', the leading N-by-M part of this array must
 C             contain the cross weighting matrix L.
 C             If JOBL = 'Z', this array is not referenced.
 C
-C     LDL     INTEGER
+C     LDL     (input) INTEGER
 C             The leading dimension of array L.
 C             LDL >= MAX(1,N) if JOBL = 'N';
 C             LDL >= 1        if JOBL = 'Z'.
@@ -184,7 +184,7 @@ C             this array contains the matrix of orthonormal eigenvectors
 C             of X.
 C             On exit X is unchanged if DICO = 'C' or FACT = 'N'.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     RNORM   (input) DOUBLE PRECISION
@@ -198,7 +198,7 @@ C             optimal feedback matrix F.
 C             This array is not referenced if DICO = 'C' and FACT = 'D'
 C             and P < M.
 C
-C     LDF     INTEGER
+C     LDF     (input) INTEGER
 C             The leading dimension of array F.  LDF >= MAX(1,M).
 C
 C     OUFACT  (output) INTEGER array, dimension (2)
@@ -216,9 +216,9 @@ C             This array is not set if N = 0 or M = 0.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or LDWORK = -1, DWORK(1) returns the
 C             optimal value of LDWORK, and for LDWORK set as specified
 C             below, DWORK(2) contains the reciprocal condition number
@@ -230,7 +230,7 @@ C             If on exit INFO = 0, and OUFACT(2) = 2, then DWORK(3),...,
 C             DWORK(N+2) contain the eigenvalues of X, in ascending
 C             order.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             Dimension of working array DWORK.
 C             LDWORK >= max(2,2*M)           if FACT =  'U';
 C             LDWORK >= max(2,3*M)           if FACT <> 'U', DICO = 'C';
@@ -250,7 +250,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -385,7 +385,7 @@ C
          INFO = -9
       ELSE IF( LDB.LT.MAX( 1, N ) ) THEN
          INFO = -11
-      ELSE IF( LDR.LT.MAX( 1, M ) .OR. ( LFACTD .AND. 
+      ELSE IF( LDR.LT.MAX( 1, M ) .OR. ( LFACTD .AND.
      $         LDR.LT.MAX( 1, P ) ) ) THEN
          INFO = -13
       ELSE IF( LDL.LT.1 .OR. ( WITHL .AND. LDL.LT.N ) ) THEN
@@ -586,7 +586,7 @@ C           factor. Construct the strictly lower triangle, if requested.
 C
             DO 30 I = 1, M
                IF ( R(I,I).LT.ZERO )
-     $            CALL DSCAL( M-I+1, -ONE, R(I,I), LDR ) 
+     $            CALL DSCAL( M-I+1, -ONE, R(I,I), LDR )
                IF ( .NOT.LUPLOU )
      $            CALL DCOPY( I-1, R(1,I), 1, R(I,1), LDR )
    30       CONTINUE

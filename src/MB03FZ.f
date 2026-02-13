@@ -66,7 +66,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             Specifies whether to compute the right deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -74,7 +74,7 @@ C             = 'N': do not compute the deflating subspace;
 C             = 'C': compute the deflating subspace and store it in the
 C                    leading subarray of Q.
 C
-C     COMPU   CHARACTER*1
+C     COMPU   (input) CHARACTER*1
 C             Specifies whether to compute the companion subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -82,7 +82,7 @@ C             = 'N': do not compute the companion subspace;
 C             = 'C': compute the companion subspace and store it in the
 C                    leading subarray of U.
 C
-C     ORTH    CHARACTER*1
+C     ORTH    (input) CHARACTER*1
 C             If COMPQ = 'C' or COMPU = 'C', specifies the technique for
 C             computing the orthonormal bases of the deflating subspace
 C             and companion subspace, as follows:
@@ -107,7 +107,7 @@ C             triangular part is not zeroed.
 C             If COMPQ = 'N' and COMPU = 'N', this array is unchanged
 C             on exit.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1, N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB, N)
@@ -120,7 +120,7 @@ C             triangular part is not zeroed.
 C             If COMPQ = 'N' and COMPU = 'N', this array is unchanged
 C             on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N).
 C
 C     FG      (input/output) COMPLEX*16 array, dimension (LDFG, N)
@@ -138,7 +138,7 @@ C             elements might have tiny imaginary parts.
 C             If COMPQ = 'N' and COMPU = 'N', this array is unchanged
 C             on exit.
 C
-C     LDFG    INTEGER
+C     LDFG    (input) INTEGER
 C             The leading dimension of the array FG.  LDFG >= MAX(1, N).
 C
 C     NEIG    (output) INTEGER
@@ -151,7 +151,7 @@ C             this array contains the matrix BD in (3) (see METHOD).
 C             If COMPQ = 'N' and COMPU = 'N', this array is not
 C             referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= 1,         if COMPQ = 'N' and COMPU = 'N';
 C             LDD >= MAX(1, N), if COMPQ = 'C' or  COMPU = 'C'.
@@ -164,7 +164,7 @@ C             not zeroed.
 C             If COMPQ = 'N' and COMPU = 'N', this array is not
 C             referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= 1,         if COMPQ = 'N' and COMPU = 'N';
 C             LDC >= MAX(1, N), if COMPQ = 'C' or  COMPU = 'C'.
@@ -177,7 +177,7 @@ C             pencil aS - bH with strictly negative real part.
 C             The remaining entries are meaningless.
 C             If COMPQ = 'N', this array is not referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,           if COMPQ = 'N';
 C             LDQ >= MAX(1, 2*N), if COMPQ = 'C'.
@@ -190,7 +190,7 @@ C             pencil aS - bH with strictly negative real part. The
 C             remaining entries are meaningless.
 C             If COMPU = 'N', this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= 1,         if COMPU = 'N';
 C             LDU >= MAX(1, N), if COMPU = 'C'.
@@ -214,17 +214,17 @@ C             overflow, the ratios should not, in general, be computed.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C
-C     LIWORK  INTEGER
+C     LIWORK  (input) INTEGER
 C             The dimension of the array IWORK.  LIWORK >= 2*N+9.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             On exit, if INFO = -26, DWORK(1) returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= c*N**2 + N + MAX(6*N, 27), where
 C                       c = 18, if                 COMPU = 'C';
@@ -238,12 +238,12 @@ C             DWORK array, returns this value as the first entry of
 C             the DWORK array, and no error message related to LDWORK
 C             is issued by XERBLA.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal LZWORK.
 C             On exit, if INFO = -28, ZWORK(1) returns the minimum
 C             value of LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 8*N + 28, if COMPQ = 'C';
 C             LZWORK >= 6*N + 28, if COMPQ = 'N' and COMPU = 'C';
@@ -256,13 +256,13 @@ C             ZWORK array, returns this value as the first entry of
 C             the ZWORK array, and no error message related to LZWORK
 C             is issued by XERBLA.
 C
-C     BWORK   LOGICAL array, dimension (LBWORK)
+C     BWORK   (input/output) LOGICAL array, dimension (LBWORK)
 C             LBWORK >= 0, if COMPQ = 'N' and COMPU = 'N';
 C             LBWORK >= N, if COMPQ = 'C' or  COMPU = 'C'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: succesful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the algorithm was not able to reveal information

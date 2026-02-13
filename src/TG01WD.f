@@ -33,7 +33,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the matrix Q' * A * Z in an upper quasi-triangular form.
 C             The elements below the first subdiagonal are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -43,7 +43,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the matrix Q' * E * Z in an upper triangular form.
 C             The elements below the diagonal are set to zero.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -52,7 +52,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q' * B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -61,7 +61,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Q       (output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -71,7 +71,7 @@ C             the real generalized Schur form.
 C             The columns of Q are the left generalized Schur vectors
 C             of the pair (A,E).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= max(1,N).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -81,7 +81,7 @@ C             the real generalized Schur form.
 C             The columns of Z are the right generalized Schur vectors
 C             of the pair (A,E).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= max(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
@@ -100,17 +100,17 @@ C             complex conjugate pair, with ALPHAI(j+1) negative.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.  LDWORK >= 8*N+16.
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

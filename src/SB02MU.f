@@ -38,19 +38,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system as follows:
 C             = 'C':  Continuous-time system;
 C             = 'D':  Discrete-time system.
 C
-C     HINV    CHARACTER*1
+C     HINV    (input) CHARACTER*1
 C             If DICO = 'D', specifies which of the matrices (2) or (3)
 C             is constructed, as follows:
 C             = 'D':  The matrix S in (2) is constructed;
 C             = 'I':  The (inverse) matrix S in (3) is constructed.
 C             HINV is not referenced if DICO = 'C'.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices G and Q is
 C             stored, as follows:
 C             = 'U':  Upper triangle is stored;
@@ -69,7 +69,7 @@ C                                                     -1
 C             part of this array contains the matrix A  .
 C             Otherwise, the array A is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     G       (input) DOUBLE PRECISION array, dimension (LDG,N)
@@ -81,7 +81,7 @@ C             The strictly lower triangular part (if UPLO = 'U') or
 C             strictly upper triangular part (if UPLO = 'L') is not
 C             referenced.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -93,7 +93,7 @@ C             The strictly lower triangular part (if UPLO = 'U') or
 C             strictly upper triangular part (if UPLO = 'L') is not
 C             referenced.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.  LDQ >= MAX(1,N).
 C
 C     S       (output) DOUBLE PRECISION array, dimension (LDS,2*N)
@@ -101,19 +101,19 @@ C             If INFO = 0, the leading 2N-by-2N part of this array
 C             contains the Hamiltonian or symplectic matrix of the
 C             problem.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,2*N).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*N)
+C     IWORK   (input/output) INTEGER array, dimension (2*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK; if DICO = 'D', DWORK(2) returns the reciprocal
 C             condition number of the given matrix  A.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 1          if DICO = 'C';
 C             LDWORK >= MAX(2,4*N) if DICO = 'D'.
@@ -128,7 +128,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

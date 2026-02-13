@@ -18,14 +18,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Specifies whether or not the transformations are
 C             accumulated, as follows:
 C             = 'N':  The transformations are not accumulated;
 C             = 'U':  The transformations are accumulated in X (the
 C                     given matrix X is updated).
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies whether or not the diagonal blocks of the real
 C             Schur form are reordered, as follows:
 C             = 'N':  The diagonal blocks are not reordered;
@@ -58,7 +58,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the computed block-diagonal matrix, in real Schur
 C             canonical form. The non-diagonal blocks are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -72,7 +72,7 @@ C             non-orthogonal similarity transformations having elements
 C             with magnitude less than or equal to PMAX.
 C             If JOBX = 'N', this array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.
 C             LDX >= 1,        if JOBX = 'N';
 C             LDX >= MAX(1,N), if JOBX = 'U'.
@@ -84,13 +84,14 @@ C     BLSIZE  (output) INTEGER array, dimension (N)
 C             The first NBLCKS elements of this array contain the orders
 C             of the resulting diagonal blocks of the matrix A.
 C
-C     WR,     (output) DOUBLE PRECISION arrays, dimension (N)
-C     WI      These arrays contain the real and imaginary parts,
+C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
+C             These arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in the ordering of the diagonal
 C             blocks of the real Schur form matrix.
 C             If the user sets TOL > 0, then the given value of TOL is
@@ -116,11 +117,11 @@ C             If SORT = 'N' or 'C', this parameter is not referenced.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

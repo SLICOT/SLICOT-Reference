@@ -32,18 +32,18 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system, as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     JOBE    CHARACTER*1
+C     JOBE    (input) CHARACTER*1
 C             Specifies whether E is an upper triangular or an identity
 C             matrix, as follows:
 C             = 'G':  E is a general upper triangular matrix;
 C             = 'I':  E is the identity matrix.
 C
-C     JOBD    CHARACTER*1
+C     JOBD    (input) CHARACTER*1
 C             Specifies whether or not a non-zero matrix D appears in
 C             the given state space model:
 C             = 'D':  D is present;
@@ -77,7 +77,7 @@ C             of L are not stored, L is lower bidiagonal, and P is
 C             stored in IWORK (see SLICOT Library routine MB02SD).
 C             Otherwise, this array is unchanged on exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
@@ -88,7 +88,7 @@ C             triangular part of this array are not referenced.
 C             If JOBE = 'I', then E is assumed to be the identity
 C             matrix and is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.
 C             LDE >= MAX(1,N), if JOBE = 'G';
 C             LDE >= 1,        if JOBE = 'I'.
@@ -101,14 +101,14 @@ C             C <> 0, and INFO = 0 or N+1, the leading N-by-M part of
 C             this array contains the solution of the system A*X = B.
 C             Otherwise, this array is unchanged on exit.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array must contain the
 C             system output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -120,21 +120,21 @@ C             N+1), the contents of this array is destroyed.
 C             Otherwise, this array is unchanged on exit.
 C             This array is not referenced if JOBD = 'Z'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.
 C             LDD >= MAX(1,P), if JOBD = 'D';
 C             LDD >= 1,        if JOBD = 'Z'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK = N, if N > 0, M > 0, P > 0, B <> 0, and C <> 0;
 C             LIWORK = 0, otherwise.
 C             This array contains the pivot indices in the LU
 C             factorization of the matrix lambda*E - A; for 1 <= i <= N,
 C             row i of the matrix was interchanged with row IWORK(i).
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal value
 C             of LDWORK, and DWORK(2), ..., DWORK(MIN(P,M)) contain the
 C             singular values of G(lambda), except for the first one,
@@ -143,7 +143,7 @@ C             If (N = 0, or B = 0, or C = 0) and JOBD = 'Z', the last
 C             MIN(P,M)-1 zero singular values of G(lambda) are not
 C             stored in DWORK(2), ..., DWORK(MIN(P,M)).
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX(1, LDW1 + LDW2 ),
 C             LDW1 = P*M, if N > 0, B <> 0, C <> 0, OMEGA = 0,
@@ -158,11 +158,11 @@ C                         or MIN(P,M) = 0;
 C             LDW2 = 6*MIN(P,M), otherwise.
 C             For good performance, LDWORK must generally be larger.
 C
-C     ZWORK   COMPLEX*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) contains the optimal
 C             LZWORK.
 C
-C     LZWORK  INTEGER
+C     LZWORK  (input) INTEGER
 C             The dimension of the array ZWORK.
 C             LZWORK >= 1, if N = 0, or B = 0, or C = 0, or (OMEGA = 0
 C                             and DICO = 'C') or MIN(P,M) = 0;
@@ -172,7 +172,7 @@ C             For good performance, LZWORK must generally be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

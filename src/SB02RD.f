@@ -52,7 +52,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'X':  Compute the solution only;
 C             = 'C':  Compute the reciprocal condition number only;
@@ -60,39 +60,39 @@ C             = 'E':  Compute the error bound only;
 C             = 'A':  Compute all: the solution, reciprocal condition
 C                     number, and the error bound.
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of Riccati equation to be solved or
 C             analyzed, as follows:
 C             = 'C':  Equation (3), continuous-time case;
 C             = 'D':  Equation (4), discrete-time case.
 C
-C     HINV    CHARACTER*1
+C     HINV    (input) CHARACTER*1
 C             If DICO = 'D' and JOB = 'X' or JOB = 'A', specifies which
 C             symplectic matrix is to be constructed, as follows:
 C             = 'D':  The matrix H in (6) (see METHOD) is constructed;
 C             = 'I':  The inverse of the matrix H in (6) is constructed.
 C             HINV is not used if DICO = 'C', or JOB = 'C' or 'E'.
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the matrices G and Q is
 C             stored, as follows:
 C             = 'U':  Upper triangle is stored;
 C             = 'L':  Lower triangle is stored.
 C
-C     SCAL    CHARACTER*1
+C     SCAL    (input) CHARACTER*1
 C             If JOB = 'X' or JOB = 'A', specifies whether or not a
 C             scaling strategy should be used, as follows:
 C             = 'G':  General scaling should be used;
 C             = 'N':  No scaling should be used.
 C             SCAL is not used if JOB = 'C' or 'E'.
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             If JOB = 'X' or JOB = 'A', specifies which eigenvalues
 C             should be obtained in the top of the Schur form, as
 C             follows:
@@ -100,7 +100,7 @@ C             = 'S':  Stable   eigenvalues come first;
 C             = 'U':  Unstable eigenvalues come first.
 C             SORT is not used if JOB = 'C' or 'E'.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             If JOB <> 'X', specifies whether or not a real Schur
 C             factorization of the closed-loop system matrix Ac is
 C             supplied on entry, as follows:
@@ -116,7 +116,7 @@ C                Ac = inv(I_n + G*X)*A, if TRANA = 'N', or
 C                Ac = A*inv(I_n + X*G), if TRANA = 'T' or 'C'.
 C             FACT is not used if JOB = 'X'.
 C
-C     LYAPUN  CHARACTER*1
+C     LYAPUN  (input) CHARACTER*1
 C             If JOB <> 'X', specifies whether or not the original or
 C             "reduced" Lyapunov equations should be solved for
 C             estimating reciprocal condition number and/or the error
@@ -142,13 +142,13 @@ C             coefficient matrix A of the equation.
 C             If JOB = 'C' or 'E' and FACT = 'F' and LYAPUN = 'R', A is
 C             not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,N), if JOB  = 'X' or JOB = 'A' or
 C                                 FACT = 'N' or LYAPUN = 'O'.
 C             LDA >= 1,        otherwise.
 C
-C     T       (input or output) DOUBLE PRECISION array, dimension
+C     T       (input/output) DOUBLE PRECISION array, dimension
 C             (LDT,N)
 C             If JOB <> 'X' and FACT = 'F', then T is an input argument
 C             and on entry, the leading N-by-N upper Hessenberg part of
@@ -162,12 +162,12 @@ C             quasi-triangular matrix T in Schur canonical form from a
 C             Schur factorization of Ac (see argument FACT).
 C             If JOB = 'X', the array T is not referenced.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.
 C             LDT >= 1,        if JOB =  'X';
 C             LDT >= MAX(1,N), if JOB <> 'X'.
 C
-C     V       (input or output) DOUBLE PRECISION array, dimension
+C     V       (input/output) DOUBLE PRECISION array, dimension
 C             (LDV,N)
 C             If JOB <> 'X' and FACT = 'F', then V is an input argument
 C             and on entry, the leading N-by-N part of this array must
@@ -179,7 +179,7 @@ C             part of this array contains the orthogonal N-by-N matrix
 C             from a real Schur factorization of Ac (see argument FACT).
 C             If JOB = 'X', the array V is not referenced.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= 1,        if JOB =  'X';
 C             LDV >= MAX(1,N), if JOB <> 'X'.
@@ -195,7 +195,7 @@ C             contains the symmetric matrix G fully stored.
 C             If JOB <> 'X' and LYAPUN = 'R', this array is modified
 C             internally, but restored on exit.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -209,10 +209,10 @@ C             contains the symmetric matrix Q fully stored.
 C             If JOB <> 'X' and LYAPUN = 'R', this array is modified
 C             internally, but restored on exit.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
-C     X       (input or output) DOUBLE PRECISION array, dimension
+C     X       (input/output) DOUBLE PRECISION array, dimension
 C             (LDX,N)
 C             If JOB = 'C' or JOB = 'E', then X is an input argument
 C             and on entry, the leading N-by-N part of this array must
@@ -225,7 +225,7 @@ C             and on exit, if INFO = 0 or INFO >= 6, the leading N-by-N
 C             part of this array contains the symmetric solution matrix
 C             X of the algebraic Riccati equation.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= MAX(1,N).
 C
 C     SEP     (output) DOUBLE PRECISION
@@ -287,19 +287,19 @@ C             where S  , S   and S   are N-by-N matrices.
 C                    11   12      22
 C             If JOB = 'C' or JOB = 'E', this array is not referenced.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.
 C             LDS >= MAX(1,2*N), if JOB = 'X' or JOB = 'A';
 C             LDS >= 1,          if JOB = 'C' or JOB = 'E'.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= 2*N,          if JOB = 'X';
 C             LIWORK >= N*N,          if JOB = 'C' or JOB = 'E';
 C             LIWORK >= MAX(2*N,N*N), if JOB = 'A'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, or INFO = 7, DWORK(1) returns the
 C             optimal value of LDWORK. If INFO = 0, or INFO >= 5, and
 C             JOB = 'X', or JOB = 'A', then DWORK(2) returns an estimate
@@ -323,7 +323,7 @@ C             elements DWORK(6:5+4*N*N) contain the 2*N-by-2*N
 C             transformation matrix  U  which reduced the Hamiltonian or
 C             symplectic matrix  H  to the ordered real Schur form  S.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 5+MAX(1,4*N*N+8*N), if JOB = 'X' or JOB = 'A';
 C             This may also be used for JOB = 'C' or JOB = 'E', but
@@ -345,7 +345,7 @@ C                 = 2*N, if LYAPUN = 'R' and DICO = 'C' and JOB = 'E';
 C                 = 3*N, if LYAPUN = 'R' and DICO = 'D' and JOB = 'E'.
 C             For optimum performance LDWORK should sometimes be larger.
 C
-C     BWORK   LOGICAL array, dimension (LBWORK)
+C     BWORK   (input/output) LOGICAL array, dimension (LBWORK)
 C             LBWORK >= 2*N,          if JOB = 'X' or JOB = 'A';
 C             LBWORK >= 1,            if JOB = 'C' or JOB = 'E', and
 C                                     FACT = 'N' and LYAPUN = 'R';
@@ -353,7 +353,7 @@ C             LBWORK >= 0,            otherwise.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -28,14 +28,14 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,M)
 C             The leading M-by-M part of this array must contain an
 C             upper Hessenberg matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,N)
 C             The leading N-by-N part of this array must contain a
 C             matrix in real Schur form.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -44,18 +44,19 @@ C             contain the coefficient matrix C of the equation.
 C             On exit, the leading M-by-N part of this array contains
 C             the matrix C with column IND updated.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     Workspace
 C
-C     D       DOUBLE PRECISION array, dimension (M*(M+1)/2+2*M)
+C     D       (input/output) DOUBLE PRECISION array,
+C             dimension (M*(M+1)/2+2*M)
 C
-C     IPR     INTEGER array, dimension (2*M)
+C     IPR     (input/output) INTEGER array, dimension (2*M)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             > 0:  if INFO = IND, a singular matrix was encountered.
 C

@@ -45,7 +45,7 @@ C             the matrix Aout and, in the zero part of Aout, information
 C             about the elementary reflectors used to compute the
 C             PVL factorization.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -62,7 +62,7 @@ C             reflectors used to compute the PVL factorization and in
 C             its last N columns the strictly upper triangular part of
 C             the matrix Gout.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     CS      (output) DOUBLE PRECISION array, dimension (2N-2)
@@ -76,18 +76,18 @@ C             scalar factors of some of the elementary reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal value
 C             of LDWORK.
 C             On exit, if INFO = -10,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N-1).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

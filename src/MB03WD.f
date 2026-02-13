@@ -31,14 +31,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the full
 C             Schur form or the eigenvalues only, as follows:
 C             = 'E':  Compute the eigenvalues only;
 C             = 'S':  Compute the factors T_1, ..., T_p of the full
 C                     Schur form, T = T_1*T_2*...*T_p.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             Indicates whether or not the user wishes to accumulate
 C             the matrices Z_1, ..., Z_p, as follows:
 C             = 'N':  The matrices Z_1, ..., Z_p are not required;
@@ -91,11 +91,11 @@ C             part of H(*,*,j) for j > 1 contains the resulting upper
 C             triangular matrix T_j.
 C             If JOB = 'E', the contents of H are unspecified on exit.
 C
-C     LDH1    INTEGER
+C     LDH1    (input) INTEGER
 C             The first leading dimension of the array H.
 C             LDH1 >= max(1,N).
 C
-C     LDH2    INTEGER
+C     LDH2    (input) INTEGER
 C             The second leading dimension of the array H.
 C             LDH2 >= max(1,N).
 C
@@ -113,12 +113,12 @@ C             transformations are applied only to the submatrices
 C             Z_j(ILOZ:IHIZ,ILO:IHI), j = 1, ..., P.
 C             If COMPZ = 'N', Z is not referenced.
 C
-C     LDZ1    INTEGER
+C     LDZ1    (input) INTEGER
 C             The first leading dimension of the array Z.
 C             LDZ1 >= 1,        if COMPZ = 'N';
 C             LDZ1 >= max(1,N), if COMPZ = 'I' or COMPZ = 'V'.
 C
-C     LDZ2    INTEGER
+C     LDZ2    (input) INTEGER
 C             The second leading dimension of the array Z.
 C             LDZ2 >= 1,        if COMPZ = 'N';
 C             LDZ2 >= max(1,N), if COMPZ = 'I' or COMPZ = 'V'.
@@ -136,14 +136,14 @@ C             diagonal of the Schur form returned in H.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= IHI-ILO+P-1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

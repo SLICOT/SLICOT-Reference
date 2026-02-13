@@ -15,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     OVER    CHARACTER*1
+C     OVER    (input) CHARACTER*1
 C             Indicates whether the user wishes to overlap pairs of
 C             arrays, as follows:
 C             = 'N':  Do not overlap;
@@ -56,21 +56,21 @@ C     A1      (input) DOUBLE PRECISION array, dimension (LDA1,N1)
 C             The leading N1-by-N1 part of this array must contain the
 C             state transition matrix A1 for the first system.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The leading dimension of array A1.  LDA1 >= MAX(1,N1).
 C
 C     B1      (input) DOUBLE PRECISION array, dimension (LDB1,M1)
 C             The leading N1-by-M1 part of this array must contain the
 C             input/state matrix B1 for the first system.
 C
-C     LDB1    INTEGER
+C     LDB1    (input) INTEGER
 C             The leading dimension of array B1.  LDB1 >= MAX(1,N1).
 C
 C     C1      (input) DOUBLE PRECISION array, dimension (LDC1,N1)
 C             The leading P1-by-N1 part of this array must contain the
 C             state/output matrix C1 for the first system.
 C
-C     LDC1    INTEGER
+C     LDC1    (input) INTEGER
 C             The leading dimension of array C1.
 C             LDC1 >= MAX(1,P1) if N1 > 0.
 C             LDC1 >= 1 if N1 = 0.
@@ -79,28 +79,28 @@ C     D1      (input) DOUBLE PRECISION array, dimension (LDD1,M1)
 C             The leading P1-by-M1 part of this array must contain the
 C             input/output matrix D1 for the first system.
 C
-C     LDD1    INTEGER
+C     LDD1    (input) INTEGER
 C             The leading dimension of array D1.  LDD1 >= MAX(1,P1).
 C
 C     A2      (input) DOUBLE PRECISION array, dimension (LDA2,N2)
 C             The leading N2-by-N2 part of this array must contain the
 C             state transition matrix A2 for the second system.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The leading dimension of array A2.  LDA2 >= MAX(1,N2).
 C
 C     B2      (input) DOUBLE PRECISION array, dimension (LDB2,P1)
 C             The leading N2-by-P1 part of this array must contain the
 C             input/state matrix B2 for the second system.
 C
-C     LDB2    INTEGER
+C     LDB2    (input) INTEGER
 C             The leading dimension of array B2.  LDB2 >= MAX(1,N2).
 C
 C     C2      (input) DOUBLE PRECISION array, dimension (LDC2,N2)
 C             The leading M1-by-N2 part of this array must contain the
 C             state/output matrix C2 for the second system.
 C
-C     LDC2    INTEGER
+C     LDC2    (input) INTEGER
 C             The leading dimension of array C2.
 C             LDC2 >= MAX(1,M1) if N2 > 0.
 C             LDC2 >= 1 if N2 = 0.
@@ -109,7 +109,7 @@ C     D2      (input) DOUBLE PRECISION array, dimension (LDD2,P1)
 C             The leading M1-by-P1 part of this array must contain the
 C             input/output matrix D2 for the second system.
 C
-C     LDD2    INTEGER
+C     LDD2    (input) INTEGER
 C             The leading dimension of array D2.  LDD2 >= MAX(1,M1).
 C
 C     N       (output) INTEGER
@@ -122,7 +122,7 @@ C             The leading N-by-N part of this array contains the state
 C             transition matrix A for the connected system.
 C             The array A can overlap A1 if OVER = 'O'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N1+N2).
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M1)
@@ -130,7 +130,7 @@ C             The leading N-by-M1 part of this array contains the
 C             input/state matrix B for the connected system.
 C             The array B can overlap B1 if OVER = 'O'.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N1+N2).
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N1+N2)
@@ -138,7 +138,7 @@ C             The leading P1-by-N part of this array contains the
 C             state/output matrix C for the connected system.
 C             The array C can overlap C1 if OVER = 'O'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,P1) if N1+N2 > 0.
 C             LDC >= 1 if N1+N2 = 0.
@@ -148,16 +148,16 @@ C             The leading P1-by-M1 part of this array contains the
 C             input/output matrix D for the connected system.
 C             The array D can overlap D1 if OVER = 'O'.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P1).
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (P1)
+C     IWORK   (input/output) INTEGER array, dimension (P1)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.             If OVER = 'N',
 C             LDWORK >= MAX(1, P1*P1, M1*M1, N1*P1), and if OVER = 'O',
 C             LDWORK >= MAX(1, N1*P1 + MAX( P1*P1, M1*M1, N1*P1) ),
@@ -167,7 +167,7 @@ C                                                        if M1 >  N*N2.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

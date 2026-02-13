@@ -46,7 +46,7 @@ C             contain the system input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed system input matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -55,7 +55,7 @@ C             contain the system output matrix C.
 C             On exit, the leading NP-by-N part of this array contains
 C             the transformed system output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= max(1,NP).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -70,21 +70,21 @@ C             The transformed submatrices D12 = [ 0  Im2 ]' and
 C             D21 = [ 0  Inp2 ] are not stored. The corresponding part
 C             of this array contains no useful information.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     TU      (output) DOUBLE PRECISION array, dimension (LDTU,M2)
 C             The leading M2-by-M2 part of this array contains the
 C             control transformation matrix TU.
 C
-C     LDTU    INTEGER
+C     LDTU    (input) INTEGER
 C             The leading dimension of the array TU.  LDTU >= max(1,M2).
 C
 C     TY      (output) DOUBLE PRECISION array, dimension (LDTY,NP2)
 C             The leading NP2-by-NP2 part of this array contains the
 C             measurement transformation matrix TY.
 C
-C     LDTY    INTEGER
+C     LDTY    (input) INTEGER
 C             The leading dimension of the array TY.
 C             LDTY >= max(1,NP2).
 C
@@ -98,7 +98,7 @@ C             then RCOND(2) was not computed, but it is set to 0.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used for controlling the accuracy of the applied
 C             transformations. Transformation matrices TU and TY whose
 C             reciprocal condition numbers are less than TOL are not
@@ -108,11 +108,11 @@ C             precision.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) contains the optimal
 C             LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX( M2 + NP1*NP1 + MAX(NP1*N,3*M2+NP1,5*M2),
 C                            NP2 + M1*M1  + MAX(M1*N,3*NP2+M1,5*NP2),
@@ -124,7 +124,7 @@ C             MAX(1,Q*(Q+MAX(N,5)+1)).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -30,7 +30,7 @@ C             contain the original state dynamics matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the balanced state dynamics matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -39,7 +39,7 @@ C             contain the original input/state matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the balanced input/state matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -48,7 +48,7 @@ C             contain the original state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the balanced state/output matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -57,7 +57,7 @@ C             contain the original direct transmission matrix D.
 C             On exit, the leading P-by-M part of this array contains
 C             the scaled direct transmission matrix D.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,P).
 C
 C     LOW     (output) INTEGER
@@ -91,11 +91,11 @@ C             state/ouput matrix C).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

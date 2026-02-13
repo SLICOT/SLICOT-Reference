@@ -12,12 +12,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ABSCHR  CHARACTER*1
+C     ABSCHR  (input) CHARACTER*1
 C             Indicates whether AB contains A or B, as follows:
 C             = 'A':  AB contains A;
 C             = 'B':  AB contains B.
 C
-C     UL      CHARACTER*1
+C     UL      (input) CHARACTER*1
 C             Indicates whether AB is upper or lower Hessenberg matrix,
 C             as follows:
 C             = 'U':  AB is upper Hessenberg;
@@ -37,7 +37,7 @@ C             the not yet modified part of the coefficient matrix C of
 C             the Sylvester equation AX + XB = C, and both the currently
 C             computed part of the solution of the Sylvester equation.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     INDX    (input) INTEGER
@@ -49,7 +49,7 @@ C             The leading N-by-N or M-by-M part of this array must
 C             contain either A or B of the Sylvester equation
 C             AX + XB = C.
 C
-C     LDAB    INTEGER
+C     LDAB    (input) INTEGER
 C             The leading dimension of array AB.
 C             LDAB >= MAX(1,N) or LDAB >= MAX(1,M) (depending on
 C             ABSCHR = 'A' or ABSCHR = 'B', respectively).

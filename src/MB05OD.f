@@ -16,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Specifies whether or not a balancing transformation (done
 C             by SLICOT Library routine MB04MD) is required, as follows:
 C             = 'N', do not use balancing;
@@ -42,7 +42,7 @@ C             if DELTA = 0.)
 C             On exit, if INFO = 0, the leading N-by-N part of this
 C             array contains the solution matrix exp(A*delta).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     MDIG    (output) INTEGER
@@ -55,18 +55,18 @@ C             exp(A*delta) at 95% confidence level.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= N*(2*N+NDIAG+1)+NDIAG, if N >  1.
 C             LDWORK >= 1,                     if N <= 1.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  if MDIG = 0 and IDIG > 0, warning for possible
 C                   inaccuracy (the exponential has been computed);
@@ -77,7 +77,7 @@ C                   reduce the matrix norm and was not actually used.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

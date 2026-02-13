@@ -32,21 +32,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
 C             = 'U':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
 C             = 'U':  Z must contain an orthogonal matrix Z1 on entry,
 C                     and the product Z1*Z is returned.
 C
-C     JOBA    CHARACTER*1
+C     JOBA    (input) CHARACTER*1
 C             = 'N':  do not reduce A22;
 C             = 'R':  reduce A22 to a SVD-like upper triangular form.
 C             = 'T':  reduce A22 to an upper trapezoidal form.
@@ -80,7 +80,7 @@ C             where A11 is a RANKE-by-RANKE matrix and Ar is a
 C             RNKA22-by-RNKA22 invertible upper triangular matrix.
 C             If JOBA = 'R' then A has the above form with X = 0.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -96,7 +96,7 @@ C
 C             where Er is a RANKE-by-RANKE upper triangular invertible
 C             matrix.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -105,7 +105,7 @@ C             contain the input/state matrix B.
 C             On exit, the leading L-by-M part of this array contains
 C             the transformed matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,L) if M > 0 or LDB >= 1 if M = 0.
 C
@@ -115,7 +115,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,L)
@@ -133,7 +133,7 @@ C                              on exit, the leading L-by-L part of this
 C                              array contains the orthogonal matrix
 C                              Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,L), if COMPQ = 'U' or 'I'.
@@ -153,7 +153,7 @@ C                              on exit, the leading N-by-N part of this
 C                              array contains the orthogonal matrix
 C                              Z1*Z.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'U' or 'I'.
@@ -170,7 +170,7 @@ C             If JOBA = 'N', then RNKA22 is not referenced.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in determining the rank of E
 C             and of A22. If the user sets TOL > 0, then the given
 C             value of TOL is used as a lower bound for the
@@ -186,13 +186,13 @@ C             DLAMCH). TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX( 1, N+P, MIN(L,N)+MAX(3*N-1,M,L) ).
 C             For optimal performance, LDWORK should be larger.
@@ -205,7 +205,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

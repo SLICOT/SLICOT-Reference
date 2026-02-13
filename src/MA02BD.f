@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Specifies the operation to be performed, as follows:
 C             = 'L': the order of rows of A is to be reversed by
 C                    pre-multiplying A with P;
@@ -40,7 +40,7 @@ C             On exit, the leading M-by-N part of this array contains
 C             the matrix P*A if SIDE = 'L', or A*P if SIDE = 'R', or
 C             P*A*P if SIDE = 'B'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     CONTRIBUTOR

@@ -19,14 +19,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LERI    CHARACTER*1
+C     LERI    (input) CHARACTER*1
 C             Indicates whether the left polynomial matrix
 C             representation or the right polynomial matrix
 C             representation is required as follows:
 C             = 'L':  A left matrix fraction is required;
 C             = 'R':  A right matrix fraction is required.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to balance the triplet
 C             (A,B,C), before computing a minimal state-space
 C             representation, as follows:
@@ -52,7 +52,7 @@ C             On exit, the leading NR-by-NR part of this array contains
 C             the upper block Hessenberg state dynamics matrix Amin of a
 C             minimal realization for the original system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension
@@ -64,7 +64,7 @@ C             workspace.
 C             On exit, the leading NR-by-M part of this array contains
 C             the transformed input/state matrix Bmin.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -75,7 +75,7 @@ C             workspace.
 C             On exit, the leading P-by-NR part of this array contains
 C             the transformed state/output matrix Cmin.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M,P).
 C
 C     D       (input) DOUBLE PRECISION array, dimension (LDD,MAX(M,P))
@@ -84,7 +84,7 @@ C             original direct transmission matrix D; the remainder of
 C             the leading MAX(M,P)-by-MAX(M,P) part is used as internal
 C             workspace.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= MAX(1,M,P).
 C
 C     NR      (output) INTEGER
@@ -118,12 +118,12 @@ C             LERI = 'L' then iorj = I, otherwise iorj = J.
 C             Thus for LERI = 'L', P(s) =
 C             diag(s**INDEX(I))*(PCOEFF(.,.,1)+PCOEFF(.,.,2)/s+...).
 C
-C     LDPCO1  INTEGER
+C     LDPCO1  (input) INTEGER
 C             The leading dimension of array PCOEFF.
 C             LDPCO1 >= MAX(1,P), if LERI = 'L';
 C             LDPCO1 >= MAX(1,M), if LERI = 'R'.
 C
-C     LDPCO2  INTEGER
+C     LDPCO2  (input) INTEGER
 C             The second dimension of array PCOEFF.
 C             LDPCO2 >= MAX(1,P), if LERI = 'L';
 C             LDPCO2 >= MAX(1,M), if LERI = 'R'.
@@ -139,12 +139,12 @@ C             of this array contains the coefficients of the numerator
 C             matrix Q(s).
 C             QCOEFF(I,J,K) is defined as for PCOEFF(I,J,K).
 C
-C     LDQCO1  INTEGER
+C     LDQCO1  (input) INTEGER
 C             The leading dimension of array QCOEFF.
 C             LDQCO1 >= MAX(1,P),   if LERI = 'L';
 C             LDQCO1 >= MAX(1,M,P), if LERI = 'R'.
 C
-C     LDQCO2  INTEGER
+C     LDQCO2  (input) INTEGER
 C             The second dimension of array QCOEFF.
 C             LDQCO2 >= MAX(1,M),   if LERI = 'L';
 C             LDQCO2 >= MAX(1,M,P), if LERI = 'R'.
@@ -155,17 +155,17 @@ C             The leading porm-by-NR-by-kpcoef part of this array
 C             contains the coefficients of the intermediate matrix V(s).
 C             VCOEFF(I,J,K) is defined as for PCOEFF(I,J,K).
 C
-C     LDVCO1  INTEGER
+C     LDVCO1  (input) INTEGER
 C             The leading dimension of array VCOEFF.
 C             LDVCO1 >= MAX(1,P), if LERI = 'L';
 C             LDVCO1 >= MAX(1,M), if LERI = 'R'.
 C
-C     LDVCO2  INTEGER
+C     LDVCO2  (input) INTEGER
 C             The second dimension of array VCOEFF.  LDVCO2 >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determination when
 C             transforming (A, B, C). If the user sets TOL > 0, then
 C             the given value of TOL is used as a lower bound for the
@@ -178,15 +178,15 @@ C             (determined by the SLICOT routine TB01UD) is used instead.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N+MAX(M,P))
+C     IWORK   (input/output) INTEGER array, dimension (N+MAX(M,P))
 C             On exit, if INFO = 0, the first nonzero elements of
 C             IWORK(1:N) return the orders of the diagonal blocks of A.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, N + MAX(N, 3*M, 3*P), PM*(PM + 2))
 C             where  PM = P, if LERI = 'L';
@@ -195,7 +195,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

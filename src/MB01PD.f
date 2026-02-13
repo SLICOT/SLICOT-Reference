@@ -14,12 +14,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SCUN    CHARACTER*1
+C     SCUN    (input) CHARACTER*1
 C             SCUN indicates the operation to be performed.
 C             = 'S':  scale the matrix.
 C             = 'U':  undo scaling of the matrix.
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             TYPE indicates the storage type of the input matrix.
 C             = 'G':  A is a full matrix.
 C             = 'L':  A is a (block) lower triangular matrix.

@@ -20,13 +20,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the spectrum separation to be
 C             performed, as follows:
 C             = 'C':  continuous-time sense;
 C             = 'D':  discrete-time sense.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies whether the domain of interest is of stability
 C             type (left part of complex plane or inside of a circle)
 C             or of instability type (right part of complex plane or
@@ -34,7 +34,7 @@ C             outside of a circle), as follows:
 C             = 'S':  stability type domain;
 C             = 'U':  instability type domain.
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates how the performed orthogonal transformations UT
 C             are accumulated, as follows:
 C             = 'I':  U is initialized to the unit matrix and the matrix
@@ -42,7 +42,7 @@ C                     UT is returned in U;
 C             = 'U':  the given matrix U is updated and the matrix U*UT
 C                     is returned in U.
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Indicates how the performed orthogonal transformations VT
 C             are accumulated, as follows:
 C             = 'I':  V is initialized to the unit matrix and the matrix
@@ -55,7 +55,7 @@ C
 C     N       (input) INTEGER
 C             The order of the matrices A, E, U, and V.  N >= 0.
 C
-C     NLOW,   (input) INTEGER
+C     NLOW    (input) INTEGER
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal subpencil  of A - lambda*E
@@ -93,7 +93,7 @@ C               For DICO = 'D':
 C                  Abs(eig(B,C)) < ALPHA if STDOM = 'S';
 C                  Abs(eig(B,C)) > ALPHA if STDOM = 'U'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -109,7 +109,7 @@ C             in the domain of interest and the trailing part of this
 C             subpencil has generalized eigenvalues outside the domain
 C             of interest (see description of A).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -125,7 +125,7 @@ C             array contains the matrix UT of the performed orthogonal
 C             transformations.
 C             Array U need not be set on entry if JOBU = 'I'.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= MAX(1,N).
 C
 C     V       (input/output) DOUBLE PRECISION array, dimension (LDV,N)
@@ -141,7 +141,7 @@ C             array contains the matrix VT of the performed orthogonal
 C             transformations.
 C             Array V need not be set on entry if JOBV = 'I'.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= MAX(1,N).
 C
 C     NDIM    (output) INTEGER
@@ -157,11 +157,11 @@ C             orthonormal basis for the above deflating subspace.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N > 1,
 C             LDWORK >= 4*N + 16.
 C
@@ -173,7 +173,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

@@ -23,13 +23,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op( A ) as follows:
 C             = 'N': op( A ) = A;
 C             = 'T': op( A ) = A';
 C             = 'C': op( A ) = A'.
 C
-C     TRANB   CHARACTER*1
+C     TRANB   (input) CHARACTER*1
 C             Specifies the form of op( B ) as follows:
 C             = 'N': op( B ) = B;
 C             = 'T': op( B ) = B';
@@ -55,7 +55,7 @@ C             the triangular matrix R11, and in the zero part
 C             information about the elementary reflectors used to
 C             compute the SURV decomposition.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -66,7 +66,7 @@ C             the Hessenberg matrix R22, and in the zero part
 C             information about the elementary reflectors used to
 C             compute the SURV decomposition.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     G       (input/output) DOUBLE PRECISION array, dimension (LDG,N)
@@ -75,7 +75,7 @@ C             contain the matrix G.
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix R12.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= MAX(1,N).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -85,7 +85,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             information about the elementary reflectors used to
 C             compute the SURV decomposition.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDG >= MAX(1,N).
 C
 C     CSL     (output) DOUBLE PRECISION array, dimension (2N)
@@ -112,18 +112,18 @@ C             applied from the right-hand side.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -16,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= MAX(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

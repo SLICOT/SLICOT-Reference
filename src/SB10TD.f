@@ -42,7 +42,7 @@ C             The leading NP-by-M part of this array must contain the
 C             system input/output matrix D. Only the trailing
 C             NMEAS-by-NCON submatrix D22 is used.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.  LDD >= max(1,NP).
 C
 C     TU      (input) DOUBLE PRECISION array, dimension (LDTU,M2)
@@ -50,7 +50,7 @@ C             The leading M2-by-M2 part of this array must contain the
 C             control transformation matrix TU, as obtained by the
 C             SLICOT Library routine SB10PD.
 C
-C     LDTU    INTEGER
+C     LDTU    (input) INTEGER
 C             The leading dimension of the array TU.  LDTU >= max(1,M2).
 C
 C     TY      (input) DOUBLE PRECISION array, dimension (LDTY,NP2)
@@ -58,7 +58,7 @@ C             The leading NP2-by-NP2 part of this array must contain the
 C             measurement transformation matrix TY, as obtained by the
 C             SLICOT Library routine SB10PD.
 C
-C     LDTY    INTEGER
+C     LDTY    (input) INTEGER
 C             The leading dimension of the array TY.
 C             LDTY >= max(1,NP2).
 C
@@ -69,7 +69,7 @@ C             as obtained by the SLICOT Library routine SB10SD.
 C             On exit, the leading N-by-N part of this array contains
 C             controller state matrix AK.
 C
-C     LDAK    INTEGER
+C     LDAK    (input) INTEGER
 C             The leading dimension of the array AK.  LDAK >= max(1,N).
 C
 C     BK      (input/output) DOUBLE PRECISION array, dimension
@@ -80,7 +80,7 @@ C             as obtained by the SLICOT Library routine SB10SD.
 C             On exit, the leading N-by-NMEAS part of this array
 C             contains controller input matrix BK.
 C
-C     LDBK    INTEGER
+C     LDBK    (input) INTEGER
 C             The leading dimension of the array BK.  LDBK >= max(1,N).
 C
 C     CK      (input/output) DOUBLE PRECISION array, dimension (LDCK,N)
@@ -90,7 +90,7 @@ C             system as obtained by the SLICOT Library routine SB10SD.
 C             On exit, the leading NCON-by-N part of this array contains
 C             controller output matrix CK.
 C
-C     LDCK    INTEGER
+C     LDCK    (input) INTEGER
 C             The leading dimension of the array CK.
 C             LDCK >= max(1,NCON).
 C
@@ -102,7 +102,7 @@ C             system as obtained by the SLICOT Library routine SB10SD.
 C             On exit, the leading NCON-by-NMEAS part of this array
 C             contains controller input/output matrix DK.
 C
-C     LDDK    INTEGER
+C     LDDK    (input) INTEGER
 C             The leading dimension of the array DK.
 C             LDDK >= max(1,NCON).
 C
@@ -113,7 +113,7 @@ C             inverted in the computation of the controller.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             Tolerance used in determining the nonsingularity of the
 C             matrix which must be inverted. If TOL <= 0, then a default
 C             value equal to sqrt(EPS) is used, where EPS is the
@@ -121,17 +121,17 @@ C             relative machine precision.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (2*M2)
+C     IWORK   (input/output) INTEGER array, dimension (2*M2)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= max(N*M2,N*NP2,M2*NP2,M2*M2+4*M2).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

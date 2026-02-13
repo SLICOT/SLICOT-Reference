@@ -13,13 +13,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies whether the matrix should be packed or unpacked,
 C             as follows:
 C             = 'P':  The matrix should be packed;
 C             = 'U':  The matrix should be unpacked.
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies the part of the matrix to be packed/unpacked,
 C             as follows:
 C             = 'U':  Upper triangular part;
@@ -30,7 +30,7 @@ C
 C     N       (input) INTEGER
 C             The order of the matrix A.  N >= 0.
 C
-C     A       (input or output) DOUBLE PRECISION array, dimension
+C     A       (input/output) DOUBLE PRECISION array, dimension
 C             (LDA,N)
 C             This array is an input parameter if JOB = 'P', and an
 C             output parameter if JOB = 'U'.
@@ -46,10 +46,10 @@ C             UPLO = 'L'), of this array contains the corresponding
 C             upper or lower triangle of the symmetric matrix A; the
 C             other strictly triangular part is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
-C     AP      (output or input) DOUBLE PRECISION array, dimension
+C     AP      (input/output) DOUBLE PRECISION array, dimension
 C             (N*(N+1)/2)
 C             This array is an output parameter if JOB = 'P', and an
 C             input parameter if JOB = 'U'.
