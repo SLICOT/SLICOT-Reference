@@ -55,7 +55,7 @@ IF(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 ENDIF()
 
 # Configure the Build
-SET(Fortran_MODULE_NAME "")
+SET(Fortran_MODULE_NAME "${SLICOT_NAME}")
 INCLUDE(FortranCompilerSettings)
 INCLUDE(GNUInstallDirs)
 INCLUDE(FortranModuleDir)
