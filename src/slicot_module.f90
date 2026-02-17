@@ -3,14 +3,14 @@
 !
 
 !
-! This file is part of SLICOT. It enables the module 
-! and type checking functionality of Fortran 90 and 
+! This file is part of SLICOT. It enables the module
+! and type checking functionality of Fortran 90 and
 ! newer for the old f77 style SLICOT interface.
 !
-module slicot 
-    implicit none 
+module slicot
+    implicit none
     
-    interface 
+    interface
         subroutine ab01md(jobz, n, a, lda, b, ncont, z, ldz, &
                        tau, tol, dwork, ldwork, info)
             character, intent(in)             :: jobz
@@ -30,7 +30,7 @@ module slicot
     end interface
     public :: ab01md
     
-    interface 
+    interface
         subroutine ab01nd(jobz, n, m, a, lda, b, ldb, ncont, &
                        indcon, nblk, z, ldz, tau, tol, iwork, dwork, &
                        ldwork, info)
@@ -56,7 +56,7 @@ module slicot
     end interface
     public :: ab01nd
     
-    interface 
+    interface
         subroutine ab01od(stages, jobu, jobv, n, m, a, lda, b, &
                        ldb, u, ldu, v, ldv, ncont, indcon, kstair, &
                        tol, iwork, dwork, ldwork, info)
@@ -85,7 +85,7 @@ module slicot
     end interface
     public :: ab01od
     
-    interface 
+    interface
         subroutine ab04md(type, n, m, p, alpha, beta, a, lda, &
                        b, ldb, c, ldc, d, ldd, iwork, dwork, &
                        ldwork, info)
@@ -111,7 +111,7 @@ module slicot
     end interface
     public :: ab04md
     
-    interface 
+    interface
         subroutine ab05md(uplo, over, n1, m1, p1, n2, p2, a1, &
                        lda1, b1, ldb1, c1, ldc1, d1, ldd1, a2, &
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
@@ -156,7 +156,7 @@ module slicot
     end interface
     public :: ab05md
     
-    interface 
+    interface
         subroutine ab05nd(over, n1, m1, p1, n2, alpha, a1, lda1, &
                        b1, ldb1, c1, ldc1, d1, ldd1, a2, lda2, &
                        b2, ldb2, c2, ldc2, d2, ldd2, n, a, &
@@ -201,7 +201,7 @@ module slicot
     end interface
     public :: ab05nd
     
-    interface 
+    interface
         subroutine ab05od(over, n1, m1, p1, n2, m2, alpha, a1, &
                        lda1, b1, ldb1, c1, ldc1, d1, ldd1, a2, &
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
@@ -245,7 +245,7 @@ module slicot
     end interface
     public :: ab05od
     
-    interface 
+    interface
         subroutine ab05pd(over, n1, m, p, n2, alpha, a1, lda1, &
                        b1, ldb1, c1, ldc1, d1, ldd1, a2, lda2, &
                        b2, ldb2, c2, ldc2, d2, ldd2, n, a, &
@@ -286,7 +286,7 @@ module slicot
     end interface
     public :: ab05pd
     
-    interface 
+    interface
         subroutine ab05qd(over, n1, m1, p1, n2, m2, p2, a1, &
                        lda1, b1, ldb1, c1, ldc1, d1, ldd1, a2, &
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
@@ -331,7 +331,7 @@ module slicot
     end interface
     public :: ab05qd
     
-    interface 
+    interface
         subroutine ab05rd(fbtype, jobd, n, m, p, mv, pz, alpha, &
                        beta, a, lda, b, ldb, c, ldc, d, &
                        ldd, f, ldf, k, ldk, g, ldg, h, &
@@ -377,7 +377,7 @@ module slicot
     end interface
     public :: ab05rd
     
-    interface 
+    interface
         subroutine ab05sd(fbtype, jobd, n, m, p, alpha, a, lda, &
                        b, ldb, c, ldc, d, ldd, f, ldf, &
                        rcond, iwork, dwork, ldwork, info)
@@ -406,7 +406,7 @@ module slicot
     end interface
     public :: ab05sd
     
-    interface 
+    interface
         subroutine ab07md(jobd, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, info)
             character, intent(in)             :: jobd
@@ -426,7 +426,7 @@ module slicot
     end interface
     public :: ab07md
     
-    interface 
+    interface
         subroutine ab07nd(n, m, a, lda, b, ldb, c, ldc, &
                        d, ldd, rcond, iwork, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -448,7 +448,7 @@ module slicot
     end interface
     public :: ab07nd
     
-    interface 
+    interface
         subroutine ab08md(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, rank, tol, iwork, dwork, &
                        ldwork, info)
@@ -474,7 +474,7 @@ module slicot
     end interface
     public :: ab08md
     
-    interface 
+    interface
         subroutine ab08mz(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, rank, tol, iwork, dwork, &
                        zwork, lzwork, info)
@@ -501,7 +501,7 @@ module slicot
     end interface
     public :: ab08mz
     
-    interface 
+    interface
         subroutine ab08nd(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nu, rank, dinfz, nkror, &
                        nkrol, infz, kronr, kronl, af, ldaf, bf, ldbf, &
@@ -539,7 +539,7 @@ module slicot
     end interface
     public :: ab08nd
     
-    interface 
+    interface
         subroutine ab08nw(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nfz, nrank, niz, dinfz, &
                        nkror, ninfe, nkrol, infz, kronr, infe, kronl, e, &
@@ -578,7 +578,7 @@ module slicot
     end interface
     public :: ab08nw
     
-    interface 
+    interface
         subroutine ab08nx(n, m, p, ro, sigma, svlmax, abcd, ldabcd, &
                        ninfz, infz, kronl, mu, nu, nkrol, tol, iwork, &
                        dwork, ldwork, info)
@@ -605,7 +605,7 @@ module slicot
     end interface
     public :: ab08nx
     
-    interface 
+    interface
         subroutine ab08ny(first, n, m, p, svlmax, abcd, ldabcd, ninfz, &
                        nr, pr, dinfz, nkronl, infz, kronl, tol, iwork, &
                        dwork, ldwork, info)
@@ -632,7 +632,7 @@ module slicot
     end interface
     public :: ab08ny
     
-    interface 
+    interface
         subroutine ab08nz(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nu, rank, dinfz, nkror, &
                        nkrol, infz, kronr, kronl, af, ldaf, bf, ldbf, &
@@ -671,7 +671,7 @@ module slicot
     end interface
     public :: ab08nz
     
-    interface 
+    interface
         subroutine ab09ad(dico, job, equil, ordsel, n, m, p, nr, &
                        a, lda, b, ldb, c, ldc, hsv, tol, &
                        iwork, dwork, ldwork, iwarn, info)
@@ -700,7 +700,7 @@ module slicot
     end interface
     public :: ab09ad
     
-    interface 
+    interface
         subroutine ab09ax(dico, job, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, hsv, t, ldt, &
                        ti, ldti, tol, iwork, dwork, ldwork, iwarn, info)
@@ -732,7 +732,7 @@ module slicot
     end interface
     public :: ab09ax
     
-    interface 
+    interface
         subroutine ab09bd(dico, job, equil, ordsel, n, m, p, nr, &
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        hsv, tol1, tol2, iwork, dwork, ldwork, iwarn, info)
@@ -764,7 +764,7 @@ module slicot
     end interface
     public :: ab09bd
     
-    interface 
+    interface
         subroutine ab09bx(dico, job, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        t, ldt, ti, ldti, tol1, tol2, iwork, dwork, &
@@ -800,7 +800,7 @@ module slicot
     end interface
     public :: ab09bx
     
-    interface 
+    interface
         subroutine ab09cd(dico, equil, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        tol1, tol2, iwork, dwork, ldwork, iwarn, info)
@@ -831,7 +831,7 @@ module slicot
     end interface
     public :: ab09cd
     
-    interface 
+    interface
         subroutine ab09cx(dico, ordsel, n, m, p, nr, a, lda, &
                        b, ldb, c, ldc, d, ldd, hsv, tol1, &
                        tol2, iwork, dwork, ldwork, iwarn, info)
@@ -861,7 +861,7 @@ module slicot
     end interface
     public :: ab09cx
     
-    interface 
+    interface
         subroutine ab09dd(dico, n, m, p, nr, a, lda, b, &
                        ldb, c, ldc, d, ldd, rcond, iwork, dwork, &
                        info)
@@ -886,7 +886,7 @@ module slicot
     end interface
     public :: ab09dd
     
-    interface 
+    interface
         subroutine ab09ed(dico, equil, ordsel, n, m, p, nr, alpha, &
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        ns, hsv, tol1, tol2, iwork, dwork, ldwork, iwarn, &
@@ -920,7 +920,7 @@ module slicot
     end interface
     public :: ab09ed
     
-    interface 
+    interface
         subroutine ab09fd(dico, jobcf, fact, jobmr, equil, ordsel, n, m, &
                        p, nr, alpha, a, lda, b, ldb, c, &
                        ldc, nq, hsv, tol1, tol2, iwork, dwork, ldwork, &
@@ -955,7 +955,7 @@ module slicot
     end interface
     public :: ab09fd
     
-    interface 
+    interface
         subroutine ab09gd(dico, jobcf, fact, jobmr, equil, ordsel, n, m, &
                        p, nr, alpha, a, lda, b, ldb, c, &
                        ldc, d, ldd, nq, hsv, tol1, tol2, tol3, &
@@ -993,7 +993,7 @@ module slicot
     end interface
     public :: ab09gd
     
-    interface 
+    interface
         subroutine ab09hd(dico, job, equil, ordsel, n, m, p, nr, &
                        alpha, beta, a, lda, b, ldb, c, ldc, &
                        d, ldd, ns, hsv, tol1, tol2, iwork, dwork, &
@@ -1030,7 +1030,7 @@ module slicot
     end interface
     public :: ab09hd
     
-    interface 
+    interface
         subroutine ab09hx(dico, job, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        t, ldt, ti, ldti, tol1, tol2, iwork, dwork, &
@@ -1067,7 +1067,7 @@ module slicot
     end interface
     public :: ab09hx
     
-    interface 
+    interface
         subroutine ab09hy(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, scalec, scaleo, s, lds, r, &
                        ldr, iwork, dwork, ldwork, bwork, info)
@@ -1097,7 +1097,7 @@ module slicot
     end interface
     public :: ab09hy
     
-    interface 
+    interface
         subroutine ab09id(dico, jobc, jobo, job, weight, equil, ordsel, n, &
                        m, p, nv, pv, nw, mw, nr, alpha, &
                        alphac, alphao, a, lda, b, ldb, c, ldc, &
@@ -1160,7 +1160,7 @@ module slicot
     end interface
     public :: ab09id
     
-    interface 
+    interface
         subroutine ab09ix(dico, job, fact, ordsel, n, m, p, nr, &
                        scalec, scaleo, a, lda, b, ldb, c, ldc, &
                        d, ldd, ti, ldti, t, ldt, nminr, hsv, &
@@ -1200,7 +1200,7 @@ module slicot
     end interface
     public :: ab09ix
     
-    interface 
+    interface
         subroutine ab09iy(dico, jobc, jobo, weight, n, m, p, nv, &
                        pv, nw, mw, alphac, alphao, a, lda, b, &
                        ldb, c, ldc, av, ldav, bv, ldbv, cv, &
@@ -1255,7 +1255,7 @@ module slicot
     end interface
     public :: ab09iy
     
-    interface 
+    interface
         subroutine ab09jd(jobv, jobw, jobinv, dico, equil, ordsel, n, nv, &
                        nw, m, p, nr, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, av, ldav, bv, &
@@ -1312,7 +1312,7 @@ module slicot
     end interface
     public :: ab09jd
     
-    interface 
+    interface
         subroutine ab09jv(job, dico, jobev, stbchk, n, m, p, nv, &
                        pv, a, lda, b, ldb, c, ldc, d, &
                        ldd, av, ldav, ev, ldev, bv, ldbv, cv, &
@@ -1352,7 +1352,7 @@ module slicot
     end interface
     public :: ab09jv
     
-    interface 
+    interface
         subroutine ab09jw(job, dico, jobew, stbchk, n, m, p, nw, &
                        mw, a, lda, b, ldb, c, ldc, d, &
                        ldd, aw, ldaw, ew, ldew, bw, ldbw, cw, &
@@ -1392,7 +1392,7 @@ module slicot
     end interface
     public :: ab09jw
     
-    interface 
+    interface
         subroutine ab09jx(dico, stdom, evtype, n, alpha, er, ei, ed, &
                        tolinf, info)
             character, intent(in)           :: dico
@@ -1409,7 +1409,7 @@ module slicot
     end interface
     public :: ab09jx
     
-    interface 
+    interface
         subroutine ab09kd(job, dico, weight, equil, ordsel, n, nv, nw, &
                        m, p, nr, alpha, a, lda, b, ldb, &
                        c, ldc, d, ldd, av, ldav, bv, ldbv, &
@@ -1465,7 +1465,7 @@ module slicot
     end interface
     public :: ab09kd
     
-    interface 
+    interface
         subroutine ab09kx(job, dico, weight, n, nv, nw, m, p, &
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        av, ldav, bv, ldbv, cv, ldcv, dv, lddv, &
@@ -1511,7 +1511,7 @@ module slicot
     end interface
     public :: ab09kx
     
-    interface 
+    interface
         subroutine ab09md(dico, job, equil, ordsel, n, m, p, nr, &
                        alpha, a, lda, b, ldb, c, ldc, ns, &
                        hsv, tol, iwork, dwork, ldwork, iwarn, info)
@@ -1542,7 +1542,7 @@ module slicot
     end interface
     public :: ab09md
     
-    interface 
+    interface
         subroutine ab09nd(dico, job, equil, ordsel, n, m, p, nr, &
                        alpha, a, lda, b, ldb, c, ldc, d, &
                        ldd, ns, hsv, tol1, tol2, iwork, dwork, ldwork, &
@@ -1577,7 +1577,7 @@ module slicot
     end interface
     public :: ab09nd
     
-    interface 
+    interface
         double precision function ab13ad (dico,equil,n,m,p,alpha,a,lda, &
                        b,ldb,c,ldc,ns,hsv,dwork,ldwork, &
                        info)
@@ -1602,7 +1602,7 @@ module slicot
     end interface
     public :: ab13ad
     
-    interface 
+    interface
         double precision function ab13ax (dico,n,m,p,a,lda,b,ldb, &
                        c,ldc,hsv,dwork,ldwork,info)
             character, intent(in)             :: dico
@@ -1623,7 +1623,7 @@ module slicot
     end interface
     public :: ab13ax
     
-    interface 
+    interface
         double precision function ab13bd (dico,jobn,n,m,p,a,lda,b, &
                        ldb,c,ldc,d,ldd,nq,tol,dwork, &
                        ldwork,iwarn,info)
@@ -1650,7 +1650,7 @@ module slicot
     end interface
     public :: ab13bd
     
-    interface 
+    interface
         double precision function ab13cd (n,m,np,a,lda,b,ldb,c, &
                        ldc,d,ldd,tol,iwork,dwork,ldwork,zwork, &
                        lzwork,bwork,info)
@@ -1677,7 +1677,7 @@ module slicot
     end interface
     public :: ab13cd
     
-    interface 
+    interface
         subroutine ab13dd(dico, jobe, equil, jobd, n, m, p, fpeak, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        d, ldd, gpeak, tol, iwork, dwork, ldwork, zwork, &
@@ -1712,7 +1712,7 @@ module slicot
     end interface
     public :: ab13dd
     
-    interface 
+    interface
         double precision function ab13dx (dico,jobe,jobd,n,m,p,omega,a, &
                        lda,e,lde,b,ldb,c,ldc,d, &
                        ldd,iwork,dwork,ldwork,zwork,lzwork,info)
@@ -1743,7 +1743,7 @@ module slicot
     end interface
     public :: ab13dx
     
-    interface 
+    interface
         subroutine ab13ed(n, a, lda, low, high, tol, dwork, ldwork, &
                        info)
             integer, intent(in)               :: n
@@ -1759,7 +1759,7 @@ module slicot
     end interface
     public :: ab13ed
     
-    interface 
+    interface
         subroutine ab13fd(n, a, lda, beta, omega, tol, dwork, ldwork, &
                        zwork, lzwork, info)
             integer, intent(in)               :: n
@@ -1777,7 +1777,7 @@ module slicot
     end interface
     public :: ab13fd
     
-    interface 
+    interface
         subroutine ab13hd(dico, jobe, equil, jobd, ckprop, reduce, poles, n, &
                        m, p, ranke, fpeak, a, lda, e, lde, &
                        b, ldb, c, ldc, d, ldd, nr, gpeak, &
@@ -1820,7 +1820,7 @@ module slicot
     end interface
     public :: ab13hd
     
-    interface 
+    interface
         logical function ab13id (jobsys,jobeig,equil,cksing,restor,update,n,m, &
                        p,a,lda,e,lde,b,ldb,c, &
                        ldc,nr,ranke,tol,iwork,dwork,ldwork,iwarn, &
@@ -1854,7 +1854,7 @@ module slicot
     end interface
     public :: ab13id
     
-    interface 
+    interface
         subroutine ab13md(fact, n, z, ldz, m, nblock, itype, x, &
                        bound, d, g, iwork, dwork, ldwork, zwork, lzwork, &
                        info)
@@ -1879,7 +1879,7 @@ module slicot
     end interface
     public :: ab13md
     
-    interface 
+    interface
         subroutine ab8nxz(n, m, p, ro, sigma, svlmax, abcd, ldabcd, &
                        ninfz, infz, kronl, mu, nu, nkrol, tol, iwork, &
                        dwork, zwork, lzwork, info)
@@ -1907,7 +1907,7 @@ module slicot
     end interface
     public :: ab8nxz
     
-    interface 
+    interface
         subroutine ag07bd(jobe, n, m, a, lda, e, lde, b, &
                        ldb, c, ldc, d, ldd, ai, ldai, ei, &
                        ldei, bi, ldbi, ci, ldci, di, lddi, info)
@@ -1939,7 +1939,7 @@ module slicot
     end interface
     public :: ag07bd
     
-    interface 
+    interface
         subroutine ag08bd(equil, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, d, ldd, nfz, &
                        nrank, niz, dinfz, nkror, ninfe, nkrol, infz, kronr, &
@@ -1979,7 +1979,7 @@ module slicot
     end interface
     public :: ag08bd
     
-    interface 
+    interface
         subroutine ag08by(first, n, m, p, svlmax, abcd, ldabcd, e, &
                        lde, nr, pr, ninfz, dinfz, nkronl, infz, kronl, &
                        tol, iwork, dwork, ldwork, info)
@@ -2008,7 +2008,7 @@ module slicot
     end interface
     public :: ag08by
     
-    interface 
+    interface
         subroutine ag08bz(equil, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, d, ldd, nfz, &
                        nrank, niz, dinfz, nkror, ninfe, nkrol, infz, kronr, &
@@ -2049,7 +2049,7 @@ module slicot
     end interface
     public :: ag08bz
     
-    interface 
+    interface
         subroutine ag8byz(first, n, m, p, svlmax, abcd, ldabcd, e, &
                        lde, nr, pr, ninfz, dinfz, nkronl, infz, kronl, &
                        tol, iwork, dwork, zwork, lzwork, info)
@@ -2079,7 +2079,7 @@ module slicot
     end interface
     public :: ag8byz
     
-    interface 
+    interface
         subroutine bb01ad(def, nr, dpar, ipar, bpar, chpar, vec, n, &
                        m, p, a, lda, b, ldb, c, ldc, &
                        g, ldg, q, ldq, x, ldx, dwork, ldwork, &
@@ -2113,7 +2113,7 @@ module slicot
     end interface
     public :: bb01ad
     
-    interface 
+    interface
         subroutine bb02ad(def, nr, dpar, ipar, bpar, chpar, vec, n, &
                        m, p, a, lda, b, ldb, c, ldc, &
                        q, ldq, r, ldr, s, lds, x, ldx, &
@@ -2149,7 +2149,7 @@ module slicot
     end interface
     public :: bb02ad
     
-    interface 
+    interface
         subroutine bb03ad(def, nr, dpar, ipar, vec, n, m, e, &
                        lde, a, lda, y, ldy, b, ldb, x, &
                        ldx, u, ldu, note, dwork, ldwork, info)
@@ -2180,7 +2180,7 @@ module slicot
     end interface
     public :: bb03ad
     
-    interface 
+    interface
         subroutine bb04ad(def, nr, dpar, ipar, vec, n, m, e, &
                        lde, a, lda, y, ldy, b, ldb, x, &
                        ldx, u, ldu, note, dwork, ldwork, info)
@@ -2211,7 +2211,7 @@ module slicot
     end interface
     public :: bb04ad
     
-    interface 
+    interface
         subroutine bd01ad(def, nr, dpar, ipar, vec, n, m, p, &
                        e, lde, a, lda, b, ldb, c, ldc, &
                        d, ldd, note, dwork, ldwork, info)
@@ -2241,7 +2241,7 @@ module slicot
     end interface
     public :: bd01ad
     
-    interface 
+    interface
         subroutine bd02ad(def, nr, dpar, ipar, vec, n, m, p, &
                        e, lde, a, lda, b, ldb, c, ldc, &
                        d, ldd, note, dwork, ldwork, info)
@@ -2271,7 +2271,7 @@ module slicot
     end interface
     public :: bd02ad
     
-    interface 
+    interface
         subroutine de01od(conv, n, a, b, info)
             character, intent(in)             :: conv
             integer, intent(in)               :: n
@@ -2282,7 +2282,7 @@ module slicot
     end interface
     public :: de01od
     
-    interface 
+    interface
         subroutine de01pd(conv, wght, n, a, b, w, info)
             character, intent(in)             :: conv
             character, intent(in)             :: wght
@@ -2295,16 +2295,7 @@ module slicot
     end interface
     public :: de01pd
     
-    interface 
-        logical function delctg (par1,par2,par3)
-            double precision, intent(in)   :: par1
-            double precision, intent(in)   :: par2
-            double precision, intent(in)   :: par3
-        end function delctg
-    end interface
-    public :: delctg
-    
-    interface 
+    interface
         subroutine df01md(sico, n, dt, a, dwork, info)
             character, intent(in)             :: sico
             integer, intent(in)               :: n
@@ -2316,7 +2307,7 @@ module slicot
     end interface
     public :: df01md
     
-    interface 
+    interface
         subroutine dg01md(indi, n, xr, xi, info)
             character, intent(in)             :: indi
             integer, intent(in)               :: n
@@ -2327,7 +2318,7 @@ module slicot
     end interface
     public :: dg01md
     
-    interface 
+    interface
         subroutine dg01nd(indi, n, xr, xi, info)
             character, intent(in)             :: indi
             integer, intent(in)               :: n
@@ -2338,7 +2329,7 @@ module slicot
     end interface
     public :: dg01nd
     
-    interface 
+    interface
         subroutine dg01ny(indi, n, xr, xi)
             character, intent(in)             :: indi
             integer, intent(in)               :: n
@@ -2348,7 +2339,7 @@ module slicot
     end interface
     public :: dg01ny
     
-    interface 
+    interface
         subroutine dg01od(scr, wght, n, a, w, info)
             character, intent(in)             :: scr
             character, intent(in)             :: wght
@@ -2360,7 +2351,7 @@ module slicot
     end interface
     public :: dg01od
     
-    interface 
+    interface
         subroutine dk01md(type, n, a, info)
             character, intent(in)             :: type
             integer, intent(in)               :: n
@@ -2370,7 +2361,7 @@ module slicot
     end interface
     public :: dk01md
     
-    interface 
+    interface
         subroutine fb01qd(jobk, multbq, n, m, p, s, lds, a, &
                        lda, b, ldb, q, ldq, c, ldc, r, &
                        ldr, k, ldk, tol, iwork, dwork, ldwork, info)
@@ -2402,7 +2393,7 @@ module slicot
     end interface
     public :: fb01qd
     
-    interface 
+    interface
         subroutine fb01rd(jobk, multbq, n, m, p, s, lds, a, &
                        lda, b, ldb, q, ldq, c, ldc, r, &
                        ldr, k, ldk, tol, iwork, dwork, ldwork, info)
@@ -2434,7 +2425,7 @@ module slicot
     end interface
     public :: fb01rd
     
-    interface 
+    interface
         subroutine fb01sd(jobx, multab, multrc, n, m, p, sinv, ldsinv, &
                        ainv, ldainv, b, ldb, rinv, ldrinv, c, ldc, &
                        qinv, ldqinv, x, rinvy, z, e, tol, iwork, &
@@ -2470,7 +2461,7 @@ module slicot
     end interface
     public :: fb01sd
     
-    interface 
+    interface
         subroutine fb01td(jobx, multrc, n, m, p, sinv, ldsinv, ainv, &
                        ldainv, ainvb, ldainb, rinv, ldrinv, c, ldc, qinv, &
                        ldqinv, x, rinvy, z, e, tol, iwork, dwork, &
@@ -2505,7 +2496,7 @@ module slicot
     end interface
     public :: fb01td
     
-    interface 
+    interface
         subroutine fb01vd(n, m, l, p, ldp, a, lda, b, &
                        ldb, c, ldc, q, ldq, r, ldr, k, &
                        ldk, tol, iwork, dwork, ldwork, info)
@@ -2535,7 +2526,7 @@ module slicot
     end interface
     public :: fb01vd
     
-    interface 
+    interface
         subroutine fd01ad(jp, l, lambda, xin, yin, efor, xf, epsbck, &
                        cteta, steta, yq, epos, eout, salph, iwarn, info)
             character, intent(in)             :: jp
@@ -2558,7 +2549,7 @@ module slicot
     end interface
     public :: fd01ad
     
-    interface 
+    interface
         subroutine ib01ad(meth, alg, jobd, batch, conct, ctrl, nobr, m, &
                        l, nsmp, u, ldu, y, ldy, n, r, &
                        ldr, sv, rcond, tol, iwork, dwork, ldwork, iwarn, &
@@ -2592,7 +2583,7 @@ module slicot
     end interface
     public :: ib01ad
     
-    interface 
+    interface
         subroutine ib01bd(meth, job, jobck, nobr, n, m, l, nsmpl, &
                        r, ldr, a, lda, c, ldc, b, ldb, &
                        d, ldd, q, ldq, ry, ldry, s, lds, &
@@ -2635,7 +2626,7 @@ module slicot
     end interface
     public :: ib01bd
     
-    interface 
+    interface
         subroutine ib01cd(jobx0, comuse, job, n, m, l, nsmp, a, &
                        lda, b, ldb, c, ldc, d, ldd, u, &
                        ldu, y, ldy, x0, v, ldv, tol, iwork, &
@@ -2672,7 +2663,7 @@ module slicot
     end interface
     public :: ib01cd
     
-    interface 
+    interface
         subroutine ib01md(meth, alg, batch, conct, nobr, m, l, nsmp, &
                        u, ldu, y, ldy, r, ldr, iwork, dwork, &
                        ldwork, iwarn, info)
@@ -2699,7 +2690,7 @@ module slicot
     end interface
     public :: ib01md
     
-    interface 
+    interface
         subroutine ib01my(meth, batch, conct, nobr, m, l, nsmp, u, &
                        ldu, y, ldy, r, ldr, iwork, dwork, ldwork, &
                        iwarn, info)
@@ -2725,7 +2716,7 @@ module slicot
     end interface
     public :: ib01my
     
-    interface 
+    interface
         subroutine ib01nd(meth, jobd, nobr, m, l, r, ldr, sv, &
                        tol, iwork, dwork, ldwork, iwarn, info)
             character, intent(in)             :: meth
@@ -2746,7 +2737,7 @@ module slicot
     end interface
     public :: ib01nd
     
-    interface 
+    interface
         subroutine ib01od(ctrl, nobr, l, sv, n, tol, iwarn, info)
             character, intent(in)           :: ctrl
             integer, intent(in)             :: nobr
@@ -2760,7 +2751,7 @@ module slicot
     end interface
     public :: ib01od
     
-    interface 
+    interface
         subroutine ib01oy(ns, nmax, n, sv, info)
             integer, intent(in)               :: ns
             integer, intent(in)               :: nmax
@@ -2771,7 +2762,7 @@ module slicot
     end interface
     public :: ib01oy
     
-    interface 
+    interface
         subroutine ib01pd(meth, job, jobcv, nobr, n, m, l, nsmpl, &
                        r, ldr, a, lda, c, ldc, b, ldb, &
                        d, ldd, q, ldq, ry, ldry, s, lds, &
@@ -2812,7 +2803,7 @@ module slicot
     end interface
     public :: ib01pd
     
-    interface 
+    interface
         subroutine ib01px(job, nobr, n, m, l, uf, lduf, un, &
                        ldun, ul, ldul, pgal, ldpgal, k, ldk, r, &
                        ldr, x, b, ldb, d, ldd, tol, iwork, &
@@ -2849,7 +2840,7 @@ module slicot
     end interface
     public :: ib01px
     
-    interface 
+    interface
         subroutine ib01py(meth, job, nobr, n, m, l, rankr1, ul, &
                        ldul, r1, ldr1, tau1, pgal, ldpgal, k, ldk, &
                        r, ldr, h, ldh, b, ldb, d, ldd, &
@@ -2888,7 +2879,7 @@ module slicot
     end interface
     public :: ib01py
     
-    interface 
+    interface
         subroutine ib01qd(jobx0, job, n, m, l, nsmp, a, lda, &
                        c, ldc, u, ldu, y, ldy, x0, b, &
                        ldb, d, ldd, tol, iwork, dwork, ldwork, iwarn, &
@@ -2922,7 +2913,7 @@ module slicot
     end interface
     public :: ib01qd
     
-    interface 
+    interface
         subroutine ib01rd(job, n, m, l, nsmp, a, lda, b, &
                        ldb, c, ldc, d, ldd, u, ldu, y, &
                        ldy, x0, tol, iwork, dwork, ldwork, iwarn, info)
@@ -2954,7 +2945,7 @@ module slicot
     end interface
     public :: ib01rd
     
-    interface 
+    interface
         subroutine ib03ad(init, alg, stor, nobr, m, l, nsmp, n, &
                        nn, itmax1, itmax2, nprint, u, ldu, y, ldy, &
                        x, lx, tol1, tol2, iwork, dwork, ldwork, iwarn, &
@@ -2988,7 +2979,7 @@ module slicot
     end interface
     public :: ib03ad
     
-    interface 
+    interface
         subroutine ib03bd(init, nobr, m, l, nsmp, n, nn, itmax1, &
                        itmax2, nprint, u, ldu, y, ldy, x, lx, &
                        tol1, tol2, iwork, dwork, ldwork, iwarn, info)
@@ -3019,15 +3010,7 @@ module slicot
     end interface
     public :: ib03bd
     
-    interface 
-        logical function lfdum (x,y)
-            double precision, intent(in)   :: x
-            double precision, intent(in)   :: y
-        end function lfdum
-    end interface
-    public :: lfdum
-    
-    interface 
+    interface
         subroutine ma01ad(xr, xi, yr, yi)
             double precision, intent(in)    :: xr
             double precision, intent(in)    :: xi
@@ -3037,7 +3020,7 @@ module slicot
     end interface
     public :: ma01ad
     
-    interface 
+    interface
         subroutine ma01bd(base, lgbas, k, s, a, inca, alpha, beta, &
                        scal)
             double precision, intent(in)    :: base
@@ -3053,7 +3036,7 @@ module slicot
     end interface
     public :: ma01bd
     
-    interface 
+    interface
         subroutine ma01bz(base, k, s, a, inca, alpha, beta, scal)
             double precision, intent(in)    :: base
             integer, intent(in)             :: k
@@ -3067,7 +3050,7 @@ module slicot
     end interface
     public :: ma01bz
     
-    interface 
+    interface
         integer function ma01cd (a,ia,b,ib)
             double precision, intent(in)   :: a
             integer, intent(in)            :: ia
@@ -3077,7 +3060,7 @@ module slicot
     end interface
     public :: ma01cd
     
-    interface 
+    interface
         subroutine ma01dd(ar1, ai1, ar2, ai2, eps, safemn, d)
             double precision, intent(in)    :: ar1
             double precision, intent(in)    :: ai1
@@ -3090,7 +3073,7 @@ module slicot
     end interface
     public :: ma01dd
     
-    interface 
+    interface
         subroutine ma01dz(ar1, ai1, b1, ar2, ai2, b2, eps, safemn, &
                        d1, d2, iwarn)
             double precision, intent(in)    :: ar1
@@ -3108,7 +3091,7 @@ module slicot
     end interface
     public :: ma01dz
     
-    interface 
+    interface
         subroutine ma02ad(job, m, n, a, lda, b, ldb)
             character, intent(in)           :: job
             integer, intent(in)             :: m
@@ -3121,7 +3104,7 @@ module slicot
     end interface
     public :: ma02ad
     
-    interface 
+    interface
         subroutine ma02az(trans, job, m, n, a, lda, b, ldb)
             character, intent(in)     :: trans
             character, intent(in)     :: job
@@ -3135,7 +3118,7 @@ module slicot
     end interface
     public :: ma02az
     
-    interface 
+    interface
         subroutine ma02bd(side, m, n, a, lda)
             character, intent(in)             :: side
             integer, intent(in)               :: m
@@ -3146,7 +3129,7 @@ module slicot
     end interface
     public :: ma02bd
     
-    interface 
+    interface
         subroutine ma02bz(side, m, n, a, lda)
             character, intent(in)       :: side
             integer, intent(in)         :: m
@@ -3157,7 +3140,7 @@ module slicot
     end interface
     public :: ma02bz
     
-    interface 
+    interface
         subroutine ma02cd(n, kl, ku, a, lda)
             integer, intent(in)               :: n
             integer, intent(in)               :: kl
@@ -3168,7 +3151,7 @@ module slicot
     end interface
     public :: ma02cd
     
-    interface 
+    interface
         subroutine ma02cz(n, kl, ku, a, lda)
             integer, intent(in)         :: n
             integer, intent(in)         :: kl
@@ -3179,7 +3162,7 @@ module slicot
     end interface
     public :: ma02cz
     
-    interface 
+    interface
         subroutine ma02dd(job, uplo, n, a, lda, ap)
             character, intent(in)             :: job
             character, intent(in)             :: uplo
@@ -3191,7 +3174,7 @@ module slicot
     end interface
     public :: ma02dd
     
-    interface 
+    interface
         subroutine ma02ed(uplo, n, a, lda)
             character, intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -3201,7 +3184,7 @@ module slicot
     end interface
     public :: ma02ed
     
-    interface 
+    interface
         subroutine ma02es(uplo, n, a, lda)
             character, intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -3211,7 +3194,7 @@ module slicot
     end interface
     public :: ma02es
     
-    interface 
+    interface
         subroutine ma02ez(uplo, trans, skew, n, a, lda)
             character, intent(in)       :: uplo
             character, intent(in)       :: trans
@@ -3223,7 +3206,7 @@ module slicot
     end interface
     public :: ma02ez
     
-    interface 
+    interface
         subroutine ma02fd(x1, x2, c, s, info)
             double precision, intent(inout)   :: x1
             double precision, intent(in)      :: x2
@@ -3234,7 +3217,7 @@ module slicot
     end interface
     public :: ma02fd
     
-    interface 
+    interface
         subroutine ma02gd(n, a, lda, k1, k2, ipiv, incx)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -3247,7 +3230,7 @@ module slicot
     end interface
     public :: ma02gd
     
-    interface 
+    interface
         subroutine ma02gz(n, a, lda, k1, k2, ipiv, incx)
             integer, intent(in)         :: n
             complex*16, intent(inout)   :: a(lda, *)
@@ -3260,7 +3243,7 @@ module slicot
     end interface
     public :: ma02gz
     
-    interface 
+    interface
         logical function ma02hd (job,m,n,diag,a,lda)
             character, intent(in)          :: job
             integer, intent(in)            :: m
@@ -3272,7 +3255,7 @@ module slicot
     end interface
     public :: ma02hd
     
-    interface 
+    interface
         logical function ma02hz (job,m,n,diag,a,lda)
             character, intent(in)    :: job
             integer, intent(in)      :: m
@@ -3284,7 +3267,7 @@ module slicot
     end interface
     public :: ma02hz
     
-    interface 
+    interface
         double precision function ma02id (typ,norm,n,a,lda,qg,ldqg,dwork)
             character, intent(in)             :: typ
             character, intent(in)             :: norm
@@ -3298,7 +3281,7 @@ module slicot
     end interface
     public :: ma02id
     
-    interface 
+    interface
         double precision function ma02iz (typ,norm,n,a,lda,qg,ldqg,dwork)
             character, intent(in)             :: typ
             character, intent(in)             :: norm
@@ -3312,7 +3295,7 @@ module slicot
     end interface
     public :: ma02iz
     
-    interface 
+    interface
         double precision function ma02jd (ltran1,ltran2,n,q1,ldq1,q2,ldq2,res, &
                        ldres)
             logical, intent(in)               :: ltran1
@@ -3328,7 +3311,7 @@ module slicot
     end interface
     public :: ma02jd
     
-    interface 
+    interface
         double precision function ma02jz (ltran1,ltran2,n,q1,ldq1,q2,ldq2,res, &
                        ldres)
             logical, intent(in)         :: ltran1
@@ -3344,7 +3327,7 @@ module slicot
     end interface
     public :: ma02jz
     
-    interface 
+    interface
         double precision function ma02md (norm,uplo,n,a,lda,dwork)
             character, intent(in)             :: norm
             character, intent(in)             :: uplo
@@ -3356,7 +3339,7 @@ module slicot
     end interface
     public :: ma02md
     
-    interface 
+    interface
         double precision function ma02mz (norm,uplo,n,a,lda,dwork)
             character, intent(in)             :: norm
             character, intent(in)             :: uplo
@@ -3368,7 +3351,7 @@ module slicot
     end interface
     public :: ma02mz
     
-    interface 
+    interface
         subroutine ma02nz(uplo, trans, skew, n, k, l, a, lda)
             character, intent(in)       :: uplo
             character, intent(in)       :: trans
@@ -3382,7 +3365,7 @@ module slicot
     end interface
     public :: ma02nz
     
-    interface 
+    interface
         integer function ma02od (skew,m,a,lda,de,ldde)
             character, intent(in)          :: skew
             integer, intent(in)            :: m
@@ -3394,7 +3377,7 @@ module slicot
     end interface
     public :: ma02od
     
-    interface 
+    interface
         integer function ma02oz (skew,m,a,lda,de,ldde)
             character, intent(in)    :: skew
             integer, intent(in)      :: m
@@ -3406,7 +3389,7 @@ module slicot
     end interface
     public :: ma02oz
     
-    interface 
+    interface
         subroutine ma02pd(m, n, a, lda, nzr, nzc)
             integer, intent(in)             :: m
             integer, intent(in)             :: n
@@ -3418,7 +3401,7 @@ module slicot
     end interface
     public :: ma02pd
     
-    interface 
+    interface
         subroutine ma02pz(m, n, a, lda, nzr, nzc)
             integer, intent(in)       :: m
             integer, intent(in)       :: n
@@ -3430,7 +3413,7 @@ module slicot
     end interface
     public :: ma02pz
     
-    interface 
+    interface
         subroutine ma02rd(id, n, d, e, info)
             character, intent(in)             :: id
             integer, intent(in)               :: n
@@ -3441,7 +3424,7 @@ module slicot
     end interface
     public :: ma02rd
     
-    interface 
+    interface
         double precision function ma02sd (m,n,a,lda)
             integer, intent(in)            :: m
             integer, intent(in)            :: n
@@ -3451,7 +3434,7 @@ module slicot
     end interface
     public :: ma02sd
     
-    interface 
+    interface
         subroutine mb01kd(uplo, trans, n, k, alpha, a, lda, b, &
                        ldb, beta, c, ldc, info)
             character, intent(in)             :: uplo
@@ -3471,7 +3454,7 @@ module slicot
     end interface
     public :: mb01kd
     
-    interface 
+    interface
         subroutine mb01ld(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3493,7 +3476,7 @@ module slicot
     end interface
     public :: mb01ld
     
-    interface 
+    interface
         subroutine mb01md(uplo, n, alpha, a, lda, x, incx, beta, &
                        y, incy)
             character, intent(in)             :: uplo
@@ -3510,7 +3493,7 @@ module slicot
     end interface
     public :: mb01md
     
-    interface 
+    interface
         subroutine mb01nd(uplo, n, alpha, x, incx, y, incy, a, &
                        lda)
             character, intent(in)             :: uplo
@@ -3526,7 +3509,7 @@ module slicot
     end interface
     public :: mb01nd
     
-    interface 
+    interface
         subroutine mb01oc(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, info)
             character, intent(in)             :: uplo
@@ -3545,7 +3528,7 @@ module slicot
     end interface
     public :: mb01oc
     
-    interface 
+    interface
         subroutine mb01od(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, e, lde, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3568,7 +3551,7 @@ module slicot
     end interface
     public :: mb01od
     
-    interface 
+    interface
         subroutine mb01oe(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, e, lde)
             character, intent(in)             :: uplo
@@ -3586,7 +3569,7 @@ module slicot
     end interface
     public :: mb01oe
     
-    interface 
+    interface
         subroutine mb01oh(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, a, lda)
             character, intent(in)             :: uplo
@@ -3604,7 +3587,7 @@ module slicot
     end interface
     public :: mb01oh
     
-    interface 
+    interface
         subroutine mb01oo(uplo, trans, n, h, ldh, x, ldx, e, &
                        lde, p, ldp, info)
             character, intent(in)           :: uplo
@@ -3623,7 +3606,7 @@ module slicot
     end interface
     public :: mb01oo
     
-    interface 
+    interface
         subroutine mb01os(uplo, trans, n, h, ldh, x, ldx, p, &
                        ldp, info)
             character, intent(in)           :: uplo
@@ -3640,7 +3623,7 @@ module slicot
     end interface
     public :: mb01os
     
-    interface 
+    interface
         subroutine mb01ot(uplo, trans, n, alpha, beta, r, ldr, e, &
                        lde, t, ldt)
             character, intent(in)             :: uplo
@@ -3658,7 +3641,7 @@ module slicot
     end interface
     public :: mb01ot
     
-    interface 
+    interface
         subroutine mb01pd(scun, type, m, n, kl, ku, anrm, nbl, &
                        nrows, a, lda, info)
             character, intent(in)             :: scun
@@ -3677,7 +3660,7 @@ module slicot
     end interface
     public :: mb01pd
     
-    interface 
+    interface
         subroutine mb01qd(type, m, n, kl, ku, cfrom, cto, nbl, &
                        nrows, a, lda, info)
             character, intent(in)             :: type
@@ -3696,7 +3679,7 @@ module slicot
     end interface
     public :: mb01qd
     
-    interface 
+    interface
         subroutine mb01rb(side, uplo, trans, m, n, alpha, beta, r, &
                        ldr, a, lda, b, ldb, info)
             character, intent(in)             :: side
@@ -3717,7 +3700,7 @@ module slicot
     end interface
     public :: mb01rb
     
-    interface 
+    interface
         subroutine mb01rd(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3739,7 +3722,7 @@ module slicot
     end interface
     public :: mb01rd
     
-    interface 
+    interface
         subroutine mb01rh(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3760,7 +3743,7 @@ module slicot
     end interface
     public :: mb01rh
     
-    interface 
+    interface
         subroutine mb01rt(uplo, trans, n, alpha, beta, r, ldr, e, &
                        lde, x, ldx, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3781,7 +3764,7 @@ module slicot
     end interface
     public :: mb01rt
     
-    interface 
+    interface
         subroutine mb01ru(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -3803,7 +3786,7 @@ module slicot
     end interface
     public :: mb01ru
     
-    interface 
+    interface
         subroutine mb01rw(uplo, trans, m, n, a, lda, z, ldz, &
                        dwork, info)
             character, intent(in)             :: uplo
@@ -3820,7 +3803,7 @@ module slicot
     end interface
     public :: mb01rw
     
-    interface 
+    interface
         subroutine mb01rx(side, uplo, trans, m, n, alpha, beta, r, &
                        ldr, a, lda, b, ldb, info)
             character, intent(in)             :: side
@@ -3841,7 +3824,7 @@ module slicot
     end interface
     public :: mb01rx
     
-    interface 
+    interface
         subroutine mb01ry(side, uplo, trans, m, alpha, beta, r, ldr, &
                        h, ldh, b, ldb, dwork, info)
             character, intent(in)             :: side
@@ -3862,7 +3845,7 @@ module slicot
     end interface
     public :: mb01ry
     
-    interface 
+    interface
         subroutine mb01sd(jobs, m, n, a, lda, r, c)
             character, intent(in)             :: jobs
             integer, intent(in)               :: m
@@ -3875,7 +3858,7 @@ module slicot
     end interface
     public :: mb01sd
     
-    interface 
+    interface
         subroutine mb01ss(jobs, uplo, n, a, lda, d)
             character, intent(in)             :: jobs
             character, intent(in)             :: uplo
@@ -3887,7 +3870,7 @@ module slicot
     end interface
     public :: mb01ss
     
-    interface 
+    interface
         subroutine mb01td(n, a, lda, b, ldb, dwork, info)
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -3900,7 +3883,7 @@ module slicot
     end interface
     public :: mb01td
     
-    interface 
+    interface
         subroutine mb01ud(side, trans, m, n, alpha, h, ldh, a, &
                        lda, b, ldb, info)
             character, intent(in)           :: side
@@ -3919,7 +3902,7 @@ module slicot
     end interface
     public :: mb01ud
     
-    interface 
+    interface
         subroutine mb01uw(side, trans, m, n, alpha, h, ldh, a, &
                        lda, dwork, ldwork, info)
             character, intent(in)             :: side
@@ -3938,7 +3921,7 @@ module slicot
     end interface
     public :: mb01uw
     
-    interface 
+    interface
         subroutine mb01ux(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, dwork, ldwork, info)
             character, intent(in)             :: side
@@ -3958,7 +3941,7 @@ module slicot
     end interface
     public :: mb01ux
     
-    interface 
+    interface
         subroutine mb01uy(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, dwork, ldwork, info)
             character, intent(in)             :: side
@@ -3978,7 +3961,7 @@ module slicot
     end interface
     public :: mb01uy
     
-    interface 
+    interface
         subroutine mb01uz(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, zwork, lzwork, info)
             character, intent(in)       :: side
@@ -3998,7 +3981,7 @@ module slicot
     end interface
     public :: mb01uz
     
-    interface 
+    interface
         subroutine mb01vd(trana, tranb, ma, na, mb, nb, alpha, beta, &
                        a, lda, b, ldb, c, ldc, mc, nc, &
                        info)
@@ -4023,7 +4006,7 @@ module slicot
     end interface
     public :: mb01vd
     
-    interface 
+    interface
         subroutine mb01wd(dico, uplo, trans, hess, n, alpha, beta, r, &
                        ldr, a, lda, t, ldt, info)
             character, intent(in)             :: dico
@@ -4044,7 +4027,7 @@ module slicot
     end interface
     public :: mb01wd
     
-    interface 
+    interface
         subroutine mb01xd(uplo, n, a, lda, info)
             character, intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -4055,7 +4038,7 @@ module slicot
     end interface
     public :: mb01xd
     
-    interface 
+    interface
         subroutine mb01xy(uplo, n, a, lda, info)
             character, intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -4066,7 +4049,7 @@ module slicot
     end interface
     public :: mb01xy
     
-    interface 
+    interface
         subroutine mb01yd(uplo, trans, n, k, l, alpha, beta, a, &
                        lda, c, ldc, info)
             character, intent(in)             :: uplo
@@ -4085,7 +4068,7 @@ module slicot
     end interface
     public :: mb01yd
     
-    interface 
+    interface
         subroutine mb01zd(side, uplo, transt, diag, m, n, l, alpha, &
                        t, ldt, h, ldh, info)
             character, intent(in)             :: side
@@ -4105,7 +4088,7 @@ module slicot
     end interface
     public :: mb01zd
     
-    interface 
+    interface
         subroutine mb02cd(job, typet, k, n, t, ldt, g, ldg, &
                        r, ldr, l, ldl, cs, lcs, dwork, ldwork, &
                        info)
@@ -4130,7 +4113,7 @@ module slicot
     end interface
     public :: mb02cd
     
-    interface 
+    interface
         subroutine mb02cu(typeg, k, p, q, nb, a1, lda1, a2, &
                        lda2, b, ldb, rnk, ipvt, cs, tol, dwork, &
                        ldwork, info)
@@ -4156,7 +4139,7 @@ module slicot
     end interface
     public :: mb02cu
     
-    interface 
+    interface
         subroutine mb02cv(typeg, strucg, k, n, p, q, nb, rnk, &
                        a1, lda1, a2, lda2, b, ldb, f1, ldf1, &
                        f2, ldf2, g, ldg, cs, dwork, ldwork, info)
@@ -4188,7 +4171,7 @@ module slicot
     end interface
     public :: mb02cv
     
-    interface 
+    interface
         subroutine mb02cx(typet, p, q, k, a, lda, b, ldb, &
                        cs, lcs, dwork, ldwork, info)
             character, intent(in)             :: typet
@@ -4208,7 +4191,7 @@ module slicot
     end interface
     public :: mb02cx
     
-    interface 
+    interface
         subroutine mb02cy(typet, strucg, p, q, n, k, a, lda, &
                        b, ldb, h, ldh, cs, lcs, dwork, ldwork, &
                        info)
@@ -4233,7 +4216,7 @@ module slicot
     end interface
     public :: mb02cy
     
-    interface 
+    interface
         subroutine mb02dd(job, typet, k, m, n, ta, ldta, t, &
                        ldt, g, ldg, r, ldr, l, ldl, cs, &
                        lcs, dwork, ldwork, info)
@@ -4261,7 +4244,7 @@ module slicot
     end interface
     public :: mb02dd
     
-    interface 
+    interface
         subroutine mb02ed(typet, k, n, nrhs, t, ldt, b, ldb, &
                        dwork, ldwork, info)
             character, intent(in)             :: typet
@@ -4279,7 +4262,7 @@ module slicot
     end interface
     public :: mb02ed
     
-    interface 
+    interface
         subroutine mb02fd(typet, k, n, p, s, t, ldt, r, &
                        ldr, dwork, ldwork, info)
             character, intent(in)             :: typet
@@ -4298,7 +4281,7 @@ module slicot
     end interface
     public :: mb02fd
     
-    interface 
+    interface
         subroutine mb02gd(typet, triu, k, n, nl, p, s, t, &
                        ldt, rb, ldrb, dwork, ldwork, info)
             character, intent(in)             :: typet
@@ -4319,7 +4302,7 @@ module slicot
     end interface
     public :: mb02gd
     
-    interface 
+    interface
         subroutine mb02hd(triu, k, l, m, ml, n, nu, p, &
                        s, tc, ldtc, tr, ldtr, rb, ldrb, dwork, &
                        ldwork, info)
@@ -4345,7 +4328,7 @@ module slicot
     end interface
     public :: mb02hd
     
-    interface 
+    interface
         subroutine mb02id(job, k, l, m, n, rb, rc, tc, &
                        ldtc, tr, ldtr, b, ldb, c, ldc, dwork, &
                        ldwork, info)
@@ -4371,7 +4354,7 @@ module slicot
     end interface
     public :: mb02id
     
-    interface 
+    interface
         subroutine mb02jd(job, k, l, m, n, p, s, tc, &
                        ldtc, tr, ldtr, q, ldq, r, ldr, dwork, &
                        ldwork, info)
@@ -4397,7 +4380,7 @@ module slicot
     end interface
     public :: mb02jd
     
-    interface 
+    interface
         subroutine mb02jx(job, k, l, m, n, tc, ldtc, tr, &
                        ldtr, rnk, q, ldq, r, ldr, jpvt, tol1, &
                        tol2, dwork, ldwork, info)
@@ -4425,7 +4408,7 @@ module slicot
     end interface
     public :: mb02jx
     
-    interface 
+    interface
         subroutine mb02kd(ldblk, trans, k, l, m, n, r, alpha, &
                        beta, tc, ldtc, tr, ldtr, b, ldb, c, &
                        ldc, dwork, ldwork, info)
@@ -4453,7 +4436,7 @@ module slicot
     end interface
     public :: mb02kd
     
-    interface 
+    interface
         subroutine mb02md(job, m, n, l, rank, c, ldc, s, &
                        x, ldx, tol, iwork, dwork, ldwork, iwarn, info)
             character, intent(in)             :: job
@@ -4476,7 +4459,7 @@ module slicot
     end interface
     public :: mb02md
     
-    interface 
+    interface
         subroutine mb02nd(m, n, l, rank, theta, c, ldc, x, &
                        ldx, q, inul, tol, reltol, iwork, dwork, ldwork, &
                        bwork, iwarn, info)
@@ -4503,7 +4486,7 @@ module slicot
     end interface
     public :: mb02nd
     
-    interface 
+    interface
         subroutine mb02ny(updatu, updatv, m, n, i, k, q, e, &
                        u, ldu, v, ldv, dwork)
             logical, intent(in)               :: updatu
@@ -4523,7 +4506,7 @@ module slicot
     end interface
     public :: mb02ny
     
-    interface 
+    interface
         subroutine mb02od(side, uplo, trans, diag, norm, m, n, alpha, &
                        a, lda, b, ldb, rcond, tol, iwork, dwork, &
                        info)
@@ -4548,7 +4531,7 @@ module slicot
     end interface
     public :: mb02od
     
-    interface 
+    interface
         subroutine mb02pd(fact, trans, n, nrhs, a, lda, af, ldaf, &
                        ipiv, equed, r, c, b, ldb, x, ldx, &
                        rcond, ferr, berr, iwork, dwork, info)
@@ -4578,7 +4561,7 @@ module slicot
     end interface
     public :: mb02pd
     
-    interface 
+    interface
         subroutine mb02qd(job, iniper, m, n, nrhs, rcond, svlmax, a, &
                        lda, b, ldb, y, jpvt, rank, sval, dwork, &
                        ldwork, info)
@@ -4604,7 +4587,7 @@ module slicot
     end interface
     public :: mb02qd
     
-    interface 
+    interface
         subroutine mb02qy(m, n, nrhs, rank, a, lda, jpvt, b, &
                        ldb, tau, dwork, ldwork, info)
             integer, intent(in)               :: m
@@ -4624,7 +4607,7 @@ module slicot
     end interface
     public :: mb02qy
     
-    interface 
+    interface
         subroutine mb02rd(trans, n, nrhs, h, ldh, ipiv, b, ldb, &
                        info)
             character, intent(in)             :: trans
@@ -4640,7 +4623,7 @@ module slicot
     end interface
     public :: mb02rd
     
-    interface 
+    interface
         subroutine mb02rz(trans, n, nrhs, h, ldh, ipiv, b, ldb, &
                        info)
             character, intent(in)       :: trans
@@ -4656,7 +4639,7 @@ module slicot
     end interface
     public :: mb02rz
     
-    interface 
+    interface
         subroutine mb02sd(n, h, ldh, ipiv, info)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: h(ldh, *)
@@ -4667,7 +4650,7 @@ module slicot
     end interface
     public :: mb02sd
     
-    interface 
+    interface
         subroutine mb02sz(n, h, ldh, ipiv, info)
             integer, intent(in)         :: n
             complex*16, intent(inout)   :: h(ldh, *)
@@ -4678,7 +4661,7 @@ module slicot
     end interface
     public :: mb02sz
     
-    interface 
+    interface
         subroutine mb02td(norm, n, hnorm, h, ldh, ipiv, rcond, iwork, &
                        dwork, info)
             character, intent(in)             :: norm
@@ -4695,7 +4678,7 @@ module slicot
     end interface
     public :: mb02td
     
-    interface 
+    interface
         subroutine mb02tz(norm, n, hnorm, h, ldh, ipiv, rcond, dwork, &
                        zwork, info)
             character, intent(in)             :: norm
@@ -4712,7 +4695,7 @@ module slicot
     end interface
     public :: mb02tz
     
-    interface 
+    interface
         subroutine mb02ud(fact, side, trans, jobp, m, n, alpha, rcond, &
                        rank, r, ldr, q, ldq, sv, b, ldb, &
                        rp, ldrp, dwork, ldwork, info)
@@ -4741,7 +4724,7 @@ module slicot
     end interface
     public :: mb02ud
     
-    interface 
+    interface
         subroutine mb02uu(n, a, lda, rhs, ipiv, jpiv, scale)
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -4754,7 +4737,7 @@ module slicot
     end interface
     public :: mb02uu
     
-    interface 
+    interface
         subroutine mb02uv(n, a, lda, ipiv, jpiv, info)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -4766,7 +4749,7 @@ module slicot
     end interface
     public :: mb02uv
     
-    interface 
+    interface
         subroutine mb02uw(ltrans, n, m, par, a, lda, b, ldb, &
                        scale, iwarn)
             logical, intent(in)               :: ltrans
@@ -4783,7 +4766,7 @@ module slicot
     end interface
     public :: mb02uw
     
-    interface 
+    interface
         subroutine mb02vd(trans, m, n, a, lda, ipiv, b, ldb, &
                        info)
             character, intent(in)             :: trans
@@ -4799,7 +4782,7 @@ module slicot
     end interface
     public :: mb02vd
     
-    interface 
+    interface
         subroutine mb02wd(form, f, n, ipar, lipar, dpar, ldpar, itmax, &
                        a, lda, b, incb, x, incx, tol, dwork, &
                        ldwork, iwarn, info)
@@ -4826,7 +4809,7 @@ module slicot
     end interface
     public :: mb02wd
     
-    interface 
+    interface
         subroutine mb02xd(form, stor, uplo, f, m, n, nrhs, ipar, &
                        lipar, dpar, ldpar, a, lda, b, ldb, ata, &
                        ldata, dwork, ldwork, info)
@@ -4854,7 +4837,7 @@ module slicot
     end interface
     public :: mb02xd
     
-    interface 
+    interface
         subroutine mb02yd(cond, n, r, ldr, ipvt, diag, qtb, rank, &
                        x, tol, dwork, ldwork, info)
             character, intent(in)             :: cond
@@ -4874,7 +4857,7 @@ module slicot
     end interface
     public :: mb02yd
     
-    interface 
+    interface
         subroutine mb03ab(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, w1, w2, c1, s1, c2, s2)
             character, intent(in)           :: shft
@@ -4896,7 +4879,7 @@ module slicot
     end interface
     public :: mb03ab
     
-    interface 
+    interface
         subroutine mb03ad(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
             character, intent(in)           :: shft
@@ -4916,7 +4899,7 @@ module slicot
     end interface
     public :: mb03ad
     
-    interface 
+    interface
         subroutine mb03ae(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
             character, intent(in)           :: shft
@@ -4936,7 +4919,7 @@ module slicot
     end interface
     public :: mb03ae
     
-    interface 
+    interface
         subroutine mb03af(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
             character, intent(in)           :: shft
@@ -4956,7 +4939,7 @@ module slicot
     end interface
     public :: mb03af
     
-    interface 
+    interface
         subroutine mb03ag(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2, iwork, dwork)
             character, intent(in)             :: shft
@@ -4978,7 +4961,7 @@ module slicot
     end interface
     public :: mb03ag
     
-    interface 
+    interface
         subroutine mb03ah(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
             character, intent(in)           :: shft
@@ -4998,7 +4981,7 @@ module slicot
     end interface
     public :: mb03ah
     
-    interface 
+    interface
         subroutine mb03ai(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2, dwork)
             character, intent(in)             :: shft
@@ -5019,7 +5002,7 @@ module slicot
     end interface
     public :: mb03ai
     
-    interface 
+    interface
         subroutine mb03ba(k, h, s, smult, amap, qmap)
             integer, intent(in)    :: k
             integer, intent(in)    :: h
@@ -5031,7 +5014,7 @@ module slicot
     end interface
     public :: mb03ba
     
-    interface 
+    interface
         subroutine mb03bb(base, lgbas, ulp, k, amap, s, sinv, a, &
                        lda1, lda2, alphar, alphai, beta, scal, dwork, info)
             double precision, intent(in)      :: base
@@ -5054,7 +5037,7 @@ module slicot
     end interface
     public :: mb03bb
     
-    interface 
+    interface
         subroutine mb03bc(k, amap, s, sinv, a, lda1, lda2, macpar, &
                        cv, sv, dwork)
             integer, intent(in)               :: k
@@ -5072,7 +5055,7 @@ module slicot
     end interface
     public :: mb03bc
     
-    interface 
+    interface
         subroutine mb03bd(job, defl, compq, qind, k, n, h, ilo, &
                        ihi, s, a, lda1, lda2, q, ldq1, ldq2, &
                        alphar, alphai, beta, scal, iwork, liwork, dwork, ldwork, &
@@ -5107,7 +5090,7 @@ module slicot
     end interface
     public :: mb03bd
     
-    interface 
+    interface
         subroutine mb03be(k, amap, s, sinv, a, lda1, lda2)
             integer, intent(in)               :: k
             integer, intent(in)               :: amap(*)
@@ -5120,7 +5103,7 @@ module slicot
     end interface
     public :: mb03be
     
-    interface 
+    interface
         subroutine mb03bf(k, amap, s, sinv, a, lda1, lda2, ulp)
             integer, intent(in)               :: k
             integer, intent(in)               :: amap(*)
@@ -5134,7 +5117,7 @@ module slicot
     end interface
     public :: mb03bf
     
-    interface 
+    interface
         subroutine mb03bg(k, n, amap, s, sinv, a, lda1, lda2, &
                        wr, wi)
             integer, intent(in)             :: k
@@ -5151,7 +5134,7 @@ module slicot
     end interface
     public :: mb03bg
     
-    interface 
+    interface
         subroutine mb03bz(job, compq, k, n, ilo, ihi, s, a, &
                        lda1, lda2, q, ldq1, ldq2, alpha, beta, scal, &
                        dwork, ldwork, zwork, lzwork, info)
@@ -5180,7 +5163,7 @@ module slicot
     end interface
     public :: mb03bz
     
-    interface 
+    interface
         subroutine mb03cd(uplo, n1, n2, prec, a, lda, b, ldb, &
                        d, ldd, q1, ldq1, q2, ldq2, q3, ldq3, &
                        dwork, ldwork, info)
@@ -5207,7 +5190,7 @@ module slicot
     end interface
     public :: mb03cd
     
-    interface 
+    interface
         subroutine mb03cz(a, lda, b, ldb, d, ldd, co1, si1, &
                        co2, si2, co3, si3)
             complex*16, intent(in)          :: a(lda, *)
@@ -5226,7 +5209,7 @@ module slicot
     end interface
     public :: mb03cz
     
-    interface 
+    interface
         subroutine mb03dd(uplo, n1, n2, prec, a, lda, b, ldb, &
                        q1, ldq1, q2, ldq2, dwork, ldwork, info)
             character, intent(in)             :: uplo
@@ -5248,7 +5231,7 @@ module slicot
     end interface
     public :: mb03dd
     
-    interface 
+    interface
         subroutine mb03dz(a, lda, b, ldb, co1, si1, co2, si2)
             complex*16, intent(in)          :: a(lda, *)
             integer, intent(in)             :: lda
@@ -5262,7 +5245,7 @@ module slicot
     end interface
     public :: mb03dz
     
-    interface 
+    interface
         subroutine mb03ed(n, prec, a, lda, b, ldb, d, ldd, &
                        q1, ldq1, q2, ldq2, q3, ldq3, dwork, ldwork, &
                        info)
@@ -5287,7 +5270,7 @@ module slicot
     end interface
     public :: mb03ed
     
-    interface 
+    interface
         subroutine mb03fd(n, prec, a, lda, b, ldb, q1, ldq1, &
                        q2, ldq2, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -5307,7 +5290,7 @@ module slicot
     end interface
     public :: mb03fd
     
-    interface 
+    interface
         subroutine mb03fz(compq, compu, orth, n, z, ldz, b, ldb, &
                        fg, ldfg, neig, d, ldd, c, ldc, q, &
                        ldq, u, ldu, alphar, alphai, beta, iwork, liwork, &
@@ -5346,7 +5329,7 @@ module slicot
     end interface
     public :: mb03fz
     
-    interface 
+    interface
         subroutine mb03gd(n, b, ldb, d, ldd, macpar, q, ldq, &
                        u, ldu, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -5366,7 +5349,7 @@ module slicot
     end interface
     public :: mb03gd
     
-    interface 
+    interface
         subroutine mb03gz(z11, z12, z22, h11, h12, co1, si1, co2, &
                        si2)
             complex*16, intent(in)          :: z11
@@ -5382,7 +5365,7 @@ module slicot
     end interface
     public :: mb03gz
     
-    interface 
+    interface
         subroutine mb03hd(n, a, lda, b, ldb, macpar, q, ldq, &
                        dwork, info)
             integer, intent(in)               :: n
@@ -5399,7 +5382,7 @@ module slicot
     end interface
     public :: mb03hd
     
-    interface 
+    interface
         subroutine mb03hz(s11, s12, h11, h12, co, si)
             complex*16, intent(in)          :: s11
             complex*16, intent(in)          :: s12
@@ -5411,7 +5394,7 @@ module slicot
     end interface
     public :: mb03hz
     
-    interface 
+    interface
         subroutine mb03id(compq, compu, n, a, lda, c, ldc, d, &
                        ldd, b, ldb, f, ldf, q, ldq, u1, &
                        ldu1, u2, ldu2, neig, iwork, liwork, dwork, ldwork, &
@@ -5445,7 +5428,7 @@ module slicot
     end interface
     public :: mb03id
     
-    interface 
+    interface
         subroutine mb03iz(compq, compu, n, a, lda, c, ldc, d, &
                        ldd, b, ldb, f, ldf, q, ldq, u1, &
                        ldu1, u2, ldu2, neig, tol, info)
@@ -5475,7 +5458,7 @@ module slicot
     end interface
     public :: mb03iz
     
-    interface 
+    interface
         subroutine mb03jd(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, iwork, liwork, dwork, &
                        ldwork, info)
@@ -5501,7 +5484,7 @@ module slicot
     end interface
     public :: mb03jd
     
-    interface 
+    interface
         subroutine mb03jp(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, iwork, liwork, dwork, &
                        ldwork, info)
@@ -5527,7 +5510,7 @@ module slicot
     end interface
     public :: mb03jp
     
-    interface 
+    interface
         subroutine mb03jz(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, tol, info)
             character, intent(in)             :: compq
@@ -5549,7 +5532,7 @@ module slicot
     end interface
     public :: mb03jz
     
-    interface 
+    interface
         subroutine mb03ka(compq, whichq, ws, k, nc, kschur, ifst, ilst, &
                        n, ni, s, t, ldt, ixt, q, ldq, &
                        ixq, tol, iwork, dwork, ldwork, info)
@@ -5579,7 +5562,7 @@ module slicot
     end interface
     public :: mb03ka
     
-    interface 
+    interface
         subroutine mb03kb(compq, whichq, ws, k, nc, kschur, j1, n1, &
                        n2, n, ni, s, t, ldt, ixt, q, &
                        ldq, ixq, tol, iwork, dwork, ldwork, info)
@@ -5610,7 +5593,7 @@ module slicot
     end interface
     public :: mb03kb
     
-    interface 
+    interface
         subroutine mb03kc(k, khess, n, r, s, a, lda, v, &
                        tau)
             integer, intent(in)               :: k
@@ -5626,7 +5609,7 @@ module slicot
     end interface
     public :: mb03kc
     
-    interface 
+    interface
         subroutine mb03kd(compq, whichq, strong, k, nc, kschur, n, ni, &
                        s, select, t, ldt, ixt, q, ldq, ixq, &
                        m, tol, iwork, dwork, ldwork, info)
@@ -5656,7 +5639,7 @@ module slicot
     end interface
     public :: mb03kd
     
-    interface 
+    interface
         subroutine mb03ke(trana, tranb, isgn, k, m, n, prec, smin, &
                        s, a, b, c, scale, dwork, ldwork, info)
             logical, intent(in)               :: trana
@@ -5679,7 +5662,7 @@ module slicot
     end interface
     public :: mb03ke
     
-    interface 
+    interface
         subroutine mb03ld(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, bwork, info)
@@ -5710,7 +5693,7 @@ module slicot
     end interface
     public :: mb03ld
     
-    interface 
+    interface
         subroutine mb03lf(compq, compu, orth, n, z, ldz, b, ldb, &
                        fg, ldfg, neig, q, ldq, u, ldu, alphar, &
                        alphai, beta, iwork, liwork, dwork, ldwork, bwork, iwarn, &
@@ -5744,7 +5727,7 @@ module slicot
     end interface
     public :: mb03lf
     
-    interface 
+    interface
         subroutine mb03lp(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, bwork, info)
@@ -5775,7 +5758,7 @@ module slicot
     end interface
     public :: mb03lp
     
-    interface 
+    interface
         subroutine mb03lz(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, dwork, ldwork, zwork, lzwork, bwork, info)
@@ -5807,7 +5790,7 @@ module slicot
     end interface
     public :: mb03lz
     
-    interface 
+    interface
         subroutine mb03md(n, l, theta, q, e, q2, e2, pivmin, &
                        tol, reltol, iwarn, info)
             integer, intent(in)               :: n
@@ -5826,7 +5809,7 @@ module slicot
     end interface
     public :: mb03md
     
-    interface 
+    interface
         double precision function mb03my (nx,x,incx)
             integer, intent(in)            :: nx
             double precision, intent(in)   :: x(*)
@@ -5835,7 +5818,7 @@ module slicot
     end interface
     public :: mb03my
     
-    interface 
+    interface
         integer function mb03nd (n,theta,q2,e2,pivmin,info)
             integer, intent(in)             :: n
             double precision, intent(in)    :: theta
@@ -5847,7 +5830,7 @@ module slicot
     end interface
     public :: mb03nd
     
-    interface 
+    interface
         double precision function mb03ny (n,omega,a,lda,s,dwork,ldwork,zwork, &
                        lzwork,info)
             integer, intent(in)               :: n
@@ -5864,7 +5847,7 @@ module slicot
     end interface
     public :: mb03ny
     
-    interface 
+    interface
         subroutine mb03od(jobqr, m, n, a, lda, jpvt, rcond, svlmax, &
                        tau, rank, sval, dwork, ldwork, info)
             character, intent(in)             :: jobqr
@@ -5885,7 +5868,7 @@ module slicot
     end interface
     public :: mb03od
     
-    interface 
+    interface
         subroutine mb03oy(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, info)
             integer, intent(in)               :: m
@@ -5904,7 +5887,7 @@ module slicot
     end interface
     public :: mb03oy
     
-    interface 
+    interface
         subroutine mb03pd(jobrq, m, n, a, lda, jpvt, rcond, svlmax, &
                        tau, rank, sval, dwork, info)
             character, intent(in)             :: jobrq
@@ -5924,7 +5907,7 @@ module slicot
     end interface
     public :: mb03pd
     
-    interface 
+    interface
         subroutine mb03py(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, info)
             integer, intent(in)               :: m
@@ -5943,7 +5926,7 @@ module slicot
     end interface
     public :: mb03py
     
-    interface 
+    interface
         subroutine mb03qd(dico, stdom, jobu, n, nlow, nsup, alpha, a, &
                        lda, u, ldu, ndim, dwork, info)
             character, intent(in)             :: dico
@@ -5964,7 +5947,7 @@ module slicot
     end interface
     public :: mb03qd
     
-    interface 
+    interface
         subroutine mb03qg(dico, stdom, jobu, jobv, n, nlow, nsup, alpha, &
                        a, lda, e, lde, u, ldu, v, ldv, &
                        ndim, dwork, ldwork, info)
@@ -5992,7 +5975,7 @@ module slicot
     end interface
     public :: mb03qg
     
-    interface 
+    interface
         subroutine mb03qv(n, s, lds, t, ldt, alphar, alphai, beta, &
                        info)
             integer, intent(in)             :: n
@@ -6008,7 +5991,7 @@ module slicot
     end interface
     public :: mb03qv
     
-    interface 
+    interface
         subroutine mb03qw(n, l, a, lda, e, lde, u, ldu, &
                        v, ldv, alphar, alphai, beta, info)
             integer, intent(in)               :: n
@@ -6029,7 +6012,7 @@ module slicot
     end interface
     public :: mb03qw
     
-    interface 
+    interface
         subroutine mb03qx(n, t, ldt, wr, wi, info)
             integer, intent(in)             :: n
             double precision, intent(in)    :: t(ldt, *)
@@ -6041,7 +6024,7 @@ module slicot
     end interface
     public :: mb03qx
     
-    interface 
+    interface
         subroutine mb03qy(n, l, a, lda, u, ldu, e1, e2, &
                        info)
             integer, intent(in)               :: n
@@ -6057,7 +6040,7 @@ module slicot
     end interface
     public :: mb03qy
     
-    interface 
+    interface
         subroutine mb03rd(jobx, sort, n, pmax, a, lda, x, ldx, &
                        nblcks, blsize, wr, wi, tol, dwork, info)
             character, intent(in)             :: jobx
@@ -6079,7 +6062,7 @@ module slicot
     end interface
     public :: mb03rd
     
-    interface 
+    interface
         subroutine mb03rw(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, info)
             integer, intent(in)               :: m
@@ -6096,7 +6079,7 @@ module slicot
     end interface
     public :: mb03rw
     
-    interface 
+    interface
         subroutine mb03rx(jobv, n, kl, ku, a, lda, x, ldx, &
                        wr, wi, dwork)
             character, intent(in)             :: jobv
@@ -6114,7 +6097,7 @@ module slicot
     end interface
     public :: mb03rx
     
-    interface 
+    interface
         subroutine mb03ry(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, info)
             integer, intent(in)               :: m
@@ -6131,7 +6114,7 @@ module slicot
     end interface
     public :: mb03ry
     
-    interface 
+    interface
         subroutine mb03rz(jobx, sort, n, pmax, a, lda, x, ldx, &
                        nblcks, blsize, w, tol, info)
             character, intent(in)             :: jobx
@@ -6151,7 +6134,7 @@ module slicot
     end interface
     public :: mb03rz
     
-    interface 
+    interface
         subroutine mb03sd(jobscl, n, a, lda, qg, ldqg, wr, wi, &
                        dwork, ldwork, info)
             character, intent(in)             :: jobscl
@@ -6169,7 +6152,7 @@ module slicot
     end interface
     public :: mb03sd
     
-    interface 
+    interface
         subroutine mb03td(typ, compu, select, lower, n, a, lda, g, &
                        ldg, u1, ldu1, u2, ldu2, wr, wi, m, &
                        dwork, ldwork, info)
@@ -6196,7 +6179,7 @@ module slicot
     end interface
     public :: mb03td
     
-    interface 
+    interface
         subroutine mb03ts(isham, wantu, n, a, lda, g, ldg, u1, &
                        ldu1, u2, ldu2, j1, n1, n2, dwork, info)
             logical, intent(in)               :: isham
@@ -6219,7 +6202,7 @@ module slicot
     end interface
     public :: mb03ts
     
-    interface 
+    interface
         subroutine mb03ud(jobq, jobp, n, a, lda, q, ldq, sv, &
                        dwork, ldwork, info)
             character, intent(in)             :: jobq
@@ -6237,7 +6220,7 @@ module slicot
     end interface
     public :: mb03ud
     
-    interface 
+    interface
         subroutine mb03vd(n, p, ilo, ihi, a, lda1, lda2, tau, &
                        ldtau, dwork, info)
             integer, intent(in)               :: n
@@ -6255,7 +6238,7 @@ module slicot
     end interface
     public :: mb03vd
     
-    interface 
+    interface
         subroutine mb03vw(compq, qind, triu, n, k, h, ilo, ihi, &
                        s, a, lda1, lda2, q, ldq1, ldq2, iwork, &
                        liwork, dwork, ldwork, info)
@@ -6283,7 +6266,7 @@ module slicot
     end interface
     public :: mb03vw
     
-    interface 
+    interface
         subroutine mb03vy(n, p, ilo, ihi, a, lda1, lda2, tau, &
                        ldtau, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -6302,7 +6285,7 @@ module slicot
     end interface
     public :: mb03vy
     
-    interface 
+    interface
         subroutine mb03wa(wantq, wantz, n1, n2, a, lda, b, ldb, &
                        q, ldq, z, ldz, info)
             logical, intent(in)               :: wantq
@@ -6322,7 +6305,7 @@ module slicot
     end interface
     public :: mb03wa
     
-    interface 
+    interface
         subroutine mb03wd(job, compz, n, p, ilo, ihi, iloz, ihiz, &
                        h, ldh1, ldh2, z, ldz1, ldz2, wr, wi, &
                        dwork, ldwork, info)
@@ -6349,7 +6332,7 @@ module slicot
     end interface
     public :: mb03wd
     
-    interface 
+    interface
         subroutine mb03wx(n, p, t, ldt1, ldt2, wr, wi, info)
             integer, intent(in)             :: n
             integer, intent(in)             :: p
@@ -6363,7 +6346,7 @@ module slicot
     end interface
     public :: mb03wx
     
-    interface 
+    interface
         subroutine mb03xd(balanc, job, jobu, jobv, n, a, lda, qg, &
                        ldqg, t, ldt, u1, ldu1, u2, ldu2, v1, &
                        ldv1, v2, ldv2, wr, wi, ilo, scale, dwork, &
@@ -6398,7 +6381,7 @@ module slicot
     end interface
     public :: mb03xd
     
-    interface 
+    interface
         subroutine mb03xp(job, compq, compz, n, ilo, ihi, a, lda, &
                        b, ldb, q, ldq, z, ldz, alphar, alphai, &
                        beta, dwork, ldwork, info)
@@ -6426,7 +6409,7 @@ module slicot
     end interface
     public :: mb03xp
     
-    interface 
+    interface
         subroutine mb03xs(jobu, n, a, lda, qg, ldqg, u1, ldu1, &
                        u2, ldu2, wr, wi, dwork, ldwork, info)
             character, intent(in)             :: jobu
@@ -6448,7 +6431,7 @@ module slicot
     end interface
     public :: mb03xs
     
-    interface 
+    interface
         subroutine mb03xu(ltra, ltrb, n, k, nb, a, lda, b, &
                        ldb, g, ldg, q, ldq, xa, ldxa, xb, &
                        ldxb, xg, ldxg, xq, ldxq, ya, ldya, yb, &
@@ -6492,7 +6475,7 @@ module slicot
     end interface
     public :: mb03xu
     
-    interface 
+    interface
         subroutine mb03xz(balanc, job, jobu, n, a, lda, qg, ldqg, &
                        u1, ldu1, u2, ldu2, wr, wi, ilo, scale, &
                        dwork, ldwork, zwork, lzwork, bwork, info)
@@ -6522,7 +6505,7 @@ module slicot
     end interface
     public :: mb03xz
     
-    interface 
+    interface
         subroutine mb03ya(wantt, wantq, wantz, n, ilo, ihi, iloq, ihiq, &
                        pos, a, lda, b, ldb, q, ldq, z, &
                        ldz, info)
@@ -6548,7 +6531,7 @@ module slicot
     end interface
     public :: mb03ya
     
-    interface 
+    interface
         subroutine mb03yd(wantt, wantq, wantz, n, ilo, ihi, iloq, ihiq, &
                        a, lda, b, ldb, q, ldq, z, ldz, &
                        alphar, alphai, beta, dwork, ldwork, info)
@@ -6578,7 +6561,7 @@ module slicot
     end interface
     public :: mb03yd
     
-    interface 
+    interface
         subroutine mb03yt(a, lda, b, ldb, alphar, alphai, beta, csl, &
                        snl, csr, snr)
             double precision, intent(inout)   :: a(lda, *)
@@ -6596,7 +6579,7 @@ module slicot
     end interface
     public :: mb03yt
     
-    interface 
+    interface
         subroutine mb03za(compc, compu, compv, compw, which, select, n, a, &
                        lda, b, ldb, c, ldc, u1, ldu1, u2, &
                        ldu2, v1, ldv1, v2, ldv2, w, ldw, wr, &
@@ -6634,7 +6617,7 @@ module slicot
     end interface
     public :: mb03za
     
-    interface 
+    interface
         subroutine mb03zd(which, meth, stab, balanc, ortbal, select, n, mm, &
                        ilo, scale, s, lds, t, ldt, g, ldg, &
                        u1, ldu1, u2, ldu2, v1, ldv1, v2, ldv2, &
@@ -6680,7 +6663,7 @@ module slicot
     end interface
     public :: mb03zd
     
-    interface 
+    interface
         subroutine mb04ad(job, compq1, compq2, compu1, compu2, n, z, ldz, &
                        h, ldh, q1, ldq1, q2, ldq2, u11, ldu11, &
                        u12, ldu12, u21, ldu21, u22, ldu22, t, ldt, &
@@ -6721,7 +6704,7 @@ module slicot
     end interface
     public :: mb04ad
     
-    interface 
+    interface
         subroutine mb04az(job, compq, compu, n, z, ldz, b, ldb, &
                        fg, ldfg, d, ldd, c, ldc, q, ldq, &
                        u, ldu, alphar, alphai, beta, iwork, liwork, dwork, &
@@ -6759,7 +6742,7 @@ module slicot
     end interface
     public :: mb04az
     
-    interface 
+    interface
         subroutine mb04bd(job, compq1, compq2, n, a, lda, de, ldde, &
                        c1, ldc1, vw, ldvw, q1, ldq1, q2, ldq2, &
                        b, ldb, f, ldf, c2, ldc2, alphar, alphai, &
@@ -6798,7 +6781,7 @@ module slicot
     end interface
     public :: mb04bd
     
-    interface 
+    interface
         subroutine mb04bp(job, compq1, compq2, n, a, lda, de, ldde, &
                        c1, ldc1, vw, ldvw, q1, ldq1, q2, ldq2, &
                        b, ldb, f, ldf, c2, ldc2, alphar, alphai, &
@@ -6837,7 +6820,7 @@ module slicot
     end interface
     public :: mb04bp
     
-    interface 
+    interface
         subroutine mb04bz(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, zwork, lzwork, bwork, info)
@@ -6868,7 +6851,7 @@ module slicot
     end interface
     public :: mb04bz
     
-    interface 
+    interface
         subroutine mb04cd(compq1, compq2, compq3, n, a, lda, b, ldb, &
                        d, ldd, q1, ldq1, q2, ldq2, q3, ldq3, &
                        iwork, liwork, dwork, ldwork, bwork, info)
@@ -6898,7 +6881,7 @@ module slicot
     end interface
     public :: mb04cd
     
-    interface 
+    interface
         subroutine mb04db(job, sgn, n, ilo, lscale, rscale, m, v1, &
                        ldv1, v2, ldv2, info)
             character, intent(in)             :: job
@@ -6917,7 +6900,7 @@ module slicot
     end interface
     public :: mb04db
     
-    interface 
+    interface
         subroutine mb04dd(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
             character, intent(in)             :: job
@@ -6933,7 +6916,7 @@ module slicot
     end interface
     public :: mb04dd
     
-    interface 
+    interface
         subroutine mb04di(job, sgn, n, ilo, scale, m, v1, ldv1, &
                        v2, ldv2, info)
             character, intent(in)             :: job
@@ -6951,7 +6934,7 @@ module slicot
     end interface
     public :: mb04di
     
-    interface 
+    interface
         subroutine mb04dl(job, n, thresh, a, lda, b, ldb, ilo, &
                        ihi, lscale, rscale, dwork, iwarn, info)
             character, intent(in)             :: job
@@ -6972,7 +6955,7 @@ module slicot
     end interface
     public :: mb04dl
     
-    interface 
+    interface
         subroutine mb04dp(job, n, thresh, a, lda, de, ldde, c, &
                        ldc, vw, ldvw, ilo, lscale, rscale, dwork, iwarn, &
                        info)
@@ -6997,7 +6980,7 @@ module slicot
     end interface
     public :: mb04dp
     
-    interface 
+    interface
         subroutine mb04ds(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
             character, intent(in)             :: job
@@ -7013,7 +6996,7 @@ module slicot
     end interface
     public :: mb04ds
     
-    interface 
+    interface
         subroutine mb04dy(jobscl, n, a, lda, qg, ldqg, d, dwork, &
                        info)
             character, intent(in)             :: jobscl
@@ -7029,7 +7012,7 @@ module slicot
     end interface
     public :: mb04dy
     
-    interface 
+    interface
         subroutine mb04dz(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
             character, intent(in)             :: job
@@ -7045,7 +7028,7 @@ module slicot
     end interface
     public :: mb04dz
     
-    interface 
+    interface
         subroutine mb04ed(job, compq, compu, n, z, ldz, b, ldb, &
                        fg, ldfg, q, ldq, u1, ldu1, u2, ldu2, &
                        alphar, alphai, beta, iwork, liwork, dwork, ldwork, info)
@@ -7077,7 +7060,7 @@ module slicot
     end interface
     public :: mb04ed
     
-    interface 
+    interface
         subroutine mb04fd(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, info)
@@ -7105,7 +7088,7 @@ module slicot
     end interface
     public :: mb04fd
     
-    interface 
+    interface
         subroutine mb04fp(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, info)
@@ -7133,7 +7116,7 @@ module slicot
     end interface
     public :: mb04fp
     
-    interface 
+    interface
         subroutine mb04gd(m, n, a, lda, jpvt, tau, dwork, info)
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -7147,7 +7130,7 @@ module slicot
     end interface
     public :: mb04gd
     
-    interface 
+    interface
         subroutine mb04hd(compq1, compq2, n, a, lda, b, ldb, q1, &
                        ldq1, q2, ldq2, iwork, liwork, dwork, ldwork, bwork, &
                        info)
@@ -7172,7 +7155,7 @@ module slicot
     end interface
     public :: mb04hd
     
-    interface 
+    interface
         subroutine mb04id(n, m, p, l, a, lda, b, ldb, &
                        tau, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7191,7 +7174,7 @@ module slicot
     end interface
     public :: mb04id
     
-    interface 
+    interface
         subroutine mb04iy(side, trans, n, m, k, p, a, lda, &
                        tau, c, ldc, dwork, ldwork, info)
             character, intent(in)             :: side
@@ -7212,7 +7195,7 @@ module slicot
     end interface
     public :: mb04iy
     
-    interface 
+    interface
         subroutine mb04iz(n, m, p, l, a, lda, b, ldb, &
                        tau, zwork, lzwork, info)
             integer, intent(in)         :: n
@@ -7231,7 +7214,7 @@ module slicot
     end interface
     public :: mb04iz
     
-    interface 
+    interface
         subroutine mb04jd(n, m, p, l, a, lda, b, ldb, &
                        tau, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7250,7 +7233,7 @@ module slicot
     end interface
     public :: mb04jd
     
-    interface 
+    interface
         subroutine mb04kd(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
             character, intent(in)             :: uplo
@@ -7271,7 +7254,7 @@ module slicot
     end interface
     public :: mb04kd
     
-    interface 
+    interface
         subroutine mb04ld(uplo, n, m, p, l, ldl, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
             character, intent(in)             :: uplo
@@ -7292,7 +7275,7 @@ module slicot
     end interface
     public :: mb04ld
     
-    interface 
+    interface
         subroutine mb04md(n, maxred, a, lda, scale, info)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: maxred
@@ -7304,7 +7287,7 @@ module slicot
     end interface
     public :: mb04md
     
-    interface 
+    interface
         subroutine mb04nd(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
             character, intent(in)             :: uplo
@@ -7325,7 +7308,7 @@ module slicot
     end interface
     public :: mb04nd
     
-    interface 
+    interface
         subroutine mb04ny(m, n, v, incv, tau, a, lda, b, &
                        ldb, dwork)
             integer, intent(in)               :: m
@@ -7342,7 +7325,7 @@ module slicot
     end interface
     public :: mb04ny
     
-    interface 
+    interface
         subroutine mb04od(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
             character, intent(in)             :: uplo
@@ -7363,7 +7346,7 @@ module slicot
     end interface
     public :: mb04od
     
-    interface 
+    interface
         subroutine mb04ow(m, n, p, a, lda, t, ldt, x, &
                        incx, b, ldb, c, ldc, d, incd)
             integer, intent(in)               :: m
@@ -7385,7 +7368,7 @@ module slicot
     end interface
     public :: mb04ow
     
-    interface 
+    interface
         subroutine mb04ox(n, a, lda, x, incx)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -7396,7 +7379,7 @@ module slicot
     end interface
     public :: mb04ox
     
-    interface 
+    interface
         subroutine mb04oy(m, n, v, tau, a, lda, b, ldb, &
                        dwork)
             integer, intent(in)               :: m
@@ -7412,7 +7395,7 @@ module slicot
     end interface
     public :: mb04oy
     
-    interface 
+    interface
         subroutine mb04pa(lham, n, k, nb, a, lda, qg, ldqg, &
                        xa, ldxa, xg, ldxg, xq, ldxq, ya, ldya, &
                        cs, tau, dwork)
@@ -7439,7 +7422,7 @@ module slicot
     end interface
     public :: mb04pa
     
-    interface 
+    interface
         subroutine mb04pb(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7457,7 +7440,7 @@ module slicot
     end interface
     public :: mb04pb
     
-    interface 
+    interface
         subroutine mb04pu(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7475,7 +7458,7 @@ module slicot
     end interface
     public :: mb04pu
     
-    interface 
+    interface
         subroutine mb04py(side, m, n, v, tau, c, ldc, dwork)
             character, intent(in)             :: side
             integer, intent(in)               :: m
@@ -7489,7 +7472,7 @@ module slicot
     end interface
     public :: mb04py
     
-    interface 
+    interface
         subroutine mb04qb(tranc, trand, tranq, storev, storew, m, n, k, &
                        v, ldv, w, ldw, c, ldc, d, ldd, &
                        cs, tau, dwork, ldwork, info)
@@ -7518,7 +7501,7 @@ module slicot
     end interface
     public :: mb04qb
     
-    interface 
+    interface
         subroutine mb04qc(strab, trana, tranb, tranq, direct, storev, storew, m, &
                        n, k, v, ldv, w, ldw, rs, ldrs, &
                        t, ldt, a, lda, b, ldb, dwork)
@@ -7549,7 +7532,7 @@ module slicot
     end interface
     public :: mb04qc
     
-    interface 
+    interface
         subroutine mb04qf(direct, storev, storew, n, k, v, ldv, w, &
                        ldw, cs, tau, rs, ldrs, t, ldt, dwork)
             character, intent(in)             :: direct
@@ -7572,7 +7555,7 @@ module slicot
     end interface
     public :: mb04qf
     
-    interface 
+    interface
         subroutine mb04qs(tranc, trand, tranu, m, n, ilo, v, ldv, &
                        w, ldw, c, ldc, d, ldd, cs, tau, &
                        dwork, ldwork, info)
@@ -7599,7 +7582,7 @@ module slicot
     end interface
     public :: mb04qs
     
-    interface 
+    interface
         subroutine mb04qu(tranc, trand, tranq, storev, storew, m, n, k, &
                        v, ldv, w, ldw, c, ldc, d, ldd, &
                        cs, tau, dwork, ldwork, info)
@@ -7628,7 +7611,7 @@ module slicot
     end interface
     public :: mb04qu
     
-    interface 
+    interface
         subroutine mb04rb(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7646,7 +7629,7 @@ module slicot
     end interface
     public :: mb04rb
     
-    interface 
+    interface
         subroutine mb04rd(jobx, joby, sort, n, pmax, a, lda, b, &
                        ldb, x, ldx, y, ldy, nblcks, blsize, alphar, &
                        alphai, beta, tol, iwork, dwork, ldwork, info)
@@ -7677,7 +7660,7 @@ module slicot
     end interface
     public :: mb04rd
     
-    interface 
+    interface
         subroutine mb04rs(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
@@ -7703,7 +7686,7 @@ module slicot
     end interface
     public :: mb04rs
     
-    interface 
+    interface
         subroutine mb04rt(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
@@ -7729,7 +7712,7 @@ module slicot
     end interface
     public :: mb04rt
     
-    interface 
+    interface
         subroutine mb04ru(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -7747,7 +7730,7 @@ module slicot
     end interface
     public :: mb04ru
     
-    interface 
+    interface
         subroutine mb04rv(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        info)
@@ -7772,7 +7755,7 @@ module slicot
     end interface
     public :: mb04rv
     
-    interface 
+    interface
         subroutine mb04rw(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
@@ -7798,7 +7781,7 @@ module slicot
     end interface
     public :: mb04rw
     
-    interface 
+    interface
         subroutine mb04rz(jobx, joby, sort, n, pmax, a, lda, b, &
                        ldb, x, ldx, y, ldy, nblcks, blsize, alpha, &
                        beta, tol, iwork, info)
@@ -7826,7 +7809,7 @@ module slicot
     end interface
     public :: mb04rz
     
-    interface 
+    interface
         subroutine mb04su(m, n, a, lda, b, ldb, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: m
@@ -7844,7 +7827,7 @@ module slicot
     end interface
     public :: mb04su
     
-    interface 
+    interface
         subroutine mb04tb(trana, tranb, n, ilo, a, lda, b, ldb, &
                        g, ldg, q, ldq, csl, csr, taul, taur, &
                        dwork, ldwork, info)
@@ -7871,7 +7854,7 @@ module slicot
     end interface
     public :: mb04tb
     
-    interface 
+    interface
         subroutine mb04ts(trana, tranb, n, ilo, a, lda, b, ldb, &
                        g, ldg, q, ldq, csl, csr, taul, taur, &
                        dwork, ldwork, info)
@@ -7898,7 +7881,7 @@ module slicot
     end interface
     public :: mb04ts
     
-    interface 
+    interface
         subroutine mb04tt(updatq, updatz, m, n, ifira, ifica, nca, a, &
                        lda, e, lde, q, ldq, z, ldz, istair, &
                        rank, tol, iwork)
@@ -7925,7 +7908,7 @@ module slicot
     end interface
     public :: mb04tt
     
-    interface 
+    interface
         subroutine mb04tu(n, x, incx, y, incy, c, s)
             integer, intent(in)               :: n
             double precision, intent(inout)   :: x(*)
@@ -7938,7 +7921,7 @@ module slicot
     end interface
     public :: mb04tu
     
-    interface 
+    interface
         subroutine mb04tv(updatz, n, nra, nca, ifira, ifica, a, lda, &
                        e, lde, z, ldz)
             logical, intent(in)               :: updatz
@@ -7957,7 +7940,7 @@ module slicot
     end interface
     public :: mb04tv
     
-    interface 
+    interface
         subroutine mb04tw(updatq, m, n, nre, nce, ifire, ifice, ifica, &
                        a, lda, e, lde, q, ldq)
             logical, intent(in)               :: updatq
@@ -7978,7 +7961,7 @@ module slicot
     end interface
     public :: mb04tw
     
-    interface 
+    interface
         subroutine mb04tx(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, mnei)
             logical, intent(in)               :: updatq
@@ -8001,7 +7984,7 @@ module slicot
     end interface
     public :: mb04tx
     
-    interface 
+    interface
         subroutine mb04ty(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, info)
             logical, intent(in)               :: updatq
@@ -8024,7 +8007,7 @@ module slicot
     end interface
     public :: mb04ty
     
-    interface 
+    interface
         subroutine mb04ud(jobq, jobz, m, n, a, lda, e, lde, &
                        q, ldq, z, ldz, ranke, istair, tol, dwork, &
                        info)
@@ -8049,7 +8032,7 @@ module slicot
     end interface
     public :: mb04ud
     
-    interface 
+    interface
         subroutine mb04vd(mode, jobq, jobz, m, n, ranke, a, lda, &
                        e, lde, q, ldq, z, ldz, istair, nblcks, &
                        nblcki, imuk, inuk, imuk0, mnei, tol, iwork, info)
@@ -8081,7 +8064,7 @@ module slicot
     end interface
     public :: mb04vd
     
-    interface 
+    interface
         subroutine mb04vx(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, mnei)
             logical, intent(in)               :: updatq
@@ -8104,7 +8087,7 @@ module slicot
     end interface
     public :: mb04vx
     
-    interface 
+    interface
         subroutine mb04wd(tranq1, tranq2, m, n, k, q1, ldq1, q2, &
                        ldq2, cs, tau, dwork, ldwork, info)
             character, intent(in)             :: tranq1
@@ -8125,7 +8108,7 @@ module slicot
     end interface
     public :: mb04wd
     
-    interface 
+    interface
         subroutine mb04wp(n, ilo, u1, ldu1, u2, ldu2, cs, tau, &
                        dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -8143,7 +8126,7 @@ module slicot
     end interface
     public :: mb04wp
     
-    interface 
+    interface
         subroutine mb04wr(job, trans, n, ilo, q1, ldq1, q2, ldq2, &
                        cs, tau, dwork, ldwork, info)
             character, intent(in)             :: job
@@ -8163,7 +8146,7 @@ module slicot
     end interface
     public :: mb04wr
     
-    interface 
+    interface
         subroutine mb04wu(tranq1, tranq2, m, n, k, q1, ldq1, q2, &
                        ldq2, cs, tau, dwork, ldwork, info)
             character, intent(in)             :: tranq1
@@ -8184,7 +8167,7 @@ module slicot
     end interface
     public :: mb04wu
     
-    interface 
+    interface
         subroutine mb04xd(jobu, jobv, m, n, rank, theta, a, lda, &
                        u, ldu, v, ldv, q, inul, tol, reltol, &
                        dwork, ldwork, iwarn, info)
@@ -8212,7 +8195,7 @@ module slicot
     end interface
     public :: mb04xd
     
-    interface 
+    interface
         subroutine mb04xy(jobu, jobv, m, n, x, ldx, taup, tauq, &
                        u, ldu, v, ldv, inul, info)
             character, intent(in)             :: jobu
@@ -8233,7 +8216,7 @@ module slicot
     end interface
     public :: mb04xy
     
-    interface 
+    interface
         subroutine mb04yd(jobu, jobv, m, n, rank, theta, q, e, &
                        u, ldu, v, ldv, inul, tol, reltol, dwork, &
                        ldwork, iwarn, info)
@@ -8260,7 +8243,7 @@ module slicot
     end interface
     public :: mb04yd
     
-    interface 
+    interface
         subroutine mb04yw(qrit, updatu, updatv, m, n, l, k, shift, &
                        d, e, u, ldu, v, ldv, dwork)
             logical, intent(in)               :: qrit
@@ -8282,7 +8265,7 @@ module slicot
     end interface
     public :: mb04yw
     
-    interface 
+    interface
         subroutine mb04zd(compu, n, a, lda, qg, ldqg, u, ldu, &
                        dwork, info)
             character, intent(in)             :: compu
@@ -8299,7 +8282,7 @@ module slicot
     end interface
     public :: mb04zd
     
-    interface 
+    interface
         subroutine mb05md(balanc, n, delta, a, lda, v, ldv, y, &
                        ldy, valr, vali, iwork, dwork, ldwork, info)
             character, intent(in)             :: balanc
@@ -8321,7 +8304,7 @@ module slicot
     end interface
     public :: mb05md
     
-    interface 
+    interface
         subroutine mb05my(balanc, n, a, lda, wr, wi, r, ldr, &
                        q, ldq, dwork, ldwork, info)
             character, intent(in)             :: balanc
@@ -8341,7 +8324,7 @@ module slicot
     end interface
     public :: mb05my
     
-    interface 
+    interface
         subroutine mb05nd(n, delta, a, lda, ex, ldex, exint, ldexin, &
                        tol, iwork, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -8361,7 +8344,7 @@ module slicot
     end interface
     public :: mb05nd
     
-    interface 
+    interface
         subroutine mb05od(balanc, n, ndiag, delta, a, lda, mdig, idig, &
                        iwork, dwork, ldwork, iwarn, info)
             character, intent(in)             :: balanc
@@ -8381,7 +8364,7 @@ module slicot
     end interface
     public :: mb05od
     
-    interface 
+    interface
         subroutine mb05oy(job, n, low, igh, a, lda, scale, info)
             character, intent(in)             :: job
             integer, intent(in)               :: n
@@ -8395,7 +8378,7 @@ module slicot
     end interface
     public :: mb05oy
     
-    interface 
+    interface
         subroutine mb3jzp(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, tol, dwork, zwork, &
                        info)
@@ -8420,7 +8403,7 @@ module slicot
     end interface
     public :: mb3jzp
     
-    interface 
+    interface
         subroutine mb3lzp(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, dwork, ldwork, zwork, lzwork, bwork, info)
@@ -8452,7 +8435,7 @@ module slicot
     end interface
     public :: mb3lzp
     
-    interface 
+    interface
         subroutine mb3oyz(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, zwork, info)
             integer, intent(in)               :: m
@@ -8472,7 +8455,7 @@ module slicot
     end interface
     public :: mb3oyz
     
-    interface 
+    interface
         subroutine mb3pyz(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, zwork, info)
             integer, intent(in)               :: m
@@ -8492,7 +8475,7 @@ module slicot
     end interface
     public :: mb3pyz
     
-    interface 
+    interface
         subroutine mb4dbz(job, sgn, n, ilo, lscale, rscale, m, v1, &
                        ldv1, v2, ldv2, info)
             character, intent(in)             :: job
@@ -8511,7 +8494,7 @@ module slicot
     end interface
     public :: mb4dbz
     
-    interface 
+    interface
         subroutine mb4dlz(job, n, thresh, a, lda, b, ldb, ilo, &
                        ihi, lscale, rscale, dwork, iwarn, info)
             character, intent(in)             :: job
@@ -8532,7 +8515,7 @@ module slicot
     end interface
     public :: mb4dlz
     
-    interface 
+    interface
         subroutine mb4dpz(job, n, thresh, a, lda, de, ldde, c, &
                        ldc, vw, ldvw, ilo, lscale, rscale, dwork, iwarn, &
                        info)
@@ -8557,7 +8540,7 @@ module slicot
     end interface
     public :: mb4dpz
     
-    interface 
+    interface
         subroutine mc01md(dp, alpha, k, p, q, info)
             integer, intent(in)             :: dp
             double precision, intent(in)    :: alpha
@@ -8569,7 +8552,7 @@ module slicot
     end interface
     public :: mc01md
     
-    interface 
+    interface
         subroutine mc01nd(dp, xr, xi, p, vr, vi, info)
             integer, intent(in)             :: dp
             double precision, intent(in)    :: xr
@@ -8582,7 +8565,7 @@ module slicot
     end interface
     public :: mc01nd
     
-    interface 
+    interface
         subroutine mc01od(k, rez, imz, rep, imp, dwork, info)
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
@@ -8595,7 +8578,7 @@ module slicot
     end interface
     public :: mc01od
     
-    interface 
+    interface
         subroutine mc01pd(k, rez, imz, p, dwork, info)
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
@@ -8607,7 +8590,7 @@ module slicot
     end interface
     public :: mc01pd
     
-    interface 
+    interface
         subroutine mc01py(k, rez, imz, p, dwork, info)
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
@@ -8619,7 +8602,7 @@ module slicot
     end interface
     public :: mc01py
     
-    interface 
+    interface
         subroutine mc01qd(da, db, a, b, rq, iwarn, info)
             integer, intent(in)               :: da
             integer, intent(inout)            :: db
@@ -8632,7 +8615,7 @@ module slicot
     end interface
     public :: mc01qd
     
-    interface 
+    interface
         subroutine mc01rd(dp1, dp2, dp3, alpha, p1, p2, p3, info)
             integer, intent(in)               :: dp1
             integer, intent(in)               :: dp2
@@ -8646,7 +8629,7 @@ module slicot
     end interface
     public :: mc01rd
     
-    interface 
+    interface
         subroutine mc01sd(dp, p, s, t, mant, e, iwork, info)
             integer, intent(in)               :: dp
             double precision, intent(inout)   :: p(*)
@@ -8660,7 +8643,7 @@ module slicot
     end interface
     public :: mc01sd
     
-    interface 
+    interface
         subroutine mc01sw(a, b, m, e)
             double precision, intent(in)    :: a
             integer, intent(in)             :: b
@@ -8670,7 +8653,7 @@ module slicot
     end interface
     public :: mc01sw
     
-    interface 
+    interface
         integer function mc01sx (lb,ub,e,mant)
             integer, intent(in)            :: lb
             integer, intent(in)            :: ub
@@ -8680,7 +8663,7 @@ module slicot
     end interface
     public :: mc01sx
     
-    interface 
+    interface
         subroutine mc01sy(m, e, b, a, ovflow)
             double precision, intent(in)    :: m
             integer, intent(in)             :: e
@@ -8691,7 +8674,7 @@ module slicot
     end interface
     public :: mc01sy
     
-    interface 
+    interface
         subroutine mc01td(dico, dp, p, stable, nz, dwork, iwarn, info)
             character, intent(in)             :: dico
             integer, intent(inout)            :: dp
@@ -8705,7 +8688,7 @@ module slicot
     end interface
     public :: mc01td
     
-    interface 
+    interface
         subroutine mc01vd(a, b, c, z1re, z1im, z2re, z2im, info)
             double precision, intent(in)    :: a
             double precision, intent(in)    :: b
@@ -8719,7 +8702,7 @@ module slicot
     end interface
     public :: mc01vd
     
-    interface 
+    interface
         subroutine mc01wd(dp, p, u1, u2, q, info)
             integer, intent(in)             :: dp
             double precision, intent(in)    :: p(*)
@@ -8731,7 +8714,7 @@ module slicot
     end interface
     public :: mc01wd
     
-    interface 
+    interface
         subroutine mc01xd(alpha, beta, gamma, delta, evr, evi, evq, dwork, &
                        ldwork, info)
             double precision, intent(in)      :: alpha
@@ -8748,7 +8731,7 @@ module slicot
     end interface
     public :: mc01xd
     
-    interface 
+    interface
         subroutine mc03md(rp1, cp1, cp2, dp1, dp2, dp3, alpha, p1, &
                        ldp11, ldp12, p2, ldp21, ldp22, p3, ldp31, ldp32, &
                        dwork, info)
@@ -8774,7 +8757,7 @@ module slicot
     end interface
     public :: mc03md
     
-    interface 
+    interface
         subroutine mc03nd(mp, np, dp, p, ldp1, ldp2, dk, gam, &
                        nullsp, ldnull, ker, ldker1, ldker2, tol, iwork, dwork, &
                        ldwork, info)
@@ -8800,7 +8783,7 @@ module slicot
     end interface
     public :: mc03nd
     
-    interface 
+    interface
         subroutine mc03nx(mp, np, dp, p, ldp1, ldp2, a, lda, &
                        e, lde)
             integer, intent(in)             :: mp
@@ -8817,7 +8800,7 @@ module slicot
     end interface
     public :: mc03nx
     
-    interface 
+    interface
         subroutine mc03ny(nblcks, nra, nca, a, lda, e, lde, imuk, &
                        inuk, veps, ldveps, info)
             integer, intent(in)               :: nblcks
@@ -8836,7 +8819,7 @@ module slicot
     end interface
     public :: mc03ny
     
-    interface 
+    interface
         subroutine md03ad(xinit, alg, stor, uplo, fcn, jpj, m, n, &
                        itmax, nprint, ipar, lipar, dpar1, ldpar1, dpar2, ldpar2, &
                        x, nfev, njev, tol, cgtol, dwork, ldwork, iwarn, &
@@ -8870,7 +8853,7 @@ module slicot
     end interface
     public :: md03ad
     
-    interface 
+    interface
         subroutine md03ba(n, ipar, lipar, fnorm, j, ldj, e, jnorms, &
                        gnorm, ipvt, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -8890,7 +8873,7 @@ module slicot
     end interface
     public :: md03ba
     
-    interface 
+    interface
         subroutine md03bb(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, delta, par, ranks, x, rx, tol, dwork, &
                        ldwork, info)
@@ -8916,7 +8899,7 @@ module slicot
     end interface
     public :: md03bb
     
-    interface 
+    interface
         subroutine md03bd(xinit, scale, cond, fcn, qrfact, lmparm, m, n, &
                        itmax, factor, nprint, ipar, lipar, dpar1, ldpar1, dpar2, &
                        ldpar2, x, diag, nfev, njev, ftol, xtol, gtol, &
@@ -8955,7 +8938,7 @@ module slicot
     end interface
     public :: md03bd
     
-    interface 
+    interface
         subroutine md03bf(iflag, m, n, ipar, lipar, dpar1, ldpar1, dpar2, &
                        ldpar2, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
@@ -8980,7 +8963,7 @@ module slicot
     end interface
     public :: md03bf
     
-    interface 
+    interface
         subroutine md03bx(m, n, fnorm, j, ldj, e, jnorms, gnorm, &
                        ipvt, dwork, ldwork, info)
             integer, intent(in)               :: m
@@ -8999,7 +8982,7 @@ module slicot
     end interface
     public :: md03bx
     
-    interface 
+    interface
         subroutine md03by(cond, n, r, ldr, ipvt, diag, qtb, delta, &
                        par, rank, x, rx, tol, dwork, ldwork, info)
             character, intent(in)             :: cond
@@ -9022,7 +9005,7 @@ module slicot
     end interface
     public :: md03by
     
-    interface 
+    interface
         subroutine nf01ad(nsmp, m, l, ipar, lipar, x, lx, u, &
                        ldu, y, ldy, dwork, ldwork, info)
             integer, intent(in)               :: nsmp
@@ -9043,7 +9026,7 @@ module slicot
     end interface
     public :: nf01ad
     
-    interface 
+    interface
         subroutine nf01ay(nsmp, nz, l, ipar, lipar, wb, lwb, z, &
                        ldz, y, ldy, dwork, ldwork, info)
             integer, intent(in)               :: nsmp
@@ -9064,7 +9047,7 @@ module slicot
     end interface
     public :: nf01ay
     
-    interface 
+    interface
         subroutine nf01ba(iflag, nsmp, n, ipar, lipar, z, ldz, y, &
                        ldy, x, nfevl, e, j, ldj, jte, dwork, &
                        ldwork, info)
@@ -9090,7 +9073,7 @@ module slicot
     end interface
     public :: nf01ba
     
-    interface 
+    interface
         subroutine nf01bb(iflag, nfun, lx, ipar, lipar, u, ldu, y, &
                        ldy, x, nfevl, e, j, ldj, jte, dwork, &
                        ldwork, info)
@@ -9116,7 +9099,7 @@ module slicot
     end interface
     public :: nf01bb
     
-    interface 
+    interface
         subroutine nf01bd(cjte, nsmp, m, l, ipar, lipar, x, lx, &
                        u, ldu, e, j, ldj, jte, dwork, ldwork, &
                        info)
@@ -9141,7 +9124,7 @@ module slicot
     end interface
     public :: nf01bd
     
-    interface 
+    interface
         subroutine nf01be(iflag, nsmp, n, ipar, lipar, z, ldz, y, &
                        ldy, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
@@ -9166,7 +9149,7 @@ module slicot
     end interface
     public :: nf01be
     
-    interface 
+    interface
         subroutine nf01bf(iflag, nfun, lx, ipar, lipar, u, ldu, y, &
                        ldy, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
@@ -9191,7 +9174,7 @@ module slicot
     end interface
     public :: nf01bf
     
-    interface 
+    interface
         subroutine nf01bp(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, delta, par, ranks, x, rx, tol, dwork, &
                        ldwork, info)
@@ -9217,7 +9200,7 @@ module slicot
     end interface
     public :: nf01bp
     
-    interface 
+    interface
         subroutine nf01bq(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, ranks, x, tol, dwork, ldwork, info)
             character, intent(in)             :: cond
@@ -9239,7 +9222,7 @@ module slicot
     end interface
     public :: nf01bq
     
-    interface 
+    interface
         subroutine nf01br(cond, uplo, trans, n, ipar, lipar, r, ldr, &
                        sdiag, s, lds, b, ranks, tol, dwork, ldwork, &
                        info)
@@ -9264,7 +9247,7 @@ module slicot
     end interface
     public :: nf01br
     
-    interface 
+    interface
         subroutine nf01bs(n, ipar, lipar, fnorm, j, ldj, e, jnorms, &
                        gnorm, ipvt, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -9284,7 +9267,7 @@ module slicot
     end interface
     public :: nf01bs
     
-    interface 
+    interface
         subroutine nf01bu(stor, uplo, n, ipar, lipar, dpar, ldpar, j, &
                        ldj, jtj, ldjtj, dwork, ldwork, info)
             character, intent(in)             :: stor
@@ -9305,7 +9288,7 @@ module slicot
     end interface
     public :: nf01bu
     
-    interface 
+    interface
         subroutine nf01bv(stor, uplo, n, ipar, lipar, dpar, ldpar, j, &
                        ldj, jtj, ldjtj, dwork, ldwork, info)
             character, intent(in)             :: stor
@@ -9326,7 +9309,7 @@ module slicot
     end interface
     public :: nf01bv
     
-    interface 
+    interface
         subroutine nf01bw(n, ipar, lipar, dpar, ldpar, j, ldj, x, &
                        incx, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -9345,7 +9328,7 @@ module slicot
     end interface
     public :: nf01bw
     
-    interface 
+    interface
         subroutine nf01bx(n, ipar, lipar, dpar, ldpar, j, ldj, x, &
                        incx, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -9364,7 +9347,7 @@ module slicot
     end interface
     public :: nf01bx
     
-    interface 
+    interface
         subroutine nf01by(cjte, nsmp, nz, l, ipar, lipar, wb, lwb, &
                        z, ldz, e, j, ldj, jte, dwork, ldwork, &
                        info)
@@ -9389,7 +9372,7 @@ module slicot
     end interface
     public :: nf01by
     
-    interface 
+    interface
         subroutine sb01bd(dico, n, m, np, alpha, a, lda, b, &
                        ldb, wr, wi, nfp, nap, nup, f, ldf, &
                        z, ldz, tol, dwork, ldwork, iwarn, info)
@@ -9420,7 +9403,7 @@ module slicot
     end interface
     public :: sb01bd
     
-    interface 
+    interface
         subroutine sb01bx(reig, n, xr, xi, wr, wi, s, p)
             logical, intent(in)               :: reig
             integer, intent(in)               :: n
@@ -9434,7 +9417,7 @@ module slicot
     end interface
     public :: sb01bx
     
-    interface 
+    interface
         subroutine sb01by(n, m, s, p, a, b, f, tol, &
                        dwork, info)
             integer, intent(in)               :: n
@@ -9451,7 +9434,7 @@ module slicot
     end interface
     public :: sb01by
     
-    interface 
+    interface
         subroutine sb01dd(n, m, indcon, a, lda, b, ldb, nblk, &
                        wr, wi, z, ldz, y, count, g, ldg, &
                        tol, iwork, dwork, ldwork, info)
@@ -9480,7 +9463,7 @@ module slicot
     end interface
     public :: sb01dd
     
-    interface 
+    interface
         subroutine sb01fy(discr, n, m, a, lda, b, ldb, f, &
                        ldf, v, ldv, info)
             logical, intent(in)             :: discr
@@ -9499,7 +9482,7 @@ module slicot
     end interface
     public :: sb01fy
     
-    interface 
+    interface
         subroutine sb01md(ncont, n, a, lda, b, wr, wi, z, &
                        ldz, g, dwork, info)
             integer, intent(in)               :: ncont
@@ -9518,7 +9501,7 @@ module slicot
     end interface
     public :: sb01md
     
-    interface 
+    interface
         logical function sb02cx (reig,ieig)
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
@@ -9526,7 +9509,7 @@ module slicot
     end interface
     public :: sb02cx
     
-    interface 
+    interface
         subroutine sb02md(dico, hinv, uplo, scal, sort, n, a, lda, &
                        g, ldg, q, ldq, rcond, wr, wi, s, &
                        lds, u, ldu, iwork, dwork, ldwork, bwork, info)
@@ -9558,7 +9541,7 @@ module slicot
     end interface
     public :: sb02md
     
-    interface 
+    interface
         logical function sb02mr (reig,ieig)
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
@@ -9566,7 +9549,7 @@ module slicot
     end interface
     public :: sb02mr
     
-    interface 
+    interface
         logical function sb02ms (reig,ieig)
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
@@ -9574,7 +9557,7 @@ module slicot
     end interface
     public :: sb02ms
     
-    interface 
+    interface
         subroutine sb02mt(jobg, jobl, fact, uplo, n, m, a, lda, &
                        b, ldb, q, ldq, r, ldr, l, ldl, &
                        ipiv, oufact, g, ldg, iwork, dwork, ldwork, info)
@@ -9606,7 +9589,7 @@ module slicot
     end interface
     public :: sb02mt
     
-    interface 
+    interface
         subroutine sb02mu(dico, hinv, uplo, n, a, lda, g, ldg, &
                        q, ldq, s, lds, iwork, dwork, ldwork, info)
             character, intent(in)             :: dico
@@ -9629,7 +9612,7 @@ module slicot
     end interface
     public :: sb02mu
     
-    interface 
+    interface
         logical function sb02mv (reig,ieig)
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
@@ -9637,7 +9620,7 @@ module slicot
     end interface
     public :: sb02mv
     
-    interface 
+    interface
         logical function sb02mw (reig,ieig)
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
@@ -9645,7 +9628,7 @@ module slicot
     end interface
     public :: sb02mw
     
-    interface 
+    interface
         subroutine sb02mx(jobg, jobl, fact, uplo, trans, flag, def, n, &
                        m, a, lda, b, ldb, q, ldq, r, &
                        ldr, l, ldl, ipiv, oufact, g, ldg, iwork, &
@@ -9681,7 +9664,7 @@ module slicot
     end interface
     public :: sb02mx
     
-    interface 
+    interface
         subroutine sb02nd(dico, fact, uplo, jobl, n, m, p, a, &
                        lda, b, ldb, r, ldr, ipiv, l, ldl, &
                        x, ldx, rnorm, f, ldf, oufact, iwork, dwork, &
@@ -9716,7 +9699,7 @@ module slicot
     end interface
     public :: sb02nd
     
-    interface 
+    interface
         subroutine sb02od(dico, jobb, fact, uplo, jobl, sort, n, m, &
                        p, a, lda, b, ldb, q, ldq, r, &
                        ldr, l, ldl, rcond, x, ldx, alfar, alfai, &
@@ -9763,7 +9746,7 @@ module slicot
     end interface
     public :: sb02od
     
-    interface 
+    interface
         logical function sb02ou (alphar,alphai,beta)
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
@@ -9772,7 +9755,7 @@ module slicot
     end interface
     public :: sb02ou
     
-    interface 
+    interface
         logical function sb02ov (alphar,alphai,beta)
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
@@ -9781,7 +9764,7 @@ module slicot
     end interface
     public :: sb02ov
     
-    interface 
+    interface
         logical function sb02ow (alphar,alphai,beta)
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
@@ -9790,7 +9773,7 @@ module slicot
     end interface
     public :: sb02ow
     
-    interface 
+    interface
         logical function sb02ox (alphar,alphai,beta)
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
@@ -9799,7 +9782,7 @@ module slicot
     end interface
     public :: sb02ox
     
-    interface 
+    interface
         subroutine sb02oy(type, dico, jobb, fact, uplo, jobl, jobe, n, &
                        m, p, a, lda, b, ldb, q, ldq, &
                        r, ldr, l, ldl, e, lde, af, ldaf, &
@@ -9839,7 +9822,7 @@ module slicot
     end interface
     public :: sb02oy
     
-    interface 
+    interface
         subroutine sb02pd(job, trana, uplo, n, a, lda, g, ldg, &
                        q, ldq, x, ldx, rcond, ferr, wr, wi, &
                        iwork, dwork, ldwork, info)
@@ -9867,7 +9850,7 @@ module slicot
     end interface
     public :: sb02pd
     
-    interface 
+    interface
         subroutine sb02qd(job, fact, trana, uplo, lyapun, n, a, lda, &
                        t, ldt, u, ldu, g, ldg, q, ldq, &
                        x, ldx, sep, rcond, ferr, iwork, dwork, ldwork, &
@@ -9901,7 +9884,7 @@ module slicot
     end interface
     public :: sb02qd
     
-    interface 
+    interface
         subroutine sb02rd(job, dico, hinv, trana, uplo, scal, sort, fact, &
                        lyapun, n, a, lda, t, ldt, v, ldv, &
                        g, ldg, q, ldq, x, ldx, sep, rcond, &
@@ -9945,7 +9928,7 @@ module slicot
     end interface
     public :: sb02rd
     
-    interface 
+    interface
         subroutine sb02ru(dico, hinv, trana, uplo, n, a, lda, g, &
                        ldg, q, ldq, s, lds, iwork, dwork, ldwork, &
                        info)
@@ -9970,7 +9953,7 @@ module slicot
     end interface
     public :: sb02ru
     
-    interface 
+    interface
         subroutine sb02sd(job, fact, trana, uplo, lyapun, n, a, lda, &
                        t, ldt, u, ldu, g, ldg, q, ldq, &
                        x, ldx, sepd, rcond, ferr, iwork, dwork, ldwork, &
@@ -10004,7 +9987,7 @@ module slicot
     end interface
     public :: sb02sd
     
-    interface 
+    interface
         subroutine sb03md(dico, job, fact, trana, n, a, lda, u, &
                        ldu, c, ldc, scale, sep, ferr, wr, wi, &
                        iwork, dwork, ldwork, info)
@@ -10032,7 +10015,7 @@ module slicot
     end interface
     public :: sb03md
     
-    interface 
+    interface
         subroutine sb03mu(ltranl, ltranr, isgn, n1, n2, tl, ldtl, tr, &
                        ldtr, b, ldb, scale, x, ldx, xnorm, info)
             logical, intent(in)             :: ltranl
@@ -10055,7 +10038,7 @@ module slicot
     end interface
     public :: sb03mu
     
-    interface 
+    interface
         subroutine sb03mv(ltran, lupper, t, ldt, b, ldb, scale, x, &
                        ldx, xnorm, info)
             logical, intent(in)             :: ltran
@@ -10073,7 +10056,7 @@ module slicot
     end interface
     public :: sb03mv
     
-    interface 
+    interface
         subroutine sb03mw(ltran, lupper, t, ldt, b, ldb, scale, x, &
                        ldx, xnorm, info)
             logical, intent(in)             :: ltran
@@ -10091,7 +10074,7 @@ module slicot
     end interface
     public :: sb03mw
     
-    interface 
+    interface
         subroutine sb03mx(trana, n, a, lda, c, ldc, scale, dwork, &
                        info)
             character, intent(in)             :: trana
@@ -10107,7 +10090,7 @@ module slicot
     end interface
     public :: sb03mx
     
-    interface 
+    interface
         subroutine sb03my(trana, n, a, lda, c, ldc, scale, info)
             character, intent(in)             :: trana
             integer, intent(in)               :: n
@@ -10121,7 +10104,7 @@ module slicot
     end interface
     public :: sb03my
     
-    interface 
+    interface
         subroutine sb03od(dico, fact, trans, n, m, a, lda, q, &
                        ldq, b, ldb, scale, wr, wi, dwork, ldwork, &
                        info)
@@ -10146,7 +10129,7 @@ module slicot
     end interface
     public :: sb03od
     
-    interface 
+    interface
         subroutine sb03or(discr, ltrans, n, m, s, lds, a, lda, &
                        c, ldc, scale, info)
             logical, intent(in)               :: discr
@@ -10165,7 +10148,7 @@ module slicot
     end interface
     public :: sb03or
     
-    interface 
+    interface
         subroutine sb03os(discr, ltrans, n, s, lds, r, ldr, scale, &
                        dwork, zwork, info)
             logical, intent(in)               :: discr
@@ -10183,7 +10166,7 @@ module slicot
     end interface
     public :: sb03os
     
-    interface 
+    interface
         subroutine sb03ot(discr, ltrans, n, s, lds, r, ldr, scale, &
                        dwork, info)
             logical, intent(in)               :: discr
@@ -10200,7 +10183,7 @@ module slicot
     end interface
     public :: sb03ot
     
-    interface 
+    interface
         subroutine sb03ou(discr, ltrans, n, m, a, lda, b, ldb, &
                        tau, u, ldu, scale, dwork, ldwork, info)
             logical, intent(in)               :: discr
@@ -10222,7 +10205,7 @@ module slicot
     end interface
     public :: sb03ou
     
-    interface 
+    interface
         subroutine sb03ov(a, b, small, c, s)
             double precision, intent(inout)   :: a(2)
             double precision, intent(in)      :: b
@@ -10233,7 +10216,7 @@ module slicot
     end interface
     public :: sb03ov
     
-    interface 
+    interface
         subroutine sb03oy(discr, ltrans, isgn, s, lds, r, ldr, a, &
                        lda, scale, info)
             logical, intent(in)               :: discr
@@ -10251,7 +10234,7 @@ module slicot
     end interface
     public :: sb03oy
     
-    interface 
+    interface
         subroutine sb03oz(dico, fact, trans, n, m, a, lda, q, &
                        ldq, b, ldb, scale, w, dwork, zwork, lzwork, &
                        info)
@@ -10276,7 +10259,7 @@ module slicot
     end interface
     public :: sb03oz
     
-    interface 
+    interface
         subroutine sb03pd(job, fact, trana, n, a, lda, u, ldu, &
                        c, ldc, scale, sepd, ferr, wr, wi, iwork, &
                        dwork, ldwork, info)
@@ -10303,7 +10286,7 @@ module slicot
     end interface
     public :: sb03pd
     
-    interface 
+    interface
         subroutine sb03qd(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sep, rcond, ferr, iwork, dwork, ldwork, info)
@@ -10335,7 +10318,7 @@ module slicot
     end interface
     public :: sb03qd
     
-    interface 
+    interface
         subroutine sb03qx(trana, uplo, lyapun, n, xanorm, t, ldt, u, &
                        ldu, r, ldr, ferr, iwork, dwork, ldwork, info)
             character, intent(in)             :: trana
@@ -10358,7 +10341,7 @@ module slicot
     end interface
     public :: sb03qx
     
-    interface 
+    interface
         subroutine sb03qy(job, trana, lyapun, n, t, ldt, u, ldu, &
                        x, ldx, sep, thnorm, iwork, dwork, ldwork, info)
             character, intent(in)             :: job
@@ -10381,7 +10364,7 @@ module slicot
     end interface
     public :: sb03qy
     
-    interface 
+    interface
         subroutine sb03rd(job, fact, trana, n, a, lda, u, ldu, &
                        c, ldc, scale, sep, ferr, wr, wi, iwork, &
                        dwork, ldwork, info)
@@ -10408,7 +10391,7 @@ module slicot
     end interface
     public :: sb03rd
     
-    interface 
+    interface
         subroutine sb03sd(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sepd, rcond, ferr, iwork, dwork, ldwork, info)
@@ -10440,7 +10423,7 @@ module slicot
     end interface
     public :: sb03sd
     
-    interface 
+    interface
         subroutine sb03sx(trana, uplo, lyapun, n, xanorm, t, ldt, u, &
                        ldu, r, ldr, ferr, iwork, dwork, ldwork, info)
             character, intent(in)             :: trana
@@ -10463,7 +10446,7 @@ module slicot
     end interface
     public :: sb03sx
     
-    interface 
+    interface
         subroutine sb03sy(job, trana, lyapun, n, t, ldt, u, ldu, &
                        xa, ldxa, sepd, thnorm, iwork, dwork, ldwork, info)
             character, intent(in)             :: job
@@ -10486,7 +10469,7 @@ module slicot
     end interface
     public :: sb03sy
     
-    interface 
+    interface
         subroutine sb03td(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sep, rcond, ferr, wr, wi, iwork, dwork, &
@@ -10521,7 +10504,7 @@ module slicot
     end interface
     public :: sb03td
     
-    interface 
+    interface
         subroutine sb03ud(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sepd, rcond, ferr, wr, wi, iwork, dwork, &
@@ -10556,7 +10539,7 @@ module slicot
     end interface
     public :: sb03ud
     
-    interface 
+    interface
         subroutine sb04md(n, m, a, lda, b, ldb, c, ldc, &
                        z, ldz, iwork, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -10577,7 +10560,7 @@ module slicot
     end interface
     public :: sb04md
     
-    interface 
+    interface
         subroutine sb04mr(m, d, ipr, info)
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
@@ -10587,7 +10570,7 @@ module slicot
     end interface
     public :: sb04mr
     
-    interface 
+    interface
         subroutine sb04mu(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
             integer, intent(in)               :: n
@@ -10606,7 +10589,7 @@ module slicot
     end interface
     public :: sb04mu
     
-    interface 
+    interface
         subroutine sb04mw(m, d, ipr, info)
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
@@ -10616,7 +10599,7 @@ module slicot
     end interface
     public :: sb04mw
     
-    interface 
+    interface
         subroutine sb04my(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
             integer, intent(in)               :: n
@@ -10635,7 +10618,7 @@ module slicot
     end interface
     public :: sb04my
     
-    interface 
+    interface
         subroutine sb04nd(abschu, ula, ulb, n, m, a, lda, b, &
                        ldb, c, ldc, tol, iwork, dwork, ldwork, info)
             character, intent(in)             :: abschu
@@ -10658,7 +10641,7 @@ module slicot
     end interface
     public :: sb04nd
     
-    interface 
+    interface
         subroutine sb04nv(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, d)
             character, intent(in)           :: abschr
@@ -10675,7 +10658,7 @@ module slicot
     end interface
     public :: sb04nv
     
-    interface 
+    interface
         subroutine sb04nw(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, d)
             character, intent(in)           :: abschr
@@ -10692,7 +10675,7 @@ module slicot
     end interface
     public :: sb04nw
     
-    interface 
+    interface
         subroutine sb04nx(rc, ul, m, a, lda, lambd1, lambd2, lambd3, &
                        lambd4, d, tol, iwork, dwork, lddwor, info)
             character, intent(in)             :: rc
@@ -10714,7 +10697,7 @@ module slicot
     end interface
     public :: sb04nx
     
-    interface 
+    interface
         subroutine sb04ny(rc, ul, m, a, lda, lambda, d, tol, &
                        iwork, dwork, lddwor, info)
             character, intent(in)             :: rc
@@ -10733,7 +10716,7 @@ module slicot
     end interface
     public :: sb04ny
     
-    interface 
+    interface
         subroutine sb04od(reduce, trans, jobd, m, n, a, lda, b, &
                        ldb, c, ldc, d, ldd, e, lde, f, &
                        ldf, scale, dif, p, ldp, q, ldq, u, &
@@ -10773,7 +10756,7 @@ module slicot
     end interface
     public :: sb04od
     
-    interface 
+    interface
         subroutine sb04ow(m, n, a, lda, b, ldb, c, ldc, &
                        d, ldd, e, lde, f, ldf, scale, iwork, &
                        info)
@@ -10798,7 +10781,7 @@ module slicot
     end interface
     public :: sb04ow
     
-    interface 
+    interface
         subroutine sb04pd(dico, facta, factb, trana, tranb, isgn, m, n, &
                        a, lda, u, ldu, b, ldb, v, ldv, &
                        c, ldc, scale, dwork, ldwork, info)
@@ -10828,7 +10811,7 @@ module slicot
     end interface
     public :: sb04pd
     
-    interface 
+    interface
         subroutine sb04px(ltranl, ltranr, isgn, n1, n2, tl, ldtl, tr, &
                        ldtr, b, ldb, scale, x, ldx, xnorm, info)
             logical, intent(in)             :: ltranl
@@ -10851,7 +10834,7 @@ module slicot
     end interface
     public :: sb04px
     
-    interface 
+    interface
         subroutine sb04py(trana, tranb, isgn, m, n, a, lda, b, &
                        ldb, c, ldc, scale, dwork, info)
             character, intent(in)             :: trana
@@ -10872,7 +10855,7 @@ module slicot
     end interface
     public :: sb04py
     
-    interface 
+    interface
         subroutine sb04qd(n, m, a, lda, b, ldb, c, ldc, &
                        z, ldz, iwork, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -10893,7 +10876,7 @@ module slicot
     end interface
     public :: sb04qd
     
-    interface 
+    interface
         subroutine sb04qr(m, d, ipr, info)
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
@@ -10903,7 +10886,7 @@ module slicot
     end interface
     public :: sb04qr
     
-    interface 
+    interface
         subroutine sb04qu(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
             integer, intent(in)               :: n
@@ -10922,7 +10905,7 @@ module slicot
     end interface
     public :: sb04qu
     
-    interface 
+    interface
         subroutine sb04qy(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
             integer, intent(in)               :: n
@@ -10941,7 +10924,7 @@ module slicot
     end interface
     public :: sb04qy
     
-    interface 
+    interface
         subroutine sb04rd(abschu, ula, ulb, n, m, a, lda, b, &
                        ldb, c, ldc, tol, iwork, dwork, ldwork, info)
             character, intent(in)             :: abschu
@@ -10964,7 +10947,7 @@ module slicot
     end interface
     public :: sb04rd
     
-    interface 
+    interface
         subroutine sb04rv(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, ba, ldba, d, dwork)
             character, intent(in)             :: abschr
@@ -10984,7 +10967,7 @@ module slicot
     end interface
     public :: sb04rv
     
-    interface 
+    interface
         subroutine sb04rw(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, ba, ldba, d, dwork)
             character, intent(in)             :: abschr
@@ -11004,7 +10987,7 @@ module slicot
     end interface
     public :: sb04rw
     
-    interface 
+    interface
         subroutine sb04rx(rc, ul, m, a, lda, lambd1, lambd2, lambd3, &
                        lambd4, d, tol, iwork, dwork, lddwor, info)
             character, intent(in)             :: rc
@@ -11026,7 +11009,7 @@ module slicot
     end interface
     public :: sb04rx
     
-    interface 
+    interface
         subroutine sb04ry(rc, ul, m, a, lda, lambda, d, tol, &
                        iwork, dwork, lddwor, info)
             character, intent(in)             :: rc
@@ -11045,7 +11028,7 @@ module slicot
     end interface
     public :: sb04ry
     
-    interface 
+    interface
         subroutine sb06nd(n, m, kmax, a, lda, b, ldb, kstair, &
                        u, ldu, f, ldf, dwork, info)
             integer, intent(in)               :: n
@@ -11066,7 +11049,7 @@ module slicot
     end interface
     public :: sb06nd
     
-    interface 
+    interface
         subroutine sb08cd(dico, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nq, nr, br, ldbr, &
                        dr, lddr, tol, dwork, ldwork, iwarn, info)
@@ -11097,7 +11080,7 @@ module slicot
     end interface
     public :: sb08cd
     
-    interface 
+    interface
         subroutine sb08dd(dico, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nq, nr, cr, ldcr, &
                        dr, lddr, tol, dwork, ldwork, iwarn, info)
@@ -11128,7 +11111,7 @@ module slicot
     end interface
     public :: sb08dd
     
-    interface 
+    interface
         subroutine sb08ed(dico, n, m, p, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, nq, nr, br, &
                        ldbr, dr, lddr, tol, dwork, ldwork, iwarn, info)
@@ -11160,7 +11143,7 @@ module slicot
     end interface
     public :: sb08ed
     
-    interface 
+    interface
         subroutine sb08fd(dico, n, m, p, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, nq, nr, cr, &
                        ldcr, dr, lddr, tol, dwork, ldwork, iwarn, info)
@@ -11192,7 +11175,7 @@ module slicot
     end interface
     public :: sb08fd
     
-    interface 
+    interface
         subroutine sb08gd(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, br, ldbr, dr, lddr, iwork, &
                        dwork, info)
@@ -11218,7 +11201,7 @@ module slicot
     end interface
     public :: sb08gd
     
-    interface 
+    interface
         subroutine sb08hd(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, cr, ldcr, dr, lddr, iwork, &
                        dwork, info)
@@ -11244,7 +11227,7 @@ module slicot
     end interface
     public :: sb08hd
     
-    interface 
+    interface
         subroutine sb08md(acona, da, a, res, e, dwork, ldwork, info)
             character, intent(in)             :: acona
             integer, intent(in)               :: da
@@ -11258,7 +11241,7 @@ module slicot
     end interface
     public :: sb08md
     
-    interface 
+    interface
         subroutine sb08my(da, a, b, epsb)
             integer, intent(in)               :: da
             double precision, intent(in)      :: a(*)
@@ -11268,7 +11251,7 @@ module slicot
     end interface
     public :: sb08my
     
-    interface 
+    interface
         subroutine sb08nd(acona, da, a, res, e, dwork, ldwork, info)
             character, intent(in)             :: acona
             integer, intent(inout)            :: da
@@ -11282,7 +11265,7 @@ module slicot
     end interface
     public :: sb08nd
     
-    interface 
+    interface
         subroutine sb08ny(da, a, b, epsb)
             integer, intent(in)             :: da
             double precision, intent(in)    :: a(*)
@@ -11292,7 +11275,7 @@ module slicot
     end interface
     public :: sb08ny
     
-    interface 
+    interface
         subroutine sb09md(n, nc, nb, h1, ldh1, h2, ldh2, ss, &
                        ldss, se, ldse, pre, ldpre, tol, info)
             integer, intent(in)             :: n
@@ -11314,7 +11297,7 @@ module slicot
     end interface
     public :: sb09md
     
-    interface 
+    interface
         subroutine sb10ad(job, n, m, np, ncon, nmeas, gamma, a, &
                        lda, b, ldb, c, ldc, d, ldd, ak, &
                        ldak, bk, ldbk, ck, ldck, dk, lddk, ac, &
@@ -11366,7 +11349,7 @@ module slicot
     end interface
     public :: sb10ad
     
-    interface 
+    interface
         subroutine sb10dd(n, m, np, ncon, nmeas, gamma, a, lda, &
                        b, ldb, c, ldc, d, ldd, ak, ldak, &
                        bk, ldbk, ck, ldck, dk, lddk, x, ldx, &
@@ -11409,7 +11392,7 @@ module slicot
     end interface
     public :: sb10dd
     
-    interface 
+    interface
         subroutine sb10ed(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, tol, iwork, &
@@ -11446,7 +11429,7 @@ module slicot
     end interface
     public :: sb10ed
     
-    interface 
+    interface
         subroutine sb10fd(n, m, np, ncon, nmeas, gamma, a, lda, &
                        b, ldb, c, ldc, d, ldd, ak, ldak, &
                        bk, ldbk, ck, ldck, dk, lddk, rcond, tol, &
@@ -11484,7 +11467,7 @@ module slicot
     end interface
     public :: sb10fd
     
-    interface 
+    interface
         subroutine sb10hd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, tol, iwork, &
@@ -11521,7 +11504,7 @@ module slicot
     end interface
     public :: sb10hd
     
-    interface 
+    interface
         subroutine sb10id(n, m, np, a, lda, b, ldb, c, &
                        ldc, d, ldd, factor, nk, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, iwork, dwork, &
@@ -11557,7 +11540,7 @@ module slicot
     end interface
     public :: sb10id
     
-    interface 
+    interface
         subroutine sb10jd(n, m, np, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, nsys, dwork, ldwork, &
                        info)
@@ -11582,7 +11565,7 @@ module slicot
     end interface
     public :: sb10jd
     
-    interface 
+    interface
         subroutine sb10kd(n, m, np, a, lda, b, ldb, c, &
                        ldc, factor, ak, ldak, bk, ldbk, ck, ldck, &
                        dk, lddk, rcond, iwork, dwork, ldwork, bwork, info)
@@ -11614,7 +11597,7 @@ module slicot
     end interface
     public :: sb10kd
     
-    interface 
+    interface
         subroutine sb10ld(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, ac, ldac, bc, &
@@ -11657,7 +11640,7 @@ module slicot
     end interface
     public :: sb10ld
     
-    interface 
+    interface
         subroutine sb10md(nc, mp, lendat, f, ord, mnb, nblock, itype, &
                        qutol, a, lda, b, ldb, c, ldc, d, &
                        ldd, omega, totord, ad, ldad, bd, ldbd, cd, &
@@ -11702,7 +11685,7 @@ module slicot
     end interface
     public :: sb10md
     
-    interface 
+    interface
         subroutine sb10pd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, tu, ldtu, ty, &
                        ldty, rcond, tol, dwork, ldwork, info)
@@ -11732,7 +11715,7 @@ module slicot
     end interface
     public :: sb10pd
     
-    interface 
+    interface
         subroutine sb10qd(n, m, np, ncon, nmeas, gamma, a, lda, &
                        b, ldb, c, ldc, d, ldd, f, ldf, &
                        h, ldh, x, ldx, y, ldy, xycond, iwork, &
@@ -11769,7 +11752,7 @@ module slicot
     end interface
     public :: sb10qd
     
-    interface 
+    interface
         subroutine sb10rd(n, m, np, ncon, nmeas, gamma, a, lda, &
                        b, ldb, c, ldc, d, ldd, f, ldf, &
                        h, ldh, tu, ldtu, ty, ldty, x, ldx, &
@@ -11817,7 +11800,7 @@ module slicot
     end interface
     public :: sb10rd
     
-    interface 
+    interface
         subroutine sb10sd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, x, ldx, y, &
@@ -11858,7 +11841,7 @@ module slicot
     end interface
     public :: sb10sd
     
-    interface 
+    interface
         subroutine sb10td(n, m, np, ncon, nmeas, d, ldd, tu, &
                        ldtu, ty, ldty, ak, ldak, bk, ldbk, ck, &
                        ldck, dk, lddk, rcond, tol, iwork, dwork, ldwork, &
@@ -11892,7 +11875,7 @@ module slicot
     end interface
     public :: sb10td
     
-    interface 
+    interface
         subroutine sb10ud(n, m, np, ncon, nmeas, b, ldb, c, &
                        ldc, d, ldd, tu, ldtu, ty, ldty, rcond, &
                        tol, dwork, ldwork, info)
@@ -11920,7 +11903,7 @@ module slicot
     end interface
     public :: sb10ud
     
-    interface 
+    interface
         subroutine sb10vd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, f, ldf, h, ldh, x, &
                        ldx, y, ldy, xycond, iwork, dwork, ldwork, bwork, &
@@ -11954,7 +11937,7 @@ module slicot
     end interface
     public :: sb10vd
     
-    interface 
+    interface
         subroutine sb10wd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, f, ldf, h, &
                        ldh, tu, ldtu, ty, ldty, ak, ldak, bk, &
@@ -11993,7 +11976,7 @@ module slicot
     end interface
     public :: sb10wd
     
-    interface 
+    interface
         subroutine sb10yd(discfl, flag, lendat, rfrdat, ifrdat, omega, n, a, &
                        lda, b, c, d, tol, iwork, dwork, ldwork, &
                        zwork, lzwork, info)
@@ -12020,7 +12003,7 @@ module slicot
     end interface
     public :: sb10yd
     
-    interface 
+    interface
         subroutine sb10zd(n, m, np, a, lda, b, ldb, c, &
                        ldc, d, ldd, factor, ak, ldak, bk, ldbk, &
                        ck, ldck, dk, lddk, rcond, tol, iwork, dwork, &
@@ -12056,7 +12039,7 @@ module slicot
     end interface
     public :: sb10zd
     
-    interface 
+    interface
         subroutine sb10zp(discfl, n, a, lda, b, c, d, iwork, &
                        dwork, ldwork, info)
             integer, intent(in)               :: discfl
@@ -12074,7 +12057,7 @@ module slicot
     end interface
     public :: sb10zp
     
-    interface 
+    interface
         subroutine sb16ad(dico, jobc, jobo, jobmr, weight, equil, ordsel, n, &
                        m, p, nc, ncr, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, ac, ldac, bc, &
@@ -12122,7 +12105,7 @@ module slicot
     end interface
     public :: sb16ad
     
-    interface 
+    interface
         subroutine sb16ay(dico, jobc, jobo, weight, n, m, p, nc, &
                        ncs, a, lda, b, ldb, c, ldc, d, &
                        ldd, ac, ldac, bc, ldbc, cc, ldcc, dc, &
@@ -12167,7 +12150,7 @@ module slicot
     end interface
     public :: sb16ay
     
-    interface 
+    interface
         subroutine sb16bd(dico, jobd, jobmr, jobcf, equil, ordsel, n, m, &
                        p, ncr, a, lda, b, ldb, c, ldc, &
                        d, ldd, f, ldf, g, ldg, dc, lddc, &
@@ -12208,7 +12191,7 @@ module slicot
     end interface
     public :: sb16bd
     
-    interface 
+    interface
         subroutine sb16cd(dico, jobd, jobmr, jobcf, ordsel, n, m, p, &
                        ncr, a, lda, b, ldb, c, ldc, d, &
                        ldd, f, ldf, g, ldg, hsv, tol, iwork, &
@@ -12245,7 +12228,7 @@ module slicot
     end interface
     public :: sb16cd
     
-    interface 
+    interface
         subroutine sb16cy(dico, jobcf, n, m, p, a, lda, b, &
                        ldb, c, ldc, f, ldf, g, ldg, scalec, &
                        scaleo, s, lds, r, ldr, dwork, ldwork, info)
@@ -12277,15 +12260,7 @@ module slicot
     end interface
     public :: sb16cy
     
-    interface 
-        logical function select (par1,par2)
-            double precision, intent(in)   :: par1
-            double precision, intent(in)   :: par2
-        end function select
-    end interface
-    public :: select
-    
-    interface 
+    interface
         subroutine sg02ad(dico, jobb, fact, uplo, jobl, scal, sort, acc, &
                        n, m, p, a, lda, e, lde, b, &
                        ldb, q, ldq, r, ldr, l, ldl, rcondu, &
@@ -12338,7 +12313,7 @@ module slicot
     end interface
     public :: sg02ad
     
-    interface 
+    interface
         subroutine sg02cv(dico, job, jobe, uplo, trans, n, a, lda, &
                        e, lde, x, ldx, r, ldr, norms, dwork, &
                        ldwork, info)
@@ -12364,7 +12339,7 @@ module slicot
     end interface
     public :: sg02cv
     
-    interface 
+    interface
         subroutine sg02cw(dico, job, jobe, flag, jobg, uplo, trans, n, &
                        m, a, lda, e, lde, g, ldg, x, &
                        ldx, f, ldf, k, ldk, xe, ldxe, r, &
@@ -12404,7 +12379,7 @@ module slicot
     end interface
     public :: sg02cw
     
-    interface 
+    interface
         subroutine sg02cx(jobe, flag, jobg, uplo, trans, n, m, e, &
                        lde, r, ldr, s, lds, g, ldg, alpha, &
                        rnorm, dwork, ldwork, iwarn, info)
@@ -12433,7 +12408,7 @@ module slicot
     end interface
     public :: sg02cx
     
-    interface 
+    interface
         subroutine sg02nd(dico, jobe, job, jobx, fact, uplo, jobl, trans, &
                        n, m, p, a, lda, e, lde, b, &
                        ldb, r, ldr, ipiv, l, ldl, x, ldx, &
@@ -12479,7 +12454,7 @@ module slicot
     end interface
     public :: sg02nd
     
-    interface 
+    interface
         subroutine sg03ad(dico, job, fact, trans, uplo, n, a, lda, &
                        e, lde, q, ldq, z, ldz, x, ldx, &
                        scale, sep, ferr, alphar, alphai, beta, iwork, dwork, &
@@ -12514,7 +12489,7 @@ module slicot
     end interface
     public :: sg03ad
     
-    interface 
+    interface
         subroutine sg03ax(trans, n, a, lda, e, lde, x, ldx, &
                        scale, info)
             character, intent(in)             :: trans
@@ -12531,7 +12506,7 @@ module slicot
     end interface
     public :: sg03ax
     
-    interface 
+    interface
         subroutine sg03ay(trans, n, a, lda, e, lde, x, ldx, &
                        scale, info)
             character, intent(in)             :: trans
@@ -12548,7 +12523,7 @@ module slicot
     end interface
     public :: sg03ay
     
-    interface 
+    interface
         subroutine sg03bd(dico, fact, trans, n, m, a, lda, e, &
                        lde, q, ldq, z, ldz, b, ldb, scale, &
                        alphar, alphai, beta, dwork, ldwork, info)
@@ -12578,7 +12553,7 @@ module slicot
     end interface
     public :: sg03bd
     
-    interface 
+    interface
         subroutine sg03br(xr, xi, yr, yi, c, sr, si, zr, &
                        zi)
             double precision, intent(in)    :: xr
@@ -12594,7 +12569,7 @@ module slicot
     end interface
     public :: sg03br
     
-    interface 
+    interface
         subroutine sg03bs(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, zwork, info)
             character, intent(in)             :: trans
@@ -12613,7 +12588,7 @@ module slicot
     end interface
     public :: sg03bs
     
-    interface 
+    interface
         subroutine sg03bt(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, zwork, info)
             character, intent(in)             :: trans
@@ -12632,7 +12607,7 @@ module slicot
     end interface
     public :: sg03bt
     
-    interface 
+    interface
         subroutine sg03bu(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, info)
             character, intent(in)             :: trans
@@ -12650,7 +12625,7 @@ module slicot
     end interface
     public :: sg03bu
     
-    interface 
+    interface
         subroutine sg03bv(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, info)
             character, intent(in)             :: trans
@@ -12668,7 +12643,7 @@ module slicot
     end interface
     public :: sg03bv
     
-    interface 
+    interface
         subroutine sg03bw(trans, m, n, a, lda, c, ldc, e, &
                        lde, d, ldd, x, ldx, scale, info)
             character, intent(in)             :: trans
@@ -12690,7 +12665,7 @@ module slicot
     end interface
     public :: sg03bw
     
-    interface 
+    interface
         subroutine sg03bx(dico, trans, a, lda, e, lde, b, ldb, &
                        u, ldu, scale, m1, ldm1, m2, ldm2, info)
             character, intent(in)           :: dico
@@ -12713,7 +12688,7 @@ module slicot
     end interface
     public :: sg03bx
     
-    interface 
+    interface
         subroutine sg03by(xr, xi, yr, yi, cr, ci, sr, si, &
                        z)
             double precision, intent(in)    :: xr
@@ -12729,7 +12704,7 @@ module slicot
     end interface
     public :: sg03by
     
-    interface 
+    interface
         subroutine sg03bz(dico, fact, trans, n, m, a, lda, e, &
                        lde, q, ldq, z, ldz, b, ldb, scale, &
                        alpha, beta, dwork, zwork, lzwork, info)
@@ -12759,7 +12734,7 @@ module slicot
     end interface
     public :: sg03bz
     
-    interface 
+    interface
         subroutine tb01id(job, n, m, p, maxred, a, lda, b, &
                        ldb, c, ldc, scale, info)
             character, intent(in)             :: job
@@ -12779,7 +12754,7 @@ module slicot
     end interface
     public :: tb01id
     
-    interface 
+    interface
         subroutine tb01iz(job, n, m, p, maxred, a, lda, b, &
                        ldb, c, ldc, scale, info)
             character, intent(in)             :: job
@@ -12799,7 +12774,7 @@ module slicot
     end interface
     public :: tb01iz
     
-    interface 
+    interface
         subroutine tb01kd(dico, stdom, joba, n, m, p, alpha, a, &
                        lda, b, ldb, c, ldc, ndim, u, ldu, &
                        wr, wi, dwork, ldwork, info)
@@ -12828,7 +12803,7 @@ module slicot
     end interface
     public :: tb01kd
     
-    interface 
+    interface
         subroutine tb01kx(n, m, p, ndim, a, lda, b, ldb, &
                        c, ldc, u, ldu, v, ldv, info)
             integer, intent(in)               :: n
@@ -12850,7 +12825,7 @@ module slicot
     end interface
     public :: tb01kx
     
-    interface 
+    interface
         subroutine tb01ld(dico, stdom, joba, n, m, p, alpha, a, &
                        lda, b, ldb, c, ldc, ndim, u, ldu, &
                        wr, wi, dwork, ldwork, info)
@@ -12879,7 +12854,7 @@ module slicot
     end interface
     public :: tb01ld
     
-    interface 
+    interface
         subroutine tb01md(jobu, uplo, n, m, a, lda, b, ldb, &
                        u, ldu, dwork, info)
             character, intent(in)             :: jobu
@@ -12898,7 +12873,7 @@ module slicot
     end interface
     public :: tb01md
     
-    interface 
+    interface
         subroutine tb01nd(jobu, uplo, n, p, a, lda, c, ldc, &
                        u, ldu, dwork, info)
             character, intent(in)             :: jobu
@@ -12917,7 +12892,7 @@ module slicot
     end interface
     public :: tb01nd
     
-    interface 
+    interface
         subroutine tb01pd(job, equil, n, m, p, a, lda, b, &
                        ldb, c, ldc, nr, tol, iwork, dwork, ldwork, &
                        info)
@@ -12942,7 +12917,7 @@ module slicot
     end interface
     public :: tb01pd
     
-    interface 
+    interface
         subroutine tb01px(job, equil, n, m, p, a, lda, b, &
                        ldb, c, ldc, nr, infred, tol, iwork, dwork, &
                        ldwork, info)
@@ -12968,7 +12943,7 @@ module slicot
     end interface
     public :: tb01px
     
-    interface 
+    interface
         subroutine tb01td(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, low, igh, scstat, scin, scout, &
                        dwork, info)
@@ -12994,7 +12969,7 @@ module slicot
     end interface
     public :: tb01td
     
-    interface 
+    interface
         subroutine tb01ty(mode, ioff, joff, nrow, ncol, size, x, ldx, &
                        bvect)
             integer, intent(in)               :: mode
@@ -13010,7 +12985,7 @@ module slicot
     end interface
     public :: tb01ty
     
-    interface 
+    interface
         subroutine tb01ud(jobz, n, m, p, a, lda, b, ldb, &
                        c, ldc, ncont, indcon, nblk, z, ldz, tau, &
                        tol, iwork, dwork, ldwork, info)
@@ -13039,7 +13014,7 @@ module slicot
     end interface
     public :: tb01ud
     
-    interface 
+    interface
         subroutine tb01ux(compz, n, m, p, a, lda, b, ldb, &
                        c, ldc, z, ldz, nobsv, nlblck, ctau, tol, &
                        iwork, dwork, info)
@@ -13066,7 +13041,7 @@ module slicot
     end interface
     public :: tb01ux
     
-    interface 
+    interface
         subroutine tb01uy(jobz, n, m1, m2, p, a, lda, b, &
                        ldb, c, ldc, ncont, indcon, nblk, z, ldz, &
                        tau, tol, iwork, dwork, ldwork, info)
@@ -13096,7 +13071,7 @@ module slicot
     end interface
     public :: tb01uy
     
-    interface 
+    interface
         subroutine tb01vd(apply, n, m, l, a, lda, b, ldb, &
                        c, ldc, d, ldd, x0, theta, ltheta, dwork, &
                        ldwork, info)
@@ -13122,7 +13097,7 @@ module slicot
     end interface
     public :: tb01vd
     
-    interface 
+    interface
         subroutine tb01vy(apply, n, m, l, theta, ltheta, a, lda, &
                        b, ldb, c, ldc, d, ldd, x0, dwork, &
                        ldwork, info)
@@ -13148,7 +13123,7 @@ module slicot
     end interface
     public :: tb01vy
     
-    interface 
+    interface
         subroutine tb01wd(n, m, p, a, lda, b, ldb, c, &
                        ldc, u, ldu, wr, wi, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -13171,7 +13146,7 @@ module slicot
     end interface
     public :: tb01wd
     
-    interface 
+    interface
         subroutine tb01wx(compu, n, m, p, a, lda, b, ldb, &
                        c, ldc, u, ldu, dwork, ldwork, info)
             character, intent(in)             :: compu
@@ -13193,7 +13168,7 @@ module slicot
     end interface
     public :: tb01wx
     
-    interface 
+    interface
         subroutine tb01xd(jobd, n, m, p, kl, ku, a, lda, &
                        b, ldb, c, ldc, d, ldd, info)
             character, intent(in)             :: jobd
@@ -13215,7 +13190,7 @@ module slicot
     end interface
     public :: tb01xd
     
-    interface 
+    interface
         subroutine tb01xz(jobd, n, m, p, kl, ku, a, lda, &
                        b, ldb, c, ldc, d, ldd, info)
             character, intent(in)       :: jobd
@@ -13237,7 +13212,7 @@ module slicot
     end interface
     public :: tb01xz
     
-    interface 
+    interface
         subroutine tb01yd(n, m, p, a, lda, b, ldb, c, &
                        ldc, info)
             integer, intent(in)               :: n
@@ -13254,7 +13229,7 @@ module slicot
     end interface
     public :: tb01yd
     
-    interface 
+    interface
         subroutine tb01zd(jobz, n, p, a, lda, b, c, ldc, &
                        ncont, z, ldz, tau, tol, dwork, ldwork, info)
             character, intent(in)             :: jobz
@@ -13277,7 +13252,7 @@ module slicot
     end interface
     public :: tb01zd
     
-    interface 
+    interface
         subroutine tb03ad(leri, equil, n, m, p, a, lda, b, &
                        ldb, c, ldc, d, ldd, nr, index, pcoeff, &
                        ldpco1, ldpco2, qcoeff, ldqco1, ldqco2, vcoeff, ldvco1, ldvco2, &
@@ -13315,7 +13290,7 @@ module slicot
     end interface
     public :: tb03ad
     
-    interface 
+    interface
         subroutine tb03ay(nr, a, lda, indblk, nblk, vcoeff, ldvco1, ldvco2, &
                        pcoeff, ldpco1, ldpco2, info)
             integer, intent(in)               :: nr
@@ -13334,7 +13309,7 @@ module slicot
     end interface
     public :: tb03ay
     
-    interface 
+    interface
         subroutine tb04ad(rowcol, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nr, index, dcoeff, lddcoe, &
                        ucoeff, lduco1, lduco2, tol1, tol2, iwork, dwork, ldwork, &
@@ -13368,7 +13343,7 @@ module slicot
     end interface
     public :: tb04ad
     
-    interface 
+    interface
         subroutine tb04ay(n, mwork, pwork, a, lda, b, ldb, c, &
                        ldc, d, ldd, ncont, indexd, dcoeff, lddcoe, ucoeff, &
                        lduco1, lduco2, at, n1, tau, tol1, tol2, iwork, &
@@ -13404,7 +13379,7 @@ module slicot
     end interface
     public :: tb04ay
     
-    interface 
+    interface
         subroutine tb04bd(jobd, order, equil, n, m, p, md, a, &
                        lda, b, ldb, c, ldc, d, ldd, ign, &
                        ldign, igd, ldigd, gn, gd, tol, iwork, dwork, &
@@ -13439,7 +13414,7 @@ module slicot
     end interface
     public :: tb04bd
     
-    interface 
+    interface
         subroutine tb04bv(order, p, m, md, ign, ldign, igd, ldigd, &
                        gn, gd, d, ldd, tol, info)
             character, intent(in)             :: order
@@ -13460,7 +13435,7 @@ module slicot
     end interface
     public :: tb04bv
     
-    interface 
+    interface
         subroutine tb04bw(order, p, m, md, ign, ldign, igd, ldigd, &
                        gn, gd, d, ldd, info)
             character, intent(in)             :: order
@@ -13480,7 +13455,7 @@ module slicot
     end interface
     public :: tb04bw
     
-    interface 
+    interface
         subroutine tb04bx(ip, iz, a, lda, b, c, d, pr, &
                        pi, zr, zi, gain, iwork)
             integer, intent(in)               :: ip
@@ -13500,7 +13475,7 @@ module slicot
     end interface
     public :: tb04bx
     
-    interface 
+    interface
         subroutine tb04cd(jobd, equil, n, m, p, npz, a, lda, &
                        b, ldb, c, ldc, d, ldd, nz, ldnz, &
                        np, ldnp, zerosr, zerosi, polesr, polesi, gains, ldgain, &
@@ -13538,7 +13513,7 @@ module slicot
     end interface
     public :: tb04cd
     
-    interface 
+    interface
         subroutine tb05ad(baleig, inita, n, m, p, freq, a, lda, &
                        b, ldb, c, ldc, rcond, g, ldg, evre, &
                        evim, hinvb, ldhinv, iwork, dwork, ldwork, zwork, lzwork, &
@@ -13572,7 +13547,7 @@ module slicot
     end interface
     public :: tb05ad
     
-    interface 
+    interface
         subroutine tc01od(leri, m, p, indlim, pcoeff, ldpco1, ldpco2, qcoeff, &
                        ldqco1, ldqco2, info)
             character, intent(in)             :: leri
@@ -13590,7 +13565,7 @@ module slicot
     end interface
     public :: tc01od
     
-    interface 
+    interface
         subroutine tc04ad(leri, m, p, index, pcoeff, ldpco1, ldpco2, qcoeff, &
                        ldqco1, ldqco2, n, rcond, a, lda, b, ldb, &
                        c, ldc, d, ldd, iwork, dwork, ldwork, info)
@@ -13622,7 +13597,7 @@ module slicot
     end interface
     public :: tc04ad
     
-    interface 
+    interface
         subroutine tc05ad(leri, m, p, sval, index, pcoeff, ldpco1, ldpco2, &
                        qcoeff, ldqco1, ldqco2, rcond, cfreqr, ldcfre, iwork, dwork, &
                        zwork, info)
@@ -13648,7 +13623,7 @@ module slicot
     end interface
     public :: tc05ad
     
-    interface 
+    interface
         subroutine td03ad(rowcol, leri, equil, m, p, indexd, dcoeff, lddcoe, &
                        ucoeff, lduco1, lduco2, nr, a, lda, b, ldb, &
                        c, ldc, d, ldd, indexp, pcoeff, ldpco1, ldpco2, &
@@ -13693,7 +13668,7 @@ module slicot
     end interface
     public :: td03ad
     
-    interface 
+    interface
         subroutine td03ay(mwork, pwork, index, dcoeff, lddcoe, ucoeff, lduco1, lduco2, &
                        n, a, lda, b, ldb, c, ldc, d, &
                        ldd, info)
@@ -13719,7 +13694,7 @@ module slicot
     end interface
     public :: td03ay
     
-    interface 
+    interface
         subroutine td04ad(rowcol, m, p, index, dcoeff, lddcoe, ucoeff, lduco1, &
                        lduco2, nr, a, lda, b, ldb, c, ldc, &
                        d, ldd, tol, iwork, dwork, ldwork, info)
@@ -13750,7 +13725,7 @@ module slicot
     end interface
     public :: td04ad
     
-    interface 
+    interface
         subroutine td05ad(unitf, output, np1, mp1, w, a, b, valr, &
                        vali, info)
             character, intent(in)           :: unitf
@@ -13767,7 +13742,7 @@ module slicot
     end interface
     public :: td05ad
     
-    interface 
+    interface
         subroutine tf01md(n, m, p, ny, a, lda, b, ldb, &
                        c, ldc, d, ldd, u, ldu, x, y, &
                        ldy, dwork, info)
@@ -13794,7 +13769,7 @@ module slicot
     end interface
     public :: tf01md
     
-    interface 
+    interface
         subroutine tf01mx(n, m, p, ny, s, lds, u, ldu, &
                        x, y, ldy, dwork, ldwork, info)
             integer, intent(in)               :: n
@@ -13815,7 +13790,7 @@ module slicot
     end interface
     public :: tf01mx
     
-    interface 
+    interface
         subroutine tf01my(n, m, p, ny, a, lda, b, ldb, &
                        c, ldc, d, ldd, u, ldu, x, y, &
                        ldy, dwork, ldwork, info)
@@ -13843,7 +13818,7 @@ module slicot
     end interface
     public :: tf01my
     
-    interface 
+    interface
         subroutine tf01nd(uplo, n, m, p, ny, a, lda, b, &
                        ldb, c, ldc, d, ldd, u, ldu, x, &
                        y, ldy, dwork, info)
@@ -13871,7 +13846,7 @@ module slicot
     end interface
     public :: tf01nd
     
-    interface 
+    interface
         subroutine tf01od(nh1, nh2, nr, nc, h, ldh, t, ldt, &
                        info)
             integer, intent(in)             :: nh1
@@ -13887,7 +13862,7 @@ module slicot
     end interface
     public :: tf01od
     
-    interface 
+    interface
         subroutine tf01pd(nh1, nh2, nr, nc, h, ldh, t, ldt, &
                        info)
             integer, intent(in)             :: nh1
@@ -13903,7 +13878,7 @@ module slicot
     end interface
     public :: tf01pd
     
-    interface 
+    interface
         subroutine tf01qd(nc, nb, n, iord, ar, ma, h, ldh, &
                        info)
             integer, intent(in)             :: nc
@@ -13919,7 +13894,7 @@ module slicot
     end interface
     public :: tf01qd
     
-    interface 
+    interface
         subroutine tf01rd(na, nb, nc, n, a, lda, b, ldb, &
                        c, ldc, h, ldh, dwork, ldwork, info)
             integer, intent(in)               :: na
@@ -13941,7 +13916,7 @@ module slicot
     end interface
     public :: tf01rd
     
-    interface 
+    interface
         subroutine tg01ad(job, l, n, m, p, thresh, a, lda, &
                        e, lde, b, ldb, c, ldc, lscale, rscale, &
                        dwork, info)
@@ -13967,7 +13942,7 @@ module slicot
     end interface
     public :: tg01ad
     
-    interface 
+    interface
         subroutine tg01az(job, l, n, m, p, thresh, a, lda, &
                        e, lde, b, ldb, c, ldc, lscale, rscale, &
                        dwork, info)
@@ -13993,7 +13968,7 @@ module slicot
     end interface
     public :: tg01az
     
-    interface 
+    interface
         subroutine tg01bd(jobe, compq, compz, n, m, p, ilo, ihi, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, dwork, ldwork, info)
@@ -14024,7 +13999,7 @@ module slicot
     end interface
     public :: tg01bd
     
-    interface 
+    interface
         subroutine tg01cd(compq, l, n, m, a, lda, e, lde, &
                        b, ldb, q, ldq, dwork, ldwork, info)
             character, intent(in)             :: compq
@@ -14046,7 +14021,7 @@ module slicot
     end interface
     public :: tg01cd
     
-    interface 
+    interface
         subroutine tg01dd(compz, l, n, p, a, lda, e, lde, &
                        c, ldc, z, ldz, dwork, ldwork, info)
             character, intent(in)             :: compz
@@ -14068,7 +14043,7 @@ module slicot
     end interface
     public :: tg01dd
     
-    interface 
+    interface
         subroutine tg01ed(joba, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, q, ldq, z, &
                        ldz, ranke, rnka22, tol, dwork, ldwork, info)
@@ -14099,7 +14074,7 @@ module slicot
     end interface
     public :: tg01ed
     
-    interface 
+    interface
         subroutine tg01fd(compq, compz, joba, l, n, m, p, a, &
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, ranke, rnka22, tol, iwork, dwork, &
@@ -14134,7 +14109,7 @@ module slicot
     end interface
     public :: tg01fd
     
-    interface 
+    interface
         subroutine tg01fz(compq, compz, joba, l, n, m, p, a, &
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, ranke, rnka22, tol, iwork, dwork, &
@@ -14170,7 +14145,7 @@ module slicot
     end interface
     public :: tg01fz
     
-    interface 
+    interface
         subroutine tg01gd(jobs, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, d, ldd, lr, &
                        nr, ranke, infred, tol, iwork, dwork, ldwork, info)
@@ -14202,7 +14177,7 @@ module slicot
     end interface
     public :: tg01gd
     
-    interface 
+    interface
         subroutine tg01hd(jobcon, compq, compz, n, m, p, a, lda, &
                        e, lde, b, ldb, c, ldc, q, ldq, &
                        z, ldz, ncont, niucon, nrblck, rtau, tol, iwork, &
@@ -14237,7 +14212,7 @@ module slicot
     end interface
     public :: tg01hd
     
-    interface 
+    interface
         subroutine tg01hu(compq, compz, l, n, m1, m2, p, n1, &
                        lbe, a, lda, e, lde, b, ldb, c, &
                        ldc, q, ldq, z, ldz, nr, nrblck, rtau, &
@@ -14275,7 +14250,7 @@ module slicot
     end interface
     public :: tg01hu
     
-    interface 
+    interface
         subroutine tg01hx(compq, compz, l, n, m, p, n1, lbe, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, nr, nrblck, rtau, tol, &
@@ -14311,7 +14286,7 @@ module slicot
     end interface
     public :: tg01hx
     
-    interface 
+    interface
         subroutine tg01hy(compq, compz, l, n, m, p, n1, lbe, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, nr, nrblck, rtau, tol, &
@@ -14348,7 +14323,7 @@ module slicot
     end interface
     public :: tg01hy
     
-    interface 
+    interface
         subroutine tg01id(jobobs, compq, compz, n, m, p, a, lda, &
                        e, lde, b, ldb, c, ldc, q, ldq, &
                        z, ldz, nobsv, niuobs, nlblck, ctau, tol, iwork, &
@@ -14383,7 +14358,7 @@ module slicot
     end interface
     public :: tg01id
     
-    interface 
+    interface
         subroutine tg01jd(job, systyp, equil, n, m, p, a, lda, &
                        e, lde, b, ldb, c, ldc, nr, infred, &
                        tol, iwork, dwork, ldwork, info)
@@ -14412,7 +14387,7 @@ module slicot
     end interface
     public :: tg01jd
     
-    interface 
+    interface
         subroutine tg01jy(job, systyp, equil, cksing, restor, n, m, p, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        nr, infred, tol, iwork, dwork, ldwork, info)
@@ -14443,7 +14418,7 @@ module slicot
     end interface
     public :: tg01jy
     
-    interface 
+    interface
         subroutine tg01kd(jobe, compc, compq, compz, n, a, lda, e, &
                        lde, b, c, incc, q, ldq, z, ldz, &
                        info)
@@ -14468,7 +14443,7 @@ module slicot
     end interface
     public :: tg01kd
     
-    interface 
+    interface
         subroutine tg01kz(jobe, compc, compq, compz, n, a, lda, e, &
                        lde, b, c, incc, q, ldq, z, ldz, &
                        info)
@@ -14493,7 +14468,7 @@ module slicot
     end interface
     public :: tg01kz
     
-    interface 
+    interface
         subroutine tg01ld(job, joba, compq, compz, n, m, p, a, &
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, nf, nd, niblck, iblck, tol, &
@@ -14530,7 +14505,7 @@ module slicot
     end interface
     public :: tg01ld
     
-    interface 
+    interface
         subroutine tg01ly(compq, compz, n, m, p, ranke, rnka22, a, &
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, nf, niblck, iblck, tol, iwork, &
@@ -14566,7 +14541,7 @@ module slicot
     end interface
     public :: tg01ly
     
-    interface 
+    interface
         subroutine tg01md(job, n, m, p, a, lda, e, lde, &
                        b, ldb, c, ldc, alphar, alphai, beta, q, &
                        ldq, z, ldz, nf, nd, niblck, iblck, tol, &
@@ -14603,7 +14578,7 @@ module slicot
     end interface
     public :: tg01md
     
-    interface 
+    interface
         subroutine tg01nd(job, jobt, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, alphar, alphai, beta, &
                        q, ldq, z, ldz, nf, nd, niblck, iblck, &
@@ -14641,7 +14616,7 @@ module slicot
     end interface
     public :: tg01nd
     
-    interface 
+    interface
         subroutine tg01nx(jobt, n, m, p, ndim, a, lda, e, &
                        lde, b, ldb, c, ldc, q, ldq, z, &
                        ldz, iwork, info)
@@ -14668,7 +14643,7 @@ module slicot
     end interface
     public :: tg01nx
     
-    interface 
+    interface
         subroutine tg01oa(jobe, n, dcba, lddcba, e, lde, info)
             character, intent(in)             :: jobe
             integer, intent(in)               :: n
@@ -14681,7 +14656,7 @@ module slicot
     end interface
     public :: tg01oa
     
-    interface 
+    interface
         subroutine tg01ob(jobe, n, dcba, lddcba, e, lde, info)
             character, intent(in)       :: jobe
             integer, intent(in)         :: n
@@ -14694,7 +14669,7 @@ module slicot
     end interface
     public :: tg01ob
     
-    interface 
+    interface
         subroutine tg01od(jobe, n, dcba, lddcba, e, lde, nz, g, &
                        tol, dwork, ldwork, info)
             character, intent(in)             :: jobe
@@ -14713,7 +14688,7 @@ module slicot
     end interface
     public :: tg01od
     
-    interface 
+    interface
         subroutine tg01oz(jobe, n, dcba, lddcba, e, lde, nz, g, &
                        tol, zwork, lzwork, info)
             character, intent(in)             :: jobe
@@ -14732,7 +14707,7 @@ module slicot
     end interface
     public :: tg01oz
     
-    interface 
+    interface
         subroutine tg01pd(dico, stdom, jobae, compq, compz, n, m, p, &
                        nlow, nsup, alpha, a, lda, e, lde, b, &
                        ldb, c, ldc, q, ldq, z, ldz, ndim, &
@@ -14771,7 +14746,7 @@ module slicot
     end interface
     public :: tg01pd
     
-    interface 
+    interface
         subroutine tg01qd(dico, stdom, jobfi, n, m, p, alpha, a, &
                        lda, e, lde, b, ldb, c, ldc, n1, &
                        n2, n3, nd, niblck, iblck, q, ldq, z, &
@@ -14814,7 +14789,7 @@ module slicot
     end interface
     public :: tg01qd
     
-    interface 
+    interface
         subroutine tg01wd(n, m, p, a, lda, e, lde, b, &
                        ldb, c, ldc, q, ldq, z, ldz, alphar, &
                        alphai, beta, dwork, ldwork, info)
@@ -14843,7 +14818,7 @@ module slicot
     end interface
     public :: tg01wd
     
-    interface 
+    interface
         subroutine ud01bd(mp, np, dp, nin, p, ldp1, ldp2, info)
             integer, intent(in)             :: mp
             integer, intent(in)             :: np
@@ -14857,7 +14832,7 @@ module slicot
     end interface
     public :: ud01bd
     
-    interface 
+    interface
         subroutine ud01cd(mp, np, dp, nin, p, ldp1, ldp2, info)
             integer, intent(in)               :: mp
             integer, intent(in)               :: np
@@ -14871,7 +14846,7 @@ module slicot
     end interface
     public :: ud01cd
     
-    interface 
+    interface
         subroutine ud01dd(m, n, nin, a, lda, info)
             integer, intent(in)             :: m
             integer, intent(in)             :: n
@@ -14883,7 +14858,7 @@ module slicot
     end interface
     public :: ud01dd
     
-    interface 
+    interface
         subroutine ud01md(m, n, l, nout, a, lda, text, info)
             integer, intent(in)             :: m
             integer, intent(in)             :: n
@@ -14897,7 +14872,7 @@ module slicot
     end interface
     public :: ud01md
     
-    interface 
+    interface
         subroutine ud01mz(m, n, l, nout, a, lda, text, info)
             integer, intent(in)          :: m
             integer, intent(in)          :: n
@@ -14911,7 +14886,7 @@ module slicot
     end interface
     public :: ud01mz
     
-    interface 
+    interface
         subroutine ud01nd(mp, np, dp, l, nout, p, ldp1, ldp2, &
                        text, info)
             integer, intent(in)             :: mp
@@ -14928,7 +14903,7 @@ module slicot
     end interface
     public :: ud01nd
     
-    interface 
+    interface
         integer function ue01md (ispec,name,opts,n1,n2,n3)
             integer, intent(in)         :: ispec
             character*(*), intent(in)   :: name
@@ -14939,13 +14914,5 @@ module slicot
         end function ue01md
     end interface
     public :: ue01md
-    
-    interface 
-        logical function zelctg (par1,par2)
-            complex*16, intent(in)   :: par1
-            complex*16, intent(in)   :: par2
-        end function zelctg
-    end interface
-    public :: zelctg
     
 end module slicot
