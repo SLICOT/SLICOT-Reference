@@ -6,5 +6,5 @@
 /usr/lib/${DEB_HOST_MULTIARCH}/cmake/SLICOT64/*
 /usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/slicot.pc
 /usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/slicot64.pc
-/usr/lib/slicot/*.mod
-/usr/lib/slicot64/*.mod
+/usr/include/slicot/*.mod
+/usr/include/slicot64/*.mod

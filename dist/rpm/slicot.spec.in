@@ -94,12 +94,12 @@ make -C build64 test
 %{_libdir}/cmake/%{upper:%{name}}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_incdir}/${name}.mod
+%{_includedir}/slicot/${name}.mod
 %if 0%{?__isa_bits} == 64
 %{_libdir}/cmake/%{upper:%{name}}64
 %{_libdir}/lib%{name}64.so
 %{_libdir}/pkgconfig/%{name}64.pc
-%{_incdir}/${name}64.mod
+%{_includedir}/slicot64/${name}.mod
 %endif
 
 %changelog
