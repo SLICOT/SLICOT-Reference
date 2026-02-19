@@ -86,7 +86,7 @@ C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
 C     LDWORK  (input) INTEGER
-C             The dimension of working array DWORK.  LWORK >= 3*N.
+C             The dimension of working array DWORK.  LDWORK >= 3*N.
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator

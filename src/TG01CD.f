@@ -105,7 +105,7 @@ C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)).
 C             For optimum performance
-C             LWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)*NB),
+C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)*NB),
 C             where NB is the optimal blocksize.
 C
 C     Error Indicator
