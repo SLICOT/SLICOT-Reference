@@ -157,7 +157,7 @@ C             of LDWORK.
 C
 C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.
-C             LWORK >= MAX( 1, N*(N+5), 5*M, 4*P ).
+C             LDWORK >= MAX( 1, N*(N+5), 5*M, 4*P ).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
