@@ -401,7 +401,7 @@ C     . comments on examples .
      8'/
       DATA (NOTES(1,I), I = 11, NEX1) /
      1'Sima 1996, Sec. 1.2.2: paper machine model error integrators', 'S
-     2ima 1996, Ex. 2.6: paper machine model with with disturbances', 'P
+     2ima 1996, Ex. 2.6: paper machine model with disturbances', 'P
      3ower plant model, Katayama et al., 1985'/
       DATA (NOTES(2,I), I = 1, NEX2) /
      1'Laub 1979, Ex. 2: uncontrollable-unobservable data', 'Laub 1979,

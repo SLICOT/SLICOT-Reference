@@ -19,7 +19,7 @@ C
 C     Input/Output Parameters
 C
 C     N       (input) INTEGER
-C             The order of the the matrix A.  N >= 0.
+C             The order of the matrix A.  N >= 0.
 C
 C     OMEGA   (input) DOUBLE PRECISION
 C             The constant factor of A - jwI.

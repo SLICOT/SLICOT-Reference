@@ -29,7 +29,7 @@ C             On entry with INDI = 'D', the first N elements of this
 C             array must contain the odd part of the input signal; for
 C             example, XR(I) = A(2*I-1) for I = 1,2,...,N.
 C             On entry with INDI = 'I', the first N+1 elements of this
-C             array must contain the the real part of the input discrete
+C             array must contain the real part of the input discrete
 C             Fourier transform (computed, for instance, by a previous
 C             call of the routine).
 C             On exit with INDI = 'D', the first N+1 elements of this
@@ -44,7 +44,7 @@ C             On entry with INDI = 'D', the first N elements of this
 C             array must contain the even part of the input signal; for
 C             example, XI(I) = A(2*I) for I = 1,2,...,N.
 C             On entry with INDI = 'I', the first N+1 elements of this
-C             array must contain the the imaginary part of the input
+C             array must contain the imaginary part of the input
 C             discrete Fourier transform (computed, for instance, by a
 C             previous call of the routine).
 C             On exit with INDI = 'D', the first N+1 elements of this
