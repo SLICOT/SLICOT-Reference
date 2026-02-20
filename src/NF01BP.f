@@ -534,7 +534,7 @@ C           Solve the system J*x = b , sqrt(PAR)*D*x = 0 , in a least
 C           square sense.
 C           The first N elements of DWORK contain the diagonal elements
 C           of the upper triangular matrix S, and the next N elements
-C           contain the the vector z, so that x = P*z (see NF01BQ).
+C           contain the vector z, so that x = P*z (see NF01BQ).
 C           The vector z is not preserved, to reduce the workspace.
 C           The elements 2*N+1 : 2*N+ST*(N-ST) contain the
 C           submatrix (S(1:N-ST,N-ST+1:N))' of the matrix S.
