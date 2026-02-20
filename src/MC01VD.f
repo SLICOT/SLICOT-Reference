@@ -22,11 +22,15 @@ C     C       (input) DOUBLE PRECISION
 C             The value of the coefficient of the constant term.
 C
 C     Z1RE    (output) DOUBLE PRECISION
+C             See Z1IM
+C
 C     Z1IM    (output) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of the largest
 C             root in magnitude.
 C
 C     Z2RE    (output) DOUBLE PRECISION
+C             See Z2IM
+C
 C     Z2IM    (output) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of the
 C             smallest root in magnitude.

@@ -31,6 +31,7 @@ C
 C     INCY    (input) INTEGER
 C
 C     C       (input) DOUBLE PRECISION
+C
 C     S       (input) DOUBLE PRECISION
 C
 C

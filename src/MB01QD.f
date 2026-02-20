@@ -48,6 +48,8 @@ C             The upper bandwidth of A.  Referenced only if TYPE = 'B',
 C             'Q' or 'Z'.
 C
 C     CFROM   (input) DOUBLE PRECISION
+C             See CTO
+C
 C     CTO     (input) DOUBLE PRECISION
 C             The matrix A is multiplied by CTO/CFROM. A(I,J) is
 C             computed without over/underflow if the final result

@@ -16,6 +16,8 @@ C     DP      (input) INTEGER
 C             The degree of the polynomial P(x).  DP >= 0.
 C
 C     XR      (input) DOUBLE PRECISION
+C             See XI
+C
 C     XI      (input) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of x0.
 C
@@ -24,6 +26,8 @@ C             This array must contain the coefficients of the polynomial
 C             P(x) in increasing powers of x.
 C
 C     VR      (output) DOUBLE PRECISION
+C             See VI
+C
 C     VI      (output) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of P(x0).
 C

@@ -69,6 +69,8 @@ C             s*E-A.
 C             NCA = mu(1) + mu(2) + ... + mu(NBLCKS).  NCA >= 0.
 C
 C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,NCA)
+C             See E
+C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,NCA)
 C             On entry, the leading NRA-by-NCA part of these arrays must
 C             contain the matrices A and E, where s*E-A is the

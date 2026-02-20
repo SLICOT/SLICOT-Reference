@@ -41,6 +41,8 @@ C     N       (input) INTEGER
 C             The order of the matrices A and B. N >= 0.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that the matrices A and B are already
 C             (quasi) upper triangular in rows and columns 1:ILO-1 and
@@ -51,6 +53,8 @@ C             matrices A and B, if WANTT = .TRUE..
 C             1 <= ILO <= max(1,N); min(ILO,N) <= IHI <= N.
 C
 C     ILOQ    (input) INTEGER
+C             See IHIQ
+C
 C     IHIQ    (input) INTEGER
 C             Specify the rows of Q and Z to which transformations
 C             must be applied if WANTQ = .TRUE. and WANTZ = .TRUE.,

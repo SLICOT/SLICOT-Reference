@@ -81,6 +81,8 @@ C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= max(1,N).
 C
 C     VALR    (output) DOUBLE PRECISION array, dimension (N)
+C             See VALI
+C
 C     VALI    (output) DOUBLE PRECISION array, dimension (N)
 C             These arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A. The

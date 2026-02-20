@@ -67,6 +67,8 @@ C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     WR      (input/output) DOUBLE PRECISION array, dimension (NP)
+C             See WR
+C
 C     WI      (input/output) DOUBLE PRECISION array, dimension (NP)
 C             On entry, these arrays must contain the real and imaginary
 C             parts, respectively, of the desired eigenvalues of the

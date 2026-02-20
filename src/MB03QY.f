@@ -45,6 +45,8 @@ C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
 C     E1      (output) DOUBLE PRECISION
+C             See E2
+C
 C     E2      (output) DOUBLE PRECISION
 C             E1 and E2 contain either the real eigenvalues or the real
 C             and positive imaginary parts, respectively, of the complex

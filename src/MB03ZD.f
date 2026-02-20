@@ -187,6 +187,8 @@ C     M       (output) INTEGER
 C             The number of selected eigenvalues.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (M)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (M)
 C             On exit, the leading M elements of WR and WI contain the
 C             real and imaginary parts, respectively, of the selected

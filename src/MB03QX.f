@@ -21,6 +21,8 @@ C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of T. The eigenvalues are stored in the same

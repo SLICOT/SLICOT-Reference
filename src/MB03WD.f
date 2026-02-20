@@ -59,6 +59,8 @@ C             The number of matrices in the product H_1*H_2*...*H_p.
 C             P >= 1.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that all matrices H_j, j = 2, ..., p, are
 C             already upper triangular in rows and columns 1:ILO-1 and
@@ -72,6 +74,8 @@ C             matrices H_i, i = 1,...,p, if JOB = 'S'.
 C             1 <= ILO <= max(1,N); min(ILO,N) <= IHI <= N.
 C
 C     ILOZ    (input) INTEGER
+C             See IHIZ
+C
 C     IHIZ    (input) INTEGER
 C             Specify the rows of Z to which the transformations must be
 C             applied if COMPZ = 'I' or COMPZ = 'V'.
@@ -124,6 +128,8 @@ C             LDZ2 >= 1,        if COMPZ = 'N';
 C             LDZ2 >= max(1,N), if COMPZ = 'I' or COMPZ = 'V'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             computed eigenvalues ILO to IHI are stored in the

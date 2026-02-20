@@ -188,7 +188,11 @@ C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     ALFAR   (output) DOUBLE PRECISION array, dimension (2*N)
+C             See BETA
+C
 C     ALFAI   (output) DOUBLE PRECISION array, dimension (2*N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (2*N)
 C             The generalized eigenvalues of the 2N-by-2N matrix pair,
 C             ordered as specified by SORT (if INFO = 0). For instance,

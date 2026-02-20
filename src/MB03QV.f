@@ -28,7 +28,11 @@ C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N,
 C             are the generalized eigenvalues.

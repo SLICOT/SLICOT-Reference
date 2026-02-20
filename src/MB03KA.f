@@ -78,6 +78,8 @@ C             The index for which the matrix T22_kschur is upper quasi-
 C             triangular. All other T22 matrices are upper triangular.
 C
 C     IFST    (input/output) INTEGER
+C             See ILST
+C
 C     ILST    (input/output) INTEGER
 C             Specify the reordering of the diagonal blocks, as follows:
 C             The block with starting row index IFST in (1) is moved to

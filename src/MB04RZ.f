@@ -135,6 +135,8 @@ C             The first NBLCKS elements of this array contain the orders
 C             of the resulting diagonal blocks of the matrices A and B.
 C
 C     ALPHA   (output) COMPLEX*16 array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) COMPLEX*16 array, dimension (N)
 C             If INFO = 0, then ALPHA(j)/BETA(j), j = 1, ..., N, are
 C             the generalized eigenvalues of the matrix pair (A, B)

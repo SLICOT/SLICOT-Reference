@@ -85,6 +85,8 @@ C             The first NBLCKS elements of this array contain the orders
 C             of the resulting diagonal blocks of the matrix A.
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             These arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A.

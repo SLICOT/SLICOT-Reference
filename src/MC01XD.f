@@ -15,13 +15,23 @@ C
 C     Input/Output Parameters
 C
 C     ALPHA   (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     BETA    (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     GAMMA   (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     DELTA   (input) DOUBLE PRECISION
 C             The coefficients of the polynomial P.
 C
 C     EVR     (output) DOUBLE PRECISION array, DIMENSION at least 3
+C             See EVR
+C
 C     EVI     (output) DOUBLE PRECISION array, DIMENSION at least 3
+C             See EVI
+C
 C     EVQ     (output) DOUBLE PRECISION array, DIMENSION at least 3
 C             On output, the kth root of P will be equal to
 C             (EVR(K) + i*EVI(K))/EVQ(K) if EVQ(K) .NE. ZERO. Note that

@@ -258,6 +258,8 @@ C             If N = 0 or X = 0, FERR is set to 0.
 C             If JOB = 'X', or JOB = 'C', FERR is not referenced.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (2*N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (2*N)
 C             If JOB = 'X' or JOB = 'A', and INFO = 0 or INFO >= 5,
 C             these arrays contain the real and imaginary parts,

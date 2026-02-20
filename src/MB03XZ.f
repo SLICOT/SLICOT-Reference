@@ -36,7 +36,7 @@ C        triu(Ge) =  [                            ],
 C                    [       0       triu(Im(G))  ]
 C
 C                    [  tril(Im(Q))       0       ]
-C        tril(Qe) =  [                            ], 
+C        tril(Qe) =  [                            ],
 C                    [     -Re(Q)    tril(Im(Q))  ]
 C
 C     and triu and tril denote the upper and lower triangle,
@@ -160,6 +160,8 @@ C             The leading dimension of the array U2.  LDU2 >= 1.
 C             LDU2 >= 2*N,    if JOBU = 'U'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (2*N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (2*N)
 C             On exit, the leading 2*N elements of WR and WI contain the
 C             real and imaginary parts, respectively, of the eigenvalues
@@ -587,9 +589,9 @@ C
             CALL DLASCL( 'General', 0, 0, CSCALE, HNRM, N2, 1, WI, N2,
      $                   IERR )
             HNR1 = HNR1 * HNRM / CSCALE
-         END IF 
+         END IF
          GO TO 190
-      END IF 
+      END IF
 C
 C     Convert the results to complex datatype. G starts now in the
 C     first column of QG.
@@ -614,7 +616,7 @@ C
             QG( J, J ) = CZERO
             IW = IW + N2 - J + 1
   120    CONTINUE
-      END IF 
+      END IF
 C
       IF ( WANTU ) THEN
 C
@@ -786,7 +788,7 @@ C
          CALL DLASCL( 'General', 0, 0, CSCALE, HNRM, N2, 1, WI, N2,
      $                IERR )
          HNR1 = HNR1 * HNRM / CSCALE
-      END IF 
+      END IF
 C
   190 CONTINUE
       DWORK( 1 ) = DBLE( OPTDW )

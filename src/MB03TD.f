@@ -149,6 +149,8 @@ C             LDU2 >= MAX(1,N),  if COMPU = 'U';
 C             LDU2 >= 1,         otherwise.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             reordered eigenvalues of A. The eigenvalues are stored

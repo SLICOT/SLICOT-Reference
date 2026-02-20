@@ -45,6 +45,8 @@ C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues. Complex

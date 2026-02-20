@@ -18,6 +18,8 @@ C
 C     Input/Output Parameters
 C
 C     AR1     (input) DOUBLE PRECISION
+C             See AI1
+C
 C     AI1     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             numerator of A1.
@@ -26,6 +28,8 @@ C     B1      (input) DOUBLE PRECISION
 C             The denominator of A1.  B1 >= 0.
 C
 C     AR2     (input) DOUBLE PRECISION
+C             See AI2
+C
 C     AI2     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             numerator of A2.
@@ -141,7 +145,7 @@ C
             ELSE IF( MX2.GT.ZERO ) THEN
                D1 = B2/DLAPY2( AR2, AI2 )
                D2 = ONE
-            ELSE 
+            ELSE
                D1 = ONE
                D2 = ZERO
             END IF
@@ -164,7 +168,7 @@ C
             ELSE IF( MX1.GT.ZERO ) THEN
                D1 = B1/DLAPY2( AR1, AI1 )
                D2 = ONE
-            ELSE 
+            ELSE
                D1 = ONE
                D2 = ZERO
             END IF

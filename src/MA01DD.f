@@ -13,11 +13,15 @@ C
 C     Input/Output Parameters
 C
 C     AR1     (input) DOUBLE PRECISION
+C             See AI1
+C
 C     AI1     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             number A1.
 C
 C     AR2     (input) DOUBLE PRECISION
+C             See AI2
+C
 C     AI2     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             number A2.

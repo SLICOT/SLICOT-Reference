@@ -46,6 +46,8 @@ C     N       (input) INTEGER
 C             The order of the matrices A and U.  N >= 1.
 C
 C     NLOW    (input) INTEGER
+C             See NSUP
+C
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal submatrix of A whose diagonal

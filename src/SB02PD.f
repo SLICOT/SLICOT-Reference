@@ -98,6 +98,8 @@ C             magnitude of the largest entry in (X - XTRUE) divided by
 C             the magnitude of the largest entry in X.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If JOB = 'A' and TRANA = 'N', WR and WI contain the real
 C             and imaginary parts, respectively, of the eigenvalues of

@@ -70,6 +70,8 @@ C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The arrays WR and WI contain the real and imaginary parts,
 C             respectively, of the N eigenvalues of H' with non-negative

@@ -64,6 +64,8 @@ C     N       (input)  INTEGER
 C             The order of each factor in the array A.  N >= 0.
 C
 C     ILO     (input)  INTEGER
+C             See IHI
+C
 C     IHI     (input)  INTEGER
 C             It is assumed that each factor in A is already upper
 C             triangular in rows and columns 1:ILO-1 and IHI+1:N.

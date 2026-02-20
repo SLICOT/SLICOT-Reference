@@ -116,6 +116,8 @@ C             norm:  norm(X - XTRUE)/norm(XTRUE).
 C             If JOB = 'X' or JOB = 'S', FERR is not referenced.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If FACT = 'N', and INFO = 0 or INFO = N+1, WR and WI
 C             contain the real and imaginary parts, respectively, of

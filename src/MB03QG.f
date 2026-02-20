@@ -56,6 +56,8 @@ C     N       (input) INTEGER
 C             The order of the matrices A, E, U, and V.  N >= 0.
 C
 C     NLOW    (input) INTEGER
+C             See NSUP
+C
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal subpencil  of A - lambda*E

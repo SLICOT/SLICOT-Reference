@@ -95,6 +95,8 @@ C             LDU2 >= MAX(1,N),  if JOBU = 'U';
 C             LDU2 >= 1,         if JOBU = 'N'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of Aout, which are half of the eigenvalues

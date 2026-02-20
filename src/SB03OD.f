@@ -116,6 +116,8 @@ C             The scale factor, scale, set less than or equal to 1 to
 C             prevent the solution overflowing.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If INFO >= 0 and INFO <= 3, WR and WI contain the real and
 C             imaginary parts, respectively, of the eigenvalues of A.

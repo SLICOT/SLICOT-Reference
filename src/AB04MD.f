@@ -32,6 +32,10 @@ C     P       (input) INTEGER
 C             The number of system outputs.  P >= 0.
 C
 C     ALPHA   (input) DOUBLE PRECISION
+C             Parameters specifying the bilinear transformation.
+C             Recommended values for stable systems: ALPHA = 1,
+C             BETA = 1.  ALPHA <> 0, BETA <> 0.
+C
 C     BETA    (input) DOUBLE PRECISION
 C             Parameters specifying the bilinear transformation.
 C             Recommended values for stable systems: ALPHA = 1,

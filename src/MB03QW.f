@@ -68,7 +68,11 @@ C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= N.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (2)
 C             (ALPHAR(k)+i*ALPHAI(k))/BETA(k) are the eigenvalues of the
 C             block pair of the pencil (A,B), k=1,2, i = sqrt(-1).

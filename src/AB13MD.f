@@ -66,6 +66,8 @@ C     BOUND   (output) DOUBLE PRECISION
 C             The upper bound on the structured singular value.
 C
 C     D       (output) DOUBLE PRECISION arrays, dimension (N)
+C             See G
+C
 C     G       (output) DOUBLE PRECISION arrays, dimension (N)
 C             The vectors of length N containing the diagonal entries
 C             of the diagonal N-by-N matrices D and G, respectively,
