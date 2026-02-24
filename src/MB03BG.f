@@ -69,7 +69,7 @@ C     evaluated as prod( A(:,:,AMAP(I)) ), for i = 1 : K. This way, the
 C     2-by-2 trailing submatrix depends only on the 2-by-2 trailing
 C     submatrices of the factors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Jan. 2019.

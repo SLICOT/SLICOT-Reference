@@ -107,7 +107,7 @@ C
 C     The routine reduces A to bidiagonal form by means of elementary
 C     reflectors and then uses the QR algorithm on the bidiagonal form.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute of Informatics, Bucharest, and
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,

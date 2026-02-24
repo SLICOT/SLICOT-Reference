@@ -85,7 +85,7 @@ C     METHOD
 C
 C     Givens rotations are properly computed and applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Dec. 2018, Dec. 2020.

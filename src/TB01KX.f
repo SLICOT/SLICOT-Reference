@@ -114,7 +114,7 @@ C                                   3
 C     The algorithm requires about N /2 + NDIM*(N-NDIM)*(2*N+M+P)
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

@@ -86,7 +86,7 @@ C     polynomial are computed, and suitable Givens rotations are found.
 C     For numerical reasons, this routine should be called when
 C     convergence difficulties are encountered.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Aug. 2019.

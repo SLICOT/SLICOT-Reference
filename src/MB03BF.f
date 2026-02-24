@@ -52,7 +52,7 @@ C
 C     Twenty iterations of a real single shifted periodic QZ algorithm
 C     are applied to the 2-by-2 matrix product A.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Dec. 2018.

@@ -95,7 +95,7 @@ C     single shift. If SINV is negative, the shift(s) correspond to the
 C     reciprocals of the eigenvalues of the product, as required by the
 C     SLICOT Library routine MB03BD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Aug. 2019, Dec. 2020.

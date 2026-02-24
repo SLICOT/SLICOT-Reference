@@ -152,7 +152,7 @@ C
 C     The algorithm requires O( (K*L+R*L+K*R)*(N+M)*log(N+M) + K*L*R )
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

@@ -22,7 +22,7 @@ C
 C     MANT      (input) DOUBLE PRECISION array
 C
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01GX by A.J. Geurts.

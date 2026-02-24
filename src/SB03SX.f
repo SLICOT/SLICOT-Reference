@@ -142,7 +142,7 @@ C     The routine can be also used as a final step in estimating a
 C     forward error bound for the solution of a discrete-time algebraic
 C     matrix Riccati equation.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Oct. 1998. Partly based on DDLSVX (and then SB03SD) by P. Petkov,

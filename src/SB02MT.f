@@ -256,7 +256,7 @@ C     NUMERICAL ASPECTS
 C
 C     The routine should not be used when R is ill-conditioned.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Sep. 1997.
 C

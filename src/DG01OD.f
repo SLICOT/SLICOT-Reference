@@ -74,7 +74,7 @@ C
 C     The algorithm is backward stable and requires O(N log(N))
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, April 2001.
 C

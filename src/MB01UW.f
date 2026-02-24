@@ -98,7 +98,7 @@ C     contribution of the subdiagonal is added. If the workspace can
 C     accomodate a copy of A, a fast BLAS 3 DTRMM operation is used in
 C     the first step.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, January 1999.
 C

@@ -250,7 +250,7 @@ C                                                               3
 C     The algorithm is numerically backward stable and needs O(N )
 C     real floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet
 C     Chemnitz, March 31, 2009.

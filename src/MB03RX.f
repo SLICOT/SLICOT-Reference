@@ -114,7 +114,7 @@ C     The algorithm is numerically stable. If some eigenvalues are
 C     ill-conditioned, their returned values could differ much from
 C     their input values.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

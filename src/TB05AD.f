@@ -115,6 +115,8 @@ C     LDG     (input) INTEGER
 C             The leading dimension of array G.  LDG >= MAX(1,P).
 C
 C     EVRE    (output) DOUBLE PRECISION arrays, dimension (N)
+C             See EVIM
+C
 C     EVIM    (output) DOUBLE PRECISION arrays, dimension (N)
 C             If INITA = 'G' and BALEIG = 'B' or 'E' or BALEIG = 'A',
 C             then these arrays contain the real and imaginary parts,
@@ -194,7 +196,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TB01FD by A.J.Laub, University of

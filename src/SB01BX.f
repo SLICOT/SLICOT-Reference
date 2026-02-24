@@ -67,7 +67,7 @@ C
 C     For efficiency reasons, |x| + |y| is used for a complex number
 C     x + jy, instead of its modulus.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     February 1999. Based on the RASP routine PMDIST.

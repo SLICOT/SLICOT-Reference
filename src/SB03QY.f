@@ -151,7 +151,7 @@ C     (if requested) not set. In this case, the equation is singular.
 C     The option LYAPUN = 'R' may occasionally produce slightly worse
 C     or better estimates, and it is much faster than the option 'O'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Oct. 1998. Partly based on DGLSVX (and then SB03QD) by P. Petkov,

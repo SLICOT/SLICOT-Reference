@@ -54,7 +54,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Based on routine RDSPAR by A.J. Geurts, Eindhoven University of

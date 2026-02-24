@@ -157,7 +157,7 @@ C     For norm scaling, 3*N**2 + O(N) multiplications are required and
 C     NO rounding errors occur as all multiplications are performed with
 C     powers of the machine base.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA.

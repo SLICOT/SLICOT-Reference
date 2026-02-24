@@ -279,7 +279,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm consists in (backward) stable steps.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB02AD by S. Van Huffel, Katholieke

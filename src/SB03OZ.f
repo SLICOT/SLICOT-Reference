@@ -292,7 +292,7 @@ C     problems, in case of equation (4) it is expected that the matrix A
 C     is enough well-conditioned, having only eigenvalues with moduli
 C     greater than 1.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, March 2022.
 C

@@ -194,7 +194,7 @@ C                            EPS * norm(A)**2 / SEPD
 C
 C     where EPS is the machine precision.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, May 1997.
 C     Supersedes Release 2.0 routine MB03AD by Control Systems Research

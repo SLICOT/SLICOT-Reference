@@ -88,7 +88,7 @@ C     step, the upper triangle of H is used; in the second step, the
 C     contribution of the subdiagonal is added. A fast BLAS 3 DTRMM
 C     operation is used in the first step.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, January 1999.
 C

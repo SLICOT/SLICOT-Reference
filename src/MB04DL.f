@@ -199,7 +199,7 @@ C     the scaling transformations is bounded by MXCOND = 1/SQRT(EPS),
 C     where EPS is the machine precision (see LAPACK Library routine
 C     DLAMCH).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 2015.
 C

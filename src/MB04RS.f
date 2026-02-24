@@ -143,7 +143,7 @@ C         Dif Estimators for Solving the Generalized Sylvester Equation.
 C         Report UMINF-132.86, Institute of Information Processing,
 C         Univ. of Umea, Sweden, July 1987.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Nov. 2022.
 C     This routine is a simplification and modification of the LAPACK

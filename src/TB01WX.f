@@ -113,7 +113,7 @@ C                                              3
 C     operations, if COMPU = 'N'. Otherwise, 2N /3 additional operations
 C     are needed.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, April 2002.

@@ -79,7 +79,7 @@ C     This routine is not very efficient because it computes all
 C     singular values, but it is very accurate. The routine is intended
 C     to be called only from the SLICOT Library routine AB13FD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     R. Byers, the routine SIGMIN (January, 1995).
 C

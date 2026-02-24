@@ -69,7 +69,7 @@ C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if uncontrollability of the pair (A,B) is detected.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

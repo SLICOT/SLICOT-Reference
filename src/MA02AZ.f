@@ -49,7 +49,7 @@ C
 C     LDB    (input) INTEGER
 C            The leading dimension of the array B.  LDB >= max(1,N).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

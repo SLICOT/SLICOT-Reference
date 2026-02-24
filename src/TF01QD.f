@@ -123,7 +123,7 @@ C     The computation of the (i,j)-th element of M(k) requires:
 C        (k-1) multiplications and k additions if k <= r;
 C          r   multiplications and r additions if k > r.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01ED by S. Van Huffel, Katholieke

@@ -231,7 +231,7 @@ C     is well-conditioned enough. The routine can be easily modified to
 C     provide estimates for the condition numbers of the clusters of
 C     eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Partly based on the RASP routine BDIAG by A. Varga, German

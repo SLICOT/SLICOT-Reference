@@ -393,7 +393,7 @@ C
 C     The routine can also compute the anti-stabilizing solutions of
 C     the algebraic Riccati equations, by specifying SORT = 'U'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Sep. 1997.
 C     Supersedes Release 2.0 routine SB02CD by T.G.J. Beelen, Philips,

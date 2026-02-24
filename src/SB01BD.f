@@ -223,7 +223,7 @@ C     operations. Although no proof of numerical stability is known,
 C     the algorithm has always been observed to yield reliable
 C     numerical results.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     February 1999. Based on the RASP routine SB01BD.

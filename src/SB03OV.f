@@ -47,7 +47,7 @@ C
 C     S       (output) DOUBLE PRECISION
 C             The real number s, the sines of the plane rotation.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB03CV by Sven Hammarling,

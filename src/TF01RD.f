@@ -111,7 +111,7 @@ C
 C     The algorithm requires approximately (NA + NB) x NA x NC x N
 C     multiplications and additions.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01FD by S. Van Huffel, Katholieke

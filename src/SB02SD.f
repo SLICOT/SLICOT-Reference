@@ -301,7 +301,7 @@ C     By symmetry, the equation (1) is also equivalent to
 C                               -1
 C         X = op(A)'*(I_n + X*G)  *X*op(A) + Q.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, and
 C     P.Hr. Petkov, Technical University of Sofia, March 1999.

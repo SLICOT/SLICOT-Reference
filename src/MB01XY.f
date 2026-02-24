@@ -65,7 +65,7 @@ C
 C     This routine is a counterpart of LAPACK Library routine DLAUU2,
 C     which computes the matrix product U * U' or L' * L.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Nov. 2000.
 C

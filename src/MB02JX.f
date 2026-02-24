@@ -163,7 +163,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires 0(K*RNK*L*M*N) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

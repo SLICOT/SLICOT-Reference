@@ -117,7 +117,7 @@ C        2xNBxNCx(N+1) multiplications/divisions,
 C        4xNBxNCxN     additions/subtractions and
 C          NBxNC       square roots.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB09AD by S. Van Huffel, Katholieke

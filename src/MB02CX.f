@@ -118,7 +118,7 @@ C     first element in that row. This first element, in turn, is
 C     then annihilated by a modified hyperbolic rotation, acting also
 C     on the i-th column of A.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Chemnitz, Germany, June 2000.
 C

@@ -202,7 +202,7 @@ C     NUMERICAL ASPECTS
 C
 C     None
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Oct. 1996.
 C     Supersedes Release 2.0 routine AB05CD by C.J.Benson, Kingston

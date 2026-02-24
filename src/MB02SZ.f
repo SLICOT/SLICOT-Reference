@@ -59,7 +59,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N ) complex operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TB01FX by A.J. Laub, University of

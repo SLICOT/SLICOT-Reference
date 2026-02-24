@@ -134,7 +134,7 @@ C     The processing time required by this routine will be approximately
 C     half that required by the SLICOT Library routine TF01MD, which
 C     treats A as a general matrix.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01BD by S. Van Huffel, Katholieke

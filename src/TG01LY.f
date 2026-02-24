@@ -239,7 +239,7 @@ C     k, for k = 1, ..., NIBLCK, where IBLCK(NIBLCK+1) = 0.
 C     Note that each infinite pole of multiplicity k corresponds to
 C     an infinite eigenvalue of multiplicity k+1.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     July 1999. Based on the RASP routine SRISEP.

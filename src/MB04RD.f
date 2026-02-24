@@ -334,7 +334,7 @@ C     product is well-conditioned enough. The routine can be easily
 C     modified to provide estimates for the condition numbers of the
 C     clusters of generalized eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Nov. 2022.
 C

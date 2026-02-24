@@ -115,7 +115,7 @@ C     op(B) = B', it could be more efficient to transpose A and/or B
 C     before calling this routine, and use the 'N' values for TRANA
 C     and/or TRANB.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 2000.
 C

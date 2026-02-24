@@ -167,7 +167,7 @@ C     conditioned problems this factor is of very limited value.
 C                                 2
 C     The algorithm requires 0(K*L *M*N) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

@@ -133,7 +133,7 @@ C     in order to increase the efficiency. If the matrix A is full, or
 C     its zero triangle has small order, an optimized DSYRK code could
 C     be faster than MB01YD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Nov. 2000.
 C

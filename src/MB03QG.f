@@ -218,7 +218,7 @@ C     NUMERICAL ASPECTS
 C                                         3
 C     The algorithm requires less than 4*N  operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     October 2002. Based on the RASP/BIMASC routine GSEOR1.

@@ -69,6 +69,8 @@ C     P       (input) INTEGER
 C             The number of rows of the matrix C.  P >= 0.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that A and E are already upper triangular in
 C             rows and columns 1:ILO-1 and IHI+1:N.  ILO and IHI could
@@ -200,7 +202,7 @@ C         Ostrouchov, S., and Sorensen, D.
 C         LAPACK Users' Guide: Second Edition.
 C         SIAM, Philadelphia, 1995.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Sima, University of Bucharest, May 2001.
 C     V. Sima, Research Institute for Informatics, Bucharest, May 2001.

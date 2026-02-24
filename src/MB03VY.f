@@ -103,7 +103,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

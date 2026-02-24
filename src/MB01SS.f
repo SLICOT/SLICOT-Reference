@@ -51,7 +51,7 @@ C
 C     D       (input) DOUBLE PRECISION array, dimension (N)
 C             The diagonal elements of the diagonal matrix D.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, July 2019.
 C

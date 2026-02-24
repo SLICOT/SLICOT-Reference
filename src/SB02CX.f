@@ -31,7 +31,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Hr. Petkov, Technical University of Sofia, May, 1999.
 C

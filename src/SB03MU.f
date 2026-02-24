@@ -104,7 +104,7 @@ C
 C     The algorithm is stable and reliable, since Gaussian elimination
 C     with complete pivoting is used.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, May 1997.
 C     Based on DLASD2 by P. Petkov, Tech. University of Sofia, September

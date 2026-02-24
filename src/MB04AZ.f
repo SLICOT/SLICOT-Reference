@@ -342,7 +342,7 @@ C
 C     This routine does not perform any scaling of the matrices. Scaling
 C     might sometimes be useful, and it should be done externally.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet
 C     Chemnitz, April 30, 2009.

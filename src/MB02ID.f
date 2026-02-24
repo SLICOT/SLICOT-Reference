@@ -166,7 +166,7 @@ C                  O( (K*L+RC*L+K*RC)*(N+M)*log(N+M) + N*N*L*L*RC );
 C
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

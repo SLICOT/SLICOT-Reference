@@ -175,7 +175,7 @@ C           O( L *K*N*( ML + NU ) + N*( ML + NU )*L *( L + K ) )
 C
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

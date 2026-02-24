@@ -60,7 +60,7 @@ C
 C     This routine can be used, for instance, for computing powers of
 C     a real Schur form matrix.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

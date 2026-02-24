@@ -47,7 +47,7 @@ C
 C     The chordal metric is finite even if A1 and A2 are both infinite,
 C     or if one of them is infinite and the other is finite, nonzero.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Mar. 2023.
 C

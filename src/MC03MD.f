@@ -170,7 +170,7 @@ C
 C     Other elementary operations involving polynomial matrices can
 C     easily be obtained by calling the appropriate BLAS routine(s).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC03AD by A.J. Geurts.

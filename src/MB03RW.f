@@ -124,7 +124,7 @@ C     reduction of M to a block-diagonal form. Bounding a norm of X is
 C     equivalent to setting an upper bound to the condition number of
 C     the transformation matrix Y.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

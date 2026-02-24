@@ -25,33 +25,42 @@ C     for K = L,...,INPLUS, with each of these having only its first
 C     NBLK(K-1) rows non-trivial except for K = L, which has NBLK(L)
 C     such rows.
 C
-C     Arguments
+C     ARGUMENTS
 C
 C     NR     (input) INTEGER
+C
 C     A      (input) DOUBLE PRECISION, dimension(LDA,*)
+C
 C     LDA    (input) INTEGER
+C
 C     INDBLK (input) INTEGER
+C
 C     NBLK   (input) INTEGER, dimension(*)
+C
 C     VCOEFF (input/output) DOUBLE PRECISION, dimension(LDVC01, LDVC02,*)
+C
 C     LDVCO1 (input) INTEGER
+C
 C     LDVCO2 (input) INTEGER
+C
 C     PCOEFF (input/output) DOUBLE PRECISION, dimension(LDPC01, LPCO2,*)
+C
 C     LDPCO1 (input) INTEGER
+C
 C     LDPCO2 (input) INTEGER
+C
 C     INFO   (input/output) INTEGER
 C
-C
-C     REVISIONS
-C
-C     -
 C
 C     KEYWORDS
 C
 C     Coprime matrix fraction, elementary polynomial operations,
 C     polynomial matrix, state-space representation, transfer matrix.
 C
-C     NOTE: In the interests of speed, this routine does not check the
-C           inputs for errors.
+C     FURTHER COMMENTS
+C
+C     In the interests of speed, this routine does not check the
+C     inputs for errors.
 C
 C     ******************************************************************
 C

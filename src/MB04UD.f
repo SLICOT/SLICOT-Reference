@@ -154,7 +154,7 @@ C
 C     It is shown in [1] that the algorithm is numerically backward
 C     stable. The operations count is proportional to (MAX(M,N))**3.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     Based on Release 3.0 routine MB04SD modified by A. Varga,

@@ -197,7 +197,7 @@ C     calculations, otherwise. No advantage of any additional workspace
 C     larger than L is taken for matrix products, but the routine can
 C     be called repeatedly for chunks of columns of B, if LDWORK < M*N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute of Informatics, Bucharest, Oct. 1999.
 C

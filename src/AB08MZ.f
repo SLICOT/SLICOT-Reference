@@ -128,7 +128,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable (see [2] and [1]).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, Oberpfaffenhofen, May 2001.
 C     Complex version: V. Sima, Research Institute for Informatics,

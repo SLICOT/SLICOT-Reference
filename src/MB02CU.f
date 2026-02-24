@@ -192,7 +192,7 @@ C     NUMERICAL ASPECTS
 C                               2
 C     The algorithm requires 0(K *( P + Q )) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

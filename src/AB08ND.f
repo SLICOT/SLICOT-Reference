@@ -215,7 +215,7 @@ C     Library routine DGGEV with A = A , B = B  and N = NU.
 C                                     f       f
 C     If RANK = 0, the routine DGEEV can be used (since B = I).
 C                                                        f
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C     Supersedes Release 2.0 routine AB08BD by F. Svaricek.

@@ -216,7 +216,7 @@ C         If sigma is the standard deviation of the input sequence
 C         XIN, then initializing EFOR = sigma*1.0E-02 usually works
 C         well.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. A. Regalia (October 1994).
 C     Release 4.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1999.

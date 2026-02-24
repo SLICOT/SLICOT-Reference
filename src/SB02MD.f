@@ -292,7 +292,7 @@ C
 C     Usually, the combinations HINV = 'D' and SORT = 'U', or HINV = 'I'
 C     and SORT = 'U', will be faster then the other combinations [3].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB02AD by Control Systems Research

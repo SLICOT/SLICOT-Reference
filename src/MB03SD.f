@@ -147,7 +147,7 @@ C     are of roughly the same magnitude, the computed eigenvalue is
 C     essentially as accurate as the computed eigenvalue obtained by
 C     traditional methods. See [1] or [2].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA.

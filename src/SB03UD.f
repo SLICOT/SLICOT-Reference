@@ -307,7 +307,7 @@ C     reciprocal of an estimate of the 1-norm of inverse(T). The true
 C     reciprocal 1-norm of inverse(T) cannot differ from sigma_min(T) by
 C     more than a factor of N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.
 C     This is an extended and improved version of Release 3.0 routine

@@ -81,6 +81,8 @@ C     P       (input) INTEGER
 C             The number of rows of the matrix C.  P >= 0.
 C
 C     NLOW    (input) INTEGER
+C             See NSUP
+C
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal subpencil of A - lambda*E
@@ -197,7 +199,11 @@ C             subpencil A12 - lambda*E12 (see description of A) lying
 C             inside the domain of interest for eigenvalues.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N,
 C             are the generalized eigenvalues.
@@ -258,7 +264,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 25N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, October 2002.

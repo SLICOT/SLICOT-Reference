@@ -36,7 +36,7 @@ C     REFERENCES
 C
 C     Adapted from EISPACK subroutine CSROOT.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA,

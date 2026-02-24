@@ -528,7 +528,7 @@ C     can be dealt with as well. Iterative refinement is used whenever
 C     useful to solve linear algebraic systems. Condition numbers and
 C     error bounds on the solutions are optionally provided.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Apr. 1999.
 C

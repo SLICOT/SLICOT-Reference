@@ -103,7 +103,7 @@ C     to an N-by-N orthogonal matrix, using identity submatrices. Then A
 C     and E are replaced by UT'*A*UT and UT'*E*UT, and the contents of
 C     the arrays U and V are U * UT and V * VT, respectively.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998. Based on the RASP routine SPLITB.

@@ -148,7 +148,7 @@ C     The implemented method is numerically stable.
 C                               3
 C     The algorithm requires 0(K S (N-P)) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, April 2001.
 C

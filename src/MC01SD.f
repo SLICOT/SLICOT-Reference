@@ -107,7 +107,7 @@ C     FURTHER COMMENTS
 C
 C     The scaling factors s and t are BASE dependent.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01GD by A.J. Geurts.

@@ -149,7 +149,7 @@ C                 norm of the balanced matrix C.
 C
 C     The routine is BASE dependent.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TB01HD by T.W.C.Williams, Kingston

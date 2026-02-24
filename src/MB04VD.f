@@ -272,7 +272,7 @@ C     sE(r)-A(r) and calling the routine with MODE set to 'B'. The
 C     result has got to be pertransposed again. (For more details see
 C     [1]).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     Based on Release 3.0 routine MB04TD modified by A. Varga,

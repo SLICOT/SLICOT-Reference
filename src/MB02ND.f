@@ -355,7 +355,7 @@ C     This is because the Householder transformations performed on the
 C     rows of C in the bidiagonalization phase (see Step 1) must be kept
 C     until the end (Step 5).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB02BD by S. Van Huffel, Katholieke

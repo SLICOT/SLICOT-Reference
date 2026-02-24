@@ -158,7 +158,7 @@ C     NUMERICAL ASPECTS
 C                                         3
 C     The algorithm requires less than 4*N  operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     April 1998. Based on the RASP routine SEOR1.

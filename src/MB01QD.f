@@ -88,7 +88,7 @@ C     dealing with block triangular, or block Hessenberg matrices.
 C     For efficiency, no tests of the input scalar parameters are
 C     performed.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C

@@ -44,7 +44,7 @@ C
 C     SCAL    (output)  INTEGER
 C             Scaling factor exponent, see ALPHA.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

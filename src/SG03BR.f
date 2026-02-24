@@ -19,15 +19,22 @@ C
 C     Input/Output Parameters
 C
 C     XR      (input) DOUBLE PRECISION
+C
 C     XI      (input) DOUBLE PRECISION
+C
 C     YR      (input) DOUBLE PRECISION
+C
 C     YI      (input) DOUBLE PRECISION
 C             The given real scalars XR, XI, YR, YI.
 C
 C     C       (output) DOUBLE PRECISION
+C
 C     SR      (output) DOUBLE PRECISION
+C
 C     SI      (output) DOUBLE PRECISION
+C
 C     ZR      (output) DOUBLE PRECISION
+C
 C     ZI      (output) DOUBLE PRECISION
 C             The computed real scalars C, SR, SI, ZR, ZI defining the
 C             complex Givens rotation and Z = ZR+ZI*I.
@@ -41,7 +48,7 @@ C
 C     In the interest of speed, this routine does not check the input
 C     for errors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Dec. 2021.
 C     This is an adaptation for real data of the LAPACK routine ZLARTG.

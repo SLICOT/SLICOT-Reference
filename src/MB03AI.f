@@ -92,7 +92,7 @@ C     found. For numerical reasons, this routine should be called
 C     when convergence difficulties are encountered for small order
 C     matrices and small K, e.g., N, K <= 6.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Jan. 2019.

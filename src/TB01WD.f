@@ -70,6 +70,8 @@ C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues of A. The
@@ -111,7 +113,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 10N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

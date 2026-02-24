@@ -146,7 +146,7 @@ C
 C     If the solution matrix U is singular, the matrices M1 and M2 are
 C     properly set (see [1], equation (6.21)).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C     V. Sima, substantial changes, Dec. 2021, Jan. 2022.

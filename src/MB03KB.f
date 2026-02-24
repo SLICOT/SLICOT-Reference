@@ -211,7 +211,7 @@ C     The implemented method is numerically backward stable.
 C                                  3
 C     The algorithm requires 0(K NC ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Mar. 2010, an essentially new version of the PEP routine

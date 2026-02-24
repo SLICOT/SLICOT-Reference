@@ -223,7 +223,7 @@ C     well-conditioned enough. The routine can be easily modified to
 C     provide estimates for the condition numbers of the clusters of
 C     eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

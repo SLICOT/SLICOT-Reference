@@ -307,7 +307,7 @@ C     is enough well-conditioned, having only eigenvalues with moduli
 C     greater than 1. However, if A is ill-conditioned, it could be
 C     preferable to use the more general SLICOT Lyapunov solver SB03MD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB03CD by Sven Hammarling,

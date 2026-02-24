@@ -27,7 +27,7 @@ C     EPSB    (output) DOUBLE PRECISION
 C             A value used for checking the accuracy of the computed
 C             coefficients.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB08BZ by A.J. Geurts.

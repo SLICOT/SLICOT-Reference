@@ -279,7 +279,7 @@ C     The implemented method is numerically backward stable.
 C                                 3
 C     The algorithm requires 0(K N ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

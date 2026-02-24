@@ -29,7 +29,7 @@ C             LAPACK Library routine DLAMCH).
 C             On exit, EPSB contains an updated value, using a norm
 C             for the accuracy of the computed coefficients.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB08AZ by A.J. Geurts.

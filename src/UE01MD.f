@@ -47,7 +47,11 @@ C             The character options to the subroutine NAME, concatenated
 C             into a single character string.
 C
 C     N1      (input) INTEGER
+C             See N3
+C
 C     N2      (input) INTEGER
+C             See N3
+C
 C     N3      (input) INTEGER
 C             Problem dimensions for the subroutine NAME; these may not
 C             all be required.

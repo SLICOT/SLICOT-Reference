@@ -76,7 +76,7 @@ C     The singular values are compared to the given, or default TOL, and
 C     the estimated order  n  is returned, possibly after user's
 C     confirmation.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 1999.
 C

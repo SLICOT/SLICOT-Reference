@@ -340,7 +340,7 @@ C     the desired number of columns. If on entry INFO < 0, then the
 C     routine estimates a suitable value of this number. If INFO = 0,
 C     the routine MB04BD is directly called.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, July 2011.
 C

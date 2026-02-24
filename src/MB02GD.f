@@ -168,7 +168,7 @@ C     The implemented method is numerically stable.
 C                                3
 C     The algorithm requires O( K *N*NL ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

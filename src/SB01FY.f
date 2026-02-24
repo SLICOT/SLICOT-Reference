@@ -77,7 +77,7 @@ C             = 1:  if uncontrollability of the pair (A,B) is detected;
 C             = 2:  if A is stable or at the stability limit;
 C             = 3:  if N = 2 and A has a pair of real eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

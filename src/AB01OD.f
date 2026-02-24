@@ -246,7 +246,7 @@ C     If the system matrices A and B are badly scaled, it would be
 C     useful to scale them with SLICOT routine TB01ID, before calling
 C     the routine.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C     Supersedes Release 2.0 routine AB01CD by M. Vanbegin, and

@@ -79,7 +79,7 @@ C     This routine enables to solve the system X * A = B or X * A' = B
 C     as easily and efficiently as possible; it is similar to the LAPACK
 C     Library routine DGESV, which solves A * X = B.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Mar. 2000.
 C

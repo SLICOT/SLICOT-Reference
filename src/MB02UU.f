@@ -49,7 +49,7 @@ C     In the interest of speed, this routine does not check the input
 C     for errors. It should only be used if the order of the matrix A
 C     is very small.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Bo Kagstrom and P. Poromaa, Univ. of Umea, Sweden, Nov. 1993.
 C

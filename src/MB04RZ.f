@@ -306,7 +306,7 @@ C     For efficiency reasons, the "absolute value" (or "magnitude") of
 C     the complex elements x of the transformation matrices is computed
 C     as |real(x)| + |imag(x)|.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Oct. 2022.
 C

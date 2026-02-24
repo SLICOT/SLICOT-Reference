@@ -182,7 +182,7 @@ C     panels of columns. The user may specify in INFO the desired number
 C     of columns. If on entry INFO <= 0, then the routine estimates a
 C     suitable value of this number.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Jan. 2011.
 C     M. Voigt, Max Planck Institute for Dynamics of Complex Technical

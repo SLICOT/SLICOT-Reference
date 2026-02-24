@@ -46,7 +46,7 @@ C             The column scale factors for A.
 C             C is not referenced if JOBS = 'R'.
 C
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, April 1998.

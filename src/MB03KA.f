@@ -212,7 +212,7 @@ C     NUMERICAL ASPECTS
 C
 C     The implemented method is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     R. Granat, Umea University, Sweden, Apr. 2008.
 C

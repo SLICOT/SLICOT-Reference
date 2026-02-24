@@ -146,7 +146,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C     Supersedes Release 2.0 routine AB08BZ by F. Svaricek.

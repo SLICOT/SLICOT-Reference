@@ -168,7 +168,7 @@ C     Note that for P = 1, the LAPACK Library routine DGEHRD could be
 C     more efficient on some computer architectures than this routine
 C     (a BLAS 2 version).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

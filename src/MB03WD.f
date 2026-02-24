@@ -191,7 +191,7 @@ C     because DHSEQR uses a block multishift QR algorithm.
 C     When P is large and JOB = 'S', it could be more efficient to
 C     compute the product matrix H, and use the LAPACK Library routines.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

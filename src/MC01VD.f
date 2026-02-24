@@ -79,7 +79,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01JD by A.J. Geurts.

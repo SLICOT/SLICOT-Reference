@@ -126,7 +126,7 @@ C     THETA/(1 - (3 x N - 1.5) x EPS) and no more than p singular values
 C     are less than or equal to
 C     THETA x (1 - (6 x N-2) x EPS)/(1 - (3 x N - 1.5) x EPS).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB03BD by S. Van Huffel, Katholieke

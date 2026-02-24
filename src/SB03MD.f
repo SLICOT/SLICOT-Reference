@@ -308,7 +308,7 @@ C                      EPS * norm(A)**2 / SEP   (DICO = 'D'),
 C
 C     where EPS is the machine precision.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, July 1997.
 C     Supersedes Release 2.0 routine SB03AD by Control Systems Research

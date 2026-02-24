@@ -105,7 +105,7 @@ C
 C     The algorithm is stable and reliable, since Gaussian elimination
 C     with complete pivoting is used.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, May 2000.
 C     This is a modification and slightly more efficient version of

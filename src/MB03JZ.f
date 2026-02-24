@@ -169,7 +169,7 @@ C                                                               3
 C     The algorithm is numerically backward stable and needs O(N )
 C     complex floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet
 C     Chemnitz, April 6, 2009.

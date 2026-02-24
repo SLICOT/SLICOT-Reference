@@ -219,7 +219,7 @@ C
 C     The forward error bound is estimated using a practical error bound
 C     similar to the one proposed in [3].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Petkov, Tech. University of Sofia, March 2000.
 C

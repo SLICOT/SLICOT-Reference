@@ -344,7 +344,7 @@ C        second call with  METH = 'M',  JOB = 'D',  JOBCV = 'C',  or
 C        first  call with  METH = 'M',  JOB = 'C',  JOBCV = 'N',
 C        second call with  METH = 'N',  JOB = 'D',  JOBCV = 'C'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 1999.
 C

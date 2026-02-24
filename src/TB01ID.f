@@ -132,7 +132,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     This subroutine is based on LAPACK routine DGEBAL, and routine

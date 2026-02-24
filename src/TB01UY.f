@@ -225,7 +225,7 @@ C     If the system matrices A and B are badly scaled, it would be
 C     useful to scale them with SLICOT routine TB01ID, before calling
 C     the routine.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, DLR Oberpfaffenhofen, March 2003.
 C

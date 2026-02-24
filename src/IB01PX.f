@@ -241,7 +241,7 @@ C     NUMERICAL ASPECTS
 C
 C     The implemented method is numerically stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Universiteit Leuven, Feb. 2000.
 C

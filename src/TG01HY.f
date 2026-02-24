@@ -301,7 +301,7 @@ C
 C     If INFO > 0 on entry, that value is used as block size for the
 C     block algorithms. Otherwise, the block size is chosen internally.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Jan. 2012.
 C     Based on SLICOT Library routine TG01HX, by A. Varga.

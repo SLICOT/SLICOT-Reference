@@ -245,7 +245,7 @@ C     If the pencil (A-lambda*E) has no zero eigenvalues, then an
 C     irreducible realization can be computed skipping Phases 1 and 3
 C     by using the setting: JOB = 'I' and SYSTYP = 'P'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     April 1999. Based on the RASP routine RPDSIR.

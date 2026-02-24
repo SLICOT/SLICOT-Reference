@@ -160,7 +160,11 @@ C             The scale factor set to avoid overflow in U.
 C             0 < SCALE <= 1.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             If INFO = 0, 3, 5, 6, or 7, then
 C             (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j = 1, ... ,N, are the
@@ -438,7 +442,7 @@ C     When setting the error indicator INFO, the routine does not test
 C     for near instability in the equation but only for exact
 C     instability.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

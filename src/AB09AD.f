@@ -206,7 +206,7 @@ C     balancing-free square-root techniques.
 C                                         3
 C     The algorithms require less than 30N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998.

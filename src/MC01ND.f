@@ -62,7 +62,7 @@ C
 C     The algorithm requires DP operations for real arguments and 4*DP
 C     for complex arguments.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01BD by Serge Steer.

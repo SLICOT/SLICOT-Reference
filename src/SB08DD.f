@@ -197,7 +197,7 @@ C                                            3
 C     The algorithm requires no more than 14N  floating point
 C     operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.
