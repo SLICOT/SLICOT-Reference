@@ -106,9 +106,10 @@ C     Workspace
 C
 C     IWORK   (input/output) INTEGER array, dimension (MAX(M,P))
 C
-C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*MAX(M,P))
+C     DWORK   (input/output) DOUBLE PRECISION array,
+C             dimension (2*MAX(M,P))
 C
-C     ZWORK   (input/output) COMPLEX~*16 array, dimension (LZWORK)
+C     ZWORK   (input/output) COMPLEX*16 array, dimension (LZWORK)
 C             On exit, if INFO = 0, ZWORK(1) returns the optimal value
 C             of LZWORK.
 C
