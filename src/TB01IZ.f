@@ -132,7 +132,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     Complex version: V. Sima, Research Institute for Informatics,

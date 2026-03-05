@@ -67,6 +67,8 @@ C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     WR      (input/output) DOUBLE PRECISION array, dimension (NP)
+C             See WR
+C
 C     WI      (input/output) DOUBLE PRECISION array, dimension (NP)
 C             On entry, these arrays must contain the real and imaginary
 C             parts, respectively, of the desired eigenvalues of the
@@ -221,7 +223,7 @@ C     operations. Although no proof of numerical stability is known,
 C     the algorithm has always been observed to yield reliable
 C     numerical results.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     February 1999. Based on the RASP routine SB01BD.

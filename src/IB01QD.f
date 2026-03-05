@@ -308,7 +308,7 @@ C     computed matrices  B  and  D  are fitted to the input and output
 C     trajectories. However, if matrix  A  is unstable, the computed
 C     matrices  B  and  D  could be inaccurate.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Apr. 2000.
 C

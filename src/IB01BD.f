@@ -397,7 +397,7 @@ C     If the covariance matrices and/or the Kalman gain are desired,
 C     JOBCK  should be set to  'C'  or  'K'  at the second call.
 C     If  B  and  D  are both needed, they should be computed at once.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 1999.
 C

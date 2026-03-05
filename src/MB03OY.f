@@ -156,7 +156,7 @@ C
 C     For a matrix with a small norm, the rank is set to zero if the
 C     largest column Euclidean norm is smaller than or equal to RCOND.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1998.
 C

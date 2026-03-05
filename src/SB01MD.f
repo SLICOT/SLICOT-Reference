@@ -54,6 +54,8 @@ C             On exit, this array contains the transformed vector Z * B
 C             of the closed-loop system.
 C
 C     WR      (input) DOUBLE PRECISION array, dimension (NCONT)
+C             See WI
+C
 C     WI      (input) DOUBLE PRECISION array, dimension (NCONT)
 C             These arrays must contain the real and imaginary parts,
 C             respectively, of the desired poles of the closed-loop

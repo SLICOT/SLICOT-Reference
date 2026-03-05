@@ -369,7 +369,7 @@ C     If the system matrices A, E and C are badly scaled, it is
 C     generally recommendable to scale them with the SLICOT routine
 C     TG01AD, before calling TG01ID.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     March 1999. Based on the RASP routine RPDSCF.

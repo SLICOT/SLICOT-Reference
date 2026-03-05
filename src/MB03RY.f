@@ -121,7 +121,7 @@ C     the reduction of M to a block-diagonal form. Bounding a norm of
 C     X is equivalent to setting an upper bound to the condition number
 C     of the transformation matrix Y.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Based on the RASP routine SYLSM by A. Varga, German Aerospace

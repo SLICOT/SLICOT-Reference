@@ -81,6 +81,8 @@ C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= max(1,N).
 C
 C     VALR    (output) DOUBLE PRECISION array, dimension (N)
+C             See VALI
+C
 C     VALI    (output) DOUBLE PRECISION array, dimension (N)
 C             These arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A. The
@@ -146,7 +148,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB05AD by M.J. Denham, Kingston

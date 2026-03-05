@@ -184,6 +184,8 @@ C             The leading dimension of the array W.  LDW >= 1.
 C             LDW >= 2*M,  if COMPW = 'I' or COMPW = 'V'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (M)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (M)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of R11. The eigenvalues are stored in the same

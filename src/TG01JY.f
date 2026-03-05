@@ -303,7 +303,7 @@ C     If the pencil A-lambda*E has no zero eigenvalues, then an
 C     irreducible realization is computed skipping Phases 3 and 4
 C     (equivalent to setting: JOB = 'I' and SYSTYP = 'P').
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Feb. 2012.
 C     Based on the SLICOT Library routine TG01JD by A. Varga.

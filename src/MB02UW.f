@@ -92,7 +92,7 @@ C     Note: all input quantities are assumed to be smaller than overflow
 C     by a reasonable factor.  (See BIGNUM.)  In the interests of speed,
 C     this routine does not check the inputs for errors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 2009.
 C     Based on the LAPACK Library routine DLALN2.

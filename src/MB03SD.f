@@ -70,6 +70,8 @@ C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The arrays WR and WI contain the real and imaginary parts,
 C             respectively, of the N eigenvalues of H' with non-negative
@@ -145,7 +147,7 @@ C     are of roughly the same magnitude, the computed eigenvalue is
 C     essentially as accurate as the computed eigenvalue obtained by
 C     traditional methods. See [1] or [2].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA.

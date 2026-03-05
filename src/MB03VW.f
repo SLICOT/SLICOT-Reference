@@ -89,6 +89,8 @@ C             On exit, H indicates the factor of A which is in upper
 C             Hessenberg form.
 C
 C     ILO     (input)  INTEGER
+C             See IHI
+C
 C     IHI     (input)  INTEGER
 C             It is assumed that each factor in A is already upper
 C             triangular in rows and columns 1:ILO-1 and IHI+1:N.
@@ -176,7 +178,7 @@ C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Feb. 2022.
 C     Based on an unfinished version of the routine PGGHRD, developed by

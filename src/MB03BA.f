@@ -36,7 +36,7 @@ C             The map for accessing the orthognal transformation
 C             matrices, that is, if QMAP(I) = J, then the matrix Q_I is
 C             stored at the J-th position in Q.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

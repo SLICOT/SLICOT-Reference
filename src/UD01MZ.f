@@ -69,7 +69,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Oct. 1997.
 C     Complex version: V. Sima, Research Institute for Informatics,

@@ -61,6 +61,8 @@ C             NBLK(1) >= NBLK(2) >= ... >= NBLK(INDCON),
 C             NBLK(1) + NBLK(2) + ... + NBLK(INDCON) = N.
 C
 C     WR      (input) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (input) DOUBLE PRECISION array, dimension (N)
 C             These arrays must contain the real and imaginary parts,
 C             respectively, of the desired poles of the closed-loop

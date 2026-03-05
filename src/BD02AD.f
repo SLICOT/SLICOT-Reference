@@ -163,7 +163,7 @@ C     NUMERICAL ASPECTS
 C
 C     None
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, V. Mehrmann, and T. Penzl (TU Chemnitz)
 C

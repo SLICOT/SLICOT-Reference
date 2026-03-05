@@ -206,7 +206,7 @@ C
 C     If L = N, the algorithm requires 0( N**3 ) floating point
 C     operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     May 1999.

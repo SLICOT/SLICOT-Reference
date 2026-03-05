@@ -17,6 +17,8 @@ C             The number of zeros (and hence the degree) of P(x).
 C             K >= 0.
 C
 C     REZ     (input) DOUBLE PRECISION array, dimension (K)
+C             See IMZ
+C
 C     IMZ     (input) DOUBLE PRECISION array, dimension (K)
 C             The real and imaginary parts of the i-th zero of P(x)
 C             must be stored in REZ(i) and IMZ(i), respectively, where
@@ -59,7 +61,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01DD by A.J. Geurts.

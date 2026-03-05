@@ -140,7 +140,7 @@ C     in order to increase the efficiency. If the matrix H is full, or
 C     its zero triangle has small order, an optimized DTRMM code could
 C     be faster than MB01ZD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Nov. 2000.
 C

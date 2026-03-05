@@ -132,7 +132,7 @@ C
 C     When near singularity is detected, perturbed values are used
 C     to solve the equation (but the given matrices are unchanged).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

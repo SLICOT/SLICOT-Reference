@@ -150,7 +150,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations and is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MB04FZ by Th.G.J. Beelen,

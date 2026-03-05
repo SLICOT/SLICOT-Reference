@@ -133,7 +133,7 @@ C
 C     The implementation exploits data locality and uses BLAS 3
 C     operations as much as possible, given the workspace length.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Mar. 2001.
 C

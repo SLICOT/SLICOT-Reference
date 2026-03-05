@@ -128,7 +128,7 @@ C     The recommended value for TOL is 9 which gives an estimate of
 C     beta(A) correct to within an order of magnitude.
 C     AB13ED requires approximately 38*N**3 flops for TOL = 9.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     R. Byers, the routines BISEC and BISEC0 (January, 1995).
 C

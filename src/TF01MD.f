@@ -114,7 +114,7 @@ C
 C     The algorithm requires approximately (N + M) x (N + P) x NY
 C     multiplications and additions.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01AD by S. Van Huffel, Katholieke

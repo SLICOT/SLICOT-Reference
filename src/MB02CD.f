@@ -171,7 +171,7 @@ C     The implemented method is numerically stable.
 C                               3 2
 C     The algorithm requires 0(K N ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Chemnitz, Germany, June 2000.
 C

@@ -133,7 +133,11 @@ C             The first NBLCKS elements of this array contain the orders
 C             of the resulting diagonal blocks of the matrices A and B.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, if INFO = 0, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j),
 C             j = 1, ..., N, will be the generalized eigenvalues.
@@ -330,7 +334,7 @@ C     product is well-conditioned enough. The routine can be easily
 C     modified to provide estimates for the condition numbers of the
 C     clusters of generalized eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Nov. 2022.
 C

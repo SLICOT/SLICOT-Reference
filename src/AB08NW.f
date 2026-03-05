@@ -217,7 +217,7 @@ C     In order to compute the finite Smith zeros of the system
 C     explicitly, a call to this routine may be followed by a call to
 C     the LAPACK Library routine DGGEV.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     V. Sima, Katholieke Univ. Leuven, Belgium, May 1999.

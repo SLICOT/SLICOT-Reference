@@ -95,6 +95,8 @@ C     LDB    (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1, N).
 C
 C     ILO     (output) INTEGER
+C             See IHI
+C
 C     IHI     (output) INTEGER
 C             ILO and IHI are set to integers such that on exit
 C             A(i,j) = 0 and B(i,j) = 0 if i > j and
@@ -197,7 +199,7 @@ C     the scaling transformations is bounded by MXCOND = 1/SQRT(EPS),
 C     where EPS is the machine precision (see LAPACK Library routine
 C     DLAMCH).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 2015.
 C

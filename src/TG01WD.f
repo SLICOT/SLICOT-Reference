@@ -85,7 +85,11 @@ C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= max(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, if INFO = 0, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j),
 C             j=1,...,N, will be the generalized eigenvalues.
@@ -129,7 +133,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 25N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 2000.

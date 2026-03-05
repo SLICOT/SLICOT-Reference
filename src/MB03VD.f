@@ -29,6 +29,8 @@ C             The number of matrices in the product A_1*A_2*...*A_p.
 C             P >= 1.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that all matrices A_j, j = 2, ..., p, are
 C             already upper triangular in rows and columns 1:ILO-1 and
@@ -166,7 +168,7 @@ C     Note that for P = 1, the LAPACK Library routine DGEHRD could be
 C     more efficient on some computer architectures than this routine
 C     (a BLAS 2 version).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

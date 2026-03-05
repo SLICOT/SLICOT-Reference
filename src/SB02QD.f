@@ -275,7 +275,7 @@ C     When SEP is computed and it is zero, the routine returns
 C     immediately, with RCOND and FERR (if requested) set to 0 and 1,
 C     respectively. In this case, the equation is singular.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P.Hr. Petkov, Technical University of Sofia, December 1998.
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.

@@ -23,6 +23,8 @@ C     P       (input) INTEGER
 C             The number p of transformation matrices.  P >= 1.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             The values of the indices ilo and ihi, respectively, used
 C             in the previous call of the SLICOT Library routine MB03VD.
@@ -101,7 +103,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

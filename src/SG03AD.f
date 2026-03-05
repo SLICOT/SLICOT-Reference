@@ -157,7 +157,11 @@ C             in the computed solution, measured in the Frobenius norm:
 C             norm(X - XTRUE) / norm(XTRUE)
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             If FACT = 'N' and INFO = 0, 3, or 4, then
 C             (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N, are the
@@ -345,7 +349,7 @@ C     ill-conditioned. Perturbed values were used to solve the equation.
 C     Ill-conditioning can be detected by a very small value of the
 C     reciprocal condition number RCOND.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

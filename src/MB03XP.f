@@ -51,6 +51,8 @@ C     N       (input) INTEGER
 C             The order of the matrices A and B. N >= 0.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that the matrices A and B are already upper
 C             triangular in rows and columns 1:ILO-1 and IHI+1:N.
@@ -121,7 +123,11 @@ C             The leading dimension of the array Z.  LDZ >= 1.
 C             If COMPZ <> 'N', LDZ >= MAX(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             The i-th (1 <= i <= N) computed eigenvalue is given by
 C             BETA(I) * ( ALPHAR(I) + sqrt(-1)*ALPHAI(I) ). If two

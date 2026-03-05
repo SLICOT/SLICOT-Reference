@@ -251,7 +251,7 @@ C     To avoid overflow, matrix J is scaled so that its largest element
 C     is no greater than  overflow**(1/2) * underflow**(1/4) in absolute
 C     value (and not much smaller than that, for maximal accuracy).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04QD by S. Van Huffel, Katholieke

@@ -188,7 +188,11 @@ C     LDX     (input) INTEGER
 C             The leading dimension of array X.  LDX >= MAX(1,N).
 C
 C     ALFAR   (output) DOUBLE PRECISION array, dimension (2*N)
+C             See BETA
+C
 C     ALFAI   (output) DOUBLE PRECISION array, dimension (2*N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (2*N)
 C             The generalized eigenvalues of the 2N-by-2N matrix pair,
 C             ordered as specified by SORT (if INFO = 0). For instance,
@@ -389,7 +393,7 @@ C
 C     The routine can also compute the anti-stabilizing solutions of
 C     the algebraic Riccati equations, by specifying SORT = 'U'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Sep. 1997.
 C     Supersedes Release 2.0 routine SB02CD by T.G.J. Beelen, Philips,

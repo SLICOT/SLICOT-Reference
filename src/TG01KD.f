@@ -146,7 +146,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 2020.
 C

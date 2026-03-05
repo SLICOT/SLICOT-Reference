@@ -152,7 +152,7 @@ C                               3
 C     The algorithm requires 0(n ) floating point operations in the
 C     discrete-time case.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C

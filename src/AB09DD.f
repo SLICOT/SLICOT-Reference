@@ -113,7 +113,7 @@ C        Cr = C1 + C2*(g*I-A22)  *A21   ,  Dr = D + C2*(g*I-A22)  *B2
 C
 C     where g = 0 if DICO = 'C' and g = 1 if DICO = 'D'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998.

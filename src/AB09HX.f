@@ -185,7 +185,7 @@ C             LDWORK >= MAX( 2, N*(MAX(N,M,P)+5),
 C                            2*N*P+MAX(P*(M+2),10*N*(N+1) ) ).
 C             For optimum performance LDWORK should be larger.
 C
-C     BWORK   (input/output) LOGICAL array, dimension 2*N
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Warning Indicator
 C

@@ -37,8 +37,14 @@ C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     LAMBD1  (input) DOUBLE PRECISION
+C             See LAMBD4
+C
 C     LAMBD2  (input) DOUBLE PRECISION
+C             See LAMBD4
+C
 C     LAMBD3  (input) DOUBLE PRECISION
+C             See LAMBD4
+C
 C     LAMBD4  (input) DOUBLE PRECISION
 C             These variables must contain the 2-by-2 block to be added
 C             to the diagonal blocks of A.

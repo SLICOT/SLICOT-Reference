@@ -45,6 +45,8 @@ C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
 C     E1      (output) DOUBLE PRECISION
+C             See E2
+C
 C     E2      (output) DOUBLE PRECISION
 C             E1 and E2 contain either the real eigenvalues or the real
 C             and positive imaginary parts, respectively, of the complex
@@ -74,7 +76,7 @@ C     U1'*A1*U1 has the appropriate form. Let UT be an extension of U1
 C     to an N-by-N orthogonal matrix, using identity submatrices. Then A
 C     is replaced by UT'*A*UT and the contents of array U is U * UT.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998. Based on the RASP routine SPLITB.

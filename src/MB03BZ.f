@@ -64,6 +64,8 @@ C     N       (input)  INTEGER
 C             The order of each factor in the array A.  N >= 0.
 C
 C     ILO     (input)  INTEGER
+C             See IHI
+C
 C     IHI     (input)  INTEGER
 C             It is assumed that each factor in A is already upper
 C             triangular in rows and columns 1:ILO-1 and IHI+1:N.
@@ -187,7 +189,7 @@ C     The implemented method is numerically backward stable.
 C                                 3
 C     The algorithm requires 0(K N ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, Dec. 2002.
 C

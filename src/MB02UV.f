@@ -51,7 +51,7 @@ C     In the interests of speed, this routine does not check the input
 C     for errors. It should only be used to factorize matrices A of
 C     very small order.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Bo Kagstrom and Peter Poromaa, Univ. of Umea, Sweden, Nov. 1993.
 C

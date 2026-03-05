@@ -150,7 +150,7 @@ C     to those of S and R, or a "small" value for scale, is a symptom
 C     of ill-conditioning. A condition estimate can be computed using
 C     SLICOT Library routine SB03MD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, May 1997.
 C     Supersedes Release 2.0 routine SB03CZ by Sven Hammarling,

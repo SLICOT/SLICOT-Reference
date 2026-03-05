@@ -83,7 +83,7 @@ C     METHOD
 C
 C     A complex single shifted periodic QZ iteration is applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

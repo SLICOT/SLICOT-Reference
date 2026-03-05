@@ -64,7 +64,7 @@ C             this array contain the upper (if UPLO = 'U') or lower
 C             (if UPLO = 'L') triangle of the symmetric matrix A, packed
 C             column-wise, as described above.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Oct. 1998.

@@ -80,7 +80,7 @@ C     FURTHER COMMENTS
 C
 C     This is a simpler, BLAS 2 version for MB01RD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, DLR, Feb. 1995.
 C

@@ -156,7 +156,7 @@ C
 C     For efficiency reasons, the "absolute value" of a complex number x
 C     is computed as |real(x)| + |imag(x)|.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Oct. 2022.
 C     This routine is a simplification and modification of the LAPACK

@@ -80,7 +80,7 @@ C
 C     The time taken is approximately proportional to
 C     NH1 x NH2 x NR x NC.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01CD by S. Van Huffel, Katholieke

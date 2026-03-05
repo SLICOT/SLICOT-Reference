@@ -73,7 +73,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires O(N log(N)) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, April 2001.
 C

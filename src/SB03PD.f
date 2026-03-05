@@ -106,6 +106,8 @@ C             norm:  norm(X - XTRUE)/norm(XTRUE).
 C             If JOB = 'X' or JOB = 'S', FERR is not referenced.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If FACT = 'N', and INFO = 0 or INFO = N+1, WR and WI
 C             contain the real and imaginary parts, respectively, of the
@@ -192,7 +194,7 @@ C                            EPS * norm(A)**2 / SEPD
 C
 C     where EPS is the machine precision.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, May 1997.
 C     Supersedes Release 2.0 routine MB03AD by Control Systems Research

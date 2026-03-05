@@ -179,7 +179,7 @@ C     eigenvalue lambda are of roughly the same magnitude, the computed
 C     eigenvalue is essentially as accurate as the computed eigenvalue
 C     from traditional methods.  See [1] or [2].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany,
 C     R. Byers, University of Kansas, Lawrence, USA, and

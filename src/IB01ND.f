@@ -188,7 +188,7 @@ C     The implemented method is numerically stable.
 C                                      3
 C     The algorithm requires 0(((m+l)s) ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 1999.
 C

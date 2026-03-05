@@ -209,7 +209,7 @@ C
 C     The algorithm is numerically backward stable and requires
 C     0( L*L*N )  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     March 1999. Based on the RASP routine RPDSSV.

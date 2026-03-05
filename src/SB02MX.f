@@ -297,7 +297,7 @@ C     computational effort will be slightly higher than that when using
 C     Cholesky factorization. It is recommended to use DEF = 'D' also if
 C     the definiteness is not known, but M is (much) smaller than N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Apr. 2014.
 C     This is an extended version of the SLICOT Library routine SB02MT.

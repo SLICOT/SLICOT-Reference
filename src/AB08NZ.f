@@ -217,7 +217,7 @@ C     Library routine ZGGEV with A = A , B = B  and N = NU.
 C                                     f       f
 C     If RANK = 0, the routine ZGEEV can be used (since B = I).
 C                                                        f
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C     Complex version: V. Sima, Research Institute for Informatics,

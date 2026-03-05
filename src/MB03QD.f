@@ -46,6 +46,8 @@ C     N       (input) INTEGER
 C             The order of the matrices A and U.  N >= 1.
 C
 C     NLOW    (input) INTEGER
+C             See NSUP
+C
 C     NSUP    (input) INTEGER
 C             NLOW and NSUP specify the boundary indices for the rows
 C             and columns of the principal submatrix of A whose diagonal
@@ -156,7 +158,7 @@ C     NUMERICAL ASPECTS
 C                                         3
 C     The algorithm requires less than 4*N  operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     April 1998. Based on the RASP routine SEOR1.

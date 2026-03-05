@@ -65,7 +65,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires 0( N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1997.
 C     Supersedes Release 2.0 routine DK01AD by R. Dekeyser, State

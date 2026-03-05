@@ -45,6 +45,8 @@ C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues. Complex
@@ -120,7 +122,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB05AY.

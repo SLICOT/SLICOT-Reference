@@ -153,7 +153,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1998.
 C

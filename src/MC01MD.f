@@ -84,7 +84,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01AD by A.J. Geurts.

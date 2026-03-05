@@ -47,7 +47,11 @@ C             (DICO = 'D'), ALPHA >= 0 represents the boundary value for
 C             the moduli of eigenvalues.
 C
 C     ER      (input) DOUBLE PRECISION arrays, dimension (N)
+C             See ED
+C
 C     EI      (input) DOUBLE PRECISION arrays, dimension (N)
+C             See ED
+C
 C     ED      (input) DOUBLE PRECISION arrays, dimension (N)
 C             If EVTYPE = 'S', ER(j) + EI(j)*i, j = 1,...,N, are
 C             the eigenvalues of a real matrix.

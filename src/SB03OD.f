@@ -116,6 +116,8 @@ C             The scale factor, scale, set less than or equal to 1 to
 C             prevent the solution overflowing.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If INFO >= 0 and INFO <= 3, WR and WI contain the real and
 C             imaginary parts, respectively, of the eigenvalues of A.
@@ -305,7 +307,7 @@ C     is enough well-conditioned, having only eigenvalues with moduli
 C     greater than 1. However, if A is ill-conditioned, it could be
 C     preferable to use the more general SLICOT Lyapunov solver SB03MD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB03CD by Sven Hammarling,

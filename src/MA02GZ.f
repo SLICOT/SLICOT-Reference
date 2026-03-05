@@ -66,7 +66,7 @@ C         CALL DTRSM( 'R', 'U', 'N', 'N', M, N, ONE, A, LDA, B, LDB )
 C         CALL DTRSM( 'R', 'L', 'N', 'U', M, N, ONE, A, LDA, B, LDB )
 C         CALL MA02GZ( M, B, LDB, 1, N, IPIV, -1 )
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Gahinet, The MathWorks, Natick, U.S.A., Mar. 2011.
 C     Based on the SLICOT Library routine MA02GD.

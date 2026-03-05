@@ -49,6 +49,8 @@ C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     WR      (output)  DOUBLE PRECISION array, dimension (2)
+C             See WI
+C
 C     WI      (output)  DOUBLE PRECISION array, dimension (2)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of the 2-by-2 trailing submatrix of the
@@ -67,14 +69,14 @@ C     evaluated as prod( A(:,:,AMAP(I)) ), for i = 1 : K. This way, the
 C     2-by-2 trailing submatrix depends only on the 2-by-2 trailing
 C     submatrices of the factors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Jan. 2019.
 C
 C     REVISIONS
 C
-C     V. Sima, Mar. 2019. 
+C     V. Sima, Mar. 2019.
 C
 C     KEYWORDS
 C

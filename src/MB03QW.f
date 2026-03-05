@@ -68,7 +68,11 @@ C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= N.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (2)
 C             (ALPHAR(k)+i*ALPHAI(k))/BETA(k) are the eigenvalues of the
 C             block pair of the pencil (A,B), k=1,2, i = sqrt(-1).
@@ -99,7 +103,7 @@ C     to an N-by-N orthogonal matrix, using identity submatrices. Then A
 C     and E are replaced by UT'*A*UT and UT'*E*UT, and the contents of
 C     the arrays U and V are U * UT and V * VT, respectively.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998. Based on the RASP routine SPLITB.

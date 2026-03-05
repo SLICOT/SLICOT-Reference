@@ -70,6 +70,8 @@ C             LDX >= 1,        if JOBV = 'N';
 C             LDX >= MAX(1,N), if JOBV = 'V'.
 C
 C     WR      (input/output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (input/output) DOUBLE PRECISION arrays, dimension (N)
 C             On entry, these arrays must contain the real and imaginary
 C             parts, respectively, of the eigenvalues of the matrix A.
@@ -112,7 +114,7 @@ C     The algorithm is numerically stable. If some eigenvalues are
 C     ill-conditioned, their returned values could differ much from
 C     their input values.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

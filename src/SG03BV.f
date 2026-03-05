@@ -220,7 +220,7 @@ C     When setting the error indicator INFO, the routine does not test
 C     for near instability in the equation but only for exact
 C     instability.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

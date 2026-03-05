@@ -115,7 +115,7 @@ C                               3 2    2 2
 C     The algorithm requires 0(K N  + K N NRHS) floating point
 C     operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Chemnitz, Germany, December 2000.
 C

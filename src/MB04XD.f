@@ -313,7 +313,7 @@ C     gained in total least squares applications (cf [2 - 4]), in the
 C     computation of the null space of a matrix and in solving
 C     (non)homogeneous linear equations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04PD by S. Van Huffel, Katholieke

@@ -14,11 +14,15 @@ C
 C     Input/Output Parameters
 C
 C     XR      (input) DOUBLE PRECISION
+C             See XI
+C
 C     XI      (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary part of the
 C             complex number of which the square root is sought.
 C
 C     YR      (output) DOUBLE PRECISION
+C             See YI
+C
 C     YI      (output) DOUBLE PRECISION
 C             These scalars define the real and imaginary part of the
 C             complex square root.
@@ -32,7 +36,7 @@ C     REFERENCES
 C
 C     Adapted from EISPACK subroutine CSROOT.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA,

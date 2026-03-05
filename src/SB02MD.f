@@ -118,6 +118,8 @@ C             the 1-norm) of the N-th order system of algebraic
 C             equations from which the solution matrix X is obtained.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (2*N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (2*N)
 C             If INFO = 0 or INFO = 5, these arrays contain the real and
 C             imaginary parts, respectively, of the eigenvalues of the
@@ -290,7 +292,7 @@ C
 C     Usually, the combinations HINV = 'D' and SORT = 'U', or HINV = 'I'
 C     and SORT = 'U', will be faster then the other combinations [3].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB02AD by Control Systems Research

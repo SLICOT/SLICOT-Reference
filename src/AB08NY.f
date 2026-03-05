@@ -188,7 +188,7 @@ C
 C     [ 0  0 ...  0  | 1  1  ...  1 |  .... | NKRONL  ...  NKRONL ]
 C     |<- KRONL(1) ->|<- KRONL(2) ->|       |<-  KRONL(NKRONL)  ->|
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium.
 C     A. Varga, DLR Oberpfaffenhofen, Germany, May 1999.

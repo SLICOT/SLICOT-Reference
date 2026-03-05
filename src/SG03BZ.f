@@ -162,6 +162,8 @@ C             The scale factor set to avoid overflow in U.
 C             0 < SCALE <= 1.
 C
 C     ALPHA   (output) COMPLEX*16 arrays, dimension (N)
+C             See BETA
+C
 C     BETA    (output) COMPLEX*16 arrays, dimension (N)
 C             If INFO = 0, 5, 6, or 7, then ALPHA(j)/BETA(j),
 C             j = 1, ... , N, are the eigenvalues of the matrix pencil
@@ -428,7 +430,7 @@ C     degenerate pair of eigenvalues, then the Lyapunov equation will be
 C     ill-conditioned. Perturbed values were used to solve the equation.
 C     A condition estimate can be obtained from the routine SG03AD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

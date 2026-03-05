@@ -149,6 +149,8 @@ C             The leading dimension of the array V2.  LDV2 >= 1.
 C             LDV2 >= N,    if JOBV = 'V'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, the leading N elements of WR and WI contain the
 C             real and imaginary parts, respectively, of N eigenvalues
@@ -704,7 +706,7 @@ C
          CALL DLASCL( 'General', 0, 0, CSCALE, HNRM, N, 1, WR, N, IERR )
          CALL DLASCL( 'General', 0, 0, CSCALE, HNRM, N, 1, WI, N, IERR )
          HNR1 = HNR1 * HNRM / CSCALE
-      END IF 
+      END IF
 C
       IF ( INFO.NE.0 )
      $   RETURN
@@ -713,7 +715,7 @@ C
          DWORK(1) = DBLE( WRKOPT )
          DWORK(2) = HNR1
          RETURN
-      END IF 
+      END IF
 C
 C     -----------------------------------------------
 C     Step 3:  Compute orthogonal symplectic factors.

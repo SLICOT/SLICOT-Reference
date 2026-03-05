@@ -314,7 +314,7 @@ C     much workspace as possible. Almost optimal efficiency can be
 C     obtained for  LDWORK = (NS+2)*(2*(M+L)*NOBR),  assuming that the
 C     cache size is large enough to accommodate R, U, Y, and DWORK.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 1999.
 C

@@ -329,7 +329,7 @@ C     Better estimates could be obtained by calling SLICOT Library
 C     routine IB01PX, but it is less efficient, and requires much more
 C     workspace.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Oct. 1999.
 C

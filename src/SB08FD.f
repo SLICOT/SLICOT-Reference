@@ -157,7 +157,7 @@ C             of LDWORK.
 C
 C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.
-C             LWORK >= MAX( 1, N*(N+5), 5*M, 4*P ).
+C             LDWORK >= MAX( 1, N*(N+5), 5*M, 4*P ).
 C             For optimum performance LDWORK should be larger.
 C
 C     Warning Indicator
@@ -197,7 +197,7 @@ C                                            3
 C     The algorithm requires no more than 14N  floating point
 C     operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

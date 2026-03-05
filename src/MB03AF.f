@@ -68,11 +68,15 @@ C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     C1      (output)  DOUBLE PRECISION
+C             See S1
+C
 C     S1      (output)  DOUBLE PRECISION
 C             On exit, C1 and S1 contain the parameters for the first
 C             Givens rotation.
 C
 C     C2      (output)  DOUBLE PRECISION
+C             See S2
+C
 C     S2      (output)  DOUBLE PRECISION
 C             On exit, if SHFT = 'D', C2 and S2 contain the parameters
 C             for the second Givens rotation. Otherwise, C2 = 1, S2 = 0.
@@ -81,7 +85,7 @@ C     METHOD
 C
 C     Givens rotations are properly computed and applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Dec. 2018, Dec. 2020.

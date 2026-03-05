@@ -113,7 +113,7 @@ C
 C     The implementation exploits data locality as much as possible,
 C     given the workspace length.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 2002.
 C

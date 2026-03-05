@@ -89,7 +89,7 @@ C     NUMERICAL ASPECTS
 C
 C     The implemented method is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Mar. 2010, an essentially new version of the PEP routine

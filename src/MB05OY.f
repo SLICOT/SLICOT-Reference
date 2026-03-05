@@ -30,6 +30,8 @@ C     N       (input) INTEGER
 C             The order of the matrix A.  N >= 0.
 C
 C     LOW     (input) INTEGER
+C             See IGH
+C
 C     IGH     (input) INTEGER
 C             The integers LOW and IGH determined by DGEBAL.
 C             1 <= LOW <= IGH <= N, if N > 0; LOW=1 and IGH=0, if N=0.

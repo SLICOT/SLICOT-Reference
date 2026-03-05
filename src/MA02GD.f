@@ -66,7 +66,7 @@ C         CALL DTRSM( 'R', 'U', 'N', 'N', M, N, ONE, A, LDA, B, LDB )
 C         CALL DTRSM( 'R', 'L', 'N', 'U', M, N, ONE, A, LDA, B, LDB )
 C         CALL MA02GD( M, B, LDB, 1, N, IPIV, -1 )
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Mar. 2000.
 C

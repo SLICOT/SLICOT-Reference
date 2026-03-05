@@ -142,10 +142,16 @@ C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     N1      (output) INTEGER
+C             The number of the generalized eigenvalues of the pair
+C             (A1,E1).
+C
 C     N2      (output) INTEGER
+C             The number of the generalized eigenvalues of the pair
+C             (A2,E2).
+C
 C     N3      (output) INTEGER
-C             The number of the generalized eigenvalues of the pairs
-C             (A1,E1), (A2,E2) and (A3,E3), respectively.
+C             The number of the generalized eigenvalues of the pair
+C             (A3,E3).
 C
 C     ND      (output) INTEGER.
 C             The number of non-dynamic infinite eigenvalues of the
@@ -176,7 +182,11 @@ C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j = 1, ..., N,
 C             are the generalized eigenvalues.
@@ -283,7 +293,7 @@ C     for k = 1, ..., NIBLCK, where IBLCK(NIBLCK+1) = 0.
 C     Note that each infinite pole of multiplicity k corresponds to an
 C     infinite eigenvalue of multiplicity k+1.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, October 2002.

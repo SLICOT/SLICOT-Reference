@@ -21,6 +21,8 @@ C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of T. The eigenvalues are stored in the same
@@ -35,7 +37,7 @@ C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998. Based on the RASP routine SEIG.

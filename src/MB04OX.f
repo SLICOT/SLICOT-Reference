@@ -48,7 +48,7 @@ C     The matrix Q is formed as a sequence of plane rotations in planes
 C     (1, n+1), (2, n+1), ..., (n, n+1), the rotation in the (j, n+1)th
 C     plane, Q(j), being chosen to annihilate the jth element of x.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

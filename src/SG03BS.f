@@ -214,7 +214,7 @@ C     eigenvalues, then the Lyapunov equation will be ill-conditioned.
 C     Perturbed values were used to solve the equation.
 C     A condition estimate can be obtained from the routine SG03AD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

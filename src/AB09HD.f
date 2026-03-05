@@ -199,7 +199,7 @@ C                                    2*N*P+MAX(P*(MB+2),10*N*(N+1) ) ),
 C             where MB = M if BETA = 0 and MB = M+P if BETA > 0.
 C             For optimum performance LDWORK should be larger.
 C
-C     BWORK   (input/output) LOGICAL array, dimension 2*N
+C     BWORK   (input/output) LOGICAL array, dimension (2*N)
 C
 C     Warning Indicator
 C

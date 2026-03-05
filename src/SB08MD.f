@@ -156,7 +156,7 @@ C     In order for the problem e(-s) * e(s) = B(s) to have a real
 C     solution e(s), it is necessary and sufficient that B(j*omega)
 C     >= 0 for any purely imaginary argument j*omega (see [1]).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB08AD by A.J. Geurts.

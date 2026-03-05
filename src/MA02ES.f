@@ -35,7 +35,7 @@ C
 C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Sep. 2012.

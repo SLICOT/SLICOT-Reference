@@ -78,7 +78,7 @@ C     METHOD
 C
 C     Two Givens rotations are properly computed and applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

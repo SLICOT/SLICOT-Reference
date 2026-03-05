@@ -107,6 +107,8 @@ C             Hessenberg index. The factor A(:,:,H) is on entry in upper
 C             Hessenberg form.  1 <= H <= K.
 C
 C     ILO     (input)  INTEGER
+C             See IHI
+C
 C     IHI     (input)  INTEGER
 C             It is assumed that each factor in A is already upper
 C             triangular in rows and columns 1:ILO-1 and IHI+1:N.
@@ -277,7 +279,7 @@ C     The implemented method is numerically backward stable.
 C                                 3
 C     The algorithm requires 0(K N ) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

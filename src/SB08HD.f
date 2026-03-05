@@ -124,7 +124,7 @@ C         square-root balancing-free techniques.
 C         System Analysis, Modelling and Simulation,
 C         vol. 11, pp. 303-311, 1993.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     July 1998.

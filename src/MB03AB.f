@@ -80,11 +80,15 @@ C             The second eigenvalue, if both eigenvalues are real, else
 C             the imaginary part of the complex conjugate pair.
 C
 C     C1      (output)  DOUBLE PRECISION
+C             See S1
+C
 C     S1      (output)  DOUBLE PRECISION
 C             On exit, C1 and S1 contain the parameters for the first
 C             Givens rotation.
 C
 C     C2      (output)  DOUBLE PRECISION
+C             See S2
+C
 C     S2      (output)  DOUBLE PRECISION
 C             On exit, C2 and S2 contain the parameters for the second
 C             Givens rotation. If SHFT = 'S', C2 = 1, S2 = 0.
@@ -93,7 +97,7 @@ C     METHOD
 C
 C     Givens rotations are properly computed and applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Nov. 2019.

@@ -103,7 +103,7 @@ C     by Gauss elimination with complete pivoting. The loss of stability
 C     of the Gauss elimination with complete pivoting is rarely
 C     encountered in practice.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

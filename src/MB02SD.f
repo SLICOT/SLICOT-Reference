@@ -59,7 +59,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

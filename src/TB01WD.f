@@ -70,6 +70,8 @@ C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues of A. The
@@ -86,7 +88,7 @@ C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
 C     LDWORK  (input) INTEGER
-C             The dimension of working array DWORK.  LWORK >= 3*N.
+C             The dimension of working array DWORK.  LDWORK >= 3*N.
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
@@ -111,7 +113,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 10N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

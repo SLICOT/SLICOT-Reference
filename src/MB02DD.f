@@ -215,7 +215,7 @@ C     but min(K,M) > 0, this case is not considered as an "update".
 C     SLICOT Library routine MB02CD should be called with the argument
 C     M instead of N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Chemnitz, Germany, December 2000.
 C

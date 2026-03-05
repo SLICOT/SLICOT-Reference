@@ -235,7 +235,7 @@ C     The routine can also be used to compute a minimal polynomial
 C     basis for the left nullspace of a polynomial matrix by simply
 C     transposing P(s).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC03BD by A.J. Geurts and MC03BZ by

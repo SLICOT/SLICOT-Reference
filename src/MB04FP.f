@@ -257,7 +257,7 @@ C     for reducing T on panels of columns. The user may specify in INFO
 C     the desired number of columns. If on entry INFO <= 0, then the
 C     routine estimates a suitable value of this number.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Dec. 2011.
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet

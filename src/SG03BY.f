@@ -19,15 +19,22 @@ C
 C     Input/Output Parameters
 C
 C     XR      (input) DOUBLE PRECISION
+C
 C     XI      (input) DOUBLE PRECISION
+C
 C     YR      (input) DOUBLE PRECISION
+C
 C     YI      (input) DOUBLE PRECISION
 C             The given real scalars XR, XI, YR, YI.
 C
 C     CR      (output) DOUBLE PRECISION
+C
 C     CI      (output) DOUBLE PRECISION
+C
 C     SR      (output) DOUBLE PRECISION
+C
 C     SI      (output) DOUBLE PRECISION
+C
 C     Z       (output) DOUBLE PRECISION
 C             The computed real scalars CR, CI, SR, SI, Z, defining the
 C             complex Givens rotation and Z.
@@ -41,7 +48,7 @@ C
 C     In the interest of speed, this routine does not check the input
 C     for errors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

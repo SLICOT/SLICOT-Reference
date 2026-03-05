@@ -18,7 +18,7 @@ C     polynomial of the product of matrices in periodic upper Hessenberg
 C     form, stored in the array A, parallel to the first unit vector.
 C     Only the rotation defined by C1 and S1 is used for the real
 C     Wilkinson single shift polynomial (see SLICOT Library routines
-C     MB03BE or MB03BF). All factors whose exponents differ from that of 
+C     MB03BE or MB03BF). All factors whose exponents differ from that of
 C     the Hessenberg factor are assumed nonsingular. The matrix product
 C     is evaluated.
 C
@@ -67,11 +67,15 @@ C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     C1      (output)  DOUBLE PRECISION
+C             See S1
+C
 C     S1      (output)  DOUBLE PRECISION
 C             On exit, C1 and S1 contain the parameters for the first
 C             Givens rotation.
 C
 C     C2      (output)  DOUBLE PRECISION
+C             See S2
+C
 C     S2      (output)  DOUBLE PRECISION
 C             On exit, if SHFT = 'D', C2 and S2 contain the parameters
 C             for the second Givens rotation. Otherwise, C2 = 1, S2 = 0.
@@ -83,12 +87,12 @@ C
 C     METHOD
 C
 C     The necessary elements of the real Wilkinson double shift
-C     polynomial are computed, and suitable Givens rotations are 
+C     polynomial are computed, and suitable Givens rotations are
 C     found. For numerical reasons, this routine should be called
 C     when convergence difficulties are encountered for small order
-C     matrices and small K, e.g., N, K <= 6. 
+C     matrices and small K, e.g., N, K <= 6.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Jan. 2019.

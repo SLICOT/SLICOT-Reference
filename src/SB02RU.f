@@ -165,7 +165,7 @@ C     can be dealt with as well. The LU factorization of  op(A)  (with
 C     no equilibration) and iterative refinement are used for solving
 C     the various linear algebraic systems involved.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Apr. 1999.
 C

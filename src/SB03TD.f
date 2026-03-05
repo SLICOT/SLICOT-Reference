@@ -194,6 +194,8 @@ C             If JOB = 'X' or JOB = 'S' or JOB = 'C', FERR is not
 C             referenced.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If FACT = 'N', and INFO = 0 or INFO = N+1, WR and WI
 C             contain the real and imaginary parts, respectively, of the
@@ -301,7 +303,7 @@ C     an estimate of the 1-norm of inverse(T). The true reciprocal
 C     1-norm of inverse(T) cannot differ from sigma_min(T) by more
 C     than a factor of N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.
 C     This is an extended and improved version of Release 3.0 routine

@@ -38,6 +38,8 @@ C             The second leading dimension of the array T.
 C             LDT2 >= max(1,N).
 C
 C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             eigenvalues of T. The eigenvalues are stored in the same
@@ -52,7 +54,7 @@ C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.
 C

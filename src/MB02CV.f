@@ -214,7 +214,7 @@ C     The Householder transformations and modified hyperbolic rotations
 C     computed by SLICOT Library routine MB02CU are applied to the
 C     corresponding parts of the matrices F1, F2 and G.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C

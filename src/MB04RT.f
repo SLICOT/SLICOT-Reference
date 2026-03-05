@@ -151,7 +151,7 @@ C         Generalized Sylvester Equation and Estimating the Separation
 C         between Regular Matrix Pairs.
 C         ACM Trans. on Math. Software, 22(1), pp. 78–103, 1996.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Nov. 2022.
 C     This routine is a simplification and modification of the LAPACK

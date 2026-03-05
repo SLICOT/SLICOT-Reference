@@ -104,7 +104,7 @@ C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,P)).
 C             For optimum performance
-C             LWORK >= MAX(1, MIN(L,N) + MAX(L,N,P)*NB),
+C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,P)*NB),
 C             where NB is the optimal blocksize.
 C
 C     Error Indicator
@@ -129,7 +129,7 @@ C
 C     The algorithm is numerically backward stable and requires
 C     0( L*N*N )  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     March 1999. Based on the RASP routine RPDSRQ.

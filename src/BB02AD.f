@@ -312,7 +312,7 @@ C
 C     Some benchmark examples read data from the data files provided
 C     with the collection.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Peter Benner (Universitaet Bremen), November 25, 1999.
 C

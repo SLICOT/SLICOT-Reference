@@ -122,7 +122,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, May 2021.
 C

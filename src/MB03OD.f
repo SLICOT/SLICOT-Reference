@@ -151,7 +151,7 @@ C     SVLMAX into account.  This is performed using the LAPACK
 C     incremental condition estimation scheme and a slightly modified
 C     rank decision test.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C

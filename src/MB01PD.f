@@ -98,7 +98,7 @@ C     larger than BIGNUM, respectively.  For undoing the scaling, the
 C     norm is again compared with SMLNUM or BIGNUM, and the reciprocal
 C     of the previous scaling factor is used.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C
