@@ -100,7 +100,7 @@ C
      $                    LDWORK = MAX( LW1, LW2, LW3, LW4 ) )
 *     .. Local Scalars ..
       LOGICAL           INIT1, INITB, INITL, INITN, INITS
-      CHARACTER*1       INIT
+      CHARACTER(LEN=1)       INIT
       INTEGER           BSN, I, INFO, INI, ITER, ITMAX1, ITMAX2, IWARN,
      $                  J, L, L1, L2, LPAR, LX, M, N, NN, NOBR, NPRINT,
      $                  NS, NSMP

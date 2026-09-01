@@ -105,7 +105,7 @@ C     .. Local Scalars ..
       INTEGER            IX, J, JP, KASE, KASE1
 C
       DOUBLE PRECISION   HINVNM, SCALE, SMLNUM
-      COMPLEX*16         T, ZDUM
+      COMPLEX*16         T
 C     ..
 C     .. External Functions ..
       LOGICAL            LSAME
@@ -118,12 +118,6 @@ C     .. External Subroutines ..
 C     ..
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DCONJG, DIMAG, MAX
-C     ..
-C     .. Statement Functions ..
-      DOUBLE PRECISION   CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( ZDUM ) = ABS( DBLE( ZDUM ) ) + ABS( DIMAG( ZDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -228,5 +222,13 @@ C
 C
    40 CONTINUE
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
 C *** Last line of MB02TZ ***
       END

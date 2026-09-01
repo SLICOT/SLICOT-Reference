@@ -44,21 +44,21 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the computation to be performed, as follows:
 C             = 'E':  compute the eigenvalues only; Z and T will not
 C                     necessarily be put into the forms in (2);
 C             = 'T':  put Z and T into the forms in (2), and return the
 C                     eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ   (input) CHARACTER*1
+C     COMPQ   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q as follows:
 C             = 'N':  Q is not computed;
 C             = 'I':  the array Q is initialized internally to the unit
 C                     matrix, and the orthogonal matrix Q is returned.
 C
-C     COMPU   (input) CHARACTER*1
+C     COMPU   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U as follows:
 C             = 'N':  U is not computed;
@@ -340,7 +340,7 @@ C     .. Array Arguments ..
 C
 C     .. Local Scalars ..
       LOGICAL            LCMPQ, LCMPU, LINIU, LQUERY, LTRI, LUPDU, UNREL
-      CHARACTER*16       CMPQ, CMPSC
+      CHARACTER(LEN=16)       CMPQ, CMPSC
       INTEGER            EMAX, EMIN, I, I11, I22, I2X2, IB1, ICF, ICG,
      $                   IQ1, IQ2, ITAU, IU, IW, IWARN, IWRK, IZ11,
      $                   IZ22, J, K, L, M, MINDW, MJ1, MJ2, MJ3, MM,

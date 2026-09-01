@@ -271,10 +271,6 @@ C     ..
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, INT, MAX, MOD
 C     ..
-C     .. Local Functions ..
-      INTEGER            INDP1
-      INDP1( I, K ) = MOD( I, K ) + 1
-C     ..
 C     .. Executable Statements ..
 C
 C     Decode and test the input parameters.
@@ -517,6 +513,14 @@ C     Store optimal workspace length and return.
 C
       DWORK(1) = DBLE( MNWORK )
       RETURN
+      CONTAINS
+        FUNCTION INDP1(II, KK)
+            INTEGER :: II, KK
+            INTEGER :: INDP1
+
+            INDP1 = MOD( II, KK ) + 1
+            RETURN
+        END FUNCTION
 C
 C *** Last line of MB03KD ***
       END

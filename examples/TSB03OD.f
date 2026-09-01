@@ -17,7 +17,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION SCALE, TEMP
       INTEGER          I, INFO, J, K, M, N
-      CHARACTER*1      DICO, FACT, TRANS
+      CHARACTER(LEN=1)      DICO, FACT, TRANS
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,LDB), DWORK(LDWORK),
      $                 Q(LDQ,NMAX), WR(NMAX), WI(NMAX), X(LDX,NMAX)

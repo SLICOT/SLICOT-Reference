@@ -20,7 +20,7 @@ C
       DOUBLE PRECISION ONE
       PARAMETER        ( ONE=1.0D0 )
 *     .. Local Scalars ..
-      CHARACTER*1      OVER
+      CHARACTER(LEN=1)      OVER
       INTEGER          I, INFO, J, M, M1, M2, N, N1, N2, P, P1, P2
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), A1(LDA1,N1MAX), A2(LDA2,N2MAX),

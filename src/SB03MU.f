@@ -184,7 +184,12 @@ C
       SGN = ISGN
 C
       K = N1 + N1 + N2 - 2
-      GO TO ( 10, 20, 30, 50 )K
+C      GO TO ( 10, 20, 30, 50 )K
+      IF ( K .EQ. 1 ) GO TO 10
+      IF ( K .EQ. 2 ) GO TO 20
+      IF ( K .EQ. 3 ) GO TO 30
+      IF ( K .EQ. 4 ) GO TO 50
+
 C
 C     1-by-1: SGN*TL11*X*TR11 - X = B11.
 C

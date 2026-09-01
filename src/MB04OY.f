@@ -104,8 +104,19 @@ C
 C
 C     Form  H * C, where H has order m+1.
 C
-      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
-     $        170, 190 ) M+1
+C      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
+C     $        170, 190 ) M+1
+      IF ( M+1 .EQ. 1 ) GO TO 10
+      IF ( M+1 .EQ. 2 ) GO TO 30
+      IF ( M+1 .EQ. 3 ) GO TO 50
+      IF ( M+1 .EQ. 4 ) GO TO 70
+      IF ( M+1 .EQ. 5 ) GO TO 90
+      IF ( M+1 .EQ. 6 ) GO TO 110
+      IF ( M+1 .EQ. 7 ) GO TO 130
+      IF ( M+1 .EQ. 8 ) GO TO 150
+      IF ( M+1 .EQ. 9 ) GO TO 170
+      IF ( M+1 .EQ. 10 ) GO TO 190
+
 C
 C     Code for general M. Compute
 C

@@ -506,7 +506,12 @@ C
 C     Swap the adjacent diagonal blocks.
 C
       L = N1 + N1 + N2 - 2
-      GO TO ( 30, 70, 140, 210 ) L
+C      GO TO ( 30, 70, 140, 210 ) L
+      IF ( L .EQ. 1 ) GO TO 30
+      IF ( L .EQ. 2 ) GO TO 70
+      IF ( L .EQ. 3 ) GO TO 140
+      IF ( L .EQ. 4 ) GO TO 210
+
 C
    30 CONTINUE
 C

@@ -32,29 +32,29 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANC   (input) CHARACTER*1
+C     TRANC   (input) CHARACTER(LEN=1)
 C             Specifies the form of op( C ) as follows:
 C             = 'N':  op( C ) = C;
 C             = 'T':  op( C ) = C';
 C             = 'C':  op( C ) = C'.
 C
-C     TRAND   (input) CHARACTER*1
+C     TRAND   (input) CHARACTER(LEN=1)
 C             Specifies the form of op( D ) as follows:
 C             = 'N':  op( D ) = D;
 C             = 'T':  op( D ) = D';
 C             = 'C':  op( D ) = D'.
 C
-C     TRANQ   (input) CHARACTER*1
+C     TRANQ   (input) CHARACTER(LEN=1)
 C             = 'N':  apply Q;
 C             = 'T':  apply Q'.
 C
-C     STOREV  (input) CHARACTER*1
+C     STOREV  (input) CHARACTER(LEN=1)
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in V are stored:
 C             = 'C':  columnwise;
 C             = 'R':  rowwise.
 C
-C     STOREW  (input) CHARACTER*1
+C     STOREW  (input) CHARACTER(LEN=1)
 C             Specifies how the vectors which define the concatenated
 C             Householder reflectors contained in W are stored:
 C             = 'C':  columnwise;
@@ -208,7 +208,7 @@ C     .. Array Arguments ..
       DOUBLE PRECISION  C(LDC,*), CS(*), D(LDD,*), DWORK(*), TAU(*),
      $                  V(LDV,*), W(LDW,*)
 C     .. Local Scalars ..
-      CHARACTER*1       SIDE
+      CHARACTER(LEN=1)       SIDE
       LOGICAL           LCOLV, LCOLW, LQUERY, LTRC, LTRD, LTRQ
       INTEGER           I, IB, IC, ID, IERR, JC, JD, KI, KK, MINWRK, NB,
      $                  NBMIN, NX, PDRS, PDT, PDW, WRKOPT

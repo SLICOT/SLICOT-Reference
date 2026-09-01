@@ -17,7 +17,7 @@ C
       INTEGER          LDWORK
       PARAMETER        ( LDWORK = 3*NMAX + 1 )
 *     .. Local Scalars ..
-      CHARACTER*1      JOBQR
+      CHARACTER(LEN=1)      JOBQR
       INTEGER          I, INFO, J, M, N, RANK
       DOUBLE PRECISION RCOND, SVAL(3), SVLMAX
 *     ..

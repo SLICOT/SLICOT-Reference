@@ -107,8 +107,19 @@ C
 C
 C     Form  C * H, where H has order n+1.
 C
-      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
-     $        170, 190 ) N+1
+C      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
+C     $        170, 190 ) N+1
+      IF ( N+1 .EQ. 1 ) GO TO 10
+      IF ( N+1 .EQ. 2 ) GO TO 30
+      IF ( N+1 .EQ. 3 ) GO TO 50
+      IF ( N+1 .EQ. 4 ) GO TO 70
+      IF ( N+1 .EQ. 5 ) GO TO 90
+      IF ( N+1 .EQ. 6 ) GO TO 110
+      IF ( N+1 .EQ. 7 ) GO TO 130
+      IF ( N+1 .EQ. 8 ) GO TO 150
+      IF ( N+1 .EQ. 9 ) GO TO 170
+      IF ( N+1 .EQ. 10 ) GO TO 190
+
 C
 C     Code for general N. Compute
 C

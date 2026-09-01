@@ -17,7 +17,7 @@ C
      $                   LDV1 = NMAX, LDV2 = NMAX,
      $                   LDWORK = 3*NMAX*NMAX + 7*NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      BALANC, JOB, JOBU, JOBV
+      CHARACTER(LEN=1)      BALANC, JOB, JOBU, JOBV
       INTEGER          I, ILO, INFO, J, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..

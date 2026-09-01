@@ -23,7 +23,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION SDEV, TOL
       INTEGER          I, INFO, IWARN, J, L, M, N, RANK
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
 *     .. Local Arrays ..
       DOUBLE PRECISION C(LDC,NMAX+LMAX), DWORK(LDWORK), S(LENGS),
      $                 X(LDX,LMAX)

@@ -21,7 +21,7 @@ C
      $                   LDWORK = 20*NMAX*NMAX + 12*NMAX + 2,
      $                   LZWORK = 12*NMAX - 2 )
 *     .. Local Scalars ..
-      CHARACTER*1      BALANC, JOB, JOBU
+      CHARACTER(LEN=1)      BALANC, JOB, JOBU
       INTEGER          I, ILO, INFO, J, M, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..

@@ -11,7 +11,7 @@ C
       INTEGER          LDA, LDQG
       PARAMETER        ( LDA = NMAX, LDQG = NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
       INTEGER          I, ILO, INFO, J, N
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA, NMAX), DUMMY(1), QG(LDQG, NMAX+1),

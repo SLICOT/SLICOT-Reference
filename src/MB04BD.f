@@ -42,14 +42,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; S and H will not
 C                    necessarily be transformed as in (2).
 C             = 'T': put S and H into the forms in (2) and return the
 C                    eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ1  (input) CHARACTER*1
+C     COMPQ1  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q1, as follows:
 C             = 'N':  Q1 is not computed;
@@ -61,7 +61,7 @@ C                     is the product of the orthogonal transformations
 C                     that are applied to the pencil aS - bH to reduce
 C                     S and H to the forms in (2), for COMPQ1 = 'I'.
 C
-C     COMPQ2  (input) CHARACTER*1
+C     COMPQ2  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q2, as follows:
 C             = 'N':  Q2 is not computed;
@@ -374,7 +374,7 @@ C
 C     .. Local Scalars ..
       LOGICAL            LCMPQ1, LCMPQ2, LINIQ1, LINIQ2, LTRI, LUPDQ1,
      $                   LUPDQ2, UNREL
-      CHARACTER*16       CMPQ, CMPSC
+      CHARACTER(LEN=16)       CMPQ, CMPSC
       INTEGER            EMAX, EMIN, I, I11, I22, I2X2, IMAT, IW, IWARN,
      $                   IWRK, J, K, L, M, MJ1, MJ2, MJ3, MK1, MK2, MK3,
      $                   MM, NBETA0, NINF, OPTDW, P

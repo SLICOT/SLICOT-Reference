@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the computation to be performed, as follows:
 C             = 'E':  compute the eigenvalues only; S and T will not
 C                     necessarily be put into skew-Hamiltonian
@@ -44,7 +44,7 @@ C             = 'T':  put S and T into skew-Hamiltonian triangular form
 C                     (2), and return the eigenvalues in ALPHAR, ALPHAI
 C                     and BETA.
 C
-C     COMPQ   (input) CHARACTER*1
+C     COMPQ   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q as follows:
 C             = 'N':  Q is not computed;
@@ -296,7 +296,7 @@ C
 C     .. Local Scalars ..
       LOGICAL            LCMPQ, LINIQ, LQUERY, LTRI, LUPDQ, PSNG,
      $                   SING
-      CHARACTER*16       CMPQ, CMPSC, CMPZ
+      CHARACTER(LEN=16)       CMPQ, CMPSC, CMPZ
       INTEGER            I, IC, ICS, IQ1, IQ2, IWRK, J, JA, JC, JE, JS,
      $                   K, M, M1, MINDW, MJ1, MJ2, MJ3, MK2, MK3, MM,
      $                   NB, NBETA0, NC, NINF, OPTDW, P

@@ -11,7 +11,7 @@ C
       INTEGER          LDA, LDB, LDC
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDC = PMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
       INTEGER          I, INFO, J, M, N, P
       DOUBLE PRECISION MAXRED
 *     .. Local Arrays ..

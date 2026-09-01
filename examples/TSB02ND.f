@@ -23,7 +23,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL, RCOND, RNORM
       INTEGER          I, INFO1, INFO2, J, M, N, P
-      CHARACTER*1      DICO, FACT, JOBB, JOBL, SORT, UPLO
+      CHARACTER(LEN=1)      DICO, FACT, JOBB, JOBL, SORT, UPLO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), ALFAI(2*NMAX), ALFAR(2*NMAX),
      $                 B(LDB,MMAX), BETA(2*NMAX), C(LDC,NMAX),

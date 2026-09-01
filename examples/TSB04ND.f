@@ -18,7 +18,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, J, M, N
-      CHARACTER*1      ABSCHU, ULA, ULB
+      CHARACTER(LEN=1)      ABSCHU, ULA, ULB
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,MMAX),
      $                 DWORK(LDWORK)

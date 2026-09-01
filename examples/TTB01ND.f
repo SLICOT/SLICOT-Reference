@@ -13,7 +13,7 @@ C
      $                   LDWORK = NMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, N, P
-      CHARACTER*1      JOBU, UPLO
+      CHARACTER(LEN=1)      JOBU, UPLO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), C(LDC,NMAX), U(LDU,NMAX),
      $                 DWORK(LDWORK)

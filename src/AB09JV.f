@@ -27,25 +27,25 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the projection to be computed as follows:
 C             = 'V':  compute the projection of V*G containing
 C                     the poles of G;
 C             = 'C':  compute the projection of conj(V)*G containing
 C                     the poles of G.
 C
-C     DICO    (input) CHARACTER*1
+C     DICO    (input) CHARACTER(LEN=1)
 C             Specifies the type of the systems as follows:
 C             = 'C':  G and V are continuous-time systems;
 C             = 'D':  G and V are discrete-time systems.
 C
-C     JOBEV   (input) CHARACTER*1
+C     JOBEV   (input) CHARACTER(LEN=1)
 C             Specifies whether EV is a general square or an identity
 C             matrix as follows:
 C             = 'G':  EV is a general square matrix;
 C             = 'I':  EV is the identity matrix.
 C
-C     STBCHK  (input) CHARACTER*1
+C     STBCHK  (input) CHARACTER(LEN=1)
 C             Specifies whether stability/antistability of V is to be
 C             checked as follows:
 C             = 'C':  check stability if JOB = 'C' or antistability if
@@ -337,7 +337,7 @@ C     .. Array Arguments ..
      $                  C(LDC,*), CV(LDCV,*), D(LDD,*), DV(LDDV,*),
      $                  DWORK(*), EV(LDEV,*)
 C     .. Local Scalars ..
-      CHARACTER*1       EVTYPE, STDOM
+      CHARACTER(LEN=1)       EVTYPE, STDOM
       LOGICAL           CONJS, DISCR, STABCK, UNITEV
       DOUBLE PRECISION  ALPHA, DIF, SCALE, TOLINF, WORK
       INTEGER           I, IA, IERR, KAI, KAR, KB, KC, KE, KF, KQ, KW,

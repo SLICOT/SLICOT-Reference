@@ -2,6 +2,7 @@ C
 C SPDX-License-Identifier: BSD-3-Clause
 C
 *     SB16AD EXAMPLE PROGRAM TEXT
+      PROGRAM TSB16AD
 *
 *     .. Parameters ..
       INTEGER          NIN, NOUT
@@ -26,7 +27,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION ALPHA, TOL1, TOL2
       INTEGER          I, INFO, IWARN, J, M, N, NCR, NCS, NC, P
-      CHARACTER*1      DICO, EQUIL, JOBC, JOBO, JOBMR, ORDSEL, WEIGHT
+      CHARACTER(LEN = 1) DICO, EQUIL, JOBC, JOBO, JOBMR, ORDSEL, WEIGHT
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 D(LDD,MMAX), DWORK(LDWORK), HSVC(NMAX),

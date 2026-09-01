@@ -11,7 +11,7 @@ C
 *     .. Local Scalars ..
       INTEGER          DP, DPP, I, INFO, IWARN, NZ
       LOGICAL          STABLE
-      CHARACTER*1      DICO
+      CHARACTER(LEN=1)      DICO
 *     .. Local Arrays ..
       DOUBLE PRECISION DWORK(2*DPMAX+2), P(DPMAX+1)
 *     .. External Functions ..

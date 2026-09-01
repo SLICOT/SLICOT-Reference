@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   (input) CHARACTER*1
+C     COMPQ   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the right deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -31,7 +31,7 @@ C             = 'N':  do not compute the deflating subspace;
 C             = 'C':  compute the deflating subspace and store it in the
 C                     leading subarray of Q.
 C
-C     ORTH    (input) CHARACTER*1
+C     ORTH    (input) CHARACTER(LEN=1)
 C             If COMPQ = 'C', specifies the technique for computing an
 C             orthogonal basis of the deflating subspace, as follows:
 C             = 'P':  QR factorization with column pivoting;
@@ -312,7 +312,7 @@ C     .. Array Arguments ..
 C
 C     .. Local Scalars ..
       LOGICAL            LINIQ, LQUERY, QR, QRP, SVD
-      CHARACTER*14       CMPQ
+      CHARACTER(LEN=14)       CMPQ
       INTEGER            IB, IC2, IFO, IH11, IH12, IQ1, IQ2, IQ3, IQ4,
      $                   IRT, IS11, IS12, IW, IWRK, J, M, MINDW, MINIW,
      $                   MM, N2, NM, NMM, NN, OPTDW

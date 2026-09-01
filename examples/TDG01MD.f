@@ -10,7 +10,7 @@ C
       PARAMETER        ( NMAX = 128 )
 *     .. Local Scalars ..
       INTEGER          I, INFO, N
-      CHARACTER*1      INDI
+      CHARACTER(LEN=1)      INDI
 *     .. Local Arrays ..
       DOUBLE PRECISION XI(NMAX), XR(NMAX)
 *     .. External Subroutines ..

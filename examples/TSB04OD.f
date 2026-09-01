@@ -21,7 +21,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION DIF, SCALE
       INTEGER          I, INFO, J, M, N
-      CHARACTER*1      JOBD, REDUCE, TRANS
+      CHARACTER(LEN=1)      JOBD, REDUCE, TRANS
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,MMAX), B(LDB,NMAX), C(LDC,NMAX),
      $                 D(LDD,MMAX), DWORK(LDWORK), E(LDE,NMAX),

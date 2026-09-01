@@ -23,8 +23,8 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, IJ, INFO, J, K, M, MD, N, P
-      CHARACTER*1      JOBD, ORDER, EQUIL
-      CHARACTER*132    ULINE
+      CHARACTER(LEN=1)      JOBD, ORDER, EQUIL
+      CHARACTER(LEN=132)    ULINE
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 D(LDD,MMAX), DWORK(LDWORK), GD(PMNMAX),

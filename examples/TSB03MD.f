@@ -15,7 +15,7 @@ C
      $                   LIWORK = NMAX*NMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, N
-      CHARACTER*1      DICO, FACT, JOB, TRANA
+      CHARACTER(LEN=1)      DICO, FACT, JOB, TRANA
       DOUBLE PRECISION FERR, SCALE, SEP
 *     .. Local Arrays ..
       INTEGER          IWORK(LIWORK)

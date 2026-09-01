@@ -16,7 +16,7 @@ C
      $                   LDRES = NMAX, LDU1 = NMAX, LDU2 = NMAX,
      $                   LDV1 = NMAX, LDV2 = NMAX, LDWORK = NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      TRANA, TRANB, TRANV1
+      CHARACTER(LEN=1)      TRANA, TRANB, TRANV1
       INTEGER          I, INFO, J, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..

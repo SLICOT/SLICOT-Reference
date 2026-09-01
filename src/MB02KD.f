@@ -19,13 +19,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LDBLK   (input) CHARACTER*1
+C     LDBLK   (input) CHARACTER(LEN=1)
 C             Specifies where the (1,1)-block of T is stored, as
 C             follows:
 C             = 'C':  in the first block of TC;
 C             = 'R':  in the first block of TR.
 C
-C     TRANS   (input) CHARACTER*1
+C     TRANS   (input) CHARACTER(LEN=1)
 C             Specifies the form of op( T ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( T ) = T;
@@ -182,7 +182,7 @@ C     .. Array Arguments ..
      $                  TR(LDTR,*)
 C     .. Local Scalars ..
       LOGICAL           FULLC, LMULT, LQUERY, LTRAN
-      CHARACTER*1       WGHT
+      CHARACTER(LEN=1)       WGHT
       INTEGER           DIMB, DIMC, I, ICP, ICQ, IERR, IR, J, JJ, KK,
      $                  LEN, LL, LN, METH, MK, NL, P, P1, P2, PB, PC,
      $                  PDW, PP, PT, Q1, Q2, R1, R2, S1, S2, SHFT, WPOS,

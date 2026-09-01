@@ -11,7 +11,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION VALI, VALR, W
       INTEGER          I, INFO, MP1, NP1
-      CHARACTER*1      UNITF, OUTPUT
+      CHARACTER(LEN=1)      UNITF, OUTPUT
 *     .. Local Arrays ..
       DOUBLE PRECISION A(NP1MAX), B(MP1MAX)
 *     .. External Functions ..

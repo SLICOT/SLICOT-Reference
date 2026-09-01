@@ -16,7 +16,7 @@ C
      $                            MAX( 3*NMAX - 1, MMAX, LMAX ) +
      $                            2*LMAX*NMAX + LMAX*MMAX + PMAX*NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOBS
+      CHARACTER(LEN=1)      JOBS
       INTEGER          I, INFO, INFRED, J, L, LR, M, N, NR, P, RANKE
       DOUBLE PRECISION TOL
 *     .. Local Arrays ..

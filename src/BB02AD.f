@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     (input) CHARACTER*1
+C     DEF     (input) CHARACTER(LEN=1)
 C             This parameter specifies if the default parameters are
 C             to be used or not.
 C             = 'N' or 'n' : The parameters given in the input vectors
@@ -155,7 +155,7 @@ C             are returned in conventional storage mode, i.e., as
 C             N-by-N or M-by-M arrays where the array element Z(I,J)
 C             contains the matrix entry Z_{i,j}.
 C
-C     CHPAR   (output) CHARACTER*255
+C     CHPAR   (output) CHARACTER(LEN=25)5
 C             On output, this string contains short information about
 C             the chosen example.
 C
@@ -358,7 +358,7 @@ C
 C     ..Local Arrays ..
       INTEGER          MDEF(2,NMAX), NDEF(4,NMAX), NEX(4), PDEF(2,NMAX)
       CHARACTER        IDENT*4
-      CHARACTER*255    NOTES(4,NMAX)
+      CHARACTER(LEN=255)    NOTES(4,NMAX)
 C
 C     .. External Functions ..
 C     . LAPACK .

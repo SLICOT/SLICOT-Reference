@@ -8,11 +8,13 @@
 ! newer for the old f77 style SLICOT interface.
 !
 module slicot
+    use iso_fortran_env
     implicit none
     
     interface
         subroutine ab01md(jobz, n, a, lda, b, ncont, z, ldz, &
                        tau, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -34,6 +36,7 @@ module slicot
         subroutine ab01nd(jobz, n, m, a, lda, b, ldb, ncont, &
                        indcon, nblk, z, ldz, tau, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -60,6 +63,7 @@ module slicot
         subroutine ab01od(stages, jobu, jobv, n, m, a, lda, b, &
                        ldb, u, ldu, v, ldv, ncont, indcon, kstair, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: stages
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: jobv
@@ -89,6 +93,7 @@ module slicot
         subroutine ab04md(type, n, m, p, alpha, beta, a, lda, &
                        b, ldb, c, ldc, d, ldd, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: type
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -117,6 +122,7 @@ module slicot
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: over
             integer, intent(in)               :: n1
@@ -162,6 +168,7 @@ module slicot
                        b2, ldb2, c2, ldc2, d2, ldd2, n, a, &
                        lda, b, ldb, c, ldc, d, ldd, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: over
             integer, intent(in)               :: n1
             integer, intent(in)               :: m1
@@ -207,6 +214,7 @@ module slicot
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
                        m, a, lda, b, ldb, c, ldc, d, &
                        ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: over
             integer, intent(in)             :: n1
             integer, intent(in)             :: m1
@@ -250,6 +258,7 @@ module slicot
                        b1, ldb1, c1, ldc1, d1, ldd1, a2, lda2, &
                        b2, ldb2, c2, ldc2, d2, ldd2, n, a, &
                        lda, b, ldb, c, ldc, d, ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: over
             integer, intent(in)             :: n1
             integer, intent(in)             :: m
@@ -292,6 +301,7 @@ module slicot
                        lda2, b2, ldb2, c2, ldc2, d2, ldd2, n, &
                        m, p, a, lda, b, ldb, c, ldc, &
                        d, ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: over
             integer, intent(in)             :: n1
             integer, intent(in)             :: m1
@@ -337,6 +347,7 @@ module slicot
                        ldd, f, ldf, k, ldk, g, ldg, h, &
                        ldh, rcond, bc, ldbc, cc, ldcc, dc, lddc, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: fbtype
             character(len=*), intent(in)             :: jobd
             integer, intent(in)               :: n
@@ -381,6 +392,7 @@ module slicot
         subroutine ab05sd(fbtype, jobd, n, m, p, alpha, a, lda, &
                        b, ldb, c, ldc, d, ldd, f, ldf, &
                        rcond, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: fbtype
             character(len=*), intent(in)             :: jobd
             integer, intent(in)               :: n
@@ -409,6 +421,7 @@ module slicot
     interface
         subroutine ab07md(jobd, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobd
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -429,6 +442,7 @@ module slicot
     interface
         subroutine ab07nd(n, m, a, lda, b, ldb, c, ldc, &
                        d, ldd, rcond, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             double precision, intent(inout)   :: a(lda, *)
@@ -452,6 +466,7 @@ module slicot
         subroutine ab08md(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, rank, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -478,23 +493,24 @@ module slicot
         subroutine ab08mz(equil, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, rank, tol, iwork, dwork, &
                        zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: b(ldb, *)
+            complex(real64), intent(in)       :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(in)            :: c(ldc, *)
+            complex(real64), intent(in)       :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(in)            :: d(ldd, *)
+            complex(real64), intent(in)       :: d(ldd, *)
             integer, intent(in)               :: ldd
             integer, intent(out)              :: rank
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab08mz
@@ -506,6 +522,7 @@ module slicot
                        c, ldc, d, ldd, nu, rank, dinfz, nkror, &
                        nkrol, infz, kronr, kronl, af, ldaf, bf, ldbf, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -544,6 +561,7 @@ module slicot
                        c, ldc, d, ldd, nfz, nrank, niz, dinfz, &
                        nkror, ninfe, nkrol, infz, kronr, infe, kronl, e, &
                        lde, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -582,6 +600,7 @@ module slicot
         subroutine ab08nx(n, m, p, ro, sigma, svlmax, abcd, ldabcd, &
                        ninfz, infz, kronl, mu, nu, nkrol, tol, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -609,6 +628,7 @@ module slicot
         subroutine ab08ny(first, n, m, p, svlmax, abcd, ldabcd, ninfz, &
                        nr, pr, dinfz, nkronl, infz, kronl, tol, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: first
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -637,17 +657,18 @@ module slicot
                        c, ldc, d, ldd, nu, rank, dinfz, nkror, &
                        nkrol, infz, kronr, kronl, af, ldaf, bf, ldbf, &
                        tol, iwork, dwork, zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: b(ldb, *)
+            complex(real64), intent(in)       :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(in)            :: c(ldc, *)
+            complex(real64), intent(in)       :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(in)            :: d(ldd, *)
+            complex(real64), intent(in)       :: d(ldd, *)
             integer, intent(in)               :: ldd
             integer, intent(out)              :: nu
             integer, intent(out)              :: rank
@@ -657,14 +678,14 @@ module slicot
             integer, intent(out)              :: infz(*)
             integer, intent(out)              :: kronr(*)
             integer, intent(out)              :: kronl(*)
-            complex*16, intent(out)           :: af(ldaf, *)
+            complex(real64), intent(out)      :: af(ldaf, *)
             integer, intent(in)               :: ldaf
-            complex*16, intent(out)           :: bf(ldbf, *)
+            complex(real64), intent(out)      :: bf(ldbf, *)
             integer, intent(in)               :: ldbf
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab08nz
@@ -675,6 +696,7 @@ module slicot
         subroutine ab09ad(dico, job, equil, ordsel, n, m, p, nr, &
                        a, lda, b, ldb, c, ldc, hsv, tol, &
                        iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
@@ -704,6 +726,7 @@ module slicot
         subroutine ab09ax(dico, job, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, hsv, t, ldt, &
                        ti, ldti, tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: ordsel
@@ -736,6 +759,7 @@ module slicot
         subroutine ab09bd(dico, job, equil, ordsel, n, m, p, nr, &
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        hsv, tol1, tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
@@ -769,6 +793,7 @@ module slicot
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        t, ldt, ti, ldti, tol1, tol2, iwork, dwork, &
                        ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: ordsel
@@ -804,6 +829,7 @@ module slicot
         subroutine ab09cd(dico, equil, ordsel, n, m, p, nr, a, &
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        tol1, tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: equil
             character(len=*), intent(in)             :: ordsel
@@ -835,6 +861,7 @@ module slicot
         subroutine ab09cx(dico, ordsel, n, m, p, nr, a, lda, &
                        b, ldb, c, ldc, d, ldd, hsv, tol1, &
                        tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: ordsel
             integer, intent(in)               :: n
@@ -865,6 +892,7 @@ module slicot
         subroutine ab09dd(dico, n, m, p, nr, a, lda, b, &
                        ldb, c, ldc, d, ldd, rcond, iwork, dwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -891,6 +919,7 @@ module slicot
                        a, lda, b, ldb, c, ldc, d, ldd, &
                        ns, hsv, tol1, tol2, iwork, dwork, ldwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: equil
             character(len=*), intent(in)             :: ordsel
@@ -925,6 +954,7 @@ module slicot
                        p, nr, alpha, a, lda, b, ldb, c, &
                        ldc, nq, hsv, tol1, tol2, iwork, dwork, ldwork, &
                        iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobcf
             character(len=*), intent(in)             :: fact
@@ -960,6 +990,7 @@ module slicot
                        p, nr, alpha, a, lda, b, ldb, c, &
                        ldc, d, ldd, nq, hsv, tol1, tol2, tol3, &
                        iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobcf
             character(len=*), intent(in)             :: fact
@@ -998,6 +1029,7 @@ module slicot
                        alpha, beta, a, lda, b, ldb, c, ldc, &
                        d, ldd, ns, hsv, tol1, tol2, iwork, dwork, &
                        ldwork, bwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
@@ -1035,6 +1067,7 @@ module slicot
                        lda, b, ldb, c, ldc, d, ldd, hsv, &
                        t, ldt, ti, ldti, tol1, tol2, iwork, dwork, &
                        ldwork, bwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: ordsel
@@ -1071,6 +1104,7 @@ module slicot
         subroutine ab09hy(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, scalec, scaleo, s, lds, r, &
                        ldr, iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -1105,6 +1139,7 @@ module slicot
                        dv, lddv, aw, ldaw, bw, ldbw, cw, ldcw, &
                        dw, lddw, ns, hsv, tol1, tol2, iwork, dwork, &
                        ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobc
             character(len=*), intent(in)             :: jobo
@@ -1165,6 +1200,7 @@ module slicot
                        scalec, scaleo, a, lda, b, ldb, c, ldc, &
                        d, ldd, ti, ldti, t, ldt, nminr, hsv, &
                        tol1, tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
@@ -1207,6 +1243,7 @@ module slicot
                        ldcv, dv, lddv, aw, ldaw, bw, ldbw, cw, &
                        ldcw, dw, lddw, scalec, scaleo, s, lds, r, &
                        ldr, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobc
             character(len=*), intent(in)             :: jobo
@@ -1262,6 +1299,7 @@ module slicot
                        ldbv, cv, ldcv, dv, lddv, aw, ldaw, bw, &
                        ldbw, cw, ldcw, dw, lddw, ns, hsv, tol1, &
                        tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobv
             character(len=*), intent(in)             :: jobw
             character(len=*), intent(in)             :: jobinv
@@ -1317,6 +1355,7 @@ module slicot
                        pv, a, lda, b, ldb, c, ldc, d, &
                        ldd, av, ldav, ev, ldev, bv, ldbv, cv, &
                        ldcv, dv, lddv, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobev
@@ -1357,6 +1396,7 @@ module slicot
                        mw, a, lda, b, ldb, c, ldc, d, &
                        ldd, aw, ldaw, ew, ldew, bw, ldbw, cw, &
                        ldcw, dw, lddw, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobew
@@ -1395,6 +1435,7 @@ module slicot
     interface
         subroutine ab09jx(dico, stdom, evtype, n, alpha, er, ei, ed, &
                        tolinf, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: dico
             character(len=*), intent(in)           :: stdom
             character(len=*), intent(in)           :: evtype
@@ -1416,6 +1457,7 @@ module slicot
                        cv, ldcv, dv, lddv, aw, ldaw, bw, ldbw, &
                        cw, ldcw, dw, lddw, ns, hsv, tol1, tol2, &
                        iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: weight
@@ -1471,6 +1513,7 @@ module slicot
                        av, ldav, bv, ldbv, cv, ldcv, dv, lddv, &
                        aw, ldaw, bw, ldbw, cw, ldcw, dw, lddw, &
                        dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: weight
@@ -1515,6 +1558,7 @@ module slicot
         subroutine ab09md(dico, job, equil, ordsel, n, m, p, nr, &
                        alpha, a, lda, b, ldb, c, ldc, ns, &
                        hsv, tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
@@ -1547,6 +1591,7 @@ module slicot
                        alpha, a, lda, b, ldb, c, ldc, d, &
                        ldd, ns, hsv, tol1, tol2, iwork, dwork, ldwork, &
                        iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
@@ -1581,6 +1626,7 @@ module slicot
         double precision function ab13ad (dico,equil,n,m,p,alpha,a,lda, &
                        b,ldb,c,ldc,ns,hsv,dwork,ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
@@ -1605,6 +1651,7 @@ module slicot
     interface
         double precision function ab13ax (dico,n,m,p,a,lda,b,ldb, &
                        c,ldc,hsv,dwork,ldwork,info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -1627,6 +1674,7 @@ module slicot
         double precision function ab13bd (dico,jobn,n,m,p,a,lda,b, &
                        ldb,c,ldc,d,ldd,nq,tol,dwork, &
                        ldwork,iwarn,info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobn
             integer, intent(in)               :: n
@@ -1654,6 +1702,7 @@ module slicot
         double precision function ab13cd (n,m,np,a,lda,b,ldb,c, &
                        ldc,d,ldd,tol,iwork,dwork,ldwork,zwork, &
                        lzwork,bwork,info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -1669,7 +1718,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -1682,6 +1731,7 @@ module slicot
                        a, lda, e, lde, b, ldb, c, ldc, &
                        d, ldd, gpeak, tol, iwork, dwork, ldwork, zwork, &
                        lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: equil
@@ -1705,7 +1755,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab13dd
@@ -1716,6 +1766,7 @@ module slicot
         double precision function ab13dx (dico,jobe,jobd,n,m,p,omega,a, &
                        lda,e,lde,b,ldb,c,ldc,d, &
                        ldd,iwork,dwork,ldwork,zwork,lzwork,info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: jobd
@@ -1736,7 +1787,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end function ab13dx
@@ -1746,6 +1797,7 @@ module slicot
     interface
         subroutine ab13ed(n, a, lda, low, high, tol, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -1762,6 +1814,7 @@ module slicot
     interface
         subroutine ab13fd(n, a, lda, beta, omega, tol, dwork, ldwork, &
                        zwork, lzwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -1770,7 +1823,7 @@ module slicot
             double precision, intent(in)      :: tol
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab13fd
@@ -1783,6 +1836,7 @@ module slicot
                        b, ldb, c, ldc, d, ldd, nr, gpeak, &
                        tol, iwork, dwork, ldwork, zwork, lzwork, bwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: equil
@@ -1811,7 +1865,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: iwarn
@@ -1825,6 +1879,7 @@ module slicot
                        p,a,lda,e,lde,b,ldb,c, &
                        ldc,nr,ranke,tol,iwork,dwork,ldwork,iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobsys
             character(len=*), intent(in)             :: jobeig
             character(len=*), intent(in)             :: equil
@@ -1858,9 +1913,10 @@ module slicot
         subroutine ab13md(fact, n, z, ldz, m, nblock, itype, x, &
                        bound, d, g, iwork, dwork, ldwork, zwork, lzwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: fact
             integer, intent(in)               :: n
-            complex*16, intent(in)            :: z(ldz, *)
+            complex(real64), intent(in)       :: z(ldz, *)
             integer, intent(in)               :: ldz
             integer, intent(in)               :: m
             integer, intent(in)               :: nblock(*)
@@ -1872,7 +1928,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab13md
@@ -1883,13 +1939,14 @@ module slicot
         subroutine ab8nxz(n, m, p, ro, sigma, svlmax, abcd, ldabcd, &
                        ninfz, infz, kronl, mu, nu, nkrol, tol, iwork, &
                        dwork, zwork, lzwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
             integer, intent(inout)            :: ro
             integer, intent(inout)            :: sigma
             double precision, intent(in)      :: svlmax
-            complex*16, intent(inout)         :: abcd(ldabcd, *)
+            complex(real64), intent(inout)    :: abcd(ldabcd, *)
             integer, intent(in)               :: ldabcd
             integer, intent(inout)            :: ninfz
             integer, intent(inout)            :: infz(*)
@@ -1900,7 +1957,7 @@ module slicot
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ab8nxz
@@ -1911,6 +1968,7 @@ module slicot
         subroutine ag07bd(jobe, n, m, a, lda, e, lde, b, &
                        ldb, c, ldc, d, ldd, ai, ldai, ei, &
                        ldei, bi, ldbi, ci, ldci, di, lddi, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: jobe
             integer, intent(in)             :: n
             integer, intent(in)             :: m
@@ -1944,6 +2002,7 @@ module slicot
                        lde, b, ldb, c, ldc, d, ldd, nfz, &
                        nrank, niz, dinfz, nkror, ninfe, nkrol, infz, kronr, &
                        infe, kronl, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -1983,6 +2042,7 @@ module slicot
         subroutine ag08by(first, n, m, p, svlmax, abcd, ldabcd, e, &
                        lde, nr, pr, ninfz, dinfz, nkronl, infz, kronl, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: first
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -2013,20 +2073,21 @@ module slicot
                        lde, b, ldb, c, ldc, d, ldd, nfz, &
                        nrank, niz, dinfz, nkror, ninfe, nkrol, infz, kronr, &
                        infe, kronl, tol, iwork, dwork, zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: l
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(in)            :: d(ldd, *)
+            complex(real64), intent(in)       :: d(ldd, *)
             integer, intent(in)               :: ldd
             integer, intent(out)              :: nfz
             integer, intent(out)              :: nrank
@@ -2042,7 +2103,7 @@ module slicot
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ag08bz
@@ -2053,14 +2114,15 @@ module slicot
         subroutine ag8byz(first, n, m, p, svlmax, abcd, ldabcd, e, &
                        lde, nr, pr, ninfz, dinfz, nkronl, infz, kronl, &
                        tol, iwork, dwork, zwork, lzwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: first
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
             double precision, intent(in)      :: svlmax
-            complex*16, intent(inout)         :: abcd(ldabcd, *)
+            complex(real64), intent(inout)    :: abcd(ldabcd, *)
             integer, intent(in)               :: ldabcd
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
             integer, intent(out)              :: nr
             integer, intent(out)              :: pr
@@ -2072,7 +2134,7 @@ module slicot
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine ag8byz
@@ -2084,6 +2146,7 @@ module slicot
                        m, p, a, lda, b, ldb, c, ldc, &
                        g, ldg, q, ldq, x, ldx, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=1), intent(in)             :: def
             integer, intent(in)               :: nr(2)
             double precision, intent(inout)   :: dpar(*)
@@ -2118,6 +2181,7 @@ module slicot
                        m, p, a, lda, b, ldb, c, ldc, &
                        q, ldq, r, ldr, s, lds, x, ldx, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: def
             integer, intent(in)               :: nr(2)
             double precision, intent(inout)   :: dpar(*)
@@ -2153,6 +2217,7 @@ module slicot
         subroutine bb03ad(def, nr, dpar, ipar, vec, n, m, e, &
                        lde, a, lda, y, ldy, b, ldb, x, &
                        ldx, u, ldu, note, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: def
             integer, intent(in)               :: nr(*)
             double precision, intent(inout)   :: dpar(*)
@@ -2184,6 +2249,7 @@ module slicot
         subroutine bb04ad(def, nr, dpar, ipar, vec, n, m, e, &
                        lde, a, lda, y, ldy, b, ldb, x, &
                        ldx, u, ldu, note, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: def
             integer, intent(in)               :: nr(*)
             double precision, intent(inout)   :: dpar(*)
@@ -2215,6 +2281,7 @@ module slicot
         subroutine bd01ad(def, nr, dpar, ipar, vec, n, m, p, &
                        e, lde, a, lda, b, ldb, c, ldc, &
                        d, ldd, note, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: def
             integer, intent(in)               :: nr(*)
             double precision, intent(inout)   :: dpar(*)
@@ -2245,6 +2312,7 @@ module slicot
         subroutine bd02ad(def, nr, dpar, ipar, vec, n, m, p, &
                        e, lde, a, lda, b, ldb, c, ldc, &
                        d, ldd, note, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: def
             integer, intent(in)               :: nr(*)
             double precision, intent(inout)   :: dpar(*)
@@ -2273,6 +2341,7 @@ module slicot
     
     interface
         subroutine de01od(conv, n, a, b, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: conv
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(*)
@@ -2284,6 +2353,7 @@ module slicot
     
     interface
         subroutine de01pd(conv, wght, n, a, b, w, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: conv
             character(len=*), intent(in)             :: wght
             integer, intent(in)               :: n
@@ -2297,6 +2367,7 @@ module slicot
     
     interface
         subroutine df01md(sico, n, dt, a, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: sico
             integer, intent(in)               :: n
             double precision, intent(in)      :: dt
@@ -2309,6 +2380,7 @@ module slicot
     
     interface
         subroutine dg01md(indi, n, xr, xi, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: indi
             integer, intent(in)               :: n
             double precision, intent(inout)   :: xr(*)
@@ -2320,6 +2392,7 @@ module slicot
     
     interface
         subroutine dg01nd(indi, n, xr, xi, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: indi
             integer, intent(in)               :: n
             double precision, intent(inout)   :: xr(*)
@@ -2331,6 +2404,7 @@ module slicot
     
     interface
         subroutine dg01ny(indi, n, xr, xi)
+            use iso_fortran_env
             character(len=*), intent(in)             :: indi
             integer, intent(in)               :: n
             double precision, intent(inout)   :: xr(*)
@@ -2341,6 +2415,7 @@ module slicot
     
     interface
         subroutine dg01od(scr, wght, n, a, w, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: scr
             character(len=*), intent(in)             :: wght
             integer, intent(in)               :: n
@@ -2353,6 +2428,7 @@ module slicot
     
     interface
         subroutine dk01md(type, n, a, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: type
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(*)
@@ -2365,6 +2441,7 @@ module slicot
         subroutine fb01qd(jobk, multbq, n, m, p, s, lds, a, &
                        lda, b, ldb, q, ldq, c, ldc, r, &
                        ldr, k, ldk, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobk
             character(len=*), intent(in)             :: multbq
             integer, intent(in)               :: n
@@ -2397,6 +2474,7 @@ module slicot
         subroutine fb01rd(jobk, multbq, n, m, p, s, lds, a, &
                        lda, b, ldb, q, ldq, c, ldc, r, &
                        ldr, k, ldk, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobk
             character(len=*), intent(in)             :: multbq
             integer, intent(in)               :: n
@@ -2430,6 +2508,7 @@ module slicot
                        ainv, ldainv, b, ldb, rinv, ldrinv, c, ldc, &
                        qinv, ldqinv, x, rinvy, z, e, tol, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: multab
             character(len=*), intent(in)             :: multrc
@@ -2466,6 +2545,7 @@ module slicot
                        ldainv, ainvb, ldainb, rinv, ldrinv, c, ldc, qinv, &
                        ldqinv, x, rinvy, z, e, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: multrc
             integer, intent(in)               :: n
@@ -2500,6 +2580,7 @@ module slicot
         subroutine fb01vd(n, m, l, p, ldp, a, lda, b, &
                        ldb, c, ldc, q, ldq, r, ldr, k, &
                        ldk, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: l
@@ -2529,6 +2610,7 @@ module slicot
     interface
         subroutine fd01ad(jp, l, lambda, xin, yin, efor, xf, epsbck, &
                        cteta, steta, yq, epos, eout, salph, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jp
             integer, intent(in)               :: l
             double precision, intent(in)      :: lambda
@@ -2554,6 +2636,7 @@ module slicot
                        l, nsmp, u, ldu, y, ldy, n, r, &
                        ldr, sv, rcond, tol, iwork, dwork, ldwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: alg
             character(len=*), intent(in)             :: jobd
@@ -2589,6 +2672,7 @@ module slicot
                        d, ldd, q, ldq, ry, ldry, s, lds, &
                        k, ldk, tol, iwork, dwork, ldwork, bwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobck
@@ -2631,6 +2715,7 @@ module slicot
                        lda, b, ldb, c, ldc, d, ldd, u, &
                        ldu, y, ldy, x0, v, ldv, tol, iwork, &
                        dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx0
             character(len=*), intent(in)             :: comuse
             character(len=*), intent(in)             :: job
@@ -2667,6 +2752,7 @@ module slicot
         subroutine ib01md(meth, alg, batch, conct, nobr, m, l, nsmp, &
                        u, ldu, y, ldy, r, ldr, iwork, dwork, &
                        ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: alg
             character(len=*), intent(in)             :: batch
@@ -2694,6 +2780,7 @@ module slicot
         subroutine ib01my(meth, batch, conct, nobr, m, l, nsmp, u, &
                        ldu, y, ldy, r, ldr, iwork, dwork, ldwork, &
                        iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: batch
             character(len=*), intent(in)             :: conct
@@ -2719,6 +2806,7 @@ module slicot
     interface
         subroutine ib01nd(meth, jobd, nobr, m, l, r, ldr, sv, &
                        tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: jobd
             integer, intent(in)               :: nobr
@@ -2739,6 +2827,7 @@ module slicot
     
     interface
         subroutine ib01od(ctrl, nobr, l, sv, n, tol, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: ctrl
             integer, intent(in)             :: nobr
             integer, intent(in)             :: l
@@ -2753,6 +2842,7 @@ module slicot
     
     interface
         subroutine ib01oy(ns, nmax, n, sv, info)
+            use iso_fortran_env
             integer, intent(in)               :: ns
             integer, intent(in)               :: nmax
             integer, intent(inout)            :: n
@@ -2767,6 +2857,7 @@ module slicot
                        r, ldr, a, lda, c, ldc, b, ldb, &
                        d, ldd, q, ldq, ry, ldry, s, lds, &
                        o, ldo, tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobcv
@@ -2808,6 +2899,7 @@ module slicot
                        ldun, ul, ldul, pgal, ldpgal, k, ldk, r, &
                        ldr, x, b, ldb, d, ldd, tol, iwork, &
                        dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: nobr
             integer, intent(in)               :: n
@@ -2845,6 +2937,7 @@ module slicot
                        ldul, r1, ldr1, tau1, pgal, ldpgal, k, ldk, &
                        r, ldr, h, ldh, b, ldb, d, ldd, &
                        tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: nobr
@@ -2884,6 +2977,7 @@ module slicot
                        c, ldc, u, ldu, y, ldy, x0, b, &
                        ldb, d, ldd, tol, iwork, dwork, ldwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx0
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
@@ -2917,6 +3011,7 @@ module slicot
         subroutine ib01rd(job, n, m, l, nsmp, a, lda, b, &
                        ldb, c, ldc, d, ldd, u, ldu, y, &
                        ldy, x0, tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -2950,6 +3045,7 @@ module slicot
                        nn, itmax1, itmax2, nprint, u, ldu, y, ldy, &
                        x, lx, tol1, tol2, iwork, dwork, ldwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: init
             character(len=*), intent(in)             :: alg
             character(len=*), intent(in)             :: stor
@@ -2983,6 +3079,7 @@ module slicot
         subroutine ib03bd(init, nobr, m, l, nsmp, n, nn, itmax1, &
                        itmax2, nprint, u, ldu, y, ldy, x, lx, &
                        tol1, tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: init
             integer, intent(in)               :: nobr
             integer, intent(in)               :: m
@@ -3012,6 +3109,7 @@ module slicot
     
     interface
         subroutine ma01ad(xr, xi, yr, yi)
+            use iso_fortran_env
             double precision, intent(in)    :: xr
             double precision, intent(in)    :: xi
             double precision, intent(out)   :: yr
@@ -3023,6 +3121,7 @@ module slicot
     interface
         subroutine ma01bd(base, lgbas, k, s, a, inca, alpha, beta, &
                        scal)
+            use iso_fortran_env
             double precision, intent(in)    :: base
             double precision, intent(in)    :: lgbas
             integer, intent(in)             :: k
@@ -3038,13 +3137,14 @@ module slicot
     
     interface
         subroutine ma01bz(base, k, s, a, inca, alpha, beta, scal)
+            use iso_fortran_env
             double precision, intent(in)    :: base
             integer, intent(in)             :: k
             integer, intent(in)             :: s(*)
-            complex*16, intent(in)          :: a(*)
+            complex(real64), intent(in)     :: a(*)
             integer, intent(in)             :: inca
-            complex*16, intent(out)         :: alpha
-            complex*16, intent(out)         :: beta
+            complex(real64), intent(out)    :: alpha
+            complex(real64), intent(out)    :: beta
             integer, intent(out)            :: scal
         end subroutine ma01bz
     end interface
@@ -3052,6 +3152,7 @@ module slicot
     
     interface
         integer function ma01cd (a,ia,b,ib)
+            use iso_fortran_env
             double precision, intent(in)   :: a
             integer, intent(in)            :: ia
             double precision, intent(in)   :: b
@@ -3062,6 +3163,7 @@ module slicot
     
     interface
         subroutine ma01dd(ar1, ai1, ar2, ai2, eps, safemn, d)
+            use iso_fortran_env
             double precision, intent(in)    :: ar1
             double precision, intent(in)    :: ai1
             double precision, intent(in)    :: ar2
@@ -3076,6 +3178,7 @@ module slicot
     interface
         subroutine ma01dz(ar1, ai1, b1, ar2, ai2, b2, eps, safemn, &
                        d1, d2, iwarn)
+            use iso_fortran_env
             double precision, intent(in)    :: ar1
             double precision, intent(in)    :: ai1
             double precision, intent(in)    :: b1
@@ -3093,6 +3196,7 @@ module slicot
     
     interface
         subroutine ma02ad(job, m, n, a, lda, b, ldb)
+            use iso_fortran_env
             character(len=*), intent(in)           :: job
             integer, intent(in)             :: m
             integer, intent(in)             :: n
@@ -3106,20 +3210,22 @@ module slicot
     
     interface
         subroutine ma02az(trans, job, m, n, a, lda, b, ldb)
-            character(len=*), intent(in)     :: trans
-            character(len=*), intent(in)     :: job
-            integer, intent(in)       :: m
-            integer, intent(in)       :: n
-            complex*16, intent(in)    :: a(lda, *)
-            integer, intent(in)       :: lda
-            complex*16, intent(out)   :: b(ldb, *)
-            integer, intent(in)       :: ldb
+            use iso_fortran_env
+            character(len=*), intent(in)          :: trans
+            character(len=*), intent(in)          :: job
+            integer, intent(in)            :: m
+            integer, intent(in)            :: n
+            complex(real64), intent(in)    :: a(lda, *)
+            integer, intent(in)            :: lda
+            complex(real64), intent(out)   :: b(ldb, *)
+            integer, intent(in)            :: ldb
         end subroutine ma02az
     end interface
     public :: ma02az
     
     interface
         subroutine ma02bd(side, m, n, a, lda)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -3131,17 +3237,19 @@ module slicot
     
     interface
         subroutine ma02bz(side, m, n, a, lda)
-            character(len=*), intent(in)       :: side
-            integer, intent(in)         :: m
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
+            use iso_fortran_env
+            character(len=*), intent(in)            :: side
+            integer, intent(in)              :: m
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
         end subroutine ma02bz
     end interface
     public :: ma02bz
     
     interface
         subroutine ma02cd(n, kl, ku, a, lda)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: kl
             integer, intent(in)               :: ku
@@ -3153,17 +3261,19 @@ module slicot
     
     interface
         subroutine ma02cz(n, kl, ku, a, lda)
-            integer, intent(in)         :: n
-            integer, intent(in)         :: kl
-            integer, intent(in)         :: ku
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
+            use iso_fortran_env
+            integer, intent(in)              :: n
+            integer, intent(in)              :: kl
+            integer, intent(in)              :: ku
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
         end subroutine ma02cz
     end interface
     public :: ma02cz
     
     interface
         subroutine ma02dd(job, uplo, n, a, lda, ap)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -3176,6 +3286,7 @@ module slicot
     
     interface
         subroutine ma02ed(uplo, n, a, lda)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -3186,6 +3297,7 @@ module slicot
     
     interface
         subroutine ma02es(uplo, n, a, lda)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -3196,18 +3308,20 @@ module slicot
     
     interface
         subroutine ma02ez(uplo, trans, skew, n, a, lda)
-            character(len=*), intent(in)       :: uplo
-            character(len=*), intent(in)       :: trans
-            character(len=*), intent(in)       :: skew
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
+            use iso_fortran_env
+            character(len=*), intent(in)            :: uplo
+            character(len=*), intent(in)            :: trans
+            character(len=*), intent(in)            :: skew
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
         end subroutine ma02ez
     end interface
     public :: ma02ez
     
     interface
         subroutine ma02fd(x1, x2, c, s, info)
+            use iso_fortran_env
             double precision, intent(inout)   :: x1
             double precision, intent(in)      :: x2
             double precision, intent(out)     :: c
@@ -3219,6 +3333,7 @@ module slicot
     
     interface
         subroutine ma02gd(n, a, lda, k1, k2, ipiv, incx)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
             integer, intent(in)               :: lda
@@ -3232,19 +3347,21 @@ module slicot
     
     interface
         subroutine ma02gz(n, a, lda, k1, k2, ipiv, incx)
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
-            integer, intent(in)         :: k1
-            integer, intent(in)         :: k2
-            integer, intent(in)         :: ipiv(*)
-            integer, intent(in)         :: incx
+            use iso_fortran_env
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
+            integer, intent(in)              :: k1
+            integer, intent(in)              :: k2
+            integer, intent(in)              :: ipiv(*)
+            integer, intent(in)              :: incx
         end subroutine ma02gz
     end interface
     public :: ma02gz
     
     interface
         logical function ma02hd (job,m,n,diag,a,lda)
+            use iso_fortran_env
             character(len=*), intent(in)          :: job
             integer, intent(in)            :: m
             integer, intent(in)            :: n
@@ -3257,18 +3374,20 @@ module slicot
     
     interface
         logical function ma02hz (job,m,n,diag,a,lda)
-            character(len=*), intent(in)    :: job
-            integer, intent(in)      :: m
-            integer, intent(in)      :: n
-            complex*16, intent(in)   :: diag
-            complex*16, intent(in)   :: a(lda, *)
-            integer, intent(in)      :: lda
+            use iso_fortran_env
+            character(len=*), intent(in)         :: job
+            integer, intent(in)           :: m
+            integer, intent(in)           :: n
+            complex(real64), intent(in)   :: diag
+            complex(real64), intent(in)   :: a(lda, *)
+            integer, intent(in)           :: lda
         end function ma02hz
     end interface
     public :: ma02hz
     
     interface
         double precision function ma02id (typ,norm,n,a,lda,qg,ldqg,dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typ
             character(len=*), intent(in)             :: norm
             integer, intent(in)               :: n
@@ -3283,12 +3402,13 @@ module slicot
     
     interface
         double precision function ma02iz (typ,norm,n,a,lda,qg,ldqg,dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typ
             character(len=*), intent(in)             :: norm
             integer, intent(in)               :: n
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: qg(ldqg, *)
+            complex(real64), intent(in)       :: qg(ldqg, *)
             integer, intent(in)               :: ldqg
             double precision, intent(inout)   :: dwork(*)
         end function ma02iz
@@ -3298,6 +3418,7 @@ module slicot
     interface
         double precision function ma02jd (ltran1,ltran2,n,q1,ldq1,q2,ldq2,res, &
                        ldres)
+            use iso_fortran_env
             logical, intent(in)               :: ltran1
             logical, intent(in)               :: ltran2
             integer, intent(in)               :: n
@@ -3314,21 +3435,23 @@ module slicot
     interface
         double precision function ma02jz (ltran1,ltran2,n,q1,ldq1,q2,ldq2,res, &
                        ldres)
-            logical, intent(in)         :: ltran1
-            logical, intent(in)         :: ltran2
-            integer, intent(in)         :: n
-            complex*16, intent(in)      :: q1(ldq1, *)
-            integer, intent(in)         :: ldq1
-            complex*16, intent(in)      :: q2(ldq2, *)
-            integer, intent(in)         :: ldq2
-            complex*16, intent(inout)   :: res(ldres, *)
-            integer, intent(in)         :: ldres
+            use iso_fortran_env
+            logical, intent(in)              :: ltran1
+            logical, intent(in)              :: ltran2
+            integer, intent(in)              :: n
+            complex(real64), intent(in)      :: q1(ldq1, *)
+            integer, intent(in)              :: ldq1
+            complex(real64), intent(in)      :: q2(ldq2, *)
+            integer, intent(in)              :: ldq2
+            complex(real64), intent(inout)   :: res(ldres, *)
+            integer, intent(in)              :: ldres
         end function ma02jz
     end interface
     public :: ma02jz
     
     interface
         double precision function ma02md (norm,uplo,n,a,lda,dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: norm
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -3341,10 +3464,11 @@ module slicot
     
     interface
         double precision function ma02mz (norm,uplo,n,a,lda,dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: norm
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
             double precision, intent(inout)   :: dwork(*)
         end function ma02mz
@@ -3353,20 +3477,22 @@ module slicot
     
     interface
         subroutine ma02nz(uplo, trans, skew, n, k, l, a, lda)
-            character(len=*), intent(in)       :: uplo
-            character(len=*), intent(in)       :: trans
-            character(len=*), intent(in)       :: skew
-            integer, intent(in)         :: n
-            integer, intent(in)         :: k
-            integer, intent(in)         :: l
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
+            use iso_fortran_env
+            character(len=*), intent(in)            :: uplo
+            character(len=*), intent(in)            :: trans
+            character(len=*), intent(in)            :: skew
+            integer, intent(in)              :: n
+            integer, intent(in)              :: k
+            integer, intent(in)              :: l
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
         end subroutine ma02nz
     end interface
     public :: ma02nz
     
     interface
         integer function ma02od (skew,m,a,lda,de,ldde)
+            use iso_fortran_env
             character(len=*), intent(in)          :: skew
             integer, intent(in)            :: m
             double precision, intent(in)   :: a(lda, *)
@@ -3379,18 +3505,20 @@ module slicot
     
     interface
         integer function ma02oz (skew,m,a,lda,de,ldde)
-            character(len=*), intent(in)    :: skew
-            integer, intent(in)      :: m
-            complex*16, intent(in)   :: a(lda, *)
-            integer, intent(in)      :: lda
-            complex*16, intent(in)   :: de(ldde, *)
-            integer, intent(in)      :: ldde
+            use iso_fortran_env
+            character(len=*), intent(in)         :: skew
+            integer, intent(in)           :: m
+            complex(real64), intent(in)   :: a(lda, *)
+            integer, intent(in)           :: lda
+            complex(real64), intent(in)   :: de(ldde, *)
+            integer, intent(in)           :: ldde
         end function ma02oz
     end interface
     public :: ma02oz
     
     interface
         subroutine ma02pd(m, n, a, lda, nzr, nzc)
+            use iso_fortran_env
             integer, intent(in)             :: m
             integer, intent(in)             :: n
             double precision, intent(in)    :: a(lda, *)
@@ -3403,18 +3531,20 @@ module slicot
     
     interface
         subroutine ma02pz(m, n, a, lda, nzr, nzc)
-            integer, intent(in)       :: m
-            integer, intent(in)       :: n
-            complex*16, intent(in)    :: a(lda, *)
-            integer, intent(in)       :: lda
-            integer, intent(out)      :: nzr
-            integer, intent(out)      :: nzc
+            use iso_fortran_env
+            integer, intent(in)            :: m
+            integer, intent(in)            :: n
+            complex(real64), intent(in)    :: a(lda, *)
+            integer, intent(in)            :: lda
+            integer, intent(out)           :: nzr
+            integer, intent(out)           :: nzc
         end subroutine ma02pz
     end interface
     public :: ma02pz
     
     interface
         subroutine ma02rd(id, n, d, e, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: id
             integer, intent(in)               :: n
             double precision, intent(inout)   :: d(*)
@@ -3426,6 +3556,7 @@ module slicot
     
     interface
         double precision function ma02sd (m,n,a,lda)
+            use iso_fortran_env
             integer, intent(in)            :: m
             integer, intent(in)            :: n
             double precision, intent(in)   :: a(lda, *)
@@ -3437,6 +3568,7 @@ module slicot
     interface
         subroutine mb01kd(uplo, trans, n, k, alpha, a, lda, b, &
                        ldb, beta, c, ldc, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3457,6 +3589,7 @@ module slicot
     interface
         subroutine mb01ld(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
@@ -3479,6 +3612,7 @@ module slicot
     interface
         subroutine mb01md(uplo, n, alpha, a, lda, x, incx, beta, &
                        y, incy)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(in)      :: alpha
@@ -3496,6 +3630,7 @@ module slicot
     interface
         subroutine mb01nd(uplo, n, alpha, x, incx, y, incy, a, &
                        lda)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(in)      :: alpha
@@ -3512,6 +3647,7 @@ module slicot
     interface
         subroutine mb01oc(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3531,6 +3667,7 @@ module slicot
     interface
         subroutine mb01od(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, e, lde, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3554,6 +3691,7 @@ module slicot
     interface
         subroutine mb01oe(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, e, lde)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3572,6 +3710,7 @@ module slicot
     interface
         subroutine mb01oh(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, a, lda)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3590,6 +3729,7 @@ module slicot
     interface
         subroutine mb01oo(uplo, trans, n, h, ldh, x, ldx, e, &
                        lde, p, ldp, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: uplo
             character(len=*), intent(in)           :: trans
             integer, intent(in)             :: n
@@ -3609,6 +3749,7 @@ module slicot
     interface
         subroutine mb01os(uplo, trans, n, h, ldh, x, ldx, p, &
                        ldp, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: uplo
             character(len=*), intent(in)           :: trans
             integer, intent(in)             :: n
@@ -3626,6 +3767,7 @@ module slicot
     interface
         subroutine mb01ot(uplo, trans, n, alpha, beta, r, ldr, e, &
                        lde, t, ldt)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3644,6 +3786,7 @@ module slicot
     interface
         subroutine mb01pd(scun, type, m, n, kl, ku, anrm, nbl, &
                        nrows, a, lda, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: scun
             character(len=*), intent(in)             :: type
             integer, intent(in)               :: m
@@ -3663,6 +3806,7 @@ module slicot
     interface
         subroutine mb01qd(type, m, n, kl, ku, cfrom, cto, nbl, &
                        nrows, a, lda, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: type
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -3682,6 +3826,7 @@ module slicot
     interface
         subroutine mb01rb(side, uplo, trans, m, n, alpha, beta, r, &
                        ldr, a, lda, b, ldb, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -3703,6 +3848,7 @@ module slicot
     interface
         subroutine mb01rd(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
@@ -3725,6 +3871,7 @@ module slicot
     interface
         subroutine mb01rh(uplo, trans, n, alpha, beta, r, ldr, h, &
                        ldh, x, ldx, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3746,6 +3893,7 @@ module slicot
     interface
         subroutine mb01rt(uplo, trans, n, alpha, beta, r, ldr, e, &
                        lde, x, ldx, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -3767,6 +3915,7 @@ module slicot
     interface
         subroutine mb01ru(uplo, trans, m, n, alpha, beta, r, ldr, &
                        a, lda, x, ldx, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
@@ -3789,6 +3938,7 @@ module slicot
     interface
         subroutine mb01rw(uplo, trans, m, n, a, lda, z, ldz, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
@@ -3806,6 +3956,7 @@ module slicot
     interface
         subroutine mb01rx(side, uplo, trans, m, n, alpha, beta, r, &
                        ldr, a, lda, b, ldb, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -3827,6 +3978,7 @@ module slicot
     interface
         subroutine mb01ry(side, uplo, trans, m, alpha, beta, r, ldr, &
                        h, ldh, b, ldb, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -3847,6 +3999,7 @@ module slicot
     
     interface
         subroutine mb01sd(jobs, m, n, a, lda, r, c)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobs
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -3860,6 +4013,7 @@ module slicot
     
     interface
         subroutine mb01ss(jobs, uplo, n, a, lda, d)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobs
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -3872,6 +4026,7 @@ module slicot
     
     interface
         subroutine mb01td(n, a, lda, b, ldb, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -3886,6 +4041,7 @@ module slicot
     interface
         subroutine mb01ud(side, trans, m, n, alpha, h, ldh, a, &
                        lda, b, ldb, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: side
             character(len=*), intent(in)           :: trans
             integer, intent(in)             :: m
@@ -3905,6 +4061,7 @@ module slicot
     interface
         subroutine mb01uw(side, trans, m, n, alpha, h, ldh, a, &
                        lda, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
@@ -3924,6 +4081,7 @@ module slicot
     interface
         subroutine mb01ux(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -3944,6 +4102,7 @@ module slicot
     interface
         subroutine mb01uy(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -3964,19 +4123,20 @@ module slicot
     interface
         subroutine mb01uz(side, uplo, trans, m, n, alpha, t, ldt, &
                        a, lda, zwork, lzwork, info)
-            character(len=*), intent(in)       :: side
-            character(len=*), intent(in)       :: uplo
-            character(len=*), intent(in)       :: trans
-            integer, intent(in)         :: m
-            integer, intent(in)         :: n
-            complex*16, intent(in)      :: alpha
-            complex*16, intent(inout)   :: t(ldt, *)
-            integer, intent(in)         :: ldt
-            complex*16, intent(in)      :: a(lda, *)
-            integer, intent(in)         :: lda
-            complex*16, intent(inout)   :: zwork(*)
-            integer, intent(in)         :: lzwork
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            character(len=*), intent(in)            :: side
+            character(len=*), intent(in)            :: uplo
+            character(len=*), intent(in)            :: trans
+            integer, intent(in)              :: m
+            integer, intent(in)              :: n
+            complex(real64), intent(in)      :: alpha
+            complex(real64), intent(inout)   :: t(ldt, *)
+            integer, intent(in)              :: ldt
+            complex(real64), intent(in)      :: a(lda, *)
+            integer, intent(in)              :: lda
+            complex(real64), intent(inout)   :: zwork(*)
+            integer, intent(in)              :: lzwork
+            integer, intent(out)             :: info
         end subroutine mb01uz
     end interface
     public :: mb01uz
@@ -3985,6 +4145,7 @@ module slicot
         subroutine mb01vd(trana, tranb, ma, na, mb, nb, alpha, beta, &
                        a, lda, b, ldb, c, ldc, mc, nc, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: tranb
             integer, intent(in)               :: ma
@@ -4009,6 +4170,7 @@ module slicot
     interface
         subroutine mb01wd(dico, uplo, trans, hess, n, alpha, beta, r, &
                        ldr, a, lda, t, ldt, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -4029,6 +4191,7 @@ module slicot
     
     interface
         subroutine mb01xd(uplo, n, a, lda, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -4040,6 +4203,7 @@ module slicot
     
     interface
         subroutine mb01xy(uplo, n, a, lda, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -4052,6 +4216,7 @@ module slicot
     interface
         subroutine mb01yd(uplo, trans, n, k, l, alpha, beta, a, &
                        lda, c, ldc, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -4071,6 +4236,7 @@ module slicot
     interface
         subroutine mb01zd(side, uplo, transt, diag, m, n, l, alpha, &
                        t, ldt, h, ldh, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: transt
@@ -4092,6 +4258,7 @@ module slicot
         subroutine mb02cd(job, typet, k, n, t, ldt, g, ldg, &
                        r, ldr, l, ldl, cs, lcs, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: typet
             integer, intent(in)               :: k
@@ -4117,6 +4284,7 @@ module slicot
         subroutine mb02cu(typeg, k, p, q, nb, a1, lda1, a2, &
                        lda2, b, ldb, rnk, ipvt, cs, tol, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typeg
             integer, intent(in)               :: k
             integer, intent(in)               :: p
@@ -4143,6 +4311,7 @@ module slicot
         subroutine mb02cv(typeg, strucg, k, n, p, q, nb, rnk, &
                        a1, lda1, a2, lda2, b, ldb, f1, ldf1, &
                        f2, ldf2, g, ldg, cs, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typeg
             character(len=*), intent(in)             :: strucg
             integer, intent(in)               :: k
@@ -4174,6 +4343,7 @@ module slicot
     interface
         subroutine mb02cx(typet, p, q, k, a, lda, b, ldb, &
                        cs, lcs, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typet
             integer, intent(in)               :: p
             integer, intent(in)               :: q
@@ -4195,6 +4365,7 @@ module slicot
         subroutine mb02cy(typet, strucg, p, q, n, k, a, lda, &
                        b, ldb, h, ldh, cs, lcs, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typet
             character(len=*), intent(in)             :: strucg
             integer, intent(in)               :: p
@@ -4220,6 +4391,7 @@ module slicot
         subroutine mb02dd(job, typet, k, m, n, ta, ldta, t, &
                        ldt, g, ldg, r, ldr, l, ldl, cs, &
                        lcs, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: typet
             integer, intent(in)               :: k
@@ -4247,6 +4419,7 @@ module slicot
     interface
         subroutine mb02ed(typet, k, n, nrhs, t, ldt, b, ldb, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typet
             integer, intent(in)               :: k
             integer, intent(in)               :: n
@@ -4265,6 +4438,7 @@ module slicot
     interface
         subroutine mb02fd(typet, k, n, p, s, t, ldt, r, &
                        ldr, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typet
             integer, intent(in)               :: k
             integer, intent(in)               :: n
@@ -4284,6 +4458,7 @@ module slicot
     interface
         subroutine mb02gd(typet, triu, k, n, nl, p, s, t, &
                        ldt, rb, ldrb, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typet
             character(len=*), intent(in)             :: triu
             integer, intent(in)               :: k
@@ -4306,6 +4481,7 @@ module slicot
         subroutine mb02hd(triu, k, l, m, ml, n, nu, p, &
                        s, tc, ldtc, tr, ldtr, rb, ldrb, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: triu
             integer, intent(in)               :: k
             integer, intent(in)               :: l
@@ -4332,6 +4508,7 @@ module slicot
         subroutine mb02id(job, k, l, m, n, rb, rc, tc, &
                        ldtc, tr, ldtr, b, ldb, c, ldc, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: k
             integer, intent(in)               :: l
@@ -4358,6 +4535,7 @@ module slicot
         subroutine mb02jd(job, k, l, m, n, p, s, tc, &
                        ldtc, tr, ldtr, q, ldq, r, ldr, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: k
             integer, intent(in)               :: l
@@ -4384,6 +4562,7 @@ module slicot
         subroutine mb02jx(job, k, l, m, n, tc, ldtc, tr, &
                        ldtr, rnk, q, ldq, r, ldr, jpvt, tol1, &
                        tol2, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: k
             integer, intent(in)               :: l
@@ -4412,6 +4591,7 @@ module slicot
         subroutine mb02kd(ldblk, trans, k, l, m, n, r, alpha, &
                        beta, tc, ldtc, tr, ldtr, b, ldb, c, &
                        ldc, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: ldblk
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: k
@@ -4439,6 +4619,7 @@ module slicot
     interface
         subroutine mb02md(job, m, n, l, rank, c, ldc, s, &
                        x, ldx, tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -4463,6 +4644,7 @@ module slicot
         subroutine mb02nd(m, n, l, rank, theta, c, ldc, x, &
                        ldx, q, inul, tol, reltol, iwork, dwork, ldwork, &
                        bwork, iwarn, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             integer, intent(in)               :: l
@@ -4489,6 +4671,7 @@ module slicot
     interface
         subroutine mb02ny(updatu, updatv, m, n, i, k, q, e, &
                        u, ldu, v, ldv, dwork)
+            use iso_fortran_env
             logical, intent(in)               :: updatu
             logical, intent(in)               :: updatv
             integer, intent(in)               :: m
@@ -4510,6 +4693,7 @@ module slicot
         subroutine mb02od(side, uplo, trans, diag, norm, m, n, alpha, &
                        a, lda, b, ldb, rcond, tol, iwork, dwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -4535,6 +4719,7 @@ module slicot
         subroutine mb02pd(fact, trans, n, nrhs, a, lda, af, ldaf, &
                        ipiv, equed, r, c, b, ldb, x, ldx, &
                        rcond, ferr, berr, iwork, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -4565,6 +4750,7 @@ module slicot
         subroutine mb02qd(job, iniper, m, n, nrhs, rcond, svlmax, a, &
                        lda, b, ldb, y, jpvt, rank, sval, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: iniper
             integer, intent(in)               :: m
@@ -4590,6 +4776,7 @@ module slicot
     interface
         subroutine mb02qy(m, n, nrhs, rank, a, lda, jpvt, b, &
                        ldb, tau, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             integer, intent(in)               :: nrhs
@@ -4610,6 +4797,7 @@ module slicot
     interface
         subroutine mb02rd(trans, n, nrhs, h, ldh, ipiv, b, ldb, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             integer, intent(in)               :: nrhs
@@ -4626,21 +4814,23 @@ module slicot
     interface
         subroutine mb02rz(trans, n, nrhs, h, ldh, ipiv, b, ldb, &
                        info)
-            character(len=*), intent(in)       :: trans
-            integer, intent(in)         :: n
-            integer, intent(in)         :: nrhs
-            complex*16, intent(in)      :: h(ldh, *)
-            integer, intent(in)         :: ldh
-            integer, intent(in)         :: ipiv(*)
-            complex*16, intent(inout)   :: b(ldb, *)
-            integer, intent(in)         :: ldb
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            character(len=*), intent(in)            :: trans
+            integer, intent(in)              :: n
+            integer, intent(in)              :: nrhs
+            complex(real64), intent(in)      :: h(ldh, *)
+            integer, intent(in)              :: ldh
+            integer, intent(in)              :: ipiv(*)
+            complex(real64), intent(inout)   :: b(ldb, *)
+            integer, intent(in)              :: ldb
+            integer, intent(out)             :: info
         end subroutine mb02rz
     end interface
     public :: mb02rz
     
     interface
         subroutine mb02sd(n, h, ldh, ipiv, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: h(ldh, *)
             integer, intent(in)               :: ldh
@@ -4652,11 +4842,12 @@ module slicot
     
     interface
         subroutine mb02sz(n, h, ldh, ipiv, info)
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: h(ldh, *)
-            integer, intent(in)         :: ldh
-            integer, intent(out)        :: ipiv(*)
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: h(ldh, *)
+            integer, intent(in)              :: ldh
+            integer, intent(out)             :: ipiv(*)
+            integer, intent(out)             :: info
         end subroutine mb02sz
     end interface
     public :: mb02sz
@@ -4664,6 +4855,7 @@ module slicot
     interface
         subroutine mb02td(norm, n, hnorm, h, ldh, ipiv, rcond, iwork, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: norm
             integer, intent(in)               :: n
             double precision, intent(in)      :: hnorm
@@ -4681,15 +4873,16 @@ module slicot
     interface
         subroutine mb02tz(norm, n, hnorm, h, ldh, ipiv, rcond, dwork, &
                        zwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: norm
             integer, intent(in)               :: n
             double precision, intent(in)      :: hnorm
-            complex*16, intent(in)            :: h(ldh, *)
+            complex(real64), intent(in)       :: h(ldh, *)
             integer, intent(in)               :: ldh
             integer, intent(in)               :: ipiv(*)
             double precision, intent(out)     :: rcond
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine mb02tz
     end interface
@@ -4699,6 +4892,7 @@ module slicot
         subroutine mb02ud(fact, side, trans, jobp, m, n, alpha, rcond, &
                        rank, r, ldr, q, ldq, sv, b, ldb, &
                        rp, ldrp, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: trans
@@ -4726,6 +4920,7 @@ module slicot
     
     interface
         subroutine mb02uu(n, a, lda, rhs, ipiv, jpiv, scale)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -4739,6 +4934,7 @@ module slicot
     
     interface
         subroutine mb02uv(n, a, lda, ipiv, jpiv, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
             integer, intent(in)               :: lda
@@ -4752,6 +4948,7 @@ module slicot
     interface
         subroutine mb02uw(ltrans, n, m, par, a, lda, b, ldb, &
                        scale, iwarn)
+            use iso_fortran_env
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -4769,6 +4966,7 @@ module slicot
     interface
         subroutine mb02vd(trans, m, n, a, lda, ipiv, b, ldb, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -4786,6 +4984,7 @@ module slicot
         subroutine mb02wd(form, f, n, ipar, lipar, dpar, ldpar, itmax, &
                        a, lda, b, incb, x, incx, tol, dwork, &
                        ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: form
             external                :: f
             integer, intent(in)               :: n
@@ -4813,6 +5012,7 @@ module slicot
         subroutine mb02xd(form, stor, uplo, f, m, n, nrhs, ipar, &
                        lipar, dpar, ldpar, a, lda, b, ldb, ata, &
                        ldata, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: form
             character(len=*), intent(in)             :: stor
             character(len=*), intent(in)             :: uplo
@@ -4840,6 +5040,7 @@ module slicot
     interface
         subroutine mb02yd(cond, n, r, ldr, ipvt, diag, qtb, rank, &
                        x, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             integer, intent(in)               :: n
             double precision, intent(inout)   :: r(ldr, *)
@@ -4860,6 +5061,7 @@ module slicot
     interface
         subroutine mb03ab(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, w1, w2, c1, s1, c2, s2)
+            use iso_fortran_env
             character(len=*), intent(in)           :: shft
             integer, intent(in)             :: k
             integer, intent(in)             :: n
@@ -4882,6 +5084,7 @@ module slicot
     interface
         subroutine mb03ad(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
+            use iso_fortran_env
             character(len=*), intent(in)           :: shft
             integer, intent(in)             :: k
             integer, intent(in)             :: n
@@ -4902,6 +5105,7 @@ module slicot
     interface
         subroutine mb03ae(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
+            use iso_fortran_env
             character(len=*), intent(in)           :: shft
             integer, intent(in)             :: k
             integer, intent(in)             :: n
@@ -4922,6 +5126,7 @@ module slicot
     interface
         subroutine mb03af(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
+            use iso_fortran_env
             character(len=*), intent(in)           :: shft
             integer, intent(in)             :: k
             integer, intent(in)             :: n
@@ -4942,6 +5147,7 @@ module slicot
     interface
         subroutine mb03ag(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2, iwork, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: shft
             integer, intent(in)               :: k
             integer, intent(in)               :: n
@@ -4964,6 +5170,7 @@ module slicot
     interface
         subroutine mb03ah(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2)
+            use iso_fortran_env
             character(len=*), intent(in)           :: shft
             integer, intent(in)             :: k
             integer, intent(in)             :: n
@@ -4984,6 +5191,7 @@ module slicot
     interface
         subroutine mb03ai(shft, k, n, amap, s, sinv, a, lda1, &
                        lda2, c1, s1, c2, s2, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: shft
             integer, intent(in)               :: k
             integer, intent(in)               :: n
@@ -5004,6 +5212,7 @@ module slicot
     
     interface
         subroutine mb03ba(k, h, s, smult, amap, qmap)
+            use iso_fortran_env
             integer, intent(in)    :: k
             integer, intent(in)    :: h
             integer, intent(in)    :: s(*)
@@ -5017,6 +5226,7 @@ module slicot
     interface
         subroutine mb03bb(base, lgbas, ulp, k, amap, s, sinv, a, &
                        lda1, lda2, alphar, alphai, beta, scal, dwork, info)
+            use iso_fortran_env
             double precision, intent(in)      :: base
             double precision, intent(in)      :: lgbas
             double precision, intent(in)      :: ulp
@@ -5040,6 +5250,7 @@ module slicot
     interface
         subroutine mb03bc(k, amap, s, sinv, a, lda1, lda2, macpar, &
                        cv, sv, dwork)
+            use iso_fortran_env
             integer, intent(in)               :: k
             integer, intent(in)               :: amap(*)
             integer, intent(in)               :: s(*)
@@ -5060,6 +5271,7 @@ module slicot
                        ihi, s, a, lda1, lda2, q, ldq1, ldq2, &
                        alphar, alphai, beta, scal, iwork, liwork, dwork, ldwork, &
                        iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: defl
             character(len=*), intent(in)             :: compq
@@ -5092,6 +5304,7 @@ module slicot
     
     interface
         subroutine mb03be(k, amap, s, sinv, a, lda1, lda2)
+            use iso_fortran_env
             integer, intent(in)               :: k
             integer, intent(in)               :: amap(*)
             integer, intent(in)               :: s(*)
@@ -5105,6 +5318,7 @@ module slicot
     
     interface
         subroutine mb03bf(k, amap, s, sinv, a, lda1, lda2, ulp)
+            use iso_fortran_env
             integer, intent(in)               :: k
             integer, intent(in)               :: amap(*)
             integer, intent(in)               :: s(*)
@@ -5120,6 +5334,7 @@ module slicot
     interface
         subroutine mb03bg(k, n, amap, s, sinv, a, lda1, lda2, &
                        wr, wi)
+            use iso_fortran_env
             integer, intent(in)             :: k
             integer, intent(in)             :: n
             integer, intent(in)             :: amap(*)
@@ -5138,6 +5353,7 @@ module slicot
         subroutine mb03bz(job, compq, k, n, ilo, ihi, s, a, &
                        lda1, lda2, q, ldq1, ldq2, alpha, beta, scal, &
                        dwork, ldwork, zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: k
@@ -5145,18 +5361,18 @@ module slicot
             integer, intent(in)               :: ilo
             integer, intent(in)               :: ihi
             integer, intent(in)               :: s(*)
-            complex*16, intent(inout)         :: a(lda1, lda2, *)
+            complex(real64), intent(inout)    :: a(lda1, lda2, *)
             integer, intent(in)               :: lda1
             integer, intent(in)               :: lda2
-            complex*16, intent(inout)         :: q(ldq1, ldq2, *)
+            complex(real64), intent(inout)    :: q(ldq1, ldq2, *)
             integer, intent(in)               :: ldq1
             integer, intent(in)               :: ldq2
-            complex*16, intent(out)           :: alpha(*)
-            complex*16, intent(out)           :: beta(*)
+            complex(real64), intent(out)      :: alpha(*)
+            complex(real64), intent(out)      :: beta(*)
             integer, intent(out)              :: scal(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine mb03bz
@@ -5167,6 +5383,7 @@ module slicot
         subroutine mb03cd(uplo, n1, n2, prec, a, lda, b, ldb, &
                        d, ldd, q1, ldq1, q2, ldq2, q3, ldq3, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(inout)            :: n1
             integer, intent(inout)            :: n2
@@ -5193,18 +5410,19 @@ module slicot
     interface
         subroutine mb03cz(a, lda, b, ldb, d, ldd, co1, si1, &
                        co2, si2, co3, si3)
-            complex*16, intent(in)          :: a(lda, *)
+            use iso_fortran_env
+            complex(real64), intent(in)     :: a(lda, *)
             integer, intent(in)             :: lda
-            complex*16, intent(in)          :: b(ldb, *)
+            complex(real64), intent(in)     :: b(ldb, *)
             integer, intent(in)             :: ldb
-            complex*16, intent(in)          :: d(ldd, *)
+            complex(real64), intent(in)     :: d(ldd, *)
             integer, intent(in)             :: ldd
             double precision, intent(out)   :: co1
-            complex*16, intent(out)         :: si1
+            complex(real64), intent(out)    :: si1
             double precision, intent(out)   :: co2
-            complex*16, intent(out)         :: si2
+            complex(real64), intent(out)    :: si2
             double precision, intent(out)   :: co3
-            complex*16, intent(out)         :: si3
+            complex(real64), intent(out)    :: si3
         end subroutine mb03cz
     end interface
     public :: mb03cz
@@ -5212,6 +5430,7 @@ module slicot
     interface
         subroutine mb03dd(uplo, n1, n2, prec, a, lda, b, ldb, &
                        q1, ldq1, q2, ldq2, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(inout)            :: n1
             integer, intent(inout)            :: n2
@@ -5233,14 +5452,15 @@ module slicot
     
     interface
         subroutine mb03dz(a, lda, b, ldb, co1, si1, co2, si2)
-            complex*16, intent(in)          :: a(lda, *)
+            use iso_fortran_env
+            complex(real64), intent(in)     :: a(lda, *)
             integer, intent(in)             :: lda
-            complex*16, intent(in)          :: b(ldb, *)
+            complex(real64), intent(in)     :: b(ldb, *)
             integer, intent(in)             :: ldb
             double precision, intent(out)   :: co1
-            complex*16, intent(out)         :: si1
+            complex(real64), intent(out)    :: si1
             double precision, intent(out)   :: co2
-            complex*16, intent(out)         :: si2
+            complex(real64), intent(out)    :: si2
         end subroutine mb03dz
     end interface
     public :: mb03dz
@@ -5249,6 +5469,7 @@ module slicot
         subroutine mb03ed(n, prec, a, lda, b, ldb, d, ldd, &
                        q1, ldq1, q2, ldq2, q3, ldq3, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: prec
             double precision, intent(in)      :: a(lda, *)
@@ -5273,6 +5494,7 @@ module slicot
     interface
         subroutine mb03fd(n, prec, a, lda, b, ldb, q1, ldq1, &
                        q2, ldq2, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: prec
             double precision, intent(inout)   :: a(lda, *)
@@ -5295,24 +5517,25 @@ module slicot
                        fg, ldfg, neig, d, ldd, c, ldc, q, &
                        ldq, u, ldu, alphar, alphai, beta, iwork, liwork, &
                        dwork, ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
             character(len=*), intent(in)             :: orth
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: z(ldz, *)
+            complex(real64), intent(inout)    :: z(ldz, *)
             integer, intent(in)               :: ldz
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: fg(ldfg, *)
+            complex(real64), intent(inout)    :: fg(ldfg, *)
             integer, intent(in)               :: ldfg
             integer, intent(out)              :: neig
-            complex*16, intent(out)           :: d(ldd, *)
+            complex(real64), intent(out)      :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(out)           :: c(ldc, *)
+            complex(real64), intent(out)      :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(out)           :: q(ldq, *)
+            complex(real64), intent(out)      :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(out)           :: u(ldu, *)
+            complex(real64), intent(out)      :: u(ldu, *)
             integer, intent(in)               :: ldu
             double precision, intent(out)     :: alphar(*)
             double precision, intent(out)     :: alphai(*)
@@ -5321,7 +5544,7 @@ module slicot
             integer, intent(in)               :: liwork
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -5332,6 +5555,7 @@ module slicot
     interface
         subroutine mb03gd(n, b, ldb, d, ldd, macpar, q, ldq, &
                        u, ldu, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: b(ldb, *)
             integer, intent(in)               :: ldb
@@ -5352,15 +5576,16 @@ module slicot
     interface
         subroutine mb03gz(z11, z12, z22, h11, h12, co1, si1, co2, &
                        si2)
-            complex*16, intent(in)          :: z11
-            complex*16, intent(in)          :: z12
-            complex*16, intent(in)          :: z22
-            complex*16, intent(in)          :: h11
-            complex*16, intent(in)          :: h12
+            use iso_fortran_env
+            complex(real64), intent(in)     :: z11
+            complex(real64), intent(in)     :: z12
+            complex(real64), intent(in)     :: z22
+            complex(real64), intent(in)     :: h11
+            complex(real64), intent(in)     :: h12
             double precision, intent(out)   :: co1
-            complex*16, intent(out)         :: si1
+            complex(real64), intent(out)    :: si1
             double precision, intent(out)   :: co2
-            complex*16, intent(out)         :: si2
+            complex(real64), intent(out)    :: si2
         end subroutine mb03gz
     end interface
     public :: mb03gz
@@ -5368,6 +5593,7 @@ module slicot
     interface
         subroutine mb03hd(n, a, lda, b, ldb, macpar, q, ldq, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -5384,12 +5610,13 @@ module slicot
     
     interface
         subroutine mb03hz(s11, s12, h11, h12, co, si)
-            complex*16, intent(in)          :: s11
-            complex*16, intent(in)          :: s12
-            complex*16, intent(in)          :: h11
-            complex*16, intent(in)          :: h12
+            use iso_fortran_env
+            complex(real64), intent(in)     :: s11
+            complex(real64), intent(in)     :: s12
+            complex(real64), intent(in)     :: h11
+            complex(real64), intent(in)     :: h12
             double precision, intent(out)   :: co
-            complex*16, intent(out)         :: si
+            complex(real64), intent(out)    :: si
         end subroutine mb03hz
     end interface
     public :: mb03hz
@@ -5399,6 +5626,7 @@ module slicot
                        ldd, b, ldb, f, ldf, q, ldq, u1, &
                        ldu1, u2, ldu2, neig, iwork, liwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
             integer, intent(in)               :: n
@@ -5432,24 +5660,25 @@ module slicot
         subroutine mb03iz(compq, compu, n, a, lda, c, ldc, d, &
                        ldd, b, ldb, f, ldf, q, ldq, u1, &
                        ldu1, u2, ldu2, neig, tol, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(inout)         :: d(ldd, *)
+            complex(real64), intent(inout)    :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: f(ldf, *)
+            complex(real64), intent(inout)    :: f(ldf, *)
             integer, intent(in)               :: ldf
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(inout)         :: u1(ldu1, *)
+            complex(real64), intent(inout)    :: u1(ldu1, *)
             integer, intent(in)               :: ldu1
-            complex*16, intent(inout)         :: u2(ldu2, *)
+            complex(real64), intent(inout)    :: u2(ldu2, *)
             integer, intent(in)               :: ldu2
             integer, intent(out)              :: neig
             double precision, intent(in)      :: tol
@@ -5462,6 +5691,7 @@ module slicot
         subroutine mb03jd(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, iwork, liwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -5488,6 +5718,7 @@ module slicot
         subroutine mb03jp(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, iwork, liwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -5513,17 +5744,18 @@ module slicot
     interface
         subroutine mb03jz(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, tol, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: d(ldd, *)
+            complex(real64), intent(inout)    :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: f(ldf, *)
+            complex(real64), intent(inout)    :: f(ldf, *)
             integer, intent(in)               :: ldf
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
             integer, intent(out)              :: neig
             double precision, intent(in)      :: tol
@@ -5536,6 +5768,7 @@ module slicot
         subroutine mb03ka(compq, whichq, ws, k, nc, kschur, ifst, ilst, &
                        n, ni, s, t, ldt, ixt, q, ldq, &
                        ixq, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: whichq(*)
             logical, intent(in)               :: ws
@@ -5566,6 +5799,7 @@ module slicot
         subroutine mb03kb(compq, whichq, ws, k, nc, kschur, j1, n1, &
                        n2, n, ni, s, t, ldt, ixt, q, &
                        ldq, ixq, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: whichq(*)
             logical, intent(in)               :: ws
@@ -5596,6 +5830,7 @@ module slicot
     interface
         subroutine mb03kc(k, khess, n, r, s, a, lda, v, &
                        tau)
+            use iso_fortran_env
             integer, intent(in)               :: k
             integer, intent(in)               :: khess
             integer, intent(in)               :: n
@@ -5613,6 +5848,7 @@ module slicot
         subroutine mb03kd(compq, whichq, strong, k, nc, kschur, n, ni, &
                        s, select, t, ldt, ixt, q, ldq, ixq, &
                        m, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: whichq(*)
             character(len=*), intent(in)             :: strong
@@ -5642,6 +5878,7 @@ module slicot
     interface
         subroutine mb03ke(trana, tranb, isgn, k, m, n, prec, smin, &
                        s, a, b, c, scale, dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: trana
             logical, intent(in)               :: tranb
             integer, intent(in)               :: isgn
@@ -5666,6 +5903,7 @@ module slicot
         subroutine mb03ld(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: orth
             integer, intent(in)               :: n
@@ -5698,6 +5936,7 @@ module slicot
                        fg, ldfg, neig, q, ldq, u, ldu, alphar, &
                        alphai, beta, iwork, liwork, dwork, ldwork, bwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
             character(len=*), intent(in)             :: orth
@@ -5731,6 +5970,7 @@ module slicot
         subroutine mb03lp(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: orth
             integer, intent(in)               :: n
@@ -5762,19 +6002,20 @@ module slicot
         subroutine mb03lz(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, dwork, ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: orth
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: de(ldde, *)
+            complex(real64), intent(inout)    :: de(ldde, *)
             integer, intent(in)               :: ldde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: fg(ldfg, *)
+            complex(real64), intent(inout)    :: fg(ldfg, *)
             integer, intent(in)               :: ldfg
             integer, intent(out)              :: neig
-            complex*16, intent(out)           :: q(ldq, *)
+            complex(real64), intent(out)      :: q(ldq, *)
             integer, intent(in)               :: ldq
             double precision, intent(out)     :: alphar(*)
             double precision, intent(out)     :: alphai(*)
@@ -5782,7 +6023,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -5793,6 +6034,7 @@ module slicot
     interface
         subroutine mb03md(n, l, theta, q, e, q2, e2, pivmin, &
                        tol, reltol, iwarn, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(inout)            :: l
             double precision, intent(inout)   :: theta
@@ -5811,6 +6053,7 @@ module slicot
     
     interface
         double precision function mb03my (nx,x,incx)
+            use iso_fortran_env
             integer, intent(in)            :: nx
             double precision, intent(in)   :: x(*)
             integer, intent(in)            :: incx
@@ -5820,6 +6063,7 @@ module slicot
     
     interface
         integer function mb03nd (n,theta,q2,e2,pivmin,info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             double precision, intent(in)    :: theta
             double precision, intent(in)    :: q2(*)
@@ -5833,6 +6077,7 @@ module slicot
     interface
         double precision function mb03ny (n,omega,a,lda,s,dwork,ldwork,zwork, &
                        lzwork,info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: omega
             double precision, intent(inout)   :: a(lda, *)
@@ -5840,7 +6085,7 @@ module slicot
             double precision, intent(out)     :: s(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end function mb03ny
@@ -5850,6 +6095,7 @@ module slicot
     interface
         subroutine mb03od(jobqr, m, n, a, lda, jpvt, rcond, svlmax, &
                        tau, rank, sval, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobqr
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -5871,6 +6117,7 @@ module slicot
     interface
         subroutine mb03oy(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -5890,6 +6137,7 @@ module slicot
     interface
         subroutine mb03pd(jobrq, m, n, a, lda, jpvt, rcond, svlmax, &
                        tau, rank, sval, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobrq
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -5910,6 +6158,7 @@ module slicot
     interface
         subroutine mb03py(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -5929,6 +6178,7 @@ module slicot
     interface
         subroutine mb03qd(dico, stdom, jobu, n, nlow, nsup, alpha, a, &
                        lda, u, ldu, ndim, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: jobu
@@ -5951,6 +6201,7 @@ module slicot
         subroutine mb03qg(dico, stdom, jobu, jobv, n, nlow, nsup, alpha, &
                        a, lda, e, lde, u, ldu, v, ldv, &
                        ndim, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: jobu
@@ -5978,6 +6229,7 @@ module slicot
     interface
         subroutine mb03qv(n, s, lds, t, ldt, alphar, alphai, beta, &
                        info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             double precision, intent(in)    :: s(lds, *)
             integer, intent(in)             :: lds
@@ -5994,6 +6246,7 @@ module slicot
     interface
         subroutine mb03qw(n, l, a, lda, e, lde, u, ldu, &
                        v, ldv, alphar, alphai, beta, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: l
             double precision, intent(inout)   :: a(lda, *)
@@ -6014,6 +6267,7 @@ module slicot
     
     interface
         subroutine mb03qx(n, t, ldt, wr, wi, info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             double precision, intent(in)    :: t(ldt, *)
             integer, intent(in)             :: ldt
@@ -6027,6 +6281,7 @@ module slicot
     interface
         subroutine mb03qy(n, l, a, lda, u, ldu, e1, e2, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: l
             double precision, intent(inout)   :: a(lda, *)
@@ -6043,6 +6298,7 @@ module slicot
     interface
         subroutine mb03rd(jobx, sort, n, pmax, a, lda, x, ldx, &
                        nblcks, blsize, wr, wi, tol, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: sort
             integer, intent(in)               :: n
@@ -6065,14 +6321,15 @@ module slicot
     interface
         subroutine mb03rw(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: b(ldb, *)
+            complex(real64), intent(in)       :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
             integer, intent(out)              :: info
         end subroutine mb03rw
@@ -6082,6 +6339,7 @@ module slicot
     interface
         subroutine mb03rx(jobv, n, kl, ku, a, lda, x, ldx, &
                        wr, wi, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobv
             integer, intent(in)               :: n
             integer, intent(in)               :: kl
@@ -6100,6 +6358,7 @@ module slicot
     interface
         subroutine mb03ry(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
@@ -6117,17 +6376,18 @@ module slicot
     interface
         subroutine mb03rz(jobx, sort, n, pmax, a, lda, x, ldx, &
                        nblcks, blsize, w, tol, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: sort
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: x(ldx, *)
+            complex(real64), intent(inout)    :: x(ldx, *)
             integer, intent(in)               :: ldx
             integer, intent(out)              :: nblcks
             integer, intent(out)              :: blsize(*)
-            complex*16, intent(out)           :: w(*)
+            complex(real64), intent(out)      :: w(*)
             double precision, intent(in)      :: tol
             integer, intent(out)              :: info
         end subroutine mb03rz
@@ -6137,6 +6397,7 @@ module slicot
     interface
         subroutine mb03sd(jobscl, n, a, lda, qg, ldqg, wr, wi, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobscl
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -6156,6 +6417,7 @@ module slicot
         subroutine mb03td(typ, compu, select, lower, n, a, lda, g, &
                        ldg, u1, ldu1, u2, ldu2, wr, wi, m, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: typ
             character(len=*), intent(in)             :: compu
             logical, intent(inout)            :: select(*)
@@ -6182,6 +6444,7 @@ module slicot
     interface
         subroutine mb03ts(isham, wantu, n, a, lda, g, ldg, u1, &
                        ldu1, u2, ldu2, j1, n1, n2, dwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: isham
             logical, intent(in)               :: wantu
             integer, intent(in)               :: n
@@ -6205,6 +6468,7 @@ module slicot
     interface
         subroutine mb03ud(jobq, jobp, n, a, lda, q, ldq, sv, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobq
             character(len=*), intent(in)             :: jobp
             integer, intent(in)               :: n
@@ -6223,6 +6487,7 @@ module slicot
     interface
         subroutine mb03vd(n, p, ilo, ihi, a, lda1, lda2, tau, &
                        ldtau, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: p
             integer, intent(in)               :: ilo
@@ -6242,6 +6507,7 @@ module slicot
         subroutine mb03vw(compq, qind, triu, n, k, h, ilo, ihi, &
                        s, a, lda1, lda2, q, ldq1, ldq2, iwork, &
                        liwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: qind(*)
             character(len=*), intent(in)             :: triu
@@ -6269,6 +6535,7 @@ module slicot
     interface
         subroutine mb03vy(n, p, ilo, ihi, a, lda1, lda2, tau, &
                        ldtau, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: p
             integer, intent(in)               :: ilo
@@ -6288,6 +6555,7 @@ module slicot
     interface
         subroutine mb03wa(wantq, wantz, n1, n2, a, lda, b, ldb, &
                        q, ldq, z, ldz, info)
+            use iso_fortran_env
             logical, intent(in)               :: wantq
             logical, intent(in)               :: wantz
             integer, intent(in)               :: n1
@@ -6309,6 +6577,7 @@ module slicot
         subroutine mb03wd(job, compz, n, p, ilo, ihi, iloz, ihiz, &
                        h, ldh1, ldh2, z, ldz1, ldz2, wr, wi, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: n
@@ -6334,6 +6603,7 @@ module slicot
     
     interface
         subroutine mb03wx(n, p, t, ldt1, ldt2, wr, wi, info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             integer, intent(in)             :: p
             double precision, intent(in)    :: t(ldt1, ldt2, *)
@@ -6351,6 +6621,7 @@ module slicot
                        ldqg, t, ldt, u1, ldu1, u2, ldu2, v1, &
                        ldv1, v2, ldv2, wr, wi, ilo, scale, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: balanc
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobu
@@ -6385,6 +6656,7 @@ module slicot
         subroutine mb03xp(job, compq, compz, n, ilo, ihi, a, lda, &
                        b, ldb, q, ldq, z, ldz, alphar, alphai, &
                        beta, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
@@ -6412,6 +6684,7 @@ module slicot
     interface
         subroutine mb03xs(jobu, n, a, lda, qg, ldqg, u1, ldu1, &
                        u2, ldu2, wr, wi, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -6437,6 +6710,7 @@ module slicot
                        ldxb, xg, ldxg, xq, ldxq, ya, ldya, yb, &
                        ldyb, yg, ldyg, yq, ldyq, csl, csr, taul, &
                        taur, dwork)
+            use iso_fortran_env
             logical, intent(in)               :: ltra
             logical, intent(in)               :: ltrb
             integer, intent(in)               :: n
@@ -6479,17 +6753,18 @@ module slicot
         subroutine mb03xz(balanc, job, jobu, n, a, lda, qg, ldqg, &
                        u1, ldu1, u2, ldu2, wr, wi, ilo, scale, &
                        dwork, ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: balanc
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobu
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: qg(ldqg, *)
+            complex(real64), intent(inout)    :: qg(ldqg, *)
             integer, intent(in)               :: ldqg
-            complex*16, intent(out)           :: u1(ldu1, *)
+            complex(real64), intent(out)      :: u1(ldu1, *)
             integer, intent(in)               :: ldu1
-            complex*16, intent(out)           :: u2(ldu2, *)
+            complex(real64), intent(out)      :: u2(ldu2, *)
             integer, intent(in)               :: ldu2
             double precision, intent(out)     :: wr(*)
             double precision, intent(out)     :: wi(*)
@@ -6497,7 +6772,7 @@ module slicot
             double precision, intent(out)     :: scale(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -6509,6 +6784,7 @@ module slicot
         subroutine mb03ya(wantt, wantq, wantz, n, ilo, ihi, iloq, ihiq, &
                        pos, a, lda, b, ldb, q, ldq, z, &
                        ldz, info)
+            use iso_fortran_env
             logical, intent(in)               :: wantt
             logical, intent(in)               :: wantq
             logical, intent(in)               :: wantz
@@ -6535,6 +6811,7 @@ module slicot
         subroutine mb03yd(wantt, wantq, wantz, n, ilo, ihi, iloq, ihiq, &
                        a, lda, b, ldb, q, ldq, z, ldz, &
                        alphar, alphai, beta, dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: wantt
             logical, intent(in)               :: wantq
             logical, intent(in)               :: wantz
@@ -6564,6 +6841,7 @@ module slicot
     interface
         subroutine mb03yt(a, lda, b, ldb, alphar, alphai, beta, csl, &
                        snl, csr, snr)
+            use iso_fortran_env
             double precision, intent(inout)   :: a(lda, *)
             integer, intent(in)               :: lda
             double precision, intent(inout)   :: b(ldb, *)
@@ -6584,6 +6862,7 @@ module slicot
                        lda, b, ldb, c, ldc, u1, ldu1, u2, &
                        ldu2, v1, ldv1, v2, ldv2, w, ldw, wr, &
                        wi, m, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compc
             character(len=*), intent(in)             :: compu
             character(len=*), intent(in)             :: compv
@@ -6623,6 +6902,7 @@ module slicot
                        u1, ldu1, u2, ldu2, v1, ldv1, v2, ldv2, &
                        m, wr, wi, us, ldus, uu, lduu, lwork, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: which
             character(len=*), intent(in)             :: meth
             character(len=*), intent(in)             :: stab
@@ -6668,6 +6948,7 @@ module slicot
                        h, ldh, q1, ldq1, q2, ldq2, u11, ldu11, &
                        u12, ldu12, u21, ldu21, u22, ldu22, t, ldt, &
                        alphar, alphai, beta, iwork, liwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq1
             character(len=*), intent(in)             :: compq2
@@ -6709,23 +6990,24 @@ module slicot
                        fg, ldfg, d, ldd, c, ldc, q, ldq, &
                        u, ldu, alphar, alphai, beta, iwork, liwork, dwork, &
                        ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: z(ldz, *)
+            complex(real64), intent(inout)    :: z(ldz, *)
             integer, intent(in)               :: ldz
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: fg(ldfg, *)
+            complex(real64), intent(inout)    :: fg(ldfg, *)
             integer, intent(in)               :: ldfg
-            complex*16, intent(out)           :: d(ldd, *)
+            complex(real64), intent(out)      :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(out)           :: c(ldc, *)
+            complex(real64), intent(out)      :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(out)           :: q(ldq, *)
+            complex(real64), intent(out)      :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(out)           :: u(ldu, *)
+            complex(real64), intent(out)      :: u(ldu, *)
             integer, intent(in)               :: ldu
             double precision, intent(out)     :: alphar(*)
             double precision, intent(out)     :: alphai(*)
@@ -6734,7 +7016,7 @@ module slicot
             integer, intent(in)               :: liwork
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -6747,6 +7029,7 @@ module slicot
                        c1, ldc1, vw, ldvw, q1, ldq1, q2, ldq2, &
                        b, ldb, f, ldf, c2, ldc2, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq1
             character(len=*), intent(in)             :: compq2
@@ -6786,6 +7069,7 @@ module slicot
                        c1, ldc1, vw, ldvw, q1, ldq1, q2, ldq2, &
                        b, ldb, f, ldf, c2, ldc2, alphar, alphai, &
                        beta, iwork, liwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq1
             character(len=*), intent(in)             :: compq2
@@ -6824,18 +7108,19 @@ module slicot
         subroutine mb04bz(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: de(ldde, *)
+            complex(real64), intent(inout)    :: de(ldde, *)
             integer, intent(in)               :: ldde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: fg(ldfg, *)
+            complex(real64), intent(inout)    :: fg(ldfg, *)
             integer, intent(in)               :: ldfg
-            complex*16, intent(out)           :: q(ldq, *)
+            complex(real64), intent(out)      :: q(ldq, *)
             integer, intent(in)               :: ldq
             double precision, intent(out)     :: alphar(*)
             double precision, intent(out)     :: alphai(*)
@@ -6843,7 +7128,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -6855,6 +7140,7 @@ module slicot
         subroutine mb04cd(compq1, compq2, compq3, n, a, lda, b, ldb, &
                        d, ldd, q1, ldq1, q2, ldq2, q3, ldq3, &
                        iwork, liwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq1
             character(len=*), intent(in)             :: compq2
             character(len=*), intent(in)             :: compq3
@@ -6884,6 +7170,7 @@ module slicot
     interface
         subroutine mb04db(job, sgn, n, ilo, lscale, rscale, m, v1, &
                        ldv1, v2, ldv2, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: sgn
             integer, intent(in)               :: n
@@ -6903,6 +7190,7 @@ module slicot
     interface
         subroutine mb04dd(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -6919,6 +7207,7 @@ module slicot
     interface
         subroutine mb04di(job, sgn, n, ilo, scale, m, v1, ldv1, &
                        v2, ldv2, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: sgn
             integer, intent(in)               :: n
@@ -6937,6 +7226,7 @@ module slicot
     interface
         subroutine mb04dl(job, n, thresh, a, lda, b, ldb, ilo, &
                        ihi, lscale, rscale, dwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(in)      :: thresh
@@ -6959,6 +7249,7 @@ module slicot
         subroutine mb04dp(job, n, thresh, a, lda, de, ldde, c, &
                        ldc, vw, ldvw, ilo, lscale, rscale, dwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(in)      :: thresh
@@ -6983,6 +7274,7 @@ module slicot
     interface
         subroutine mb04ds(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -6999,6 +7291,7 @@ module slicot
     interface
         subroutine mb04dy(jobscl, n, a, lda, qg, ldqg, d, dwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobscl
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -7015,11 +7308,12 @@ module slicot
     interface
         subroutine mb04dz(job, n, a, lda, qg, ldqg, ilo, scale, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: qg(ldqg, *)
+            complex(real64), intent(inout)    :: qg(ldqg, *)
             integer, intent(in)               :: ldqg
             integer, intent(out)              :: ilo
             double precision, intent(out)     :: scale(*)
@@ -7032,6 +7326,7 @@ module slicot
         subroutine mb04ed(job, compq, compu, n, z, ldz, b, ldb, &
                        fg, ldfg, q, ldq, u1, ldu1, u2, ldu2, &
                        alphar, alphai, beta, iwork, liwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compu
@@ -7064,6 +7359,7 @@ module slicot
         subroutine mb04fd(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
@@ -7092,6 +7388,7 @@ module slicot
         subroutine mb04fp(job, compq, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, q, ldq, alphar, alphai, beta, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
@@ -7118,6 +7415,7 @@ module slicot
     
     interface
         subroutine mb04gd(m, n, a, lda, jpvt, tau, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -7134,6 +7432,7 @@ module slicot
         subroutine mb04hd(compq1, compq2, n, a, lda, b, ldb, q1, &
                        ldq1, q2, ldq2, iwork, liwork, dwork, ldwork, bwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq1
             character(len=*), intent(in)             :: compq2
             integer, intent(in)               :: n
@@ -7158,6 +7457,7 @@ module slicot
     interface
         subroutine mb04id(n, m, p, l, a, lda, b, ldb, &
                        tau, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -7177,6 +7477,7 @@ module slicot
     interface
         subroutine mb04iy(side, trans, n, m, k, p, a, lda, &
                        tau, c, ldc, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -7198,18 +7499,19 @@ module slicot
     interface
         subroutine mb04iz(n, m, p, l, a, lda, b, ldb, &
                        tau, zwork, lzwork, info)
-            integer, intent(in)         :: n
-            integer, intent(in)         :: m
-            integer, intent(in)         :: p
-            integer, intent(in)         :: l
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
-            complex*16, intent(inout)   :: b(ldb, *)
-            integer, intent(in)         :: ldb
-            complex*16, intent(out)     :: tau(*)
-            complex*16, intent(inout)   :: zwork(*)
-            integer, intent(in)         :: lzwork
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            integer, intent(in)              :: n
+            integer, intent(in)              :: m
+            integer, intent(in)              :: p
+            integer, intent(in)              :: l
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
+            complex(real64), intent(inout)   :: b(ldb, *)
+            integer, intent(in)              :: ldb
+            complex(real64), intent(out)     :: tau(*)
+            complex(real64), intent(inout)   :: zwork(*)
+            integer, intent(in)              :: lzwork
+            integer, intent(out)             :: info
         end subroutine mb04iz
     end interface
     public :: mb04iz
@@ -7217,6 +7519,7 @@ module slicot
     interface
         subroutine mb04jd(n, m, p, l, a, lda, b, ldb, &
                        tau, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -7236,6 +7539,7 @@ module slicot
     interface
         subroutine mb04kd(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -7257,6 +7561,7 @@ module slicot
     interface
         subroutine mb04ld(uplo, n, m, p, l, ldl, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -7277,6 +7582,7 @@ module slicot
     
     interface
         subroutine mb04md(n, maxred, a, lda, scale, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: maxred
             double precision, intent(inout)   :: a(lda, *)
@@ -7290,6 +7596,7 @@ module slicot
     interface
         subroutine mb04nd(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -7311,6 +7618,7 @@ module slicot
     interface
         subroutine mb04ny(m, n, v, incv, tau, a, lda, b, &
                        ldb, dwork)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: v(*)
@@ -7328,6 +7636,7 @@ module slicot
     interface
         subroutine mb04od(uplo, n, m, p, r, ldr, a, lda, &
                        b, ldb, c, ldc, tau, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -7349,6 +7658,7 @@ module slicot
     interface
         subroutine mb04ow(m, n, p, a, lda, t, ldt, x, &
                        incx, b, ldb, c, ldc, d, incd)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             integer, intent(in)               :: p
@@ -7370,6 +7680,7 @@ module slicot
     
     interface
         subroutine mb04ox(n, a, lda, x, incx)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
             integer, intent(in)               :: lda
@@ -7382,6 +7693,7 @@ module slicot
     interface
         subroutine mb04oy(m, n, v, tau, a, lda, b, ldb, &
                        dwork)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: v(*)
@@ -7399,6 +7711,7 @@ module slicot
         subroutine mb04pa(lham, n, k, nb, a, lda, qg, ldqg, &
                        xa, ldxa, xg, ldxg, xq, ldxq, ya, ldya, &
                        cs, tau, dwork)
+            use iso_fortran_env
             logical, intent(in)               :: lham
             integer, intent(in)               :: n
             integer, intent(in)               :: k
@@ -7425,6 +7738,7 @@ module slicot
     interface
         subroutine mb04pb(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ilo
             double precision, intent(inout)   :: a(lda, *)
@@ -7443,6 +7757,7 @@ module slicot
     interface
         subroutine mb04pu(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ilo
             double precision, intent(inout)   :: a(lda, *)
@@ -7460,6 +7775,7 @@ module slicot
     
     interface
         subroutine mb04py(side, m, n, v, tau, c, ldc, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: side
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -7476,6 +7792,7 @@ module slicot
         subroutine mb04qb(tranc, trand, tranq, storev, storew, m, n, k, &
                        v, ldv, w, ldw, c, ldc, d, ldd, &
                        cs, tau, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: tranc
             character(len=*), intent(in)             :: trand
             character(len=*), intent(in)             :: tranq
@@ -7505,6 +7822,7 @@ module slicot
         subroutine mb04qc(strab, trana, tranb, tranq, direct, storev, storew, m, &
                        n, k, v, ldv, w, ldw, rs, ldrs, &
                        t, ldt, a, lda, b, ldb, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: strab
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: tranb
@@ -7535,6 +7853,7 @@ module slicot
     interface
         subroutine mb04qf(direct, storev, storew, n, k, v, ldv, w, &
                        ldw, cs, tau, rs, ldrs, t, ldt, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: direct
             character(len=*), intent(in)             :: storev
             character(len=*), intent(in)             :: storew
@@ -7559,6 +7878,7 @@ module slicot
         subroutine mb04qs(tranc, trand, tranu, m, n, ilo, v, ldv, &
                        w, ldw, c, ldc, d, ldd, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: tranc
             character(len=*), intent(in)             :: trand
             character(len=*), intent(in)             :: tranu
@@ -7586,6 +7906,7 @@ module slicot
         subroutine mb04qu(tranc, trand, tranq, storev, storew, m, n, k, &
                        v, ldv, w, ldw, c, ldc, d, ldd, &
                        cs, tau, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: tranc
             character(len=*), intent(in)             :: trand
             character(len=*), intent(in)             :: tranq
@@ -7614,6 +7935,7 @@ module slicot
     interface
         subroutine mb04rb(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ilo
             double precision, intent(inout)   :: a(lda, *)
@@ -7633,6 +7955,7 @@ module slicot
         subroutine mb04rd(jobx, joby, sort, n, pmax, a, lda, b, &
                        ldb, x, ldx, y, ldy, nblcks, blsize, alphar, &
                        alphai, beta, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: joby
             character(len=*), intent(in)             :: sort
@@ -7664,6 +7987,7 @@ module slicot
         subroutine mb04rs(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
@@ -7690,6 +8014,7 @@ module slicot
         subroutine mb04rt(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
@@ -7715,6 +8040,7 @@ module slicot
     interface
         subroutine mb04ru(n, ilo, a, lda, qg, ldqg, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ilo
             double precision, intent(inout)   :: a(lda, *)
@@ -7734,20 +8060,21 @@ module slicot
         subroutine mb04rv(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: b(ldb, *)
+            complex(real64), intent(in)       :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(in)            :: d(ldd, *)
+            complex(real64), intent(in)       :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(in)            :: e(lde, *)
+            complex(real64), intent(in)       :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: f(ldf, *)
+            complex(real64), intent(inout)    :: f(ldf, *)
             integer, intent(in)               :: ldf
             double precision, intent(out)     :: scale
             integer, intent(out)              :: info
@@ -7759,20 +8086,21 @@ module slicot
         subroutine mb04rw(m, n, pmax, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, f, ldf, scale, &
                        iwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
-            complex*16, intent(in)            :: a(lda, *)
+            complex(real64), intent(in)       :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(in)            :: b(ldb, *)
+            complex(real64), intent(in)       :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(in)            :: d(ldd, *)
+            complex(real64), intent(in)       :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(in)            :: e(lde, *)
+            complex(real64), intent(in)       :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: f(ldf, *)
+            complex(real64), intent(inout)    :: f(ldf, *)
             integer, intent(in)               :: ldf
             double precision, intent(out)     :: scale
             integer, intent(inout)            :: iwork(*)
@@ -7785,23 +8113,24 @@ module slicot
         subroutine mb04rz(jobx, joby, sort, n, pmax, a, lda, b, &
                        ldb, x, ldx, y, ldy, nblcks, blsize, alpha, &
                        beta, tol, iwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobx
             character(len=*), intent(in)             :: joby
             character(len=*), intent(in)             :: sort
             integer, intent(in)               :: n
             double precision, intent(in)      :: pmax
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: x(ldx, *)
+            complex(real64), intent(inout)    :: x(ldx, *)
             integer, intent(in)               :: ldx
-            complex*16, intent(inout)         :: y(ldy, *)
+            complex(real64), intent(inout)    :: y(ldy, *)
             integer, intent(in)               :: ldy
             integer, intent(out)              :: nblcks
             integer, intent(out)              :: blsize(*)
-            complex*16, intent(out)           :: alpha(*)
-            complex*16, intent(out)           :: beta(*)
+            complex(real64), intent(out)      :: alpha(*)
+            complex(real64), intent(out)      :: beta(*)
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             integer, intent(out)              :: info
@@ -7812,6 +8141,7 @@ module slicot
     interface
         subroutine mb04su(m, n, a, lda, b, ldb, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -7831,6 +8161,7 @@ module slicot
         subroutine mb04tb(trana, tranb, n, ilo, a, lda, b, ldb, &
                        g, ldg, q, ldq, csl, csr, taul, taur, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: tranb
             integer, intent(in)               :: n
@@ -7858,6 +8189,7 @@ module slicot
         subroutine mb04ts(trana, tranb, n, ilo, a, lda, b, ldb, &
                        g, ldg, q, ldq, csl, csr, taul, taur, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: tranb
             integer, intent(in)               :: n
@@ -7885,6 +8217,7 @@ module slicot
         subroutine mb04tt(updatq, updatz, m, n, ifira, ifica, nca, a, &
                        lda, e, lde, q, ldq, z, ldz, istair, &
                        rank, tol, iwork)
+            use iso_fortran_env
             logical, intent(in)               :: updatq
             logical, intent(in)               :: updatz
             integer, intent(in)               :: m
@@ -7910,6 +8243,7 @@ module slicot
     
     interface
         subroutine mb04tu(n, x, incx, y, incy, c, s)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(inout)   :: x(*)
             integer, intent(in)               :: incx
@@ -7924,6 +8258,7 @@ module slicot
     interface
         subroutine mb04tv(updatz, n, nra, nca, ifira, ifica, a, lda, &
                        e, lde, z, ldz)
+            use iso_fortran_env
             logical, intent(in)               :: updatz
             integer, intent(in)               :: n
             integer, intent(in)               :: nra
@@ -7943,6 +8278,7 @@ module slicot
     interface
         subroutine mb04tw(updatq, m, n, nre, nce, ifire, ifice, ifica, &
                        a, lda, e, lde, q, ldq)
+            use iso_fortran_env
             logical, intent(in)               :: updatq
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -7964,6 +8300,7 @@ module slicot
     interface
         subroutine mb04tx(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, mnei)
+            use iso_fortran_env
             logical, intent(in)               :: updatq
             logical, intent(in)               :: updatz
             integer, intent(in)               :: m
@@ -7987,6 +8324,7 @@ module slicot
     interface
         subroutine mb04ty(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, info)
+            use iso_fortran_env
             logical, intent(in)               :: updatq
             logical, intent(in)               :: updatz
             integer, intent(in)               :: m
@@ -8011,6 +8349,7 @@ module slicot
         subroutine mb04ud(jobq, jobz, m, n, a, lda, e, lde, &
                        q, ldq, z, ldz, ranke, istair, tol, dwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobq
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: m
@@ -8036,6 +8375,7 @@ module slicot
         subroutine mb04vd(mode, jobq, jobz, m, n, ranke, a, lda, &
                        e, lde, q, ldq, z, ldz, istair, nblcks, &
                        nblcki, imuk, inuk, imuk0, mnei, tol, iwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: mode
             character(len=*), intent(in)             :: jobq
             character(len=*), intent(in)             :: jobz
@@ -8067,6 +8407,7 @@ module slicot
     interface
         subroutine mb04vx(updatq, updatz, m, n, nblcks, inuk, imuk, a, &
                        lda, e, lde, q, ldq, z, ldz, mnei)
+            use iso_fortran_env
             logical, intent(in)               :: updatq
             logical, intent(in)               :: updatz
             integer, intent(in)               :: m
@@ -8090,6 +8431,7 @@ module slicot
     interface
         subroutine mb04wd(tranq1, tranq2, m, n, k, q1, ldq1, q2, &
                        ldq2, cs, tau, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: tranq1
             character(len=*), intent(in)             :: tranq2
             integer, intent(in)               :: m
@@ -8111,6 +8453,7 @@ module slicot
     interface
         subroutine mb04wp(n, ilo, u1, ldu1, u2, ldu2, cs, tau, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ilo
             double precision, intent(inout)   :: u1(ldu1, *)
@@ -8129,6 +8472,7 @@ module slicot
     interface
         subroutine mb04wr(job, trans, n, ilo, q1, ldq1, q2, ldq2, &
                        cs, tau, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
@@ -8149,6 +8493,7 @@ module slicot
     interface
         subroutine mb04wu(tranq1, tranq2, m, n, k, q1, ldq1, q2, &
                        ldq2, cs, tau, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: tranq1
             character(len=*), intent(in)             :: tranq2
             integer, intent(in)               :: m
@@ -8171,6 +8516,7 @@ module slicot
         subroutine mb04xd(jobu, jobv, m, n, rank, theta, a, lda, &
                        u, ldu, v, ldv, q, inul, tol, reltol, &
                        dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: jobv
             integer, intent(in)               :: m
@@ -8198,6 +8544,7 @@ module slicot
     interface
         subroutine mb04xy(jobu, jobv, m, n, x, ldx, taup, tauq, &
                        u, ldu, v, ldv, inul, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: jobv
             integer, intent(in)               :: m
@@ -8220,6 +8567,7 @@ module slicot
         subroutine mb04yd(jobu, jobv, m, n, rank, theta, q, e, &
                        u, ldu, v, ldv, inul, tol, reltol, dwork, &
                        ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: jobv
             integer, intent(in)               :: m
@@ -8246,6 +8594,7 @@ module slicot
     interface
         subroutine mb04yw(qrit, updatu, updatv, m, n, l, k, shift, &
                        d, e, u, ldu, v, ldv, dwork)
+            use iso_fortran_env
             logical, intent(in)               :: qrit
             logical, intent(in)               :: updatu
             logical, intent(in)               :: updatv
@@ -8268,6 +8617,7 @@ module slicot
     interface
         subroutine mb04zd(compu, n, a, lda, qg, ldqg, u, ldu, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compu
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -8285,6 +8635,7 @@ module slicot
     interface
         subroutine mb05md(balanc, n, delta, a, lda, v, ldv, y, &
                        ldy, valr, vali, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: balanc
             integer, intent(in)               :: n
             double precision, intent(in)      :: delta
@@ -8307,6 +8658,7 @@ module slicot
     interface
         subroutine mb05my(balanc, n, a, lda, wr, wi, r, ldr, &
                        q, ldq, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: balanc
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -8327,6 +8679,7 @@ module slicot
     interface
         subroutine mb05nd(n, delta, a, lda, ex, ldex, exint, ldexin, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             double precision, intent(in)      :: delta
             double precision, intent(in)      :: a(lda, *)
@@ -8347,6 +8700,7 @@ module slicot
     interface
         subroutine mb05od(balanc, n, ndiag, delta, a, lda, mdig, idig, &
                        iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: balanc
             integer, intent(in)               :: n
             integer, intent(in)               :: ndiag
@@ -8366,6 +8720,7 @@ module slicot
     
     interface
         subroutine mb05oy(job, n, low, igh, a, lda, scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: low
@@ -8382,22 +8737,23 @@ module slicot
         subroutine mb3jzp(compq, n, a, lda, d, ldd, b, ldb, &
                        f, ldf, q, ldq, neig, tol, dwork, zwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: d(ldd, *)
+            complex(real64), intent(inout)    :: d(ldd, *)
             integer, intent(in)               :: ldd
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: f(ldf, *)
+            complex(real64), intent(inout)    :: f(ldf, *)
             integer, intent(in)               :: ldf
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
             integer, intent(out)              :: neig
             double precision, intent(in)      :: tol
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine mb3jzp
     end interface
@@ -8407,19 +8763,20 @@ module slicot
         subroutine mb3lzp(compq, orth, n, a, lda, de, ldde, b, &
                        ldb, fg, ldfg, neig, q, ldq, alphar, alphai, &
                        beta, iwork, dwork, ldwork, zwork, lzwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: orth
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: de(ldde, *)
+            complex(real64), intent(inout)    :: de(ldde, *)
             integer, intent(in)               :: ldde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: fg(ldfg, *)
+            complex(real64), intent(inout)    :: fg(ldfg, *)
             integer, intent(in)               :: ldfg
             integer, intent(out)              :: neig
-            complex*16, intent(out)           :: q(ldq, *)
+            complex(real64), intent(out)      :: q(ldq, *)
             integer, intent(in)               :: ldq
             double precision, intent(out)     :: alphar(*)
             double precision, intent(out)     :: alphai(*)
@@ -8427,7 +8784,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             logical, intent(inout)            :: bwork(*)
             integer, intent(out)              :: info
@@ -8438,18 +8795,19 @@ module slicot
     interface
         subroutine mb3oyz(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, zwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
             double precision, intent(in)      :: rcond
             double precision, intent(in)      :: svlmax
             integer, intent(out)              :: rank
             double precision, intent(out)     :: sval(3)
             integer, intent(out)              :: jpvt(*)
-            complex*16, intent(out)           :: tau(*)
+            complex(real64), intent(out)      :: tau(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine mb3oyz
     end interface
@@ -8458,18 +8816,19 @@ module slicot
     interface
         subroutine mb3pyz(m, n, a, lda, rcond, svlmax, rank, sval, &
                        jpvt, tau, dwork, zwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
             double precision, intent(in)      :: rcond
             double precision, intent(in)      :: svlmax
             integer, intent(out)              :: rank
             double precision, intent(out)     :: sval(3)
             integer, intent(out)              :: jpvt(*)
-            complex*16, intent(out)           :: tau(*)
+            complex(real64), intent(out)      :: tau(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine mb3pyz
     end interface
@@ -8478,6 +8837,7 @@ module slicot
     interface
         subroutine mb4dbz(job, sgn, n, ilo, lscale, rscale, m, v1, &
                        ldv1, v2, ldv2, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: sgn
             integer, intent(in)               :: n
@@ -8485,9 +8845,9 @@ module slicot
             double precision, intent(in)      :: lscale(*)
             double precision, intent(in)      :: rscale(*)
             integer, intent(in)               :: m
-            complex*16, intent(inout)         :: v1(ldv1, *)
+            complex(real64), intent(inout)    :: v1(ldv1, *)
             integer, intent(in)               :: ldv1
-            complex*16, intent(inout)         :: v2(ldv2, *)
+            complex(real64), intent(inout)    :: v2(ldv2, *)
             integer, intent(in)               :: ldv2
             integer, intent(out)              :: info
         end subroutine mb4dbz
@@ -8497,12 +8857,13 @@ module slicot
     interface
         subroutine mb4dlz(job, n, thresh, a, lda, b, ldb, ilo, &
                        ihi, lscale, rscale, dwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(in)      :: thresh
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
             integer, intent(out)              :: ilo
             integer, intent(out)              :: ihi
@@ -8519,16 +8880,17 @@ module slicot
         subroutine mb4dpz(job, n, thresh, a, lda, de, ldde, c, &
                        ldc, vw, ldvw, ilo, lscale, rscale, dwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             double precision, intent(in)      :: thresh
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: de(ldde, *)
+            complex(real64), intent(inout)    :: de(ldde, *)
             integer, intent(in)               :: ldde
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(inout)         :: vw(ldvw, *)
+            complex(real64), intent(inout)    :: vw(ldvw, *)
             integer, intent(in)               :: ldvw
             integer, intent(out)              :: ilo
             double precision, intent(out)     :: lscale(*)
@@ -8542,6 +8904,7 @@ module slicot
     
     interface
         subroutine mc01md(dp, alpha, k, p, q, info)
+            use iso_fortran_env
             integer, intent(in)             :: dp
             double precision, intent(in)    :: alpha
             integer, intent(in)             :: k
@@ -8554,6 +8917,7 @@ module slicot
     
     interface
         subroutine mc01nd(dp, xr, xi, p, vr, vi, info)
+            use iso_fortran_env
             integer, intent(in)             :: dp
             double precision, intent(in)    :: xr
             double precision, intent(in)    :: xi
@@ -8567,6 +8931,7 @@ module slicot
     
     interface
         subroutine mc01od(k, rez, imz, rep, imp, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
             double precision, intent(in)      :: imz(*)
@@ -8580,6 +8945,7 @@ module slicot
     
     interface
         subroutine mc01pd(k, rez, imz, p, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
             double precision, intent(in)      :: imz(*)
@@ -8592,6 +8958,7 @@ module slicot
     
     interface
         subroutine mc01py(k, rez, imz, p, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: k
             double precision, intent(in)      :: rez(*)
             double precision, intent(in)      :: imz(*)
@@ -8604,6 +8971,7 @@ module slicot
     
     interface
         subroutine mc01qd(da, db, a, b, rq, iwarn, info)
+            use iso_fortran_env
             integer, intent(in)               :: da
             integer, intent(inout)            :: db
             double precision, intent(in)      :: a(*)
@@ -8617,6 +8985,7 @@ module slicot
     
     interface
         subroutine mc01rd(dp1, dp2, dp3, alpha, p1, p2, p3, info)
+            use iso_fortran_env
             integer, intent(in)               :: dp1
             integer, intent(in)               :: dp2
             integer, intent(inout)            :: dp3
@@ -8631,6 +9000,7 @@ module slicot
     
     interface
         subroutine mc01sd(dp, p, s, t, mant, e, iwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: dp
             double precision, intent(inout)   :: p(*)
             integer, intent(out)              :: s
@@ -8645,6 +9015,7 @@ module slicot
     
     interface
         subroutine mc01sw(a, b, m, e)
+            use iso_fortran_env
             double precision, intent(in)    :: a
             integer, intent(in)             :: b
             double precision, intent(out)   :: m
@@ -8655,6 +9026,7 @@ module slicot
     
     interface
         integer function mc01sx (lb,ub,e,mant)
+            use iso_fortran_env
             integer, intent(in)            :: lb
             integer, intent(in)            :: ub
             integer, intent(in)            :: e(*)
@@ -8665,6 +9037,7 @@ module slicot
     
     interface
         subroutine mc01sy(m, e, b, a, ovflow)
+            use iso_fortran_env
             double precision, intent(in)    :: m
             integer, intent(in)             :: e
             integer, intent(in)             :: b
@@ -8676,6 +9049,7 @@ module slicot
     
     interface
         subroutine mc01td(dico, dp, p, stable, nz, dwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(inout)            :: dp
             double precision, intent(in)      :: p(*)
@@ -8690,6 +9064,7 @@ module slicot
     
     interface
         subroutine mc01vd(a, b, c, z1re, z1im, z2re, z2im, info)
+            use iso_fortran_env
             double precision, intent(in)    :: a
             double precision, intent(in)    :: b
             double precision, intent(in)    :: c
@@ -8704,6 +9079,7 @@ module slicot
     
     interface
         subroutine mc01wd(dp, p, u1, u2, q, info)
+            use iso_fortran_env
             integer, intent(in)             :: dp
             double precision, intent(in)    :: p(*)
             double precision, intent(in)    :: u1
@@ -8717,6 +9093,7 @@ module slicot
     interface
         subroutine mc01xd(alpha, beta, gamma, delta, evr, evi, evq, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             double precision, intent(in)      :: alpha
             double precision, intent(in)      :: beta
             double precision, intent(in)      :: gamma
@@ -8735,6 +9112,7 @@ module slicot
         subroutine mc03md(rp1, cp1, cp2, dp1, dp2, dp3, alpha, p1, &
                        ldp11, ldp12, p2, ldp21, ldp22, p3, ldp31, ldp32, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: rp1
             integer, intent(in)               :: cp1
             integer, intent(in)               :: cp2
@@ -8761,6 +9139,7 @@ module slicot
         subroutine mc03nd(mp, np, dp, p, ldp1, ldp2, dk, gam, &
                        nullsp, ldnull, ker, ldker1, ldker2, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: mp
             integer, intent(in)               :: np
             integer, intent(in)               :: dp
@@ -8786,6 +9165,7 @@ module slicot
     interface
         subroutine mc03nx(mp, np, dp, p, ldp1, ldp2, a, lda, &
                        e, lde)
+            use iso_fortran_env
             integer, intent(in)             :: mp
             integer, intent(in)             :: np
             integer, intent(in)             :: dp
@@ -8803,6 +9183,7 @@ module slicot
     interface
         subroutine mc03ny(nblcks, nra, nca, a, lda, e, lde, imuk, &
                        inuk, veps, ldveps, info)
+            use iso_fortran_env
             integer, intent(in)               :: nblcks
             integer, intent(in)               :: nra
             integer, intent(in)               :: nca
@@ -8824,6 +9205,7 @@ module slicot
                        itmax, nprint, ipar, lipar, dpar1, ldpar1, dpar2, ldpar2, &
                        x, nfev, njev, tol, cgtol, dwork, ldwork, iwarn, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: xinit
             character(len=*), intent(in)             :: alg
             character(len=*), intent(in)             :: stor
@@ -8834,13 +9216,13 @@ module slicot
             integer, intent(in)               :: n
             integer, intent(in)               :: itmax
             integer, intent(in)               :: nprint
-            integer, intent(inout)            :: ipar(*)
+            integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
             double precision, intent(inout)   :: dpar1(ldpar1, *)
             integer, intent(in)               :: ldpar1
             double precision, intent(inout)   :: dpar2(ldpar2, *)
             integer, intent(in)               :: ldpar2
-            double precision, intent(in)      :: x(*)
+            double precision, intent(inout)   :: x(*)
             integer, intent(out)              :: nfev
             integer, intent(out)              :: njev
             double precision, intent(in)      :: tol
@@ -8856,6 +9238,7 @@ module slicot
     interface
         subroutine md03ba(n, ipar, lipar, fnorm, j, ldj, e, jnorms, &
                        gnorm, ipvt, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
@@ -8877,6 +9260,7 @@ module slicot
         subroutine md03bb(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, delta, par, ranks, x, rx, tol, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
@@ -8904,6 +9288,7 @@ module slicot
                        itmax, factor, nprint, ipar, lipar, dpar1, ldpar1, dpar2, &
                        ldpar2, x, diag, nfev, njev, ftol, xtol, gtol, &
                        tol, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: xinit
             character(len=*), intent(in)             :: scale
             character(len=*), intent(in)             :: cond
@@ -8915,14 +9300,14 @@ module slicot
             integer, intent(in)               :: itmax
             double precision, intent(in)      :: factor
             integer, intent(in)               :: nprint
-            integer, intent(inout)            :: ipar(*)
+            integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
             double precision, intent(inout)   :: dpar1(*)
             integer, intent(in)               :: ldpar1
             double precision, intent(inout)   :: dpar2(*)
             integer, intent(in)               :: ldpar2
-            double precision, intent(in)      :: x(*)
-            double precision, intent(in)      :: diag(*)
+            double precision, intent(inout)   :: x(*)
+            double precision, intent(inout)   :: diag(*)
             integer, intent(out)              :: nfev
             integer, intent(out)              :: njev
             double precision, intent(in)      :: ftol
@@ -8942,6 +9327,7 @@ module slicot
         subroutine md03bf(iflag, m, n, ipar, lipar, dpar1, ldpar1, dpar2, &
                        ldpar2, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(inout)            :: iflag
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -8966,6 +9352,7 @@ module slicot
     interface
         subroutine md03bx(m, n, fnorm, j, ldj, e, jnorms, gnorm, &
                        ipvt, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: fnorm
@@ -8985,6 +9372,7 @@ module slicot
     interface
         subroutine md03by(cond, n, r, ldr, ipvt, diag, qtb, delta, &
                        par, rank, x, rx, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             integer, intent(in)               :: n
             double precision, intent(inout)   :: r(ldr, *)
@@ -9008,6 +9396,7 @@ module slicot
     interface
         subroutine nf01ad(nsmp, m, l, ipar, lipar, x, lx, u, &
                        ldu, y, ldy, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: m
             integer, intent(in)               :: l
@@ -9029,6 +9418,7 @@ module slicot
     interface
         subroutine nf01ay(nsmp, nz, l, ipar, lipar, wb, lwb, z, &
                        ldz, y, ldy, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: nz
             integer, intent(in)               :: l
@@ -9051,6 +9441,7 @@ module slicot
         subroutine nf01ba(iflag, nsmp, n, ipar, lipar, z, ldz, y, &
                        ldy, x, nfevl, e, j, ldj, jte, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             integer, intent(inout)            :: iflag
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: n
@@ -9077,6 +9468,7 @@ module slicot
         subroutine nf01bb(iflag, nfun, lx, ipar, lipar, u, ldu, y, &
                        ldy, x, nfevl, e, j, ldj, jte, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             integer, intent(inout)            :: iflag
             integer, intent(in)               :: nfun
             integer, intent(in)               :: lx
@@ -9103,6 +9495,7 @@ module slicot
         subroutine nf01bd(cjte, nsmp, m, l, ipar, lipar, x, lx, &
                        u, ldu, e, j, ldj, jte, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cjte
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: m
@@ -9128,6 +9521,7 @@ module slicot
         subroutine nf01be(iflag, nsmp, n, ipar, lipar, z, ldz, y, &
                        ldy, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(inout)            :: iflag
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: n
@@ -9153,6 +9547,7 @@ module slicot
         subroutine nf01bf(iflag, nfun, lx, ipar, lipar, u, ldu, y, &
                        ldy, x, nfevl, e, j, ldj, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(inout)            :: iflag
             integer, intent(in)               :: nfun
             integer, intent(in)               :: lx
@@ -9178,6 +9573,7 @@ module slicot
         subroutine nf01bp(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, delta, par, ranks, x, rx, tol, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
@@ -9203,6 +9599,7 @@ module slicot
     interface
         subroutine nf01bq(cond, n, ipar, lipar, r, ldr, ipvt, diag, &
                        qtb, ranks, x, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
@@ -9226,6 +9623,7 @@ module slicot
         subroutine nf01br(cond, uplo, trans, n, ipar, lipar, r, ldr, &
                        sdiag, s, lds, b, ranks, tol, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cond
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: trans
@@ -9250,6 +9648,7 @@ module slicot
     interface
         subroutine nf01bs(n, ipar, lipar, fnorm, j, ldj, e, jnorms, &
                        gnorm, ipvt, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
@@ -9270,6 +9669,7 @@ module slicot
     interface
         subroutine nf01bu(stor, uplo, n, ipar, lipar, dpar, ldpar, j, &
                        ldj, jtj, ldjtj, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: stor
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -9291,6 +9691,7 @@ module slicot
     interface
         subroutine nf01bv(stor, uplo, n, ipar, lipar, dpar, ldpar, j, &
                        ldj, jtj, ldjtj, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: stor
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -9312,6 +9713,7 @@ module slicot
     interface
         subroutine nf01bw(n, ipar, lipar, dpar, ldpar, j, ldj, x, &
                        incx, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
@@ -9331,6 +9733,7 @@ module slicot
     interface
         subroutine nf01bx(n, ipar, lipar, dpar, ldpar, j, ldj, x, &
                        incx, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: ipar(*)
             integer, intent(in)               :: lipar
@@ -9351,6 +9754,7 @@ module slicot
         subroutine nf01by(cjte, nsmp, nz, l, ipar, lipar, wb, lwb, &
                        z, ldz, e, j, ldj, jte, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: cjte
             integer, intent(in)               :: nsmp
             integer, intent(in)               :: nz
@@ -9376,6 +9780,7 @@ module slicot
         subroutine sb01bd(dico, n, m, np, alpha, a, lda, b, &
                        ldb, wr, wi, nfp, nap, nup, f, ldf, &
                        z, ldz, tol, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -9405,6 +9810,7 @@ module slicot
     
     interface
         subroutine sb01bx(reig, n, xr, xi, wr, wi, s, p)
+            use iso_fortran_env
             logical, intent(in)               :: reig
             integer, intent(in)               :: n
             double precision, intent(in)      :: xr
@@ -9420,6 +9826,7 @@ module slicot
     interface
         subroutine sb01by(n, m, s, p, a, b, f, tol, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             double precision, intent(in)      :: s
@@ -9438,6 +9845,7 @@ module slicot
         subroutine sb01dd(n, m, indcon, a, lda, b, ldb, nblk, &
                        wr, wi, z, ldz, y, count, g, ldg, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: indcon
@@ -9466,6 +9874,7 @@ module slicot
     interface
         subroutine sb01fy(discr, n, m, a, lda, b, ldb, f, &
                        ldf, v, ldv, info)
+            use iso_fortran_env
             logical, intent(in)             :: discr
             integer, intent(in)             :: n
             integer, intent(in)             :: m
@@ -9485,6 +9894,7 @@ module slicot
     interface
         subroutine sb01md(ncont, n, a, lda, b, wr, wi, z, &
                        ldz, g, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: ncont
             integer, intent(in)               :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -9503,6 +9913,7 @@ module slicot
     
     interface
         logical function sb02cx (reig,ieig)
+            use iso_fortran_env
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
         end function sb02cx
@@ -9513,6 +9924,7 @@ module slicot
         subroutine sb02md(dico, hinv, uplo, scal, sort, n, a, lda, &
                        g, ldg, q, ldq, rcond, wr, wi, s, &
                        lds, u, ldu, iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: hinv
             character(len=*), intent(in)             :: uplo
@@ -9543,6 +9955,7 @@ module slicot
     
     interface
         logical function sb02mr (reig,ieig)
+            use iso_fortran_env
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
         end function sb02mr
@@ -9551,6 +9964,7 @@ module slicot
     
     interface
         logical function sb02ms (reig,ieig)
+            use iso_fortran_env
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
         end function sb02ms
@@ -9561,6 +9975,7 @@ module slicot
         subroutine sb02mt(jobg, jobl, fact, uplo, n, m, a, lda, &
                        b, ldb, q, ldq, r, ldr, l, ldl, &
                        ipiv, oufact, g, ldg, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobg
             character(len=*), intent(in)             :: jobl
             character(len=*), intent(in)             :: fact
@@ -9592,6 +10007,7 @@ module slicot
     interface
         subroutine sb02mu(dico, hinv, uplo, n, a, lda, g, ldg, &
                        q, ldq, s, lds, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: hinv
             character(len=*), intent(in)             :: uplo
@@ -9614,6 +10030,7 @@ module slicot
     
     interface
         logical function sb02mv (reig,ieig)
+            use iso_fortran_env
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
         end function sb02mv
@@ -9622,6 +10039,7 @@ module slicot
     
     interface
         logical function sb02mw (reig,ieig)
+            use iso_fortran_env
             double precision, intent(in)   :: reig
             double precision, intent(in)   :: ieig
         end function sb02mw
@@ -9633,6 +10051,7 @@ module slicot
                        m, a, lda, b, ldb, q, ldq, r, &
                        ldr, l, ldl, ipiv, oufact, g, ldg, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobg
             character(len=*), intent(in)             :: jobl
             character(len=*), intent(in)             :: fact
@@ -9669,6 +10088,7 @@ module slicot
                        lda, b, ldb, r, ldr, ipiv, l, ldl, &
                        x, ldx, rnorm, f, ldf, oufact, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: uplo
@@ -9705,6 +10125,7 @@ module slicot
                        ldr, l, ldl, rcond, x, ldx, alfar, alfai, &
                        beta, s, lds, t, ldt, u, ldu, tol, &
                        iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobb
             character(len=*), intent(in)             :: fact
@@ -9748,6 +10169,7 @@ module slicot
     
     interface
         logical function sb02ou (alphar,alphai,beta)
+            use iso_fortran_env
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
             double precision, intent(in)   :: beta
@@ -9757,6 +10179,7 @@ module slicot
     
     interface
         logical function sb02ov (alphar,alphai,beta)
+            use iso_fortran_env
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
             double precision, intent(in)   :: beta
@@ -9766,6 +10189,7 @@ module slicot
     
     interface
         logical function sb02ow (alphar,alphai,beta)
+            use iso_fortran_env
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
             double precision, intent(in)   :: beta
@@ -9775,6 +10199,7 @@ module slicot
     
     interface
         logical function sb02ox (alphar,alphai,beta)
+            use iso_fortran_env
             double precision, intent(in)   :: alphar
             double precision, intent(in)   :: alphai
             double precision, intent(in)   :: beta
@@ -9787,6 +10212,7 @@ module slicot
                        m, p, a, lda, b, ldb, q, ldq, &
                        r, ldr, l, ldl, e, lde, af, ldaf, &
                        bf, ldbf, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: type
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobb
@@ -9826,6 +10252,7 @@ module slicot
         subroutine sb02pd(job, trana, uplo, n, a, lda, g, ldg, &
                        q, ldq, x, ldx, rcond, ferr, wr, wi, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: uplo
@@ -9855,6 +10282,7 @@ module slicot
                        t, ldt, u, ldu, g, ldg, q, ldq, &
                        x, ldx, sep, rcond, ferr, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -9890,6 +10318,7 @@ module slicot
                        g, ldg, q, ldq, x, ldx, sep, rcond, &
                        ferr, wr, wi, s, lds, iwork, dwork, ldwork, &
                        bwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: hinv
@@ -9932,6 +10361,7 @@ module slicot
         subroutine sb02ru(dico, hinv, trana, uplo, n, a, lda, g, &
                        ldg, q, ldq, s, lds, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: hinv
             character(len=*), intent(in)             :: trana
@@ -9958,6 +10388,7 @@ module slicot
                        t, ldt, u, ldu, g, ldg, q, ldq, &
                        x, ldx, sepd, rcond, ferr, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -9991,6 +10422,7 @@ module slicot
         subroutine sb03md(dico, job, fact, trana, n, a, lda, u, &
                        ldu, c, ldc, scale, sep, ferr, wr, wi, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
@@ -10018,6 +10450,7 @@ module slicot
     interface
         subroutine sb03mu(ltranl, ltranr, isgn, n1, n2, tl, ldtl, tr, &
                        ldtr, b, ldb, scale, x, ldx, xnorm, info)
+            use iso_fortran_env
             logical, intent(in)             :: ltranl
             logical, intent(in)             :: ltranr
             integer, intent(in)             :: isgn
@@ -10041,6 +10474,7 @@ module slicot
     interface
         subroutine sb03mv(ltran, lupper, t, ldt, b, ldb, scale, x, &
                        ldx, xnorm, info)
+            use iso_fortran_env
             logical, intent(in)             :: ltran
             logical, intent(in)             :: lupper
             double precision, intent(in)    :: t(ldt, *)
@@ -10059,6 +10493,7 @@ module slicot
     interface
         subroutine sb03mw(ltran, lupper, t, ldt, b, ldb, scale, x, &
                        ldx, xnorm, info)
+            use iso_fortran_env
             logical, intent(in)             :: ltran
             logical, intent(in)             :: lupper
             double precision, intent(in)    :: t(ldt, *)
@@ -10077,6 +10512,7 @@ module slicot
     interface
         subroutine sb03mx(trana, n, a, lda, c, ldc, scale, dwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -10092,6 +10528,7 @@ module slicot
     
     interface
         subroutine sb03my(trana, n, a, lda, c, ldc, scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -10108,6 +10545,7 @@ module slicot
         subroutine sb03od(dico, fact, trans, n, m, a, lda, q, &
                        ldq, b, ldb, scale, wr, wi, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trans
@@ -10132,6 +10570,7 @@ module slicot
     interface
         subroutine sb03or(discr, ltrans, n, m, s, lds, a, lda, &
                        c, ldc, scale, info)
+            use iso_fortran_env
             logical, intent(in)               :: discr
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: n
@@ -10151,16 +10590,17 @@ module slicot
     interface
         subroutine sb03os(discr, ltrans, n, s, lds, r, ldr, scale, &
                        dwork, zwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: discr
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: n
-            complex*16, intent(in)            :: s(lds, *)
+            complex(real64), intent(in)       :: s(lds, *)
             integer, intent(in)               :: lds
-            complex*16, intent(inout)         :: r(ldr, *)
+            complex(real64), intent(inout)    :: r(ldr, *)
             integer, intent(in)               :: ldr
             double precision, intent(out)     :: scale
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine sb03os
     end interface
@@ -10169,6 +10609,7 @@ module slicot
     interface
         subroutine sb03ot(discr, ltrans, n, s, lds, r, ldr, scale, &
                        dwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: discr
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: n
@@ -10186,6 +10627,7 @@ module slicot
     interface
         subroutine sb03ou(discr, ltrans, n, m, a, lda, b, ldb, &
                        tau, u, ldu, scale, dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: discr
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: n
@@ -10207,6 +10649,7 @@ module slicot
     
     interface
         subroutine sb03ov(a, b, small, c, s)
+            use iso_fortran_env
             double precision, intent(inout)   :: a(2)
             double precision, intent(in)      :: b
             double precision, intent(in)      :: small
@@ -10219,6 +10662,7 @@ module slicot
     interface
         subroutine sb03oy(discr, ltrans, isgn, s, lds, r, ldr, a, &
                        lda, scale, info)
+            use iso_fortran_env
             logical, intent(in)               :: discr
             logical, intent(in)               :: ltrans
             integer, intent(in)               :: isgn
@@ -10238,21 +10682,22 @@ module slicot
         subroutine sb03oz(dico, fact, trans, n, m, a, lda, q, &
                        ldq, b, ldb, scale, w, dwork, zwork, lzwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             integer, intent(in)               :: m
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
             double precision, intent(out)     :: scale
-            complex*16, intent(out)           :: w(*)
+            complex(real64), intent(out)      :: w(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine sb03oz
@@ -10263,6 +10708,7 @@ module slicot
         subroutine sb03pd(job, fact, trana, n, a, lda, u, ldu, &
                        c, ldc, scale, sepd, ferr, wr, wi, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10290,6 +10736,7 @@ module slicot
         subroutine sb03qd(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sep, rcond, ferr, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10321,6 +10768,7 @@ module slicot
     interface
         subroutine sb03qx(trana, uplo, lyapun, n, xanorm, t, ldt, u, &
                        ldu, r, ldr, ferr, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: lyapun
@@ -10344,6 +10792,7 @@ module slicot
     interface
         subroutine sb03qy(job, trana, lyapun, n, t, ldt, u, ldu, &
                        x, ldx, sep, thnorm, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: lyapun
@@ -10368,6 +10817,7 @@ module slicot
         subroutine sb03rd(job, fact, trana, n, a, lda, u, ldu, &
                        c, ldc, scale, sep, ferr, wr, wi, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10395,6 +10845,7 @@ module slicot
         subroutine sb03sd(job, fact, trana, uplo, lyapun, n, scale, a, &
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sepd, rcond, ferr, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10426,6 +10877,7 @@ module slicot
     interface
         subroutine sb03sx(trana, uplo, lyapun, n, xanorm, t, ldt, u, &
                        ldu, r, ldr, ferr, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: uplo
             character(len=*), intent(in)             :: lyapun
@@ -10449,6 +10901,7 @@ module slicot
     interface
         subroutine sb03sy(job, trana, lyapun, n, t, ldt, u, ldu, &
                        xa, ldxa, sepd, thnorm, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: lyapun
@@ -10474,6 +10927,7 @@ module slicot
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sep, rcond, ferr, wr, wi, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10509,6 +10963,7 @@ module slicot
                        lda, t, ldt, u, ldu, c, ldc, x, &
                        ldx, sepd, rcond, ferr, wr, wi, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trana
@@ -10542,6 +10997,7 @@ module slicot
     interface
         subroutine sb04md(n, m, a, lda, b, ldb, c, ldc, &
                        z, ldz, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             double precision, intent(inout)   :: a(lda, *)
@@ -10562,6 +11018,7 @@ module slicot
     
     interface
         subroutine sb04mr(m, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
             integer, intent(out)              :: ipr(*)
@@ -10573,6 +11030,7 @@ module slicot
     interface
         subroutine sb04mu(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: ind
@@ -10591,6 +11049,7 @@ module slicot
     
     interface
         subroutine sb04mw(m, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
             integer, intent(out)              :: ipr(*)
@@ -10602,6 +11061,7 @@ module slicot
     interface
         subroutine sb04my(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: ind
@@ -10621,6 +11081,7 @@ module slicot
     interface
         subroutine sb04nd(abschu, ula, ulb, n, m, a, lda, b, &
                        ldb, c, ldc, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: abschu
             character(len=*), intent(in)             :: ula
             character(len=*), intent(in)             :: ulb
@@ -10644,6 +11105,7 @@ module slicot
     interface
         subroutine sb04nv(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, d)
+            use iso_fortran_env
             character(len=*), intent(in)           :: abschr
             character(len=*), intent(in)           :: ul
             integer, intent(in)             :: n
@@ -10661,6 +11123,7 @@ module slicot
     interface
         subroutine sb04nw(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, d)
+            use iso_fortran_env
             character(len=*), intent(in)           :: abschr
             character(len=*), intent(in)           :: ul
             integer, intent(in)             :: n
@@ -10678,6 +11141,7 @@ module slicot
     interface
         subroutine sb04nx(rc, ul, m, a, lda, lambd1, lambd2, lambd3, &
                        lambd4, d, tol, iwork, dwork, lddwor, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rc
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: m
@@ -10700,6 +11164,7 @@ module slicot
     interface
         subroutine sb04ny(rc, ul, m, a, lda, lambda, d, tol, &
                        iwork, dwork, lddwor, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rc
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: m
@@ -10721,6 +11186,7 @@ module slicot
                        ldb, c, ldc, d, ldd, e, lde, f, &
                        ldf, scale, dif, p, ldp, q, ldq, u, &
                        ldu, v, ldv, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: reduce
             character(len=*), intent(in)             :: trans
             character(len=*), intent(in)             :: jobd
@@ -10760,6 +11226,7 @@ module slicot
         subroutine sb04ow(m, n, a, lda, b, ldb, c, ldc, &
                        d, ldd, e, lde, f, ldf, scale, iwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -10785,6 +11252,7 @@ module slicot
         subroutine sb04pd(dico, facta, factb, trana, tranb, isgn, m, n, &
                        a, lda, u, ldu, b, ldb, v, ldv, &
                        c, ldc, scale, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: facta
             character(len=*), intent(in)             :: factb
@@ -10814,6 +11282,7 @@ module slicot
     interface
         subroutine sb04px(ltranl, ltranr, isgn, n1, n2, tl, ldtl, tr, &
                        ldtr, b, ldb, scale, x, ldx, xnorm, info)
+            use iso_fortran_env
             logical, intent(in)             :: ltranl
             logical, intent(in)             :: ltranr
             integer, intent(in)             :: isgn
@@ -10837,6 +11306,7 @@ module slicot
     interface
         subroutine sb04py(trana, tranb, isgn, m, n, a, lda, b, &
                        ldb, c, ldc, scale, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trana
             character(len=*), intent(in)             :: tranb
             integer, intent(in)               :: isgn
@@ -10858,6 +11328,7 @@ module slicot
     interface
         subroutine sb04qd(n, m, a, lda, b, ldb, c, ldc, &
                        z, ldz, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             double precision, intent(inout)   :: a(lda, *)
@@ -10878,6 +11349,7 @@ module slicot
     
     interface
         subroutine sb04qr(m, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: m
             double precision, intent(inout)   :: d(*)
             integer, intent(out)              :: ipr(*)
@@ -10889,6 +11361,7 @@ module slicot
     interface
         subroutine sb04qu(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: ind
@@ -10908,6 +11381,7 @@ module slicot
     interface
         subroutine sb04qy(n, m, ind, a, lda, b, ldb, c, &
                        ldc, d, ipr, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: ind
@@ -10927,6 +11401,7 @@ module slicot
     interface
         subroutine sb04rd(abschu, ula, ulb, n, m, a, lda, b, &
                        ldb, c, ldc, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: abschu
             character(len=*), intent(in)             :: ula
             character(len=*), intent(in)             :: ulb
@@ -10950,6 +11425,7 @@ module slicot
     interface
         subroutine sb04rv(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, ba, ldba, d, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: abschr
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: n
@@ -10970,6 +11446,7 @@ module slicot
     interface
         subroutine sb04rw(abschr, ul, n, m, c, ldc, indx, ab, &
                        ldab, ba, ldba, d, dwork)
+            use iso_fortran_env
             character(len=*), intent(in)             :: abschr
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: n
@@ -10990,6 +11467,7 @@ module slicot
     interface
         subroutine sb04rx(rc, ul, m, a, lda, lambd1, lambd2, lambd3, &
                        lambd4, d, tol, iwork, dwork, lddwor, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rc
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: m
@@ -11012,6 +11490,7 @@ module slicot
     interface
         subroutine sb04ry(rc, ul, m, a, lda, lambda, d, tol, &
                        iwork, dwork, lddwor, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rc
             character(len=*), intent(in)             :: ul
             integer, intent(in)               :: m
@@ -11031,6 +11510,7 @@ module slicot
     interface
         subroutine sb06nd(n, m, kmax, a, lda, b, ldb, kstair, &
                        u, ldu, f, ldf, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: kmax
@@ -11053,6 +11533,7 @@ module slicot
         subroutine sb08cd(dico, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nq, nr, br, ldbr, &
                        dr, lddr, tol, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -11084,6 +11565,7 @@ module slicot
         subroutine sb08dd(dico, n, m, p, a, lda, b, ldb, &
                        c, ldc, d, ldd, nq, nr, cr, ldcr, &
                        dr, lddr, tol, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -11115,6 +11597,7 @@ module slicot
         subroutine sb08ed(dico, n, m, p, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, nq, nr, br, &
                        ldbr, dr, lddr, tol, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -11147,6 +11630,7 @@ module slicot
         subroutine sb08fd(dico, n, m, p, alpha, a, lda, b, &
                        ldb, c, ldc, d, ldd, nq, nr, cr, &
                        ldcr, dr, lddr, tol, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -11179,6 +11663,7 @@ module slicot
         subroutine sb08gd(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, br, ldbr, dr, lddr, iwork, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -11205,6 +11690,7 @@ module slicot
         subroutine sb08hd(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, cr, ldcr, dr, lddr, iwork, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -11229,6 +11715,7 @@ module slicot
     
     interface
         subroutine sb08md(acona, da, a, res, e, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: acona
             integer, intent(in)               :: da
             double precision, intent(inout)   :: a(*)
@@ -11243,6 +11730,7 @@ module slicot
     
     interface
         subroutine sb08my(da, a, b, epsb)
+            use iso_fortran_env
             integer, intent(in)               :: da
             double precision, intent(in)      :: a(*)
             double precision, intent(out)     :: b(*)
@@ -11253,6 +11741,7 @@ module slicot
     
     interface
         subroutine sb08nd(acona, da, a, res, e, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: acona
             integer, intent(in)               :: da
             double precision, intent(inout)   :: a(*)
@@ -11267,6 +11756,7 @@ module slicot
     
     interface
         subroutine sb08ny(da, a, b, epsb)
+            use iso_fortran_env
             integer, intent(in)             :: da
             double precision, intent(in)    :: a(*)
             double precision, intent(out)   :: b(*)
@@ -11278,6 +11768,7 @@ module slicot
     interface
         subroutine sb09md(n, nc, nb, h1, ldh1, h2, ldh2, ss, &
                        ldss, se, ldse, pre, ldpre, tol, info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             integer, intent(in)             :: nc
             integer, intent(in)             :: nb
@@ -11304,6 +11795,7 @@ module slicot
                        ldac, bc, ldbc, cc, ldcc, dc, lddc, rcond, &
                        gtol, actol, iwork, liwork, dwork, ldwork, bwork, lbwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -11355,6 +11847,7 @@ module slicot
                        bk, ldbk, ck, ldck, dk, lddk, x, ldx, &
                        z, ldz, rcond, tol, iwork, dwork, ldwork, bwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11397,6 +11890,7 @@ module slicot
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, tol, iwork, &
                        dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11434,6 +11928,7 @@ module slicot
                        b, ldb, c, ldc, d, ldd, ak, ldak, &
                        bk, ldbk, ck, ldck, dk, lddk, rcond, tol, &
                        iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11472,6 +11967,7 @@ module slicot
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, tol, iwork, &
                        dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11509,6 +12005,7 @@ module slicot
                        ldc, d, ldd, factor, nk, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, rcond, iwork, dwork, &
                        ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11544,6 +12041,7 @@ module slicot
         subroutine sb10jd(n, m, np, a, lda, b, ldb, c, &
                        ldc, d, ldd, e, lde, nsys, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11569,6 +12067,7 @@ module slicot
         subroutine sb10kd(n, m, np, a, lda, b, ldb, c, &
                        ldc, factor, ak, ldak, bk, ldbk, ck, ldck, &
                        dk, lddk, rcond, iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11603,6 +12102,7 @@ module slicot
                        ldbk, ck, ldck, dk, lddk, ac, ldac, bc, &
                        ldbc, cc, ldcc, dc, lddc, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11646,6 +12146,7 @@ module slicot
                        ldd, omega, totord, ad, ldad, bd, ldbd, cd, &
                        ldcd, dd, lddd, mju, iwork, liwork, dwork, ldwork, &
                        zwork, lzwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: nc
             integer, intent(in)               :: mp
             integer, intent(in)               :: lendat
@@ -11678,7 +12179,7 @@ module slicot
             integer, intent(in)               :: liwork
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine sb10md
@@ -11689,6 +12190,7 @@ module slicot
         subroutine sb10pd(n, m, np, ncon, nmeas, a, lda, b, &
                        ldb, c, ldc, d, ldd, tu, ldtu, ty, &
                        ldty, rcond, tol, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11720,6 +12222,7 @@ module slicot
                        b, ldb, c, ldc, d, ldd, f, ldf, &
                        h, ldh, x, ldx, y, ldy, xycond, iwork, &
                        dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11758,6 +12261,7 @@ module slicot
                        h, ldh, tu, ldtu, ty, ldty, x, ldx, &
                        y, ldy, ak, ldak, bk, ldbk, ck, ldck, &
                        dk, lddk, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11805,6 +12309,7 @@ module slicot
                        ldb, c, ldc, d, ldd, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, x, ldx, y, &
                        ldy, rcond, tol, iwork, dwork, ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11846,6 +12351,7 @@ module slicot
                        ldtu, ty, ldty, ak, ldak, bk, ldbk, ck, &
                        ldck, dk, lddk, rcond, tol, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11879,6 +12385,7 @@ module slicot
         subroutine sb10ud(n, m, np, ncon, nmeas, b, ldb, c, &
                        ldc, d, ldd, tu, ldtu, ty, ldty, rcond, &
                        tol, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11908,6 +12415,7 @@ module slicot
                        ldb, c, ldc, f, ldf, h, ldh, x, &
                        ldx, y, ldy, xycond, iwork, dwork, ldwork, bwork, &
                        info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -11942,6 +12450,7 @@ module slicot
                        ldb, c, ldc, d, ldd, f, ldf, h, &
                        ldh, tu, ldtu, ty, ldty, ak, ldak, bk, &
                        ldbk, ck, ldck, dk, lddk, info)
+            use iso_fortran_env
             integer, intent(in)             :: n
             integer, intent(in)             :: m
             integer, intent(in)             :: np
@@ -11980,6 +12489,7 @@ module slicot
         subroutine sb10yd(discfl, flag, lendat, rfrdat, ifrdat, omega, n, a, &
                        lda, b, c, d, tol, iwork, dwork, ldwork, &
                        zwork, lzwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: discfl
             integer, intent(in)               :: flag
             integer, intent(in)               :: lendat
@@ -11996,7 +12506,7 @@ module slicot
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine sb10yd
@@ -12008,6 +12518,7 @@ module slicot
                        ldc, d, ldd, factor, ak, ldak, bk, ldbk, &
                        ck, ldck, dk, lddk, rcond, tol, iwork, dwork, &
                        ldwork, bwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: np
@@ -12042,6 +12553,7 @@ module slicot
     interface
         subroutine sb10zp(discfl, n, a, lda, b, c, d, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: discfl
             integer, intent(inout)            :: n
             double precision, intent(inout)   :: a(lda, *)
@@ -12063,6 +12575,7 @@ module slicot
                        ldb, c, ldc, d, ldd, ac, ldac, bc, &
                        ldbc, cc, ldcc, dc, lddc, ncs, hsvc, tol1, &
                        tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobc
             character(len=*), intent(in)             :: jobo
@@ -12111,6 +12624,7 @@ module slicot
                        ldd, ac, ldac, bc, ldbc, cc, ldcc, dc, &
                        lddc, scalec, scaleo, s, lds, r, ldr, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobc
             character(len=*), intent(in)             :: jobo
@@ -12155,6 +12669,7 @@ module slicot
                        p, ncr, a, lda, b, ldb, c, ldc, &
                        d, ldd, f, ldf, g, ldg, dc, lddc, &
                        hsv, tol1, tol2, iwork, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobd
             character(len=*), intent(in)             :: jobmr
@@ -12196,6 +12711,7 @@ module slicot
                        ncr, a, lda, b, ldb, c, ldc, d, &
                        ldd, f, ldf, g, ldg, hsv, tol, iwork, &
                        dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobd
             character(len=*), intent(in)             :: jobmr
@@ -12232,6 +12748,7 @@ module slicot
         subroutine sb16cy(dico, jobcf, n, m, p, a, lda, b, &
                        ldb, c, ldc, f, ldf, g, ldg, scalec, &
                        scaleo, s, lds, r, ldr, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobcf
             integer, intent(in)               :: n
@@ -12267,6 +12784,7 @@ module slicot
                        x, ldx, alfar, alfai, beta, s, lds, t, &
                        ldt, u, ldu, tol, iwork, dwork, ldwork, bwork, &
                        iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobb
             character(len=*), intent(in)             :: fact
@@ -12317,6 +12835,7 @@ module slicot
         subroutine sg02cv(dico, job, jobe, uplo, trans, n, a, lda, &
                        e, lde, x, ldx, r, ldr, norms, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobe
@@ -12344,6 +12863,7 @@ module slicot
                        m, a, lda, e, lde, g, ldg, x, &
                        ldx, f, ldf, k, ldk, xe, ldxe, r, &
                        ldr, c, ldc, norms, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobe
@@ -12383,6 +12903,7 @@ module slicot
         subroutine sg02cx(jobe, flag, jobg, uplo, trans, n, m, e, &
                        lde, r, ldr, s, lds, g, ldg, alpha, &
                        rnorm, dwork, ldwork, iwarn, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: flag
             character(len=*), intent(in)             :: jobg
@@ -12414,6 +12935,7 @@ module slicot
                        ldb, r, ldr, ipiv, l, ldl, x, ldx, &
                        rnorm, k, ldk, h, ldh, xe, ldxe, oufact, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: job
@@ -12459,6 +12981,7 @@ module slicot
                        e, lde, q, ldq, z, ldz, x, ldx, &
                        scale, sep, ferr, alphar, alphai, beta, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: fact
@@ -12492,6 +13015,7 @@ module slicot
     interface
         subroutine sg03ax(trans, n, a, lda, e, lde, x, ldx, &
                        scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -12509,6 +13033,7 @@ module slicot
     interface
         subroutine sg03ay(trans, n, a, lda, e, lde, x, ldx, &
                        scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -12527,6 +13052,7 @@ module slicot
         subroutine sg03bd(dico, fact, trans, n, m, a, lda, e, &
                        lde, q, ldq, z, ldz, b, ldb, scale, &
                        alphar, alphai, beta, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trans
@@ -12556,6 +13082,7 @@ module slicot
     interface
         subroutine sg03br(xr, xi, yr, yi, c, sr, si, zr, &
                        zi)
+            use iso_fortran_env
             double precision, intent(in)    :: xr
             double precision, intent(in)    :: xi
             double precision, intent(in)    :: yr
@@ -12572,17 +13099,18 @@ module slicot
     interface
         subroutine sg03bs(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, zwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
             double precision, intent(out)     :: scale
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine sg03bs
     end interface
@@ -12591,17 +13119,18 @@ module slicot
     interface
         subroutine sg03bt(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, zwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
             double precision, intent(out)     :: scale
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine sg03bt
     end interface
@@ -12610,6 +13139,7 @@ module slicot
     interface
         subroutine sg03bu(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -12628,6 +13158,7 @@ module slicot
     interface
         subroutine sg03bv(trans, n, a, lda, e, lde, b, ldb, &
                        scale, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             double precision, intent(in)      :: a(lda, *)
@@ -12646,6 +13177,7 @@ module slicot
     interface
         subroutine sg03bw(trans, m, n, a, lda, c, ldc, e, &
                        lde, d, ldd, x, ldx, scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: m
             integer, intent(in)               :: n
@@ -12668,6 +13200,7 @@ module slicot
     interface
         subroutine sg03bx(dico, trans, a, lda, e, lde, b, ldb, &
                        u, ldu, scale, m1, ldm1, m2, ldm2, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: dico
             character(len=*), intent(in)           :: trans
             double precision, intent(in)    :: a(lda, *)
@@ -12691,6 +13224,7 @@ module slicot
     interface
         subroutine sg03by(xr, xi, yr, yi, cr, ci, sr, si, &
                        z)
+            use iso_fortran_env
             double precision, intent(in)    :: xr
             double precision, intent(in)    :: xi
             double precision, intent(in)    :: yr
@@ -12708,26 +13242,27 @@ module slicot
         subroutine sg03bz(dico, fact, trans, n, m, a, lda, e, &
                        lde, q, ldq, z, ldz, b, ldb, scale, &
                        alpha, beta, dwork, zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: fact
             character(len=*), intent(in)             :: trans
             integer, intent(in)               :: n
             integer, intent(in)               :: m
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(inout)         :: z(ldz, *)
+            complex(real64), intent(inout)    :: z(ldz, *)
             integer, intent(in)               :: ldz
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
             double precision, intent(out)     :: scale
-            complex*16, intent(out)           :: alpha(*)
-            complex*16, intent(out)           :: beta(*)
+            complex(real64), intent(out)      :: alpha(*)
+            complex(real64), intent(out)      :: beta(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine sg03bz
@@ -12737,6 +13272,7 @@ module slicot
     interface
         subroutine tb01id(job, n, m, p, maxred, a, lda, b, &
                        ldb, c, ldc, scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -12757,16 +13293,17 @@ module slicot
     interface
         subroutine tb01iz(job, n, m, p, maxred, a, lda, b, &
                        ldb, c, ldc, scale, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
             double precision, intent(inout)   :: maxred
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
             double precision, intent(out)     :: scale(*)
             integer, intent(out)              :: info
@@ -12778,6 +13315,7 @@ module slicot
         subroutine tb01kd(dico, stdom, joba, n, m, p, alpha, a, &
                        lda, b, ldb, c, ldc, ndim, u, ldu, &
                        wr, wi, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: joba
@@ -12806,6 +13344,7 @@ module slicot
     interface
         subroutine tb01kx(n, m, p, ndim, a, lda, b, ldb, &
                        c, ldc, u, ldu, v, ldv, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -12829,6 +13368,7 @@ module slicot
         subroutine tb01ld(dico, stdom, joba, n, m, p, alpha, a, &
                        lda, b, ldb, c, ldc, ndim, u, ldu, &
                        wr, wi, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: joba
@@ -12857,6 +13397,7 @@ module slicot
     interface
         subroutine tb01md(jobu, uplo, n, m, a, lda, b, ldb, &
                        u, ldu, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -12876,6 +13417,7 @@ module slicot
     interface
         subroutine tb01nd(jobu, uplo, n, p, a, lda, c, ldc, &
                        u, ldu, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobu
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
@@ -12896,6 +13438,7 @@ module slicot
         subroutine tb01pd(job, equil, n, m, p, a, lda, b, &
                        ldb, c, ldc, nr, tol, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
@@ -12921,6 +13464,7 @@ module slicot
         subroutine tb01px(job, equil, n, m, p, a, lda, b, &
                        ldb, c, ldc, nr, infred, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
@@ -12947,6 +13491,7 @@ module slicot
         subroutine tb01td(n, m, p, a, lda, b, ldb, c, &
                        ldc, d, ldd, low, igh, scstat, scin, scout, &
                        dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -12972,6 +13517,7 @@ module slicot
     interface
         subroutine tb01ty(mode, ioff, joff, nrow, ncol, size, x, ldx, &
                        bvect)
+            use iso_fortran_env
             integer, intent(in)               :: mode
             integer, intent(in)               :: ioff
             integer, intent(in)               :: joff
@@ -12989,6 +13535,7 @@ module slicot
         subroutine tb01ud(jobz, n, m, p, a, lda, b, ldb, &
                        c, ldc, ncont, indcon, nblk, z, ldz, tau, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13018,6 +13565,7 @@ module slicot
         subroutine tb01ux(compz, n, m, p, a, lda, b, ldb, &
                        c, ldc, z, ldz, nobsv, nlblck, ctau, tol, &
                        iwork, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13045,6 +13593,7 @@ module slicot
         subroutine tb01uy(jobz, n, m1, m2, p, a, lda, b, &
                        ldb, c, ldc, ncont, indcon, nblk, z, ldz, &
                        tau, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: n
             integer, intent(in)               :: m1
@@ -13075,6 +13624,7 @@ module slicot
         subroutine tb01vd(apply, n, m, l, a, lda, b, ldb, &
                        c, ldc, d, ldd, x0, theta, ltheta, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: apply
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13101,6 +13651,7 @@ module slicot
         subroutine tb01vy(apply, n, m, l, theta, ltheta, a, lda, &
                        b, ldb, c, ldc, d, ldd, x0, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: apply
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13126,6 +13677,7 @@ module slicot
     interface
         subroutine tb01wd(n, m, p, a, lda, b, ldb, c, &
                        ldc, u, ldu, wr, wi, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13149,6 +13701,7 @@ module slicot
     interface
         subroutine tb01wx(compu, n, m, p, a, lda, b, ldb, &
                        c, ldc, u, ldu, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compu
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13171,6 +13724,7 @@ module slicot
     interface
         subroutine tb01xd(jobd, n, m, p, kl, ku, a, lda, &
                        b, ldb, c, ldc, d, ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobd
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13193,21 +13747,22 @@ module slicot
     interface
         subroutine tb01xz(jobd, n, m, p, kl, ku, a, lda, &
                        b, ldb, c, ldc, d, ldd, info)
-            character(len=*), intent(in)       :: jobd
-            integer, intent(in)         :: n
-            integer, intent(in)         :: m
-            integer, intent(in)         :: p
-            integer, intent(in)         :: kl
-            integer, intent(in)         :: ku
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
-            complex*16, intent(inout)   :: b(ldb, *)
-            integer, intent(in)         :: ldb
-            complex*16, intent(inout)   :: c(ldc, *)
-            integer, intent(in)         :: ldc
-            complex*16, intent(inout)   :: d(ldd, *)
-            integer, intent(in)         :: ldd
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            character(len=*), intent(in)            :: jobd
+            integer, intent(in)              :: n
+            integer, intent(in)              :: m
+            integer, intent(in)              :: p
+            integer, intent(in)              :: kl
+            integer, intent(in)              :: ku
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
+            complex(real64), intent(inout)   :: b(ldb, *)
+            integer, intent(in)              :: ldb
+            complex(real64), intent(inout)   :: c(ldc, *)
+            integer, intent(in)              :: ldc
+            complex(real64), intent(inout)   :: d(ldd, *)
+            integer, intent(in)              :: ldd
+            integer, intent(out)             :: info
         end subroutine tb01xz
     end interface
     public :: tb01xz
@@ -13215,6 +13770,7 @@ module slicot
     interface
         subroutine tb01yd(n, m, p, a, lda, b, ldb, c, &
                        ldc, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13232,6 +13788,7 @@ module slicot
     interface
         subroutine tb01zd(jobz, n, p, a, lda, b, c, ldc, &
                        ncont, z, ldz, tau, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobz
             integer, intent(in)               :: n
             integer, intent(in)               :: p
@@ -13257,6 +13814,7 @@ module slicot
                        ldb, c, ldc, d, ldd, nr, index, pcoeff, &
                        ldpco1, ldpco2, qcoeff, ldqco1, ldqco2, vcoeff, ldvco1, ldvco2, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: leri
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
@@ -13293,6 +13851,7 @@ module slicot
     interface
         subroutine tb03ay(nr, a, lda, indblk, nblk, vcoeff, ldvco1, ldvco2, &
                        pcoeff, ldpco1, ldpco2, info)
+            use iso_fortran_env
             integer, intent(in)               :: nr
             double precision, intent(in)      :: a(lda, *)
             integer, intent(in)               :: lda
@@ -13314,6 +13873,7 @@ module slicot
                        c, ldc, d, ldd, nr, index, dcoeff, lddcoe, &
                        ucoeff, lduco1, lduco2, tol1, tol2, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rowcol
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13348,6 +13908,7 @@ module slicot
                        ldc, d, ldd, ncont, indexd, dcoeff, lddcoe, ucoeff, &
                        lduco1, lduco2, at, n1, tau, tol1, tol2, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: mwork
             integer, intent(in)               :: pwork
@@ -13384,6 +13945,7 @@ module slicot
                        lda, b, ldb, c, ldc, d, ldd, ign, &
                        ldign, igd, ldigd, gn, gd, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobd
             character(len=*), intent(in)             :: order
             character(len=*), intent(in)             :: equil
@@ -13417,6 +13979,7 @@ module slicot
     interface
         subroutine tb04bv(order, p, m, md, ign, ldign, igd, ldigd, &
                        gn, gd, d, ldd, tol, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: order
             integer, intent(in)               :: p
             integer, intent(in)               :: m
@@ -13438,6 +14001,7 @@ module slicot
     interface
         subroutine tb04bw(order, p, m, md, ign, ldign, igd, ldigd, &
                        gn, gd, d, ldd, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: order
             integer, intent(in)               :: p
             integer, intent(in)               :: m
@@ -13458,6 +14022,7 @@ module slicot
     interface
         subroutine tb04bx(ip, iz, a, lda, b, c, d, pr, &
                        pi, zr, zi, gain, iwork)
+            use iso_fortran_env
             integer, intent(in)               :: ip
             integer, intent(in)               :: iz
             double precision, intent(inout)   :: a(lda, *)
@@ -13480,6 +14045,7 @@ module slicot
                        b, ldb, c, ldc, d, ldd, nz, ldnz, &
                        np, ldnp, zerosr, zerosi, polesr, polesi, gains, ldgain, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobd
             character(len=*), intent(in)             :: equil
             integer, intent(in)               :: n
@@ -13518,12 +14084,13 @@ module slicot
                        b, ldb, c, ldc, rcond, g, ldg, evre, &
                        evim, hinvb, ldhinv, iwork, dwork, ldwork, zwork, lzwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: baleig
             character(len=*), intent(in)             :: inita
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(in)            :: freq
+            complex(real64), intent(in)       :: freq
             double precision, intent(inout)   :: a(lda, *)
             integer, intent(in)               :: lda
             double precision, intent(inout)   :: b(ldb, *)
@@ -13531,16 +14098,16 @@ module slicot
             double precision, intent(inout)   :: c(ldc, *)
             integer, intent(in)               :: ldc
             double precision, intent(out)     :: rcond
-            complex*16, intent(out)           :: g(ldg, *)
+            complex(real64), intent(out)      :: g(ldg, *)
             integer, intent(in)               :: ldg
             double precision, intent(out)     :: evre(*)
             double precision, intent(out)     :: evim(*)
-            complex*16, intent(out)           :: hinvb(ldhinv, *)
+            complex(real64), intent(out)      :: hinvb(ldhinv, *)
             integer, intent(in)               :: ldhinv
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
             integer, intent(in)               :: ldwork
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine tb05ad
@@ -13550,6 +14117,7 @@ module slicot
     interface
         subroutine tc01od(leri, m, p, indlim, pcoeff, ldpco1, ldpco2, qcoeff, &
                        ldqco1, ldqco2, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: leri
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13569,6 +14137,7 @@ module slicot
         subroutine tc04ad(leri, m, p, index, pcoeff, ldpco1, ldpco2, qcoeff, &
                        ldqco1, ldqco2, n, rcond, a, lda, b, ldb, &
                        c, ldc, d, ldd, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: leri
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13601,10 +14170,11 @@ module slicot
         subroutine tc05ad(leri, m, p, sval, index, pcoeff, ldpco1, ldpco2, &
                        qcoeff, ldqco1, ldqco2, rcond, cfreqr, ldcfre, iwork, dwork, &
                        zwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: leri
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(in)            :: sval
+            complex(real64), intent(in)       :: sval
             integer, intent(in)               :: index(*)
             double precision, intent(in)      :: pcoeff(ldpco1, ldpco2, *)
             integer, intent(in)               :: ldpco1
@@ -13613,11 +14183,11 @@ module slicot
             integer, intent(in)               :: ldqco1
             integer, intent(in)               :: ldqco2
             double precision, intent(out)     :: rcond
-            complex*16, intent(out)           :: cfreqr(ldcfre, *)
+            complex(real64), intent(out)      :: cfreqr(ldcfre, *)
             integer, intent(in)               :: ldcfre
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(out)              :: info
         end subroutine tc05ad
     end interface
@@ -13629,6 +14199,7 @@ module slicot
                        c, ldc, d, ldd, indexp, pcoeff, ldpco1, ldpco2, &
                        qcoeff, ldqco1, ldqco2, vcoeff, ldvco1, ldvco2, tol, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rowcol
             character(len=*), intent(in)             :: leri
             character(len=*), intent(in)             :: equil
@@ -13672,6 +14243,7 @@ module slicot
         subroutine td03ay(mwork, pwork, index, dcoeff, lddcoe, ucoeff, lduco1, lduco2, &
                        n, a, lda, b, ldb, c, ldc, d, &
                        ldd, info)
+            use iso_fortran_env
             integer, intent(in)               :: mwork
             integer, intent(in)               :: pwork
             integer, intent(in)               :: index(*)
@@ -13698,6 +14270,7 @@ module slicot
         subroutine td04ad(rowcol, m, p, index, dcoeff, lddcoe, ucoeff, lduco1, &
                        lduco2, nr, a, lda, b, ldb, c, ldc, &
                        d, ldd, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: rowcol
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13728,6 +14301,7 @@ module slicot
     interface
         subroutine td05ad(unitf, output, np1, mp1, w, a, b, valr, &
                        vali, info)
+            use iso_fortran_env
             character(len=*), intent(in)           :: unitf
             character(len=*), intent(in)           :: output
             integer, intent(in)             :: np1
@@ -13746,6 +14320,7 @@ module slicot
         subroutine tf01md(n, m, p, ny, a, lda, b, ldb, &
                        c, ldc, d, ldd, u, ldu, x, y, &
                        ldy, dwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13772,6 +14347,7 @@ module slicot
     interface
         subroutine tf01mx(n, m, p, ny, s, lds, u, ldu, &
                        x, y, ldy, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13794,6 +14370,7 @@ module slicot
         subroutine tf01my(n, m, p, ny, a, lda, b, ldb, &
                        c, ldc, d, ldd, u, ldu, x, y, &
                        ldy, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -13822,6 +14399,7 @@ module slicot
         subroutine tf01nd(uplo, n, m, p, ny, a, lda, b, &
                        ldb, c, ldc, d, ldd, u, ldu, x, &
                        y, ldy, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: uplo
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -13849,6 +14427,7 @@ module slicot
     interface
         subroutine tf01od(nh1, nh2, nr, nc, h, ldh, t, ldt, &
                        info)
+            use iso_fortran_env
             integer, intent(in)             :: nh1
             integer, intent(in)             :: nh2
             integer, intent(in)             :: nr
@@ -13865,6 +14444,7 @@ module slicot
     interface
         subroutine tf01pd(nh1, nh2, nr, nc, h, ldh, t, ldt, &
                        info)
+            use iso_fortran_env
             integer, intent(in)             :: nh1
             integer, intent(in)             :: nh2
             integer, intent(in)             :: nr
@@ -13881,6 +14461,7 @@ module slicot
     interface
         subroutine tf01qd(nc, nb, n, iord, ar, ma, h, ldh, &
                        info)
+            use iso_fortran_env
             integer, intent(in)             :: nc
             integer, intent(in)             :: nb
             integer, intent(in)             :: n
@@ -13897,6 +14478,7 @@ module slicot
     interface
         subroutine tf01rd(na, nb, nc, n, a, lda, b, ldb, &
                        c, ldc, h, ldh, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: na
             integer, intent(in)               :: nb
             integer, intent(in)               :: nc
@@ -13920,6 +14502,7 @@ module slicot
         subroutine tg01ad(job, l, n, m, p, thresh, a, lda, &
                        e, lde, b, ldb, c, ldc, lscale, rscale, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -13946,19 +14529,20 @@ module slicot
         subroutine tg01az(job, l, n, m, p, thresh, a, lda, &
                        e, lde, b, ldb, c, ldc, lscale, rscale, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: l
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
             double precision, intent(in)      :: thresh
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
             double precision, intent(out)     :: lscale(*)
             double precision, intent(out)     :: rscale(*)
@@ -13972,6 +14556,7 @@ module slicot
         subroutine tg01bd(jobe, compq, compz, n, m, p, ilo, ihi, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
@@ -14002,6 +14587,7 @@ module slicot
     interface
         subroutine tg01cd(compq, l, n, m, a, lda, e, lde, &
                        b, ldb, q, ldq, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -14024,6 +14610,7 @@ module slicot
     interface
         subroutine tg01dd(compz, l, n, p, a, lda, e, lde, &
                        c, ldc, z, ldz, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -14047,6 +14634,7 @@ module slicot
         subroutine tg01ed(joba, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, q, ldq, z, &
                        ldz, ranke, rnka22, tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: joba
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -14079,6 +14667,7 @@ module slicot
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, ranke, rnka22, tol, iwork, dwork, &
                        ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
             character(len=*), intent(in)             :: joba
@@ -14114,6 +14703,7 @@ module slicot
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, ranke, rnka22, tol, iwork, dwork, &
                        zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
             character(len=*), intent(in)             :: joba
@@ -14121,24 +14711,24 @@ module slicot
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
-            complex*16, intent(inout)         :: a(lda, *)
+            complex(real64), intent(inout)    :: a(lda, *)
             integer, intent(in)               :: lda
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
-            complex*16, intent(inout)         :: b(ldb, *)
+            complex(real64), intent(inout)    :: b(ldb, *)
             integer, intent(in)               :: ldb
-            complex*16, intent(inout)         :: c(ldc, *)
+            complex(real64), intent(inout)    :: c(ldc, *)
             integer, intent(in)               :: ldc
-            complex*16, intent(inout)         :: q(ldq, *)
+            complex(real64), intent(inout)    :: q(ldq, *)
             integer, intent(in)               :: ldq
-            complex*16, intent(inout)         :: z(ldz, *)
+            complex(real64), intent(inout)    :: z(ldz, *)
             integer, intent(in)               :: ldz
             integer, intent(out)              :: ranke
             integer, intent(out)              :: rnka22
             double precision, intent(in)      :: tol
             integer, intent(inout)            :: iwork(*)
             double precision, intent(inout)   :: dwork(*)
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine tg01fz
@@ -14149,6 +14739,7 @@ module slicot
         subroutine tg01gd(jobs, l, n, m, p, a, lda, e, &
                        lde, b, ldb, c, ldc, d, ldd, lr, &
                        nr, ranke, infred, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobs
             integer, intent(in)               :: l
             integer, intent(in)               :: n
@@ -14182,6 +14773,7 @@ module slicot
                        e, lde, b, ldb, c, ldc, q, ldq, &
                        z, ldz, ncont, niucon, nrblck, rtau, tol, iwork, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobcon
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
@@ -14217,6 +14809,7 @@ module slicot
                        lbe, a, lda, e, lde, b, ldb, c, &
                        ldc, q, ldq, z, ldz, nr, nrblck, rtau, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: l
@@ -14255,6 +14848,7 @@ module slicot
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, nr, nrblck, rtau, tol, &
                        iwork, dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: l
@@ -14291,6 +14885,7 @@ module slicot
                        a, lda, e, lde, b, ldb, c, ldc, &
                        q, ldq, z, ldz, nr, nrblck, rtau, tol, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
             integer, intent(in)               :: l
@@ -14328,6 +14923,7 @@ module slicot
                        e, lde, b, ldb, c, ldc, q, ldq, &
                        z, ldz, nobsv, niuobs, nlblck, ctau, tol, iwork, &
                        dwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobobs
             character(len=*), intent(in)             :: compq
             character(len=*), intent(in)             :: compz
@@ -14362,6 +14958,7 @@ module slicot
         subroutine tg01jd(job, systyp, equil, n, m, p, a, lda, &
                        e, lde, b, ldb, c, ldc, nr, infred, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: systyp
             character(len=*), intent(in)             :: equil
@@ -14391,6 +14988,7 @@ module slicot
         subroutine tg01jy(job, systyp, equil, cksing, restor, n, m, p, &
                        a, lda, e, lde, b, ldb, c, ldc, &
                        nr, infred, tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: systyp
             character(len=*), intent(in)             :: equil
@@ -14422,6 +15020,7 @@ module slicot
         subroutine tg01kd(jobe, compc, compq, compz, n, a, lda, e, &
                        lde, b, c, incc, q, ldq, z, ldz, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             character(len=*), intent(in)             :: compc
             character(len=*), intent(in)             :: compq
@@ -14447,23 +15046,24 @@ module slicot
         subroutine tg01kz(jobe, compc, compq, compz, n, a, lda, e, &
                        lde, b, c, incc, q, ldq, z, ldz, &
                        info)
-            character(len=*), intent(in)       :: jobe
-            character(len=*), intent(in)       :: compc
-            character(len=*), intent(in)       :: compq
-            character(len=*), intent(in)       :: compz
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: a(lda, *)
-            integer, intent(in)         :: lda
-            complex*16, intent(inout)   :: e(lde, *)
-            integer, intent(in)         :: lde
-            complex*16, intent(inout)   :: b(*)
-            complex*16, intent(inout)   :: c(*)
-            integer, intent(in)         :: incc
-            complex*16, intent(inout)   :: q(ldq, *)
-            integer, intent(in)         :: ldq
-            complex*16, intent(inout)   :: z(ldz, *)
-            integer, intent(in)         :: ldz
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            character(len=*), intent(in)            :: jobe
+            character(len=*), intent(in)            :: compc
+            character(len=*), intent(in)            :: compq
+            character(len=*), intent(in)            :: compz
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: a(lda, *)
+            integer, intent(in)              :: lda
+            complex(real64), intent(inout)   :: e(lde, *)
+            integer, intent(in)              :: lde
+            complex(real64), intent(inout)   :: b(*)
+            complex(real64), intent(inout)   :: c(*)
+            integer, intent(in)              :: incc
+            complex(real64), intent(inout)   :: q(ldq, *)
+            integer, intent(in)              :: ldq
+            complex(real64), intent(inout)   :: z(ldz, *)
+            integer, intent(in)              :: ldz
+            integer, intent(out)             :: info
         end subroutine tg01kz
     end interface
     public :: tg01kz
@@ -14473,6 +15073,7 @@ module slicot
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, nf, nd, niblck, iblck, tol, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: joba
             character(len=*), intent(in)             :: compq
@@ -14510,6 +15111,7 @@ module slicot
                        lda, e, lde, b, ldb, c, ldc, q, &
                        ldq, z, ldz, nf, niblck, iblck, tol, iwork, &
                        dwork, ldwork, info)
+            use iso_fortran_env
             logical, intent(in)               :: compq
             logical, intent(in)               :: compz
             integer, intent(in)               :: n
@@ -14546,6 +15148,7 @@ module slicot
                        b, ldb, c, ldc, alphar, alphai, beta, q, &
                        ldq, z, ldz, nf, nd, niblck, iblck, tol, &
                        iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -14583,6 +15186,7 @@ module slicot
                        lde, b, ldb, c, ldc, alphar, alphai, beta, &
                        q, ldq, z, ldz, nf, nd, niblck, iblck, &
                        tol, iwork, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: job
             character(len=*), intent(in)             :: jobt
             integer, intent(in)               :: n
@@ -14620,6 +15224,7 @@ module slicot
         subroutine tg01nx(jobt, n, m, p, ndim, a, lda, e, &
                        lde, b, ldb, c, ldc, q, ldq, z, &
                        ldz, iwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobt
             integer, intent(in)               :: n
             integer, intent(in)               :: m
@@ -14645,6 +15250,7 @@ module slicot
     
     interface
         subroutine tg01oa(jobe, n, dcba, lddcba, e, lde, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             integer, intent(in)               :: n
             double precision, intent(inout)   :: dcba(lddcba, *)
@@ -14658,13 +15264,14 @@ module slicot
     
     interface
         subroutine tg01ob(jobe, n, dcba, lddcba, e, lde, info)
-            character(len=*), intent(in)       :: jobe
-            integer, intent(in)         :: n
-            complex*16, intent(inout)   :: dcba(lddcba, *)
-            integer, intent(in)         :: lddcba
-            complex*16, intent(inout)   :: e(lde, *)
-            integer, intent(in)         :: lde
-            integer, intent(out)        :: info
+            use iso_fortran_env
+            character(len=*), intent(in)            :: jobe
+            integer, intent(in)              :: n
+            complex(real64), intent(inout)   :: dcba(lddcba, *)
+            integer, intent(in)              :: lddcba
+            complex(real64), intent(inout)   :: e(lde, *)
+            integer, intent(in)              :: lde
+            integer, intent(out)             :: info
         end subroutine tg01ob
     end interface
     public :: tg01ob
@@ -14672,6 +15279,7 @@ module slicot
     interface
         subroutine tg01od(jobe, n, dcba, lddcba, e, lde, nz, g, &
                        tol, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             integer, intent(in)               :: n
             double precision, intent(inout)   :: dcba(lddcba, *)
@@ -14691,16 +15299,17 @@ module slicot
     interface
         subroutine tg01oz(jobe, n, dcba, lddcba, e, lde, nz, g, &
                        tol, zwork, lzwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: jobe
             integer, intent(in)               :: n
-            complex*16, intent(inout)         :: dcba(lddcba, *)
+            complex(real64), intent(inout)    :: dcba(lddcba, *)
             integer, intent(in)               :: lddcba
-            complex*16, intent(inout)         :: e(lde, *)
+            complex(real64), intent(inout)    :: e(lde, *)
             integer, intent(in)               :: lde
             integer, intent(out)              :: nz
-            complex*16, intent(out)           :: g
+            complex(real64), intent(out)      :: g
             double precision, intent(in)      :: tol
-            complex*16, intent(inout)         :: zwork(*)
+            complex(real64), intent(inout)    :: zwork(*)
             integer, intent(in)               :: lzwork
             integer, intent(out)              :: info
         end subroutine tg01oz
@@ -14712,6 +15321,7 @@ module slicot
                        nlow, nsup, alpha, a, lda, e, lde, b, &
                        ldb, c, ldc, q, ldq, z, ldz, ndim, &
                        alphar, alphai, beta, dwork, ldwork, info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: jobae
@@ -14752,6 +15362,7 @@ module slicot
                        n2, n3, nd, niblck, iblck, q, ldq, z, &
                        ldz, alphar, alphai, beta, tol, iwork, dwork, ldwork, &
                        info)
+            use iso_fortran_env
             character(len=*), intent(in)             :: dico
             character(len=*), intent(in)             :: stdom
             character(len=*), intent(in)             :: jobfi
@@ -14793,6 +15404,7 @@ module slicot
         subroutine tg01wd(n, m, p, a, lda, e, lde, b, &
                        ldb, c, ldc, q, ldq, z, ldz, alphar, &
                        alphai, beta, dwork, ldwork, info)
+            use iso_fortran_env
             integer, intent(in)               :: n
             integer, intent(in)               :: m
             integer, intent(in)               :: p
@@ -14820,6 +15432,7 @@ module slicot
     
     interface
         subroutine ud01bd(mp, np, dp, nin, p, ldp1, ldp2, info)
+            use iso_fortran_env
             integer, intent(in)             :: mp
             integer, intent(in)             :: np
             integer, intent(in)             :: dp
@@ -14834,6 +15447,7 @@ module slicot
     
     interface
         subroutine ud01cd(mp, np, dp, nin, p, ldp1, ldp2, info)
+            use iso_fortran_env
             integer, intent(in)             :: mp
             integer, intent(in)             :: np
             integer, intent(in)             :: dp
@@ -14848,6 +15462,7 @@ module slicot
     
     interface
         subroutine ud01dd(m, n, nin, a, lda, info)
+            use iso_fortran_env
             integer, intent(in)             :: m
             integer, intent(in)             :: n
             integer, intent(in)             :: nin
@@ -14860,13 +15475,14 @@ module slicot
     
     interface
         subroutine ud01md(m, n, l, nout, a, lda, text, info)
+            use iso_fortran_env
             integer, intent(in)             :: m
             integer, intent(in)             :: n
             integer, intent(in)             :: l
             integer, intent(in)             :: nout
             double precision, intent(in)    :: a(lda, *)
             integer, intent(in)             :: lda
-            character(len=*), intent(in)           :: text
+            character*(*), intent(in)       :: text
             integer, intent(out)            :: info
         end subroutine ud01md
     end interface
@@ -14874,14 +15490,15 @@ module slicot
     
     interface
         subroutine ud01mz(m, n, l, nout, a, lda, text, info)
-            integer, intent(in)       :: m
-            integer, intent(in)       :: n
-            integer, intent(in)       :: l
-            integer, intent(in)       :: nout
-            complex*16, intent(in)    :: a(lda, *)
-            integer, intent(in)       :: lda
-            character(len=*), intent(in)     :: text
-            integer, intent(out)      :: info
+            use iso_fortran_env
+            integer, intent(in)            :: m
+            integer, intent(in)            :: n
+            integer, intent(in)            :: l
+            integer, intent(in)            :: nout
+            complex(real64), intent(in)    :: a(lda, *)
+            integer, intent(in)            :: lda
+            character*(*), intent(in)      :: text
+            integer, intent(out)           :: info
         end subroutine ud01mz
     end interface
     public :: ud01mz
@@ -14889,6 +15506,7 @@ module slicot
     interface
         subroutine ud01nd(mp, np, dp, l, nout, p, ldp1, ldp2, &
                        text, info)
+            use iso_fortran_env
             integer, intent(in)             :: mp
             integer, intent(in)             :: np
             integer, intent(in)             :: dp
@@ -14897,7 +15515,7 @@ module slicot
             double precision, intent(in)    :: p(ldp1, ldp2, *)
             integer, intent(in)             :: ldp1
             integer, intent(in)             :: ldp2
-            character(len=*), intent(in)           :: text
+            character*(*), intent(in)       :: text
             integer, intent(out)            :: info
         end subroutine ud01nd
     end interface
@@ -14905,12 +15523,13 @@ module slicot
     
     interface
         integer function ue01md (ispec,name,opts,n1,n2,n3)
-            integer, intent(in)     :: ispec
-            character(len=*), intent(in)   :: name
-            character(len=*), intent(in)   :: opts
-            integer, intent(in)     :: n1
-            integer, intent(in)     :: n2
-            integer, intent(in)     :: n3
+            use iso_fortran_env
+            integer, intent(in)         :: ispec
+            character*(*), intent(in)   :: name
+            character*(*), intent(in)   :: opts
+            integer, intent(in)         :: n1
+            integer, intent(in)         :: n2
+            integer, intent(in)         :: n3
         end function ue01md
     end interface
     public :: ue01md

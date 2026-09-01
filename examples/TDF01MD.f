@@ -11,7 +11,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION DT
       INTEGER          I, INFO, N
-      CHARACTER*1      SICO
+      CHARACTER(LEN=1)      SICO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(NMAX), DWORK(NMAX+1)
 *     .. External Functions ..

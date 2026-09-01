@@ -206,12 +206,6 @@ C     .. External Subroutines ..
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, INT, LOG10, MAX, MIN, SIGN
 C     ..
-C     .. Statement Functions ..
-      DOUBLE PRECISION   CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( CDUM ) = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
-C
 C     .. Executable Statements ..
 C
 C     Test the input parameters.
@@ -504,5 +498,14 @@ C
   200 CONTINUE
 C
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
+
 C *** Last line of TG01AZ ***
       END
