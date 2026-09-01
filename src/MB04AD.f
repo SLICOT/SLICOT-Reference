@@ -60,7 +60,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; Z, T, and H will not
 C                    necessarily be put into the forms in (2); H22' is
@@ -68,7 +68,7 @@ C                    upper Hessenberg;
 C             = 'T': put Z, T, and H into the forms in (2), and return
 C                    the eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ1  (input) CHARACTER*1
+C     COMPQ1  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q1, as follows:
 C             = 'N': Q1 is not computed;
@@ -81,7 +81,7 @@ C                    that are applied to the pencil aT*Z - bH on the
 C                    left to reduce T, Z, and H to the forms in (2),
 C                    for COMPQ1 = 'I'.
 C
-C     COMPQ2  (input) CHARACTER*1
+C     COMPQ2  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal transformation
 C             matrix Q2, as follows:
 C             = 'N': Q2 is not computed;
@@ -94,7 +94,7 @@ C                    that are applied to the pencil aT*Z - bH on the
 C                    right to reduce T, Z, and H to the forms in (2),
 C                    for COMPQ2 = 'I'.
 C
-C     COMPU1  (input) CHARACTER*1
+C     COMPU1  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U1, as follows:
 C             = 'N': U1 is not computed;
@@ -111,7 +111,7 @@ C                    transformations that are applied to the pencil
 C                    aT*Z - bH to reduce T, Z, and H to the forms in
 C                    (2), for COMPU1 = 'I'.
 C
-C     COMPU2  (input) CHARACTER*1
+C     COMPU2  (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the orthogonal symplectic
 C             transformation matrix U2, as follows:
 C             = 'N': U2 is not computed;
@@ -443,7 +443,7 @@ C     .. Local Scalars ..
       LOGICAL            LCMPQ1, LCMPQ2, LCMPU1, LCMPU2, LINIQ1, LINIQ2,
      $                   LINIU1, LINIU2, LQUERY, LTRI, LUPDQ1, LUPDQ2,
      $                   LUPDU1, LUPDU2, UNREL
-      CHARACTER*16       CMPQ, CMPSC
+      CHARACTER(LEN=16)       CMPQ, CMPSC
       INTEGER            EMAX, EMIN, I, I11, I22, I2X2, IMAT, IQ, ITAU,
      $                   IW, IWARN, IWRK, J, K, L, M, MINDW, MM, NBETA0,
      $                   NINF, OPTDW, P

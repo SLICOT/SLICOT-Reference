@@ -53,14 +53,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     (input) CHARACTER*1
+C     JOB     (input) CHARACTER(LEN=1)
 C             Specifies the computation to be performed, as follows:
 C             = 'E': compute the eigenvalues only; S and H will not
 C                    necessarily be transformed as in (3).
 C             = 'T': put S and H into the forms in (3) and return the
 C                    eigenvalues in ALPHAR, ALPHAI and BETA.
 C
-C     COMPQ   (input) CHARACTER*1
+C     COMPQ   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the unitary transformation
 C             matrix Q, as follows:
 C             = 'N':  Q is not computed;
@@ -343,7 +343,7 @@ C     .. Array Arguments ..
 C
 C     .. Local Scalars ..
       LOGICAL            LCMPQ, LQUERY, LTRI, UNREL
-      CHARACTER*14       CMPQ, JOBF
+      CHARACTER(LEN=14)       CMPQ, JOBF
       INTEGER            I, I1, IA, IB, IDE, IEV, IFG, IQ, IQ2, IQB, IS,
      $                   IW, IW1, IWRK, J, J1, J2, JM1, JP2, K, L, M,
      $                   MINDB, MINDW, MINZW, N2, NB, NC, NN, OPTDW,

@@ -14,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    (input) CHARACTER*1
+C     JOBU    (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the left singular subspace
 C             as follows:
 C             = 'N':  Do not compute the left singular subspace;
@@ -23,7 +23,7 @@ C                     left singular subspace in U;
 C             = 'S':  Return the first (min(M,N) - RANK) base vectors
 C                     of the desired left singular subspace in U.
 C
-C     JOBV    (input) CHARACTER*1
+C     JOBV    (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the right singular subspace
 C             as follows:
 C             = 'N':  Do not compute the right singular subspace;
@@ -341,7 +341,7 @@ C     .. Array Arguments ..
       LOGICAL           INUL(*)
       DOUBLE PRECISION  A(LDA,*), DWORK(*), Q(*), U(LDU,*), V(LDV,*)
 C     .. Local Scalars ..
-      CHARACTER*1       JOBUY, JOBVY
+      CHARACTER(LEN=1)       JOBUY, JOBVY
       LOGICAL           ALL, LJOBUA, LJOBUS, LJOBVA, LJOBVS, LQUERY, QR,
      $                  WANTU, WANTV
       INTEGER           I, IHOUSH, IJ, ITAU, ITAUP, ITAUQ, J, JU, JV,

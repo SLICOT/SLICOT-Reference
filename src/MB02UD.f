@@ -23,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     FACT    (input) CHARACTER*1
+C     FACT    (input) CHARACTER(LEN=1)
 C             Specifies whether R has been previously factored or not,
 C             as follows:
 C             = 'F':  R has been factored and its rank and singular
@@ -31,19 +31,19 @@ C                     value decomposition, R = Q*S*P', are available;
 C             = 'N':  R has not been factored and its singular value
 C                     decomposition, R = Q*S*P', should be computed.
 C
-C     SIDE    (input) CHARACTER*1
+C     SIDE    (input) CHARACTER(LEN=1)
 C             Specifies whether op(R) appears on the left or right
 C             of X as follows:
 C             = 'L':  Solve op(R)*X = alpha*B  (op(R) is on the left);
 C             = 'R':  Solve X*op(R) = alpha*B  (op(R) is on the right).
 C
-C     TRANS   (input) CHARACTER*1
+C     TRANS   (input) CHARACTER(LEN=1)
 C             Specifies the form of op(R) to be used as follows:
 C             = 'N':  op(R) = R;
 C             = 'T':  op(R) = R';
 C             = 'C':  op(R) = R'.
 C
-C     JOBP    (input) CHARACTER*1
+C     JOBP    (input) CHARACTER(LEN=1)
 C             Specifies whether or not the pseudoinverse of R is to be
 C             computed or it is available as follows:
 C             = 'P':  Compute pinv(R), if FACT = 'N', or
@@ -224,7 +224,7 @@ C     .. Array Arguments ..
      $                  RP(LDRP,*), SV(*)
 C     .. Local Scalars ..
       LOGICAL           LEFT, LQUERY, NFCT, PINV, TRAN
-      CHARACTER*1       NTRAN
+      CHARACTER(LEN=1)       NTRAN
       INTEGER           I, L, MAXWRK, MINWRK, MN
       DOUBLE PRECISION  TOLL
 C     .. External Functions ..

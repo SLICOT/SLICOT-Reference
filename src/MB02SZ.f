@@ -76,6 +76,7 @@ C     Frequency response, Hessenberg form, matrix algebra.
 C
 C     ******************************************************************
 C
+      IMPLICIT NONE
 C     .. Parameters ..
       COMPLEX*16        ZERO
       PARAMETER         ( ZERO = ( 0.0D+0, 0.0D+0 ) )
@@ -86,15 +87,10 @@ C     .. Array Arguments ..
       COMPLEX*16        H(LDH,*)
 C     .. Local Scalars ..
       INTEGER           J, JP
-      COMPLEX*16        CDUM
 C     .. External Subroutines ..
       EXTERNAL          XERBLA, ZAXPY, ZSWAP
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, DIMAG, MAX
-C     .. Statement Functions ..
-      DOUBLE PRECISION  CABS1
-C     .. Statement Function definitions ..
-      CABS1( CDUM )   = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -152,5 +148,12 @@ C
          END IF
    10 CONTINUE
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
 C *** Last line of MB02SZ ***
       END

@@ -35,7 +35,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     (input) CHARACTER*1
+C     DEF     (input) CHARACTER(LEN=1)
 C             Specifies the kind of values used as parameters when
 C             generating parameter-dependent and scalable examples
 C             (i.e., examples with NR(1) = 2, 3, or 4):
@@ -149,7 +149,7 @@ C
 C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
-C     NOTE    (output) CHARACTER*70
+C     NOTE    (output) CHARACTER(LEN=70)
 C             String containing short information about the chosen
 C             example.
 C
@@ -208,7 +208,7 @@ C     .. Parameters ..
      1                   FOUR = .4D1)
 C     .. Scalar Arguments ..
       CHARACTER         DEF
-      CHARACTER*70      NOTE
+      CHARACTER(LEN=70)      NOTE
       INTEGER           INFO, LDA, LDB, LDE, LDU, LDWORK, LDX, LDY, M, N
 C     .. Array Arguments ..
       LOGICAL           VEC(8)

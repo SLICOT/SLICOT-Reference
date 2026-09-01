@@ -16,7 +16,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION ALPHA, SHNORM
       INTEGER          I, INFO, J, M, N, NS, P
-      CHARACTER*1      DICO, EQUIL
+      CHARACTER(LEN=1)      DICO, EQUIL
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 DWORK(LDWORK), HSV(NMAX)

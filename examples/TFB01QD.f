@@ -18,7 +18,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, ISTEP, J, M, N, P
-      CHARACTER*1      JOBK, MULTBQ
+      CHARACTER(LEN=1)      JOBK, MULTBQ
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 DIAG(PMAX), DWORK(LDWORK), K(LDK,PMAX),

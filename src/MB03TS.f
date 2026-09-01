@@ -420,7 +420,11 @@ C
 C        Swap the adjacent diagonal blocks.
 C
          K = N1 + N1 + N2 - 3
-         GO TO ( 10, 20, 30 )K
+C         GO TO ( 10, 20, 30 )K
+         IF ( K .EQ. 1 ) GO TO 10
+         IF ( K .EQ. 2 ) GO TO 20
+         IF ( K .EQ. 3 ) GO TO 30
+
 C
    10    CONTINUE
 C

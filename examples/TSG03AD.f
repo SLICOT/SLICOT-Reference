@@ -15,7 +15,7 @@ C
       PARAMETER         ( LIWORK = NMAX**2,
      $                    LDWORK = MAX( 2*NMAX**2, 4*NMAX ) )
 *     .. Local Scalars ..
-      CHARACTER*1       DICO, FACT, JOB, TRANS, UPLO
+      CHARACTER(LEN=1)       DICO, FACT, JOB, TRANS, UPLO
       DOUBLE PRECISION  FERR, SCALE, SEP
       INTEGER           I, INFO, J, N
 *     .. Local Arrays ..

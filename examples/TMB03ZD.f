@@ -17,7 +17,7 @@ C
      $                   LDUS = 2*NMAX, LDUU = 2*NMAX, LDV1 = NMAX,
      $                   LDV2 = NMAX, LDWORK = 3*NMAX*NMAX + 7*NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      BALANC, METH, ORTBAL, STAB, WHICH
+      CHARACTER(LEN=1)      BALANC, METH, ORTBAL, STAB, WHICH
       INTEGER          I, ILO, INFO, J, M, N
 *     .. Local Arrays ..
       LOGICAL          LWORK(2*NMAX), SELECT(NMAX)

@@ -22,7 +22,7 @@ C
       COMPLEX*16       SVAL
       DOUBLE PRECISION RCOND
       INTEGER          I, INFO, J, K, KPCOEF, M, P, PORM, PORP
-      CHARACTER*1      LERI
+      CHARACTER(LEN=1)      LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       COMPLEX*16       CFREQR(LDCFRE,MAXMP), ZWORK(LZWORK)

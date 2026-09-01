@@ -17,7 +17,7 @@ C
      $                   LDD = P2MAX, LDD1 = P1MAX, LDD2 = P2MAX,
      $                   LDWORK = P1MAX*N1MAX )
 *     .. Local Scalars ..
-      CHARACTER*1      OVER, UPLO
+      CHARACTER(LEN=1)      OVER, UPLO
       INTEGER          I, INFO, J, M1, N, N1, N2, P1, P2
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), A1(LDA1,N1MAX), A2(LDA2,N2MAX),

@@ -17,7 +17,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, IWARN, J, M, N, NQ, NR, P
-      CHARACTER*1      DICO
+      CHARACTER(LEN=1)      DICO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), ALPHA(2), B(LDB,MMAX), C(LDC,NMAX),
      $                 CR(LDCR,NMAX), D(LDD,MMAX), DR(LDDR,MMAX),

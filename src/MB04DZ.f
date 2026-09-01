@@ -134,11 +134,6 @@ C     .. External Subroutines ..
       EXTERNAL          XERBLA, ZDRSCL, ZDSCAL, ZSWAP
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, DIMAG, MAX, MIN
-C     .. Statement Functions ..
-      DOUBLE PRECISION  CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( CDUM ) = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C
 C     .. Executable Statements ..
 C
@@ -446,5 +441,13 @@ C
          IF ( .NOT.CONV ) GO TO 140
       END IF
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
 C *** Last line of MB04DZ ***
       END

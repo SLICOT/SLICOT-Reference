@@ -21,7 +21,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INDBLK, INFO, J, K, KDCOEF, M, N, NR, P, PORM
-      CHARACTER*1      ROWCOL
+      CHARACTER(LEN=1)      ROWCOL
       LOGICAL          LROWCO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),

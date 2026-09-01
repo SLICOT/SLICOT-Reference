@@ -185,7 +185,7 @@ C     .. Scalar Arguments ..
 C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), DWORK(*), R(LDR,*), X(LDX,*)
 C     .. Local Scalars ..
-      CHARACTER*12      NTRAN
+      CHARACTER(LEN=12) NTRAN
       LOGICAL           LTRANS, LUPLO
       INTEGER           J, JWORK, LDW, NROWA
 C     .. External Functions ..

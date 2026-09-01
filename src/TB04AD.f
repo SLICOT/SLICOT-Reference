@@ -17,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ROWCOL  (input) CHARACTER*1
+C     ROWCOL  (input) CHARACTER(LEN=1)
 C             Indicates whether the transfer matrix T(s) is required
 C             as rows or columns over common denominators as follows:
 C             = 'R':  T(s) is required as rows over common denominators;
@@ -234,7 +234,7 @@ C     .. Array Arguments ..
      $                  UCOEFF(LDUCO1,LDUCO2,*)
 C     .. Local Scalars ..
       LOGICAL           LROCOC, LROCOR
-      CHARACTER*1       JOBD
+      CHARACTER(LEN=1)       JOBD
       INTEGER           I, IA, ITAU, J, JWORK, K, KDCOEF, MAXMP, MAXMPN,
      $                  MPLIM, MWORK, N1, PWORK
 C     .. External Functions ..

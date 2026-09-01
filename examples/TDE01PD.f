@@ -10,7 +10,7 @@ C
       PARAMETER        ( NMAX = 128 )
 *     .. Local Scalars ..
       INTEGER          I, INFO, N
-      CHARACTER*1      CONV, WGHT
+      CHARACTER(LEN=1)      CONV, WGHT
 *     .. Local Arrays ..
       DOUBLE PRECISION A(NMAX), B(NMAX), W(NMAX)
 *     .. External Functions ..

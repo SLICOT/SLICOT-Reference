@@ -14,7 +14,7 @@ C     .. Parameters ..
 C     .. Local Scalars ..
       CHARACTER        DEF
       INTEGER          INFO, N, M, I, J, LDPAR, LIPAR
-      CHARACTER*70     NOTE
+      CHARACTER(LEN=70)     NOTE
 C     .. Local Arrays ..
       DOUBLE PRECISION E(LDE,NMAX), A(LDA, NMAX), Y(LDY, NMAX),
      1                 B(LDB,NMAX), X(LDX, NMAX), U(LDU, NMAX),

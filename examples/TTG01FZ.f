@@ -17,7 +17,7 @@ C
       PARAMETER        ( LZWORK = MAX( 1, NMAX+PMAX,
      $                   MIN(LMAX,NMAX)+MAX( 3*NMAX-1, MMAX, LMAX ) ) )
 *     .. Local Scalars ..
-      CHARACTER*1      COMPQ, COMPZ, JOBA
+      CHARACTER(LEN=1)      COMPQ, COMPZ, JOBA
       INTEGER          I, INFO, J, L, M, N, P, RANKE, RNKA22
       DOUBLE PRECISION TOL
 *     .. Local Arrays ..

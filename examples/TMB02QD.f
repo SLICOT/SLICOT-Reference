@@ -16,7 +16,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION RCOND, SVLMAX
       INTEGER          I, INFO, J, M, N, NRHS, RANK
-      CHARACTER*1      INIPER, JOB
+      CHARACTER(LEN=1)      INIPER, JOB
 *     .. Local Arrays ..
       INTEGER          JPVT(NMAX)
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,NRHSMX), DWORK(LDWORK),

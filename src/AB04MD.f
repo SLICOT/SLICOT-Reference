@@ -196,7 +196,7 @@ C     .. External Functions ..
       EXTERNAL          LSAME
 C     .. External Subroutines ..
       EXTERNAL          DGEMM, DGETRF, DGETRS, DGETRI, DLASCL, DSCAL,
-     $                  DSWAP, XERBLA
+     $                  DSWAP, DTRSM, XERBLA
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, MAX, SIGN, SQRT
 C     .. Executable Statements ..

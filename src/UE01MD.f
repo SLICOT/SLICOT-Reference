@@ -73,9 +73,9 @@ C     .. Scalar Arguments ..
       INTEGER            ISPEC, N1, N2, N3
 C
 C     .. Local Scalars ..
-      CHARACTER*1        C3
-      CHARACTER*2        C2
-      CHARACTER*6        SUBNAM
+      CHARACTER(LEN=1)        C3
+      CHARACTER(LEN=2)        C2
+      CHARACTER(LEN=6)        SUBNAM
       INTEGER            I, IC, IZ, NB, NBMIN, NX
 C     .. External Functions ..
       INTEGER            ILAENV

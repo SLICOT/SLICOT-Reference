@@ -15,7 +15,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, J, N, NCONT
-      CHARACTER*1      JOBZ
+      CHARACTER(LEN=1)      JOBZ
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(NMAX), DWORK(LDWORK), TAU(NMAX),
      $                 Z(LDZ,NMAX)

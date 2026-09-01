@@ -27,7 +27,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   (input) CHARACTER*1
+C     COMPQ   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the right deflating subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -35,7 +35,7 @@ C             = 'N':  do not compute the deflating subspace;
 C             = 'C':  compute the deflating subspace and store it in the
 C                     leading subarray of Q.
 C
-C     COMPU   (input) CHARACTER*1
+C     COMPU   (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the companion subspace
 C             corresponding to the eigenvalues of aS - bH with strictly
 C             negative real part.
@@ -43,7 +43,7 @@ C             = 'N': do not compute the companion subspace;
 C             = 'C': compute the companion subspace and store it in the
 C                    leading subarray of U.
 C
-C     ORTH    (input) CHARACTER*1
+C     ORTH    (input) CHARACTER(LEN=1)
 C             If COMPQ = 'C' and/or COMPU = 'C', specifies the technique
 C             for computing the orthogonal basis of the deflating
 C             subspace, and/or of the companion subspace, as follows:
@@ -320,7 +320,7 @@ C     .. Array Arguments ..
 C
 C     .. Local Scalars ..
       LOGICAL            LCMP, LCMPQ, LCMPU, LQUERY, QR, QRP, SVD
-      CHARACTER*14       CMPI, CMQI, CMUI, JOB
+      CHARACTER(LEN=14)       CMPI, CMQI, CMUI, JOB
       INTEGER            I, IH, IH12, IQ1, IQ2, IQ3, IQ4, IS, IT, IU11,
      $                   IU12, IU21, IU22, IU3, IW, IWRK, IZ12, J, M,
      $                   MINDB, MINDW, MINIW, MM, MP1, N2, NM, NMM, NN,

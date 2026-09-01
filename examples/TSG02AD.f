@@ -26,7 +26,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION RCONDU, TOL
       INTEGER          I, INFO, IWARN, J, M, N, P
-      CHARACTER*1      ACC, DICO, FACT, JOBB, JOBL, SCAL, SORT, UPLO
+      CHARACTER(LEN=1) ACC, DICO, FACT, JOBB, JOBL, SCAL, SORT, UPLO
       LOGICAL          LJOBB
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX),  ALFAI(NMAX2),  ALFAR(NMAX2),

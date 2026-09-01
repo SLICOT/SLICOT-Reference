@@ -14,7 +14,7 @@ C
       PARAMETER        ( LDWORK = NMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, N
-      CHARACTER*1      JOBSCL
+      CHARACTER(LEN=1)      JOBSCL
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), D(NMAX), DWORK(LDWORK),
      $                 QG(LDQG,NMAX+1)

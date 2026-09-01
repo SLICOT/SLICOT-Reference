@@ -12,7 +12,7 @@ C
       PARAMETER        ( LDP1 = MPMAX, LDP2 = NPMAX )
 *     .. Local Scalars ..
       INTEGER          DP, INFO, L, MP, NP
-      CHARACTER*72     TEXT
+      CHARACTER(LEN=72)     TEXT
 *     .. Local Arrays ..
       DOUBLE PRECISION P(LDP1,LDP2,DPMAX)
 *     .. External Subroutines ..

@@ -11,7 +11,7 @@ C
       PARAMETER        ( LDA = NMAX, LDB = MMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, M, N
-      CHARACTER*1      TRANS
+      CHARACTER(LEN=1)      TRANS
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,NMAX)
       INTEGER          IPIV(NMAX)

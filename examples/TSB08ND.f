@@ -13,7 +13,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION RES
       INTEGER          DA, I, INFO
-      CHARACTER*1      ACONA
+      CHARACTER(LEN=1)      ACONA
 *     .. Local Arrays ..
       DOUBLE PRECISION A(DAMAX+1), DWORK(LDWORK), E(DAMAX+1)
 *     .. External Functions ..

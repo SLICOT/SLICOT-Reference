@@ -25,7 +25,7 @@ C
       DOUBLE PRECISION TOL
       INTEGER          DINFZ, I, INFO, J, L, M, N, NFZ, NINFE, NIZ,
      $                 NKROL, NKROR, NRANK, P
-      CHARACTER*1      EQUIL
+      CHARACTER(LEN=1)      EQUIL
 *     .. Local Arrays ..
       COMPLEX*16       A(LDA,NMAX), ALPHA(NMAX), ASAVE(LDA,NMAX),
      $                 B(LDB,MMAX),  BETA(NMAX), BSAVE(LDB,MMAX),

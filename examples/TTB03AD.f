@@ -25,7 +25,7 @@ C
       DOUBLE PRECISION TOL
       INTEGER          I, INDBLK, INFO, J, K, KPCOEF, M, N, NR, P, PORM,
      $                 PORP
-      CHARACTER*1      EQUIL, LERI
+      CHARACTER(LEN=1)      EQUIL, LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),

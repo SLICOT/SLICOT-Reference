@@ -11,7 +11,7 @@ C
       INTEGER          LDA, LDQG
       PARAMETER        ( LDA = NMAX, LDQG = NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
       INTEGER          I, ILO, INFO, J, N
 *     .. Local Arrays ..
       COMPLEX*16       A(LDA, NMAX), QG(LDQG, NMAX+1)

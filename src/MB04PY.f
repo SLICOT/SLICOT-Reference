@@ -115,8 +115,20 @@ C
 C
 C        Form  H * C, where H has order m.
 C
-         GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
-     $           170, 190 ) M
+C         GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
+C     $           170, 190 ) M
+         IF ( M .EQ. 1 ) GO TO 10
+         IF ( M .EQ. 2 ) GO TO 30
+         IF ( M .EQ. 3 ) GO TO 50
+         IF ( M .EQ. 4 ) GO TO 70
+         IF ( M .EQ. 5 ) GO TO 90
+         IF ( M .EQ. 6 ) GO TO 110
+         IF ( M .EQ. 7 ) GO TO 130
+         IF ( M .EQ. 8 ) GO TO 150
+         IF ( M .EQ. 9 ) GO TO 170
+         IF ( M .EQ. 10 ) GO TO 190
+
+C
 C
 C        Code for general M.
 C
@@ -372,8 +384,19 @@ C
 C
 C        Form  C * H, where H has order n.
 C
-         GO TO ( 210, 230, 250, 270, 290, 310, 330, 350,
-     $           370, 390 ) N
+C         GO TO ( 210, 230, 250, 270, 290, 310, 330, 350,
+C     $           370, 390 ) N
+          IF ( N .EQ. 1 ) GO TO 210
+          IF ( N .EQ. 2 ) GO TO 230
+          IF ( N .EQ. 3 ) GO TO 250
+          IF ( N .EQ. 4 ) GO TO 270
+          IF ( N .EQ. 5 ) GO TO 290
+          IF ( N .EQ. 6 ) GO TO 310
+          IF ( N .EQ. 7 ) GO TO 330
+          IF ( N .EQ. 8 ) GO TO 350
+          IF ( N .EQ. 9 ) GO TO 370
+          IF ( N .EQ. 10 ) GO TO 390
+
 C
 C        Code for general N.
 C

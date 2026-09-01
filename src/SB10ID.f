@@ -189,7 +189,7 @@ C     .. Array Arguments ..
      $                   RCOND( 2 )
 C     ..
 C     .. Local Scalars ..
-      CHARACTER*1        HINV
+      CHARACTER(LEN=1)        HINV
       INTEGER            I, I1, I2, I3, I4, I5, I6, I7, I8, I9, I10,
      $                   I11, I12, I13, INFO2, IWRK, J, LWA, LWAMAX,
      $                   MINWRK, N2, NS, SDIM

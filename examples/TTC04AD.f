@@ -23,7 +23,7 @@ C
 *     .. Local Scalars ..
       DOUBLE PRECISION RCOND
       INTEGER          I, INFO, J, K, KPCOEF, M, N, P, PORM, PORP
-      CHARACTER*1      LERI
+      CHARACTER(LEN=1)      LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),

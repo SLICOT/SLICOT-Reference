@@ -14,7 +14,7 @@ C
       INTEGER          LDWORK
       PARAMETER        ( LDWORK = MAX( 1, 3*(LMAX+NMAX ) ) )
 *     .. Local Scalars ..
-      CHARACTER*1      JOBS
+      CHARACTER(LEN=1)      JOBS
       INTEGER          I, INFO, J, L, M, N, P
       DOUBLE PRECISION ABCNRM, ENORM, SABCNM, SENORM, THRESH
 *     .. Local Arrays ..

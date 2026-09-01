@@ -14,7 +14,7 @@ C
       INTEGER          LDWORK
       PARAMETER        ( LDWORK = MIN(LMAX,NMAX)+MAX(LMAX,NMAX,PMAX) )
 *     .. Local Scalars ..
-      CHARACTER*1      COMPZ
+      CHARACTER(LEN=1)      COMPZ
       INTEGER          I, INFO, J, L, N, P
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), C(LDC,NMAX),

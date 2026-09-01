@@ -17,7 +17,7 @@ C
      $                   LDV1 = NMAX, LDV2 = NMAX,
      $                   LDWORK = NBMAX*( 16*NMAX + 1 ) )
 *     .. Local Scalars ..
-      CHARACTER*1      TRANA, TRANB, TRANV1
+      CHARACTER(LEN=1)      TRANA, TRANB, TRANV1
       INTEGER          I, INFO, J, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..

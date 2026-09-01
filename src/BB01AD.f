@@ -47,7 +47,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     (input) CHARACTER*1
+C     DEF     (input) CHARACTER(LEN=1)
 C             This parameter specifies if the default parameters are
 C             to be used or not.
 C             = 'N' or 'n' : The parameters given in the input vectors
@@ -198,7 +198,7 @@ C             are returned in conventional storage mode, i.e., as
 C             N-by-N arrays where the array element Z(I,J) contains the
 C             matrix entry Z_{i,j}.
 C
-C     CHPAR   (input/output) CHARACTER*255
+C     CHPAR   (input/output) CHARACTER(LEN=25)5
 C             On input, this is the name of a data file supplied by the
 C             user.
 C             In the current version, only Example 4.4 allows a
@@ -391,7 +391,7 @@ C
 C     .. Scalar Arguments ..
       INTEGER          INFO, LDA, LDB, LDC, LDG, LDQ, LDWORK, LDX, M, N,
      $                 P
-      CHARACTER*1      DEF
+      CHARACTER(LEN=1)      DEF
 C
 C     .. Array Arguments ..
       INTEGER          IPAR(4), NR(2)
@@ -409,7 +409,7 @@ C     ..Local Arrays ..
       INTEGER          MDEF(2,NMAX), NDEF(4,NMAX), NEX(4), PDEF(2,NMAX)
       DOUBLE PRECISION PARDEF(4,NMAX)
       CHARACTER        IDENT*4
-      CHARACTER*255    NOTES(4,NMAX)
+      CHARACTER(LEN=255) NOTES(4,NMAX)
 C
 C     .. External Functions ..
 C     . BLAS .

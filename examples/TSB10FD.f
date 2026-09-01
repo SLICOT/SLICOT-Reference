@@ -3,6 +3,7 @@ C SPDX-License-Identifier: BSD-3-Clause
 C
 *     SB10FD EXAMPLE PROGRAM TEXT
 *
+      PROGRAM TSB10FD
 *     .. Parameters ..
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )

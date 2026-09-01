@@ -16,7 +16,7 @@ C
       INTEGER          LDWORK
       PARAMETER        ( LDWORK = 4*NMAX+16 )
 *     .. Local Scalars ..
-      CHARACTER*1      DICO, JOBFI, STDOM
+      CHARACTER(LEN=1)      DICO, JOBFI, STDOM
       INTEGER          I, INFO, J, M, N, N1, N2, N3, ND, NIBLCK, P
       DOUBLE PRECISION ALPHA, TOL
 *     .. Local Arrays ..
