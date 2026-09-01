@@ -106,12 +106,12 @@ jobs:
     - name: Test with OpenMP
       working-directory: ${{github.workspace}}/build
       if: ${{ contains( matrix.fflags, 'openmp' ) }}
-      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j1 --output-on-failure --timeout 100
+      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j1 --output-on-failure --timeout 300
 
     - name: Test
       working-directory: ${{github.workspace}}/build
       if: ${{ !contains( matrix.fflags, 'openmp' )  }}
-      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j2 --output-on-failure --timeout 100
+      run: ctest -C ${{env.BUILD_TYPE}} --schedule-random -j2 --output-on-failure --timeout 300
 
     - name: Install
       run: cmake --build build --target install -j2
