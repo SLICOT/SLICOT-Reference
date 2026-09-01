@@ -18,7 +18,7 @@ linux:
   parallel:
     matrix:
       - OS: [ "ubuntu" ]
-        OSVERSION: [ 'focal', 'jammy']
+        OSVERSION: [ 'jammy' ]
         TAG: "amd64"
       - OS: [ "ubuntu" ]
         OSVERSION: [ 'noble', 'resolute' ]
@@ -30,7 +30,7 @@ linux:
         FC: "flang-new"
         TAG: "amd64"
       - OS: [ "fedora" ]
-        OSVERSION: [ '41', '42', '43', 'rawhide' ]
+        OSVERSION: [ '43', '44', '45', 'rawhide' ]
         TAG: "amd64"
       - OS: [ "almalinux" ]
         OSVERSION: [ '8', '9', '10' ]
@@ -75,7 +75,7 @@ fpm:
     - ${TAG}
 
   script:
-    - fpm build --profile release 
+    - fpm build --profile release
 
 
 compilers:
@@ -126,7 +126,7 @@ dist-rpm:
   parallel:
     matrix:
       - OS: [ 'fedora' ]
-        OSVERSION: ['42', '43' ]
+        OSVERSION: ['43', '44', '45' ]
   image: ${CI_REGISTRY_IMAGE}/${OS}:${OSVERSION}
   needs: []
   script:

@@ -51,29 +51,35 @@ This package contains the development headers and libraries.
 %setup -q
 
 %build
-%cmake -B build \
+%global _vpath_builddir build
+%cmake  \
     -DSLICOT_INTEGER8=OFF \
     -DSLICOT_VERSION="%{major}.%{minor}.%{patch}"
-%make_build -C build
+%cmake_build
+
 %if 0%{?__isa_bits} == 64
-%cmake -B build64 \
+%global _vpath_builddir build64
+%cmake \
     -DSLICOT_INTEGER8=ON \
     -DSLICOT_VERSION="%{major}.%{minor}.%{patch}"
-
-%make_build -C build64
+%cmake_build
 %endif
 
 %install
-%make_install -C build
+%global _vpath_builddir build
+%cmake_install
 %if 0%{?__isa_bits} == 64
-%make_install -C build64
+%global _vpath_builddir build64
+%cmake_install
 %endif
 
 %check
 export CTEST_OUTPUT_ON_FAILURE=1
-make -C build test
+%global _vpath_builddir build
+%ctest
 %if 0%{?__isa_bits} == 64
-make -C build64 test
+%global _vpath_builddir build64
+%ctest
 %endif
 
 %files
