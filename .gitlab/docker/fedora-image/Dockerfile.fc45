@@ -1,4 +1,4 @@
-FROM fedora:42
+FROM fedora:45
 RUN dnf update -y
 RUN dnf upgrade -y
 RUN dnf install -y bash rpmdevtools gcc gcc-fortran ; \
