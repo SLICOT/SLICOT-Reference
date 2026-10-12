@@ -4,6 +4,7 @@
 
 ### Bugfixes
 
+* Fix: Github #46, SG02AD with JOBB='B' and FACT='C'
 * Fix: GitHub #45, Rewrite obsolete language constructs
 * Fix: GitHub #21, "Index out of bounds error in MB04DD, line 327"
 * Fix: GitHub #34, Double transpose in SB02RU
