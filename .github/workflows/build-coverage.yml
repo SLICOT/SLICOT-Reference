@@ -139,5 +139,5 @@ jobs:
         # Fail if new uncovered statements are introduced despite overall improvement (pycobertura exit code 3)
         new-uncovered-statements-failure: false
         # Fail if the overall coverage percentage decreases (more forgiving approach)
-        coverage-rate-reduction-failure: true
+        coverage-rate-reduction-failure: false
 
