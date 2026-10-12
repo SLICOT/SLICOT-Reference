@@ -491,7 +491,7 @@ C     .. Local Scalars ..
       INTEGER           I, INFO1, IW, IWB, IWC, IWF, IWR, J, LDW, MP,
      $                  NDIM, NN, NNM, NP, NP1, WRKOPT
       DOUBLE PRECISION  ASYM, EPS, PIVOTU, RCONDL, RNORM, SCALE, SEPS,
-     $                  U12M, UNORM
+     $                  U12M, UNORM, QSCALE, RSCALE
 C     .. External Functions ..
       LOGICAL           LSAME, SB02OU, SB02OV, SB02OW
       DOUBLE PRECISION  DLAMCH, DLANGE, DLANSY
@@ -631,6 +631,10 @@ C     NB refers to the optimal block size for the immediately
 C     following subroutine, as returned by ILAENV.)
 C
       LSCAL = LSCAL .AND. LJOBB
+
+      QSCALE = ONE
+      RSCALE = ONE
+
       IF ( LSCAL ) THEN
 C
 C        Scale the matrices Q, R (or G), and L so that
@@ -660,6 +664,7 @@ C
             RTYPE = 'G'
             MP = P
          END IF
+
          SCALE = SCALE + RNORM
 C
          IF ( LJOBLN )
@@ -667,8 +672,20 @@ C
          IF ( SCALE.EQ.ZERO )
      $      SCALE = ONE
 C
-         CALL DLASCL( QTYPE, 0, 0, SCALE, ONE, NP, N, Q, LDQ, INFO1 )
-         CALL DLASCL( RTYPE, 0, 0, SCALE, ONE, MP, M, R, LDR, INFO1 )
+         IF (LFACQ .OR. LFACB) THEN
+             QSCALE = SQRT(SCALE)
+         ELSE
+             QSCALE = SCALE
+         END IF
+         IF (LFACR .OR. LFACB) THEN
+             RSCALE = SQRT(SCALE)
+         ELSE
+             RSCALE = SCALE
+         END IF
+
+
+         CALL DLASCL( QTYPE, 0, 0, QSCALE, ONE, NP, N, Q, LDQ, INFO1 )
+         CALL DLASCL( RTYPE, 0, 0, RSCALE, ONE, MP, M, R, LDR, INFO1 )
          IF ( LJOBLN )
      $      CALL DLASCL( 'G', 0, 0, SCALE, ONE, N, M, L, LDL, INFO1 )
       ELSE
@@ -689,8 +706,8 @@ C
 C
 C        Undo scaling of the data arrays.
 C
-         CALL DLASCL( QTYPE, 0, 0, ONE, SCALE, NP, N, Q, LDQ, INFO1 )
-         CALL DLASCL( RTYPE, 0, 0, ONE, SCALE, MP, M, R, LDR, INFO1 )
+         CALL DLASCL( QTYPE, 0, 0, ONE, QSCALE, NP, N, Q, LDQ, INFO1 )
+         CALL DLASCL( RTYPE, 0, 0, ONE, RSCALE, MP, M, R, LDR, INFO1 )
          IF ( LJOBLN )
      $      CALL DLASCL( 'G', 0, 0, ONE, SCALE, N, M, L, LDL, INFO1 )
       END IF
